@@ -9,7 +9,7 @@ class Step4 extends React.Component {
     // The markup for the Step 1 UI
     return (
       <div className="form-group">
-          <h2>Do you have any credit card debt</h2>
+          <h2>How much credit card debt do you have?</h2>
         <label htmlFor="monthly_income">Monthly Income</label>
         <input
           className="form-control"

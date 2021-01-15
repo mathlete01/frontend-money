@@ -1,17 +1,19 @@
 import React, { Component } from "react";
+import Container from "react-bootstrap/Container";
+import Jumbotron from "react-bootstrap/Jumbotron";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
 import Step4 from "./Step4";
 
-class MasterForm extends Component {
+class MasterForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       currentStep: 1,
-      monthly_income: 0,
-      monthly_bills: 0,
-      four01k_match: 0,
+      email: "",
+      username: "",
+      password: "",
     };
   }
 
@@ -85,7 +87,7 @@ class MasterForm extends Component {
   render() {
     return (
       <React.Fragment>
-        <h1>MoneyBot 💵🤖</h1>
+        <h1>React Wizard Form 🧙‍♂️</h1>
         <p>Step {this.state.currentStep} </p>
 
         <form onSubmit={this.handleSubmit}>

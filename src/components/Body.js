@@ -8,10 +8,10 @@ const Body = () => {
     return (
         <Container>
             <div>
-                {/* <Jumbotron>
+                <Jumbotron>
                     <h1>Welcome!</h1>
                     <p>Blurb</p>
-                </Jumbotron> */}
+                </Jumbotron>
             </div>
             <div>
                 <MasterForm />
