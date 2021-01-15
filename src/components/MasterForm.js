@@ -5,22 +5,23 @@ import Step1 from "./Step1";
 import Step2 from "./Step2";
 import Step3 from "./Step3";
 import Step4 from "./Step4";
+import { connect } from "react-redux" 
+import { updateCurrentStep } from "../actions/navigation"
+
 
 class MasterForm extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      currentStep: "Step1",
-      email: "",
-      username: "",
-      password: "",
-    };
-  }
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       currentStep: "Step1",
+//     };
+//   }
 
-  handleChange = (step) => {
-    this.setState({
-      currentStep: step,
-    });
+  handleChange = (nextStep) => {
+      this.props.updateCurrentStep(nextStep)
+    // this.setState({
+    //   currentStep: nextStep,
+    // });
   };
 
   render() {
@@ -32,24 +33,24 @@ class MasterForm extends React.Component {
           render the form steps and pass required props in
         */}
           <Step1
-            currentStep={this.state.currentStep}
+            currentStep={this.props.currentStep}
             handleChange={this.handleChange}
-            email={this.state.email}
+            email={this.props.email}
           />
           <Step2
-            currentStep={this.state.currentStep}
+            currentStep={this.props.currentStep}
             handleChange={this.handleChange}
-            username={this.state.username}
+            username={this.props.username}
           />
           <Step3
-            currentStep={this.state.currentStep}
+            currentStep={this.props.currentStep}
             handleChange={this.handleChange}
-            password={this.state.password}
+            password={this.props.password}
           />
           <Step4
-            currentStep={this.state.currentStep}
+            currentStep={this.props.currentStep}
             handleChange={this.handleChange}
-            password={this.state.password}
+            password={this.props.password}
           />
         {/* </form> */}
       </React.Fragment>
@@ -57,13 +58,18 @@ class MasterForm extends React.Component {
   }
 }
 
-//   handleSubmit = (event) => {
-//     event.preventDefault();
-//     const { email, username, password } = this.state;
-//     alert(`Your registration detail: \n 
-//              Email: ${email} \n 
-//              Username: ${username} \n
-//              Password: ${password}`);
-//   };
+const mapStateToProps = (state) => {
+    return {
+      currentStep: state.currentStep,
+    }
+  }
 
-export default MasterForm;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        updateCurrentStep: () => {
+            dispatch(updateCurrentStep())
+        }
+    }
+}
+
+export default connect(mapStateToProps, {updateCurrentStep})(MasterForm)
