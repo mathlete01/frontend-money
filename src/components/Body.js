@@ -7,12 +7,12 @@ const Body = () => {
 
     return (
         <Container>
-            <div>
-                {/* <Jumbotron>
+            {/* <div>
+                <Jumbotron>
                     <h1>Welcome!</h1>
                     <p>Blurb</p>
-                </Jumbotron> */}
-            </div>
+                </Jumbotron>
+            </div> */}
             <div>
                 <MasterForm />
             </div>
