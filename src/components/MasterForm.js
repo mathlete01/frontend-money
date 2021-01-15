@@ -10,28 +10,15 @@ import { updateCurrentStep } from "../actions/navigation"
 
 
 class MasterForm extends React.Component {
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       currentStep: "Step1",
-//     };
-//   }
 
   handleChange = (nextStep) => {
       this.props.updateCurrentStep(nextStep)
-    // this.setState({
-    //   currentStep: nextStep,
-    // });
   };
 
   render() {
     return (
       <React.Fragment>
         <h1>Advise-o-matic 💵</h1>
-        {/* <form onSubmit={this.handleSubmit}> */}
-          {/* 
-          render the form steps and pass required props in
-        */}
           <Step1
             currentStep={this.props.currentStep}
             handleChange={this.handleChange}
@@ -52,7 +39,6 @@ class MasterForm extends React.Component {
             handleChange={this.handleChange}
             password={this.props.password}
           />
-        {/* </form> */}
       </React.Fragment>
     );
   }
