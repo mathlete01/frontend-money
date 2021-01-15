@@ -10,10 +10,11 @@ class Step2 extends React.Component {
     return (
       <div className="form-group">
         <h2>Does your job happen to offer a 401(k) plan?</h2>
-        <button className="btn btn-secondary" type="button" onClick={this._yes}>
+        <button className="btn btn-secondary form-control" type="button" onClick={this._yes}>
           Yes
         </button>
-        <button className="btn btn-secondary" type="button" onClick={this._no}>
+        <br></br>
+        <button className="btn btn-secondary form-control" type="button" onClick={this._no}>
           No
         </button>
       </div>
