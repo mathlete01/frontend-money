@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class Step2 extends React.Component {
+class StepTwo extends React.Component {
   render() {
     if (this.props.currentStep !== 2) {
       // Prop: The current step
@@ -13,7 +13,6 @@ class Step2 extends React.Component {
         <button className="btn btn-secondary form-control" type="button" onClick={this._yes}>
           Yes
         </button>
-        <br></br>
         <button className="btn btn-secondary form-control" type="button" onClick={this._no}>
           No
         </button>
@@ -22,4 +21,4 @@ class Step2 extends React.Component {
   }
 }
 
-export default Step2;
+export default StepTwo;

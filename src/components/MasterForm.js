@@ -1,8 +1,10 @@
 import React, { Component } from "react";
-import Step1 from "./Step1";
-import Step2 from "./Step2";
+import StepOne from "./StepOne";
+import StepTwo from "./StepTwo";
 import Step3 from "./Step3";
 import Step4 from "./Step4";
+import CardBinary from "./CardBinary";
+import GoalMoney from "./GoalMoney";
 
 class MasterForm extends Component {
   constructor(props) {
@@ -12,8 +14,70 @@ class MasterForm extends Component {
       monthly_income: 0,
       monthly_bills: 0,
       four01k_match: 0,
+      //       cards:
+      //   {
+      //     id: 1,
+      //     name: 'goal_money',
+      //     data: {
+      //       headline: 'How much money do you have to put towards your goals?',
+      //       yes: null,
+      //       no: null,
+      //       number: 0,
+      //       next: 'offer_401k'
+      //     }
+      //   },
+      //   {
+      //     id: 2,
+      //     name: 'offer_401k',
+      //     data: {
+      //       headline: 'Does your employer offer a 401(k) plan?',
+      //       yes: 'company_match',
+      //       no: 'cc_debt',
+      //       number: null,
+      //       continue: null
+      //     }
+      //   },
+      //   {
+      //     id: 3,
+      //     name: 'company_match',
+      //     data: {
+      //       headline: 'What percentage of your contributions does your company match?',
+      //       yes: null,
+      //       no: null,
+      //       number: 0,
+      //       continue: 'contribution_amt'
+      //     }
+      //   },
+      //   {
+      //     id: 4,
+      //     name: 'cc_debt',
+      //     data: {
+      //       headline: 'Do you have credit card debt?',
+      //       yes: 'how_much_debt',
+      //       no: 'post_debt_determination',
+      //       number: null,
+      //       continue: null
+      //     }
+      //   }
     };
   }
+
+  //   const API = "http://localhost:3000/cards";
+
+  //   componentDidMount() {
+  //     fetch(API)
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         //? Did not need to make this an anonymous function
+  //         this.setState({
+  //           sushis: data,
+  //         });
+  //       })
+  //       .then((data) => this.getFourSushis())
+  //       .catch((error) => {
+  //         console.error("Error:", error);
+  //       });
+  //   }
 
   handleChange = (event) => {
     const { name, value } = event.target;
@@ -92,23 +156,26 @@ class MasterForm extends Component {
           {/* 
           render the form steps and pass required props in
         */}
-          <Step1
+          {/* <CardBinary currentStep={this.state.currentStep} /> */}
+          <GoalMoney />
+          {/* <StepOne
             currentStep={this.state.currentStep}
             handleChange={this.handleChange}
             email={this.state.email}
-          />
-          <Step2
-            currentStep={this.state.currentStep}
-            handleChange={this.handleChange}
-            username={this.state.username}
           />
           <Step3
             currentStep={this.state.currentStep}
             handleChange={this.handleChange}
             password={this.state.password}
           />
-          {this.previousButton()}
-          {this.nextButton()}
+          <StepTwo
+            currentStep={this.state.currentStep}
+            handleChange={this.handleChange}
+            username={this.state.username}
+          /> */}
+
+          {/* {this.previousButton()}
+          {this.nextButton()} */}
         </form>
       </React.Fragment>
     );
@@ -117,7 +184,7 @@ class MasterForm extends Component {
 
 export default MasterForm;
 
-// function Step1(props) {
+// function StepOne(props) {
 //   if (props.currentStep !== 1) {
 //     return null;
 //   }
@@ -137,7 +204,7 @@ export default MasterForm;
 //   );
 // }
 
-// function Step2(props) {
+// function StepTwo(props) {
 //   if (props.currentStep !== 2) {
 //     return null;
 //   }

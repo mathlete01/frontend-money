@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class Step1 extends React.Component {
+class StepOne extends React.Component {
   render() {
     if (this.props.currentStep !== 1) {
       // Prop: The current step
@@ -36,4 +36,4 @@ class Step1 extends React.Component {
   }
 }
 
-export default Step1;
+export default StepOne;
