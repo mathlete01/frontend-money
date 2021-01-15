@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import store from "../app/store";
+import { connect } from "react-redux" 
+import { updateCurrentStep } from "../actions/navigation"
 
 class Step1 extends React.Component {
 
@@ -47,4 +50,10 @@ class Step1 extends React.Component {
   }
 }
 
-export default Step1;
+const mapStateToProps = (state) => {
+  return {
+    currentStep: state.currentStep,
+  }
+}
+
+export default connect(mapStateToProps, { updateCurrentStep })(Step1);
