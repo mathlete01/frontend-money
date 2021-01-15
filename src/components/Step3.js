@@ -1,8 +1,17 @@
 import React, { Component } from "react";
 
 class Step3 extends React.Component {
+
+  _next = () => {
+    this.props.handleChange("Step4")
+  };
+
+  _prev = () => {
+    this.props.handleChange("Step2")
+  };
+
   render() {
-    if (this.props.currentStep !== 3) {
+    if (this.props.currentStep !== "Step3") {
       // Prop: The current step
       return null;
     }
@@ -10,26 +19,31 @@ class Step3 extends React.Component {
     return (
       <div className="form-group">
           <h2>How much is the employer match?</h2>
-        <label htmlFor="monthly_income">Monthly Income</label>
+        {/* <label htmlFor="employer_match">Employer Match</label> */}
+        <label >Employer Match</label>
         <input
           className="form-control"
-          id="monthly_income"
-          name="monthly_income"
-          type="integer"
-          placeholder="3000"
-          value={this.props.monthly_income} // Prop: The email input data
+          id="employer_match"
+          name="employer_match"
+          type="number"
+          placeholder="3%"
+          value={this.props.employer_match} // Prop: The email input data
           onChange={this.props.handleChange} // Prop: Puts data into state
         />
-        <label htmlFor="monthly_bills">Monthly Bills</label>
-        <input
-          className="form-control"
-          id="monthly_bills"
-          name="monthly_bills"
-          type="integer"
-          placeholder="1000"
-          value={this.props.monthly_bills} // Prop: The email input data
-          onChange={this.props.handleChange} // Prop: Puts data into state
-        />
+        <button
+          className="btn btn-secondary"
+          type="button"
+          onClick={this._prev}
+        >
+          Previous
+        </button>
+        <button
+          className="btn btn-primary float-right"
+          type="button"
+          onClick={this._next}
+        >
+          Next
+        </button>
       </div>
     );
   }

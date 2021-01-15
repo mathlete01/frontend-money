@@ -1,8 +1,13 @@
 import React, { Component } from "react";
 
 class Step1 extends React.Component {
+
+  _next = () => {
+    this.props.handleChange("Step2")
+  };
+
   render() {
-    if (this.props.currentStep !== 1) {
+    if (this.props.currentStep !== "Step1") {
       // Prop: The current step
       return null;
     }
@@ -30,6 +35,13 @@ class Step1 extends React.Component {
           value={this.props.monthly_bills} // Prop: The email input data
           onChange={this.props.handleChange} // Prop: Puts data into state
         />
+        <button
+          className="btn btn-primary float-right"
+          type="button"
+          onClick={this._next}
+        >
+          Next
+        </button>
       </div>
     );
   }

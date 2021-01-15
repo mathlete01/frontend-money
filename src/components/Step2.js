@@ -1,8 +1,21 @@
 import React, { Component } from "react";
 
 class Step2 extends React.Component {
+
+  _prev = () => {
+    this.props.handleChange("Step1")
+  };
+  
+  _yes = () => {
+    this.props.handleChange("Step3")
+  };
+
+  _no = () => {
+    this.props.handleChange("Step4")
+  };
+
   render() {
-    if (this.props.currentStep !== 2) {
+    if (this.props.currentStep !== "Step2") {
       // Prop: The current step
       return null;
     }
@@ -15,6 +28,13 @@ class Step2 extends React.Component {
         </button>
         <button className="btn btn-secondary" type="button" onClick={this._no}>
           No
+        </button>
+        <button
+          className="btn btn-secondary"
+          type="button"
+          onClick={this._prev}
+        >
+          Previous
         </button>
       </div>
     );
