@@ -2,7 +2,7 @@ let state;
 
 export function reducer(
   state = {
-    currentStep: "Step1",
+    currentStep: "Step0",
   },
   action
 ) {
