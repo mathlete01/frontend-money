@@ -5,8 +5,10 @@ import { updateCurrentStep } from "../actions/navigation";
 
 const BASE_URL = "http://localhost:3000";
 const USERS_URL = `${BASE_URL}/users`;
+let CURRENT_USER = ""
 
 class Step0 extends React.Component {
+  
   _next = () => {
     this.props.handleChange("Step1");
     this.createUser();
@@ -17,7 +19,12 @@ class Step0 extends React.Component {
   //   console.log(`CURRENT_USER = ${CURRENT_USER}`);
   // }
 
-  createUser() {
+  setCurrentUser = (obj) => {
+    CURRENT_USER = obj.id;
+    console.log(`CURRENT_USER = ${CURRENT_USER}`);
+  }
+
+  createUser = () => {
     let formData = {
       email: "yourmom@mom.com",
     };
@@ -32,9 +39,11 @@ class Step0 extends React.Component {
 
     fetch(USERS_URL, configObj)
       .then((res) => res.json())
-      // .then((data) => setCurrentUser(data))
+      .then((data) => this.setCurrentUser(data))
       .catch((errors) => console.log(`createUser: ${errors}`));
   }
+
+
 
   render() {
     if (this.props.currentStep !== "Step0") {

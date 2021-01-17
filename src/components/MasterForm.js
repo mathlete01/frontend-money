@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import Container from "react-bootstrap/Container";
-import Jumbotron from "react-bootstrap/Jumbotron";
+// import Container from "react-bootstrap/Container";
 import Step0 from "./Step0";
 import Step1 from "./Step1";
 import Step2 from "./Step2";
@@ -21,7 +20,7 @@ class MasterForm extends React.Component {
         <Step0
           currentStep={this.props.currentStep}
           handleChange={this.handleChange}
-          email={this.props.email}
+        //   email={this.props.email}
         />
         <Step1
           currentStep={this.props.currentStep}
