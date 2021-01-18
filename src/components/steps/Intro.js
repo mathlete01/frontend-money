@@ -1,16 +1,16 @@
 import React, { Component } from "react";
 // import store from "../app/store";
 import { connect } from "react-redux";
-import { updateCurrentStep } from "../actions/navigation";
+import { updateCurrentStep } from "../../actions/navigation";
 
 const BASE_URL = "http://localhost:3000";
 const USERS_URL = `${BASE_URL}/users`;
 let CURRENT_USER = ""
 
-class Step0 extends React.Component {
+class Intro extends React.Component {
   
   _next = () => {
-    this.props.handleStepChange("Step1");
+    this.props.handleStepChange("IncomeMinusBills");
     this.createUser();
   };
 
@@ -36,7 +36,7 @@ class Step0 extends React.Component {
 
 
   render() {
-    if (this.props.currentStep !== "Step0") {
+    if (this.props.currentStep !== "Intro") {
       // Prop: The current step
       return null;
     }
@@ -67,5 +67,5 @@ const mapStateToProps = (state) => {
   };
 };
 
-// export default connect(mapStateToProps, { updateCurrentStep })(Step0);
-export default connect(mapStateToProps)(Step0);
+// export default connect(mapStateToProps, { updateCurrentStep })(Intro);
+export default connect(mapStateToProps)(Intro);

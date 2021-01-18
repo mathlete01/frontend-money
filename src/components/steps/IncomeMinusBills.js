@@ -1,18 +1,19 @@
 import React, { Component } from "react";
-import store from "../app/store";
+import store from "../../app/store";
 import { connect } from "react-redux" 
-import { updateCurrentStep } from "../actions/navigation"
+import { updateCurrentStep } from "../../actions/navigation"
 
 const BASE_URL = "http://localhost:3000";
 const USERS_URL = `${BASE_URL}/users`;
 
-class Step1 extends React.Component {
+class IncomeMinusBills extends React.Component {
   
   saveIncomeBills = (income, bills) => {
     let formData = {
       id: this.props.CURRENT_USER,
       monthly_income: income,
       monthly_bills: bills,
+      leftover_money: income - bills
     };
 
     let configOb = {
@@ -34,11 +35,11 @@ class Step1 extends React.Component {
     let income = document.getElementById("monthly_income")
     let bills = document.getElementById("monthly_bills")
     this.saveIncomeBills(income.value, bills.value)
-    this.props.handleStepChange("Step2")
+    this.props.handleStepChange("Four01kPlan")
   };
 
   render() {
-    if (this.props.currentStep !== "Step1") {
+    if (this.props.currentStep !== "IncomeMinusBills") {
       // Prop: The current step
       return null;
     }
@@ -81,4 +82,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { updateCurrentStep })(Step1);
+export default connect(mapStateToProps, { updateCurrentStep })(IncomeMinusBills);

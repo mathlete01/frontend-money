@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 
-class Step3 extends React.Component {
+class EmployerMatch extends React.Component {
 
   _next = () => {
-    this.props.handleStepChange("Step4")
+    this.props.handleStepChange("CCardDebt")
   };
 
   _prev = () => {
-    this.props.handleStepChange("Step2")
+    this.props.handleStepChange("Four01kPlan")
   };
 
   render() {
-    if (this.props.currentStep !== "Step3") {
+    if (this.props.currentStep !== "EmployerMatch") {
       // Prop: The current step
       return null;
     }
@@ -49,4 +49,4 @@ class Step3 extends React.Component {
   }
 }
 
-export default Step3;
+export default EmployerMatch;
