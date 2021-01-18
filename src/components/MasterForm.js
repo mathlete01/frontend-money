@@ -9,12 +9,25 @@ import { connect } from "react-redux";
 import { updateCurrentStep } from "../actions/navigation";
 
 class MasterForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      CURRENT_USER: "",
+    };
+  }
+
   handleStepChange = (nextStep) => {
     this.props.updateCurrentStep(nextStep);
     // this.props.dispatch({
     //   type: 'UPDATE_STEP'
     // })
   };
+
+  setCurrentUser = (obj) => {
+    this.setState({
+      CURRENT_USER: obj.id,
+    });
+  }
 
   render() {
     return (
@@ -23,27 +36,24 @@ class MasterForm extends React.Component {
         <Step0
           currentStep={this.props.currentStep}
           handleStepChange={this.handleStepChange}
-        //   email={this.props.email}
+          setCurrentUser={this.setCurrentUser}
         />
         <Step1
           currentStep={this.props.currentStep}
+          CURRENT_USER={this.state.CURRENT_USER}
           handleStepChange={this.handleStepChange}
-          email={this.props.email}
         />
         <Step2
           currentStep={this.props.currentStep}
           handleStepChange={this.handleStepChange}
-          username={this.props.username}
         />
         <Step3
           currentStep={this.props.currentStep}
           handleStepChange={this.handleStepChange}
-          password={this.props.password}
         />
         <Step4
           currentStep={this.props.currentStep}
           handleStepChange={this.handleStepChange}
-          password={this.props.password}
         />
       </React.Fragment>
     );

@@ -14,16 +14,6 @@ class Step0 extends React.Component {
     this.createUser();
   };
 
-  // setCurrentUser = (obj) => {
-  //   const CURRENT_USER = 1234;
-  //   console.log(`CURRENT_USER = ${CURRENT_USER}`);
-  // }
-
-  setCurrentUser = (obj) => {
-    CURRENT_USER = obj.id;
-    console.log(`CURRENT_USER = ${CURRENT_USER}`);
-  }
-
   createUser = () => {
     let formData = {
       email: "yourmom@mom.com",
@@ -39,7 +29,7 @@ class Step0 extends React.Component {
 
     fetch(USERS_URL, configObj)
       .then((res) => res.json())
-      .then((data) => this.setCurrentUser(data))
+      .then((data) => this.props.setCurrentUser(data))
       .catch((errors) => console.log(`createUser: ${errors}`));
   }
 

@@ -5,18 +5,16 @@ import { updateCurrentStep } from "../actions/navigation"
 
 const BASE_URL = "http://localhost:3000";
 const USERS_URL = `${BASE_URL}/users`;
-// let CURRENT_USER = ""
 
 const monthly_income = document.getElementById("monthly_income");
 
 class Step1 extends React.Component {
   
   saveIncome = (value) => {
-    //alert(`saveIncome:value = ${value}`)
     console.log(`saveIncome:value = ${value}`);
+    console.log(this.props.CURRENT_USER);
     let formData = {
-      // id: CURRENT_USER,
-      id: 31,
+      id: this.props.CURRENT_USER,
       monthly_income: value,
     };
 
@@ -32,7 +30,6 @@ class Step1 extends React.Component {
     fetch(USERS_URL, configOb)
       .then((res) => res.json())
       .then((obj) => console.log(obj))
-      // .then(updateGame(name))
       .catch((errors) => console.log(`saveIncome: ${errors}`));
   }
 
