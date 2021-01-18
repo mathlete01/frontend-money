@@ -31,11 +31,11 @@ class Four01kMatch extends React.Component {
   _next = () => {
     let match = document.getElementById("employer_match")
     this.saveFour01kMatch(match.value)
-    this.props.handleStepChange("Four01kContribution")
+    this.props.handleNextStep("Four01kContribution")
   };
 
   _prev = () => {
-    this.props.handleStepChange("Four01k")
+    this.props.handlePrevStep("Four01k")
   };
 
   render() {
@@ -56,7 +56,7 @@ class Four01kMatch extends React.Component {
           type="float"
           defaultValue="3"
           // value={this.props.employer_match} // Prop: The email input data
-          // onChange={this.props.handleStepChange} // Prop: Puts data into state
+          // onChange={this.props.handleNextStep} // Prop: Puts data into state
         />
         <button
           className="btn btn-secondary"

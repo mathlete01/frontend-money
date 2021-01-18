@@ -31,11 +31,11 @@ class Four01kContribution extends React.Component {
   _next = () => {
     let match = document.getElementById("employee_contribution")
     this.saveFour01kContribution(match.value)
-    this.props.handleStepChange("CreditCardDebt")
+    this.props.handleNextStep("CreditCardDebt")
   };
 
   _prev = () => {
-    this.props.handleStepChange("Four01kMatch")
+    this.props.handlePrevStep("Four01kMatch")
   };
 
   render() {

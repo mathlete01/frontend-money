@@ -10,7 +10,7 @@ let CURRENT_USER = ""
 class Intro extends React.Component {
   
   _next = () => {
-    this.props.handleStepChange("LeftoverMoney");
+    this.props.handleNextStep("LeftoverMoney");
     this.createUser();
   };
 

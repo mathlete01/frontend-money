@@ -14,21 +14,37 @@ class MasterForm extends React.Component {
     super(props);
     this.state = {
       CURRENT_USER: "",
+      prevStep: "",
+      path: [],
     };
   }
 
-  handleStepChange = (nextStep) => {
+  handleNextStep = (nextStep) => {
+    // console.log("handleNextStep called");
+    this.setState({
+      path: [...this.state.path, nextStep],
+    });
+    // console.log(`this.state.path = ${this.state.path}`);
     this.props.updateCurrentStep(nextStep);
-    // this.props.dispatch({
-    //   type: 'UPDATE_STEP'
-    // })
+  };
+
+  handlePrevStep = () => {
+    console.log("handlePrevStep called");
+    let i = this.state.path.length;
+    this.setState((prevState) => ({
+      path: prevState.path.filter((_, i) => i !== this.state.path.length - 1),
+    }));
+    // console.log(`this.state.path = ${this.state.path}`);
+    let last = this.state.path.length - 2
+    // console.log(`last = ${last}`);
+    this.props.updateCurrentStep(this.state.path[last])
   };
 
   setCurrentUser = (obj) => {
     this.setState({
       CURRENT_USER: obj.id,
     });
-  }
+  };
 
   render() {
     return (
@@ -36,33 +52,38 @@ class MasterForm extends React.Component {
         <h1>Advise-o-matic 💵</h1>
         <Intro
           currentStep={this.props.currentStep}
-          handleStepChange={this.handleStepChange}
+          handleNextStep={this.handleNextStep}
           setCurrentUser={this.setCurrentUser}
         />
         <LeftoverMoney
           currentStep={this.props.currentStep}
+          handlePrevStep={this.handlePrevStep}
           CURRENT_USER={this.state.CURRENT_USER}
-          handleStepChange={this.handleStepChange}
+          handleNextStep={this.handleNextStep}
         />
         <Four01k
           currentStep={this.props.currentStep}
+          handlePrevStep={this.handlePrevStep}
           CURRENT_USER={this.state.CURRENT_USER}
-          handleStepChange={this.handleStepChange}
+          handleNextStep={this.handleNextStep}
         />
         <Four01kMatch
           currentStep={this.props.currentStep}
+          handlePrevStep={this.handlePrevStep}
           CURRENT_USER={this.state.CURRENT_USER}
-          handleStepChange={this.handleStepChange}
+          handleNextStep={this.handleNextStep}
         />
         <Four01kContribution
           currentStep={this.props.currentStep}
+          handlePrevStep={this.handlePrevStep}
           CURRENT_USER={this.state.CURRENT_USER}
-          handleStepChange={this.handleStepChange}
+          handleNextStep={this.handleNextStep}
         />
         <CreditCardDebt
           currentStep={this.props.currentStep}
+          handlePrevStep={this.handlePrevStep}
           CURRENT_USER={this.state.CURRENT_USER}
-          handleStepChange={this.handleStepChange}
+          handleNextStep={this.handleNextStep}
         />
       </React.Fragment>
     );

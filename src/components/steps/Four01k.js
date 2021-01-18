@@ -27,17 +27,18 @@ class Four01k extends React.Component {
   };
 
   _prev = () => {
-    this.props.handleStepChange("LeftoverMoney");
+    // this.props.handlePrevStep("LeftoverMoney");
+    this.props.handlePrevStep();
   };
 
   _yes = () => {
     this.saveFour01k(true);
-    this.props.handleStepChange("Four01kMatch");
+    this.props.handleNextStep("Four01kMatch");
   };
 
   _no = () => {
     this.saveFour01k(false);
-    this.props.handleStepChange("CreditCardDebt");
+    this.props.handleNextStep("CreditCardDebt");
   };
 
   render() {

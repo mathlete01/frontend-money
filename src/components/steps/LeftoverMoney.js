@@ -35,7 +35,7 @@ class LeftoverMoney extends React.Component {
     let income = document.getElementById("monthly_income")
     let bills = document.getElementById("monthly_bills")
     this.saveIncomeBills(income.value, bills.value)
-    this.props.handleStepChange("Four01k")
+    this.props.handleNextStep("Four01k")
   };
 
   render() {

@@ -3,11 +3,11 @@ import React, { Component } from "react";
 class CreditCardDebt extends React.Component {
 
   _next = () => {
-    this.props.handleStepChange("Step5")
+    this.props.handleNextStep("Step5")
   };
 
   _prev = () => {
-    this.props.handleStepChange("Four01k")
+    this.props.handlePrevStep("Four01k")
   };
 
   render() {
@@ -18,34 +18,32 @@ class CreditCardDebt extends React.Component {
     // The markup for the Step 1 UI
     return (
       <div className="form-group">
-          <h2>How much credit card debt do you have?</h2>
-        <label htmlFor="monthly_income">CC 1</label>
+        <h2>How much credit card debt do you have?</h2>
+        <label>Card #1</label>
         <input
           className="form-control"
-          id="monthly_income"
-          name="monthly_income"
-          type="integer"
-          placeholder="3000"
-          value={this.props.monthly_income} // Prop: The email input data
-          onChange={this.props.handleStepChange} // Prop: Puts data into state
+          id="cc_1"
+          name="cc_1"
+          type="number"
+          // placeholder="3000"
+          defaultValue="2000"
         />
-        <label htmlFor="monthly_bills">CC 2</label>
+        <label>Card #2</label>
         <input
           className="form-control"
-          id="monthly_bills"
-          name="monthly_bills"
-          type="integer"
-          placeholder="1000"
-          value={this.props.monthly_bills} // Prop: The email input data
-          onChange={this.props.handleStepChange} // Prop: Puts data into state
+          id="cc_2"
+          name="cc_2"
+          type="number"
+          defaultValue="400"
         />
-        <button
-          className="btn btn-secondary"
-          type="button"
-          onClick={this._prev}
-        >
-          Previous
-        </button>
+        <label>Card #3</label>
+        <input
+          className="form-control"
+          id="cc_3"
+          name="cc_3"
+          type="number"
+          defaultValue="800"
+        />
         <button
           className="btn btn-primary float-right"
           type="button"
