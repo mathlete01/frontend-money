@@ -6,16 +6,13 @@ import { updateCurrentStep } from "../actions/navigation"
 const BASE_URL = "http://localhost:3000";
 const USERS_URL = `${BASE_URL}/users`;
 
-const monthly_income = document.getElementById("monthly_income");
-
 class Step1 extends React.Component {
   
-  saveIncome = (value) => {
-    console.log(`saveIncome:value = ${value}`);
-    console.log(this.props.CURRENT_USER);
+  saveIncomeBills = (income, bills) => {
     let formData = {
       id: this.props.CURRENT_USER,
-      monthly_income: value,
+      monthly_income: income,
+      monthly_bills: bills,
     };
 
     let configOb = {
@@ -30,13 +27,13 @@ class Step1 extends React.Component {
     fetch(USERS_URL, configOb)
       .then((res) => res.json())
       .then((obj) => console.log(obj))
-      .catch((errors) => console.log(`saveIncome: ${errors}`));
+      .catch((errors) => console.log(`saveIncomeBills: ${errors}`));
   }
 
   _next = () => {
     let income = document.getElementById("monthly_income")
-    console.log(`monthly_income = ${income.value}`)
-    this.saveIncome(income.value)
+    let bills = document.getElementById("monthly_bills")
+    this.saveIncomeBills(income.value, bills.value)
     this.props.handleStepChange("Step2")
   };
 
@@ -54,20 +51,17 @@ class Step1 extends React.Component {
           className="form-control"
           id="monthly_income"
           name="monthly_income"
-          type="integer"
-          placeholder="3000"
-          // value={this.props.monthly_income} // Prop: The email input data
-          // onChange={this.props.handleStepChange} // Prop: Puts data into state
+          type="number"
+          // placeholder="3000"
+          defaultValue="3000"
         />
         <label htmlFor="monthly_bills">Monthly Bills</label>
         <input
           className="form-control"
           id="monthly_bills"
           name="monthly_bills"
-          type="integer"
-          placeholder="1000"
-          value={this.props.monthly_bills} // Prop: The email input data
-          // onChange={this.props.handleStepChange} // Prop: Puts data into state
+          type="number"
+          defaultValue="1000"
         />
         <button
           className="btn btn-primary float-right"
