@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 
-class CCardDebt extends React.Component {
+class CreditCardDebt extends React.Component {
 
   _next = () => {
     this.props.handleStepChange("Step5")
   };
 
   _prev = () => {
-    this.props.handleStepChange("Four01kPlan")
+    this.props.handleStepChange("Four01k")
   };
 
   render() {
-    if (this.props.currentStep !== "CCardDebt") {
+    if (this.props.currentStep !== "CreditCardDebt") {
       // Prop: The current step
       return null;
     }
@@ -58,4 +58,4 @@ class CCardDebt extends React.Component {
   }
 }
 
-export default CCardDebt;
+export default CreditCardDebt;

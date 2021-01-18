@@ -6,7 +6,7 @@ import { updateCurrentStep } from "../../actions/navigation"
 const BASE_URL = "http://localhost:3000";
 const USERS_URL = `${BASE_URL}/users`;
 
-class IncomeMinusBills extends React.Component {
+class LeftoverMoney extends React.Component {
   
   saveIncomeBills = (income, bills) => {
     let formData = {
@@ -35,11 +35,11 @@ class IncomeMinusBills extends React.Component {
     let income = document.getElementById("monthly_income")
     let bills = document.getElementById("monthly_bills")
     this.saveIncomeBills(income.value, bills.value)
-    this.props.handleStepChange("Four01kPlan")
+    this.props.handleStepChange("Four01k")
   };
 
   render() {
-    if (this.props.currentStep !== "IncomeMinusBills") {
+    if (this.props.currentStep !== "LeftoverMoney") {
       // Prop: The current step
       return null;
     }
@@ -82,4 +82,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { updateCurrentStep })(IncomeMinusBills);
+export default connect(mapStateToProps, { updateCurrentStep })(LeftoverMoney);

@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 // import Container from "react-bootstrap/Container";
 import Intro from "./steps/Intro";
-import IncomeMinusBills from "./steps/IncomeMinusBills";
-import Four01kPlan from "./steps/Four01kPlan";
-import EmployerMatch from "./steps/EmployerMatch";
-import CCardDebt from "./steps/CCardDebt";
+import LeftoverMoney from "./steps/LeftoverMoney";
+import Four01k from "./steps/Four01k";
+import Four01kMatch from "./steps/Four01kMatch";
+import Four01kContribution from "./steps/Four01k_Contribution";
+import CreditCardDebt from "./steps/CreditCardDebt";
 import { connect } from "react-redux";
 import { updateCurrentStep } from "../actions/navigation";
 
@@ -38,22 +39,27 @@ class MasterForm extends React.Component {
           handleStepChange={this.handleStepChange}
           setCurrentUser={this.setCurrentUser}
         />
-        <IncomeMinusBills
+        <LeftoverMoney
           currentStep={this.props.currentStep}
           CURRENT_USER={this.state.CURRENT_USER}
           handleStepChange={this.handleStepChange}
         />
-        <Four01kPlan
+        <Four01k
           currentStep={this.props.currentStep}
           CURRENT_USER={this.state.CURRENT_USER}
           handleStepChange={this.handleStepChange}
         />
-        <EmployerMatch
+        <Four01kMatch
           currentStep={this.props.currentStep}
           CURRENT_USER={this.state.CURRENT_USER}
           handleStepChange={this.handleStepChange}
         />
-        <CCardDebt
+        <Four01kContribution
+          currentStep={this.props.currentStep}
+          CURRENT_USER={this.state.CURRENT_USER}
+          handleStepChange={this.handleStepChange}
+        />
+        <CreditCardDebt
           currentStep={this.props.currentStep}
           CURRENT_USER={this.state.CURRENT_USER}
           handleStepChange={this.handleStepChange}

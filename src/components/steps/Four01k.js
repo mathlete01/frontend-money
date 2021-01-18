@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 
-const BASE_URL = "http://localhost:3000";
-const USERS_URL = `${BASE_URL}/users`;
-
-class Four01kPlan extends React.Component {
+class Four01k extends React.Component {
 
   saveFour01k = (bool) => {
+    const BASE_URL = "http://localhost:3000";
+    const USERS_URL = `${BASE_URL}/users`;
+
     let formData = {
       id: this.props.CURRENT_USER,
       four01k: bool,
@@ -27,21 +27,21 @@ class Four01kPlan extends React.Component {
   };
 
   _prev = () => {
-    this.props.handleStepChange("IncomeMinusBills");
+    this.props.handleStepChange("LeftoverMoney");
   };
 
   _yes = () => {
     this.saveFour01k(true);
-    this.props.handleStepChange("EmployerMatch");
+    this.props.handleStepChange("Four01kMatch");
   };
 
   _no = () => {
     this.saveFour01k(false);
-    this.props.handleStepChange("CCardDebt");
+    this.props.handleStepChange("CreditCardDebt");
   };
 
   render() {
-    if (this.props.currentStep !== "Four01kPlan") {
+    if (this.props.currentStep !== "Four01k") {
       // Prop: The current step
       return null;
     }
@@ -67,4 +67,4 @@ class Four01kPlan extends React.Component {
   }
 }
 
-export default Four01kPlan;
+export default Four01k;
