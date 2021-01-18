@@ -16,7 +16,7 @@ class Step1 extends React.Component {
     console.log(`saveIncome:value = ${value}`);
     let formData = {
       // id: CURRENT_USER,
-      id: 30,
+      id: 31,
       monthly_income: value,
     };
 

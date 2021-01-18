@@ -11,6 +11,9 @@ import { updateCurrentStep } from "../actions/navigation";
 class MasterForm extends React.Component {
   handleStepChange = (nextStep) => {
     this.props.updateCurrentStep(nextStep);
+    // this.props.dispatch({
+    //   type: 'UPDATE_STEP'
+    // })
   };
 
   render() {
@@ -62,4 +65,5 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, { updateCurrentStep })(MasterForm);
+// export default connect(mapStateToProps)(MasterForm);
 // export default connect(mapStateToProps, mapDispatchToProps)(MasterForm);

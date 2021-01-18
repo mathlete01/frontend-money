@@ -77,4 +77,5 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { updateCurrentStep })(Step0);
+// export default connect(mapStateToProps, { updateCurrentStep })(Step0);
+export default connect(mapStateToProps)(Step0);
