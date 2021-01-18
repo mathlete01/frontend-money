@@ -3,11 +3,11 @@ import React, { Component } from "react";
 class Step4 extends React.Component {
 
   _next = () => {
-    this.props.handleChange("Step5")
+    this.props.handleStepChange("Step5")
   };
 
   _prev = () => {
-    this.props.handleChange("Step2")
+    this.props.handleStepChange("Step2")
   };
 
   render() {
@@ -27,7 +27,7 @@ class Step4 extends React.Component {
           type="integer"
           placeholder="3000"
           value={this.props.monthly_income} // Prop: The email input data
-          onChange={this.props.handleChange} // Prop: Puts data into state
+          onChange={this.props.handleStepChange} // Prop: Puts data into state
         />
         <label htmlFor="monthly_bills">CC 2</label>
         <input
@@ -37,7 +37,7 @@ class Step4 extends React.Component {
           type="integer"
           placeholder="1000"
           value={this.props.monthly_bills} // Prop: The email input data
-          onChange={this.props.handleChange} // Prop: Puts data into state
+          onChange={this.props.handleStepChange} // Prop: Puts data into state
         />
         <button
           className="btn btn-secondary"

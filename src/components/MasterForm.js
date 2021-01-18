@@ -9,7 +9,7 @@ import { connect } from "react-redux";
 import { updateCurrentStep } from "../actions/navigation";
 
 class MasterForm extends React.Component {
-  handleChange = (nextStep) => {
+  handleStepChange = (nextStep) => {
     this.props.updateCurrentStep(nextStep);
   };
 
@@ -19,27 +19,27 @@ class MasterForm extends React.Component {
         <h1>Advise-o-matic 💵</h1>
         <Step0
           currentStep={this.props.currentStep}
-          handleChange={this.handleChange}
+          handleStepChange={this.handleStepChange}
         //   email={this.props.email}
         />
         <Step1
           currentStep={this.props.currentStep}
-          handleChange={this.handleChange}
+          handleStepChange={this.handleStepChange}
           email={this.props.email}
         />
         <Step2
           currentStep={this.props.currentStep}
-          handleChange={this.handleChange}
+          handleStepChange={this.handleStepChange}
           username={this.props.username}
         />
         <Step3
           currentStep={this.props.currentStep}
-          handleChange={this.handleChange}
+          handleStepChange={this.handleStepChange}
           password={this.props.password}
         />
         <Step4
           currentStep={this.props.currentStep}
-          handleChange={this.handleChange}
+          handleStepChange={this.handleStepChange}
           password={this.props.password}
         />
       </React.Fragment>
@@ -62,3 +62,4 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, { updateCurrentStep })(MasterForm);
+// export default connect(mapStateToProps, mapDispatchToProps)(MasterForm);

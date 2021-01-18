@@ -16,7 +16,7 @@ class Step1 extends React.Component {
     console.log(`saveIncome:value = ${value}`);
     let formData = {
       // id: CURRENT_USER,
-      id: 17,
+      id: 30,
       monthly_income: value,
     };
 
@@ -40,7 +40,7 @@ class Step1 extends React.Component {
     let income = document.getElementById("monthly_income")
     console.log(`monthly_income = ${income.value}`)
     this.saveIncome(income.value)
-    this.props.handleChange("Step2")
+    this.props.handleStepChange("Step2")
   };
 
   render() {
@@ -60,7 +60,7 @@ class Step1 extends React.Component {
           type="integer"
           placeholder="3000"
           // value={this.props.monthly_income} // Prop: The email input data
-          // onChange={this.props.handleChange} // Prop: Puts data into state
+          // onChange={this.props.handleStepChange} // Prop: Puts data into state
         />
         <label htmlFor="monthly_bills">Monthly Bills</label>
         <input
@@ -70,7 +70,7 @@ class Step1 extends React.Component {
           type="integer"
           placeholder="1000"
           value={this.props.monthly_bills} // Prop: The email input data
-          // onChange={this.props.handleChange} // Prop: Puts data into state
+          // onChange={this.props.handleStepChange} // Prop: Puts data into state
         />
         <button
           className="btn btn-primary float-right"

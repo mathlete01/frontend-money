@@ -1,6 +1,6 @@
 let state;
 
-export function reducer(
+export function stepReducer(
   state = {
     currentStep: "Step0",
   },
@@ -16,3 +16,5 @@ export function reducer(
       return state;
   }
 }
+
+export default stepReducer;

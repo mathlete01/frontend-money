@@ -3,11 +3,11 @@ import React, { Component } from "react";
 class Step3 extends React.Component {
 
   _next = () => {
-    this.props.handleChange("Step4")
+    this.props.handleStepChange("Step4")
   };
 
   _prev = () => {
-    this.props.handleChange("Step2")
+    this.props.handleStepChange("Step2")
   };
 
   render() {
@@ -28,7 +28,7 @@ class Step3 extends React.Component {
           type="number"
           placeholder="3%"
           value={this.props.employer_match} // Prop: The email input data
-          onChange={this.props.handleChange} // Prop: Puts data into state
+          onChange={this.props.handleStepChange} // Prop: Puts data into state
         />
         <button
           className="btn btn-secondary"

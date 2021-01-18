@@ -10,7 +10,7 @@ let CURRENT_USER = ""
 class Step0 extends React.Component {
   
   _next = () => {
-    this.props.handleChange("Step1");
+    this.props.handleStepChange("Step1");
     this.createUser();
   };
 

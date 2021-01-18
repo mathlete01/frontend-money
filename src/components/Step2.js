@@ -3,15 +3,15 @@ import React, { Component } from "react";
 class Step2 extends React.Component {
 
   _prev = () => {
-    this.props.handleChange("Step1")
+    this.props.handleStepChange("Step1")
   };
   
   _yes = () => {
-    this.props.handleChange("Step3")
+    this.props.handleStepChange("Step3")
   };
 
   _no = () => {
-    this.props.handleChange("Step4")
+    this.props.handleStepChange("Step4")
   };
 
   render() {
