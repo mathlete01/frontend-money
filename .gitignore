@@ -66,3 +66,7 @@ yarn-debug.log*
 /storage/*
 !/storage/.keep
 .DS_Store
+.eslintcache
+.gitignore
+src/.DS_Store
+.DS_Store
