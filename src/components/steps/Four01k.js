@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 
 class Four01k extends React.Component {
-
   saveFour01k = (bool) => {
     const BASE_URL = "http://localhost:3000";
     const USERS_URL = `${BASE_URL}/users`;
@@ -38,7 +37,7 @@ class Four01k extends React.Component {
 
   _no = () => {
     this.saveFour01k(false);
-    this.props.handleNextStep("CreditCardDebt");
+    this.props.handleNextStep("CreditCardDebtQuestion");
   };
 
   render() {
@@ -49,20 +48,35 @@ class Four01k extends React.Component {
     // The markup for the Step 1 UI
     return (
       <div className="form-group">
-        <h2>Does your job happen to offer a 401(k) plan?</h2>
-        <button className="btn btn-secondary" type="button" onClick={this._yes}>
-          Yes
-        </button>
-        <button className="btn btn-secondary" type="button" onClick={this._no}>
-          No
-        </button>
-        <button
-          className="btn btn-secondary"
-          type="button"
-          onClick={this._prev}
-        >
-          Previous
-        </button>
+        <div className="form-group">
+          <h2>Does your job happen to offer a 401(k) plan?</h2>
+          <p>A 401(k) plan is a retirement investment account that many companies offer their employees.</p>
+        </div>
+        <div className="form-group">
+          <button
+            className="btn btn-secondary float-right"
+            type="button"
+            onClick={this._yes}
+          >
+            Yes
+          </button>
+          <button
+            className="btn btn-secondary"
+            type="button"
+            onClick={this._no}
+          >
+            No
+          </button>
+        </div>
+        <div className="form-group">
+          <button
+            className="btn btn-secondary"
+            type="button"
+            onClick={this._prev}
+          >
+            Previous
+          </button>
+        </div>
       </div>
     );
   }

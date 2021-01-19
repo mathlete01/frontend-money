@@ -8,11 +8,13 @@ import Four01kContribution from "./steps/Four01k_Contribution";
 import CreditCardDebtQuestion from "./steps/CreditCardDebtQuestion";
 import CreditCardDebt from "./steps/CreditCardDebt";
 import Rung1Determination from "./steps/Rung1Determination";
+import DoneForNow from "./steps/DoneForNow";
+import RothIRA from "./steps/RothIRA";
 import { connect } from "react-redux";
 import { updateCurrentStep } from "../actions/navigation";
 
-const BASE_URL = "http://localhost:3000";
-const USERS_URL = `${BASE_URL}/users`;
+// const BASE_URL = "http://localhost:3000";
+// const USERS_URL = `${BASE_URL}/users`;
 
 class MasterForm extends React.Component {
   constructor(props) {
@@ -22,65 +24,47 @@ class MasterForm extends React.Component {
       prevStep: "",
       path: [],
       credit_card_debt: 0,
+      userObject: {},
     };
   }
 
-  monthsToPayOffDebt = () => {
-    console.log("monthsToPayOffDebt")
+  getUserObject = () => {
     const BASE_URL = "http://localhost:3000";
     const USERS_URL = `${BASE_URL}/users`;
-    let SPECIFIC_USER = `${USERS_URL}/${this.state.currentUser}`
-    console.log(`SPECIFIC_USER = ${SPECIFIC_USER}`)
-
-    let formData = {
+    const SPECIFIC_USER = `${USERS_URL}/${this.state.currentUser}`;
+    const formData = {
       id: this.props.currentUser,
     };
 
-    let configOb = {
+    const configOb = {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
     };
-
-    let userObj = ""
-    // fetch(`${USERS_URL}/2`, configOb)
     fetch(`${SPECIFIC_USER}`, configOb)
       .then((res) => res.json())
-      // .then((obj) => console.log(obj.credit_card_debt))
-      .then(data => userObj = data)
-      .then(() => console.log(userObj))
-      .then(() => console.log(userObj.credit_card_debt))
-      .then(() => console.log(userObj.leftover_money))
-      // .then(return{(userObj => {
-        //  userObj.credit_card_debt})};
-      // .catch((errors) => console.log(`saveIncomeBills: ${errors}`));
-      // console.log(obj)
-      // let debt = userObj.credit_card_debt
-      // let leftover_money = userObj.leftover_money
-      return userObj.credit_card_debt
-      // return "WORLD"
+      .then((data) => {
+        this.setState({ userObject: data });
+
+      })
   };
 
   handleNextStep = (nextStep) => {
-    // console.log("handleNextStep called");
     this.setState({
       path: [...this.state.path, nextStep],
     });
-    // console.log(`this.state.path = ${this.state.path}`);
     this.props.updateCurrentStep(nextStep);
   };
 
   handlePrevStep = () => {
     console.log("handlePrevStep called");
-    let i = this.state.path.length;
+    const i = this.state.path.length;
     this.setState((prevState) => ({
       path: prevState.path.filter((_, i) => i !== this.state.path.length - 1),
     }));
-    // console.log(`this.state.path = ${this.state.path}`);
-    let last = this.state.path.length - 2;
-    // console.log(`last = ${last}`);
+    const last = this.state.path.length - 2;
     this.props.updateCurrentStep(this.state.path[last]);
   };
 
@@ -110,6 +94,7 @@ class MasterForm extends React.Component {
           handlePrevStep={this.handlePrevStep}
           currentUser={this.state.currentUser}
           handleNextStep={this.handleNextStep}
+          userObject={this.state.userObject}
         />
         <Four01kMatch
           currentStep={this.props.currentStep}
@@ -128,19 +113,36 @@ class MasterForm extends React.Component {
           handlePrevStep={this.handlePrevStep}
           currentUser={this.state.currentUser}
           handleNextStep={this.handleNextStep}
+          getUserObject={this.getUserObject}
         />
         <CreditCardDebt
           currentStep={this.props.currentStep}
           handlePrevStep={this.handlePrevStep}
           currentUser={this.state.currentUser}
           handleNextStep={this.handleNextStep}
+          getUserObject={this.getUserObject}
         />
         <Rung1Determination
           currentStep={this.props.currentStep}
           handlePrevStep={this.handlePrevStep}
           currentUser={this.state.currentUser}
           handleNextStep={this.handleNextStep}
-          monthsToPayOffDebt={this.monthsToPayOffDebt}
+          getUserObject={this.getUserObject}
+          userObject={this.state.userObject}
+        />
+        <DoneForNow
+          currentStep={this.props.currentStep}
+          handlePrevStep={this.handlePrevStep}
+          currentUser={this.state.currentUser}
+          handleNextStep={this.handleNextStep}
+          getUserObject={this.getUserObject}
+        />
+        <RothIRA
+          currentStep={this.props.currentStep}
+          handlePrevStep={this.handlePrevStep}
+          currentUser={this.state.currentUser}
+          handleNextStep={this.handleNextStep}
+          getUserObject={this.getUserObject}
         />
       </React.Fragment>
     );

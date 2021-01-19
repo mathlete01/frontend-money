@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 
 class Four01kContribution extends React.Component {
-
   saveFour01kContribution = (match) => {
     // match = match/100
-    console.log(match)
+    console.log(match);
     const BASE_URL = "http://localhost:3000";
     const USERS_URL = `${BASE_URL}/users`;
 
@@ -29,13 +28,13 @@ class Four01kContribution extends React.Component {
   };
 
   _next = () => {
-    let match = document.getElementById("employee_contribution")
-    this.saveFour01kContribution(match.value)
-    this.props.handleNextStep("CreditCardDebtQuestion")
+    let match = document.getElementById("employee_contribution");
+    this.saveFour01kContribution(match.value);
+    this.props.handleNextStep("CreditCardDebtQuestion");
   };
 
   _prev = () => {
-    this.props.handlePrevStep("Four01kMatch")
+    this.props.handlePrevStep("Four01kMatch");
   };
 
   render() {
@@ -46,29 +45,35 @@ class Four01kContribution extends React.Component {
     // The markup for the Step 1 UI
     return (
       <div className="form-group">
+        <div className="form-group">
           <h2>What percentage are you contributing?</h2>
-        <label >Employee Contribution</label>
-        <input
-          className="form-control"
-          id="employee_contribution"
-          name="employee_contribution"
-          type="float"
-          defaultValue="6"
-        />
-        <button
-          className="btn btn-secondary"
-          type="button"
-          onClick={this._prev}
-        >
-          Previous
-        </button>
-        <button
-          className="btn btn-primary float-right"
-          type="button"
-          onClick={this._next}
-        >
-          Next
-        </button>
+        </div>
+        <div className="form-group">
+          <label>Employee Contribution</label>
+          <input
+            className="form-control"
+            id="employee_contribution"
+            name="employee_contribution"
+            type="float"
+            defaultValue="6"
+          />
+        </div>
+        <div className="form-group">
+          <button
+            className="btn btn-secondary"
+            type="button"
+            onClick={this._prev}
+          >
+            Previous
+          </button>
+          <button
+            className="btn btn-primary float-right"
+            type="button"
+            onClick={this._next}
+          >
+            Next
+          </button>
+        </div>
       </div>
     );
   }

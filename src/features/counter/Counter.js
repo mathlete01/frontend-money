@@ -15,7 +15,7 @@ export function Counter() {
   const [incrementAmount, setIncrementAmount] = useState('2');
 
   return (
-    <div>
+    <div className="form-group">
       <div className={styles.row}>
         <button
           className={styles.button}
