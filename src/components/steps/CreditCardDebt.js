@@ -3,11 +3,43 @@ import React, { Component } from "react";
 class CreditCardDebt extends React.Component {
 
   _next = () => {
-    this.props.handleNextStep("Step5")
+    let cc_1 = document.getElementById("cc_1")
+    let cc_2 = document.getElementById("cc_2")
+    let cc_3 = document.getElementById("cc_3")
+    this.saveCreditCardDebt(cc_1.value, cc_2.value, cc_3.value)
+    this.props.handleNextStep("Rung1Determination");
   };
 
   _prev = () => {
-    this.props.handlePrevStep("Four01k")
+    this.props.handlePrevStep();
+  };
+
+  saveCreditCardDebt = (cc_1, cc_2, cc_3) => {
+    const BASE_URL = "http://localhost:3000";
+    const USERS_URL = `${BASE_URL}/users`;
+
+    console.log(cc_1, cc_2, cc_3)
+    let sum = parseInt(cc_1) + parseInt(cc_2) + parseInt(cc_3);
+    console.log(`sum = ${sum}`)
+    let formData = {
+      id: this.props.currentUser,
+      credit_card_debt: sum,
+    };
+
+    let configOb = {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify(formData),
+    };
+
+    
+    fetch(USERS_URL, configOb)
+      .then((res) => res.json())
+      .then((obj) => console.log(obj))
+      .catch((errors) => console.log(`saveCreditCardDebt: ${errors}`));
   };
 
   render() {
@@ -25,7 +57,6 @@ class CreditCardDebt extends React.Component {
           id="cc_1"
           name="cc_1"
           type="number"
-          // placeholder="3000"
           defaultValue="2000"
         />
         <label>Card #2</label>
@@ -44,6 +75,13 @@ class CreditCardDebt extends React.Component {
           type="number"
           defaultValue="800"
         />
+        <button
+          className="btn btn-secondary"
+          type="button"
+          onClick={this._prev}
+        >
+          Previous
+        </button>
         <button
           className="btn btn-primary float-right"
           type="button"

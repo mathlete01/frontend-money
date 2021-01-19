@@ -7,7 +7,7 @@ class Four01k extends React.Component {
     const USERS_URL = `${BASE_URL}/users`;
 
     let formData = {
-      id: this.props.CURRENT_USER,
+      id: this.props.currentUser,
       four01k: bool,
     };
 

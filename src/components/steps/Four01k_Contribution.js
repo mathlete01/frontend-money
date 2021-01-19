@@ -9,7 +9,7 @@ class Four01kContribution extends React.Component {
     const USERS_URL = `${BASE_URL}/users`;
 
     let formData = {
-      id: this.props.CURRENT_USER,
+      id: this.props.currentUser,
       four01k_contribution: match,
     };
 
@@ -31,7 +31,7 @@ class Four01kContribution extends React.Component {
   _next = () => {
     let match = document.getElementById("employee_contribution")
     this.saveFour01kContribution(match.value)
-    this.props.handleNextStep("CreditCardDebt")
+    this.props.handleNextStep("CreditCardDebtQuestion")
   };
 
   _prev = () => {

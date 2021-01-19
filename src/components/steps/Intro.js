@@ -5,7 +5,7 @@ import { updateCurrentStep } from "../../actions/navigation";
 
 const BASE_URL = "http://localhost:3000";
 const USERS_URL = `${BASE_URL}/users`;
-let CURRENT_USER = ""
+let currentUser = ""
 
 class Intro extends React.Component {
   
