@@ -1,39 +1,14 @@
 import React, { Component } from "react";
-import store from "../../app/store";
 import { connect } from "react-redux";
-import { updateCurrentStep } from "../../actions/navigation";
+import { updateCurrentStep } from "../../actions/stepActions";
+import { updateCurrentUser } from "../../actions/userActions";
 
 class LeftoverMoney extends React.Component {
-  saveIncomeBills = (income, bills) => {
-    const BASE_URL = "http://localhost:3000";
-    const USERS_URL = `${BASE_URL}/users`;
-
-    let formData = {
-      id: this.props.currentUser,
-      monthly_income: income,
-      monthly_bills: bills,
-      leftover_money: income - bills,
-    };
-
-    let configOb = {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(formData),
-    };
-
-    fetch(USERS_URL, configOb)
-      .then((res) => res.json())
-      // .then((obj) => console.log(obj))
-      .catch((errors) => console.log(`saveIncomeBills: ${errors}`));
-  };
 
   _next = () => {
     let income = document.getElementById("monthly_income");
     let bills = document.getElementById("monthly_bills");
-    this.saveIncomeBills(income.value, bills.value);
+    this.props.updateCurrentUser(this.props.userObject.id, {monthly_income: income.value, monthly_bills: bills.value})
     this.props.handleNextStep("Four01k");
   };
 
@@ -85,8 +60,9 @@ class LeftoverMoney extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    currentStep: state.currentStep,
+    currentStep: state.stepReducer.currentStep,
+    userObject: state.userReducer.user
   };
 };
 
-export default connect(mapStateToProps, { updateCurrentStep })(LeftoverMoney);
+export default connect(mapStateToProps, { updateCurrentStep, updateCurrentUser })(LeftoverMoney);

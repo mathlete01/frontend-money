@@ -7,7 +7,7 @@ class Single extends React.Component {
     const USERS_URL = `${BASE_URL}/users`;
 
     let formData = {
-      id: this.props.currentUser,
+      id: this.props.userObject.id,
       single: bool,
     };
 

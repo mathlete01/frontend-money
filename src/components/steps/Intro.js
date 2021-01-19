@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 // import store from "../app/store";
 import { connect } from "react-redux";
-import { updateCurrentStep } from "../../actions/navigation";
+import { updateCurrentStep } from "../../actions/stepActions";
+import { setCurrentUser } from "../../actions/userActions";
 import Container from "react-bootstrap/Container";
 
 const BASE_URL = "http://localhost:3000";
 const USERS_URL = `${BASE_URL}/users`;
-let currentUser = "";
+let userID = "";
 
 class Intro extends React.Component {
   _next = () => {
@@ -65,9 +66,8 @@ class Intro extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    currentStep: state.currentStep,
+    currentStep: state.stepReducer.currentStep,
   };
 };
 
-// export default connect(mapStateToProps, { updateCurrentStep })(Intro);
-export default connect(mapStateToProps)(Intro);
+export default connect(mapStateToProps, {setCurrentUser})(Intro);

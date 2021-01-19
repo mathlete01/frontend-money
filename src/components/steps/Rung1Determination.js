@@ -1,14 +1,10 @@
 import React, { Component } from "react";
-
-// const BASE_URL = "http://localhost:3000";
-// const USERS_URL = `${BASE_URL}/users`;
-// let currentUser = "";
-// const nextStep = "";
-// const advice = "";
+import { connect } from "react-redux";
+import { updateCurrentStep } from "../../actions/stepActions";
+import { getCurrentUser, updateCurrentUser } from "../../actions/userActions";
 
 class Rung1Determination extends React.Component {
   _next = () => {
-    // this.props.handleNextStep(nextStep);
     this.props.handleNextStep(this.nextStep);
   };
 
@@ -107,4 +103,13 @@ class Rung1Determination extends React.Component {
   }
 }
 
-export default Rung1Determination;
+const mapStateToProps = (state) => {
+  // console.log(`state = `, state)
+  return {
+    currentStep: state.currentStep,
+    userID: state.userID,
+    userObject: state.userObject
+  };
+};
+
+export default connect(mapStateToProps, { updateCurrentStep, getCurrentUser, updateCurrentUser })(Rung1Determination);

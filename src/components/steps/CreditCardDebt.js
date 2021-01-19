@@ -1,42 +1,26 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { updateCurrentStep } from "../../actions/stepActions";
+import { getCurrentUser, updateCurrentUser } from "../../actions/userActions";
 
 class CreditCardDebt extends React.Component {
   _next = () => {
     let cc_1 = document.getElementById("cc_1");
     let cc_2 = document.getElementById("cc_2");
     let cc_3 = document.getElementById("cc_3");
-    this.saveCreditCardDebt(cc_1.value, cc_2.value, cc_3.value);
-    this.props.getUserObject();
+    const sum = parseInt(cc_1) + parseInt(cc_2) + parseInt(cc_3);
+    // this.saveCreditCardDebt(cc_1.value, cc_2.value, cc_3.value);
+    console.log(`*** this.props.userObject.id = `, this.props.userObject.id)
+    console.log(`*** this.props.userObject = `, this.props.userObject)
+    // console.log(`*** this.props.userObject.id = `, this.props.userObject.id)
+    // this.props.updateCurrentUser(this.props.userObject.id, {credit_card_debt: this.sum})
+    this.props.updateCurrentUser(this.props.userObject.id, {credit_card_debt: this.sum})
+    // this.props.getUserObject();
     this.props.handleNextStep("Rung1Determination");
   };
 
   _prev = () => {
     this.props.handlePrevStep();
-  };
-
-  saveCreditCardDebt = (cc_1, cc_2, cc_3) => {
-    const BASE_URL = "http://localhost:3000";
-    const USERS_URL = `${BASE_URL}/users`;
-
-    let sum = parseInt(cc_1) + parseInt(cc_2) + parseInt(cc_3);
-    let formData = {
-      id: this.props.currentUser,
-      credit_card_debt: sum,
-    };
-
-    let configOb = {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(formData),
-    };
-
-    fetch(USERS_URL, configOb)
-      .then((res) => res.json())
-      .then((obj) => console.log(obj))
-      .catch((errors) => console.log(`saveCreditCardDebt: ${errors}`));
   };
 
   render() {
@@ -97,4 +81,13 @@ class CreditCardDebt extends React.Component {
   }
 }
 
-export default CreditCardDebt;
+const mapStateToProps = (state) => {
+  // console.log(`state = `, state)
+  return {
+    currentStep: state.currentStep,
+    userID: state.userID,
+    userObject: state.userObject
+  };
+};
+
+export default connect(mapStateToProps, { updateCurrentStep, getCurrentUser, updateCurrentUser })(CreditCardDebt);

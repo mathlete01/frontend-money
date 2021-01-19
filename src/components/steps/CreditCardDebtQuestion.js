@@ -12,34 +12,35 @@ class CreditCardDebtQuestion extends React.Component {
 
   _no = () => {
     this.props.handleNextStep("Rung1Determination");
-    this.saveCreditCardDebt();
+    // this.saveCreditCardDebt();
+    this.props.updateCurrentUser(this.props.userObject.id, {credit_card_debt: 0})
     this.props.getUserObject();
   };
 
-  saveCreditCardDebt = () => {
-    const BASE_URL = "http://localhost:3000";
-    const USERS_URL = `${BASE_URL}/users`;
+  // saveCreditCardDebt = () => {
+  //   const BASE_URL = "http://localhost:3000";
+  //   const USERS_URL = `${BASE_URL}/users`;
 
-    let sum = 0;
-    let formData = {
-      id: this.props.currentUser,
-      credit_card_debt: sum,
-    };
+  //   let sum = 0;
+  //   let formData = {
+  //     id: this.props.userObject.id,
+  //     credit_card_debt: sum,
+  //   };
 
-    let configOb = {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(formData),
-    };
+  //   let configOb = {
+  //     method: "PATCH",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Accept: "application/json",
+  //     },
+  //     body: JSON.stringify(formData),
+  //   };
 
-    fetch(USERS_URL, configOb)
-      .then((res) => res.json())
-      .then((obj) => console.log(obj))
-      .catch((errors) => console.log(`saveCreditCardDebt: ${errors}`));
-  };
+  //   fetch(USERS_URL, configOb)
+  //     .then((res) => res.json())
+  //     .then((obj) => console.log(obj))
+  //     .catch((errors) => console.log(`saveCreditCardDebt: ${errors}`));
+  // };
 
   render() {
     if (this.props.currentStep !== "CreditCardDebtQuestion") {
