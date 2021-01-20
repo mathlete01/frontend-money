@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { updateCurrentStep } from "../../actions/stepActions";
+import { updateCurrentUser } from "../../actions/userActions";
 
 class DoneForNow extends React.Component {
   _prev = () => {

@@ -14,15 +14,13 @@ class LeftoverMoney extends React.Component {
 
   render() {
     if (this.props.currentStep !== "LeftoverMoney") {
-      // Prop: The current step
       return null;
     }
-    // The markup for the Step 1 UI
     return (
       <div className="form-group">
         <div className="form-group">
           <h2>
-            How much money do you have every month to put towards your goals?
+            How much money do you have every month to put towards your goals? Note: Estimations are fine, you can always come back and update the numbers
           </h2>
         </div>
         <div className="form-group">

@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { updateCurrentStep } from "../../actions/stepActions";
+import { updateCurrentUser } from "../../actions/userActions";
 
 class CreditCardDebtQuestion extends React.Component {
   _prev = () => {
-    // this.props.handlePrevStep("LeftoverMoney");
     this.props.handlePrevStep();
   };
 
@@ -12,42 +14,14 @@ class CreditCardDebtQuestion extends React.Component {
 
   _no = () => {
     this.props.handleNextStep("Rung1Determination");
-    // this.saveCreditCardDebt();
     this.props.updateCurrentUser(this.props.userObject.id, {credit_card_debt: 0})
-    this.props.getUserObject();
+    // this.props.getUserObject();
   };
-
-  // saveCreditCardDebt = () => {
-  //   const BASE_URL = "http://localhost:3000";
-  //   const USERS_URL = `${BASE_URL}/users`;
-
-  //   let sum = 0;
-  //   let formData = {
-  //     id: this.props.userObject.id,
-  //     credit_card_debt: sum,
-  //   };
-
-  //   let configOb = {
-  //     method: "PATCH",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Accept: "application/json",
-  //     },
-  //     body: JSON.stringify(formData),
-  //   };
-
-  //   fetch(USERS_URL, configOb)
-  //     .then((res) => res.json())
-  //     .then((obj) => console.log(obj))
-  //     .catch((errors) => console.log(`saveCreditCardDebt: ${errors}`));
-  // };
 
   render() {
     if (this.props.currentStep !== "CreditCardDebtQuestion") {
-      // Prop: The current step
       return null;
     }
-    // The markup for the Step 1 UI
     return (
       <div className="form-group">
         <div className="form-group">
@@ -84,4 +58,11 @@ class CreditCardDebtQuestion extends React.Component {
   }
 }
 
-export default CreditCardDebtQuestion;
+const mapStateToProps = (state) => {
+  return {
+    currentStep: state.stepReducer.currentStep,
+    userObject: state.userReducer.user
+  };
+};
+
+export default connect(mapStateToProps, { updateCurrentStep, updateCurrentUser })(CreditCardDebtQuestion);

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import store from "../app/store";
 import { connect } from "react-redux";
 import { updateCurrentStep } from "../../actions/stepActions";
 import { setCurrentUser } from "../../actions/userActions";

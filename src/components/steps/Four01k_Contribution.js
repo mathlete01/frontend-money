@@ -7,7 +7,7 @@ class Four01kContribution extends React.Component {
 
   _next = () => {
     let match = document.getElementById("employee_contribution");
-    this.props.updateCurrentUser(this.props.userObject.id, {employee_contribution: match.value})
+    this.props.updateCurrentUser(this.props.userObject.id, {four01k_contribution: match.value})
     this.props.handleNextStep("CreditCardDebtQuestion");
   };
 
@@ -17,10 +17,8 @@ class Four01kContribution extends React.Component {
 
   render() {
     if (this.props.currentStep !== "Four01kContribution") {
-      // Prop: The current step
       return null;
     }
-    // The markup for the Step 1 UI
     return (
       <div className="form-group">
         <div className="form-group">
@@ -56,7 +54,6 @@ class Four01kContribution extends React.Component {
     );
   }
 }
-
 
 const mapStateToProps = (state) => {
   return {

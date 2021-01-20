@@ -3,12 +3,6 @@ import { connect } from "react-redux";
 import { updateCurrentStep } from "../../actions/stepActions";
 import { updateCurrentUser } from "../../actions/userActions";
 
-const BASE_URL = "http://localhost:3000";
-const USERS_URL = `${BASE_URL}/users`;
-let userID = "";
-const nextStep = ""
-const advice = ""
-
 class RothIRA extends React.Component {
   
   _next = () => {
@@ -21,10 +15,8 @@ class RothIRA extends React.Component {
 
   render() {
     if (this.props.currentStep !== "RothIRA") {
-      // Prop: The current step
       return null;
     }
-    // The markup for the Step 1 UI
 
     return (
       <div className="form-group">
