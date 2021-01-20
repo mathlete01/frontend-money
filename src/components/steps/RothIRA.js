@@ -48,7 +48,7 @@ class RothIRA extends React.Component {
 const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
-    userObject: state.userReducer.user
+    currentUser: state.userReducer.currentUser
   };
 };
 

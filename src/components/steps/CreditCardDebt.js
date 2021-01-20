@@ -9,7 +9,7 @@ class CreditCardDebt extends React.Component {
     let cc_2 = document.getElementById("cc_2");
     let cc_3 = document.getElementById("cc_3");
     const sum = parseInt(cc_1.value) + parseInt(cc_2.value) + parseInt(cc_3.value);
-    this.props.updateCurrentUser(this.props.userObject.id, {credit_card_debt: sum})
+    this.props.updateCurrentUser(this.props.currentUser.id, {credit_card_debt: sum})
     this.props.handleNextStep("Rung1Determination");
   };
 
@@ -76,7 +76,7 @@ class CreditCardDebt extends React.Component {
 const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
-    userObject: state.userReducer.user
+    currentUser: state.userReducer.currentUser
   };
 };
 
