@@ -1,10 +1,7 @@
 import React, { Component } from "react";
-
-const BASE_URL = "http://localhost:3000";
-const USERS_URL = `${BASE_URL}/users`;
-let currentUser = "";
-const nextStep = ""
-const advice = ""
+import { connect } from "react-redux";
+import { updateCurrentStep } from "../../actions/stepActions";
+import { updateCurrentUser } from "../../actions/userActions";
 
 class RothIRA extends React.Component {
   
@@ -18,10 +15,8 @@ class RothIRA extends React.Component {
 
   render() {
     if (this.props.currentStep !== "RothIRA") {
-      // Prop: The current step
       return null;
     }
-    // The markup for the Step 1 UI
 
     return (
       <div className="form-group">
@@ -50,4 +45,11 @@ class RothIRA extends React.Component {
   }
 }
 
-export default RothIRA;
+const mapStateToProps = (state) => {
+  return {
+    currentStep: state.stepReducer.currentStep,
+    userObject: state.userReducer.user
+  };
+};
+
+export default connect(mapStateToProps, { updateCurrentStep, updateCurrentUser })(RothIRA);

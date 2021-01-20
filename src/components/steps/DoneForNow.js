@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { updateCurrentStep } from "../../actions/stepActions";
+import { updateCurrentUser } from "../../actions/userActions";
 
 class DoneForNow extends React.Component {
   _prev = () => {
-    // this.props.handlePrevStep("LeftoverMoney");
     this.props.handlePrevStep();
   };
 
@@ -16,10 +18,8 @@ class DoneForNow extends React.Component {
 
   render() {
     if (this.props.currentStep !== "DoneForNow") {
-      // Prop: The current step
       return null;
     }
-    // The markup for the Step 1 UI
     return (
       <div className="form-group">
         <div className="form-group">
@@ -49,4 +49,11 @@ class DoneForNow extends React.Component {
   }
 }
 
-export default DoneForNow;
+const mapStateToProps = (state) => {
+  return {
+    currentStep: state.stepReducer.currentStep,
+    userObject: state.userReducer.user
+  };
+};
+
+export default connect(mapStateToProps, { updateCurrentStep, updateCurrentUser })(DoneForNow);

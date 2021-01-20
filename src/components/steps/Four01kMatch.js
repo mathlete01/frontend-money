@@ -1,35 +1,13 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { updateCurrentStep } from "../../actions/stepActions";
+import { updateCurrentUser } from "../../actions/userActions";
 
 class Four01kMatch extends React.Component {
-  saveFour01kMatch = (match) => {
-    // match = match/100
-    console.log(match);
-    const BASE_URL = "http://localhost:3000";
-    const USERS_URL = `${BASE_URL}/users`;
-
-    let formData = {
-      id: this.props.currentUser,
-      four01k_match: match,
-    };
-
-    let configOb = {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(formData),
-    };
-
-    fetch(USERS_URL, configOb)
-      .then((res) => res.json())
-      .then((obj) => console.log(obj))
-      .catch((errors) => console.log(`saveFour01kMatch: ${errors}`));
-  };
 
   _next = () => {
     let match = document.getElementById("employer_match");
-    this.saveFour01kMatch(match.value);
+    this.props.updateCurrentUser(this.props.userObject.id, {four01k_match: match.value})
     this.props.handleNextStep("Four01kContribution");
   };
 
@@ -39,10 +17,8 @@ class Four01kMatch extends React.Component {
 
   render() {
     if (this.props.currentStep !== "Four01kMatch") {
-      // Prop: The current step
       return null;
     }
-    // The markup for the Step 1 UI
     return (
       <div className="form-group">
         <div className="form-group">
@@ -81,4 +57,12 @@ class Four01kMatch extends React.Component {
   }
 }
 
-export default Four01kMatch;
+const mapStateToProps = (state) => {
+  return {
+    currentStep: state.stepReducer.currentStep,
+    userObject: state.userReducer.user
+  };
+};
+
+export default connect(mapStateToProps, { updateCurrentStep, updateCurrentUser })(Four01kMatch);
+

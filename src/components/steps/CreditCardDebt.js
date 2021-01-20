@@ -1,12 +1,15 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { updateCurrentStep } from "../../actions/stepActions";
+import { updateCurrentUser } from "../../actions/userActions";
 
 class CreditCardDebt extends React.Component {
   _next = () => {
     let cc_1 = document.getElementById("cc_1");
     let cc_2 = document.getElementById("cc_2");
     let cc_3 = document.getElementById("cc_3");
-    this.saveCreditCardDebt(cc_1.value, cc_2.value, cc_3.value);
-    this.props.getUserObject();
+    const sum = parseInt(cc_1.value) + parseInt(cc_2.value) + parseInt(cc_3.value);
+    this.props.updateCurrentUser(this.props.userObject.id, {credit_card_debt: sum})
     this.props.handleNextStep("Rung1Determination");
   };
 
@@ -14,37 +17,10 @@ class CreditCardDebt extends React.Component {
     this.props.handlePrevStep();
   };
 
-  saveCreditCardDebt = (cc_1, cc_2, cc_3) => {
-    const BASE_URL = "http://localhost:3000";
-    const USERS_URL = `${BASE_URL}/users`;
-
-    let sum = parseInt(cc_1) + parseInt(cc_2) + parseInt(cc_3);
-    let formData = {
-      id: this.props.currentUser,
-      credit_card_debt: sum,
-    };
-
-    let configOb = {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: JSON.stringify(formData),
-    };
-
-    fetch(USERS_URL, configOb)
-      .then((res) => res.json())
-      .then((obj) => console.log(obj))
-      .catch((errors) => console.log(`saveCreditCardDebt: ${errors}`));
-  };
-
   render() {
     if (this.props.currentStep !== "CreditCardDebt") {
-      // Prop: The current step
       return null;
     }
-    // The markup for the Step 1 UI
     return (
       <div className="form-group">
         <div className="form-group">
@@ -97,4 +73,11 @@ class CreditCardDebt extends React.Component {
   }
 }
 
-export default CreditCardDebt;
+const mapStateToProps = (state) => {
+  return {
+    currentStep: state.stepReducer.currentStep,
+    userObject: state.userReducer.user
+  };
+};
+
+export default connect(mapStateToProps, { updateCurrentStep, updateCurrentUser })(CreditCardDebt);
