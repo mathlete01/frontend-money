@@ -108,7 +108,7 @@ class LeftoverMoney extends React.Component {
             <Row>
               <Col></Col>
               <Col>
-                <Button variant="success" size="lg" block onClick={this._next}>
+                <Button variant="primary" size="lg" block onClick={this._next}>
                   Next
                 </Button>
               </Col>
