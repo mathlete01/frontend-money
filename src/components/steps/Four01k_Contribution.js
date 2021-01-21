@@ -2,6 +2,14 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { updateCurrentStep } from "../../actions/stepActions";
 import { updateCurrentUser } from "../../actions/userActions";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import Nav from "react-bootstrap/Nav";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Form from "react-bootstrap/Form";
 
 class Four01kContribution extends React.Component {
 
@@ -20,37 +28,49 @@ class Four01kContribution extends React.Component {
       return null;
     }
     return (
-      <div className="form-group">
-        <div className="form-group">
-          <h2>What percentage are you contributing?</h2>
-        </div>
-        <div className="form-group">
-          <label>Employee Contribution</label>
-          <input
-            className="form-control"
-            id="employee_contribution"
-            name="employee_contribution"
-            type="float"
-            defaultValue="6"
-          />
-        </div>
-        <div className="form-group">
-          <button
-            className="btn btn-secondary"
-            type="button"
-            onClick={this._prev}
-          >
-            Previous
-          </button>
-          <button
-            className="btn btn-primary float-right"
-            type="button"
-            onClick={this._next}
-          >
-            Next
-          </button>
-        </div>
-      </div>
+      <Card>
+        <Card.Header>
+          <Nav variant="tabs" defaultActiveKey="#first">
+            <Nav.Item>
+              <Nav.Link onClick={this._prev}>
+                <FontAwesomeIcon icon="chevron-left" /> Back
+              </Nav.Link>
+            </Nav.Item>
+          </Nav>
+        </Card.Header>
+        <Card.Body>
+          <Card.Title>How much are you contributing to your 401(k)?</Card.Title>
+          <Card.Text>
+            Usually an employee's contributions are capped at a specific maximumm percentage.
+          </Card.Text>
+          <Container>
+            <Form.Group>
+              <Form.Row>
+                <Form.Label column lg={6}>
+                  Employee Contribution
+                </Form.Label>
+                <Col>
+                  <Form.Control
+                    type="float"
+                    defaultValue="6"
+                    id="employee_contribution"
+                  />
+                </Col>
+              </Form.Row>
+            </Form.Group>
+          </Container>
+          <Container>
+            <Row>
+              <Col></Col>
+              <Col>
+                <Button variant="success" size="lg" block onClick={this._next}>
+                  Next
+                </Button>
+              </Col>
+            </Row>
+          </Container>
+        </Card.Body>
+      </Card>
     );
   }
 }

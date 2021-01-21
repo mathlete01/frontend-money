@@ -13,6 +13,8 @@ import RothIRA from "./steps/RothIRA";
 import { connect } from "react-redux";
 import { updateCurrentStep } from "../actions/stepActions";
 import { getCurrentUser} from "../actions/userActions";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 
 class MasterForm extends React.Component {
   constructor(props) {
@@ -43,7 +45,6 @@ class MasterForm extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <h1>Climb the Ladder 💵</h1>
         <Intro
           handleNextStep={this.handleNextStep}
         />
@@ -91,7 +92,8 @@ class MasterForm extends React.Component {
 const mapStateToProps = (state) => {
   // console.log(`state = `, state)
   return {
-    currentStep: state.currentStep,
+    // currentStep: state.currentStep,
+    currentStep: state.stepReducer.currentStep,
     // currentUser: state.currentUser
   };
 };

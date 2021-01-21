@@ -2,6 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { updateCurrentStep } from "../../actions/stepActions";
 import { updateCurrentUser } from "../../actions/userActions";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import Nav from "react-bootstrap/Nav";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class CreditCardDebtQuestion extends React.Component {
   _prev = () => {
@@ -23,37 +30,37 @@ class CreditCardDebtQuestion extends React.Component {
       return null;
     }
     return (
-      <div className="form-group">
-        <div className="form-group">
-          <h2>Do you have any credit card debt?</h2>
-          <p>The interest you pay on credit card debt is often 3 times the amount of interest you get from investments.</p>
-        </div>
-        <div className="form-group">
-          <button
-            className="btn btn-secondary float-right"
-            type="button"
-            onClick={this._yes}
-          >
-            Yes
-          </button>
-          <button
-            className="btn btn-secondary"
-            type="button"
-            onClick={this._no}
-          >
-            No
-          </button>
-        </div>
-        <div className="form-group">
-          <button
-            className="btn btn-secondary"
-            type="button"
-            onClick={this._prev}
-          >
-            Previous
-          </button>
-        </div>
-      </div>
+        <Card>
+        <Card.Header>
+          <Nav variant="tabs" defaultActiveKey="#first">
+            <Nav.Item>
+              <Nav.Link onClick={this._prev}>
+                <FontAwesomeIcon icon="chevron-left" /> Back
+              </Nav.Link>
+            </Nav.Item>
+          </Nav>
+        </Card.Header>
+        <Card.Body>
+          <Card.Title>Do you have any credit card debt?</Card.Title>
+          <Card.Text>
+          The interest you pay on credit card debt is often 3 times the amount of interest you get from investments.
+          </Card.Text>
+        <Container>
+          <Row>
+            <Col>
+              <Button variant="danger" size="lg" block onClick={this._no}>
+                No
+              </Button>
+            </Col>
+            <Col>
+              <Button variant="success" size="lg" block onClick={this._yes}>
+                Yes
+              </Button>
+            </Col>
+          </Row>
+        </Container>
+        </Card.Body>
+      </Card>
     );
   }
 }

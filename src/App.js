@@ -1,9 +1,8 @@
 import React from "react";
-import { Route, Switch, withRouter, Link } from "react-router-dom";
-import "./App.css";
+import { Route, Switch, withRouter, NavLink } from "react-router-dom";
 import Body from "./components/Body";
 import NotFound from "./NotFound";
-import Form from "./Auth/Form";
+import Credentials from "./Auth/Credentials";
 import { connect } from "react-redux";
 import { updateCurrentStep } from "./actions/stepActions";
 import { updateCurrentUser, setCurrentUser } from "./actions/userActions";
@@ -11,6 +10,13 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Navbar from "react-bootstrap/Navbar";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faSwimmingPool, faCoffee, faHandPointLeft, faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Nav from "react-bootstrap/Nav";
+import Button from "react-bootstrap/Button";
+
+library.add(faSwimmingPool, faCoffee, faHandPointLeft, faChevronLeft);
 
 class App extends React.Component {
   state = {
@@ -20,20 +26,18 @@ class App extends React.Component {
   renderForm = (routerProps) => {
     console.log(routerProps);
     if (routerProps.location.pathname === "/login") {
-      return <Form name="Login Form" handleSubmit={this.handleLogin} />;
+      return <Credentials name="Login Form" handleSubmit={this.handleLogin} />;
     } else if (routerProps.location.pathname === "/signup") {
-      return <Form name="Signup Form" handleSubmit={this.handleSignup} />;
+      return <Credentials name="Signup Form" handleSubmit={this.handleSignup} />;
     }
   };
 
-  //auth
   handleLogin = (info) => {
     console.log(`info = `, info);
     this.handleAuthFetch(info, "http://localhost:3000/login");
     window.location.reload(false);
   };
 
-  // logout needs to delete the token from localStorage AND remove user data from state
   handleLogout = () => {
     console.log("Logout called");
     localStorage.clear();
@@ -67,49 +71,65 @@ class App extends React.Component {
     })
       .then((res) => res.json())
       .then((data) => {
-        // stores the user in state, but stores the token in localStorage
         this.props.setCurrentUser(data);
       });
   };
 
   render() {
     return (
+      <div>
+      <Navbar bg="dark" variant="dark">
+        <Navbar.Brand>
+          <FontAwesomeIcon icon="swimming-pool" />
+          {/* <img
+              alt=""
+              src="./images/noun_Ladder_3196564.svg"
+              width="30"
+              height="30"
+              className="d-inline-block align-top"
+            /> */}{" "}
+          The Ladder
+        </Navbar.Brand>
+        <Nav className="justify-content-end">
+          <Nav.Item>
+          {/* Nav.Link doesn't work */}
+          {/* <Nav.Link to="/signup">Sign Up</Nav.Link>  */}
+            <NavLink to="/signup">Sign Up</NavLink>
+            {/* Button refreshes the page */}
+            {/* <Button variant="secondary" size="sm" href="/signup">Sign Up</Button> */}
+          </Nav.Item>
+          <Nav.Item>
+            {/* <NavLink to="/login">Log in</NavLink> */}
+            <Button variant="secondary" size="sm" href="/login">Log In</Button>
+          </Nav.Item>
+          <Nav.Item>
+            <Button variant="secondary"  size="sm" onClick={this.handleLogout}>
+              Log Out
+            </Button>
+          </Nav.Item>
+        </Nav>
+      </Navbar>
       <Container>
         <Row>
-          {/* <Col> */}
-          <Link to="/signup">Sign Up</Link>
-          {/* </Col> */}
-          {/* <Col> */}
-          <Link to="/login">Log in</Link>
-          {/* </Col> */}
-          {/* <Col> */}
-          <button
-            className="btn btn-secondary float-right"
-            type="button"
-            onClick={this.handleLogout}
-          >
-            Log Out
-          </button>
-          {/* </Col> */}
-          <Switch>
-            <Route path="/" exact component={this.handleHome} />
-            <Route path="/login" exact component={this.renderForm} />
-            <Route path="/signup" exact component={this.renderForm} />
-            <Route component={NotFound} />
-          </Switch>
-        </Row>
-        <Row>
-          <Body />
+          <Col></Col>
+          <Col xs={8}>
+            <Switch>
+              <Route path="/" exact component={this.handleHome} />
+              <Route path="/login" exact component={this.renderForm} />
+              <Route path="/signup" exact component={this.renderForm} />
+              <Route component={NotFound} />
+            </Switch>
+            <Body />
+          </Col>
+          <Col></Col>
         </Row>
       </Container>
+    </div>
     );
   }
 }
 
-// export default App;
-
 const mapStateToProps = (state) => {
-  // console.log(`state = `, state)
   return {
     currentStep: state.stepReducer.currentStep,
     currentUser: state.userReducer.currentUser,
@@ -121,4 +141,3 @@ export default connect(mapStateToProps, {
   setCurrentUser,
   updateCurrentUser,
 })(withRouter(App));
-// export default withRouter(App);

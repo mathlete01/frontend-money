@@ -3,6 +3,12 @@ import { connect } from "react-redux";
 import { updateCurrentStep } from "../../actions/stepActions";
 import { setCurrentUser } from "../../actions/userActions";
 import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import Nav from "react-bootstrap/Nav";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const BASE_URL = "http://localhost:3000";
 const USERS_URL = `${BASE_URL}/users`;
@@ -35,6 +41,7 @@ class Intro extends React.Component {
 
     fetch(USERS_URL, configObj)
       .then((res) => res.json())
+      // .then((data) => console.log(data))
       .then((data) => this.props.setCurrentUser(data))
       .catch((errors) => console.log(`createUser: ${errors}`));
   };
@@ -46,25 +53,33 @@ class Intro extends React.Component {
     }
     // The markup for the Step 1 UI
     return (
-      <div className="form-group">
-        <div className="form-group">
-          <h2>We're gonna walk you through a bunch of questions.</h2>
-          <p>
+      <Card>
+        <Card.Header> </Card.Header>
+        <Card.Body>
+          <Card.Title>
+            We're gonna walk you through a bunch of questions.
+          </Card.Title>
+          <Card.Text>
             You'll be asked to enter a few numbers, but estimates are just fine.
             Sample numbers are provided, so you can also just go with those and
-            correct them later if you'd like.{" "}
-          </p>
-        </div>
-        <div className="form-group">
-          <button
-            className="btn btn-primary float-right"
-            type="button"
-            onClick={this._next}
-          >
-            Let's go!
-          </button>
-        </div>
-      </div>
+            correct them later if you'd like.
+          </Card.Text>
+          <Container>
+            <Row>
+              <Col>
+                {/* <Button variant="danger" size="lg" block onClick={this._no}>
+                No
+              </Button> */}
+              </Col>
+              <Col>
+                <Button variant="success" size="lg" block onClick={this._next}>
+                  Let's go!
+                </Button>
+              </Col>
+            </Row>
+          </Container>
+        </Card.Body>
+      </Card>
     );
   }
 }
