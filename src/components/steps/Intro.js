@@ -6,17 +6,23 @@ import Container from "react-bootstrap/Container";
 
 const BASE_URL = "http://localhost:3000";
 const USERS_URL = `${BASE_URL}/users`;
-let userID = "";
 
 class Intro extends React.Component {
   _next = () => {
     this.props.handleNextStep("LeftoverMoney");
-    this.createUser();
+    if(Object.keys(this.props.currentUser).length == 0){
+      this.createUser();
+    }
   };
+
+  generateRandomString = function(length=6){
+    return Math.random().toString(20).substr(2, length)
+    }
 
   createUser = () => {
     let formData = {
-      email: "yourmom@mom.com",
+      // username: "yourmom",
+      username: this.generateRandomString(),
     };
     let configObj = {
       method: "POST",
@@ -66,6 +72,7 @@ class Intro extends React.Component {
 const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
+    currentUser: state.userReducer.currentUser
   };
 };
 

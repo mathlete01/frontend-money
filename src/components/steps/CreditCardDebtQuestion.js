@@ -14,8 +14,8 @@ class CreditCardDebtQuestion extends React.Component {
 
   _no = () => {
     this.props.handleNextStep("Rung1Determination");
-    this.props.updateCurrentUser(this.props.userObject.id, {credit_card_debt: 0})
-    // this.props.getUserObject();
+    this.props.updateCurrentUser(this.props.currentUser.id, {credit_card_debt: 0})
+    // this.props.getcurrentUser();
   };
 
   render() {
@@ -61,7 +61,7 @@ class CreditCardDebtQuestion extends React.Component {
 const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
-    userObject: state.userReducer.user
+    currentUser: state.userReducer.currentUser
   };
 };
 

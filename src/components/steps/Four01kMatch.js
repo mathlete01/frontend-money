@@ -7,7 +7,7 @@ class Four01kMatch extends React.Component {
 
   _next = () => {
     let match = document.getElementById("employer_match");
-    this.props.updateCurrentUser(this.props.userObject.id, {four01k_match: match.value})
+    this.props.updateCurrentUser(this.props.currentUser.id, {four01k_match: match.value})
     this.props.handleNextStep("Four01kContribution");
   };
 
@@ -60,7 +60,7 @@ class Four01kMatch extends React.Component {
 const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
-    userObject: state.userReducer.user
+    currentUser: state.userReducer.currentUser
   };
 };
 

@@ -1,13 +1,13 @@
-export const setCurrentUser = (userObject) => {
+export const setCurrentUser = (currentUser) => {
   return (dispatch) => {
     dispatch({
       type: "UPDATE_USER",
-      newUser: userObject,
+      newUser: currentUser,
     });
   };
 };
 
-export const getCurrentUser = (id, userObject) => {
+export const getCurrentUser = (id, currentUser) => {
   return (dispatch) => {
     const BASE_URL = "http://localhost:3000";
     const USERS_URL = `${BASE_URL}/users`;

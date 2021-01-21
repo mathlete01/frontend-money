@@ -10,12 +10,12 @@ class Four01k extends React.Component {
   };
 
   _yes = () => {
-    this.props.updateCurrentUser(this.props.userObject.id, {four01k: true})
+    this.props.updateCurrentUser(this.props.currentUser.id, {four01k: true})
     this.props.handleNextStep("Four01kMatch");
   };
 
   _no = () => {
-    this.props.updateCurrentUser(this.props.userObject.id, {four01k: false})
+    this.props.updateCurrentUser(this.props.currentUser.id, {four01k: false})
     this.props.handleNextStep("CreditCardDebtQuestion");
   };
 
@@ -62,7 +62,7 @@ class Four01k extends React.Component {
 const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
-    userObject: state.userReducer.user
+    currentUser: state.userReducer.currentUser
   };
 };
 

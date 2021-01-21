@@ -2,7 +2,7 @@ let state;
 
 export function userReducer(
     state = {
-      user: {},
+      currentUser: {},
     },
     action
   ) {
@@ -10,7 +10,7 @@ export function userReducer(
       case "UPDATE_USER":
         return {
           ...state,
-          user: action.newUser,
+          currentUser: action.newUser,
         };
       default:
         return state;

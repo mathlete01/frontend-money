@@ -19,7 +19,7 @@ class Rung1Determination extends React.Component {
       four01k_match,
       four01k_contribution,
       credit_card_debt,
-    } = this.props.userObject;
+    } = this.props.currentUser;
     switch (true) {
       // Case: No 401k and debt is tiny
       case four01k === false && credit_card_debt <= leftover_money:
@@ -96,7 +96,7 @@ class Rung1Determination extends React.Component {
 const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
-    userObject: state.userReducer.user
+    currentUser: state.userReducer.currentUser
   };
 };
 

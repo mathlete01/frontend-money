@@ -8,7 +8,7 @@ class LeftoverMoney extends React.Component {
   _next = () => {
     let income = document.getElementById("monthly_income");
     let bills = document.getElementById("monthly_bills");
-    this.props.updateCurrentUser(this.props.userObject.id, {monthly_income: income.value, monthly_bills: bills.value})
+    this.props.updateCurrentUser(this.props.currentUser.id, {monthly_income: income.value, monthly_bills: bills.value})
     this.props.handleNextStep("Four01k");
   };
 
@@ -59,7 +59,7 @@ class LeftoverMoney extends React.Component {
 const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
-    userObject: state.userReducer.user
+    currentUser: state.userReducer.currentUser
   };
 };
 

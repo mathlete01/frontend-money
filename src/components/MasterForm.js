@@ -92,7 +92,7 @@ const mapStateToProps = (state) => {
   // console.log(`state = `, state)
   return {
     currentStep: state.currentStep,
-    // userObject: state.userObject
+    // currentUser: state.currentUser
   };
 };
 
