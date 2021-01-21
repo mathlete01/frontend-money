@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Switch, withRouter, NavLink } from "react-router-dom";
-// import "./App.css";
 import Body from "./components/Body";
 import NotFound from "./NotFound";
 import Form from "./Auth/Form";
@@ -33,14 +32,12 @@ class App extends React.Component {
     }
   };
 
-  //auth
   handleLogin = (info) => {
     console.log(`info = `, info);
     this.handleAuthFetch(info, "http://localhost:3000/login");
     window.location.reload(false);
   };
 
-  // logout needs to delete the token from localStorage AND remove user data from state
   handleLogout = () => {
     console.log("Logout called");
     localStorage.clear();
@@ -74,7 +71,6 @@ class App extends React.Component {
     })
       .then((res) => res.json())
       .then((data) => {
-        // stores the user in state, but stores the token in localStorage
         this.props.setCurrentUser(data);
       });
   };
@@ -95,25 +91,20 @@ class App extends React.Component {
           The Ladder
         </Navbar.Brand>
         <Nav className="justify-content-end">
-          {/* <Nav.Link to="/signup">Sign Up</Nav.Link> */}
           <Nav.Item>
+          {/* Nav.Link doesn't work */}
+          {/* <Nav.Link to="/signup">Sign Up</Nav.Link>  */}
             <NavLink to="/signup">Sign Up</NavLink>
-            {/* <Nav.Link to="/login">Log In</Nav.Link> */}
+            {/* Button refreshes the page */}
+            {/* <Button variant="secondary" size="sm" href="/signup">Sign Up</Button> */}
           </Nav.Item>
           <Nav.Item>
-            <NavLink to="/login">Log in</NavLink>
+            {/* <NavLink to="/login">Log in</NavLink> */}
+            <Button variant="secondary" size="sm" href="/login">Log In</Button>
           </Nav.Item>
           <Nav.Item>
-            {/* <NavLink onClick={this.handleLogout}>Log Out</NavLink> */}
-            <Button variant="link" onClick={this.handleLogout}>
+            <Button variant="secondary"  size="sm" onClick={this.handleLogout}>
               Log Out
-              {/* <button
-        className="btn btn-secondary float-right"
-        type="button"
-        onClick={this.handleLogout}
-      >
-        Log Out
-      </button> */}
             </Button>
           </Nav.Item>
         </Nav>
@@ -138,10 +129,7 @@ class App extends React.Component {
   }
 }
 
-// export default App;
-
 const mapStateToProps = (state) => {
-  // console.log(`state = `, state)
   return {
     currentStep: state.stepReducer.currentStep,
     currentUser: state.userReducer.currentUser,
@@ -153,4 +141,3 @@ export default connect(mapStateToProps, {
   setCurrentUser,
   updateCurrentUser,
 })(withRouter(App));
-// export default withRouter(App);

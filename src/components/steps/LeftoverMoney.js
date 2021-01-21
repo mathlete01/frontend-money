@@ -38,9 +38,9 @@ class LeftoverMoney extends React.Component {
         <Card.Header>
           <Nav variant="tabs" defaultActiveKey="#first">
             <Nav.Item>
-              <Nav.Link onClick={this._prev}>
+              {/* <Nav.Link onClick={this._prev}>
                 <FontAwesomeIcon icon="chevron-left" /> Back
-              </Nav.Link>
+              </Nav.Link> */}
             </Nav.Item>
           </Nav>
         </Card.Header>
@@ -55,7 +55,7 @@ class LeftoverMoney extends React.Component {
           <Container>
             <Form.Group>
               <Form.Row>
-                <Form.Label column lg={4}>
+                <Form.Label column lg={6}>
                   Monthly Income
                 </Form.Label>
                 <Col>
@@ -68,7 +68,7 @@ class LeftoverMoney extends React.Component {
               </Form.Row>
               <br />
               <Form.Row>
-                <Form.Label column lg={4}>
+                <Form.Label column lg={6}>
                   Monthly Bills
                 </Form.Label>
                 <Col>
@@ -80,7 +80,7 @@ class LeftoverMoney extends React.Component {
                 </Col>
               </Form.Row>
               <br />
-              <Form.Row>
+              {/* <Form.Row>
                 <Form.Label column lg={4}>
                   Weekly Spending Money
                 </Form.Label>
@@ -91,7 +91,7 @@ class LeftoverMoney extends React.Component {
                     id="weekly_spending"
                   />{" "}
                 </Col>
-              </Form.Row>
+              </Form.Row> */}
             </Form.Group>
           </Container>
           <Container>
