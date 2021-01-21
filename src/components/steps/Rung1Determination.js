@@ -2,6 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { updateCurrentStep } from "../../actions/stepActions";
 import { getCurrentUser, updateCurrentUser } from "../../actions/userActions";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import Nav from "react-bootstrap/Nav";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class Rung1Determination extends React.Component {
   _next = () => {
@@ -88,28 +95,34 @@ class Rung1Determination extends React.Component {
 
     this.makeDetermination();
     return (
-      <div className="form-group">
-        <div className="form-group">
-          <h2>Here's the deal...</h2>
-          <p>{this.advice}.</p>
-        </div>
-        <div className="form-group">
-          <button
-            className="btn btn-secondary"
-            type="button"
-            onClick={this._prev}
-          >
-            Previous
-          </button>
-          <button
-            className="btn btn-primary float-right"
-            type="button"
-            onClick={this._next}
-          >
-            Next
-          </button>
-        </div>
-      </div>
+        <Card>
+        <Card.Header>
+          <Nav variant="tabs" defaultActiveKey="#first">
+            <Nav.Item>
+              <Nav.Link onClick={this._prev}>
+                <FontAwesomeIcon icon="chevron-left" /> Back
+              </Nav.Link>
+            </Nav.Item>
+          </Nav>
+        </Card.Header>
+        <Card.Body>
+          <Card.Title>Here's the deal:</Card.Title>
+          <Card.Text>
+          {this.advice}
+          </Card.Text>
+        <Container>
+          <Row>
+            <Col>
+            </Col>
+            <Col>
+              <Button variant="primary" size="lg" block onClick={this._next}>
+                Continue
+              </Button>
+            </Col>
+          </Row>
+        </Container>
+        </Card.Body>
+      </Card>
     );
   }
 }

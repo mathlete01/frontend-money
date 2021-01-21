@@ -72,7 +72,7 @@ class Intro extends React.Component {
               </Button> */}
               </Col>
               <Col>
-                <Button variant="success" size="lg" block onClick={this._next}>
+                <Button variant="primary" size="lg" block onClick={this._next}>
                   Let's go!
                 </Button>
               </Col>
