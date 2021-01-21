@@ -7,6 +7,10 @@ import Form from "./Auth/Form";
 import { connect } from "react-redux";
 import { updateCurrentStep } from "./actions/stepActions";
 import { updateCurrentUser, setCurrentUser } from "./actions/userActions";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Navbar from "react-bootstrap/Navbar";
 
 class App extends React.Component {
   state = {
@@ -24,25 +28,30 @@ class App extends React.Component {
 
   //auth
   handleLogin = (info) => {
-    console.log("login");
+    console.log(`info = `, info);
     this.handleAuthFetch(info, "http://localhost:3000/login");
+    window.location.reload(false);
   };
 
   // logout needs to delete the token from localStorage AND remove user data from state
   handleLogout = () => {
+    console.log("Logout called");
     localStorage.clear();
-    this.props.setCurrentUser({})
-    this.props.history.push("/")
+    this.props.setCurrentUser({});
+    this.props.history.push("/");
+    window.location.reload(false);
   };
 
   handleSignup = (info) => {
-    console.log("sign up");
-    if(Object.keys(this.props.currentUser).length == 0){
+    if (Object.keys(this.props.currentUser).length === 0) {
       this.handleAuthFetch(info, "http://localhost:3000/users");
-    }else{
-      this.props.updateCurrentUser(this.props.currentUser.id, { username: info.username, password: info.password })
+    } else {
+      this.props.updateCurrentUser(this.props.currentUser.id, {
+        username: info.username,
+        password: info.password,
+      });
     }
-    this.props.history.push("/")
+    this.props.history.push("/");
   };
 
   handleAuthFetch = (info, request) => {
@@ -65,24 +74,34 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="form-group">
-        <Link to="/signup">Sign Up</Link>
-        <Link to="/login">Log in</Link>
-        <button
-          className="btn btn-secondary float-right"
-          type="button"
-          onClick={this.handleLogout}
-        >
-          Log Out
-        </button>
-        <Switch>
-          <Route path="/" exact component={this.handleHome} />
-          <Route path="/login" exact component={this.renderForm} />
-          <Route path="/signup" exact component={this.renderForm} />
-          <Route component={NotFound} />
-        </Switch>
-        <Body />
-      </div>
+      <Container>
+        <Row>
+          {/* <Col> */}
+          <Link to="/signup">Sign Up</Link>
+          {/* </Col> */}
+          {/* <Col> */}
+          <Link to="/login">Log in</Link>
+          {/* </Col> */}
+          {/* <Col> */}
+          <button
+            className="btn btn-secondary float-right"
+            type="button"
+            onClick={this.handleLogout}
+          >
+            Log Out
+          </button>
+          {/* </Col> */}
+          <Switch>
+            <Route path="/" exact component={this.handleHome} />
+            <Route path="/login" exact component={this.renderForm} />
+            <Route path="/signup" exact component={this.renderForm} />
+            <Route component={NotFound} />
+          </Switch>
+        </Row>
+        <Row>
+          <Body />
+        </Row>
+      </Container>
     );
   }
 }
@@ -93,9 +112,13 @@ const mapStateToProps = (state) => {
   // console.log(`state = `, state)
   return {
     currentStep: state.stepReducer.currentStep,
-    currentUser: state.userReducer.currentUser
+    currentUser: state.userReducer.currentUser,
   };
 };
 
-export default connect(mapStateToProps, { updateCurrentStep, setCurrentUser, updateCurrentUser })(withRouter(App));
+export default connect(mapStateToProps, {
+  updateCurrentStep,
+  setCurrentUser,
+  updateCurrentUser,
+})(withRouter(App));
 // export default withRouter(App);
