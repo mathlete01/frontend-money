@@ -70,7 +70,7 @@ class LeftoverMoney extends React.Component {
                 </Form.Label>
                 <Col>
                   <Form.Control
-                    type="text"
+                    type="number" 
                     defaultValue="3000"
                     id="monthly_income"
                   />
@@ -83,7 +83,7 @@ class LeftoverMoney extends React.Component {
                 </Form.Label>
                 <Col>
                   <Form.Control
-                    type="text"
+                    type="number" 
                     defaultValue="1000"
                     id="monthly_bills"
                   />{" "}
@@ -96,7 +96,7 @@ class LeftoverMoney extends React.Component {
                 </Form.Label>
                 <Col>
                   <Form.Control
-                    type="text"
+                    type="number" 
                     defaultValue="100"
                     id="weekly_spending"
                   />{" "}

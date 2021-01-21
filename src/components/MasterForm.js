@@ -92,7 +92,8 @@ class MasterForm extends React.Component {
 const mapStateToProps = (state) => {
   // console.log(`state = `, state)
   return {
-    currentStep: state.currentStep,
+    // currentStep: state.currentStep,
+    currentStep: state.stepReducer.currentStep,
     // currentUser: state.currentUser
   };
 };
