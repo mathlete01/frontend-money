@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Switch, withRouter, NavLink } from "react-router-dom";
 import Body from "./components/Body";
 import NotFound from "./NotFound";
-import Form from "./Auth/Form";
+import Credentials from "./Auth/Credentials";
 import { connect } from "react-redux";
 import { updateCurrentStep } from "./actions/stepActions";
 import { updateCurrentUser, setCurrentUser } from "./actions/userActions";
@@ -26,9 +26,9 @@ class App extends React.Component {
   renderForm = (routerProps) => {
     console.log(routerProps);
     if (routerProps.location.pathname === "/login") {
-      return <Form name="Login Form" handleSubmit={this.handleLogin} />;
+      return <Credentials name="Login Form" handleSubmit={this.handleLogin} />;
     } else if (routerProps.location.pathname === "/signup") {
-      return <Form name="Signup Form" handleSubmit={this.handleSignup} />;
+      return <Credentials name="Signup Form" handleSubmit={this.handleSignup} />;
     }
   };
 
