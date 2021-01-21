@@ -14,7 +14,7 @@ class Rung1Determination extends React.Component {
 
   makeDetermination = () => {
     console.log(`makeDetermination: this.props.currentUser = `, this.props.currentUser)
-    console.log(`makeDetermination: this.props.currentUser.leftover_money = `, this.props.currentUser.leftover_money)
+    // console.log(`makeDetermination: this.props.currentUser.leftover_money = `, this.props.currentUser.leftover_money)
     const {
       // leftover_money,
       four01k,
@@ -78,10 +78,10 @@ class Rung1Determination extends React.Component {
   }
 
   render() {
+    console.log(`this.props.currentUser = `, this.props.currentUser);
     if (this.props.currentStep !== "Rung1Determination") {
       // Prop: The current step
-      console.log(`this.props.currentStep = `, this.props.currentStep);
-      console.log(`this.props.currentUser = `, this.props.currentUser);
+      // console.log(`this.props.currentStep = `, this.props.currentStep);
       return null;
     }
     // The markup for the Step 1 UI
