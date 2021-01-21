@@ -2,6 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { updateCurrentStep } from "../../actions/stepActions";
 import { getCurrentUser, updateCurrentUser } from "../../actions/userActions";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
+import Nav from "react-bootstrap/Nav";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class Rung1Determination extends React.Component {
   _next = () => {
@@ -31,11 +38,11 @@ class Rung1Determination extends React.Component {
         this.advice = `Ok! Rung #1 is not applicable since your employer doesn't offer a 401(k), so you're on Rung #2: Pay Off Credit Card Debt. First, target the smallest debt you have, then the next smallest. After that, you're on to Rung #3, so come back here for your next goal!`;
         this.nextStep = "DoneForNow";
         break;
-      // Case:  401k contribution > 401k match and debt is big
+      // Case:  401k contribution > 401k match and debt is small
       case four01k_contribution > four01k_match &&
-      credit_card_debt < leftover_money:
+        credit_card_debt < leftover_money:
         this.advice = `Ok, so you've got a bit of credit card debt, but you have enough money leftover after bills and spending money to pay if off in a month. So, that's your marching orders: PAY THE DAMN DEBT OFF THIS MONTH, YO. Onto Rung #3: Max-out a Roth IRA. Let's see if you qualify...`;
-        this.nextStep = "RothIRA"
+        this.nextStep = "RothIRA";
         break;
       // Case:  401k contribution > 401k match and debt is big
       case four01k_contribution > four01k_match &&
@@ -64,31 +71,37 @@ class Rung1Determination extends React.Component {
     if (this.props.currentStep !== "Rung1Determination") {
       return null;
     }
-
     this.makeDetermination();
     return (
-      <div className="form-group">
-        <div className="form-group">
-          <h2>Here's the deal...</h2>
-          <p>{this.advice}.</p>
-        </div>
-        <div className="form-group">
-          <button
-            className="btn btn-secondary"
-            type="button"
-            onClick={this._prev}
-          >
-            Previous
-          </button>
-          <button
-            className="btn btn-primary float-right"
-            type="button"
-            onClick={this._next}
-          >
-            Next
-          </button>
-        </div>
-      </div>
+      <Card>
+        <Card.Header>
+          <Nav variant="tabs" defaultActiveKey="#first">
+            <Nav.Item>
+              <Nav.Link onClick={this._prev}>
+                <FontAwesomeIcon icon="chevron-left" /> Back
+              </Nav.Link>
+            </Nav.Item>
+          </Nav>
+        </Card.Header>
+        <Card.Body>
+          <Card.Title>Here's the deal:</Card.Title>
+          <Card.Text>{this.advice}</Card.Text>
+          <Container>
+            <Row>
+              <Col>
+                {/* <Button variant="danger" size="lg" block onClick={this._no}>
+                No
+              </Button> */}
+              </Col>
+              <Col>
+                <Button variant="success" size="lg" block onClick={this._next}>
+                  Onward!
+                </Button>
+              </Col>
+            </Row>
+          </Container>
+        </Card.Body>
+      </Card>
     );
   }
 }
@@ -96,8 +109,11 @@ class Rung1Determination extends React.Component {
 const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
-    currentUser: state.userReducer.currentUser
+    currentUser: state.userReducer.currentUser,
   };
 };
 
-export default connect(mapStateToProps, { updateCurrentStep, updateCurrentUser })(Rung1Determination);
+export default connect(mapStateToProps, {
+  updateCurrentStep,
+  updateCurrentUser,
+})(Rung1Determination);

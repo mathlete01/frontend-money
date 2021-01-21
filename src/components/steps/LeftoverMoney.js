@@ -18,6 +18,13 @@ class LeftoverMoney extends React.Component {
     let bills = document.getElementById("monthly_bills");
     // let spending = document.getElementById("weekly_spending");
     // let monthly_spending = spending.value * 4;
+    let leftover_money = parseInt(income.value) - parseInt(bills.value)
+    // this.props.updateCurrentUser(this.props.currentUser.id, {
+    //   monthly_income: income.value,
+    //   monthly_bills: bills.value,
+    //   monthly_spending: monthly_spending,
+    //   leftover_money: leftover_money
+    // });
     // let leftover_money = parseInt(income.value) - (parseInt(bills.value) + monthly_spending)
     // this.props.updateCurrentUser(this.props.currentUser.id, {
     //   monthly_income: income.value,
@@ -25,7 +32,10 @@ class LeftoverMoney extends React.Component {
     //   monthly_spending: monthly_spending,
     //   leftover_money: leftover_money
     // });
-    this.props.updateCurrentUser(this.props.currentUser.id, {monthly_income: income.value, monthly_bills: bills.value})
+    this.props.updateCurrentUser(this.props.currentUser.id, {
+      monthly_income: income.value, 
+      monthly_bills: bills.value,
+      leftover_money: leftover_money})
     this.props.handleNextStep("Four01k");
   };
 
