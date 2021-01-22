@@ -9,7 +9,9 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Nav from "react-bootstrap/Nav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Form from "react-bootstrap/Form";
+// import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
+import { Form, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 
 class Four01kContribution extends React.Component {
 
@@ -39,7 +41,7 @@ class Four01kContribution extends React.Component {
           </Nav>
         </Card.Header>
         <Card.Body>
-          <Card.Title>How much are you contributing to your 401(k)?</Card.Title>
+          <Card.Title>How much are you contributing to your 401(k)? </Card.Title>
           <Card.Text>
             Usually an employee's contributions are capped at a specific maximumm percentage.
           </Card.Text>
@@ -50,11 +52,14 @@ class Four01kContribution extends React.Component {
                   Employee Contribution
                 </Form.Label>
                 <Col>
-                  <Form.Control
-                    type="float"
+                  <InputGroup className="mb-3">
+                    <FormControl type="number"
                     defaultValue="6"
-                    id="employee_contribution"
-                  />
+                    id="employee_contribution" />
+                    <InputGroup.Append>
+                      <InputGroup.Text>%</InputGroup.Text>
+                    </InputGroup.Append>
+                  </InputGroup>
                 </Col>
               </Form.Row>
             </Form.Group>
