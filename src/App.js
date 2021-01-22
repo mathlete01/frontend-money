@@ -80,7 +80,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-      <Navbar bg="dark" variant="dark">
+      <Navbar bg="white" >
         <Navbar.Brand>
           {/* <FontAwesomeIcon icon="swimming-pool" /> */}
           {/* <img

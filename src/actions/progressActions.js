@@ -1,10 +1,11 @@
 export const updateCurrentProgress = (id, level) => {
+  // debugger
     return (dispatch) => {
       const BASE_URL = "http://localhost:3000";
-      const PROGRESSES_URL = `${BASE_URL}/progresses`;
+      const PROGRESSES_URL = `${BASE_URL}/rungs`;
       const formData = {
         user_id: id,
-        rung_id: level
+        ...level
       };
   
       const configOb = {
@@ -15,12 +16,15 @@ export const updateCurrentProgress = (id, level) => {
         },
         body: JSON.stringify(formData)
       };
-      fetch(`${PROGRESSES_URL}`, configOb)
+      // fetch(`${PROGRESSES_URL}`, configOb)
+      fetch("http://localhost:3000/rungs", configOb)
+      
         .then((res) => res.json())
+        // .then((data) => console.log(data))
         .then((data) => {
           dispatch({
-            type: "UPDATE_USER",
-            newUser: data,
+            type: "UPDATE_PROGRESS",
+            newProgress: data,
           });
         });
     };

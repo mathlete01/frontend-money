@@ -14,7 +14,8 @@ import InputGroup from "react-bootstrap/InputGroup";
 import { Form, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 
 class LeftoverMoney extends React.Component {
-  _next = () => {
+  _next = (event) => {
+    event.preventDefault();
     let income = document.getElementById("monthly_income");
     let bills = document.getElementById("monthly_bills");
     // let spending = document.getElementById("weekly_spending");
@@ -58,7 +59,7 @@ class LeftoverMoney extends React.Component {
         </Card.Header>
         <Card.Body>
           <Card.Title>
-            <h1>How much money do you have every month to put towards your goals?</h1>
+            <h2>How much money do you have every month to put towards your goals?</h2>
           </Card.Title>
           <br></br>
           <Card.Text>
@@ -67,8 +68,9 @@ class LeftoverMoney extends React.Component {
           </Card.Text>
           <br></br>
           <Form>
-            <Form.Group as={Row} controlId="formHorizontalEmail">
-              <Form.Label column sm={4}>
+            {/* <Form.Group as={Row} controlId="formHorizontalEmail"> */}
+            <Form.Group as={Row} >
+              <Form.Label column sm={4} size="lg" >
                 Monthly Income
               </Form.Label>
               <Col sm={8}>
@@ -80,13 +82,15 @@ class LeftoverMoney extends React.Component {
                     type="number"
                     defaultValue="3000"
                     id="monthly_income"
+                    size="lg"
                   />
                 </InputGroup>
               </Col>
             </Form.Group>
 
-            <Form.Group as={Row} controlId="formHorizontalEmail">
-              <Form.Label column sm={4}>
+            {/* <Form.Group as={Row} controlId="formHorizontalEmail" > */}
+            <Form.Group as={Row}  >
+              <Form.Label column sm={4} size="lg">
                 Monthly Bills
               </Form.Label>
               <Col sm={8}>
@@ -98,13 +102,14 @@ class LeftoverMoney extends React.Component {
                     type="number"
                     defaultValue="1000"
                     id="monthly_bills"
+                    size="lg"
                   />
                 </InputGroup>
               </Col>
             </Form.Group>
             <Form.Group as={Row}>
               <Col sm={{ span: 8, offset: 4 }}>
-                <Button type="submit" block onClick={this._next}>
+                <Button type="submit" block onClick={this._next} size="lg">
                   Next
                 </Button>
               </Col>
