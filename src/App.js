@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Switch, withRouter, NavLink } from "react-router-dom";
-import Body from "./components/Body";
+import Body from "./components/xBody";
 import NotFound from "./NotFound";
-import Credentials from "./Auth/Credentials";
+import Credentials from "./components/Credentials";
 import { connect } from "react-redux";
 import { updateCurrentStep } from "./actions/stepActions";
 import { updateCurrentUser, setCurrentUser } from "./actions/userActions";
@@ -15,6 +15,8 @@ import { faSwimmingPool, faCoffee, faHandPointLeft, faChevronLeft } from "@forta
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
+import StepContainer from "./components/StepContainer"
+import './App.css';
 
 library.add(faSwimmingPool, faCoffee, faHandPointLeft, faChevronLeft);
 
@@ -112,14 +114,14 @@ class App extends React.Component {
       <Container>
         <Row>
           <Col></Col>
-          <Col xs={8}>
+          <Col xs={8} className="containerContainer">
             <Switch>
               <Route path="/" exact component={this.handleHome} />
               <Route path="/login" exact component={this.renderForm} />
               <Route path="/signup" exact component={this.renderForm} />
               <Route component={NotFound} />
             </Switch>
-            <Body />
+            <StepContainer />
           </Col>
           <Col></Col>
         </Row>

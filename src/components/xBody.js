@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Container from "react-bootstrap/Container";
 // import Jumbotron from 'react-bootstrap/Jumbotron'
-import MasterForm from "./MasterForm";
+import StepContainer from "./StepContainer";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 
@@ -15,7 +15,7 @@ const Body = () => {
                 </Jumbotron>
             </div> */}
       <Row>
-        <MasterForm />
+        <StepContainer />
       </Row>
     </Container>
   );
