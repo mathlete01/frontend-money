@@ -9,7 +9,9 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Nav from "react-bootstrap/Nav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Form from "react-bootstrap/Form";
+// import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
+import { Form, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 
 class CreditCardDebt extends React.Component {
   _next = () => {
@@ -44,7 +46,7 @@ class CreditCardDebt extends React.Component {
           </Nav>
         </Card.Header>
         <Card.Body>
-          <Card.Title>How much credit card debt do you have?</Card.Title>
+          <Card.Title>How much credit card debt do you have? </Card.Title>
           <Card.Text>
             The interest you pay on credit card debt is usually three times the
             amount of interst you could earn on investment.
@@ -56,7 +58,14 @@ class CreditCardDebt extends React.Component {
                   Credit Card #1
                 </Form.Label>
                 <Col>
-                  <Form.Control id="cc_1" type="number" defaultValue="2000" />
+                  <InputGroup className="mb-3">
+                    <InputGroup.Prepend>
+                      <InputGroup.Text>$</InputGroup.Text>
+                    </InputGroup.Prepend>
+                    <FormControl type="number"
+                    defaultValue="2000"
+                    id="cc_1" />
+                  </InputGroup>
                 </Col>
               </Form.Row>
               <br />
@@ -65,7 +74,14 @@ class CreditCardDebt extends React.Component {
                   Credit Card #2
                 </Form.Label>
                 <Col>
-                  <Form.Control id="cc_2" type="number" defaultValue="400" />{" "}
+                  <InputGroup className="mb-3">
+                    <InputGroup.Prepend>
+                      <InputGroup.Text>$</InputGroup.Text>
+                    </InputGroup.Prepend>
+                    <FormControl type="number"
+                    defaultValue="400"
+                    id="cc_2" />
+                  </InputGroup>
                 </Col>
               </Form.Row>
               <br />
@@ -74,7 +90,14 @@ class CreditCardDebt extends React.Component {
                   Credit Card #3
                 </Form.Label>
                 <Col>
-                  <Form.Control id="cc_3" type="number" defaultValue="800" />{" "}
+                  <InputGroup className="mb-3">
+                    <InputGroup.Prepend>
+                      <InputGroup.Text>$</InputGroup.Text>
+                    </InputGroup.Prepend>
+                    <FormControl type="number"
+                    defaultValue="800"
+                    id="cc_3" />
+                  </InputGroup>
                 </Col>
               </Form.Row>
             </Form.Group>

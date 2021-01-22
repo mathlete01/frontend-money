@@ -82,7 +82,7 @@ class App extends React.Component {
       <div>
       <Navbar bg="dark" variant="dark">
         <Navbar.Brand>
-          <FontAwesomeIcon icon="swimming-pool" />
+          {/* <FontAwesomeIcon icon="swimming-pool" /> */}
           {/* <img
               alt=""
               src="./images/noun_Ladder_3196564.svg"
@@ -90,7 +90,7 @@ class App extends React.Component {
               height="30"
               className="d-inline-block align-top"
             /> */}{" "}
-          The Ladder
+          🪜 Climb the Ladder
         </Navbar.Brand>
         <Nav className="justify-content-end">
           <Nav.Item>

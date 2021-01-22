@@ -41,7 +41,7 @@ class CreditCardDebtQuestion extends React.Component {
           </Nav>
         </Card.Header>
         <Card.Body>
-          <Card.Title>Do you have any credit card debt?</Card.Title>
+          <Card.Title>Do you have any credit card debt? </Card.Title>
           <Card.Text>
           The interest you pay on credit card debt is often 3 times the amount of interest you get from investments.
           </Card.Text>

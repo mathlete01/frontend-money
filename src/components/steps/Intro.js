@@ -57,7 +57,7 @@ class Intro extends React.Component {
         <Card.Header> </Card.Header>
         <Card.Body>
           <Card.Title>
-            We're gonna walk you through a bunch of questions.
+          We're gonna walk you through a bunch of questions. 
           </Card.Title>
           <Card.Text>
             You'll be asked to enter a few numbers, but estimates are just fine.

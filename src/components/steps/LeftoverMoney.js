@@ -9,16 +9,17 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Nav from "react-bootstrap/Nav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Form from "react-bootstrap/Form";
+// import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
+import { Form, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 
 class LeftoverMoney extends React.Component {
-
   _next = () => {
     let income = document.getElementById("monthly_income");
     let bills = document.getElementById("monthly_bills");
     // let spending = document.getElementById("weekly_spending");
     // let monthly_spending = spending.value * 4;
-    let leftover_money = parseInt(income.value) - parseInt(bills.value)
+    let leftover_money = parseInt(income.value) - parseInt(bills.value);
     // this.props.updateCurrentUser(this.props.currentUser.id, {
     //   monthly_income: income.value,
     //   monthly_bills: bills.value,
@@ -33,9 +34,10 @@ class LeftoverMoney extends React.Component {
     //   leftover_money: leftover_money
     // });
     this.props.updateCurrentUser(this.props.currentUser.id, {
-      monthly_income: income.value, 
+      monthly_income: income.value,
       monthly_bills: bills.value,
-      leftover_money: leftover_money})
+      leftover_money: leftover_money,
+    });
     this.props.handleNextStep("Four01k");
   };
 
@@ -56,64 +58,58 @@ class LeftoverMoney extends React.Component {
         </Card.Header>
         <Card.Body>
           <Card.Title>
-            How much money do you have every month to put towards your goals?
+            <h1>How much money do you have every month to put towards your goals?</h1>
           </Card.Title>
+          <br></br>
           <Card.Text>
             Estimations are fine, you can always come back and update the
-            numbers
+            numbers.
           </Card.Text>
-          <Container>
-            <Form.Group>
-              <Form.Row>
-                <Form.Label column lg={6}>
-                  Monthly Income
-                </Form.Label>
-                <Col>
-                  <Form.Control
-                    type="number" 
+          <br></br>
+          <Form>
+            <Form.Group as={Row} controlId="formHorizontalEmail">
+              <Form.Label column sm={4}>
+                Monthly Income
+              </Form.Label>
+              <Col sm={8}>
+                <InputGroup className="mb-3">
+                  <InputGroup.Prepend>
+                    <InputGroup.Text>$</InputGroup.Text>
+                  </InputGroup.Prepend>
+                  <FormControl
+                    type="number"
                     defaultValue="3000"
                     id="monthly_income"
                   />
-                </Col>
-              </Form.Row>
-              <br />
-              <Form.Row>
-                <Form.Label column lg={6}>
-                  Monthly Bills
-                </Form.Label>
-                <Col>
-                  <Form.Control
-                    type="number" 
+                </InputGroup>
+              </Col>
+            </Form.Group>
+
+            <Form.Group as={Row} controlId="formHorizontalEmail">
+              <Form.Label column sm={4}>
+                Monthly Bills
+              </Form.Label>
+              <Col sm={8}>
+                <InputGroup className="mb-3">
+                  <InputGroup.Prepend>
+                    <InputGroup.Text>$</InputGroup.Text>
+                  </InputGroup.Prepend>
+                  <FormControl
+                    type="number"
                     defaultValue="1000"
                     id="monthly_bills"
-                  />{" "}
-                </Col>
-              </Form.Row>
-              <br />
-              {/* <Form.Row>
-                <Form.Label column lg={4}>
-                  Weekly Spending Money
-                </Form.Label>
-                <Col>
-                  <Form.Control
-                    type="number" 
-                    defaultValue="100"
-                    id="weekly_spending"
-                  />{" "}
-                </Col>
-              </Form.Row> */}
+                  />
+                </InputGroup>
+              </Col>
             </Form.Group>
-          </Container>
-          <Container>
-            <Row>
-              <Col></Col>
-              <Col>
-                <Button variant="primary" size="lg" block onClick={this._next}>
+            <Form.Group as={Row}>
+              <Col sm={{ span: 8, offset: 4 }}>
+                <Button type="submit" block onClick={this._next}>
                   Next
                 </Button>
               </Col>
-            </Row>
-          </Container>
+            </Form.Group>
+          </Form>
         </Card.Body>
       </Card>
     );
@@ -123,8 +119,11 @@ class LeftoverMoney extends React.Component {
 const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
-    currentUser: state.userReducer.currentUser
+    currentUser: state.userReducer.currentUser,
   };
 };
 
-export default connect(mapStateToProps, { updateCurrentStep, updateCurrentUser })(LeftoverMoney);
+export default connect(mapStateToProps, {
+  updateCurrentStep,
+  updateCurrentUser,
+})(LeftoverMoney);

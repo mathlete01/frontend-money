@@ -9,7 +9,9 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Nav from "react-bootstrap/Nav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Form from "react-bootstrap/Form";
+// import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
+import { Form, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 
 class Four01kMatch extends React.Component {
   _next = () => {
@@ -40,7 +42,7 @@ class Four01kMatch extends React.Component {
           </Nav>
         </Card.Header>
         <Card.Body>
-          <Card.Title>How much is the employer match?</Card.Title>
+          <Card.Title>How much is the employer match? </Card.Title>
           <Card.Text>
             The "employer match" is the maximum percentage of your paycheck that
             they will contribute to your 401(k).
@@ -52,11 +54,14 @@ class Four01kMatch extends React.Component {
                   Employer Match
                 </Form.Label>
                 <Col>
-                  <Form.Control
-                    type="float"
+                  <InputGroup className="mb-3">
+                    <FormControl type="number"
                     defaultValue="3"
-                    id="employer_match"
-                  />
+                    id="employer_match" />
+                    <InputGroup.Append>
+                      <InputGroup.Text>%</InputGroup.Text>
+                    </InputGroup.Append>
+                  </InputGroup>
                 </Col>
               </Form.Row>
             </Form.Group>
