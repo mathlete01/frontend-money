@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import Container from "react-bootstrap/Container";
 import Intro from "./steps/Intro";
 import LeftoverMoney from "./steps/LeftoverMoney";
 import Four01k from "./steps/Four01k";
@@ -44,7 +43,8 @@ class MasterForm extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      // <React.Fragment>
+      <Container>
         <Intro
           handleNextStep={this.handleNextStep}
         />
@@ -84,8 +84,9 @@ class MasterForm extends React.Component {
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
-      </React.Fragment>
-    );
+        </Container>
+      
+    )
   }
 }
 
