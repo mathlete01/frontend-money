@@ -21,7 +21,7 @@ class MarriedMax extends React.Component {
 
   _no = () => {
     this.props.updateCurrentUser(this.props.currentUser.id, { married_max: false });
-    this.props.handleNextStep("backdoor_roth");
+    this.props.handleNextStep("trad_ira");
   };
 
   render() {

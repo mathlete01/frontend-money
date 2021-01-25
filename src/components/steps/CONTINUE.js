@@ -9,23 +9,18 @@ import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 
-class EarnedIncome extends React.Component {
+class BLANK_TITLE extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
 
-  _yes = () => {
-    this.props.updateCurrentUser(this.props.currentUser.id, { earned_income: true });
-    this.props.handleNextStep("Below50");
-  };
-
-  _no = () => {
-    this.props.updateCurrentUser(this.props.currentUser.id, { earned_income: false });
-    this.props.handleNextStep("RothMax");
+  _next = () => {
+    this.props.updateCurrentUser(this.props.currentUser.id, { BLANK_DB: true });
+    this.props.handleNextStep("BLANK_NEXT");
   };
 
   render() {
-    if (this.props.currentStep !== "EarnedIncome") {
+    if (this.props.currentStep !== "BLANK_TITLE") {
       return null;
     }
     return (
@@ -38,12 +33,12 @@ class EarnedIncome extends React.Component {
         </Row>
         <Row id="title" className="step">
           <Container>
-            <h3>Will you have any earned income this year?</h3>
+            <h3>BLANK_QUESTION</h3>
           </Container>
         </Row>
         <Row id="body" className="step">
           <Container>
-            Earned income is income you'd make from wages, not from investments.
+            BLANK_BODY
           </Container>
         </Row>
         <Row id="form" className="step"></Row>
@@ -52,7 +47,7 @@ class EarnedIncome extends React.Component {
             <Form.Group>
               <Form.Row>
                 <Col>
-                  <Button
+                  {/* <Button
                     className="no"
                     variant="danger"
                     size="lg"
@@ -60,7 +55,7 @@ class EarnedIncome extends React.Component {
                     onClick={this._no}
                   >
                     No
-                  </Button>
+                  </Button> */}
                 </Col>
                 <Col>
                   <Button
@@ -68,7 +63,7 @@ class EarnedIncome extends React.Component {
                     variant="success"
                     size="lg"
                     block
-                    onClick={this._yes}
+                    onClick={this._next}
                   >
                     Yes
                   </Button>
@@ -92,4 +87,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(EarnedIncome);
+})(BLANK_TITLE);

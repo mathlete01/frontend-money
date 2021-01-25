@@ -9,23 +9,23 @@ import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 
-class EarnedIncome extends React.Component {
+class SingleBetween extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
 
   _yes = () => {
-    this.props.updateCurrentUser(this.props.currentUser.id, { earned_income: true });
-    this.props.handleNextStep("Below50");
+    this.props.updateCurrentUser(this.props.currentUser.id, { single_between: true });
+    this.props.handleNextStep("below_50");
   };
 
   _no = () => {
-    this.props.updateCurrentUser(this.props.currentUser.id, { earned_income: false });
-    this.props.handleNextStep("RothMax");
+    this.props.updateCurrentUser(this.props.currentUser.id, { single_between: false });
+    this.props.handleNextStep("married_max");
   };
 
   render() {
-    if (this.props.currentStep !== "EarnedIncome") {
+    if (this.props.currentStep !== "SingleBetween") {
       return null;
     }
     return (
@@ -38,12 +38,12 @@ class EarnedIncome extends React.Component {
         </Row>
         <Row id="title" className="step">
           <Container>
-            <h3>Will you have any earned income this year?</h3>
+            <h3>Will you earn less than $137,000 this year?</h3>
           </Container>
         </Row>
         <Row id="body" className="step">
           <Container>
-            Earned income is income you'd make from wages, not from investments.
+            That's the maximum amount you can earn to qualify for a Roth IRA if you file your taxes as a single person.
           </Container>
         </Row>
         <Row id="form" className="step"></Row>
@@ -92,4 +92,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(EarnedIncome);
+})(SingleBetween);

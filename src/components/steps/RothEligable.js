@@ -9,23 +9,18 @@ import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 
-class BackdoorRoth extends React.Component {
+class RothEligable extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
 
-  _yes = () => {
-    this.props.updateCurrentUser(this.props.currentUser.id, { BLANK_DB: true });
-    this.props.handleNextStep("BLANK_YES");
-  };
-
-  _no = () => {
-    this.props.updateCurrentUser(this.props.currentUser.id, { BLANK_DB: false });
-    this.props.handleNextStep("BLANK_NO");
+  _next = () => {
+    this.props.updateCurrentUser(this.props.currentUser.id, { roth_eligable: true });
+    this.props.handleNextStep("BLANK_NEXT");
   };
 
   render() {
-    if (this.props.currentStep !== "BackdoorRoth") {
+    if (this.props.currentStep !== "RothEligable") {
       return null;
     }
     return (
@@ -38,12 +33,12 @@ class BackdoorRoth extends React.Component {
         </Row>
         <Row id="title" className="step">
           <Container>
-            <h3>While you don't qualify for a regular Roth IRA, you can still do a "Backdoor" Roth IRA.</h3>
+            <h3>You can contribute 6k to a Roth IRA</h3>
           </Container>
         </Row>
         <Row id="body" className="step">
           <Container>
-            Let me explain...
+            BLANK_BODY
           </Container>
         </Row>
         <Row id="form" className="step"></Row>
@@ -52,7 +47,7 @@ class BackdoorRoth extends React.Component {
             <Form.Group>
               <Form.Row>
                 <Col>
-                  <Button
+                  {/* <Button
                     className="no"
                     variant="danger"
                     size="lg"
@@ -60,7 +55,7 @@ class BackdoorRoth extends React.Component {
                     onClick={this._no}
                   >
                     No
-                  </Button>
+                  </Button> */}
                 </Col>
                 <Col>
                   <Button
@@ -68,7 +63,7 @@ class BackdoorRoth extends React.Component {
                     variant="success"
                     size="lg"
                     block
-                    onClick={this._yes}
+                    onClick={this._next}
                   >
                     Yes
                   </Button>
@@ -92,4 +87,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(BackdoorRoth);
+})(RothEligable);

@@ -11,7 +11,10 @@ import SaveYourWork from "./steps/SaveYourWork";
 import RothIRA from "./steps/RothIRA";
 import Single from "./steps/Single";
 import SingleMax from "./steps/SingleMax";
-import BLANK from "./steps/BLANK";
+import SingleBetween from "./steps/SingleBetween";
+import EarnedIncome from "./steps/EarnedIncome";
+import Below50 from "./steps/Below50";
+// import BLANK from "./steps/BLANK";
 import { connect } from "react-redux";
 import { updateCurrentStep } from "../actions/stepActions";
 import Container from "react-bootstrap/Container";
@@ -90,6 +93,18 @@ class MasterForm extends React.Component {
           handleNextStep={this.handleNextStep}
         />
         <SingleMax
+          handlePrevStep={this.handlePrevStep}
+          handleNextStep={this.handleNextStep}
+        />
+        <SingleBetween
+          handlePrevStep={this.handlePrevStep}
+          handleNextStep={this.handleNextStep}
+        />
+        <EarnedIncome
+          handlePrevStep={this.handlePrevStep}
+          handleNextStep={this.handleNextStep}
+        />
+        <Below50
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
