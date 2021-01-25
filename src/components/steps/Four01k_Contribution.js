@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { updateCurrentStep } from "../../actions/stepActions";
 import { updateCurrentUser } from "../../actions/userActions";
@@ -14,10 +14,11 @@ import InputGroup from "react-bootstrap/InputGroup";
 import { Form, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 
 class Four01kContribution extends React.Component {
-
   _next = () => {
     let match = document.getElementById("employee_contribution");
-    this.props.updateCurrentUser(this.props.currentUser.id, {four01k_contribution: match.value})
+    this.props.updateCurrentUser(this.props.currentUser.id, {
+      four01k_contribution: match.value,
+    });
     this.props.handleNextStep("CreditCardDebtQuestion");
   };
 
@@ -30,32 +31,40 @@ class Four01kContribution extends React.Component {
       return null;
     }
     return (
-      <Card>
-        <Card.Header>
-          <Nav variant="tabs" defaultActiveKey="#first">
-            <Nav.Item>
-              <Nav.Link onClick={this._prev}>
-                <FontAwesomeIcon icon="chevron-left" /> Back
-              </Nav.Link>
-            </Nav.Item>
-          </Nav>
-        </Card.Header>
-        <Card.Body>
-          <Card.Title>How much are you contributing to your 401(k)? </Card.Title>
-          <Card.Text>
-            Usually an employee's contributions are capped at a specific maximumm percentage.
-          </Card.Text>
+      <Container className="border step">
+        <Row id="header" className="step">
+          <Button onClick={this._prev} variant="link">
+            <FontAwesomeIcon icon="chevron-left" /> Back
+          </Button>
+          <hr className="w-100" />
+        </Row>
+        <Row id="title" className="step">
+          <Container>
+            <h3>How much are you contributing to your 401(k)?</h3>
+          </Container>
+        </Row>
+        <Row id="body" className="step">
+          <Container>
+            Usually an employee's contributions are capped at a specific
+            maximumm percentage.
+          </Container>
+        </Row>
+        <Row id="form" className="step">
           <Container>
             <Form.Group>
               <Form.Row>
-                <Form.Label column lg={6}>
-                  Employee Contribution
-                </Form.Label>
+                <Col id="formText">
+                  <Form.Label>Employee Contribution</Form.Label>
+                </Col>
                 <Col>
-                  <InputGroup className="mb-3">
-                    <FormControl type="number"
-                    defaultValue="6"
-                    id="employee_contribution" />
+                  <InputGroup>
+                    <FormControl
+                      className="formField"
+                      type="number"
+                      defaultValue="6"
+                      id="employee_contribution"
+                      size="lg"
+                    />
                     <InputGroup.Append>
                       <InputGroup.Text>%</InputGroup.Text>
                     </InputGroup.Append>
@@ -64,18 +73,28 @@ class Four01kContribution extends React.Component {
               </Form.Row>
             </Form.Group>
           </Container>
+        </Row>
+        <Row id="buttons" className="step">
           <Container>
-            <Row>
-              <Col></Col>
-              <Col>
-                <Button variant="primary" size="lg" block onClick={this._next}>
-                  Next
-                </Button>
-              </Col>
-            </Row>
+            <Form.Group>
+              <Form.Row>
+                <Col></Col>
+                <Col>
+                  <Button
+                    className="yes"
+                    variant="primary"
+                    size="lg"
+                    block
+                    onClick={this._next}
+                  >
+                    Continue
+                  </Button>
+                </Col>
+              </Form.Row>
+            </Form.Group>
           </Container>
-        </Card.Body>
-      </Card>
+        </Row>
+      </Container>
     );
   }
 }
@@ -83,8 +102,11 @@ class Four01kContribution extends React.Component {
 const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
-    currentUser: state.userReducer.currentUser
+    currentUser: state.userReducer.currentUser,
   };
 };
 
-export default connect(mapStateToProps, { updateCurrentStep, updateCurrentUser })(Four01kContribution);
+export default connect(mapStateToProps, {
+  updateCurrentStep,
+  updateCurrentUser,
+})(Four01kContribution);

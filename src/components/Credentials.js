@@ -25,7 +25,6 @@ class Credentials extends React.Component {
 
   render() {
     return (
-      // <Container>
         <Form onSubmit={this.handleSubmit}>
           <Row>
             <Col>
@@ -51,24 +50,6 @@ class Credentials extends React.Component {
             </Button>
           </Row>
         </Form>
-        /* <form onSubmit={this.handleSubmit}>
-          <label htmlFor="username">Username:</label>
-          <input
-            type="text"
-            name="username"
-            value={this.state.username}
-            onChange={this.handleChange}
-          />
-          <label htmlFor="password">Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={this.state.password}
-            onChange={this.handleChange}
-          />
-          <input type="submit" value="Submit" />
-        </form> */
-      // </Container>
     );
   }
 }

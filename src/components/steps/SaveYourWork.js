@@ -2,31 +2,26 @@ import React from "react";
 import { connect } from "react-redux";
 import { updateCurrentStep } from "../../actions/stepActions";
 import { updateCurrentUser } from "../../actions/userActions";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
-import { Form, FormGroup, FormControl } from "react-bootstrap";
 
-class RothIRA extends React.Component {
-  _next = () => {
-    this.props.handleNextStep("Single");
-  };
-
+class SaveYourWork extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
 
+  _yes = () => {
+    this.props.handleNextStep("CreditCardDebt");
+  };
+
+  _no = () => {
+    this.props.handleNextStep("Determination");
+  };
+
   render() {
-    if (this.props.currentStep !== "RothIRA") {
+    if (this.props.currentStep !== "SaveYourWork") {
       return null;
     }
-
     return (
-      <Container className="border step">
+        <Container className="border step">
         <Row id="header" className="step">
           <Button onClick={this._prev} variant="link">
             <FontAwesomeIcon icon="chevron-left" /> Back
@@ -35,19 +30,12 @@ class RothIRA extends React.Component {
         </Row>
         <Row id="title" className="step">
           <Container>
-            <h3>Rung #3: Max-out a Roth IRA</h3>
+            <h3>Save your work</h3>
           </Container>
         </Row>
         <Row id="body" className="step">
           <Container>
-            {/* A <OverlayTrigger overlay={this.renderTooltip}>401(k) plan</OverlayTrigger> */}
-            Roth IRAs are great for a number of reasons. The best thing about
-            them is that, because you can withdraw your contributions at any
-            time for any reason, they're like a piggy bank you can break in an
-            emergency. Even if you don't qualify for a Roth IRA because of age
-            or income, you can still open a Roth IRA using a totally legal
-            loophole called a "Backdoor Roth IRA". We'll cross that bridge if we
-            need to, but let's see if you qualify first.
+          Let's save your work now so you can come back here for your next goal!
           </Container>
         </Row>
         <Row id="form" className="step"></Row>
@@ -69,12 +57,12 @@ class RothIRA extends React.Component {
                 <Col>
                   <Button
                     className="yes"
-                    variant="success"
+                    variant="primary"
                     size="lg"
                     block
                     onClick={this._next}
                   >
-                    Continue
+                    Okay
                   </Button>
                 </Col>
               </Form.Row>
@@ -89,11 +77,8 @@ class RothIRA extends React.Component {
 const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
-    currentUser: state.userReducer.currentUser,
+    currentUser: state.userReducer.currentUser
   };
 };
 
-export default connect(mapStateToProps, {
-  updateCurrentStep,
-  updateCurrentUser,
-})(RothIRA);
+export default connect(mapStateToProps, { updateCurrentStep, updateCurrentUser })(SaveYourWork);

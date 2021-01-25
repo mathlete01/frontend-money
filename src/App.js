@@ -32,7 +32,7 @@ class App extends React.Component {
   };
 
   renderForm = (routerProps) => {
-    console.log(routerProps);
+    console.log(`routerProps = `, routerProps)
     if (routerProps.location.pathname === "/login") {
       return <Credentials name="Login Form" handleSubmit={this.handleLogin} />;
     } else if (routerProps.location.pathname === "/signup") {

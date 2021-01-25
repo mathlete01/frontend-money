@@ -1,19 +1,20 @@
-import React, { Component } from "react";
+import React from "react";
 import Intro from "./steps/Intro";
 import LeftoverMoney from "./steps/LeftoverMoney";
-import Four01k from "./steps/Four01k";
+import Four01kQuestion from "./steps/Four01kQuestion";
 import Four01kMatch from "./steps/Four01kMatch";
 import Four01kContribution from "./steps/Four01k_Contribution";
 import CreditCardDebtQuestion from "./steps/CreditCardDebtQuestion";
 import CreditCardDebt from "./steps/CreditCardDebt";
 import Rung1Determination from "./steps/Rung1Determination";
-import DoneForNow from "./steps/DoneForNow";
+import SaveYourWork from "./steps/SaveYourWork";
 import RothIRA from "./steps/RothIRA";
+import Single from "./steps/Single";
+import SingleMax from "./steps/SingleMax";
+import BLANK from "./steps/BLANK";
 import { connect } from "react-redux";
 import { updateCurrentStep } from "../actions/stepActions";
-import { getCurrentUser} from "../actions/userActions";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
 
 class MasterForm extends React.Component {
   constructor(props) {
@@ -52,7 +53,7 @@ class MasterForm extends React.Component {
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
-        <Four01k
+        <Four01kQuestion
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
@@ -76,11 +77,19 @@ class MasterForm extends React.Component {
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
-        <DoneForNow
+        <SaveYourWork
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
         <RothIRA
+          handlePrevStep={this.handlePrevStep}
+          handleNextStep={this.handleNextStep}
+        />
+        <Single
+          handlePrevStep={this.handlePrevStep}
+          handleNextStep={this.handleNextStep}
+        />
+        <SingleMax
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
@@ -91,14 +100,11 @@ class MasterForm extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  // console.log(`state = `, state)
   return {
-    // currentStep: state.currentStep,
     currentStep: state.stepReducer.currentStep,
-    // currentUser: state.currentUser
   };
 };
 
-// export default connect(mapStateToProps, { updateCurrentStep, getCurrentUser })(MasterForm);
+
 export default connect(mapStateToProps, { updateCurrentStep })(MasterForm);
 

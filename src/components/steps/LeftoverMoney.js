@@ -1,4 +1,4 @@
-// import React, { Component } from "react";
+// import React from "react";
 import React from "react";
 import { connect } from "react-redux";
 import { updateCurrentStep } from "../../actions/stepActions";
@@ -30,7 +30,6 @@ class LeftoverMoney extends React.Component {
   }
 
   _next = (event) => {
-    console.log("next called")
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, {
       monthly_income: document.getElementById("monthly_income").value,
@@ -38,7 +37,7 @@ class LeftoverMoney extends React.Component {
       monthly_spending: document.getElementById("monthly_spending").value,
       leftover_money: document.getElementById("leftover_money").value
     });
-    this.props.handleNextStep("Four01k");
+    this.props.handleNextStep("Four01kQuestion");
   };
 
   render() {

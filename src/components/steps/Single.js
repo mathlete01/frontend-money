@@ -7,24 +7,27 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 
-class RothIRA extends React.Component {
-  _next = () => {
-    this.props.handleNextStep("Single");
-  };
-
+class Single extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
 
+  _yes = () => {
+    this.props.updateCurrentUser(this.props.currentUser.id, { single: true });
+    this.props.handleNextStep("SingleMax");
+  };
+
+  _no = () => {
+    this.props.updateCurrentUser(this.props.currentUser.id, { single: false });
+    this.props.handleNextStep("FilingJointly");
+  };
+
   render() {
-    if (this.props.currentStep !== "RothIRA") {
+    if (this.props.currentStep !== "Single") {
       return null;
     }
-
     return (
       <Container className="border step">
         <Row id="header" className="step">
@@ -35,19 +38,12 @@ class RothIRA extends React.Component {
         </Row>
         <Row id="title" className="step">
           <Container>
-            <h3>Rung #3: Max-out a Roth IRA</h3>
+            <h3>Are you single?</h3>
           </Container>
         </Row>
         <Row id="body" className="step">
           <Container>
-            {/* A <OverlayTrigger overlay={this.renderTooltip}>401(k) plan</OverlayTrigger> */}
-            Roth IRAs are great for a number of reasons. The best thing about
-            them is that, because you can withdraw your contributions at any
-            time for any reason, they're like a piggy bank you can break in an
-            emergency. Even if you don't qualify for a Roth IRA because of age
-            or income, you can still open a Roth IRA using a totally legal
-            loophole called a "Backdoor Roth IRA". We'll cross that bridge if we
-            need to, but let's see if you qualify first.
+            Your marriage status, along with other factors, can determine if you qualify for a Roth IRA.
           </Container>
         </Row>
         <Row id="form" className="step"></Row>
@@ -56,7 +52,7 @@ class RothIRA extends React.Component {
             <Form.Group>
               <Form.Row>
                 <Col>
-                  {/* <Button
+                  <Button
                     className="no"
                     variant="danger"
                     size="lg"
@@ -64,7 +60,7 @@ class RothIRA extends React.Component {
                     onClick={this._no}
                   >
                     No
-                  </Button> */}
+                  </Button>
                 </Col>
                 <Col>
                   <Button
@@ -72,9 +68,9 @@ class RothIRA extends React.Component {
                     variant="success"
                     size="lg"
                     block
-                    onClick={this._next}
+                    onClick={this._yes}
                   >
-                    Continue
+                    Yes
                   </Button>
                 </Col>
               </Form.Row>
@@ -96,4 +92,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(RothIRA);
+})(Single);

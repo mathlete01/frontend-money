@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { updateCurrentStep } from "../../actions/stepActions";
 import { updateCurrentProgress } from "../../actions/progressActions";
@@ -10,6 +10,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Nav from "react-bootstrap/Nav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Form, FormGroup, FormControl } from "react-bootstrap";
 
 class Rung1Determination extends React.Component {
   _next = () => {
@@ -21,7 +22,6 @@ class Rung1Determination extends React.Component {
   };
   
   makeDetermination = () => {
-    // console.log("makeDetermination called")
     const {
       leftover_money,
       four01k,
@@ -44,7 +44,7 @@ class Rung1Determination extends React.Component {
       case four01k === false && credit_card_debt > leftover_money:
         // Rung 1 is N/A. Maybe new Rung 1 is pay off CC?
         this.advice = `Ok! Rung #1 is not applicable since your employer doesn't offer a 401(k), so you're on Rung #2: Pay Off Credit Card Debt. First, target the smallest debt you have, then the next smallest. After that, you're on to Rung #3, so come back here for your next goal!`;
-        this.nextStep = "DoneForNow";
+        this.nextStep = "SaveYourWork";
         this.props.updateCurrentProgress(this.props.currentUser.id, {
           rung_2: true,
         });
@@ -65,7 +65,7 @@ class Rung1Determination extends React.Component {
         // Advice: Paying off CC debt is your top priority. Reduce your contribution to [match], then  pay off debt, starting with smallest cc. After that, come back here for next goal.
         // Rung 1 achieved, onto Rung 2
         this.advice = `While it's great that you are taking advantage of your 401(k), right now paying off credit card debt is your top priority. To that end, let's give you more money to pay off your debt: Temporarily reduce your 401(k) contribution from ${four01k_contribution}% to ${four01k_match}% and use the increased take-home pay to pay off your cards, starting with smallest debt you owe then the next smallest, and so on. After that, come back here for next goal.`;
-        this.nextStep = "DoneForNow";
+        this.nextStep = "SaveYourWork";
         this.props.updateCurrentProgress(this.props.currentUser.id, {
           rung_1: true,
           rung_2: true,
@@ -76,7 +76,7 @@ class Rung1Determination extends React.Component {
       case four01k_contribution < four01k_match &&
         credit_card_debt > leftover_money:
         this.advice = `Right now, your top priority is to pay off your credit card debt. But before you do anything, you should to increase your 401k contribution from ${four01k_contribution}% to ${four01k_match}%. The employer match is free money, so take advantage of it! Make that change now, then focus on paying off your cards, starting with smallest debt you owe then the next smallest, and so on. After that, come back here for next goal.`;
-        this.nextStep = "DoneForNow";
+        this.nextStep = "SaveYourWork";
         this.props.updateCurrentProgress(this.props.currentUser.id, {
           rung_1: true,
           rung_2: true,
@@ -88,7 +88,7 @@ class Rung1Determination extends React.Component {
         credit_card_debt > leftover_money:
         // Rung 1 achieved, onto Rung 2
         this.advice = `Well done--you're correct to restrict your 401k contribution to the company match of ${four01k_match}%. For now, focus on paying off your debt, starting with smallest cc then working your way up. Come back here when you're done for your next goal!`;
-        this.nextStep = "DoneForNow";
+        this.nextStep = "SaveYourWork";
         this.props.updateCurrentProgress(this.props.currentUser.id, {
           rung_1: true,
           rung_2: true,
@@ -119,31 +119,55 @@ class Rung1Determination extends React.Component {
     // The markup for the Step 1 UI
 
     return (
-      <Card>
-        <Card.Header>
-          <Nav variant="tabs" defaultActiveKey="#first">
-            <Nav.Item>
-              <Nav.Link onClick={this._prev}>
-                <FontAwesomeIcon icon="chevron-left" /> Back
-              </Nav.Link>
-            </Nav.Item>
-          </Nav>
-        </Card.Header>
-        <Card.Body>
-          <Card.Title>Here's the deal:</Card.Title>
-          <Card.Text>{this.advice}</Card.Text>
+        <Container className="border step">
+        <Row id="header" className="step">
+          <Button onClick={this._prev} variant="link">
+            <FontAwesomeIcon icon="chevron-left" /> Back
+          </Button>
+          <hr className="w-100" />
+        </Row>
+        <Row id="title" className="step">
           <Container>
-            <Row>
-              <Col></Col>
-              <Col>
-                <Button variant="primary" size="lg" block onClick={this._next}>
-                  Continue
-                </Button>
-              </Col>
-            </Row>
+            <h3>Here's the deal:</h3>
           </Container>
-        </Card.Body>
-      </Card>
+        </Row>
+        <Row id="body" className="step">
+          <Container>
+            {this.advice}
+          </Container>
+        </Row>
+        <Row id="form" className="step"></Row>
+        <Row id="buttons" className="step">
+          <Container>
+            <Form.Group>
+              <Form.Row>
+                <Col>
+                  {/* <Button
+                    className="no"
+                    variant="danger"
+                    size="lg"
+                    block
+                    onClick={this._no}
+                  >
+                    No
+                  </Button> */}
+                </Col>
+                <Col>
+                  <Button
+                    className="yes"
+                    variant="primary"
+                    size="lg"
+                    block
+                    onClick={this._next}
+                  >
+                    Continue
+                  </Button>
+                </Col>
+              </Form.Row>
+            </Form.Group>
+          </Container>
+        </Row>
+      </Container>
     );
   }
 }
