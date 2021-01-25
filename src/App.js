@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Switch, withRouter, NavLink } from "react-router-dom";
-import Body from "./components/xBody";
+// import Body from "./components/xBody";
 import NotFound from "./NotFound";
 import Credentials from "./components/Credentials";
 import { connect } from "react-redux";

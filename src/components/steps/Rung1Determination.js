@@ -21,7 +21,7 @@ class Rung1Determination extends React.Component {
   };
   
   makeDetermination = () => {
-    console.log("makeDetermination called")
+    // console.log("makeDetermination called")
     const {
       leftover_money,
       four01k,

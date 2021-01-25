@@ -31,33 +31,36 @@ class Four01kMatch extends React.Component {
       return null;
     }
     return (
-      <Card>
-        <Card.Header>
-          <Nav variant="tabs" defaultActiveKey="#first">
-            <Nav.Item>
-              <Nav.Link onClick={this._prev}>
-                <FontAwesomeIcon icon="chevron-left" /> Back
-              </Nav.Link>
-            </Nav.Item>
-          </Nav>
-        </Card.Header>
-        <Card.Body>
-          <Card.Title>How much is the employer match? </Card.Title>
-          <Card.Text>
+      <Container className="border step">
+        <Row id="header" className="step">
+              <Button onClick={this._prev} variant="link"><FontAwesomeIcon icon="chevron-left" /> Back</Button>
+          <hr className="w-100" /> 
+        </Row>
+        <Row id="title" className="step">
+          <Container><h3>How much is the employer match?</h3></Container>
+        </Row>
+        <Row id="body" className="step">
+          <Container>
             The "employer match" is the maximum percentage of your paycheck that
             they will contribute to your 401(k).
-          </Card.Text>
+          </Container>
+        </Row>
+        <Row id="form" className="step">
           <Container>
             <Form.Group>
               <Form.Row>
-                <Form.Label column lg={6}>
-                  Employer Match
-                </Form.Label>
-                <Col>
-                  <InputGroup className="mb-3">
-                    <FormControl type="number"
-                    defaultValue="3"
-                    id="employer_match" />
+                <Col id="formText" >
+                  <Form.Label >Employer Match</Form.Label>
+                </Col>
+                <Col >
+                  <InputGroup >
+                    <FormControl
+                    className="formField"
+                      type="number"
+                      defaultValue="3"
+                      id="employer_match"
+                      size="lg"
+                    />
                     <InputGroup.Append>
                       <InputGroup.Text>%</InputGroup.Text>
                     </InputGroup.Append>
@@ -66,18 +69,29 @@ class Four01kMatch extends React.Component {
               </Form.Row>
             </Form.Group>
           </Container>
+        </Row>
+        <Row id="buttons" className="step">
           <Container>
-            <Row>
-              <Col></Col>
-              <Col>
-                <Button variant="primary" size="lg" block onClick={this._next}>
-                  Next
-                </Button>
-              </Col>
-            </Row>
+            <Form.Group>
+              <Form.Row>
+                <Col>
+                </Col>
+                <Col>
+                  <Button
+                  className="yes"
+                    variant="primary"
+                    size="lg"
+                    block
+                    onClick={this._next}
+                  >
+                    Continue
+                  </Button>
+                </Col>
+              </Form.Row>
+            </Form.Group>
           </Container>
-        </Card.Body>
-      </Card>
+        </Row>
+      </Container>
     );
   }
 }

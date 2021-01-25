@@ -6,12 +6,10 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import Nav from "react-bootstrap/Nav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
-import { Form, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { Form, FormControl } from "react-bootstrap";
 
 class CreditCardDebt extends React.Component {
   _next = () => {
@@ -35,85 +33,126 @@ class CreditCardDebt extends React.Component {
       return null;
     }
     return (
-      <Card>
-        <Card.Header>
-          <Nav variant="tabs" defaultActiveKey="#first">
-            <Nav.Item>
-              <Nav.Link onClick={this._prev}>
-                <FontAwesomeIcon icon="chevron-left" /> Back
-              </Nav.Link>
-            </Nav.Item>
-          </Nav>
-        </Card.Header>
-        <Card.Body>
-          <Card.Title>How much credit card debt do you have? </Card.Title>
-          <Card.Text>
-            The interest you pay on credit card debt is usually three times the
-            amount of interst you could earn on investment.
-          </Card.Text>
+        <Container className="border step">
+        <Row id="header" className="step">
+              <Button onClick={this._prev} variant="link"><FontAwesomeIcon icon="chevron-left" /> Back</Button>
+          <hr className="w-100" /> 
+        </Row>
+        <Row id="title" className="step">
+          <Container><h3>How much credit card debt do you have?</h3></Container>
+        </Row>
+        <Row id="body" className="step">
+          <Container>
+          The interest you pay on credit card debt is usually three times the amount of interst you could earn on investment.
+          </Container>
+        </Row>
+        <Row id="form" className="step">
           <Container>
             <Form.Group>
               <Form.Row>
-                <Form.Label column lg={6}>
-                  Credit Card #1
-                </Form.Label>
-                <Col>
-                  <InputGroup className="mb-3">
-                    <InputGroup.Prepend>
-                      <InputGroup.Text>$</InputGroup.Text>
-                    </InputGroup.Prepend>
-                    <FormControl type="number"
-                    defaultValue="2000"
-                    id="cc_1" />
-                  </InputGroup>
+                <Col id="formText" >
+                  <Form.Label >Credit Card #1</Form.Label>
                 </Col>
-              </Form.Row>
-              <br />
-              <Form.Row>
-                <Form.Label column lg={6}>
-                  Credit Card #2
-                </Form.Label>
-                <Col>
-                  <InputGroup className="mb-3">
-                    <InputGroup.Prepend>
+                <Col >
+                  <InputGroup >
+                  <InputGroup.Prepend>
                       <InputGroup.Text>$</InputGroup.Text>
                     </InputGroup.Prepend>
-                    <FormControl type="number"
-                    defaultValue="400"
-                    id="cc_2" />
-                  </InputGroup>
-                </Col>
-              </Form.Row>
-              <br />
-              <Form.Row>
-                <Form.Label column lg={6}>
-                  Credit Card #3
-                </Form.Label>
-                <Col>
-                  <InputGroup className="mb-3">
-                    <InputGroup.Prepend>
-                      <InputGroup.Text>$</InputGroup.Text>
-                    </InputGroup.Prepend>
-                    <FormControl type="number"
-                    defaultValue="800"
-                    id="cc_3" />
+                    <FormControl
+                    className="formField"
+                      type="number"
+                      defaultValue="2000"
+                      id="cc_1"
+                      size="lg"
+                    />
                   </InputGroup>
                 </Col>
               </Form.Row>
             </Form.Group>
           </Container>
+        </Row>
+        <Row id="form" className="step">
           <Container>
-            <Row>
-              <Col></Col>
-              <Col>
-                <Button variant="primary" size="lg" block onClick={this._next}>
-                  Next
-                </Button>
-              </Col>
-            </Row>
+            <Form.Group>
+              <Form.Row>
+                <Col id="formText" >
+                  <Form.Label >Credit Card #2</Form.Label>
+                </Col>
+                <Col >
+                  <InputGroup >
+                  <InputGroup.Prepend>
+                      <InputGroup.Text>$</InputGroup.Text>
+                    </InputGroup.Prepend>
+                    <FormControl
+                    className="formField"
+                      type="number"
+                      defaultValue="800"
+                      id="cc_2"
+                      size="lg"
+                    />
+                  </InputGroup>
+                </Col>
+              </Form.Row>
+            </Form.Group>
           </Container>
-        </Card.Body>
-      </Card>
+        </Row>
+        <Row id="form" className="step">
+          <Container>
+            <Form.Group>
+              <Form.Row>
+                <Col id="formText" >
+                  <Form.Label >Credit Card #3</Form.Label>
+                </Col>
+                <Col >
+                  <InputGroup >
+                  <InputGroup.Prepend>
+                      <InputGroup.Text>$</InputGroup.Text>
+                    </InputGroup.Prepend>
+                    <FormControl
+                    className="formField"
+                      type="number"
+                      defaultValue="400"
+                      id="cc_3"
+                      size="lg"
+                    />
+                  </InputGroup>
+                </Col>
+              </Form.Row>
+            </Form.Group>
+          </Container>
+        </Row>
+        <Row id="buttons" className="step">
+          <Container>
+            <Form.Group>
+              <Form.Row>
+                <Col>
+                  <Button
+                  className="no"
+                    variant="danger"
+                    size="lg"
+                    block
+                    onClick={this._next}
+                  >
+                    No
+                  </Button>
+                </Col>
+                <Col>
+                  <Button
+                  className="yes"
+                    variant="success"
+                    size="lg"
+                    block
+                    onClick={this._next}
+                  >
+                    Yes
+                  </Button>
+                </Col>
+              </Form.Row>
+            </Form.Group>
+          </Container>
+        </Row>
+      </Container>
+
     );
   }
 }
