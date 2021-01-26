@@ -34,12 +34,12 @@ class Below50RothSingle extends React.Component {
       four01k_contribution,
       earned_income,
       single,
-      single_max,
+      singleMax,
       credit_card_debt,
     } = this.props.currentUser;
     switch (true) {
       // Case: Young, Earning, Single, Below Single Max, Tiny Debt --> 6k to Roth IRA
-      case answer === true && earned_income == true && single == true && single_max == true && credit_card_debt < leftover_money:
+      case answer === true && earned_income === true && single === true && singleMax === true && credit_card_debt < leftover_money:
         this.nextStep = "RothEligable";
         this.props.updateCurrentProgress(this.props.currentUser.id, {
           rung_2: true,
@@ -47,28 +47,28 @@ class Below50RothSingle extends React.Component {
         });
         break;
         // Case: Young, Earning, Jointly, Below Married Max, Tiny Debt --> 6k to Roth IRA
-        case answer === false && earned_income == true && single == true && single_max == true && credit_card_debt < leftover_money:
+        case answer === false && earned_income === true && single === true && singleMax === true && credit_card_debt < leftover_money:
           this.nextStep = "RothEligable";
           this.props.updateCurrentProgress(this.props.currentUser.id, {
             rung_3: true,
           });
           break;
         // Case: Old, Earning, Single, Below Single Max, Tiny Debt --> 7k to Roth IRA
-        case answer === false && earned_income == true && single == true && single_max == true && credit_card_debt < leftover_money:
+        case answer === false && earned_income === true && single === true && singleMax === true && credit_card_debt < leftover_money:
           this.nextStep = "RothMax";
           this.props.updateCurrentProgress(this.props.currentUser.id, {
             rung_3: true,
           });
           break;
         // Case: Old, Earning, Jointly, Below Married Max, Tiny Debt --> 7k to Roth IRA
-        case answer === false && earned_income == true && single == true && single_max == true && credit_card_debt < leftover_money:
+        case answer === false && earned_income === true && single === true && singleMax === true && credit_card_debt < leftover_money:
           this.nextStep = "RothMax";
           this.props.updateCurrentProgress(this.props.currentUser.id, {
             rung_3: true,
           });
           break;
         // Case: Old, Earning, Jointly, Below Married Max, Tiny Debt --> 7k to Roth IRA
-        case answer === false && earned_income == true && single == true && single_max == true && credit_card_debt < leftover_money:
+        case answer === false && earned_income === true && single === true && singleMax === true && credit_card_debt < leftover_money:
           this.nextStep = "RothMax";
           this.props.updateCurrentProgress(this.props.currentUser.id, {
             rung_3: true,

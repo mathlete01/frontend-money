@@ -4,15 +4,19 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import { loginCurrentUser } from "../actions/userActions";
+import { connect } from "react-redux";
 
 class Credentials extends React.Component {
   state = {
     username: "",
     password: "",
+    // password: "!iCPWC?L,2o?V!\2aR,e')'#}nDIlQUJ"
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
+    // this.props.loginCurrentUser(this.state);
     this.props.handleSubmit(this.state);
   };
 
@@ -54,4 +58,13 @@ class Credentials extends React.Component {
   }
 }
 
-export default Credentials;
+const mapStateToProps = (state) => {
+  return {
+    currentStep: state.stepReducer.currentStep,
+    currentUser: state.userReducer.currentUser,
+  };
+};
+
+export default connect(mapStateToProps, { loginCurrentUser })(Credentials);
+
+

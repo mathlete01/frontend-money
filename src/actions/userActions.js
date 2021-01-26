@@ -34,7 +34,7 @@ export const updateCurrentUser = (id, dataObj) => {
       ...dataObj,
     };
     let token = localStorage.getItem("token")
-    const configOb = {
+    const configObj = {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -43,7 +43,31 @@ export const updateCurrentUser = (id, dataObj) => {
       },
       body: JSON.stringify(formData)
     };
-    fetch(`${SPECIFIC_USER}`, configOb)
+    fetch(`${SPECIFIC_USER}`, configObj)
+      .then((res) => res.json())
+      .then((data) => 
+        dispatch({
+          type: "UPDATE_USER",
+          newUser: data
+      }))
+  };
+};
+
+export const loginCurrentUser = (userObj) => {
+  return (dispatch) => {
+    const BASE_URL = "http://localhost:3000";
+    const USERS_URL = `${BASE_URL}/login`;
+    let token = localStorage.getItem("token")
+    const configObj = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify(userObj)
+    };
+    fetch(`${USERS_URL}`, configObj)
       .then((res) => res.json())
       .then((data) => 
         dispatch({

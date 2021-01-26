@@ -11,7 +11,6 @@ import Nav from "react-bootstrap/Nav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 
-
 const BASE_URL = "http://localhost:3000";
 const USERS_URL = `${BASE_URL}/users`;
 
@@ -19,19 +18,22 @@ class Intro extends React.Component {
   _next = (event) => {
     event.preventDefault();
     this.props.handleNextStep("LeftoverMoney");
-    if(Object.keys(this.props.currentUser).length == 0){
+    // debugger
+    if (Object.keys(this.props.currentUser).length === 0) {
       this.createUser();
     }
   };
 
-  generateRandomString = function(length=6){
-    return Math.random().toString(20).substr(2, length)
-    }
+  generateRandomString = function (length = 6) {
+    return Math.random().toString(20).substr(2, length);
+  };
 
   createUser = () => {
     let formData = {
-      // username: "yourmom",
-      username: this.generateRandomString(),
+      user: {
+        username: this.generateRandomString(),
+        password: this.generateRandomString(),
+      },
     };
     let configObj = {
       method: "POST",
@@ -46,8 +48,8 @@ class Intro extends React.Component {
       .then((res) => res.json())
       // .then((data) => console.log(data))
       .then((data) => {
-        this.props.setCurrentUser(data.user)
-        localStorage.setItem("token", data.token)
+        this.props.setCurrentUser(data.user);
+        localStorage.setItem("token", data.token);
       })
       .catch((errors) => console.log(`createUser: ${errors}`));
   };
@@ -59,13 +61,17 @@ class Intro extends React.Component {
     }
     // The markup for the Step 1 UI
     return (
-        <Container className="border step">
+      <Container className="border step">
         <Row id="header" className="step">
-              <Button onClick={this._prev} variant="link" disabled><FontAwesomeIcon icon="chevron-left" /> Back</Button>
-          <hr className="w-100" /> 
+          <Button onClick={this._prev} variant="link" disabled>
+            <FontAwesomeIcon icon="chevron-left" /> Back
+          </Button>
+          <hr className="w-100" />
         </Row>
         <Row id="title" className="step">
-          <Container><h3>We're gonna walk you through a bunch of questions.</h3></Container>
+          <Container>
+            <h3>We're gonna walk you through a bunch of questions.</h3>
+          </Container>
         </Row>
         <Row id="body" className="step">
           <Container>
@@ -74,18 +80,15 @@ class Intro extends React.Component {
             correct them later if you'd like.
           </Container>
         </Row>
-        <Row id="form" className="step">
-          
-        </Row>
+        <Row id="form" className="step"></Row>
         <Row id="buttons" className="step">
           <Container>
             <Form.Group>
               <Form.Row>
-                <Col>
-                </Col>
+                <Col></Col>
                 <Col>
                   <Button
-                  className="yes"
+                    className="yes"
                     variant="primary"
                     size="lg"
                     block
@@ -106,8 +109,8 @@ class Intro extends React.Component {
 const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
-    currentUser: state.userReducer.currentUser
+    currentUser: state.userReducer.currentUser,
   };
 };
 
-export default connect(mapStateToProps, {setCurrentUser})(Intro);
+export default connect(mapStateToProps, { setCurrentUser })(Intro);

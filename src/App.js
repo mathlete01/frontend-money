@@ -32,6 +32,7 @@ class App extends React.Component {
   };
 
   renderForm = (routerProps) => {
+    // debugger
     console.log(`routerProps = `, routerProps)
     if (routerProps.location.pathname === "/login") {
       return <Credentials name="Login Form" handleSubmit={this.handleLogin} />;
@@ -43,6 +44,7 @@ class App extends React.Component {
   };
 
   handleLogin = (info) => {
+    // debugger
     console.log(`info = `, info);
     this.handleAuthFetch(info, "http://localhost:3000/login");
     window.location.reload(false);
@@ -57,6 +59,7 @@ class App extends React.Component {
   };
 
   handleSignup = (info) => {
+    // debugger
     if (Object.keys(this.props.currentUser).length === 0) {
       this.handleAuthFetch(info, "http://localhost:3000/users");
     } else {

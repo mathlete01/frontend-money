@@ -7,12 +7,13 @@ export const updateCurrentProgress = (id, level) => {
         user_id: id,
         ...level
       };
-  
+      let token = localStorage.getItem("token")
       const configOb = {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
+          Authorization: `Bearer ${token}`
         },
         body: JSON.stringify(formData)
       };
