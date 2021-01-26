@@ -34,11 +34,11 @@ class LeftoverMoney extends React.Component {
     const spending = this.state.monthly_spending
     const difference = income -
     (parseInt(bills) + parseInt(spending))
-    console.log("calcLeftoverMoney called")
-    console.log(`income = `, income)
-    console.log(`bills = `, bills)
-    console.log(`spending = `, spending)
-    console.log(`difference = `, difference)
+    // console.log("calcLeftoverMoney called")
+    // console.log(`income = `, income)
+    // console.log(`bills = `, bills)
+    // console.log(`spending = `, spending)
+    // console.log(`difference = `, difference)
     this.setState ({
       leftover_money: difference
     })

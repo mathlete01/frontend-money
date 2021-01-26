@@ -33,7 +33,7 @@ class App extends React.Component {
 
   renderForm = (routerProps) => {
     // debugger
-    console.log(`routerProps = `, routerProps)
+    // console.log(`routerProps = `, routerProps)
     if (routerProps.location.pathname === "/login") {
       return <Credentials name="Login Form" handleSubmit={this.handleLogin} />;
     } else if (routerProps.location.pathname === "/signup") {
@@ -43,48 +43,53 @@ class App extends React.Component {
     }
   };
 
-  handleLogin = (info) => {
+  handleLogin = (credentialObj) => {
     // debugger
-    console.log(`info = `, info);
-    this.handleAuthFetch(info, "http://localhost:3000/login");
-    window.location.reload(false);
+    console.log(`handleLogin: credentialObj = `, credentialObj);
+    this.handleAuthFetch(credentialObj, "http://localhost:3000/login");
   };
 
   handleLogout = () => {
-    console.log("Logout called");
+    // console.log("Logout called");
     localStorage.clear();
     this.props.setCurrentUser({});
     this.props.history.push("/");
     window.location.reload(false);
   };
 
-  handleSignup = (info) => {
+  handleSignup = (credentialObj) => {
     // debugger
+    console.log(`handleSignup: credentialObj = `, credentialObj);
     if (Object.keys(this.props.currentUser).length === 0) {
-      this.handleAuthFetch(info, "http://localhost:3000/users");
+      this.handleAuthFetch(credentialObj, "http://localhost:3000/users");
     } else {
       this.props.updateCurrentUser(this.props.currentUser.id, {
-        username: info.username,
-        password: info.password,
+        username: credentialObj.username,
+        password: credentialObj.password,
       });
     }
     this.props.history.push("/");
   };
 
-  handleAuthFetch = (info, request) => {
-    fetch(request, {
+  handleAuthFetch = (credentialObj, endpoint) => {
+    console.log(`handleAuthFetch: credentialObj = `, credentialObj);
+    fetch(endpoint, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username: info.username,
-        password: info.password,
+        user: {
+          username: credentialObj.username,
+          password: credentialObj.password,
+        },
       }),
     })
       .then((res) => res.json())
       .then((data) => {
-        this.props.setCurrentUser(data);
+        console.log(`data = `, data);
+        localStorage.setItem("token", data.token)
+        this.props.setCurrentUser(data.user);
       });
   };
 
@@ -104,24 +109,32 @@ class App extends React.Component {
             🪜 Climb the Ladder
           </Navbar.Brand>
           <Nav className="justify-content-end">
+            <Row>
+              <Col>
             <Nav.Item>
               {/* Nav.Link doesn't work */}
               {/* <Nav.Link to="/signup">Sign Up</Nav.Link>  */}
-              <NavLink to="/signup">Sign Up</NavLink>
+              <NavLink variant="secondary" size="sm" to="/signup">Sign Up</NavLink>
               {/* Button refreshes the page */}
               {/* <Button variant="secondary" size="sm" href="/signup">Sign Up</Button> */}
             </Nav.Item>
+            </Col>
+            <Col>
             <Nav.Item>
               {/* <NavLink to="/login">Log in</NavLink> */}
-              <Button variant="secondary" size="sm" href="/login">
+              <NavLink variant="secondary" size="sm" to="/login">
                 Log In
-              </Button>
+              </NavLink>
             </Nav.Item>
+            </Col>
+            <Col>
             <Nav.Item>
               <Button variant="secondary" size="sm" onClick={this.handleLogout}>
                 Log Out
               </Button>
             </Nav.Item>
+            </Col>
+            </Row>
           </Nav>
         </Navbar>
         <Container>
@@ -134,24 +147,20 @@ class App extends React.Component {
                 <Route path="/signup" exact component={this.renderForm} />
                 <Route component={NotFound} />
               </Switch>
-              <StepContainer className="h-100"/>
+              <StepContainer className="h-100" />
             </Col>
             <Col xs={4} className="containerContainer">
               <Container className="border-right border-left border-gray">
                 <Row>
                   <Alert variant="dark" id="rung_6">
                     <Alert.Heading>Rung 6</Alert.Heading>
-                    <p className="mb-0">
-                      Goal: Taxable brokerage account
-                    </p>
+                    <p className="mb-0">Goal: Taxable brokerage account</p>
                   </Alert>
                 </Row>
                 <Row>
                   <Alert variant="dark" id="rung_5">
                     <Alert.Heading>Rung 5</Alert.Heading>
-                    <p className="mb-0">
-                      Goal: 6-month Emergency Fund
-                    </p>
+                    <p className="mb-0">Goal: 6-month Emergency Fund</p>
                   </Alert>
                 </Row>
                 <Row>
@@ -169,17 +178,13 @@ class App extends React.Component {
                 <Row>
                   <Alert variant="warning" id="rung_2">
                     <Alert.Heading>Rung 2</Alert.Heading>
-                    <p className="mb-0">
-                      Goal: Pay off credit card debt
-                    </p>
+                    <p className="mb-0">Goal: Pay off credit card debt</p>
                   </Alert>
                 </Row>
                 <Row>
                   <Alert variant="dark" id="rung_1">
                     <Alert.Heading>Rung 1</Alert.Heading>
-                    <p className="mb-0">
-                      Goal: Get 402(k) company match
-                    </p>
+                    <p className="mb-0">Goal: Get 402(k) company match</p>
                   </Alert>
                 </Row>
               </Container>

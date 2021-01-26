@@ -25,7 +25,7 @@ export const getCurrentUser = (id, currentUser) => {
 };
 
 export const updateCurrentUser = (id, dataObj) => {
-  console.log(`updateCurrentUser dataObj = `, dataObj)
+  console.log(`updateCurrentUser id = `, id, `dataObj = `, dataObj)
   return (dispatch) => {
     const BASE_URL = "http://localhost:3000";
     const USERS_URL = `${BASE_URL}/users`;

@@ -20,7 +20,7 @@ class SingleMaxNoRoth extends React.Component {
   };
 
   makeDetermination = () => {
-    console.log("makeDetermination called");
+    // console.log("makeDetermination called");
     const {
       leftover_money,
       four01k,
@@ -28,18 +28,18 @@ class SingleMaxNoRoth extends React.Component {
       four01k_contribution,
       credit_card_debt,
     } = this.props.currentUser;
-    console.log(
-      `SingleMaxNoRoth: this.props.currentUser = `,
-      this.props.currentUser
-    );
-    console.log(`SingleMaxNoRoth: leftover_money = `, leftover_money);
-    console.log(`SingleMaxNoRoth: four01k = `, four01k);
-    console.log(`SingleMaxNoRoth: four01k_match = `, four01k_match);
-    console.log(
-      `SingleMaxNoRoth: four01k_contribution = `,
-      four01k_contribution
-    );
-    console.log(`SingleMaxNoRoth: credit_card_debt = `, credit_card_debt);
+    // console.log(
+    //   `SingleMaxNoRoth: this.props.currentUser = `,
+    //   this.props.currentUser
+    // );
+    // console.log(`SingleMaxNoRoth: leftover_money = `, leftover_money);
+    // console.log(`SingleMaxNoRoth: four01k = `, four01k);
+    // console.log(`SingleMaxNoRoth: four01k_match = `, four01k_match);
+    // console.log(
+    //   `SingleMaxNoRoth: four01k_contribution = `,
+    //   four01k_contribution
+    // );
+    // console.log(`SingleMaxNoRoth: credit_card_debt = `, credit_card_debt);
     switch (true) {
       // Case: Yes 401k --> are you maxing it out?
       case four01k === true:
