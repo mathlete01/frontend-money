@@ -14,12 +14,14 @@ class MarriedMax extends React.Component {
     this.props.handlePrevStep();
   };
 
-  _yes = () => {
+  _yes = (event) => {
+    event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { married_max: true });
     this.props.handleNextStep("math");
   };
 
-  _no = () => {
+  _no = (event) => {
+    event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { married_max: false });
     this.props.handleNextStep("trad_ira");
   };

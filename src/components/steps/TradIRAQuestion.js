@@ -14,7 +14,8 @@ class TradIRAQuestion extends React.Component {
     this.props.handlePrevStep();
   };
 
-  _next = () => {
+  _next = (event) => {
+    event.preventDefault();
     this.props.handleNextStep("BLANK_YES");
   };
 

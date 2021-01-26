@@ -16,12 +16,14 @@ class Four01kQuestion extends React.Component {
     this.props.handlePrevStep();
   };
 
-  _yes = () => {
+  _yes = (event) => {
+    event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { four01k: true });
     this.props.handleNextStep("Four01kMatch");
   };
 
-  _no = () => {
+  _no = (event) => {
+    event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { four01k: false });
     this.props.handleNextStep("CreditCardDebtQuestion");
   };

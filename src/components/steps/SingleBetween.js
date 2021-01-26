@@ -14,12 +14,14 @@ class SingleBetween extends React.Component {
     this.props.handlePrevStep();
   };
 
-  _yes = () => {
+  _yes = (event) => {
+    event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { single_between: true });
     this.props.handleNextStep("below_50");
   };
 
-  _no = () => {
+  _no = (event) => {
+    event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { single_between: false });
     this.props.handleNextStep("married_max");
   };

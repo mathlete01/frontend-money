@@ -14,7 +14,8 @@ class BLANK_TITLE extends React.Component {
     this.props.handlePrevStep();
   };
 
-  _next = () => {
+  _next = (event) => {
+    event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { BLANK_DB: true });
     this.props.handleNextStep("BLANK_NEXT");
   };

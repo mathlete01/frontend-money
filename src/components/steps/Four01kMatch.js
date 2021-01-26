@@ -23,8 +23,8 @@ class Four01kMatch extends React.Component {
     })
   }
 
-  _next = () => {
-    // let match = document.getElementById("employer_match");
+  _next = (event) => {
+    event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, {
       four01k_match: this.state.four01k_match
     });

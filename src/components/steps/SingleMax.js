@@ -14,12 +14,14 @@ class SingleMax extends React.Component {
     this.props.handlePrevStep();
   };
 
-  _yes = () => {
+  _yes = (event) => {
+    event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { singleMax: true });
     this.props.handleNextStep("EarnedIncome");
   };
 
-  _no = () => {
+  _no = (event) => {
+    event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { singleMax: false });
     this.props.handleNextStep("SingleBetween");
   };

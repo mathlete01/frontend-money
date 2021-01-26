@@ -12,14 +12,35 @@ import InputGroup from "react-bootstrap/InputGroup";
 import { Form, FormControl } from "react-bootstrap";
 
 class CreditCardDebt extends React.Component {
-  _next = () => {
-    let cc_1 = document.getElementById("cc_1");
-    let cc_2 = document.getElementById("cc_2");
-    let cc_3 = document.getElementById("cc_3");
-    const sum =
-      parseInt(cc_1.value) + parseInt(cc_2.value) + parseInt(cc_3.value);
+
+  state = {
+    cc_1: this.props.currentUser.cc_1,
+    cc_2: this.props.currentUser.cc_2,
+    cc_3: this.props.currentUser.cc_3,
+    credit_card_debt: this.props.currentUser.credit_card_debt
+  }
+
+  handleChange = (event) => {
+    this.setState ({
+      [event.target.name]: event.target.value
+    })
+    this.calcSum()
+  }
+
+  calcSum = () => {
+    const cc_1 = this.state.cc_1
+    const cc_2 = this.state.cc_2
+    const cc_3 = this.state.cc_3
+    const sum = parseInt(cc_1) + parseInt(cc_2) + parseInt(cc_3)
+    this.setState ({
+      credit_card_debt: sum
+    })
+  }
+
+  _next = (event) => {
+    event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, {
-      credit_card_debt: sum,
+      credit_card_debt: this.state.credit_card_debt
     });
     this.props.handleNextStep("Rung1Determination");
   };
@@ -61,9 +82,10 @@ class CreditCardDebt extends React.Component {
                     <FormControl
                     className="formField"
                       type="number"
-                      defaultValue="2000"
                       id="cc_1"
+                      name="cc_1"
                       size="lg"
+                      onChange={this.handleChange} 
                     />
                   </InputGroup>
                 </Col>
@@ -85,10 +107,11 @@ class CreditCardDebt extends React.Component {
                     </InputGroup.Prepend>
                     <FormControl
                     className="formField"
-                      type="number"
-                      defaultValue="800"
-                      id="cc_2"
-                      size="lg"
+                    type="number"
+                    id="cc_2"
+                    name="cc_2"
+                    size="lg"
+                    onChange={this.handleChange} 
                     />
                   </InputGroup>
                 </Col>
@@ -110,10 +133,11 @@ class CreditCardDebt extends React.Component {
                     </InputGroup.Prepend>
                     <FormControl
                     className="formField"
-                      type="number"
-                      defaultValue="400"
-                      id="cc_3"
-                      size="lg"
+                    type="number"
+                    id="cc_3"
+                    name="cc_3"
+                    size="lg"
+                    onChange={this.handleChange} 
                     />
                   </InputGroup>
                 </Col>

@@ -2,17 +2,25 @@ import React from "react";
 import { connect } from "react-redux";
 import { updateCurrentStep } from "../../actions/stepActions";
 import { updateCurrentUser } from "../../actions/userActions";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Form, FormGroup, FormControl } from "react-bootstrap";
 
 class SaveYourWork extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
 
-  _yes = () => {
+  _yes = (event) => {
+    event.preventDefault();
     this.props.handleNextStep("CreditCardDebt");
   };
 
-  _no = () => {
+  _no = (event) => {
+    event.preventDefault();
     this.props.handleNextStep("Determination");
   };
 

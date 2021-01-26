@@ -16,7 +16,8 @@ const BASE_URL = "http://localhost:3000";
 const USERS_URL = `${BASE_URL}/users`;
 
 class Intro extends React.Component {
-  _next = () => {
+  _next = (event) => {
+    event.preventDefault();
     this.props.handleNextStep("LeftoverMoney");
     if(Object.keys(this.props.currentUser).length == 0){
       this.createUser();

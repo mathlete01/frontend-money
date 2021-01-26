@@ -14,10 +14,21 @@ import InputGroup from "react-bootstrap/InputGroup";
 import { Form, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 
 class Four01kContribution extends React.Component {
-  _next = () => {
-    let match = document.getElementById("employee_contribution");
+
+  state = {
+    four01k_contribution: this.props.currentUser.four01k_contribution
+  }
+
+  handleChange = (event) => {
+    this.setState ({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  _next = (event) => {
+    event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, {
-      four01k_contribution: match.value,
+      four01k_contribution: this.state.four01k_contribution
     });
     this.props.handleNextStep("CreditCardDebtQuestion");
   };
@@ -61,9 +72,12 @@ class Four01kContribution extends React.Component {
                     <FormControl
                       className="formField"
                       type="number"
-                      defaultValue="6"
-                      id="employee_contribution"
+                      // defaultValue="6"
+                      value={this.state.four01k_contribution ? this.state.four01k_contribution : 0}
+                      id="four01k_contribution"
+                      name="four01k_contribution"
                       size="lg"
+                      onChange={this.handleChange} 
                     />
                     <InputGroup.Append>
                       <InputGroup.Text>%</InputGroup.Text>

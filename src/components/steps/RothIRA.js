@@ -12,7 +12,8 @@ import Tooltip from "react-bootstrap/Tooltip";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 
 class RothIRA extends React.Component {
-  _next = () => {
+  _next = (event) => {
+    event.preventDefault();
     this.props.handleNextStep("Single");
   };
 

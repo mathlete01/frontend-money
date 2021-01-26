@@ -14,12 +14,14 @@ class Below50 extends React.Component {
     this.props.handlePrevStep();
   };
 
-  _yes = () => {
+  _yes = (event) => {
+    event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { below_50: true });
     this.props.handleNextStep("BLANK_YES");
   };
 
-  _no = () => {
+  _no = (event) => {
+    event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { below_50: false });
     this.props.handleNextStep("BLANK_NO");
   };

@@ -14,12 +14,14 @@ class EarnedIncome extends React.Component {
     this.props.handlePrevStep();
   };
 
-  _yes = () => {
+  _yes = (event) => {
+    event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { earned_income: true });
     this.props.handleNextStep("Below50");
   };
 
-  _no = () => {
+  _no = (event) => {
+    event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { earned_income: false });
     this.props.handleNextStep("RothMax");
   };

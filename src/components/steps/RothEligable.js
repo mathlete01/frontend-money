@@ -14,7 +14,8 @@ class RothEligable extends React.Component {
     this.props.handlePrevStep();
   };
 
-  _next = () => {
+  _next = (event) => {
+    event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { roth_eligable: true });
     this.props.handleNextStep("BLANK_NEXT");
   };

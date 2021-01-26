@@ -14,12 +14,14 @@ class BLANK_TITLE extends React.Component {
     this.props.handlePrevStep();
   };
 
-  _yes = () => {
+  _yes = (event) => {
+    event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { BLANK_DB: true });
     this.props.handleNextStep("BLANK_YES");
   };
 
-  _no = () => {
+  _no = (event) => {
+    event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { BLANK_DB: false });
     this.props.handleNextStep("BLANK_NO");
   };
