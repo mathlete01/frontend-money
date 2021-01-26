@@ -13,7 +13,7 @@ import Single from "./steps/Single";
 import SingleMax from "./steps/SingleMax";
 import SingleBetween from "./steps/SingleBetween";
 import EarnedIncome from "./steps/EarnedIncome";
-import Below50 from "./steps/Below50";
+// import Below50 from "./steps/Below50";
 // import BLANK from "./steps/BLANK";
 import { connect } from "react-redux";
 import { updateCurrentStep } from "../actions/stepActions";
@@ -104,10 +104,10 @@ class MasterForm extends React.Component {
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
-        <Below50
+        {/* <Below50
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
-        />
+        /> */}
         </Container>
       
     )
@@ -117,6 +117,7 @@ class MasterForm extends React.Component {
 const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
+    currentUser: state.userReducer.currentUser,
   };
 };
 

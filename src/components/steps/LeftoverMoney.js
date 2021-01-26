@@ -13,16 +13,44 @@ import { Form, FormControl } from "react-bootstrap";
 
 
 class LeftoverMoney extends React.Component {
+
+  state= {
+    monthly_income: this.props.currentUser.monthly_income,
+    monthly_bills: this.props.currentUser.monthly_bills,
+    monthly_spending: this.props.currentUser.monthly_spending,
+    leftover_money: this.props.currentUser.leftover_money
+  }
+
+  handleChange = (event) => {
+    this.setState ({
+      [event.target.name]: event.target.value
+    })
+    this.calcLeftoverMoney()
+  }
+
   calcLeftoverMoney = () => {
-    const income = document.getElementById("monthly_income").value;
-    const bills = document.getElementById("monthly_bills").value;
-    const spending = document.getElementById("monthly_spending").value;
     console.log("calcLeftoverMoney called")
+    const income = this.state.monthly_income
+    const bills = this.state.monthly_bills
+    const spending = this.state.monthly_spending
+    
     const difference = income -
     (parseInt(bills) + parseInt(spending))
-    const leftover = document.getElementById("leftover_money");
-    leftover.value = difference
+    this.setState ({
+      leftover_money: difference
+    })
   }
+
+  // calcLeftoverMoney = () => {
+  //   const income = document.getElementById("monthly_income
+  //   const bills = document.getElementById("monthly_bills
+  //   const spending = document.getElementById("monthly_spending").value;
+  //   console.log("calcLeftoverMoney called")
+  //   const difference = income -
+  //   (parseInt(bills) + parseInt(spending))
+  //   const leftover = document.getElementById("leftover_money");
+  //   leftover.value = difference
+  // }
 
   componentDidUpdate() {
     // console.log("I updated!")
@@ -81,10 +109,12 @@ class LeftoverMoney extends React.Component {
                     <FormControl
                       className="formField"
                       type="number"
-                      defaultValue="3000"
+                      // placeholder="3000"
+                      value={this.state.monthly_income ? this.state.monthly_income : 0}
                       id="monthly_income"
+                      name="monthly_income"
                       size="lg"
-                      onChange={this.calcLeftoverMoney}
+                      onChange={this.handleChange} 
                     />
                   </InputGroup>
                 </Col>
@@ -107,10 +137,11 @@ class LeftoverMoney extends React.Component {
                     <FormControl
                       className="formField"
                       type="number"
-                      defaultValue="1000"
+                      value={this.state.monthly_bills ? this.state.monthly_bills : 0}
                       id="monthly_bills"
+                      name="monthly_bills"
                       size="lg"
-                      onChange={this.calcLeftoverMoney}
+                      onChange={this.handleChange}
                     />
                   </InputGroup>
                 </Col>
@@ -133,10 +164,11 @@ class LeftoverMoney extends React.Component {
                     <FormControl
                       className="formField"
                       type="number"
-                      defaultValue="600"
+                      value={this.state.monthly_spending ? this.state.monthly_spending : 0}                   
                       id="monthly_spending"
+                      name="monthly_spending"
                       size="lg"
-                      onChange={this.calcLeftoverMoney}
+                      onChange={this.handleChange}
                     />
                   </InputGroup>
                 </Col>
@@ -159,9 +191,10 @@ class LeftoverMoney extends React.Component {
                     <FormControl
                       className="formField"
                       type="number"
-                      defaultValue= "1400"
+                      value={this.state.leftover_money ? this.state.leftover_money : 0}
                       readOnly
                       id="leftover_money"
+                      name="leftover_money"
                       size="lg"
                     />
                   </InputGroup>
