@@ -44,6 +44,7 @@ export const updateCurrentUser = (id, dataObj) => {
     fetch(`${SPECIFIC_USER}`, configOb)
       .then((res) => res.json())
       .then((data) => {
+        // localStorage.setItem("token", data.token)
         dispatch({
           type: "UPDATE_USER",
           newUser: data,

@@ -44,7 +44,10 @@ class Intro extends React.Component {
     fetch(USERS_URL, configObj)
       .then((res) => res.json())
       // .then((data) => console.log(data))
-      .then((data) => this.props.setCurrentUser(data))
+      .then((data) => {
+        this.props.setCurrentUser(data.user)
+        localStorage.setItem("token", data.token)
+      })
       .catch((errors) => console.log(`createUser: ${errors}`));
   };
 
