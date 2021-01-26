@@ -29,13 +29,16 @@ class LeftoverMoney extends React.Component {
   }
 
   calcLeftoverMoney = () => {
-    console.log("calcLeftoverMoney called")
     const income = this.state.monthly_income
     const bills = this.state.monthly_bills
     const spending = this.state.monthly_spending
-    
     const difference = income -
     (parseInt(bills) + parseInt(spending))
+    console.log("calcLeftoverMoney called")
+    console.log(`income = `, income)
+    console.log(`bills = `, bills)
+    console.log(`spending = `, spending)
+    console.log(`difference = `, difference)
     this.setState ({
       leftover_money: difference
     })
@@ -44,10 +47,10 @@ class LeftoverMoney extends React.Component {
   _next = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, {
-      monthly_income: document.getElementById("monthly_income").value,
-      monthly_bills: document.getElementById("monthly_bills").value,
-      monthly_spending: document.getElementById("monthly_spending").value,
-      leftover_money: document.getElementById("leftover_money").value
+      monthly_income: this.state.monthly_income,
+      monthly_bills: this.state.monthly_bills,
+      monthly_spending:  this.state.monthly_spending,
+      leftover_money:  this.state.monthly_spending
     });
     this.props.handleNextStep("Four01kQuestion");
   };

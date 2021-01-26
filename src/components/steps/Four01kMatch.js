@@ -6,18 +6,27 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import Nav from "react-bootstrap/Nav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import { Form, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 
 class Four01kMatch extends React.Component {
+
+  state = {
+    four01k_match: this.props.currentUser.four01k_match
+  }
+
+  handleChange = (event) => {
+    this.setState ({
+      [event.target.name]: event.target.value
+    })
+  }
+
   _next = () => {
-    let match = document.getElementById("employer_match");
+    // let match = document.getElementById("employer_match");
     this.props.updateCurrentUser(this.props.currentUser.id, {
-      four01k_match: match.value,
+      four01k_match: this.state.four01k_match
     });
     this.props.handleNextStep("Four01kContribution");
   };
@@ -57,9 +66,12 @@ class Four01kMatch extends React.Component {
                     <FormControl
                     className="formField"
                       type="number"
-                      defaultValue="3"
-                      id="employer_match"
+                      // defaultValue="3"
+                      value={this.state.four01k_match ? this.state.four01k_match : 0}
+                      id="four01k_match"
+                      name="four01k_match"
                       size="lg"
+                      onChange={this.handleChange} 
                     />
                     <InputGroup.Append>
                       <InputGroup.Text>%</InputGroup.Text>

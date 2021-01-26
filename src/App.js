@@ -135,15 +135,6 @@ class App extends React.Component {
             </Col>
             <Col xs={4} className="containerContainer">
               <Container className="border-right border-left border-gray">
-                {/* <Row>
-                  <Alert variant="dark" id="rung_7">
-                    <Alert.Heading>Rung 7</Alert.Heading>
-                    <p className="mb-0">
-                      Goal: Damn, you're good. Hire a human and discuss
-                      annuities, trusts, estate stuff
-                    </p>
-                  </Alert>
-                </Row> */}
                 <Row>
                   <Alert variant="dark" id="rung_6">
                     <Alert.Heading>Rung 6</Alert.Heading>
