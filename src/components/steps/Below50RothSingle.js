@@ -9,7 +9,7 @@ import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 
-class Below50 extends React.Component {
+class Below50RothSingle extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
@@ -32,6 +32,9 @@ class Below50 extends React.Component {
       four01k,
       four01k_match,
       four01k_contribution,
+      earned_income,
+      single,
+      single_max,
       credit_card_debt,
     } = this.props.currentUser;
     switch (true) {
@@ -83,7 +86,7 @@ class Below50 extends React.Component {
   }
 
   render() {
-    if (this.props.currentStep !== "Below50") {
+    if (this.props.currentStep !== "Below50RothSingle") {
       return null;
     }
     return (
@@ -150,4 +153,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(Below50);
+})(Below50RothSingle);

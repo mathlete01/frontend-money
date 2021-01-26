@@ -9,25 +9,18 @@ import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 
-class SingleMax extends React.Component {
+class GoalMaxOut401k extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
 
-  _yes = (event) => {
+  _next = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { singleMax: true });
-    this.props.handleNextStep("EarnedIncomeRothSingle");
-  };
-
-  _no = (event) => {
-    event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { singleMax: false });
-    this.props.handleNextStep("SingleBetween");
+    this.props.handleNextStep("DoneForNow");
   };
 
   render() {
-    if (this.props.currentStep !== "SingleMax") {
+    if (this.props.currentStep !== "GoalMaxOut401k") {
       return null;
     }
     return (
@@ -40,12 +33,12 @@ class SingleMax extends React.Component {
         </Row>
         <Row id="title" className="step">
           <Container>
-            <h3>Will you earn less than $122,000 this year?</h3>
+            <h3>Rung #4: Max out your 401k</h3>
           </Container>
         </Row>
         <Row id="body" className="step">
           <Container>
-            That's the maximum you can earn as a single person and still qualify for a Roth IRA.  
+            BLANK_BODY
           </Container>
         </Row>
         <Row id="form" className="step"></Row>
@@ -54,15 +47,6 @@ class SingleMax extends React.Component {
             <Form.Group>
               <Form.Row>
                 <Col>
-                  <Button
-                    className="no"
-                    variant="danger"
-                    size="lg"
-                    block
-                    onClick={this._no}
-                  >
-                    No
-                  </Button>
                 </Col>
                 <Col>
                   <Button
@@ -72,7 +56,7 @@ class SingleMax extends React.Component {
                     block
                     onClick={this._yes}
                   >
-                    Yes
+                    Okay
                   </Button>
                 </Col>
               </Form.Row>
@@ -94,4 +78,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(SingleMax);
+})(GoalMaxOut401k);

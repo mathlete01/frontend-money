@@ -9,29 +9,22 @@ import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 
-class EarnedIncome extends React.Component {
+class DoneForNow extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
 
   _yes = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { earned_income: true });
-    this.props.handleNextStep("Below50");
-  };
-
-  _no = (event) => {
-    event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { earned_income: false });
-    this.props.handleNextStep("RothMax");
+    this.props.handleNextStep("CreditCardDebt");
   };
 
   render() {
-    if (this.props.currentStep !== "EarnedIncome") {
+    if (this.props.currentStep !== "DoneForNow") {
       return null;
     }
     return (
-      <Container className="border step">
+        <Container className="border step">
         <Row id="header" className="step">
           <Button onClick={this._prev} variant="link">
             <FontAwesomeIcon icon="chevron-left" /> Back
@@ -40,12 +33,12 @@ class EarnedIncome extends React.Component {
         </Row>
         <Row id="title" className="step">
           <Container>
-            <h3>Will you have any earned income this year?</h3>
+            <h3>You've got your marching orders</h3>
           </Container>
         </Row>
         <Row id="body" className="step">
           <Container>
-            Earned income is income you'd make from wages, not from investments.
+          Let's save your work now so you can come back here for your next goal!
           </Container>
         </Row>
         <Row id="form" className="step"></Row>
@@ -54,7 +47,7 @@ class EarnedIncome extends React.Component {
             <Form.Group>
               <Form.Row>
                 <Col>
-                  <Button
+                  {/* <Button
                     className="no"
                     variant="danger"
                     size="lg"
@@ -62,18 +55,18 @@ class EarnedIncome extends React.Component {
                     onClick={this._no}
                   >
                     No
-                  </Button>
+                  </Button> */}
                 </Col>
                 <Col>
-                  <Button
+                  {/* <Button
                     className="yes"
-                    variant="success"
+                    variant="primary"
                     size="lg"
                     block
-                    onClick={this._yes}
+                    onClick={this._next}
                   >
-                    Yes
-                  </Button>
+                    Okay
+                  </Button> */}
                 </Col>
               </Form.Row>
             </Form.Group>
@@ -87,11 +80,8 @@ class EarnedIncome extends React.Component {
 const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
-    currentUser: state.userReducer.currentUser,
+    currentUser: state.userReducer.currentUser
   };
 };
 
-export default connect(mapStateToProps, {
-  updateCurrentStep,
-  updateCurrentUser,
-})(EarnedIncome);
+export default connect(mapStateToProps, { updateCurrentStep, updateCurrentUser })(DoneForNow);

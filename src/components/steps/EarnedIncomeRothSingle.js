@@ -9,25 +9,25 @@ import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 
-class SingleMax extends React.Component {
+class EarnedIncomeRothSingle extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
 
   _yes = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { singleMax: true });
-    this.props.handleNextStep("EarnedIncomeRothSingle");
+    this.props.updateCurrentUser(this.props.currentUser.id, { earned_income: true });
+    this.props.handleNextStep("Below50RothSingle");
   };
 
   _no = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { singleMax: false });
-    this.props.handleNextStep("SingleBetween");
+    this.props.updateCurrentUser(this.props.currentUser.id, { earned_income: false });
+    this.props.handleNextStep("RothMax");
   };
 
   render() {
-    if (this.props.currentStep !== "SingleMax") {
+    if (this.props.currentStep !== "EarnedIncomeRothSingle") {
       return null;
     }
     return (
@@ -40,12 +40,12 @@ class SingleMax extends React.Component {
         </Row>
         <Row id="title" className="step">
           <Container>
-            <h3>Will you earn less than $122,000 this year?</h3>
+            <h3>Will you have any earned income this year?</h3>
           </Container>
         </Row>
         <Row id="body" className="step">
           <Container>
-            That's the maximum you can earn as a single person and still qualify for a Roth IRA.  
+            Earned income is income you'd make from wages, not from investments.
           </Container>
         </Row>
         <Row id="form" className="step"></Row>
@@ -94,4 +94,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(SingleMax);
+})(EarnedIncomeRothSingle);
