@@ -41,22 +41,6 @@ class LeftoverMoney extends React.Component {
     })
   }
 
-  // calcLeftoverMoney = () => {
-  //   const income = document.getElementById("monthly_income
-  //   const bills = document.getElementById("monthly_bills
-  //   const spending = document.getElementById("monthly_spending").value;
-  //   console.log("calcLeftoverMoney called")
-  //   const difference = income -
-  //   (parseInt(bills) + parseInt(spending))
-  //   const leftover = document.getElementById("leftover_money");
-  //   leftover.value = difference
-  // }
-
-  componentDidUpdate() {
-    // console.log("I updated!")
-    // this.calcLeftoverMoney()
-  }
-
   _next = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, {

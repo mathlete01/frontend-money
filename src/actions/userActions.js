@@ -32,23 +32,22 @@ export const updateCurrentUser = (id, dataObj) => {
     const formData = {
       ...dataObj,
     };
-
+    let token = localStorage.getItem("token")
     const configOb = {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
+        Authorization: `Bearer ${token}`
       },
       body: JSON.stringify(formData)
     };
     fetch(`${SPECIFIC_USER}`, configOb)
       .then((res) => res.json())
-      .then((data) => {
-        // localStorage.setItem("token", data.token)
+      .then((data) => 
         dispatch({
           type: "UPDATE_USER",
-          newUser: data,
-        });
-      });
+          newUser: data
+      }))
   };
 };
