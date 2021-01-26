@@ -23,7 +23,7 @@ class SingleBetween extends React.Component {
   _no = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { single_between: false });
-    this.props.handleNextStep("married_max");
+    this.props.handleNextStep("SingleMaxNoRoth");
   };
 
   render() {

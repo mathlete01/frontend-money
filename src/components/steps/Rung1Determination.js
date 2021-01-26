@@ -2,13 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 import { updateCurrentStep } from "../../actions/stepActions";
 import { updateCurrentProgress } from "../../actions/progressActions";
-import { getCurrentUser, updateCurrentUser } from "../../actions/userActions";
+// import { getCurrentUser, updateCurrentUser } from "../../actions/userActions";
+import { updateCurrentUser } from "../../actions/userActions";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import Nav from "react-bootstrap/Nav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 
@@ -17,12 +16,13 @@ class Rung1Determination extends React.Component {
     event.preventDefault();
     this.props.handleNextStep(this.nextStep);
   };
-  
+
   _prev = () => {
     this.props.handlePrevStep();
   };
-  
+
   makeDetermination = () => {
+    console.log("makeDetermination called")
     const {
       leftover_money,
       four01k,
@@ -30,11 +30,12 @@ class Rung1Determination extends React.Component {
       four01k_contribution,
       credit_card_debt,
     } = this.props.currentUser;
-    console.log(`leftover_money = `, leftover_money)
-    console.log(`four01k = `, four01k)
-    console.log(`four01k_match = `, four01k_match)
-    console.log(`four01k_contribution = `, four01k_contribution)
-    console.log(`credit_card_debt = `, credit_card_debt)
+    console.log(`this.props.currentUser = `, this.props.currentUser);
+    console.log(`leftover_money = `, leftover_money);
+    console.log(`four01k = `, four01k);
+    console.log(`four01k_match = `, four01k_match);
+    console.log(`four01k_contribution = `, four01k_contribution);
+    console.log(`credit_card_debt = `, credit_card_debt);
     switch (true) {
       // Case: No 401k and debt is tiny
       case four01k === false && credit_card_debt <= leftover_money:
@@ -107,7 +108,9 @@ class Rung1Determination extends React.Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.currentStep != this.props.currentStep) {
+    console.log(`componentDidUpdate this.props.currentUser.credit_card_debt = `, this.props.currentUser.credit_card_debt);
+
+    if (prevProps.currentStep !== this.props.currentStep) {
       this.makeDetermination();
     }
   }
@@ -125,7 +128,7 @@ class Rung1Determination extends React.Component {
     // The markup for the Step 1 UI
 
     return (
-        <Container className="border step">
+      <Container className="border step">
         <Row id="header" className="step">
           <Button onClick={this._prev} variant="link">
             <FontAwesomeIcon icon="chevron-left" /> Back
@@ -138,9 +141,7 @@ class Rung1Determination extends React.Component {
           </Container>
         </Row>
         <Row id="body" className="step">
-          <Container>
-            {this.advice}
-          </Container>
+          <Container>{this.advice}</Container>
         </Row>
         <Row id="form" className="step"></Row>
         <Row id="buttons" className="step">
@@ -148,15 +149,6 @@ class Rung1Determination extends React.Component {
             <Form.Group>
               <Form.Row>
                 <Col>
-                  {/* <Button
-                    className="no"
-                    variant="danger"
-                    size="lg"
-                    block
-                    onClick={this._no}
-                  >
-                    No
-                  </Button> */}
                 </Col>
                 <Col>
                   <Button
@@ -189,6 +181,6 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-  getCurrentUser,
+  // getCurrentUser,
   updateCurrentProgress,
 })(Rung1Determination);

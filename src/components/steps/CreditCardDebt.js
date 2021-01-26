@@ -35,13 +35,16 @@ class CreditCardDebt extends React.Component {
     this.setState ({
       credit_card_debt: sum
     })
+    console.log(`calcSum this.state.credit_card_debt = `, this.state.credit_card_debt)
   }
 
   _next = (event) => {
+    console.log(`_next before this.state.credit_card_debt = `, this.state.credit_card_debt)
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, {
       credit_card_debt: this.state.credit_card_debt
     });
+    console.log(`_next after this.state.credit_card_debt = `, this.state.credit_card_debt)
     this.props.handleNextStep("Rung1Determination");
   };
 
