@@ -17,6 +17,12 @@ class Four01kMatch extends React.Component {
     four01k_match: this.props.currentUser.four01k_match
   }
 
+  checkValid = () => {
+    if (this.state.four01k_match > 0) {
+      return true;
+    }
+  };
+
   handleChange = (event) => {
     this.setState ({
       [event.target.name]: event.target.value
@@ -89,15 +95,21 @@ class Four01kMatch extends React.Component {
                 <Col>
                 </Col>
                 <Col>
-                  <Button
-                  className="yes"
-                    variant="primary"
-                    size="lg"
-                    block
-                    onClick={this._next}
-                  >
-                    Continue
-                  </Button>
+                  {this.checkValid() ? (
+                    <Button
+                      className="yes"
+                      variant="primary"
+                      size="lg"
+                      block
+                      onClick={this._next}
+                    >
+                      Next
+                    </Button>
+                  ) : (
+                    <Button className="yes" variant="primary" size="lg" block disabled>
+                      Next
+                    </Button>
+                  )}
                 </Col>
               </Form.Row>
             </Form.Group>

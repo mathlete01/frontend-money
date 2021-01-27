@@ -30,6 +30,12 @@ class CreditCardDebt extends React.Component {
     credit_card_debt: this.props.currentUser.credit_card_debt
   }
 
+  checkValid = () => {
+    if (this.state.cc_1 > 0) {
+      return true;
+    }
+  }
+
   handleChange = (event) => {
     this.setState ({
       [event.target.name]: event.target.value
@@ -175,26 +181,24 @@ class CreditCardDebt extends React.Component {
             <Form.Group>
               <Form.Row>
                 <Col>
-                  <Button
-                  className="no"
-                    variant="danger"
-                    size="lg"
-                    block
-                    onClick={this._next}
-                  >
-                    No
-                  </Button>
+                  
                 </Col>
                 <Col>
-                  <Button
-                  className="yes"
-                    variant="success"
-                    size="lg"
-                    block
-                    onClick={this._next}
-                  >
-                    Yes
-                  </Button>
+                  {this.checkValid() ? (
+                    <Button
+                      className="yes"
+                      variant="primary"
+                      size="lg"
+                      block
+                      onClick={this._next}
+                    >
+                      Next
+                    </Button>
+                  ) : (
+                    <Button className="yes" variant="primary" size="lg" block disabled>
+                      Next
+                    </Button>
+                  )}
                 </Col>
               </Form.Row>
             </Form.Group>

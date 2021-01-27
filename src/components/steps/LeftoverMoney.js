@@ -12,9 +12,8 @@ import InputGroup from "react-bootstrap/InputGroup";
 import { Form, FormControl } from "react-bootstrap";
 
 class LeftoverMoney extends React.Component {
-
   componentDidUpdate(prevProps, prevState) {
-    console.log("LeftoverMoney: ComponentDidUpdate")
+    console.log("LeftoverMoney: ComponentDidUpdate");
     if (prevProps.currentUser !== this.props.currentUser) {
       this.setState({
         monthly_income: this.props.currentUser.monthly_income,
@@ -43,21 +42,29 @@ class LeftoverMoney extends React.Component {
     const bills = this.state.monthly_bills;
     const spending = this.state.monthly_spending;
     const difference = income - (parseInt(bills) + parseInt(spending));
-    return(
-      difference
-    )
+    return difference;
   };
 
   _next = (event) => {
-    console.log("_next: updateCurrentUser called")
+    console.log("_next: updateCurrentUser called");
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, {
-      monthly_income: this.state.monthly_income,
-      monthly_bills: this.state.monthly_bills,
-      monthly_spending: this.state.monthly_spending,
-      leftover_money: this.state.monthly_spending,
-    }, this.props.currentStep);
+    this.props.updateCurrentUser(
+      this.props.currentUser.id,
+      {
+        monthly_income: this.state.monthly_income,
+        monthly_bills: this.state.monthly_bills,
+        monthly_spending: this.state.monthly_spending,
+        leftover_money: this.state.leftover_money,
+      },
+      this.props.currentStep
+    );
     this.props.handleNextStep("Four01kQuestion");
+  };
+
+  checkValid = () => {
+    if (this.calcLeftoverMoney() > 0) {
+      return true;
+    }
   };
 
   render() {
@@ -90,7 +97,7 @@ class LeftoverMoney extends React.Component {
             <Form.Group>
               <Form.Row>
                 <Col id="formText">
-                  <Form.Label><h5>Monthly Income</h5></Form.Label>
+                  <Form.Label>Monthly Income</Form.Label>
                 </Col>
                 <Col>
                   <InputGroup>
@@ -101,7 +108,9 @@ class LeftoverMoney extends React.Component {
                       className="formField"
                       type="number"
                       value={
-                        this.state.monthly_income ? this.state.monthly_income : 0
+                        this.state.monthly_income
+                          ? this.state.monthly_income
+                          : 0
                       }
                       id="monthly_income"
                       name="monthly_income"
@@ -189,8 +198,7 @@ class LeftoverMoney extends React.Component {
                     <FormControl
                       className="formField"
                       type="number"
-                      value={
-                        this.calcLeftoverMoney()}
+                      value={this.calcLeftoverMoney()}
                       readOnly
                       id="leftover_money"
                       name="leftover_money"
@@ -208,15 +216,21 @@ class LeftoverMoney extends React.Component {
               <Form.Row>
                 <Col></Col>
                 <Col>
-                  <Button
-                    className="yes"
-                    variant="primary"
-                    size="lg"
-                    block
-                    onClick={this._next}
-                  >
-                    Next
-                  </Button>
+                  {this.checkValid() ? (
+                    <Button
+                      className="yes"
+                      variant="primary"
+                      size="lg"
+                      block
+                      onClick={this._next}
+                    >
+                      Next
+                    </Button>
+                  ) : (
+                    <Button className="yes" variant="primary" size="lg" block disabled>
+                      Next
+                    </Button>
+                  )}
                 </Col>
               </Form.Row>
             </Form.Group>
