@@ -45,13 +45,7 @@ class MasterForm extends React.Component {
     this.setState({
       path: [...this.state.path, nextStep],
     });
-    // console.log(`handleNextStep: this.state.path Before = `, this.state.path)
-    let pathStr = JSON.stringify(this.state.path)
-    // console.log(`pathStr After = `, pathStr)
     this.props.updateCurrentStep(nextStep);
-    this.props.updateCurrentUser(this.props.currentUser.id, {
-      path_str: pathStr
-    },this.props.currentStep);
   };
 
   handlePrevStep = () => {
@@ -62,7 +56,6 @@ class MasterForm extends React.Component {
     const last = this.state.path.length - 2;
     this.props.updateCurrentStep(this.state.path[last]);
   };
-  
 
   render() {
     return (
@@ -111,9 +104,7 @@ class MasterForm extends React.Component {
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
-        <Intro
-          handleNextStep={this.handleNextStep}
-        />
+        <Intro handleNextStep={this.handleNextStep} />
         <LeftoverMoney
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
@@ -174,8 +165,8 @@ class MasterForm extends React.Component {
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
-        </Container>
-    )
+      </Container>
+    );
   }
 }
 
@@ -186,6 +177,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-
-export default connect(mapStateToProps, { updateCurrentStep, updateCurrentUser })(MasterForm);
-
+export default connect(mapStateToProps, {
+  updateCurrentStep,
+  updateCurrentUser,
+})(MasterForm);

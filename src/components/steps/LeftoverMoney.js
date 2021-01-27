@@ -12,6 +12,7 @@ import InputGroup from "react-bootstrap/InputGroup";
 import { Form, FormControl } from "react-bootstrap";
 
 class LeftoverMoney extends React.Component {
+  
   componentDidUpdate(prevProps, prevState) {
     console.log("LeftoverMoney: ComponentDidUpdate");
     if (prevProps.currentUser !== this.props.currentUser) {
@@ -38,11 +39,20 @@ class LeftoverMoney extends React.Component {
   };
 
   calcLeftoverMoney = () => {
-    const income = this.state.monthly_income;
-    const bills = this.state.monthly_bills;
-    const spending = this.state.monthly_spending;
-    const difference = income - (parseInt(bills) + parseInt(spending));
-    return difference;
+    if (
+      this.state.monthly_income &&
+      this.state.monthly_bills &&
+      this.state.monthly_spending
+    ) {
+      const income = this.state.monthly_income;
+      const bills = this.state.monthly_bills;
+      const spending = this.state.monthly_spending;
+      const difference = income - (parseInt(bills) + parseInt(spending));
+      this.props.currentUser.leftover_money = difference
+      return difference;
+    }else{
+      return (0)
+    } 
   };
 
   _next = (event) => {
@@ -231,7 +241,13 @@ class LeftoverMoney extends React.Component {
                       Next
                     </Button>
                   ) : (
-                    <Button className="yes" variant="primary" size="lg" block disabled>
+                    <Button
+                      className="yes"
+                      variant="primary"
+                      size="lg"
+                      block
+                      disabled
+                    >
                       Next
                     </Button>
                   )}

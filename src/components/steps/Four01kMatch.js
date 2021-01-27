@@ -18,7 +18,7 @@ class Four01kMatch extends React.Component {
   }
 
   checkValid = () => {
-    if (this.state.four01k_match > 0) {
+    if (this.state.four01k_match > -1) {
       return true;
     }
   };
@@ -73,6 +73,7 @@ class Four01kMatch extends React.Component {
                     className="formField"
                       type="number"
                       min="0"
+                      max="7"
                       // defaultValue="3"
                       value={this.state.four01k_match ? this.state.four01k_match : 0}
                       id="four01k_match"
