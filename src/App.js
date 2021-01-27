@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch, withRouter, NavLink } from "react-router-dom";
+import { Route, Switch, withRouter, Link, NavLink } from "react-router-dom";
 // import Body from "./components/xBody";
 import NotFound from "./NotFound";
 import Credentials from "./components/Credentials";
@@ -27,6 +27,8 @@ import Button from "react-bootstrap/Button";
 import StepContainer from "./components/StepContainer";
 import "./App.css";
 import Ladder from "./components/Ladder";
+import { Form, FormControl, NavItem } from "react-bootstrap";
+
 
 library.add(faSwimmingPool, faCoffee, faHandPointLeft, faChevronLeft);
 
@@ -106,47 +108,40 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Navbar bg="white">
-          <Switch>
-            <Route path="/" exact component={this.handleHome} />
-            <Route path="/login" exact component={this.renderForm} />
-            <Route path="/signup" exact component={this.renderForm} />
-            <Route component={NotFound} />
-          </Switch>
-          <Navbar.Brand>
-            🪜 Climb the Ladder
-          </Navbar.Brand>
-          <Nav className="justify-content-end">
-            <Row>
-              <Col>
-                <Nav.Item>
-                  <NavLink variant="secondary" size="sm" to="/signup">
-                    Sign Up
-                  </NavLink>
-                 
-                </Nav.Item>
-              </Col>
-              <Col>
-                <Nav.Item>
-                  <NavLink variant="secondary" size="sm" to="/login">
-                    Log In
-                  </NavLink>
-                </Nav.Item>
-              </Col>
-              <Col>
-                <Nav.Item>
-                  <Button
-                    variant="secondary"
-                    size="sm"
-                    onClick={this.handleLogout}
-                  >
-                    Log Out
-                  </Button>
-                </Nav.Item>
-              </Col>
-            </Row>
-          </Nav>
-        </Navbar>
+        <Navbar>
+            <Navbar.Brand>Make Money Moves</Navbar.Brand>
+            {/* <Form inline> */}
+                <Switch>
+                  <Route path="/" exact component={this.handleHome} />
+                  <Route path="/login" exact component={this.renderForm} />
+                  <Route path="/signup" exact component={this.renderForm} />
+                  <Route component={NotFound} />
+                </Switch>
+              {/* </Form> */}
+            <Navbar.Collapse className="justify-content-end">
+            <Nav>
+                <NavItem href="/">
+                  <Nav.Link as={Link} to="/login">
+                    Log in
+                  </Nav.Link>
+                </NavItem>
+              </Nav>
+              <Nav>
+                <NavItem href="/">
+                  <Nav.Link as={Link} to="/signup">
+                    Sign up
+                  </Nav.Link>
+                </NavItem>
+              </Nav>
+              <Nav>
+                <NavItem href="/">
+                  <Nav.Link as={Link} to="/" onClick={this.handleLogout}>
+                    Log out
+                  </Nav.Link>
+                </NavItem>
+              </Nav>
+            </Navbar.Collapse>
+          </Navbar>
         <Container>
           <Row>
             {/* Left Margin */}
