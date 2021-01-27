@@ -22,7 +22,7 @@ import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import StepContainer from "./components/StepContainer";
 import "./App.css";
-import Alert from "react-bootstrap/Alert";
+import Ladder from "./components/Ladder";
 
 library.add(faSwimmingPool, faCoffee, faHandPointLeft, faChevronLeft);
 
@@ -32,8 +32,6 @@ class App extends React.Component {
   };
 
   renderForm = (routerProps) => {
-    // debugger
-    // console.log(`routerProps = `, routerProps)
     if (routerProps.location.pathname === "/login") {
       return <Credentials name="Login Form" handleSubmit={this.handleLogin} />;
     } else if (routerProps.location.pathname === "/signup") {
@@ -143,8 +141,10 @@ class App extends React.Component {
         </Navbar>
         <Container>
           <Row>
+            {/* Left Margin */}
             <Col></Col>
-            <Col xs={6} className="containerContainer">
+            {/* Step Container */}
+            <Col md={6} className="containerContainer">
               <Switch>
                 <Route path="/" exact component={this.handleHome} />
                 <Route path="/login" exact component={this.renderForm} />
@@ -153,46 +153,11 @@ class App extends React.Component {
               </Switch>
               <StepContainer className="h-100" />
             </Col>
-            <Col xs={4} className="containerContainer">
-              <Container className="border-right border-left border-gray">
-                <Row>
-                  <Alert variant="dark" id="rung_6">
-                    <Alert.Heading>Rung 6</Alert.Heading>
-                    <p className="mb-0">Goal: Taxable brokerage account</p>
-                  </Alert>
-                </Row>
-                <Row>
-                  <Alert variant="dark" id="rung_5">
-                    <Alert.Heading>Rung 5</Alert.Heading>
-                    <p className="mb-0">Goal: 6-month Emergency Fund</p>
-                  </Alert>
-                </Row>
-                <Row>
-                  <Alert variant="dark" id="rung_4">
-                    <Alert.Heading>Rung 4</Alert.Heading>
-                    <p className="mb-0">Goal: Max-out your 401(k)</p>
-                  </Alert>
-                </Row>
-                <Row>
-                  <Alert variant="dark" id="rung_3">
-                    <Alert.Heading>Rung 3</Alert.Heading>
-                    <p className="mb-0">Goal: Max-out a Roth IRA</p>
-                  </Alert>
-                </Row>
-                <Row>
-                  <Alert variant="warning" id="rung_2">
-                    <Alert.Heading>Rung 2</Alert.Heading>
-                    <p className="mb-0">Goal: Pay off credit card debt</p>
-                  </Alert>
-                </Row>
-                <Row>
-                  <Alert variant="dark" id="rung_1">
-                    <Alert.Heading>Rung 1</Alert.Heading>
-                    <p className="mb-0">Goal: Get 402(k) company match</p>
-                  </Alert>
-                </Row>
-              </Container>
-            </Col>
+            {/* Ladder */}
+            {/* <Col md={4} className="containerContainer">
+              <Ladder />
+            </Col> */}
+            {/* Right Margin */}
             <Col></Col>
           </Row>
         </Container>

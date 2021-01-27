@@ -29,6 +29,7 @@ import TradIRAQuestion from "./steps/TradIRAQuestion";
 // import BLANK from "./steps/BLANK";
 import { connect } from "react-redux";
 import { updateCurrentStep } from "../actions/stepActions";
+import { updateCurrentUser } from "../actions/userActions";
 import Container from "react-bootstrap/Container";
 
 class MasterForm extends React.Component {
@@ -44,7 +45,13 @@ class MasterForm extends React.Component {
     this.setState({
       path: [...this.state.path, nextStep],
     });
+    // console.log(`this.state.path Before = `, this.state.path)
+    let pathStr = JSON.stringify(this.state.path)
+    // console.log(`pathStr After = `, pathStr)
     this.props.updateCurrentStep(nextStep);
+    this.props.updateCurrentUser(this.props.currentUser.id, {
+      path_str: pathStr
+    },this.props.currentStep);
   };
 
   handlePrevStep = () => {
@@ -181,5 +188,5 @@ const mapStateToProps = (state) => {
 };
 
 
-export default connect(mapStateToProps, { updateCurrentStep })(MasterForm);
+export default connect(mapStateToProps, { updateCurrentStep, updateCurrentUser })(MasterForm);
 

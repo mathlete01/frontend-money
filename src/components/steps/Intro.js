@@ -64,10 +64,10 @@ class Intro extends React.Component {
     return (
       <Container className="border step">
         <Row id="header" className="step">
-          <Button onClick={this._prev} variant="link" disabled>
+          {/* <Button onClick={this._prev} variant="link" disabled>
             <FontAwesomeIcon icon="chevron-left" /> Back
-          </Button>
-          <hr className="w-100" />
+          </Button> */}
+          {/* <hr className="w-100" /> */}
         </Row>
         <Row id="title" className="step">
           <Container>
