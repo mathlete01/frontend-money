@@ -16,13 +16,13 @@ class FilingJointly extends React.Component {
 
   _yes = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { filing_jointly: true });
+    this.props.updateCurrentUser(this.props.currentUser.id, { filing_jointly: true },this.props.currentStep);
     this.props.handleNextStep("below_50");
   };
 
   _no = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { filing_jointly: false });
+    this.props.updateCurrentUser(this.props.currentUser.id, { filing_jointly: false },this.props.currentStep);
     this.props.handleNextStep("married_max");
   };
 

@@ -16,13 +16,13 @@ class EarnedIncomeRothSingle extends React.Component {
 
   _yes = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { earned_income: true });
+    this.props.updateCurrentUser(this.props.currentUser.id, { earned_income: true },this.props.currentStep);
     this.props.handleNextStep("Below50RothSingle");
   };
 
   _no = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { earned_income: false });
+    this.props.updateCurrentUser(this.props.currentUser.id, { earned_income: false },this.props.currentStep);
     this.props.handleNextStep("RothMax");
   };
 

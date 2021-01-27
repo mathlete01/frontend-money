@@ -43,7 +43,7 @@ class CreditCardDebt extends React.Component {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, {
       credit_card_debt: this.state.credit_card_debt
-    });
+    },this.props.currentStep);
     console.log(`_next after this.state.credit_card_debt = `, this.state.credit_card_debt)
     this.props.handleNextStep("Rung1Determination");
   };

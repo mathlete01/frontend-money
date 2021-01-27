@@ -16,13 +16,13 @@ class Four01kMaxOutQuestion extends React.Component {
 
   _yes = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { four01k_max_out: true });
+    this.props.updateCurrentUser(this.props.currentUser.id, { four01k_max_out: true },this.props.currentStep);
     this.props.handleNextStep("BLANK_YES");
   };
 
   _no = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { four01k_max_out: false });
+    this.props.updateCurrentUser(this.props.currentUser.id, { four01k_max_out: false },this.props.currentStep);
     this.props.handleNextStep("BLANK_NO");
   };
 

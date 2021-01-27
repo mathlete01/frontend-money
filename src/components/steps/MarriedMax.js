@@ -16,13 +16,13 @@ class MarriedMax extends React.Component {
 
   _yes = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { married_max: true });
+    this.props.updateCurrentUser(this.props.currentUser.id, { married_max: true },this.props.currentStep);
     this.props.handleNextStep("math");
   };
 
   _no = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { married_max: false });
+    this.props.updateCurrentUser(this.props.currentUser.id, { married_max: false },this.props.currentStep);
     this.props.handleNextStep("trad_ira");
   };
 

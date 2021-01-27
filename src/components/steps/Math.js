@@ -16,13 +16,13 @@ class Math extends React.Component {
 
   _yes = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { BLANK_DB: true });
+    this.props.updateCurrentUser(this.props.currentUser.id, { BLANK_DB: true },this.props.currentStep);
     this.props.handleNextStep("BLANK_YES");
   };
 
   _no = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { BLANK_DB: false });
+    this.props.updateCurrentUser(this.props.currentUser.id, { BLANK_DB: false },this.props.currentStep);
     this.props.handleNextStep("BLANK_NO");
   };
 

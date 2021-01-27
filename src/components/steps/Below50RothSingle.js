@@ -16,13 +16,13 @@ class Below50RothSingle extends React.Component {
 
   _yes = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { below_50: true });
+    this.props.updateCurrentUser(this.props.currentUser.id, { below_50: true },this.props.currentStep);
     this.props.handleNextStep("BLANK_YES");
   };
 
   _no = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { below_50: false });
+    this.props.updateCurrentUser(this.props.currentUser.id, { below_50: false },this.props.currentStep);
     this.props.handleNextStep("BLANK_NO");
   };
 

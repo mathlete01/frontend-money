@@ -29,7 +29,7 @@ class Four01kContribution extends React.Component {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, {
       four01k_contribution: this.state.four01k_contribution
-    });
+    },this.props.currentStep);
     this.props.handleNextStep("CreditCardDebtQuestion");
   };
 

@@ -16,13 +16,13 @@ class Single extends React.Component {
 
   _yes = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { single: true });
+    this.props.updateCurrentUser(this.props.currentUser.id, { single: true },this.props.currentStep);
     this.props.handleNextStep("SingleMax");
   };
 
   _no = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { single: false });
+    this.props.updateCurrentUser(this.props.currentUser.id, { single: false },this.props.currentStep);
     this.props.handleNextStep("FilingJointly");
   };
 

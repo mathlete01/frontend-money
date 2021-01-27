@@ -11,47 +11,56 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import InputGroup from "react-bootstrap/InputGroup";
 import { Form, FormControl } from "react-bootstrap";
 
-
 class LeftoverMoney extends React.Component {
 
-  state= {
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.currentUser !== this.props.currentUser) {
+      this.setState({
+        monthly_income: this.props.currentUser.monthly_income,
+        monthly_bills: this.props.currentUser.monthly_bills,
+        monthly_spending: this.props.currentUser.monthly_spending,
+        leftover_money: this.props.currentUser.leftover_money,
+      });
+    }
+  }
+
+  state = {
     monthly_income: this.props.currentUser.monthly_income,
     monthly_bills: this.props.currentUser.monthly_bills,
     monthly_spending: this.props.currentUser.monthly_spending,
-    leftover_money: this.props.currentUser.leftover_money
-  }
+    leftover_money: this.props.currentUser.leftover_money,
+  };
 
   handleChange = (event) => {
-    this.setState ({
-      [event.target.name]: event.target.value
-    })
-    this.calcLeftoverMoney()
-  }
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+    this.calcLeftoverMoney();
+  };
 
   calcLeftoverMoney = () => {
-    const income = this.state.monthly_income
-    const bills = this.state.monthly_bills
-    const spending = this.state.monthly_spending
-    const difference = income -
-    (parseInt(bills) + parseInt(spending))
+    const income = this.state.monthly_income;
+    const bills = this.state.monthly_bills;
+    const spending = this.state.monthly_spending;
+    const difference = income - (parseInt(bills) + parseInt(spending));
     // console.log("calcLeftoverMoney called")
     // console.log(`income = `, income)
     // console.log(`bills = `, bills)
     // console.log(`spending = `, spending)
     // console.log(`difference = `, difference)
-    this.setState ({
-      leftover_money: difference
-    })
-  }
+    this.setState({
+      leftover_money: difference,
+    });
+  };
 
   _next = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, {
       monthly_income: this.state.monthly_income,
       monthly_bills: this.state.monthly_bills,
-      monthly_spending:  this.state.monthly_spending,
-      leftover_money:  this.state.monthly_spending
-    });
+      monthly_spending: this.state.monthly_spending,
+      leftover_money: this.state.monthly_spending,
+    }, this.props.currentStep);
     this.props.handleNextStep("Four01kQuestion");
   };
 
@@ -60,8 +69,7 @@ class LeftoverMoney extends React.Component {
       return null;
     }
     return (
-      
-      <Container className="border step" >
+      <Container className="border step">
         <Row id="header" className="step">
           <Button onClick={this._prev} variant="link" disabled>
             <FontAwesomeIcon icon="chevron-left" /> Back
@@ -96,12 +104,13 @@ class LeftoverMoney extends React.Component {
                     <FormControl
                       className="formField"
                       type="number"
-                      // placeholder="3000"
-                      value={this.state.monthly_income ? this.state.monthly_income : 0}
+                      value={
+                        this.state.monthly_income ? this.state.monthly_income : 0
+                      }
                       id="monthly_income"
                       name="monthly_income"
                       size="lg"
-                      onChange={this.handleChange} 
+                      onChange={this.handleChange}
                     />
                   </InputGroup>
                 </Col>
@@ -124,7 +133,9 @@ class LeftoverMoney extends React.Component {
                     <FormControl
                       className="formField"
                       type="number"
-                      value={this.state.monthly_bills ? this.state.monthly_bills : 0}
+                      value={
+                        this.state.monthly_bills ? this.state.monthly_bills : 0
+                      }
                       id="monthly_bills"
                       name="monthly_bills"
                       size="lg"
@@ -151,7 +162,11 @@ class LeftoverMoney extends React.Component {
                     <FormControl
                       className="formField"
                       type="number"
-                      value={this.state.monthly_spending ? this.state.monthly_spending : 0}                   
+                      value={
+                        this.state.monthly_spending
+                          ? this.state.monthly_spending
+                          : 0
+                      }
                       id="monthly_spending"
                       name="monthly_spending"
                       size="lg"
@@ -178,7 +193,11 @@ class LeftoverMoney extends React.Component {
                     <FormControl
                       className="formField"
                       type="number"
-                      value={this.state.leftover_money ? this.state.leftover_money : 0}
+                      value={
+                        this.state.leftover_money
+                          ? this.state.leftover_money
+                          : 0
+                      }
                       readOnly
                       id="leftover_money"
                       name="leftover_money"

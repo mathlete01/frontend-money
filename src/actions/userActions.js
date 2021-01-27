@@ -24,32 +24,36 @@ export const getCurrentUser = (id, currentUser) => {
   };
 };
 
-export const updateCurrentUser = (id, dataObj) => {
-  console.log(`updateCurrentUser id = `, id, `dataObj = `, dataObj)
+export const updateCurrentUser = (id, dataObj, currentStep) => {
+  console.log(`updateCurrentUser id = `, id, `dataObj = `, dataObj, `currentStep = `, currentStep);
   return (dispatch) => {
     const BASE_URL = "http://localhost:3000";
     const USERS_URL = `${BASE_URL}/users`;
     const SPECIFIC_USER = `${USERS_URL}/${id}`;
     const formData = {
-      ...dataObj,
+      user: {
+        ...dataObj,
+        current_step: currentStep,
+      },
     };
-    let token = localStorage.getItem("token")
+    let token = localStorage.getItem("token");
     const configObj = {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(formData)
+      body: JSON.stringify(formData),
     };
     fetch(`${SPECIFIC_USER}`, configObj)
       .then((res) => res.json())
-      .then((data) => 
+      .then((data) => {
         dispatch({
           type: "UPDATE_USER",
-          newUser: data
-      }))
+          newUser: data,
+        });
+      });
   };
 };
 
@@ -57,22 +61,23 @@ export const loginCurrentUser = (userObj) => {
   return (dispatch) => {
     const BASE_URL = "http://localhost:3000";
     const USERS_URL = `${BASE_URL}/login`;
-    let token = localStorage.getItem("token")
+    let token = localStorage.getItem("token");
     const configObj = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(userObj)
+      body: JSON.stringify(userObj),
     };
     fetch(`${USERS_URL}`, configObj)
       .then((res) => res.json())
-      .then((data) => 
+      .then((data) =>
         dispatch({
           type: "UPDATE_USER",
-          newUser: data
-      }))
+          newUser: data,
+        })
+      );
   };
 };

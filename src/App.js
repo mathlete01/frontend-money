@@ -5,7 +5,7 @@ import NotFound from "./NotFound";
 import Credentials from "./components/Credentials";
 import { connect } from "react-redux";
 import { updateCurrentStep } from "./actions/stepActions";
-import { updateCurrentUser, setCurrentUser } from "./actions/userActions";
+import { updateCurrentUser, setCurrentUser, getCurrentUser } from "./actions/userActions";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -66,7 +66,7 @@ class App extends React.Component {
       this.props.updateCurrentUser(this.props.currentUser.id, {
         username: credentialObj.username,
         password: credentialObj.password,
-      });
+      }, this.props.currentStep);
     }
     this.props.history.push("/");
   };
@@ -87,9 +87,13 @@ class App extends React.Component {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(`data = `, data);
-        localStorage.setItem("token", data.token)
-        this.props.setCurrentUser(data.user);
+        if(data.user){
+          localStorage.setItem("token", data.token)
+          this.props.setCurrentUser(data.user);
+          this.props.updateCurrentStep(data.user.current_step)
+        }else{
+          console.log(`data = `, data);
+        }
       });
   };
 
@@ -208,4 +212,5 @@ export default connect(mapStateToProps, {
   updateCurrentStep,
   setCurrentUser,
   updateCurrentUser,
+  getCurrentUser
 })(withRouter(App));

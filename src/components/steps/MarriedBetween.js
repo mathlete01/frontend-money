@@ -16,13 +16,13 @@ class MarriedBetween extends React.Component {
 
   _yes = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { married_between: true });
+    this.props.updateCurrentUser(this.props.currentUser.id, { married_between: true },this.props.currentStep);
     this.props.handleNextStep("below_50");
   };
 
   _no = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { married_between: false });
+    this.props.updateCurrentUser(this.props.currentUser.id, { married_between: false },this.props.currentStep);
     this.props.handleNextStep("married_max");
   };
 

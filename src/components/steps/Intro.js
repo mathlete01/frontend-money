@@ -33,6 +33,7 @@ class Intro extends React.Component {
       user: {
         username: this.generateRandomString(),
         password: this.generateRandomString(),
+        current_step: "LeftoverMoney"
       },
     };
     let configObj = {
@@ -70,14 +71,12 @@ class Intro extends React.Component {
         </Row>
         <Row id="title" className="step">
           <Container>
-            <h3>We're gonna walk you through a bunch of questions.</h3>
+            <h3>Wondering what money moves you should be making?</h3>
           </Container>
         </Row>
         <Row id="body" className="step">
           <Container>
-            You'll be asked to enter a few numbers, but estimates are just fine.
-            Sample numbers are provided, so you can also just go with those and
-            correct them later if you'd like.
+            This interactive quiz asks you a bunch of questions then tells you what you should do. Well, what are you waiting for?
           </Container>
         </Row>
         <Row id="form" className="step"></Row>

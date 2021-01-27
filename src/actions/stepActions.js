@@ -4,5 +4,6 @@ export const updateCurrentStep = (nextStep) => {
             type: "UPDATE_STEP",
             newStep: nextStep
         })
+        
     }
 }

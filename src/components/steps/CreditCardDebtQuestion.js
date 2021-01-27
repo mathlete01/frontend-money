@@ -24,7 +24,7 @@ class CreditCardDebtQuestion extends React.Component {
     this.props.handleNextStep("Rung1Determination");
     this.props.updateCurrentUser(this.props.currentUser.id, {
       credit_card_debt: 0,
-    });
+    },this.props.currentStep);
   };
 
   render() {
