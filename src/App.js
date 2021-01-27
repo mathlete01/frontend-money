@@ -29,7 +29,6 @@ import "./App.css";
 import Ladder from "./components/Ladder";
 import { Form, FormControl, NavItem } from "react-bootstrap";
 
-
 library.add(faSwimmingPool, faCoffee, faHandPointLeft, faChevronLeft);
 
 class App extends React.Component {
@@ -109,39 +108,39 @@ class App extends React.Component {
     return (
       <div>
         <Navbar>
-            <Navbar.Brand>Make Money Moves</Navbar.Brand>
-            {/* <Form inline> */}
-                <Switch>
-                  <Route path="/" exact component={this.handleHome} />
-                  <Route path="/login" exact component={this.renderForm} />
-                  <Route path="/signup" exact component={this.renderForm} />
-                  <Route component={NotFound} />
-                </Switch>
-              {/* </Form> */}
-            <Navbar.Collapse className="justify-content-end">
+          <Navbar.Brand>Make Money Moves</Navbar.Brand>
+
+          <Switch>
+            <Route path="/" exact component={this.handleHome} />
+            <Route path="/login" exact component={this.renderForm} />
+            <Route path="/signup" exact component={this.renderForm} />
+            <Route component={NotFound} />
+          </Switch>
+
+          <Navbar.Collapse className="justify-content-end">
             <Nav>
-                <NavItem href="/">
-                  <Nav.Link as={Link} to="/login">
-                    Log in
-                  </Nav.Link>
-                </NavItem>
-              </Nav>
-              <Nav>
-                <NavItem href="/">
-                  <Nav.Link as={Link} to="/signup">
-                    Sign up
-                  </Nav.Link>
-                </NavItem>
-              </Nav>
-              <Nav>
-                <NavItem href="/">
-                  <Nav.Link as={Link} to="/" onClick={this.handleLogout}>
-                    Log out
-                  </Nav.Link>
-                </NavItem>
-              </Nav>
-            </Navbar.Collapse>
-          </Navbar>
+              <NavItem href="/">
+                <Nav.Link as={Link} to="/login">
+                  Log in
+                </Nav.Link>
+              </NavItem>
+            </Nav>
+            <Nav>
+              <NavItem href="/">
+                <Nav.Link as={Link} to="/signup">
+                  Sign up
+                </Nav.Link>
+              </NavItem>
+            </Nav>
+            <Nav>
+              <NavItem href="/">
+                <Nav.Link as={Link} to="/" onClick={this.handleLogout}>
+                  Log out
+                </Nav.Link>
+              </NavItem>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
         <Container>
           <Row>
             {/* Left Margin */}

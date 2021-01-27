@@ -106,14 +106,12 @@ class TopNav extends React.Component {
         <div>
           <Navbar>
             <Navbar.Brand>Make Money Moves</Navbar.Brand>
-            <Form inline>
                 <Switch>
                   <Route path="/" exact component={this.handleHome} />
                   <Route path="/login" exact component={this.renderForm} />
                   <Route path="/signup" exact component={this.renderForm} />
                   <Route component={NotFound} />
                 </Switch>
-              </Form>
             <Navbar.Collapse className="justify-content-end">
             <Nav>
                 <NavItem href="/">
