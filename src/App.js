@@ -28,6 +28,7 @@ import StepContainer from "./components/StepContainer";
 import "./App.css";
 import Ladder from "./components/Ladder";
 import { Form, FormControl, NavItem } from "react-bootstrap";
+import background from "./img/Louis_Vuitton.png"
 
 library.add(faSwimmingPool, faCoffee, faHandPointLeft, faChevronLeft);
 
@@ -106,9 +107,10 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={{ backgroundImage: `url(${background})`,backgroundRepeat: 'repeat' }}>
+      {/* <div> */}
         <Navbar>
-          <Navbar.Brand>Make Money Moves</Navbar.Brand>
+          <Navbar.Brand>Money Moves</Navbar.Brand>
 
           <Switch>
             <Route path="/" exact component={this.handleHome} />
@@ -143,23 +145,11 @@ class App extends React.Component {
         </Navbar>
         <Container>
           <Row>
-            {/* Left Margin */}
             <Col></Col>
-            {/* Step Container */}
             <Col md={6} className="containerContainer">
-              {/* <Switch>
-                <Route path="/" exact component={this.handleHome} />
-                <Route path="/login" exact component={this.renderForm} />
-                <Route path="/signup" exact component={this.renderForm} />
-                <Route component={NotFound} />
-              </Switch> */}
               <StepContainer className="h-100" />
             </Col>
-            {/* Ladder */}
-            {/* <Col md={4} className="containerContainer">
-              <Ladder />
-            </Col> */}
-            {/* Right Margin */}
+
             <Col></Col>
           </Row>
         </Container>
