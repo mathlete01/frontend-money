@@ -44,26 +44,29 @@ class CreditCardDebt extends React.Component {
   }
 
   calcSum = () => {
-    const cc_1 = this.state.cc_1
-    const cc_2 = this.state.cc_2
-    const cc_3 = this.state.cc_3
-    const sum = parseInt(cc_1) + parseInt(cc_2) + parseInt(cc_3)
-    this.setState ({
-      credit_card_debt: sum
-    })
-    console.log(`calcSum this.state.credit_card_debt = `, this.state.credit_card_debt)
+    if (this.state.cc_1 > 0) {
+      const cc_1 = this.state.cc_1
+      const cc_2 = this.state.cc_2 ? this.state.cc_2 : 0
+      const cc_3 = this.state.cc_3 ? this.state.cc_3 : 0
+      const sum = parseInt(cc_1) + parseInt(cc_2) + parseInt(cc_3)
+      // console.log(`cc_1 = `, cc_1)
+      // console.log(`parseInt(cc_2) = `, parseInt(cc_2))
+      // console.log(`cc_3 = `, cc_3)
+      // console.log(`sum = `, sum)
+      return sum
+    }else {
+      return 0
+    }
   }
 
   _next = (event) => {
-    console.log(`_next before this.state.credit_card_debt = `, this.state.credit_card_debt)
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, {
       cc_1: this.state.cc_1,
       cc_2: this.state.cc_2,
       cc_3: this.state.cc_3,
-      credit_card_debt: this.state.credit_card_debt
+      credit_card_debt: this.calcSum()
     },this.props.currentStep);
-    console.log(`_next after this.state.credit_card_debt = `, this.state.credit_card_debt)
     this.props.handleNextStep("Rung1Determination");
   };
 

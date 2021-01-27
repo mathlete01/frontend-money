@@ -30,12 +30,12 @@ class Rung1Determination extends React.Component {
       four01k_contribution,
       credit_card_debt,
     } = this.props.currentUser;
-    console.log(`this.props.currentUser = `, this.props.currentUser);
-    console.log(`leftover_money = `, leftover_money);
-    console.log(`four01k = `, four01k);
-    console.log(`four01k_match = `, four01k_match);
-    console.log(`four01k_contribution = `, four01k_contribution);
-    console.log(`credit_card_debt = `, credit_card_debt);
+    // console.log(`this.props.currentUser = `, this.props.currentUser);
+    // console.log(`leftover_money = `, leftover_money);
+    // console.log(`four01k = `, four01k);
+    // console.log(`four01k_match = `, four01k_match);
+    // console.log(`four01k_contribution = `, four01k_contribution);
+    // console.log(`credit_card_debt = `, credit_card_debt);
     switch (true) {
       // Case: No 401k and debt is tiny
       case four01k === false && credit_card_debt <= leftover_money:
