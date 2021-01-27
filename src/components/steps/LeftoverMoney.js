@@ -43,11 +43,6 @@ class LeftoverMoney extends React.Component {
     const bills = this.state.monthly_bills;
     const spending = this.state.monthly_spending;
     const difference = income - (parseInt(bills) + parseInt(spending));
-    console.log("calcLeftoverMoney called")
-    console.log(`income = `, income)
-    console.log(`bills = `, bills)
-    console.log(`spending = `, spending)
-    console.log(`difference = `, difference)
     return(
       difference
     )
@@ -70,7 +65,7 @@ class LeftoverMoney extends React.Component {
       return null;
     }
     return (
-      <Container className="border step">
+      <Container className="step">
         <Row id="header" className="step">
           <Button onClick={this._prev} variant="link" disabled>
             <FontAwesomeIcon icon="chevron-left" /> Back
@@ -95,7 +90,7 @@ class LeftoverMoney extends React.Component {
             <Form.Group>
               <Form.Row>
                 <Col id="formText">
-                  <Form.Label>Monthly Income</Form.Label>
+                  <Form.Label><h5>Monthly Income</h5></Form.Label>
                 </Col>
                 <Col>
                   <InputGroup>

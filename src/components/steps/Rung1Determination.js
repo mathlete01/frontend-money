@@ -128,7 +128,7 @@ class Rung1Determination extends React.Component {
     // The markup for the Step 1 UI
 
     return (
-      <Container className="border step">
+      <Container className="step">
         <Row id="header" className="step">
           <Button onClick={this._prev} variant="link">
             <FontAwesomeIcon icon="chevron-left" /> Back

@@ -31,7 +31,7 @@ class SingleMax extends React.Component {
       return null;
     }
     return (
-      <Container className="border step">
+      <Container className="step">
         <Row id="header" className="step">
           <Button onClick={this._prev} variant="link">
             <FontAwesomeIcon icon="chevron-left" /> Back

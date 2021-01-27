@@ -27,7 +27,7 @@ class RothIRA extends React.Component {
     }
 
     return (
-      <Container className="border step">
+      <Container className="step">
         <Row id="header" className="step">
           <Button onClick={this._prev} variant="link">
             <FontAwesomeIcon icon="chevron-left" /> Back

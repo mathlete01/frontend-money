@@ -107,7 +107,10 @@ class App extends React.Component {
 
   render() {
     return (
-      <div style={{ backgroundImage: `url(${background})`,backgroundRepeat: 'repeat' }}>
+      <div style={{ backgroundImage: `url(${background})`,
+      backgroundRepeat: 'repeat',
+      // height: "100%", 
+      }} id="bg">
       {/* <div> */}
         <Navbar>
           <Navbar.Brand>Money Moves</Navbar.Brand>

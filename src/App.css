@@ -1,7 +1,7 @@
 
 
 .containerContainer {
-  margin-top: 60px;
+  margin-top: 30px;
   /* padding-left: ($spacer-x * .5); */
   /* padding-right: ($spacer-x * .5); */
   background-color: white;
@@ -34,3 +34,6 @@ body {
 #formField {
 
 } */
+#bg {
+  height: 100vh
+}
