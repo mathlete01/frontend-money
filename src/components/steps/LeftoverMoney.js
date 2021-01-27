@@ -54,6 +54,7 @@ class LeftoverMoney extends React.Component {
   };
 
   _next = (event) => {
+    console.log("_next: updateCurrentUser called")
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, {
       monthly_income: this.state.monthly_income,

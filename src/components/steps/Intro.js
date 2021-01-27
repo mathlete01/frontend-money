@@ -6,9 +6,6 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import Nav from "react-bootstrap/Nav";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 
 const BASE_URL = "http://localhost:3000";
@@ -29,6 +26,7 @@ class Intro extends React.Component {
   };
 
   createUser = () => {
+    console.log("createUser called")
     let formData = {
       user: {
         username: this.generateRandomString(),

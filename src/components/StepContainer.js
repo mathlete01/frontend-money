@@ -45,7 +45,7 @@ class MasterForm extends React.Component {
     this.setState({
       path: [...this.state.path, nextStep],
     });
-    // console.log(`this.state.path Before = `, this.state.path)
+    // console.log(`handleNextStep: this.state.path Before = `, this.state.path)
     let pathStr = JSON.stringify(this.state.path)
     // console.log(`pathStr After = `, pathStr)
     this.props.updateCurrentStep(nextStep);

@@ -50,7 +50,6 @@ class TopNav extends React.Component {
   };
 
   handleLogout = () => {
-    // console.log("Logout called");
     localStorage.clear();
     this.props.setCurrentUser({});
     this.props.history.push("/");
@@ -107,7 +106,6 @@ class TopNav extends React.Component {
         <div>
           <Navbar>
             <Navbar.Brand>Make Money Moves</Navbar.Brand>
-            {/* <Navbar.Toggle /> */}
             <Form inline>
                 <Switch>
                   <Route path="/" exact component={this.handleHome} />
@@ -131,22 +129,15 @@ class TopNav extends React.Component {
                   </Nav.Link>
                 </NavItem>
               </Nav>
+              <Nav>
+                <NavItem href="/">
+                  <Nav.Link as={Link} to="/" onClick={this.handleLogout}>
+                    Log out
+                  </Nav.Link>
+                </NavItem>
+              </Nav>
             </Navbar.Collapse>
           </Navbar>
-        </div>
-        <div>
-          {/* <Navbar>
-            <Navbar.Collapse>
-              <Form inline>
-                <Switch>
-                  <Route path="/" exact component={this.handleHome} />
-                  <Route path="/login" exact component={this.renderForm} />
-                  <Route path="/signup" exact component={this.renderForm} />
-                  <Route component={NotFound} />
-                </Switch>
-              </Form>
-            </Navbar.Collapse>
-          </Navbar> */}
         </div>
       </div>
     );
