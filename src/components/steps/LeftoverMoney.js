@@ -107,6 +107,7 @@ class LeftoverMoney extends React.Component {
                     <FormControl
                       className="formField"
                       type="number"
+                      min="0"
                       value={
                         this.state.monthly_income
                           ? this.state.monthly_income
@@ -138,6 +139,7 @@ class LeftoverMoney extends React.Component {
                     <FormControl
                       className="formField"
                       type="number"
+                      min="0"
                       value={
                         this.state.monthly_bills ? this.state.monthly_bills : 0
                       }
@@ -167,6 +169,7 @@ class LeftoverMoney extends React.Component {
                     <FormControl
                       className="formField"
                       type="number"
+                      min="0"
                       value={
                         this.state.monthly_spending
                           ? this.state.monthly_spending
@@ -198,6 +201,7 @@ class LeftoverMoney extends React.Component {
                     <FormControl
                       className="formField"
                       type="number"
+                      min="0"
                       value={this.calcLeftoverMoney()}
                       readOnly
                       id="leftover_money"

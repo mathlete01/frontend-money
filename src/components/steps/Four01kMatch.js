@@ -72,6 +72,7 @@ class Four01kMatch extends React.Component {
                     <FormControl
                     className="formField"
                       type="number"
+                      min="0"
                       // defaultValue="3"
                       value={this.state.four01k_match ? this.state.four01k_match : 0}
                       id="four01k_match"

@@ -104,6 +104,7 @@ class CreditCardDebt extends React.Component {
                     <FormControl
                     className="formField"
                       type="number"
+                      min="0"
                       value={
                         this.state.cc_1 ? this.state.cc_1 : 0
                       }
@@ -133,6 +134,7 @@ class CreditCardDebt extends React.Component {
                     <FormControl
                     className="formField"
                     type="number"
+                      min="0"
                     value={
                       this.state.cc_2 ? this.state.cc_2 : 0
                     }
@@ -162,6 +164,7 @@ class CreditCardDebt extends React.Component {
                     <FormControl
                     className="formField"
                     type="number"
+                      min="0"
                     value={
                       this.state.cc_3 ? this.state.cc_3 : 0
                     }
