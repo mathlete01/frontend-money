@@ -13,6 +13,16 @@ import { Form, FormControl } from "react-bootstrap";
 
 class CreditCardDebt extends React.Component {
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.currentUser !== this.props.currentUser) {
+      this.setState({
+        cc_1: this.props.currentUser.cc_1,
+        cc_2: this.props.currentUser.cc_2,
+        cc_3: this.props.currentUser.cc_3,
+      });
+    }
+  }
+
   state = {
     cc_1: this.props.currentUser.cc_1,
     cc_2: this.props.currentUser.cc_2,
@@ -42,6 +52,9 @@ class CreditCardDebt extends React.Component {
     console.log(`_next before this.state.credit_card_debt = `, this.state.credit_card_debt)
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, {
+      cc_1: this.state.cc_1,
+      cc_2: this.state.cc_2,
+      cc_3: this.state.cc_3,
       credit_card_debt: this.state.credit_card_debt
     },this.props.currentStep);
     console.log(`_next after this.state.credit_card_debt = `, this.state.credit_card_debt)
@@ -85,6 +98,9 @@ class CreditCardDebt extends React.Component {
                     <FormControl
                     className="formField"
                       type="number"
+                      value={
+                        this.state.cc_1 ? this.state.cc_1 : 0
+                      }
                       id="cc_1"
                       name="cc_1"
                       size="lg"
@@ -111,6 +127,9 @@ class CreditCardDebt extends React.Component {
                     <FormControl
                     className="formField"
                     type="number"
+                    value={
+                      this.state.cc_2 ? this.state.cc_2 : 0
+                    }
                     id="cc_2"
                     name="cc_2"
                     size="lg"
@@ -137,6 +156,9 @@ class CreditCardDebt extends React.Component {
                     <FormControl
                     className="formField"
                     type="number"
+                    value={
+                      this.state.cc_3 ? this.state.cc_3 : 0
+                    }
                     id="cc_3"
                     name="cc_3"
                     size="lg"

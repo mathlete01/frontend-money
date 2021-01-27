@@ -14,6 +14,7 @@ import { Form, FormControl } from "react-bootstrap";
 class LeftoverMoney extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
+    console.log("LeftoverMoney: ComponentDidUpdate")
     if (prevProps.currentUser !== this.props.currentUser) {
       this.setState({
         monthly_income: this.props.currentUser.monthly_income,
@@ -35,7 +36,6 @@ class LeftoverMoney extends React.Component {
     this.setState({
       [event.target.name]: event.target.value,
     });
-    this.calcLeftoverMoney();
   };
 
   calcLeftoverMoney = () => {
@@ -43,14 +43,14 @@ class LeftoverMoney extends React.Component {
     const bills = this.state.monthly_bills;
     const spending = this.state.monthly_spending;
     const difference = income - (parseInt(bills) + parseInt(spending));
-    // console.log("calcLeftoverMoney called")
-    // console.log(`income = `, income)
-    // console.log(`bills = `, bills)
-    // console.log(`spending = `, spending)
-    // console.log(`difference = `, difference)
-    this.setState({
-      leftover_money: difference,
-    });
+    console.log("calcLeftoverMoney called")
+    console.log(`income = `, income)
+    console.log(`bills = `, bills)
+    console.log(`spending = `, spending)
+    console.log(`difference = `, difference)
+    return(
+      difference
+    )
   };
 
   _next = (event) => {
@@ -195,10 +195,7 @@ class LeftoverMoney extends React.Component {
                       className="formField"
                       type="number"
                       value={
-                        this.state.leftover_money
-                          ? this.state.leftover_money
-                          : 0
-                      }
+                        this.calcLeftoverMoney()}
                       readOnly
                       id="leftover_money"
                       name="leftover_money"
