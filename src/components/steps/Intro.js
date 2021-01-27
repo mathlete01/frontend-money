@@ -27,7 +27,7 @@ class Intro extends React.Component {
   };
 
   createUser = () => {
-    console.log("createUser called")
+    // console.log("createUser called")
     let formData = {
       user: {
         username: this.generateRandomString(),

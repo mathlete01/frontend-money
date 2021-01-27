@@ -14,7 +14,7 @@ import { Form, FormControl } from "react-bootstrap";
 class LeftoverMoney extends React.Component {
   
   componentDidUpdate(prevProps, prevState) {
-    console.log("LeftoverMoney: ComponentDidUpdate");
+    // console.log("LeftoverMoney: ComponentDidUpdate");
     if (prevProps.currentUser !== this.props.currentUser) {
       this.setState({
         monthly_income: this.props.currentUser.monthly_income,
@@ -56,7 +56,7 @@ class LeftoverMoney extends React.Component {
   };
 
   _next = (event) => {
-    console.log("_next: updateCurrentUser called");
+    console.log(`_next: updateCurrentUser called, this.calcLeftoverMoney() =`, this.calcLeftoverMoney());
     event.preventDefault();
     this.props.updateCurrentUser(
       this.props.currentUser.id,
@@ -64,7 +64,7 @@ class LeftoverMoney extends React.Component {
         monthly_income: this.state.monthly_income,
         monthly_bills: this.state.monthly_bills,
         monthly_spending: this.state.monthly_spending,
-        leftover_money: this.state.leftover_money,
+        leftover_money: this.calcLeftoverMoney(),
       },
       this.props.currentStep
     );
