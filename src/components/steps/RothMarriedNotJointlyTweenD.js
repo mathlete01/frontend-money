@@ -58,43 +58,43 @@ class RothMarriedNotJointlyTweenD extends React.Component {
                 <td>$6,000</td>
               </tr>
               <tr>
-                <td>$125,500 </td>
+                <td>$1,000 </td>
                 <td>$5,400 </td>
               </tr>
               <tr>
-                <td>$127,000 </td>
+                <td>$2,000 </td>
                 <td>$4,800 </td>
               </tr>
               <tr>
-                <td>$128,500 </td>
+                <td>$3,000 </td>
                 <td>$4,200 </td>
               </tr>
               <tr>
-                <td>$130,000 </td>
+                <td>$4,000 </td>
                 <td>$3,600 </td>
               </tr>
               <tr>
-                <td>$131,500 </td>
+                <td>$5,000 </td>
                 <td>$3,000 </td>
               </tr>
               <tr>
-                <td>$133,000 </td>
+                <td>$6,000 </td>
                 <td>$2,400 </td>
               </tr>
               <tr>
-                <td>$134,500 </td>
+                <td>$7,000 </td>
                 <td>$1,800 </td>
               </tr>
               <tr>
-                <td>$136,000 </td>
+                <td>$8,000 </td>
                 <td>$1,200 </td>
               </tr>
               <tr>
-                <td>$137,500 </td>
+                <td>$9,000 </td>
                 <td>$600 </td>
               </tr>
               <tr>
-                <td>$139,000 and over </td>
+                <td>$10,000 and over </td>
                 <td>$0 😕 </td>
               </tr>
             </tbody>
