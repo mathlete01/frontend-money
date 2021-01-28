@@ -33,7 +33,7 @@ class RothSingleUnderD extends React.Component {
         </Row>
         <Row id="title" className="step">
           <Container>
-            <h3>Ya gotta have earned income to contribute to a Roth IRA (any IRA, actually)</h3>
+            <h3>You must have earned income to contribute to a Roth IRA (any IRA, actually)</h3>
           </Container>
         </Row>
         <Row id="body" className="step">

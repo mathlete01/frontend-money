@@ -8,6 +8,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
+import { Tabs, Tab } from "react-bootstrap";
 
 class Four01kMaxRec extends React.Component {
   _prev = () => {
@@ -33,14 +34,52 @@ class Four01kMaxRec extends React.Component {
         </Row>
         <Row id="title" className="step">
           <Container>
-            <h3>Rung #4: Max out your 401k</h3>
+            <h6>YOUR NEXT PRIORITY:</h6>
+            <h3>Max-out your 401(k)</h3>
           </Container>
         </Row>
         <Row id="body" className="step">
           <Container>
-            BLANK_BODY
+            They may be poorly named, but they are maybe the best investment you can get your hands on.
           </Container>
         </Row>
+        <Row>
+          <Tabs defaultActiveKey="what" id="uncontrolled-tab-example">
+            <Tab eventKey="what" title="What">
+              <ul>
+                <li>
+                  401(k)s are tax-advantaged retirement accounts that many employers offer their employees as a perk.
+                </li>
+              </ul>
+            </Tab>
+            <Tab eventKey="why" title="Why">
+              <ul>
+                <li>
+                The two big deals about a 401(k) are (1) many companies will match your contributions up to a limit, and (2) you contributions are taken out pre-tax.
+                </li>
+                <li>
+                  For example, if your paycheck is $1,000 and you contribute $100 per paycheck to your 401(k), you're only being taxed on $900 of your income!
+                </li>
+              </ul>
+            </Tab>
+            <Tab eventKey="where" title="Where">
+            <ul>
+                <li>
+                  If it's offered by your employer, it's in an account at whatever brokerage your employer chose. 
+                </li>
+                <li>You can't change where the funds are unless you leave the company and do what's called a "rollover".</li>
+              </ul>
+            </Tab>
+            <Tab eventKey="how" title="How">
+              <ul>
+              <li>
+                  Talk to your HR person and they'll explain how to change your contribution level.
+                </li>
+              </ul>
+            </Tab>
+          </Tabs>
+        </Row>
+        <hr className="w-100" />
         <Row id="form" className="step"></Row>
         <Row id="buttons" className="step">
           <Container>

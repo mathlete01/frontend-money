@@ -18,10 +18,15 @@ body {
   /* padding: 10px; */
   margin: 15px 25px 15px 25px;
   width: 95%;
+  text-align: left; 
 }
 .nav-tabs{
-  margin-left:15px;
+  margin-left:15px; 
 }
+ul { 
+	/* display: inline-block;  */
+	text-align: left; 
+	}
 .formField {
 }
 #title {

@@ -99,7 +99,7 @@ class LeftoverMoney extends React.Component {
         <Row id="body" className="step">
           <Container>
             Estimations are fine, you can always come back and update the
-            numbers.
+            numbers later.
           </Container>
         </Row>
         <Row id="form" className="step">

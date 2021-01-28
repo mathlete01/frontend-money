@@ -11,7 +11,7 @@ import { Form, FormGroup, FormControl } from "react-bootstrap";
 // import Tabs from "react-bootstrap/Tabs";
 import { Tabs, Tab } from "react-bootstrap";
 import TabContainer from "react-bootstrap/TabContainer";
-import Nav from 'react-bootstrap/Nav'
+import Nav from "react-bootstrap/Nav";
 import { NavItem } from "react-bootstrap";
 import Navbar from "react-bootstrap/Navbar";
 
@@ -39,72 +39,58 @@ class TaxableBrokerageIntro extends React.Component {
         </Row>
         <Row id="title" className="step">
           <Container>
-            <h3>Let's talk about taxable brokerages</h3>
+            <h6>YOUR NEXT PRIORITY:</h6>
+            <h3>Invest in a Taxable Brokerage Account</h3>
           </Container>
         </Row>
         <Row id="body" className="step">
           <Container>
             Do you have more disposible income to put towards your financial
             goals? If so, it's time to invest in a taxable brokerage account.
-            That's just a fancy name for an investment account that isn't
-            tax-advantaged like it's cousin, the IRA.
           </Container>
         </Row>
-        {/* <Row>
-        <hr className="w-100" />
-          <Tab.Container id="left-tabs-example" defaultActiveKey="first" className="step">
-            <Row>
-              <Col sm={3}>
-                <Nav variant="pills" className="flex-column">
-                  <Nav.Item>
-                    <Nav.Link eventKey="first">Tab 1</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link eventKey="second">Tab 2</Nav.Link>
-                  </Nav.Item>
-                </Nav>
-              </Col>
-              <Col sm={9}>
-                <Tab.Content >
-                  <Tab.Pane eventKey="first">
-                  Do you have more disposible income to put towards your financial
-            goals? If so, it's time to invest in a taxable brokerage account.
-            That's just a fancy name for an investment account that isn't
-            tax-advantaged like it's cousin, the IRA.
-                  </Tab.Pane>
-                  <Tab.Pane eventKey="second">
-                  Do you have more disposible income to put towards your financial
-            goals? If so, it's time to invest in a taxable brokerage account.
-            That's just a fancy name for an investment account that isn't
-            tax-advantaged like it's cousin, the IRA.
-                  </Tab.Pane>
-                </Tab.Content>
-              </Col>
-            </Row>
-          </Tab.Container>
-        </Row> */}
         <Row>
           <Tabs defaultActiveKey="what" id="uncontrolled-tab-example">
             <Tab eventKey="what" title="What">
-              A taxable brokerage is just a plain old means an investment account 
+              <ul>
+                <li>
+                  A taxable brokerage is just a plain old investment account.
+                </li>
+                <li>
+                  It's called "taxable" because it's not tax <i>advantaged</i>{" "}
+                  like it's cousins, IRAs and 401(k)s.
+                </li>
+              </ul>
             </Tab>
             <Tab eventKey="why" title="Why">
-              WhyProfile text Do you have more disposible income to put towards your financial
-            goals? If so, it's time to invest in a taxable brokerage account.
-            That's just a fancy name for an investment account that isn't
-            tax-advantaged like it's cousin, the IRA.
+              <ul>
+                <li>
+                  You should <i>only</i> invest in a taxable brokerage account
+                  once you have maximized your tax <i>advantaged</i> accounts,
+                  like IRAs and 401(k)s. According to your choices, you've
+                  already explored those options.
+                </li>
+              </ul>
             </Tab>
             <Tab eventKey="where" title="Where">
-              WhereContact text Do you have more disposible income to put towards your financial
-            goals? If so, it's time to invest in a taxable brokerage account.
-            That's just a fancy name for an investment account that isn't
-            tax-advantaged like it's cousin, the IRA.
+            <ul>
+                <li>
+                  Do you already have an investment account at a discount brokerage? Do it there.
+                </li>
+                <li>
+                  Otherwise, open an account at a discount brokerage like <a href="http://www.vanguard.com" target="_blank">Vanguard</a> (our favorite) or <a href="http://www.schwab.com" target="_blank">Schwab</a>.
+                </li>
+              </ul>
             </Tab>
             <Tab eventKey="how" title="How">
-              HowContact text Do you have more disposible income to put towards your financial
-            goals? If so, it's time to invest in a taxable brokerage account.
-            That's just a fancy name for an investment account that isn't
-            tax-advantaged like it's cousin, the IRA.
+              <ul>
+                <li>
+                  The first thing you should do is put your money in a target date fund. Do it immediately, it's extremely low-risk and the earlier you do it, the better. Ask the people at the brokerage why people recommend a target date fund and they'll explain it to you.
+                </li>
+                <li>
+                  Once that's set up, you can explore different investing strategies, if you want. But our advice is to just leave it in a target date fund and forget about it. This stratetgy is called "buy and hold". Trying to "time" the market by buying and selling only works if you can tell the future.
+                </li>
+              </ul>
             </Tab>
           </Tabs>
         </Row>

@@ -89,7 +89,7 @@ class CreditCardDebt extends React.Component {
         </Row>
         <Row id="body" className="step">
           <Container>
-          The interest you pay on credit card debt is usually three times the amount of interst you could earn on investment.
+          C'mon, let's add it all up.
           </Container>
         </Row>
         <Row id="form" className="step">

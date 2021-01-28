@@ -36,18 +36,23 @@ class RothIntro extends React.Component {
         </Row>
         <Row id="title" className="step">
           <Container>
-            <h3>Rung #3: Max-out a Roth IRA</h3>
+            <h3>Ah, the legendary Roth IRA...</h3>
           </Container>
         </Row>
         <Row id="body" className="step">
           <Container>
-            Roth IRAs are great for a number of reasons. The best thing about
-            them is that, because you can withdraw your contributions at any
-            time for any reason, they're like a piggy bank you can break in an
-            emergency. Even if you don't qualify for a Roth IRA because of age
-            or income, you can still open a Roth IRA using a totally legal
-            loophole called a "Backdoor Roth IRA". We'll cross that bridge if we
-            need to, but let's see if you qualify first.
+          Roth IRAs are great for three reaons:
+              <ol>
+                <li>Your money grows tax-free</li>
+                <li>
+                  You don't pay taxes on it when you withdraw it upon retirement
+                </li>
+                <li>
+                  You can withdraw your contributions (not your <i>earnings</i>,
+                  just your contributions) whenever you want. That makes it
+                  double as an Emergency Fund.
+                </li>
+              </ol>
           </Container>
         </Row>
         <Row id="form" className="step"></Row>

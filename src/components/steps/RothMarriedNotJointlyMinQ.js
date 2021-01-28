@@ -45,7 +45,7 @@ class RothMarriedNotJointlyMinQ extends React.Component {
         </Row>
         <Row id="body" className="step">
           <Container>
-            That's the minimim amount you can earn to qualify for a Roth IRA if you file your taxes singly as a married person.
+            That's the minimim amount you can earn to qualify for a Roth IRA if you are married but file your taxes as a single person.
           </Container>
         </Row>
         <Row id="form" className="step"></Row>

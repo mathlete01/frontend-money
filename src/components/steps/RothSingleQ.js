@@ -45,7 +45,7 @@ class RothSingleQ extends React.Component {
         </Row>
         <Row id="body" className="step">
           <Container>
-            BLANK_BODY
+            Your marriage status can affect the amount you're allowed to contribute to a Roth IRA. 
           </Container>
         </Row>
         <Row id="form" className="step"></Row>
