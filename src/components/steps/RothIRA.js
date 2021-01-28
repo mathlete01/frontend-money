@@ -60,7 +60,7 @@ class RothIRA extends React.Component {
                 <Col>
                   <Button
                     className="yes"
-                    variant="success"
+                    variant="primary"
                     size="lg"
                     block
                     onClick={this._next}

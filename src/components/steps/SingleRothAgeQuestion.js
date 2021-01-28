@@ -9,19 +9,25 @@ import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 
-class RothMax extends React.Component {
+class SingleRothAgeQuestion extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
 
-  _next = (event) => {
+  _yes = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { roth_max: true },this.props.currentStep);
-    this.props.handleNextStep("BLANK_NEXT");
+    this.props.updateCurrentUser(this.props.currentUser.id, { below_50: true },this.props.currentStep);
+    this.props.handleNextStep("SingleBelow50RothTable");
+  };
+
+  _no = (event) => {
+    event.preventDefault();
+    this.props.updateCurrentUser(this.props.currentUser.id, { below_50: false },this.props.currentStep);
+    this.props.handleNextStep("SingleAbove50RothTable");
   };
 
   render() {
-    if (this.props.currentStep !== "RothMax") {
+    if (this.props.currentStep !== "SingleRothAgeQuestion") {
       return null;
     }
     return (
@@ -34,12 +40,12 @@ class RothMax extends React.Component {
         </Row>
         <Row id="title" className="step">
           <Container>
-            <h3>You can contribute 7k to a Roth IRA</h3>
+            <h3>Are you younger than 50?</h3>
           </Container>
         </Row>
         <Row id="body" className="step">
           <Container>
-            BLANK_BODY
+            BODY
           </Container>
         </Row>
         <Row id="form" className="step"></Row>
@@ -48,7 +54,7 @@ class RothMax extends React.Component {
             <Form.Group>
               <Form.Row>
                 <Col>
-                  {/* <Button
+                  <Button
                     className="no"
                     variant="danger"
                     size="lg"
@@ -56,17 +62,17 @@ class RothMax extends React.Component {
                     onClick={this._no}
                   >
                     No
-                  </Button> */}
+                  </Button>
                 </Col>
                 <Col>
                   <Button
                     className="yes"
-                    variant="primary"
+                    variant="success"
                     size="lg"
                     block
-                    onClick={this._next}
+                    onClick={this._yes}
                   >
-                    Next
+                    Yes
                   </Button>
                 </Col>
               </Form.Row>
@@ -88,4 +94,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(RothMax);
+})(SingleRothAgeQuestion);

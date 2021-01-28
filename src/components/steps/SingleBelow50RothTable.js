@@ -8,20 +8,21 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
+import Table from 'react-bootstrap/Table'
 
-class RothMax extends React.Component {
+class SingleBelow50RothTable extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
 
   _next = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { roth_max: true },this.props.currentStep);
+    this.props.updateCurrentUser(this.props.currentUser.id, { BLANK_DB: true },this.props.currentStep);
     this.props.handleNextStep("BLANK_NEXT");
   };
 
   render() {
-    if (this.props.currentStep !== "RothMax") {
+    if (this.props.currentStep !== "SingleBelow50RothTable") {
       return null;
     }
     return (
@@ -34,7 +35,7 @@ class RothMax extends React.Component {
         </Row>
         <Row id="title" className="step">
           <Container>
-            <h3>You can contribute 7k to a Roth IRA</h3>
+            <h3>You're right inbetween!</h3>
           </Container>
         </Row>
         <Row id="body" className="step">
@@ -42,21 +43,68 @@ class RothMax extends React.Component {
             BLANK_BODY
           </Container>
         </Row>
+        <Row>
+        <Table striped bordered hover>
+  <thead>
+    <tr>
+      <th>Your Modified Adjusted Gross Income (MAGI)</th>
+      <th>Max Contribution if under 50</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>under $124,000</td>
+      <td>$6,000</td>
+    </tr>
+    <tr>
+      <td>$125,500	</td>
+      <td>$5,400	</td>
+    </tr>
+    <tr>
+      <td >$127,000	</td>
+      <td>$4,800	</td>
+    </tr>
+    <tr>
+      <td >$128,500	</td>
+      <td>$4,200	</td>
+    </tr>
+    <tr>
+      <td >$130,000	</td>
+      <td>$3,600	</td>
+    </tr>
+    <tr>
+      <td >$131,500	</td>
+      <td>$3,000	</td>
+    </tr>
+    <tr>
+      <td >$133,000	</td>
+      <td>$2,400	</td>
+    </tr>
+    <tr>
+      <td >$134,500	</td>
+      <td>$1,800	</td>
+    </tr>
+    <tr>
+      <td >$136,000	</td>
+      <td>$1,200	</td>
+    </tr>
+    <tr>
+      <td >$137,500	</td>
+      <td>$600	</td>
+    </tr>
+    <tr>
+      <td >$139,000 and over	</td>
+      <td>$0 😕	</td>
+    </tr>
+  </tbody>
+</Table>
+        </Row>
         <Row id="form" className="step"></Row>
         <Row id="buttons" className="step">
           <Container>
             <Form.Group>
               <Form.Row>
                 <Col>
-                  {/* <Button
-                    className="no"
-                    variant="danger"
-                    size="lg"
-                    block
-                    onClick={this._no}
-                  >
-                    No
-                  </Button> */}
                 </Col>
                 <Col>
                   <Button
@@ -66,7 +114,7 @@ class RothMax extends React.Component {
                     block
                     onClick={this._next}
                   >
-                    Next
+                    Okay
                   </Button>
                 </Col>
               </Form.Row>
@@ -88,4 +136,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(RothMax);
+})(SingleBelow50RothTable);

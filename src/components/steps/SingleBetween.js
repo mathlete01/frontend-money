@@ -17,7 +17,7 @@ class SingleBetween extends React.Component {
   _yes = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { singleBetween: true },this.props.currentStep);
-    this.props.handleNextStep("below_50");
+    this.props.handleNextStep("SingleBelow50RothTable");
   };
 
   _no = (event) => {

@@ -1,5 +1,5 @@
 import React from "react";
-import Below50RothSingle from "./steps/Below50RothSingle";
+import Below50RothSingle from "./steps/SingleRothAgeQuestion";
 import CreditCardDebt from "./steps/CreditCardDebt";
 import CreditCardDebtQuestion from "./steps/CreditCardDebtQuestion";
 import DoneForNow from "./steps/DoneForNow";
@@ -22,9 +22,12 @@ import RothRec from "./steps/RothRec";
 import Rung1Determination from "./steps/Rung1Determination";
 import SaveYourWork from "./steps/SaveYourWork";
 import Single from "./steps/Single";
+import SingleBelow50RothTable from "./steps/SingleBelow50RothTable";
+import SingleRothAgeQuestion from "./steps/SingleRothAgeQuestion";
 import SingleBetween from "./steps/SingleBetween";
 import SingleMax from "./steps/SingleMax";
 import SingleMaxNoRoth from "./steps/SingleMaxNoRoth";
+import SingleRothCalc from "./steps/SingleRothCalc";
 import TradIRAQuestion from "./steps/TradIRAQuestion";
 // import BLANK from "./steps/BLANK";
 import { connect } from "react-redux";
@@ -149,6 +152,14 @@ class MasterForm extends React.Component {
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
+        <SingleBelow50RothTable
+          handlePrevStep={this.handlePrevStep}
+          handleNextStep={this.handleNextStep}
+        />
+        <SingleRothAgeQuestion
+          handlePrevStep={this.handlePrevStep}
+          handleNextStep={this.handleNextStep}
+        />
         <SingleBetween
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
@@ -158,6 +169,10 @@ class MasterForm extends React.Component {
           handleNextStep={this.handleNextStep}
         />
         <SingleMaxNoRoth
+          handlePrevStep={this.handlePrevStep}
+          handleNextStep={this.handleNextStep}
+        />
+        <SingleRothCalc
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />

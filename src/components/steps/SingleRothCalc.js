@@ -9,19 +9,19 @@ import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 
-class RothMax extends React.Component {
+class SingleRothCalc extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
 
-  _next = (event) => {
+  _yes = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { roth_max: true },this.props.currentStep);
-    this.props.handleNextStep("BLANK_NEXT");
+    this.props.updateCurrentUser(this.props.currentUser.id, { BLANK_DB: true });
+    this.props.handleNextStep("BLANK_YES");
   };
 
   render() {
-    if (this.props.currentStep !== "RothMax") {
+    if (this.props.currentStep !== "SingleRothCalc") {
       return null;
     }
     return (
@@ -34,12 +34,12 @@ class RothMax extends React.Component {
         </Row>
         <Row id="title" className="step">
           <Container>
-            <h3>You can contribute 7k to a Roth IRA</h3>
+            <h3>You're right inbetween!</h3>
           </Container>
         </Row>
         <Row id="body" className="step">
           <Container>
-            BLANK_BODY
+          Ok, since you'll make more than $122K but less than $137K this year, we gotta do some math to figure out how much you're allowed to contribute to a Roth IRA. <a href="https://www.calcxml.com/calculators/ira-calculator" target="_blank">Use this calculator to find out</a>, then hit "Continue".
           </Container>
         </Row>
         <Row id="form" className="step"></Row>
@@ -48,15 +48,6 @@ class RothMax extends React.Component {
             <Form.Group>
               <Form.Row>
                 <Col>
-                  {/* <Button
-                    className="no"
-                    variant="danger"
-                    size="lg"
-                    block
-                    onClick={this._no}
-                  >
-                    No
-                  </Button> */}
                 </Col>
                 <Col>
                   <Button
@@ -64,9 +55,9 @@ class RothMax extends React.Component {
                     variant="primary"
                     size="lg"
                     block
-                    onClick={this._next}
+                    onClick={this._yes}
                   >
-                    Next
+                    Continue
                   </Button>
                 </Col>
               </Form.Row>
@@ -88,4 +79,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(RothMax);
+})(SingleRothCalc);

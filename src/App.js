@@ -108,7 +108,7 @@ class App extends React.Component {
   render() {
     return (
       <div style={{ backgroundImage: `url(${background})`,
-      backgroundRepeat: 'repeat',
+      // backgroundRepeat: 'repeat',
       // height: "100%", 
       }} id="bg">
       {/* <div> */}
