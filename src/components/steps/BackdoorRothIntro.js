@@ -16,7 +16,7 @@ class BackdoorRothIntro extends React.Component {
 
   _next = (event) => {
     event.preventDefault();
-    this.props.handleNextStep("BLANK_YES");
+    this.props.handleNextStep("Four01kMaxOutQ");
   };
 
 

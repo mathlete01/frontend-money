@@ -12,41 +12,46 @@ import { Form, FormGroup, FormControl } from "react-bootstrap";
 class RothSingleOverD extends React.Component {
   _next = (event) => {
     event.preventDefault();
-    this.props.handleNextStep(this.nextStep);
+    this.props.handleNextStep("BackdoorRothIntro");
   };
 
   _prev = () => {
     this.props.handlePrevStep();
   };
 
-  makeDetermination = () => {
-    // console.log("makeDetermination called");
-    const {
-      leftover_money,
-      four01k,
-      four01k_match,
-      four01k_contribution,
-      credit_card_debt,
-    } = this.props.currentUser;
-    switch (true) {
-      // Case: Yes 401k --> are you maxing it out?
-      case four01k === true:
-        this.nextStep = "Four01kMaxOutQ"
-        break;
-      // Case:  No 401K  --> Try for traditional IRA
-      case four01k === false:
-        this.nextStep = "BackdoorRothIntro";
-        break;
-      default:
-        this.advice = "Whoops, we've encountered an error. How embarassing.";
-    }
-  };
+  // _next = (event) => {
+  //   event.preventDefault();
+  //   this.props.handleNextStep(this.nextStep);
+  // };
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.currentStep !== this.props.currentStep) {
-      this.makeDetermination();
-    }
-  }
+  // makeDetermination = () => {
+  //   // console.log("makeDetermination called");
+  //   const {
+  //     leftover_money,
+  //     four01k,
+  //     four01k_match,
+  //     four01k_contribution,
+  //     credit_card_debt,
+  //   } = this.props.currentUser;
+  //   switch (true) {
+  //     // Case: Yes 401k --> are you maxing it out?
+  //     case four01k === true:
+  //       this.nextStep = "Four01kMaxOutQ"
+  //       break;
+  //     // Case:  No 401K  --> Try for traditional IRA
+  //     case four01k === false:
+  //       this.nextStep = "BackdoorRothIntro";
+  //       break;
+  //     default:
+  //       this.advice = "Whoops, we've encountered an error. How embarassing.";
+  //   }
+  // };
+
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevProps.currentStep !== this.props.currentStep) {
+  //     this.makeDetermination();
+  //   }
+  // }
 
   render() {
     if (this.props.currentStep !== "RothSingleOverD") {
@@ -67,7 +72,7 @@ class RothSingleOverD extends React.Component {
         </Row>
         <Row id="body" className="step">
           <Container>
-            Ok, since you'll make more than $137K this year, you're not eligible to contribute to a regular Roth IRA. 
+            Ok, since you'll make more than $137K this year, you're not eligible to contribute to a regular Roth IRA. But--and this is a big but--anyone with earned income can contribute to a Backdoor Roth IRA! What's that? Well, let me tell you...
           </Container>
         </Row>
         <Row id="form" className="step"></Row>
@@ -80,7 +85,7 @@ class RothSingleOverD extends React.Component {
                 <Col>
                   <Button
                     className="yes"
-                    variant="success"
+                    variant="primary"
                     size="lg"
                     block
                     onClick={this._next}

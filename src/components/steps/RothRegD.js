@@ -17,7 +17,7 @@ class RothRegD extends React.Component {
   _next = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { roth_eligable: true },this.props.currentStep);
-    this.props.handleNextStep("MoreToSpendQ");
+    this.props.handleNextStep("Four01kMaxOutQ");
   };
 
   render() {

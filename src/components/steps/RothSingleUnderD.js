@@ -12,7 +12,7 @@ import { Form, FormGroup, FormControl } from "react-bootstrap";
 class RothSingleUnderD extends React.Component {
   _next = (event) => {
     event.preventDefault();
-    this.props.handleNextStep("MoreToSpendQ");
+    this.props.handleNextStep("TaxableBrokerageIntro");
   };
 
   _prev = () => {
@@ -51,7 +51,7 @@ class RothSingleUnderD extends React.Component {
                 <Col>
                   <Button
                     className="yes"
-                    variant="success"
+                    variant="primary"
                     size="lg"
                     block
                     onClick={this._next}

@@ -14,6 +14,14 @@ body {
   padding: 10px;
   margin: 0px;
 }
+.tab-content {
+  /* padding: 10px; */
+  margin: 15px 25px 15px 25px;
+  width: 95%;
+}
+.nav-tabs{
+  margin-left:15px;
+}
 .formField {
 }
 #title {

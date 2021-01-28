@@ -16,7 +16,7 @@ class Four01kMaxRec extends React.Component {
 
   _next = (event) => {
     event.preventDefault();
-    this.props.handleNextStep("MoreToSpendQ");
+    this.props.handleNextStep("DoneForNow");
   };
 
   render() {
@@ -54,7 +54,7 @@ class Four01kMaxRec extends React.Component {
                     variant="primary"
                     size="lg"
                     block
-                    onClick={this._yes}
+                    onClick={this._next}
                   >
                     Okay
                   </Button>

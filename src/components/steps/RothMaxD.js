@@ -17,7 +17,7 @@ class RothMaxD extends React.Component {
   _next = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { roth_max: true },this.props.currentStep);
-    this.props.handleNextStep("MoreToSpendQ");
+    this.props.handleNextStep("Four01kMaxOutQ");
   };
 
   render() {
