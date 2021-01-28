@@ -41,7 +41,7 @@ class Rung1Determination extends React.Component {
       case four01k === false && credit_card_debt <= leftover_money:
         // Rung 1 & 2 achieved, onto Rung 3
         this.advice = `Nice! Rung #1 is not applicable since your employer doesn't offer a 401(k), and Rung #2 is done because you don't have any credit card debt. Onto Rung #3: Max-out a Roth IRA. Let's see if you qualify...`;
-        this.nextStep = "RothIRA";
+        this.nextStep = "RothIntro";
         this.props.updateCurrentProgress(this.props.currentUser.id, {
           rung_2: true,
           rung_3: true,
@@ -60,7 +60,7 @@ class Rung1Determination extends React.Component {
       case four01k_contribution > four01k_match &&
         credit_card_debt < leftover_money:
         this.advice = `Ok, so you've got a bit of credit card debt, but you have enough money leftover after bills and spending money to pay if off in a month. So, that's your marching orders: PAY THE DAMN DEBT OFF THIS MONTH, YO. Onto Rung #3: Max-out a Roth IRA. Let's see if you qualify...`;
-        this.nextStep = "RothIRA";
+        this.nextStep = "RothIntro";
         this.props.updateCurrentProgress(this.props.currentUser.id, {
           rung_1: true,
           rung_2: true,

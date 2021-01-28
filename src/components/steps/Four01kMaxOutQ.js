@@ -9,25 +9,25 @@ import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 
-class FilingJointly extends React.Component {
+class Four01kMaxOutQ extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
 
   _yes = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { filing_jointly: true },this.props.currentStep);
-    this.props.handleNextStep("below_50");
+    this.props.updateCurrentUser(this.props.currentUser.id, { four01k_max_out: true },this.props.currentStep);
+    this.props.handleNextStep("BLANK_YES");
   };
 
   _no = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { filing_jointly: false },this.props.currentStep);
-    this.props.handleNextStep("married_max");
+    this.props.updateCurrentUser(this.props.currentUser.id, { four01k_max_out: false },this.props.currentStep);
+    this.props.handleNextStep("BLANK_NO");
   };
 
   render() {
-    if (this.props.currentStep !== "FilingJointly") {
+    if (this.props.currentStep !== "Four01kMaxOutQ") {
       return null;
     }
     return (
@@ -40,12 +40,12 @@ class FilingJointly extends React.Component {
         </Row>
         <Row id="title" className="step">
           <Container>
-            <h3>Will you be filing your taxes jointly?</h3>
+            <h3>Are you maxxing-out your 401(k)?</h3>
           </Container>
         </Row>
         <Row id="body" className="step">
           <Container>
-            Some married people choose to file their taxes as a single person because it's beneficial to them, tax-wise.
+            BLANK_BODY
           </Container>
         </Row>
         <Row id="form" className="step"></Row>
@@ -94,4 +94,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(FilingJointly);
+})(Four01kMaxOutQ);

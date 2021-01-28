@@ -7,27 +7,35 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 
-class SingleMax extends React.Component {
+class Four01kQ extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
 
   _yes = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { singleMax: true },this.props.currentStep);
-    this.props.handleNextStep("EarnedIncomeRothSingle");
+    this.props.updateCurrentUser(this.props.currentUser.id, { four01k: true },this.props.currentStep);
+    this.props.handleNextStep("Four01kMatch");
   };
 
   _no = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { singleMax: false },this.props.currentStep);
-    this.props.handleNextStep("SingleBetween");
+    this.props.updateCurrentUser(this.props.currentUser.id, { four01k: false },this.props.currentStep);
+    this.props.handleNextStep("CreditCardDebtQ");
   };
 
+  renderTooltip = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      Simple tooltip
+    </Tooltip>
+  );
+
   render() {
-    if (this.props.currentStep !== "SingleMax") {
+    if (this.props.currentStep !== "Four01kQ") {
       return null;
     }
     return (
@@ -40,12 +48,14 @@ class SingleMax extends React.Component {
         </Row>
         <Row id="title" className="step">
           <Container>
-            <h3>Will you earn less than $122,000 this year?</h3>
+            <h3>Does your employer offer a 401(k) plan?</h3>
           </Container>
         </Row>
         <Row id="body" className="step">
           <Container>
-            That's the maximum you can earn as a single person and still qualify for a Roth IRA.  
+            {/* A <OverlayTrigger overlay={this.renderTooltip}>401(k) plan</OverlayTrigger> */}
+            A 401(k) plan is a retirement investment account that many companies
+            offer their employees.
           </Container>
         </Row>
         <Row id="form" className="step"></Row>
@@ -94,4 +104,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(SingleMax);
+})(Four01kQ);

@@ -1,34 +1,35 @@
 import React from "react";
-import Below50RothSingle from "./steps/SingleRothAgeQuestion";
 import CreditCardDebt from "./steps/CreditCardDebt";
-import CreditCardDebtQuestion from "./steps/CreditCardDebtQuestion";
+import CreditCardDebtQ from "./steps/CreditCardDebtQ";
 import DoneForNow from "./steps/DoneForNow";
-import EarnedIncomeRothSingle from "./steps/EarnedIncomeRothSingle";
-import FilingJointly from "./steps/FilingJointly";
+import RothSingleIncomeQ from "./steps/RothSingleIncomeQ";
+import RothMarriedJointlyQ from "./steps/RothMarriedJointlyQ";
 import Four01kContribution from "./steps/Four01k_Contribution";
 import Four01kMatch from "./steps/Four01kMatch";
-import Four01kMaxOutQuestion from "./steps/Four01kMaxOutQuestion";
-import Four01kQuestion from "./steps/Four01kQuestion";
+import Four01kMaxOutQ from "./steps/Four01kMaxOutQ";
+import Four01kQ from "./steps/Four01kQ";
 import GoalMaxOut401k from "./steps/GoalMaxOut401k";
 import Intro from "./steps/Intro";
 import LeftoverMoney from "./steps/LeftoverMoney";
-import MarriedBetween from "./steps/MarriedBetween";
-import MarriedMax from "./steps/MarriedMax";
-import Math from "./steps/Math";
-import RothEligable from "./steps/RothEligable";
-import RothIRA from "./steps/RothIRA";
-import RothMax from "./steps/RothMax";
-import RothRec from "./steps/RothRec";
+import RothMarriedJointlyMinQ from "./steps/RothMarriedJointlyMinQ";
+import RothMarriedJointlyMaxQ from "./steps/RothMarriedJointlyMaxQ";
+import Math from "./steps/RENAME-1";
+import RothRegD from "./steps/RothRegD";
+import RothIntro from "./steps/RothIntro";
+import RothMaxD from "./steps/RothMaxD";
+import RothRec from "./steps/RENAME-2";
 import Rung1Determination from "./steps/Rung1Determination";
 import SaveYourWork from "./steps/SaveYourWork";
-import Single from "./steps/Single";
-import SingleBelow50RothTable from "./steps/SingleBelow50RothTable";
-import SingleRothAgeQuestion from "./steps/SingleRothAgeQuestion";
-import SingleBetween from "./steps/SingleBetween";
-import SingleMax from "./steps/SingleMax";
-import SingleMaxNoRoth from "./steps/SingleMaxNoRoth";
-import SingleRothCalc from "./steps/SingleRothCalc";
-import TradIRAQuestion from "./steps/TradIRAQuestion";
+import xRothSingleQ from "./steps/xRothSingleQ";
+import RothSingleTweenD from "./steps/RothSingleTweenD";
+import RothSingle50Q from "./steps/RothSingle50Q";
+import RothSingleMinQ from "./steps/RothSingleMinQ";
+import RothSingleMaxQ from "./steps/RothSingleMaxQ";
+import RothSingleOverD from "./steps/RothSingleOverD";
+import RothSingleUnderD from "./steps/RothSingleUnderD";
+import SingleRothCalc from "./steps/RENAME-3";
+import BackdoorRothIntro from "./steps/BackdoorRothIntro";
+import FooRothSingleQ from "./steps/FooRothSingleQ";
 // import BLANK from "./steps/BLANK";
 import { connect } from "react-redux";
 import { updateCurrentStep } from "../actions/stepActions";
@@ -63,7 +64,7 @@ class MasterForm extends React.Component {
   render() {
     return (
       <Container>
-        <Below50RothSingle
+        <RothSingle50Q
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
@@ -71,7 +72,7 @@ class MasterForm extends React.Component {
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
-        <CreditCardDebtQuestion
+        <CreditCardDebtQ
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
@@ -79,11 +80,15 @@ class MasterForm extends React.Component {
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
-        <EarnedIncomeRothSingle
+        <RothSingleIncomeQ
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
-        <FilingJointly
+        <RothMarriedJointlyQ
+          handlePrevStep={this.handlePrevStep}
+          handleNextStep={this.handleNextStep}
+        />
+        <RothSingleMaxQ
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
@@ -95,11 +100,11 @@ class MasterForm extends React.Component {
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
-        <Four01kMaxOutQuestion
+        <Four01kMaxOutQ
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
-        <Four01kQuestion
+        <Four01kQ
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
@@ -112,11 +117,11 @@ class MasterForm extends React.Component {
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
-        <MarriedBetween
+        <RothMarriedJointlyMinQ
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
-        <MarriedMax
+        <RothMarriedJointlyMaxQ
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
@@ -124,15 +129,15 @@ class MasterForm extends React.Component {
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
-        <RothEligable
+        <RothRegD
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
-        <RothIRA
+        <RothIntro
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
-        <RothMax
+        <RothMaxD
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
@@ -148,27 +153,19 @@ class MasterForm extends React.Component {
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
-        <Single
+        <xRothSingleQ
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
-        <SingleBelow50RothTable
+        <RothSingleTweenD
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
-        <SingleRothAgeQuestion
+        <RothSingleMinQ
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
-        <SingleBetween
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        />
-        <SingleMax
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        />
-        <SingleMaxNoRoth
+        <RothSingleOverD
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
@@ -176,7 +173,15 @@ class MasterForm extends React.Component {
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
-        <TradIRAQuestion
+        <BackdoorRothIntro
+          handlePrevStep={this.handlePrevStep}
+          handleNextStep={this.handleNextStep}
+        />
+         <RothSingleUnderD
+          handlePrevStep={this.handlePrevStep}
+          handleNextStep={this.handleNextStep}
+        />
+        <FooRothSingleQ
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />

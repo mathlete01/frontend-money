@@ -9,26 +9,19 @@ import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 
-class CreditCardDebtQuestion extends React.Component {
+class RothMaxD extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
 
-  _yes = (event) => {
+  _next = (event) => {
     event.preventDefault();
-    this.props.handleNextStep("CreditCardDebt");
-  };
-
-  _no = (event) => {
-    event.preventDefault();
-    this.props.handleNextStep("Rung1Determination");
-    this.props.updateCurrentUser(this.props.currentUser.id, {
-      credit_card_debt: 0,
-    },this.props.currentStep);
+    this.props.updateCurrentUser(this.props.currentUser.id, { roth_max: true },this.props.currentStep);
+    this.props.handleNextStep("BLANK_NEXT");
   };
 
   render() {
-    if (this.props.currentStep !== "CreditCardDebtQuestion") {
+    if (this.props.currentStep !== "RothMaxD") {
       return null;
     }
     return (
@@ -41,14 +34,12 @@ class CreditCardDebtQuestion extends React.Component {
         </Row>
         <Row id="title" className="step">
           <Container>
-            <h3>Do you have any credit card debt?</h3>
+            <h3>You can contribute 7k to a Roth IRA</h3>
           </Container>
         </Row>
         <Row id="body" className="step">
           <Container>
-            {/* A <OverlayTrigger overlay={this.renderTooltip}>401(k) plan</OverlayTrigger> */}
-            The interest you pay on credit card debt is often 3 times the amount
-            of interest you get from investments.
+            BLANK_BODY
           </Container>
         </Row>
         <Row id="form" className="step"></Row>
@@ -57,7 +48,7 @@ class CreditCardDebtQuestion extends React.Component {
             <Form.Group>
               <Form.Row>
                 <Col>
-                  <Button
+                  {/* <Button
                     className="no"
                     variant="danger"
                     size="lg"
@@ -65,17 +56,17 @@ class CreditCardDebtQuestion extends React.Component {
                     onClick={this._no}
                   >
                     No
-                  </Button>
+                  </Button> */}
                 </Col>
                 <Col>
                   <Button
                     className="yes"
-                    variant="success"
+                    variant="primary"
                     size="lg"
                     block
-                    onClick={this._yes}
+                    onClick={this._next}
                   >
-                    Yes
+                    Next
                   </Button>
                 </Col>
               </Form.Row>
@@ -97,4 +88,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(CreditCardDebtQuestion);
+})(RothMaxD);

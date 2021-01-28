@@ -68,7 +68,7 @@ class LeftoverMoney extends React.Component {
       },
       this.props.currentStep
     );
-    this.props.handleNextStep("Four01kQuestion");
+    this.props.handleNextStep("Four01kQ");
   };
 
   checkValid = () => {

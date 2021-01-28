@@ -9,25 +9,25 @@ import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 
-class Four01kMaxOutQuestion extends React.Component {
+class RothSingleMinQ extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
 
   _yes = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { four01k_max_out: true },this.props.currentStep);
-    this.props.handleNextStep("BLANK_YES");
+    this.props.updateCurrentUser(this.props.currentUser.id, { singleMax: true },this.props.currentStep);
+    this.props.handleNextStep("RothSingleIncomeQ");
   };
 
   _no = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { four01k_max_out: false },this.props.currentStep);
-    this.props.handleNextStep("BLANK_NO");
+    this.props.updateCurrentUser(this.props.currentUser.id, { singleMax: false },this.props.currentStep);
+    this.props.handleNextStep("RothSingleMaxQ");
   };
 
   render() {
-    if (this.props.currentStep !== "Four01kMaxOutQuestion") {
+    if (this.props.currentStep !== "RothSingleMinQ") {
       return null;
     }
     return (
@@ -40,12 +40,12 @@ class Four01kMaxOutQuestion extends React.Component {
         </Row>
         <Row id="title" className="step">
           <Container>
-            <h3>Are you maxxing-out your 401(k)?</h3>
+            <h3>Will you earn less than $122,000 this year?</h3>
           </Container>
         </Row>
         <Row id="body" className="step">
           <Container>
-            BLANK_BODY
+            That's the maximum you can earn as a single person and still qualify for a Roth IRA.  
           </Container>
         </Row>
         <Row id="form" className="step"></Row>
@@ -94,4 +94,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(Four01kMaxOutQuestion);
+})(RothSingleMinQ);

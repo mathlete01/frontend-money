@@ -9,25 +9,25 @@ import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 
-class MarriedBetween extends React.Component {
+class RothSingleMaxQ extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
 
   _yes = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { married_between: true },this.props.currentStep);
-    this.props.handleNextStep("below_50");
+    this.props.updateCurrentUser(this.props.currentUser.id, { singleBetween: true },this.props.currentStep);
+    this.props.handleNextStep("RothSingleTweenD");
   };
 
   _no = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { married_between: false },this.props.currentStep);
-    this.props.handleNextStep("married_max");
+    this.props.updateCurrentUser(this.props.currentUser.id, { singleBetween: false },this.props.currentStep);
+    this.props.handleNextStep("RothSingleOverD");
   };
 
   render() {
-    if (this.props.currentStep !== "MarriedBetween") {
+    if (this.props.currentStep !== "RothSingleMaxQ") {
       return null;
     }
     return (
@@ -40,12 +40,12 @@ class MarriedBetween extends React.Component {
         </Row>
         <Row id="title" className="step">
           <Container>
-            <h3>Will you earn less than $193,000 this year?</h3>
+            <h3>Will you earn less than $137,000 this year?</h3>
           </Container>
         </Row>
         <Row id="body" className="step">
           <Container>
-            That's the maximum amount you can earn to qualify for a Roth IRA if you file your taxes as a married person.
+            That's the maximum amount you can earn to qualify for a Roth IRA if you file your taxes as a single person.
           </Container>
         </Row>
         <Row id="form" className="step"></Row>
@@ -94,4 +94,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(MarriedBetween);
+})(RothSingleMaxQ);

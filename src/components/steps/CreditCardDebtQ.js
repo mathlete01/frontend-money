@@ -9,25 +9,26 @@ import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 
-class SingleBetween extends React.Component {
+class CreditCardDebtQ extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
 
   _yes = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { singleBetween: true },this.props.currentStep);
-    this.props.handleNextStep("SingleBelow50RothTable");
+    this.props.handleNextStep("CreditCardDebt");
   };
 
   _no = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { singleBetween: false },this.props.currentStep);
-    this.props.handleNextStep("SingleMaxNoRoth");
+    this.props.handleNextStep("Rung1Determination");
+    this.props.updateCurrentUser(this.props.currentUser.id, {
+      credit_card_debt: 0,
+    },this.props.currentStep);
   };
 
   render() {
-    if (this.props.currentStep !== "SingleBetween") {
+    if (this.props.currentStep !== "CreditCardDebtQ") {
       return null;
     }
     return (
@@ -40,12 +41,14 @@ class SingleBetween extends React.Component {
         </Row>
         <Row id="title" className="step">
           <Container>
-            <h3>Will you earn less than $137,000 this year?</h3>
+            <h3>Do you have any credit card debt?</h3>
           </Container>
         </Row>
         <Row id="body" className="step">
           <Container>
-            That's the maximum amount you can earn to qualify for a Roth IRA if you file your taxes as a single person.
+            {/* A <OverlayTrigger overlay={this.renderTooltip}>401(k) plan</OverlayTrigger> */}
+            The interest you pay on credit card debt is often 3 times the amount
+            of interest you get from investments.
           </Container>
         </Row>
         <Row id="form" className="step"></Row>
@@ -94,4 +97,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(SingleBetween);
+})(CreditCardDebtQ);

@@ -9,19 +9,19 @@ import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 
-class TradIRAQuestion extends React.Component {
+class RothRegD extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
 
   _next = (event) => {
     event.preventDefault();
-    this.props.handleNextStep("BLANK_YES");
+    this.props.updateCurrentUser(this.props.currentUser.id, { roth_eligable: true },this.props.currentStep);
+    this.props.handleNextStep("BLANK_NEXT");
   };
 
-
   render() {
-    if (this.props.currentStep !== "TradIRAQuestion") {
+    if (this.props.currentStep !== "RothRegD") {
       return null;
     }
     return (
@@ -34,12 +34,12 @@ class TradIRAQuestion extends React.Component {
         </Row>
         <Row id="title" className="step">
           <Container>
-            <h3>Let's see if you qualify for a traditional IRA!</h3>
+            <h3>You can contribute 6k to a Roth IRA</h3>
           </Container>
         </Row>
         <Row id="body" className="step">
           <Container>
-            Let me explain...
+            BLANK_BODY
           </Container>
         </Row>
         <Row id="form" className="step"></Row>
@@ -66,7 +66,7 @@ class TradIRAQuestion extends React.Component {
                     block
                     onClick={this._next}
                   >
-                    Continue
+                    Yes
                   </Button>
                 </Col>
               </Form.Row>
@@ -88,4 +88,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(TradIRAQuestion);
+})(RothRegD);

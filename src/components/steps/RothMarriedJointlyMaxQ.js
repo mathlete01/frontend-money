@@ -9,19 +9,25 @@ import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 
-class RothEligable extends React.Component {
+class RothMarriedJointlyMaxQ extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
 
-  _next = (event) => {
+  _yes = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { roth_eligable: true },this.props.currentStep);
-    this.props.handleNextStep("BLANK_NEXT");
+    this.props.updateCurrentUser(this.props.currentUser.id, { married_max: true },this.props.currentStep);
+    this.props.handleNextStep("math");
+  };
+
+  _no = (event) => {
+    event.preventDefault();
+    this.props.updateCurrentUser(this.props.currentUser.id, { married_max: false },this.props.currentStep);
+    this.props.handleNextStep("trad_ira");
   };
 
   render() {
-    if (this.props.currentStep !== "RothEligable") {
+    if (this.props.currentStep !== "RothMarriedJointlyMaxQ") {
       return null;
     }
     return (
@@ -34,12 +40,12 @@ class RothEligable extends React.Component {
         </Row>
         <Row id="title" className="step">
           <Container>
-            <h3>You can contribute 6k to a Roth IRA</h3>
+            <h3>Will you earn less than $203,000 this year?</h3>
           </Container>
         </Row>
         <Row id="body" className="step">
           <Container>
-            BLANK_BODY
+            $203,000 is the maximum you can earn and still contribute to a Roth IRA.
           </Container>
         </Row>
         <Row id="form" className="step"></Row>
@@ -48,7 +54,7 @@ class RothEligable extends React.Component {
             <Form.Group>
               <Form.Row>
                 <Col>
-                  {/* <Button
+                  <Button
                     className="no"
                     variant="danger"
                     size="lg"
@@ -56,7 +62,7 @@ class RothEligable extends React.Component {
                     onClick={this._no}
                   >
                     No
-                  </Button> */}
+                  </Button>
                 </Col>
                 <Col>
                   <Button
@@ -64,7 +70,7 @@ class RothEligable extends React.Component {
                     variant="success"
                     size="lg"
                     block
-                    onClick={this._next}
+                    onClick={this._yes}
                   >
                     Yes
                   </Button>
@@ -88,4 +94,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(RothEligable);
+})(RothMarriedJointlyMaxQ);

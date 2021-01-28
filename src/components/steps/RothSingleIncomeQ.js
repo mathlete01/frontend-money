@@ -9,7 +9,7 @@ import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 
-class EarnedIncomeRothSingle extends React.Component {
+class RothSingleIncomeQ extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
@@ -17,17 +17,17 @@ class EarnedIncomeRothSingle extends React.Component {
   _yes = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { earned_income: true },this.props.currentStep);
-    this.props.handleNextStep("Below50RothSingle");
+    this.props.handleNextStep("RothSingle50Q");
   };
 
   _no = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { earned_income: false },this.props.currentStep);
-    this.props.handleNextStep("RothMax");
+    this.props.handleNextStep("RothSingleUnderD");
   };
 
   render() {
-    if (this.props.currentStep !== "EarnedIncomeRothSingle") {
+    if (this.props.currentStep !== "RothSingleIncomeQ") {
       return null;
     }
     return (
@@ -94,4 +94,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(EarnedIncomeRothSingle);
+})(RothSingleIncomeQ);

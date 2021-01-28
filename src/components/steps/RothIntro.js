@@ -7,29 +7,25 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 
-class MarriedMax extends React.Component {
+class RothIntro extends React.Component {
+  _next = (event) => {
+    event.preventDefault();
+    this.props.handleNextStep("FooRothSingleQ");
+  };
+
   _prev = () => {
     this.props.handlePrevStep();
   };
 
-  _yes = (event) => {
-    event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { married_max: true },this.props.currentStep);
-    this.props.handleNextStep("math");
-  };
-
-  _no = (event) => {
-    event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { married_max: false },this.props.currentStep);
-    this.props.handleNextStep("trad_ira");
-  };
-
   render() {
-    if (this.props.currentStep !== "MarriedMax") {
+    if (this.props.currentStep !== "RothIntro") {
       return null;
     }
+
     return (
       <Container className="step">
         <Row id="header" className="step">
@@ -40,12 +36,18 @@ class MarriedMax extends React.Component {
         </Row>
         <Row id="title" className="step">
           <Container>
-            <h3>Will you earn less than $203,000 this year?</h3>
+            <h3>Rung #3: Max-out a Roth IRA</h3>
           </Container>
         </Row>
         <Row id="body" className="step">
           <Container>
-            $203,000 is the maximum you can earn and still contribute to a Roth IRA.
+            Roth IRAs are great for a number of reasons. The best thing about
+            them is that, because you can withdraw your contributions at any
+            time for any reason, they're like a piggy bank you can break in an
+            emergency. Even if you don't qualify for a Roth IRA because of age
+            or income, you can still open a Roth IRA using a totally legal
+            loophole called a "Backdoor Roth IRA". We'll cross that bridge if we
+            need to, but let's see if you qualify first.
           </Container>
         </Row>
         <Row id="form" className="step"></Row>
@@ -54,25 +56,16 @@ class MarriedMax extends React.Component {
             <Form.Group>
               <Form.Row>
                 <Col>
-                  <Button
-                    className="no"
-                    variant="danger"
-                    size="lg"
-                    block
-                    onClick={this._no}
-                  >
-                    No
-                  </Button>
                 </Col>
                 <Col>
                   <Button
                     className="yes"
-                    variant="success"
+                    variant="primary"
                     size="lg"
                     block
-                    onClick={this._yes}
+                    onClick={this._next}
                   >
-                    Yes
+                    Continue
                   </Button>
                 </Col>
               </Form.Row>
@@ -94,4 +87,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(MarriedMax);
+})(RothIntro);

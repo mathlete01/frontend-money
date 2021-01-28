@@ -7,25 +7,24 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
+import Table from 'react-bootstrap/Table'
 
-class RothIRA extends React.Component {
-  _next = (event) => {
-    event.preventDefault();
-    this.props.handleNextStep("Single");
-  };
-
+class RothSingleTweenD extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
 
+  _next = (event) => {
+    event.preventDefault();
+    this.props.updateCurrentUser(this.props.currentUser.id, { BLANK_DB: true },this.props.currentStep);
+    this.props.handleNextStep("BLANK_NEXT");
+  };
+
   render() {
-    if (this.props.currentStep !== "RothIRA") {
+    if (this.props.currentStep !== "RothSingleTweenD") {
       return null;
     }
-
     return (
       <Container className="step">
         <Row id="header" className="step">
@@ -36,19 +35,69 @@ class RothIRA extends React.Component {
         </Row>
         <Row id="title" className="step">
           <Container>
-            <h3>Rung #3: Max-out a Roth IRA</h3>
+            <h3>You're right inbetween!</h3>
           </Container>
         </Row>
         <Row id="body" className="step">
           <Container>
-            Roth IRAs are great for a number of reasons. The best thing about
-            them is that, because you can withdraw your contributions at any
-            time for any reason, they're like a piggy bank you can break in an
-            emergency. Even if you don't qualify for a Roth IRA because of age
-            or income, you can still open a Roth IRA using a totally legal
-            loophole called a "Backdoor Roth IRA". We'll cross that bridge if we
-            need to, but let's see if you qualify first.
+            BLANK_BODY
           </Container>
+        </Row>
+        <Row>
+        <Table striped bordered hover>
+  <thead>
+    <tr>
+      <th>Your Modified Adjusted Gross Income (MAGI)</th>
+      <th>Max Contribution if under 50</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>under $124,000</td>
+      <td>$6,000</td>
+    </tr>
+    <tr>
+      <td>$125,500	</td>
+      <td>$5,400	</td>
+    </tr>
+    <tr>
+      <td >$127,000	</td>
+      <td>$4,800	</td>
+    </tr>
+    <tr>
+      <td >$128,500	</td>
+      <td>$4,200	</td>
+    </tr>
+    <tr>
+      <td >$130,000	</td>
+      <td>$3,600	</td>
+    </tr>
+    <tr>
+      <td >$131,500	</td>
+      <td>$3,000	</td>
+    </tr>
+    <tr>
+      <td >$133,000	</td>
+      <td>$2,400	</td>
+    </tr>
+    <tr>
+      <td >$134,500	</td>
+      <td>$1,800	</td>
+    </tr>
+    <tr>
+      <td >$136,000	</td>
+      <td>$1,200	</td>
+    </tr>
+    <tr>
+      <td >$137,500	</td>
+      <td>$600	</td>
+    </tr>
+    <tr>
+      <td >$139,000 and over	</td>
+      <td>$0 😕	</td>
+    </tr>
+  </tbody>
+</Table>
         </Row>
         <Row id="form" className="step"></Row>
         <Row id="buttons" className="step">
@@ -65,7 +114,7 @@ class RothIRA extends React.Component {
                     block
                     onClick={this._next}
                   >
-                    Continue
+                    Okay
                   </Button>
                 </Col>
               </Form.Row>
@@ -87,4 +136,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(RothIRA);
+})(RothSingleTweenD);
