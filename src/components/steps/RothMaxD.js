@@ -17,7 +17,7 @@ class RothMaxD extends React.Component {
   _next = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { roth_max: true },this.props.currentStep);
-    this.props.handleNextStep("BLANK_NEXT");
+    this.props.handleNextStep("MoreToSpendQ");
   };
 
   render() {
@@ -66,7 +66,7 @@ class RothMaxD extends React.Component {
                     block
                     onClick={this._next}
                   >
-                    Next
+                    Continue
                   </Button>
                 </Col>
               </Form.Row>

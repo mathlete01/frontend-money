@@ -16,7 +16,7 @@ class Four01kMaxRec extends React.Component {
 
   _next = (event) => {
     event.preventDefault();
-    this.props.handleNextStep("DoneForNow");
+    this.props.handleNextStep("MoreToSpendQ");
   };
 
   render() {

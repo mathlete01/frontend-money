@@ -17,7 +17,7 @@ class RothRegD extends React.Component {
   _next = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { roth_eligable: true },this.props.currentStep);
-    this.props.handleNextStep("BLANK_NEXT");
+    this.props.handleNextStep("MoreToSpendQ");
   };
 
   render() {
@@ -61,12 +61,12 @@ class RothRegD extends React.Component {
                 <Col>
                   <Button
                     className="yes"
-                    variant="success"
+                    variant="primary"
                     size="lg"
                     block
                     onClick={this._next}
                   >
-                    Yes
+                    Continue
                   </Button>
                 </Col>
               </Form.Row>

@@ -14,11 +14,9 @@ import RothMarriedJointlyMinQ from "./steps/RothMarriedJointlyMinQ";
 import RothMarriedJointlyMaxQ from "./steps/RothMarriedJointlyMaxQ";
 import RothMarriedJointlyIncomeQ from "./steps/RothMarriedJointlyIncomeQ";
 import RothMarriedJointly50Q from "./steps/RothMarriedJointly50Q";
-import Math from "./steps/RENAME-1";
 import RothRegD from "./steps/RothRegD";
 import RothIntro from "./steps/RothIntro";
 import RothMaxD from "./steps/RothMaxD";
-import RothRec from "./steps/RENAME-2";
 import Rung1Determination from "./steps/Rung1Determination";
 import SaveYourWork from "./steps/SaveYourWork";
 import RothSingleTweenD from "./steps/RothSingleTweenD";
@@ -40,6 +38,7 @@ import RothMarriedJointlyTweenD from "./steps/RothMarriedJointlyTweenD";
 import RothMarriedJointlyOverD from "./steps/RothMarriedJointlyOverD";
 import Four01kMaxRec from "./steps/Four01kMaxRec";
 import TaxableBrokerageIntro from "./steps/TaxableBrokerageIntro";
+import MoreToSpendQ from "./steps/MoreToSpendQ";
 
 
 class MasterForm extends React.Component {
@@ -127,10 +126,7 @@ class MasterForm extends React.Component {
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
-        <Math
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        />
+      
         <RothRegD
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
@@ -143,10 +139,7 @@ class MasterForm extends React.Component {
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
-        <RothRec
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        />
+        
         <Rung1Determination
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
@@ -212,6 +205,10 @@ class MasterForm extends React.Component {
           handleNextStep={this.handleNextStep}
         />
         <RothMarriedJointlyTweenD
+          handlePrevStep={this.handlePrevStep}
+          handleNextStep={this.handleNextStep}
+        />
+        <MoreToSpendQ
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />

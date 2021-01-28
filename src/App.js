@@ -149,7 +149,7 @@ class App extends React.Component {
         <Container>
           <Row>
             <Col></Col>
-            <Col md={6} className="containerContainer">
+            <Col md={8} className="containerContainer">
               <StepContainer className="h-100" />
             </Col>
 

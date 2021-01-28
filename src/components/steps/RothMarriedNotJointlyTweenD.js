@@ -17,7 +17,7 @@ class RothMarriedNotJointlyTweenD extends React.Component {
   _yes = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { BLANK_DB: true });
-    this.props.handleNextStep("BLANK_YES");
+    this.props.handleNextStep("MoreToSpendQ");
   };
 
   render() {
