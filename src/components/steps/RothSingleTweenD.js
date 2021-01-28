@@ -35,12 +35,12 @@ class RothSingleTweenD extends React.Component {
         </Row>
         <Row id="title" className="step">
           <Container>
-            <h3>You're right inbetween!</h3>
+            <h3>You're an Inbetweener, income-wise</h3>
           </Container>
         </Row>
         <Row id="body" className="step">
           <Container>
-            BLANK_BODY
+            Since you'll make more than $124k but less than $139k this year, the amount you'll be able to contribute is reduced. Check out the table below to see the maximum you're allowed to contribtue to a Roth IRA based on your income.
           </Container>
         </Row>
         <Row>

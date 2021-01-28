@@ -34,7 +34,7 @@ class BackdoorRothIntro extends React.Component {
         </Row>
         <Row id="title" className="step">
           <Container>
-            <h3>Let's see if you qualify for a traditional IRA!</h3>
+            <h3>Remember when we said you made too much money to contribute to a regular Roth IRA? Well, let me introduce you to something called a Backdoor Roth IRA..!</h3>
           </Container>
         </Row>
         <Row id="body" className="step">
@@ -61,7 +61,7 @@ class BackdoorRothIntro extends React.Component {
                 <Col>
                   <Button
                     className="yes"
-                    variant="success"
+                    variant="primary"
                     size="lg"
                     block
                     onClick={this._next}

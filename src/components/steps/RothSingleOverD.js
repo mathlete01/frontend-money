@@ -31,7 +31,7 @@ class RothSingleOverD extends React.Component {
     switch (true) {
       // Case: Yes 401k --> are you maxing it out?
       case four01k === true:
-        this.nextStep = "MaxOutQuestion"
+        this.nextStep = "Four01kMaxOutQ"
         break;
       // Case:  No 401K  --> Try for traditional IRA
       case four01k === false:
@@ -62,13 +62,12 @@ class RothSingleOverD extends React.Component {
         </Row>
         <Row id="title" className="step">
           <Container>
-            <h3>Your income is too high to contribute to a Roth IRA</h3>
+            <h3>Your income is too high to contribute to a regular Roth IRA</h3>
           </Container>
         </Row>
         <Row id="body" className="step">
           <Container>
-            Ok, since you'll make more than $137K this year, you're not eligible
-            to contribute to a Roth IRA.
+            Ok, since you'll make more than $137K this year, you're not eligible to contribute to a regular Roth IRA. 
           </Container>
         </Row>
         <Row id="form" className="step"></Row>

@@ -9,25 +9,18 @@ import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 
-class FooRothSingleQ extends React.Component {
+class Four01kMaxRec extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
 
-  _yes = (event) => {
+  _next = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { single: true });
-    this.props.handleNextStep("RothSingleMinQ");
-  };
-
-  _no = (event) => {
-    event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { single: false });
-    this.props.handleNextStep("RothMarriedJointlyQ");
+    this.props.handleNextStep("DoneForNow");
   };
 
   render() {
-    if (this.props.currentStep !== "FooRothSingleQ") {
+    if (this.props.currentStep !== "Four01kMaxRec") {
       return null;
     }
     return (
@@ -40,7 +33,7 @@ class FooRothSingleQ extends React.Component {
         </Row>
         <Row id="title" className="step">
           <Container>
-            <h3>Are you single?</h3>
+            <h3>Rung #4: Max out your 401k</h3>
           </Container>
         </Row>
         <Row id="body" className="step">
@@ -54,25 +47,16 @@ class FooRothSingleQ extends React.Component {
             <Form.Group>
               <Form.Row>
                 <Col>
-                  <Button
-                    className="no"
-                    variant="danger"
-                    size="lg"
-                    block
-                    onClick={this._no}
-                  >
-                    No
-                  </Button>
                 </Col>
                 <Col>
                   <Button
                     className="yes"
-                    variant="success"
+                    variant="primary"
                     size="lg"
                     block
                     onClick={this._yes}
                   >
-                    Yes
+                    Okay
                   </Button>
                 </Col>
               </Form.Row>
@@ -94,4 +78,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(FooRothSingleQ);
+})(Four01kMaxRec);

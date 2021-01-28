@@ -7,25 +7,23 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 
-class RothIntro extends React.Component {
-  _next = (event) => {
-    event.preventDefault();
-    this.props.handleNextStep("RothSingleQ");
-  };
-
+class TaxableBrokerageIntro extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
 
+  _next = (event) => {
+    event.preventDefault();
+    this.props.handleNextStep("BLANK_YES");
+  };
+
+
   render() {
-    if (this.props.currentStep !== "RothIntro") {
+    if (this.props.currentStep !== "TaxableBrokerageIntro") {
       return null;
     }
-
     return (
       <Container className="step">
         <Row id="header" className="step">
@@ -36,18 +34,12 @@ class RothIntro extends React.Component {
         </Row>
         <Row id="title" className="step">
           <Container>
-            <h3>Rung #3: Max-out a Roth IRA</h3>
+            <h3>Let's see if you qualify for a traditional IRA!</h3>
           </Container>
         </Row>
         <Row id="body" className="step">
           <Container>
-            Roth IRAs are great for a number of reasons. The best thing about
-            them is that, because you can withdraw your contributions at any
-            time for any reason, they're like a piggy bank you can break in an
-            emergency. Even if you don't qualify for a Roth IRA because of age
-            or income, you can still open a Roth IRA using a totally legal
-            loophole called a "Backdoor Roth IRA". We'll cross that bridge if we
-            need to, but let's see if you qualify first.
+            Let me explain...
           </Container>
         </Row>
         <Row id="form" className="step"></Row>
@@ -56,11 +48,20 @@ class RothIntro extends React.Component {
             <Form.Group>
               <Form.Row>
                 <Col>
+                  {/* <Button
+                    className="no"
+                    variant="danger"
+                    size="lg"
+                    block
+                    onClick={this._no}
+                  >
+                    No
+                  </Button> */}
                 </Col>
                 <Col>
                   <Button
                     className="yes"
-                    variant="primary"
+                    variant="success"
                     size="lg"
                     block
                     onClick={this._next}
@@ -87,4 +88,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(RothIntro);
+})(TaxableBrokerageIntro);

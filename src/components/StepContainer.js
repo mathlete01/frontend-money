@@ -8,11 +8,12 @@ import Four01kContribution from "./steps/Four01k_Contribution";
 import Four01kMatch from "./steps/Four01kMatch";
 import Four01kMaxOutQ from "./steps/Four01kMaxOutQ";
 import Four01kQ from "./steps/Four01kQ";
-import GoalMaxOut401k from "./steps/GoalMaxOut401k";
 import Intro from "./steps/Intro";
 import LeftoverMoney from "./steps/LeftoverMoney";
 import RothMarriedJointlyMinQ from "./steps/RothMarriedJointlyMinQ";
 import RothMarriedJointlyMaxQ from "./steps/RothMarriedJointlyMaxQ";
+import RothMarriedJointlyIncomeQ from "./steps/RothMarriedJointlyIncomeQ";
+import RothMarriedJointly50Q from "./steps/RothMarriedJointly50Q";
 import Math from "./steps/RENAME-1";
 import RothRegD from "./steps/RothRegD";
 import RothIntro from "./steps/RothIntro";
@@ -20,21 +21,26 @@ import RothMaxD from "./steps/RothMaxD";
 import RothRec from "./steps/RENAME-2";
 import Rung1Determination from "./steps/Rung1Determination";
 import SaveYourWork from "./steps/SaveYourWork";
-import xRothSingleQ from "./steps/xRothSingleQ";
 import RothSingleTweenD from "./steps/RothSingleTweenD";
 import RothSingle50Q from "./steps/RothSingle50Q";
 import RothSingleMinQ from "./steps/RothSingleMinQ";
 import RothSingleMaxQ from "./steps/RothSingleMaxQ";
 import RothSingleOverD from "./steps/RothSingleOverD";
 import RothSingleUnderD from "./steps/RothSingleUnderD";
-import SingleRothCalc from "./steps/RENAME-3";
+import RothMarriedNotJointlyTweenD from "./steps/RothMarriedNotJointlyTweenD";
+import RothMarriedNotJointlyMinQ from "./steps/RothMarriedNotJointlyMinQ";
+import RothMarriedNotJointlyOverD from "./steps/RothMarriedNotJointlyOverD";
 import BackdoorRothIntro from "./steps/BackdoorRothIntro";
-import FooRothSingleQ from "./steps/FooRothSingleQ";
-// import BLANK from "./steps/BLANK";
+import RothSingleQ from "./steps/RothSingleQ";
 import { connect } from "react-redux";
 import { updateCurrentStep } from "../actions/stepActions";
 import { updateCurrentUser } from "../actions/userActions";
 import Container from "react-bootstrap/Container";
+import RothMarriedJointlyTweenD from "./steps/RothMarriedJointlyTweenD";
+import RothMarriedJointlyOverD from "./steps/RothMarriedJointlyOverD";
+import Four01kMaxRec from "./steps/Four01kMaxRec";
+import TaxableBrokerageIntro from "./steps/TaxableBrokerageIntro";
+
 
 class MasterForm extends React.Component {
   constructor(props) {
@@ -108,10 +114,6 @@ class MasterForm extends React.Component {
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
-        <GoalMaxOut401k
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        />
         <Intro handleNextStep={this.handleNextStep} />
         <LeftoverMoney
           handlePrevStep={this.handlePrevStep}
@@ -153,10 +155,6 @@ class MasterForm extends React.Component {
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
-        <xRothSingleQ
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        />
         <RothSingleTweenD
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
@@ -169,7 +167,7 @@ class MasterForm extends React.Component {
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
-        <SingleRothCalc
+        <RothMarriedNotJointlyTweenD
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
@@ -181,10 +179,43 @@ class MasterForm extends React.Component {
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
-        <FooRothSingleQ
+        <RothSingleQ
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
+        <RothMarriedJointlyIncomeQ
+          handlePrevStep={this.handlePrevStep}
+          handleNextStep={this.handleNextStep}
+        />
+        <RothMarriedJointly50Q
+          handlePrevStep={this.handlePrevStep}
+          handleNextStep={this.handleNextStep}
+        />
+        <RothMarriedNotJointlyMinQ
+          handlePrevStep={this.handlePrevStep}
+          handleNextStep={this.handleNextStep}
+        />
+        <RothMarriedNotJointlyOverD
+          handlePrevStep={this.handlePrevStep}
+          handleNextStep={this.handleNextStep}
+        />
+        <TaxableBrokerageIntro
+          handlePrevStep={this.handlePrevStep}
+          handleNextStep={this.handleNextStep}
+        />
+        <Four01kMaxRec
+          handlePrevStep={this.handlePrevStep}
+          handleNextStep={this.handleNextStep}
+        />
+        <RothMarriedJointlyOverD
+          handlePrevStep={this.handlePrevStep}
+          handleNextStep={this.handleNextStep}
+        />
+        <RothMarriedJointlyTweenD
+          handlePrevStep={this.handlePrevStep}
+          handleNextStep={this.handleNextStep}
+        />
+        
       </Container>
     );
   }

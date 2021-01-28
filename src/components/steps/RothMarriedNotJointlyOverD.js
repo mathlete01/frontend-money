@@ -9,19 +9,47 @@ import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 
-class SingleRothCalc extends React.Component {
+class RothMarriedNotJointlyOverD extends React.Component {
+  _next = (event) => {
+    event.preventDefault();
+    this.props.handleNextStep(this.nextStep);
+  };
+
   _prev = () => {
     this.props.handlePrevStep();
   };
 
-  _yes = (event) => {
-    event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { BLANK_DB: true });
-    this.props.handleNextStep("BLANK_YES");
+  makeDetermination = () => {
+    // console.log("makeDetermination called");
+    const {
+      leftover_money,
+      four01k,
+      four01k_match,
+      four01k_contribution,
+      credit_card_debt,
+    } = this.props.currentUser;
+    switch (true) {
+      // Case: Yes 401k --> are you maxing it out?
+      case four01k === true:
+        this.nextStep = "Four01kMaxOutQ"
+        break;
+      // Case:  No 401K  --> Try for traditional IRA
+      case four01k === false:
+        this.nextStep = "BackdoorRothIntro";
+        break;
+      default:
+        this.advice = "Whoops, we've encountered an error. How embarassing.";
+    }
   };
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.currentStep !== this.props.currentStep) {
+      this.makeDetermination();
+    }
+  }
+
   render() {
-    if (this.props.currentStep !== "SingleRothCalc") {
+    if (this.props.currentStep !== "RothMarriedNotJointlyOverD") {
       return null;
     }
     return (
@@ -34,12 +62,12 @@ class SingleRothCalc extends React.Component {
         </Row>
         <Row id="title" className="step">
           <Container>
-            <h3>You're right inbetween!</h3>
+          <h3>You make too much to contribute to a regular Roth IRA.</h3>
           </Container>
         </Row>
         <Row id="body" className="step">
           <Container>
-          Ok, since you'll make more than $122K but less than $137K this year, we gotta do some math to figure out how much you're allowed to contribute to a Roth IRA. <a href="https://www.calcxml.com/calculators/ira-calculator" target="_blank">Use this calculator to find out</a>, then hit "Continue".
+          Ok, since you'll make more than $10k this year, you're not eligible to contribute to a regular Roth IRA. 
           </Container>
         </Row>
         <Row id="form" className="step"></Row>
@@ -55,7 +83,7 @@ class SingleRothCalc extends React.Component {
                     variant="primary"
                     size="lg"
                     block
-                    onClick={this._yes}
+                    onClick={this._next}
                   >
                     Continue
                   </Button>
@@ -79,4 +107,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(SingleRothCalc);
+})(RothMarriedNotJointlyOverD);

@@ -9,18 +9,25 @@ import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 
-class GoalMaxOut401k extends React.Component {
+class RothMarriedNotJointlyMinQ extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
 
-  _next = (event) => {
+  _yes = (event) => {
     event.preventDefault();
-    this.props.handleNextStep("DoneForNow");
+    this.props.updateCurrentUser(this.props.currentUser.id, { married_between: true },this.props.currentStep);
+    this.props.handleNextStep("RothMarriedNotJointlyTweenD");
+  };
+
+  _no = (event) => {
+    event.preventDefault();
+    this.props.updateCurrentUser(this.props.currentUser.id, { married_between: false },this.props.currentStep);
+    this.props.handleNextStep("RothMarriedNotJointlyOverD");
   };
 
   render() {
-    if (this.props.currentStep !== "GoalMaxOut401k") {
+    if (this.props.currentStep !== "RothMarriedNotJointlyMinQ") {
       return null;
     }
     return (
@@ -33,12 +40,12 @@ class GoalMaxOut401k extends React.Component {
         </Row>
         <Row id="title" className="step">
           <Container>
-            <h3>Rung #4: Max out your 401k</h3>
+            <h3>Will you earn less than $10,000 this year?</h3>
           </Container>
         </Row>
         <Row id="body" className="step">
           <Container>
-            BLANK_BODY
+            That's the minimim amount you can earn to qualify for a Roth IRA if you file your taxes singly as a married person.
           </Container>
         </Row>
         <Row id="form" className="step"></Row>
@@ -47,6 +54,15 @@ class GoalMaxOut401k extends React.Component {
             <Form.Group>
               <Form.Row>
                 <Col>
+                  <Button
+                    className="no"
+                    variant="danger"
+                    size="lg"
+                    block
+                    onClick={this._no}
+                  >
+                    No
+                  </Button>
                 </Col>
                 <Col>
                   <Button
@@ -56,7 +72,7 @@ class GoalMaxOut401k extends React.Component {
                     block
                     onClick={this._yes}
                   >
-                    Okay
+                    Yes
                   </Button>
                 </Col>
               </Form.Row>
@@ -78,4 +94,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(GoalMaxOut401k);
+})(RothMarriedNotJointlyMinQ);

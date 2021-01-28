@@ -7,25 +7,51 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 
-class RothIntro extends React.Component {
+class RothMarriedJointlyOverD extends React.Component {
   _next = (event) => {
     event.preventDefault();
-    this.props.handleNextStep("RothSingleQ");
+    this.props.handleNextStep(this.nextStep);
   };
 
   _prev = () => {
     this.props.handlePrevStep();
   };
 
+  makeDetermination = () => {
+    // console.log("makeDetermination called");
+    const {
+      leftover_money,
+      four01k,
+      four01k_match,
+      four01k_contribution,
+      credit_card_debt,
+    } = this.props.currentUser;
+    switch (true) {
+      // Case: Yes 401k --> are you maxing it out?
+      case four01k === true:
+        this.nextStep = "Four01kMaxOutQ"
+        break;
+      // Case:  No 401K  --> Try for traditional IRA
+      case four01k === false:
+        this.nextStep = "BackdoorRothIntro";
+        break;
+      default:
+        this.advice = "Whoops, we've encountered an error. How embarassing.";
+    }
+  };
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.currentStep !== this.props.currentStep) {
+      this.makeDetermination();
+    }
+  }
+
   render() {
-    if (this.props.currentStep !== "RothIntro") {
+    if (this.props.currentStep !== "RothMarriedJointlyOverD") {
       return null;
     }
-
     return (
       <Container className="step">
         <Row id="header" className="step">
@@ -36,18 +62,12 @@ class RothIntro extends React.Component {
         </Row>
         <Row id="title" className="step">
           <Container>
-            <h3>Rung #3: Max-out a Roth IRA</h3>
+            <h3>Your income is too high to contribute to a regular Roth IRA</h3>
           </Container>
         </Row>
         <Row id="body" className="step">
           <Container>
-            Roth IRAs are great for a number of reasons. The best thing about
-            them is that, because you can withdraw your contributions at any
-            time for any reason, they're like a piggy bank you can break in an
-            emergency. Even if you don't qualify for a Roth IRA because of age
-            or income, you can still open a Roth IRA using a totally legal
-            loophole called a "Backdoor Roth IRA". We'll cross that bridge if we
-            need to, but let's see if you qualify first.
+          Ok, since you'll make more than $203K this year, you're not eligible to contribute to a regular Roth IRA. 
           </Container>
         </Row>
         <Row id="form" className="step"></Row>
@@ -87,4 +107,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(RothIntro);
+})(RothMarriedJointlyOverD);

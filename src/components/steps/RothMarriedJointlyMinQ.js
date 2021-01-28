@@ -17,13 +17,13 @@ class RothMarriedJointlyMinQ extends React.Component {
   _yes = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { married_between: true },this.props.currentStep);
-    this.props.handleNextStep("below_50");
+    this.props.handleNextStep("RothMarriedJointlyIncomeQ");
   };
 
   _no = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { married_between: false },this.props.currentStep);
-    this.props.handleNextStep("married_max");
+    this.props.handleNextStep("RothMarriedJointlyMaxQ");
   };
 
   render() {
@@ -40,7 +40,7 @@ class RothMarriedJointlyMinQ extends React.Component {
         </Row>
         <Row id="title" className="step">
           <Container>
-            <h3>Will you earn less than $193,000 this year?</h3>
+            <h3>As a couple, will your Modified Adjusted Gross Income be less than $193,000 this year?</h3>
           </Container>
         </Row>
         <Row id="body" className="step">

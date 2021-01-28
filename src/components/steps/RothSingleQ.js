@@ -9,25 +9,25 @@ import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 
-class xRothSingleQ extends React.Component {
+class RothSingleQ extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
 
   _yes = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { single: true },this.props.currentStep);
+    this.props.updateCurrentUser(this.props.currentUser.id, { single: true });
     this.props.handleNextStep("RothSingleMinQ");
   };
 
   _no = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { single: false },this.props.currentStep);
+    this.props.updateCurrentUser(this.props.currentUser.id, { single: false });
     this.props.handleNextStep("RothMarriedJointlyQ");
   };
 
   render() {
-    if (this.props.currentStep !== "Single") {
+    if (this.props.currentStep !== "RothSingleQ") {
       return null;
     }
     return (
@@ -45,7 +45,7 @@ class xRothSingleQ extends React.Component {
         </Row>
         <Row id="body" className="step">
           <Container>
-            Your marriage status, along with other factors, can determine if you qualify for a Roth IRA.
+            BLANK_BODY
           </Container>
         </Row>
         <Row id="form" className="step"></Row>
@@ -94,4 +94,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(xRothSingleQ);
+})(RothSingleQ);
