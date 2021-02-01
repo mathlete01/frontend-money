@@ -16,13 +16,13 @@ class RothSingle50Q extends React.Component {
 
   _yes = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { below_50: true },this.props.currentStep);
+    this.props.updateCurrentUser(this.props.currentUser.id, { RothRegD: true },this.props.currentStep);
     this.props.handleNextStep("RothRegD");
   };
 
   _no = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { below_50: false },this.props.currentStep);
+    this.props.updateCurrentUser(this.props.currentUser.id, { RothMaxD: false },this.props.currentStep);
     this.props.handleNextStep("RothMaxD");
   };
 

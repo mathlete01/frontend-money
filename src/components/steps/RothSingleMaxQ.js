@@ -16,13 +16,13 @@ class RothSingleMaxQ extends React.Component {
 
   _yes = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { singleBetween: true },this.props.currentStep);
+    this.props.updateCurrentUser(this.props.currentUser.id, { single_between: true },this.props.currentStep);
     this.props.handleNextStep("RothSingleTweenD");
   };
 
   _no = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { singleBetween: false },this.props.currentStep);
+    this.props.updateCurrentUser(this.props.currentUser.id, { single_between: false },this.props.currentStep);
     this.props.handleNextStep("RothSingleOverD");
   };
 

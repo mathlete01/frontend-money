@@ -41,7 +41,7 @@ class RothIntro extends React.Component {
         </Row>
         <Row id="body" className="step">
           <Container>
-          Roth IRAs are great for three reaons:
+          Roth IRAs are great for three reasons:
               <ol>
                 <li>Your money grows tax-free</li>
                 <li>

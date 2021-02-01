@@ -8,6 +8,8 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
+import Table from 'react-bootstrap/Table'
+import { Tabs, Tab } from "react-bootstrap";
 
 class RothRegD extends React.Component {
   _prev = () => {

@@ -28,7 +28,7 @@ import StepContainer from "./components/StepContainer";
 import "./App.css";
 import Ladder from "./components/Ladder";
 import { Form, FormControl, NavItem } from "react-bootstrap";
-import background from "./img/Louis_Vuitton.png"
+import background from "./img/Louis_Vuitton-blue.png"
 
 library.add(faSwimmingPool, faCoffee, faHandPointLeft, faChevronLeft);
 
