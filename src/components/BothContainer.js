@@ -14,14 +14,14 @@ class BothContainer extends React.Component {
   render() {
     return (
       <Row className="bothContainer justify-content-md-center">
-        <Col md={5} >
+        <Col md={6} >
           <StepContainer 
           className="h-100"
           handleNextDirective = {this.props.handleNextDirective} 
           />
         </Col>
-        <Col md={1}></Col>
-        <Col md={5} >
+        {/* <Col md={1}></Col> */}
+        <Col md={6} >
           <DirectiveContainer 
           className="h-100"
           directives = {this.props.directives} 
