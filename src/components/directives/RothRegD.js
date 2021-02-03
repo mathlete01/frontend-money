@@ -28,19 +28,19 @@ class RothRegD extends React.Component {
 
   render() {
     return (
-      <Container className="step">
-        <Row id="title" className="step">
+      <Container className="directive">
+        <Row id="title" className="rowElement">
           <Container>
             <h6>YOUR NEXT PRIORITY:</h6>
             <h3>Max-out your Roth IRA</h3>
           </Container>
         </Row>
-        <Row id="body" className="step">
+        <Row id="body" className="rowElement">
           <Container>
             You can contribute up to $6k to a Roth IRA, so do it!
           </Container>
         </Row>
-        <Row>
+        <Row className="rowElement">
           <Tabs defaultActiveKey="what" id="uncontrolled-tab-example">
             <Tab eventKey="what" title="What">
               <ul>

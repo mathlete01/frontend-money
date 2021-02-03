@@ -83,26 +83,26 @@ class LeftoverMoney extends React.Component {
     }
     return (
       <Container className="step">
-        <Row id="header" className="step">
+        <Row id="header" className="rowElement">
           <Button onClick={this._prev} variant="link" disabled>
             <FontAwesomeIcon icon="chevron-left" /> Back
           </Button>
           <hr className="w-100" />
         </Row>
-        <Row id="title" className="step">
+        <Row id="title" className="rowElement">
           <Container>
             <h3>
               How much money do you have every month to put towards your goals?
             </h3>
           </Container>
         </Row>
-        <Row id="body" className="step">
+        <Row id="body" className="rowElement">
           <Container>
             Estimations are fine, you can always come back and update the
             numbers later.
           </Container>
         </Row>
-        <Row id="form" className="step">
+        <Row id="form" className="rowElement">
           <Container>
             <Form.Group>
               <Form.Row>
@@ -134,7 +134,7 @@ class LeftoverMoney extends React.Component {
             </Form.Group>
           </Container>
         </Row>
-        <Row id="form" className="step">
+        <Row id="form" className="rowElement">
           <Container>
             <Form.Group>
               <Form.Row>
@@ -164,7 +164,7 @@ class LeftoverMoney extends React.Component {
             </Form.Group>
           </Container>
         </Row>
-        <Row id="form" className="step">
+        <Row id="form" className="rowElement">
           <Container>
             <Form.Group>
               <Form.Row>
@@ -196,7 +196,7 @@ class LeftoverMoney extends React.Component {
             </Form.Group>
           </Container>
         </Row>
-        <Row id="form" className="step">
+        <Row id="form" className="rowElement">
           <Container>
             <Form.Group>
               <Form.Row>
@@ -224,7 +224,7 @@ class LeftoverMoney extends React.Component {
             </Form.Group>
           </Container>
         </Row>
-        <Row id="buttons" className="step">
+        <Row id="buttons" className="rowElement">
           <Container>
             <Form.Group>
               <Form.Row>

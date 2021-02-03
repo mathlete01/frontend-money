@@ -28,21 +28,21 @@ class TaxableBrokerageIntro extends React.Component {
   render() {
    
     return (
-      <Container className="step">
+      <Container className="directive">
         
-        <Row id="title" className="step">
+        <Row id="title" className="rowElement">
           <Container>
             <h6>YOUR NEXT PRIORITY:</h6>
             <h3>Invest in a Taxable Brokerage Account</h3>
           </Container>
         </Row>
-        <Row id="body" className="step">
+        <Row id="body" className="rowElement">
           <Container>
             Do you have more disposible income to put towards your financial
             goals? If so, it's time to invest in a taxable brokerage account.
           </Container>
         </Row>
-        <Row>
+        <Row className="rowElement">
           <Tabs defaultActiveKey="what" id="uncontrolled-tab-example">
             <Tab eventKey="what" title="What">
               <ul>

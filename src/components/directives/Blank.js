@@ -24,25 +24,25 @@ class Blank extends React.Component {
   render() {
   
     return (
-      <Container className="step">
-        <Row id="header" className="step">
+      <Container className="directive">
+        <Row id="header" className="rowElement">
           <Button onClick={this._prev} variant="link">
             <FontAwesomeIcon icon="chevron-left" /> Back
           </Button>
           <hr className="w-100" />
         </Row>
-        <Row id="title" className="step">
+        <Row id="title" className="rowElement">
           <Container>
             <h6>BLANK:</h6>
             <h3>Blank</h3>
           </Container>
         </Row>
-        <Row id="body" className="step">
+        <Row id="body" className="rowElement">
           <Container>
             Also known as a Roth IRA Conversion, the Backdoor Roth is a (totally legal) loophole you ought to take advantage of.
           </Container>
         </Row>
-        <Row>
+        <Row className="rowElement">
           <Tabs defaultActiveKey="what" id="uncontrolled-tab-example">
             <Tab eventKey="what" title="What">
               <ul>
@@ -82,7 +82,7 @@ class Blank extends React.Component {
           </Tabs>
         </Row>
         <hr className="w-100" />
-        <Row id="buttons" className="step">
+        <Row id="buttons" className="rowElement">
           <Container>
             <Form.Group>
               <Form.Row>

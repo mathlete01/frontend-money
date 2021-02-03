@@ -24,20 +24,20 @@ class BackdoorRothIntro extends React.Component {
   render() {
    
     return (
-      <Container className="step">
+      <Container className="directive">
         
-        <Row id="title" className="step">
+        <Row id="title" className="rowElement">
           <Container>
             <h6>YOUR NEXT PRIORITY:</h6>
             <h3>Max-out a "Backdoor" Roth IRA</h3>
           </Container>
         </Row>
-        <Row id="body" className="step">
+        <Row id="body" className="rowElement">
           <Container>
             Also known as a Roth IRA Conversion, the Backdoor Roth is a (totally legal) loophole you ought to take advantage of.
           </Container>
         </Row>
-        <Row>
+        <Row className="rowElement">
           <Tabs defaultActiveKey="what" id="uncontrolled-tab-example">
             <Tab eventKey="what" title="What">
               <ul>

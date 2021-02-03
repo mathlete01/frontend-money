@@ -36,7 +36,8 @@ library.add(faSwimmingPool, faCoffee, faHandPointLeft, faChevronLeft);
 class App extends React.Component {
   state = {
     user: "",
-    directives: ["TaxableBrokerageIntro", "BackdoorRothIntro", "RothRegD"]
+    directives: ["TaxableBrokerageIntro", "BackdoorRothIntro", "RothRegD"],
+    // directives: []
   };
 
   renderForm = (routerProps) => {
@@ -54,7 +55,7 @@ class App extends React.Component {
     this.setState({
       directives: [...this.state.directives, nextDirective],
     });
-    this.props.updateCurrentDirective(nextDirective);
+    // this.props.updateCurrentDirective(nextDirective);
   };
 
   handleLogin = (credentialObj) => {
@@ -162,7 +163,6 @@ class App extends React.Component {
             <Col md={12}>
               <Container>
                 <BothContainer 
-                className="bothContainer"
                 handleNextDirective = {this.handleNextDirective}
                 directives = {this.state.directives}
                 />

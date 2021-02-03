@@ -25,20 +25,20 @@ class RothMarriedNotJointlyTweenD extends React.Component {
   render() {
  
     return (
-      <Container className="step">
-        <Row id="header" className="step">
+      <Container className="directive">
+        <Row id="header" className="rowElement">
           <Button onClick={this._prev} variant="link">
             <FontAwesomeIcon icon="chevron-left" /> Back
           </Button>
           <hr className="w-100" />
         </Row>
-        <Row id="title" className="step">
+        <Row id="title" className="rowElement">
           <Container>
             <h6>YOUR NEXT PRIORITY:</h6>
             <h3>Max-out your Roth IRA</h3>
           </Container>
         </Row>
-        <Row id="body" className="step">
+        <Row id="body" className="rowElement">
           <Container>
             Since your Modified Adjusted Gross Income as a couple will be less
             than $10k, the amount you'll be able to contribute is reduced. Check
@@ -46,7 +46,7 @@ class RothMarriedNotJointlyTweenD extends React.Component {
             to a Roth IRA based on your income.
           </Container>
         </Row>
-        <Row>
+        <Row className="rowElement">
           <Tabs defaultActiveKey="what" id="uncontrolled-tab-example">
             <Tab eventKey="what" title="What">
               <ul>
@@ -169,8 +169,8 @@ class RothMarriedNotJointlyTweenD extends React.Component {
         </Row>
         <hr className="w-100" />
         <Row></Row>
-        <Row id="form" className="step"></Row>
-        <Row id="buttons" className="step">
+        <Row id="form" className="rowElement"></Row>
+        <Row id="buttons" className="rowElement">
           <Container>
             <Form.Group>
               <Form.Row>

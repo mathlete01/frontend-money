@@ -1,16 +1,26 @@
 .bothContainer {
   margin-top: 30px;
   margin-bottom: 30px;
-  /* background-color: white; */
 }
 .stepContainer {
-  /* margin-top: 30px; */
-  /* margin-bottom: 30px; */
+  /* background-color: white; */
+}
+.directiveContainer {
+  /* background-color: white; */
+}
+.rowElement {
+  padding: 10px;
+  margin: 0px;
   background-color: white;
 }
 .directive {
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: white;
+}
+.step {
   margin-bottom: 30px;
-  padding: 10px;
+  padding: 0px;
   background-color: white;
 }
 .alert {
@@ -19,12 +29,7 @@
 body {
   /* background: blue; */
 }
-.step {
-  padding: 10px;
-  margin: 0px;
-}
 .tab-content {
-  /* padding: 10px; */
   margin: 15px 25px 15px 25px;
   width: 95%;
   text-align: left; 
@@ -33,16 +38,13 @@ body {
   margin-left:15px; 
 }
 ul { 
-	/* display: inline-block;  */
 	text-align: left; 
 	}
 .formField {
 }
 #title {
-  /* line-height: 1.428;   */
 }
 .no {
-  /* variant:"danger"; */
 }
 
 #bg {

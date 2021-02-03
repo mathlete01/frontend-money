@@ -123,16 +123,16 @@ class DirectiveContainer extends React.Component {
 
   render() {
     return (
-      <Container >
-        <Row className="directive">
+      <Container className="directiveContainer">
+        <Row >
           {this.directive1()}
         </Row>
         <Row></Row>
-        <Row  className="directive">
+        <Row >
           {this.directive2()}
         </Row>
         <Row></Row>
-        <Row className="directive">
+        <Row >
           {this.directive3()}
         </Row>
       </Container>
