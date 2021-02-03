@@ -42,7 +42,6 @@ class StepContainer extends React.Component {
   }
 
   handleNextStep = (nextStep) => {
-    console.log(`handleNextStep" nextStep = `, nextStep)
     this.setState({
       path: [...this.state.path, nextStep],
     });

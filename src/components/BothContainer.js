@@ -18,14 +18,12 @@ class BothContainer extends React.Component {
   };
 
   setNextStep = (nextStep) => {
-    console.log(`nextStep = `, nextStep)
     this.setState({
       nextStep: nextStep,
     });
   }
 
   handleNextDirective = (nextDirective) => {
-    // console.log(`nextDirective = `, nextDirective);
     if (this.state.directives.indexOf(nextDirective) !== -1) {
       return null;
     } else {
