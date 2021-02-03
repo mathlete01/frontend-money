@@ -8,7 +8,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
-import Table from 'react-bootstrap/Table'
+import Table from "react-bootstrap/Table";
 import { Tabs, Tab } from "react-bootstrap";
 
 class RothRegD extends React.Component {
@@ -18,20 +18,17 @@ class RothRegD extends React.Component {
 
   _next = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { roth_eligable: true },this.props.currentStep);
+    this.props.updateCurrentUser(
+      this.props.currentUser.id,
+      { roth_eligable: true },
+      this.props.currentStep
+    );
     this.props.handleNextStep("Four01kMaxOutQ");
   };
 
   render() {
-  
     return (
       <Container className="step">
-        <Row id="header" className="step">
-          <Button onClick={this._prev} variant="link">
-            <FontAwesomeIcon icon="chevron-left" /> Back
-          </Button>
-          <hr className="w-100" />
-        </Row>
         <Row id="title" className="step">
           <Container>
             <h6>YOUR NEXT PRIORITY:</h6>
@@ -89,45 +86,22 @@ class RothRegD extends React.Component {
             <Tab eventKey="how" title="How">
               <ul>
                 <li>
-                  The first thing you should do is put your money in a target date fund. Do it immediately, it's extremely low-risk and the earlier you do it, the better. Ask the people at the brokerage why people recommend a target date fund and they'll explain it to you.
+                  The first thing you should do is put your money in a target
+                  date fund. Do it immediately, it's extremely low-risk and the
+                  earlier you do it, the better. Ask the people at the brokerage
+                  why people recommend a target date fund and they'll explain it
+                  to you.
                 </li>
                 <li>
-                  Once that's set up, you can explore different investing strategies, if you want. But our advice is to just leave it in a target date fund and forget about it. This stratetgy is called "buy and hold". Trying to "time" the market by buying and selling only works if you can tell the future.
+                  Once that's set up, you can explore different investing
+                  strategies, if you want. But our advice is to just leave it in
+                  a target date fund and forget about it. This stratetgy is
+                  called "buy and hold". Trying to "time" the market by buying
+                  and selling only works if you can tell the future.
                 </li>
               </ul>
             </Tab>
           </Tabs>
-        </Row>
-        <hr className="w-100" />
-        <Row id="buttons" className="step">
-          <Container>
-            <Form.Group>
-              <Form.Row>
-                <Col>
-                  {/* <Button
-                    className="no"
-                    variant="danger"
-                    size="lg"
-                    block
-                    onClick={this._no}
-                  >
-                    No
-                  </Button> */}
-                </Col>
-                <Col>
-                  <Button
-                    className="yes"
-                    variant="primary"
-                    size="lg"
-                    block
-                    onClick={this._next}
-                  >
-                    Continue
-                  </Button>
-                </Col>
-              </Form.Row>
-            </Form.Group>
-          </Container>
         </Row>
       </Container>
     );

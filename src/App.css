@@ -1,7 +1,16 @@
-.containerContainer {
+.bothContainer {
   margin-top: 30px;
-  /* padding-left: ($spacer-x * .5); */
-  /* padding-right: ($spacer-x * .5); */
+  margin-bottom: 30px;
+  /* background-color: white; */
+}
+.stepContainer {
+  /* margin-top: 30px; */
+  /* margin-bottom: 30px; */
+  background-color: white;
+}
+.directive {
+  margin-bottom: 30px;
+  padding: 10px;
   background-color: white;
 }
 .alert {
@@ -35,15 +44,7 @@ ul {
 .no {
   /* variant:"danger"; */
 }
-/* #body {
-      
-}
-#formText {
 
-}
-#formField {
-
-} */
 #bg {
   height: 100vh;
   overflow-y: scroll;

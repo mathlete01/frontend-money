@@ -162,7 +162,7 @@ class App extends React.Component {
             <Col md={12}>
               <Container>
                 <BothContainer 
-                className="containerContainer"
+                className="bothContainer"
                 handleNextDirective = {this.handleNextDirective}
                 directives = {this.state.directives}
                 />

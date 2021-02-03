@@ -25,12 +25,7 @@ class BackdoorRothIntro extends React.Component {
    
     return (
       <Container className="step">
-        <Row id="header" className="step">
-          <Button onClick={this._prev} variant="link">
-            <FontAwesomeIcon icon="chevron-left" /> Back
-          </Button>
-          <hr className="w-100" />
-        </Row>
+        
         <Row id="title" className="step">
           <Container>
             <h6>YOUR NEXT PRIORITY:</h6>
@@ -81,28 +76,7 @@ class BackdoorRothIntro extends React.Component {
             </Tab>
           </Tabs>
         </Row>
-        <hr className="w-100" />
-        <Row id="buttons" className="step">
-          <Container>
-            <Form.Group>
-              <Form.Row>
-                <Col>
-                </Col>
-                <Col>
-                  <Button
-                    className="yes"
-                    variant="primary"
-                    size="lg"
-                    block
-                    onClick={this._next}
-                  >
-                    Continue
-                  </Button>
-                </Col>
-              </Form.Row>
-            </Form.Group>
-          </Container>
-        </Row>
+        
       </Container>
     );
   }

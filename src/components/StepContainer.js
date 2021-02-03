@@ -59,7 +59,7 @@ class StepContainer extends React.Component {
 
   render() {
     return (
-      <Container>
+      <Container className="stepContainer">
         <Rung1Step
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}

@@ -13,15 +13,15 @@ import { updateCurrentUser } from "../actions/userActions";
 class BothContainer extends React.Component {
   render() {
     return (
-      <Row>
-        <Col md={5} className="containerContainer">
+      <Row className="bothContainer justify-content-md-center">
+        <Col md={5} >
           <StepContainer 
           className="h-100"
           handleNextDirective = {this.props.handleNextDirective} 
           />
         </Col>
-        <Col></Col>
-        <Col md={5} className="containerContainer">
+        <Col md={1}></Col>
+        <Col md={5} >
           <DirectiveContainer 
           className="h-100"
           directives = {this.props.directives} 
