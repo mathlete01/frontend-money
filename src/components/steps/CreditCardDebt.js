@@ -68,6 +68,7 @@ class CreditCardDebt extends React.Component {
       credit_card_debt: this.calcSum()
     },this.props.currentStep);
     this.props.handleNextStep("Rung1Step");
+    this.props.handleNextDirective("Rung1Determination");
   };
 
   _prev = () => {

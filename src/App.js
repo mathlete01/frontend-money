@@ -28,16 +28,15 @@ import DirectiveContainer from "./components/DirectiveContainer";
 import "./App.css";
 import Ladder from "./components/Ladder";
 import { Form, FormControl, NavItem } from "react-bootstrap";
-import background from "./img/Louis_Vuitton-blue.png"
-import BothContainer from "./components/BothContainer"
+import background from "./img/Louis_Vuitton-blue.png";
+import BothContainer from "./components/BothContainer";
 
 library.add(faSwimmingPool, faCoffee, faHandPointLeft, faChevronLeft);
 
 class App extends React.Component {
   state = {
     user: "",
-    directives: ["TaxableBrokerageIntro", "BackdoorRothIntro", "RothRegD"],
-    // directives: []
+    directives: [],
   };
 
   renderForm = (routerProps) => {
@@ -51,11 +50,14 @@ class App extends React.Component {
   };
 
   handleNextDirective = (nextDirective) => {
-    console.log(`nextDirective = `, nextDirective)
-    this.setState({
-      directives: [...this.state.directives, nextDirective],
-    });
-    // this.props.updateCurrentDirective(nextDirective);
+    // console.log(`nextDirective = `, nextDirective);
+    if (this.state.directives.indexOf(nextDirective) !== -1) {
+      return null;
+    } else {
+      this.setState({
+        directives: [...this.state.directives, nextDirective],
+      });
+    }
   };
 
   handleLogin = (credentialObj) => {
@@ -118,11 +120,15 @@ class App extends React.Component {
 
   render() {
     return (
-      <div style={{ backgroundImage: `url(${background})`,
-      // backgroundRepeat: 'repeat',
-      // height: "100%", 
-      }} id="bg">
-      {/* <div> */}
+      <div
+        style={{
+          backgroundImage: `url(${background})`,
+          // backgroundRepeat: 'repeat',
+          // height: "100%",
+        }}
+        id="bg"
+      >
+        {/* <div> */}
         <Navbar>
           <Navbar.Brand>Money Moves</Navbar.Brand>
 
@@ -162,9 +168,9 @@ class App extends React.Component {
             <Col></Col>
             <Col md={12}>
               <Container>
-                <BothContainer 
-                handleNextDirective = {this.handleNextDirective}
-                directives = {this.state.directives}
+                <BothContainer
+                  handleNextDirective={this.handleNextDirective}
+                  directives={this.state.directives}
                 />
               </Container>
             </Col>
