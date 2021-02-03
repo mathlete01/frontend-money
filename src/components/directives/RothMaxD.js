@@ -29,12 +29,7 @@ class RothMaxD extends React.Component {
    
     return (
       <Container className="directive">
-        <Row id="header" className="rowElement">
-          <Button onClick={this._prev} variant="link">
-            <FontAwesomeIcon icon="chevron-left" /> Back
-          </Button>
-          <hr className="w-100" />
-        </Row>
+        
         <Row id="title" className="rowElement">
           <Container>
             <h6>YOUR NEXT PRIORITY:</h6>
@@ -101,37 +96,7 @@ class RothMaxD extends React.Component {
             </Tab>
           </Tabs>
         </Row>
-        <hr className="w-100" />
-        <Row id="buttons" className="rowElement">
-          <Container>
-            <Form.Group>
-              <Form.Row>
-                <Col>
-                  {/* <Button
-                    className="no"
-                    variant="danger"
-                    size="lg"
-                    block
-                    onClick={this._no}
-                  >
-                    No
-                  </Button> */}
-                </Col>
-                <Col>
-                  <Button
-                    className="yes"
-                    variant="primary"
-                    size="lg"
-                    block
-                    onClick={this._next}
-                  >
-                    Continue
-                  </Button>
-                </Col>
-              </Form.Row>
-            </Form.Group>
-          </Container>
-        </Row>
+        
       </Container>
     );
   }

@@ -59,12 +59,7 @@ class Intro extends React.Component {
     return (
       // <Container className="border step">
       <Container className="directive">
-        <Row id="header" className="rowElement">
-          {/* <Button onClick={this._prev} variant="link" disabled>
-            <FontAwesomeIcon icon="chevron-left" /> Back
-          </Button> */}
-          {/* <hr className="w-100" /> */}
-        </Row>
+        
         <Row id="title" className="rowElement">
           <Container>
             <h3>Wondering what money moves you should be making?</h3>
@@ -75,27 +70,7 @@ class Intro extends React.Component {
             This interactive quiz asks you a bunch of questions then tells you what you should do. Well, what are you waiting for?
           </Container>
         </Row>
-        <Row id="form" className="rowElement"></Row>
-        <Row id="buttons" className="rowElement">
-          <Container>
-            <Form.Group>
-              <Form.Row>
-                <Col></Col>
-                <Col>
-                  <Button
-                    className="yes"
-                    variant="primary"
-                    size="lg"
-                    block
-                    onClick={this._next}
-                  >
-                    Let's go
-                  </Button>
-                </Col>
-              </Form.Row>
-            </Form.Group>
-          </Container>
-        </Row>
+        
       </Container>
     );
   }
