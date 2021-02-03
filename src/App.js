@@ -36,7 +36,7 @@ library.add(faSwimmingPool, faCoffee, faHandPointLeft, faChevronLeft);
 class App extends React.Component {
   state = {
     user: "",
-    directives: [],
+    // directives: [],
     // directives: ["Rung1Determination"],
   };
 
@@ -50,16 +50,16 @@ class App extends React.Component {
     }
   };
 
-  handleNextDirective = (nextDirective) => {
-    // console.log(`nextDirective = `, nextDirective);
-    if (this.state.directives.indexOf(nextDirective) !== -1) {
-      return null;
-    } else {
-      this.setState({
-        directives: [...this.state.directives, nextDirective],
-      });
-    }
-  };
+  // handleNextDirective = (nextDirective) => {
+  //   // console.log(`nextDirective = `, nextDirective);
+  //   if (this.state.directives.indexOf(nextDirective) !== -1) {
+  //     return null;
+  //   } else {
+  //     this.setState({
+  //       directives: [...this.state.directives, nextDirective],
+  //     });
+  //   }
+  // };
 
   handleLogin = (credentialObj) => {
     // debugger
@@ -170,8 +170,8 @@ class App extends React.Component {
             <Col md={12}>
               <Container>
                 <BothContainer
-                  handleNextDirective={this.handleNextDirective}
-                  directives={this.state.directives}
+                  // handleNextDirective={this.handleNextDirective}
+                  // directives={this.state.directives}
                 />
               </Container>
             </Col>

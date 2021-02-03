@@ -43,7 +43,7 @@ class DirectiveContainer extends React.Component {
         return <TaxableBrokerageIntro directives = {this.props.directives} />;
         break;
       case this.props.directives[0] === "Rung1Determination":
-        return <Rung1Determination directives = {this.props.directives} />;
+        return <Rung1Determination directives = {this.props.directives} setNextStep={this.props.setNextStep}/>;
         break;
       case this.props.directives[0] === "RothSingleTweenD":
         return <RothSingleTweenD directives = {this.props.directives} />;

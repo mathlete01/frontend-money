@@ -22,9 +22,13 @@ class RothIntro extends React.Component {
   };
 
   render() {
+    // console.log(`RothIntro render: this.props.currentStep = `, this.props.currentStep)
+    console.log(`* * *`, this.props.currentStep, "RothIntro")
     if (this.props.currentStep !== "RothIntro") {
+      // console.log(`* * * this.props.currentStep !== "RothIntro"`)
       return null;
     }
+    // console.log(`* * * this.props.currentStep === "RothIntro"`)
 
     return (
       <Container className="step">

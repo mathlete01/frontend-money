@@ -11,20 +11,45 @@ import { updateCurrentStep } from "../actions/stepActions";
 import { updateCurrentUser } from "../actions/userActions";
 
 class BothContainer extends React.Component {
+  state = {
+    directives: [],
+    // directives: ["Rung1Determination"],
+    nextStep: ""
+  };
+
+  setNextStep = (nextStep) => {
+    console.log(`nextStep = `, nextStep)
+    this.setState({
+      nextStep: nextStep,
+    });
+  }
+
+  handleNextDirective = (nextDirective) => {
+    // console.log(`nextDirective = `, nextDirective);
+    if (this.state.directives.indexOf(nextDirective) !== -1) {
+      return null;
+    } else {
+      this.setState({
+        directives: [...this.state.directives, nextDirective],
+      });
+    }
+  };
   render() {
     return (
       <Row className="bothContainer justify-content-md-center">
         <Col md={6} >
           <StepContainer 
           className="h-100"
-          handleNextDirective = {this.props.handleNextDirective} 
+          handleNextDirective = {this.handleNextDirective} 
+          nextStep={this.state.nextStep}
           />
         </Col>
         {/* <Col md={1}></Col> */}
         <Col md={6} >
           <DirectiveContainer 
           className="h-100"
-          directives = {this.props.directives} 
+          directives = {this.state.directives} 
+          setNextStep={this.setNextStep}
           />
         </Col>
       </Row>

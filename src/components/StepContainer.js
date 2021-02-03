@@ -42,6 +42,7 @@ class StepContainer extends React.Component {
   }
 
   handleNextStep = (nextStep) => {
+    console.log(`handleNextStep" nextStep = `, nextStep)
     this.setState({
       path: [...this.state.path, nextStep],
     });
@@ -64,6 +65,7 @@ class StepContainer extends React.Component {
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
           handleNextDirective={this.props.handleNextDirective}
+          nextStep={this.props.nextStep}
         />
         <RothSingle50Q
           handlePrevStep={this.handlePrevStep}

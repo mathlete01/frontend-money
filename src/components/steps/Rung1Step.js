@@ -14,7 +14,9 @@ import { Form, FormGroup, FormControl } from "react-bootstrap";
 class Rung1Step extends React.Component {
   _next = (event) => {
     event.preventDefault();
-    this.props.handleNextStep(this.nextStep);
+    // this.props.handleNextStep(this.nextStep);
+    // console.log(`_next this.props.nextStep = `, this.props.nextStep)
+    this.props.handleNextStep(this.props.nextStep);
   };
 
   _prev = () => {
