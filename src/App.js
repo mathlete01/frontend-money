@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Switch, withRouter, Link, NavLink } from "react-router-dom";
-// import Body from "./components/xBody";
 import NotFound from "./NotFound";
 import Credentials from "./components/Credentials";
 import { connect } from "react-redux";
@@ -25,16 +24,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import StepContainer from "./components/StepContainer";
+import DirectiveContainer from "./components/DirectiveContainer";
 import "./App.css";
 import Ladder from "./components/Ladder";
 import { Form, FormControl, NavItem } from "react-bootstrap";
 import background from "./img/Louis_Vuitton-blue.png"
+import BothContainer from "./components/BothContainer"
 
 library.add(faSwimmingPool, faCoffee, faHandPointLeft, faChevronLeft);
 
 class App extends React.Component {
   state = {
     user: "",
+    directives: ["TaxableBrokerageIntro", "BackdoorRothIntro", "RothRegD"]
   };
 
   renderForm = (routerProps) => {
@@ -45,6 +47,14 @@ class App extends React.Component {
         <Credentials name="Signup Form" handleSubmit={this.handleSignup} />
       );
     }
+  };
+
+  handleNextDirective = (nextDirective) => {
+    console.log(`nextDirective = `, nextDirective)
+    this.setState({
+      directives: [...this.state.directives, nextDirective],
+    });
+    this.props.updateCurrentDirective(nextDirective);
   };
 
   handleLogin = (credentialObj) => {
@@ -149,10 +159,15 @@ class App extends React.Component {
         <Container>
           <Row>
             <Col></Col>
-            <Col md={8} className="containerContainer">
-              <StepContainer className="h-100" />
+            <Col md={12}>
+              <Container>
+                <BothContainer 
+                className="containerContainer"
+                handleNextDirective = {this.handleNextDirective}
+                directives = {this.state.directives}
+                />
+              </Container>
             </Col>
-
             <Col></Col>
           </Row>
         </Container>

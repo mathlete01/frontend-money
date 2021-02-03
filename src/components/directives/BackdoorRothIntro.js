@@ -10,20 +10,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { Tabs, Tab } from "react-bootstrap";
 
-class Four01kMaxRec extends React.Component {
+class BackdoorRothIntro extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
 
   _next = (event) => {
     event.preventDefault();
-    this.props.handleNextStep("DoneForNow");
+    this.props.handleNextStep("Four01kMaxOutQ");
   };
 
+
   render() {
-    if (this.props.currentStep !== "Four01kMaxRec") {
-      return null;
-    }
+   
     return (
       <Container className="step">
         <Row id="header" className="step">
@@ -35,12 +34,12 @@ class Four01kMaxRec extends React.Component {
         <Row id="title" className="step">
           <Container>
             <h6>YOUR NEXT PRIORITY:</h6>
-            <h3>Max-out your 401(k)</h3>
+            <h3>Max-out a "Backdoor" Roth IRA</h3>
           </Container>
         </Row>
         <Row id="body" className="step">
           <Container>
-            They may be poorly named, but they are maybe the best investment you can get your hands on.
+            Also known as a Roth IRA Conversion, the Backdoor Roth is a (totally legal) loophole you ought to take advantage of.
           </Container>
         </Row>
         <Row>
@@ -48,39 +47,41 @@ class Four01kMaxRec extends React.Component {
             <Tab eventKey="what" title="What">
               <ul>
                 <li>
-                  401(k)s are tax-advantaged retirement accounts that many employers offer their employees as a perk.
+                  You make a non-deductible contribution to a <i>traditional</i> IRA, then convert it to a <i>Roth</i> IRA.
                 </li>
               </ul>
             </Tab>
             <Tab eventKey="why" title="Why">
               <ul>
                 <li>
-                The two big deals about a 401(k) are (1) many companies will match your contributions up to a limit, and (2) you contributions are taken out pre-tax.
-                </li>
-                <li>
-                  For example, if your paycheck is $1,000 and you contribute $100 per paycheck to your 401(k), you're only being taxed on $900 of your income!
+                As we've said, Roth IRAs are great, but there are income limits and you've exceeded those. 
+                This loophole allows anyone with earned income to contribute to a Roth IRA, regardless of income limits.
                 </li>
               </ul>
             </Tab>
             <Tab eventKey="where" title="Where">
             <ul>
                 <li>
-                  If it's offered by your employer, it's in an account at whatever brokerage your employer chose. 
+                  Do you already have an investment account at a discount brokerage? Do it there.
                 </li>
-                <li>You can't change where the funds are unless you leave the company and do what's called a "rollover".</li>
+                <li>
+                  Otherwise, open an account at a discount brokerage like <a href="http://www.vanguard.com" target="_blank">Vanguard</a> (our favorite) or <a href="http://www.schwab.com" target="_blank">Schwab</a>.
+                </li>
               </ul>
             </Tab>
             <Tab eventKey="how" title="How">
               <ul>
-              <li>
-                  Talk to your HR person and they'll explain how to change your contribution level.
+                <li>
+                  This is an oversimplification, but basically you (1) contribute up to $6k to a tranditional IRA, then (2) call up the brokerage and ask them to convert that IRA to a Roth IRA.
+                </li>
+                <li>
+                  It's a bit complicated but totally doable. Call up your brokerage and ask them to explain it to you.
                 </li>
               </ul>
             </Tab>
           </Tabs>
         </Row>
         <hr className="w-100" />
-        <Row id="form" className="step"></Row>
         <Row id="buttons" className="step">
           <Container>
             <Form.Group>
@@ -95,7 +96,7 @@ class Four01kMaxRec extends React.Component {
                     block
                     onClick={this._next}
                   >
-                    Okay
+                    Continue
                   </Button>
                 </Col>
               </Form.Row>
@@ -117,4 +118,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(Four01kMaxRec);
+})(BackdoorRothIntro);

@@ -121,16 +121,7 @@ class Rung1Determination extends React.Component {
   }
 
   render() {
-    // console.log(
-    //   `Rung1Determination: render: this.props.currentUser = `,
-    //   this.props.currentUser
-    // );
-    if (this.props.currentStep !== "Rung1Determination") {
-      // Prop: The current step
-      // console.log(`this.props.currentStep = `, this.props.currentStep);
-      return null;
-    }
-    // The markup for the Step 1 UI
+
 
     return (
       <Container className="step">

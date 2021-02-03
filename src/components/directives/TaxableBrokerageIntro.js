@@ -8,23 +8,25 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
+// import Tabs from "react-bootstrap/Tabs";
 import { Tabs, Tab } from "react-bootstrap";
+import TabContainer from "react-bootstrap/TabContainer";
+import Nav from "react-bootstrap/Nav";
+import { NavItem } from "react-bootstrap";
+import Navbar from "react-bootstrap/Navbar";
 
-class BackdoorRothIntro extends React.Component {
+class TaxableBrokerageIntro extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
 
   _next = (event) => {
     event.preventDefault();
-    this.props.handleNextStep("Four01kMaxOutQ");
+    this.props.handleNextStep("DoneForNow");
   };
 
-
   render() {
-    if (this.props.currentStep !== "BackdoorRothIntro") {
-      return null;
-    }
+   
     return (
       <Container className="step">
         <Row id="header" className="step">
@@ -36,12 +38,13 @@ class BackdoorRothIntro extends React.Component {
         <Row id="title" className="step">
           <Container>
             <h6>YOUR NEXT PRIORITY:</h6>
-            <h3>Max-out a "Backdoor" Roth IRA</h3>
+            <h3>Invest in a Taxable Brokerage Account</h3>
           </Container>
         </Row>
         <Row id="body" className="step">
           <Container>
-            Also known as a Roth IRA Conversion, the Backdoor Roth is a (totally legal) loophole you ought to take advantage of.
+            Do you have more disposible income to put towards your financial
+            goals? If so, it's time to invest in a taxable brokerage account.
           </Container>
         </Row>
         <Row>
@@ -49,15 +52,21 @@ class BackdoorRothIntro extends React.Component {
             <Tab eventKey="what" title="What">
               <ul>
                 <li>
-                  You make a non-deductible contribution to a <i>traditional</i> IRA, then convert it to a <i>Roth</i> IRA.
+                  A taxable brokerage is just a plain old investment account.
+                </li>
+                <li>
+                  It's called "taxable" because it's not tax <i>advantaged</i>{" "}
+                  like it's cousins, IRAs and 401(k)s.
                 </li>
               </ul>
             </Tab>
             <Tab eventKey="why" title="Why">
               <ul>
                 <li>
-                As we've said, Roth IRAs are great, but there are income limits and you've exceeded those. 
-                This loophole allows anyone with earned income to contribute to a Roth IRA, regardless of income limits.
+                  You should <i>only</i> invest in a taxable brokerage account
+                  once you have maximized your tax <i>advantaged</i> accounts,
+                  like IRAs and 401(k)s. According to your choices, you've
+                  already explored those options.
                 </li>
               </ul>
             </Tab>
@@ -74,21 +83,31 @@ class BackdoorRothIntro extends React.Component {
             <Tab eventKey="how" title="How">
               <ul>
                 <li>
-                  This is an oversimplification, but basically you (1) contribute up to $6k to a tranditional IRA, then (2) call up the brokerage and ask them to convert that IRA to a Roth IRA.
+                  The first thing you should do is put your money in a target date fund. Do it immediately, it's extremely low-risk and the earlier you do it, the better. Ask the people at the brokerage why people recommend a target date fund and they'll explain it to you.
                 </li>
                 <li>
-                  It's a bit complicated but totally doable. Call up your brokerage and ask them to explain it to you.
+                  Once that's set up, you can explore different investing strategies, if you want. But our advice is to just leave it in a target date fund and forget about it. This stratetgy is called "buy and hold". Trying to "time" the market by buying and selling only works if you can tell the future.
                 </li>
               </ul>
             </Tab>
           </Tabs>
         </Row>
         <hr className="w-100" />
+        <Row id="form" className="step"></Row>
         <Row id="buttons" className="step">
           <Container>
             <Form.Group>
               <Form.Row>
                 <Col>
+                  {/* <Button
+                    className="no"
+                    variant="danger"
+                    size="lg"
+                    block
+                    onClick={this._no}
+                  >
+                    No
+                  </Button> */}
                 </Col>
                 <Col>
                   <Button
@@ -120,4 +139,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(BackdoorRothIntro);
+})(TaxableBrokerageIntro);

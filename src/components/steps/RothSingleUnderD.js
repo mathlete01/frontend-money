@@ -33,12 +33,16 @@ class RothSingleUnderD extends React.Component {
         </Row>
         <Row id="title" className="step">
           <Container>
-            <h3>You must have earned income to contribute to a Roth IRA (any IRA, actually)</h3>
+            <h3>
+              You must have earned income to contribute to a Roth IRA (any IRA,
+              actually)
+            </h3>
           </Container>
         </Row>
         <Row id="body" className="step">
           <Container>
-          Unfortunately, you can't contribute to either a Roth IRA or a Traditional IRA if you don't have any earned income this year. 
+            Unfortunately, you can't contribute to either a Roth IRA or a
+            Traditional IRA if you don't have any earned income this year.
           </Container>
         </Row>
         <Row id="form" className="step"></Row>
@@ -46,8 +50,7 @@ class RothSingleUnderD extends React.Component {
           <Container>
             <Form.Group>
               <Form.Row>
-                <Col>
-                </Col>
+                <Col></Col>
                 <Col>
                   <Button
                     className="yes"

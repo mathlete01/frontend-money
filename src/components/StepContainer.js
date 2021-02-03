@@ -14,34 +14,25 @@ import RothMarriedJointlyMinQ from "./steps/RothMarriedJointlyMinQ";
 import RothMarriedJointlyMaxQ from "./steps/RothMarriedJointlyMaxQ";
 import RothMarriedJointlyIncomeQ from "./steps/RothMarriedJointlyIncomeQ";
 import RothMarriedJointly50Q from "./steps/RothMarriedJointly50Q";
-import RothRegD from "./steps/RothRegD";
 import RothIntro from "./steps/RothIntro";
-import RothMaxD from "./steps/RothMaxD";
-import Rung1Determination from "./steps/Rung1Determination";
 import SaveYourWork from "./steps/SaveYourWork";
-import RothSingleTweenD from "./steps/RothSingleTweenD";
 import RothSingle50Q from "./steps/RothSingle50Q";
 import RothSingleMinQ from "./steps/RothSingleMinQ";
 import RothSingleMaxQ from "./steps/RothSingleMaxQ";
 import RothSingleOverD from "./steps/RothSingleOverD";
 import RothSingleUnderD from "./steps/RothSingleUnderD";
-import RothMarriedNotJointlyTweenD from "./steps/RothMarriedNotJointlyTweenD";
 import RothMarriedNotJointlyMinQ from "./steps/RothMarriedNotJointlyMinQ";
 import RothMarriedNotJointlyOverD from "./steps/RothMarriedNotJointlyOverD";
-import BackdoorRothIntro from "./steps/BackdoorRothIntro";
 import RothSingleQ from "./steps/RothSingleQ";
 import { connect } from "react-redux";
 import { updateCurrentStep } from "../actions/stepActions";
 import { updateCurrentUser } from "../actions/userActions";
 import Container from "react-bootstrap/Container";
-import RothMarriedJointlyTweenD from "./steps/RothMarriedJointlyTweenD";
 import RothMarriedJointlyOverD from "./steps/RothMarriedJointlyOverD";
-import Four01kMaxRec from "./steps/Four01kMaxRec";
-import TaxableBrokerageIntro from "./steps/TaxableBrokerageIntro";
 import MoreToSpendQ from "./steps/MoreToSpendQ";
+import Rung1Step from "./steps/Rung1Step";
 
-
-class MasterForm extends React.Component {
+class StepContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -69,150 +60,151 @@ class MasterForm extends React.Component {
   render() {
     return (
       <Container>
+        <Rung1Step
+          handlePrevStep={this.handlePrevStep}
+          handleNextStep={this.handleNextStep}
+          handleNextDirective={this.props.handleNextDirective}
+        />
         <RothSingle50Q
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
+          handleNextDirective={this.props.handleNextDirective}
         />
         <CreditCardDebt
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
+          handleNextDirective={this.props.handleNextDirective}
         />
         <CreditCardDebtQ
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
+          handleNextDirective={this.props.handleNextDirective}
         />
         <DoneForNow
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
+          handleNextDirective={this.props.handleNextDirective}
         />
         <RothSingleIncomeQ
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
+          handleNextDirective={this.props.handleNextDirective}
         />
         <RothMarriedJointlyQ
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
+          handleNextDirective={this.props.handleNextDirective}
         />
         <RothSingleMaxQ
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
+          handleNextDirective={this.props.handleNextDirective}
         />
         <Four01kContribution
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
+          handleNextDirective={this.props.handleNextDirective}
         />
         <Four01kMatch
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
+          handleNextDirective={this.props.handleNextDirective}
         />
         <Four01kMaxOutQ
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
+          handleNextDirective={this.props.handleNextDirective}
         />
         <Four01kQ
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
+          handleNextDirective={this.props.handleNextDirective}
         />
-        <Intro handleNextStep={this.handleNextStep} />
+        <Intro
+          handleNextStep={this.handleNextStep}
+          handleNextDirective={this.props.handleNextDirective}
+        />
         <LeftoverMoney
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
+          handleNextDirective={this.props.handleNextDirective}
         />
         <RothMarriedJointlyMinQ
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
+          handleNextDirective={this.props.handleNextDirective}
         />
         <RothMarriedJointlyMaxQ
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
+          handleNextDirective={this.props.handleNextDirective}
         />
-      
-        <RothRegD
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        />
+
         <RothIntro
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
+          handleNextDirective={this.props.handleNextDirective}
         />
-        <RothMaxD
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        />
-        
-        <Rung1Determination
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        />
+
         <SaveYourWork
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
+          handleNextDirective={this.props.handleNextDirective}
         />
-        <RothSingleTweenD
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        />
+
         <RothSingleMinQ
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
+          handleNextDirective={this.props.handleNextDirective}
         />
         <RothSingleOverD
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
+          handleNextDirective={this.props.handleNextDirective}
         />
-        <RothMarriedNotJointlyTweenD
+
+        <RothSingleUnderD
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
-        />
-        <BackdoorRothIntro
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        />
-         <RothSingleUnderD
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
+          handleNextDirective={this.props.handleNextDirective}
         />
         <RothSingleQ
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
+          handleNextDirective={this.props.handleNextDirective}
         />
         <RothMarriedJointlyIncomeQ
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
+          handleNextDirective={this.props.handleNextDirective}
         />
         <RothMarriedJointly50Q
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
+          handleNextDirective={this.props.handleNextDirective}
         />
         <RothMarriedNotJointlyMinQ
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
+          handleNextDirective={this.props.handleNextDirective}
         />
         <RothMarriedNotJointlyOverD
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
+          handleNextDirective={this.props.handleNextDirective}
         />
-        <TaxableBrokerageIntro
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        />
-        <Four01kMaxRec
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        />
+
         <RothMarriedJointlyOverD
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
+          handleNextDirective={this.props.handleNextDirective}
         />
-        <RothMarriedJointlyTweenD
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        />
+
         <MoreToSpendQ
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
+          handleNextDirective={this.props.handleNextDirective}
         />
-        
       </Container>
     );
   }
@@ -228,4 +220,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(MasterForm);
+})(StepContainer);

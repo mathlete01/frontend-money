@@ -21,7 +21,8 @@ class CreditCardDebtQ extends React.Component {
 
   _no = (event) => {
     event.preventDefault();
-    this.props.handleNextStep("Rung1Determination");
+    this.props.handleNextStep("Rung1Step");
+    this.props.handleNextDirective("Rung1Directive");
     this.props.updateCurrentUser(this.props.currentUser.id, {
       credit_card_debt: 0,
     },this.props.currentStep);

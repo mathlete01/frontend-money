@@ -22,9 +22,7 @@ class RothSingleTweenD extends React.Component {
   };
 
   render() {
-    if (this.props.currentStep !== "RothSingleTweenD") {
-      return null;
-    }
+
     return (
       <Container className="step">
         <Row id="header" className="step">

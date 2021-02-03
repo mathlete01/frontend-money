@@ -55,11 +55,7 @@ class Intro extends React.Component {
   };
 
   render() {
-    if (this.props.currentStep !== "Intro") {
-      // Prop: The current step
-      return null;
-    }
-    // The markup for the Step 1 UI
+
     return (
       // <Container className="border step">
       <Container className="step">

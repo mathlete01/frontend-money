@@ -8,24 +8,25 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
-import Table from "react-bootstrap/Table";
 import { Tabs, Tab } from "react-bootstrap";
 
-class RothMarriedNotJointlyTweenD extends React.Component {
+class RothMaxD extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
 
-  _yes = (event) => {
+  _next = (event) => {
     event.preventDefault();
-    // this.props.updateCurrentUser(this.props.currentUser.id, { BLANK_DB: true });
+    this.props.updateCurrentUser(
+      this.props.currentUser.id,
+      { roth_max: true },
+      this.props.currentStep
+    );
     this.props.handleNextStep("Four01kMaxOutQ");
   };
 
   render() {
-    if (this.props.currentStep !== "RothMarriedJointlyTweenD") {
-      return null;
-    }
+   
     return (
       <Container className="step">
         <Row id="header" className="step">
@@ -37,85 +38,23 @@ class RothMarriedNotJointlyTweenD extends React.Component {
         <Row id="title" className="step">
           <Container>
             <h6>YOUR NEXT PRIORITY:</h6>
-            <h3>Max-out Roth IRA</h3>
+            <h3>Max-out your Roth IRA</h3>
           </Container>
         </Row>
         <Row id="body" className="step">
           <Container>
-            Since your Modified Adjusted Gross Income as a couple will be than
-            $196k but less than $206k this year, the amount you'll be able to
-            contribute is reduced. Check out the table below to see the maximum
-            you're allowed to contribtue to a Roth IRA based on your income.
+            You can contribute up to $7k to a Roth IRA, so do it!
           </Container>
         </Row>
-
         <Row>
           <Tabs defaultActiveKey="what" id="uncontrolled-tab-example">
             <Tab eventKey="what" title="What">
               <ul>
                 <li>
                   Every year, there is a maximum you can contribute to a Roth
-                  IRA.
-                </li>
-                <li>
-                  Check out the table below to see the maximum you're allowed to
-                  contribtue to a Roth IRA based on your income.
+                  IRA. The maximum for someone age 50 or over is $7k.
                 </li>
               </ul>
-              <Table striped bordered hover>
-                <thead>
-                  <tr>
-                    <th>Your Modified Adjusted Gross Income (MAGI)</th>
-                    <th>Max Contribution if under 50</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>under $196,000</td>
-                    <td>$6,000</td>
-                  </tr>
-                  <tr>
-                    <td>$197,000 </td>
-                    <td>$5,400 </td>
-                  </tr>
-                  <tr>
-                    <td>$198,000 </td>
-                    <td>$4,800 </td>
-                  </tr>
-                  <tr>
-                    <td>$199,000 </td>
-                    <td>$4,200 </td>
-                  </tr>
-                  <tr>
-                    <td>$200,000 </td>
-                    <td>$3,600 </td>
-                  </tr>
-                  <tr>
-                    <td>$201,000 </td>
-                    <td>$3,000 </td>
-                  </tr>
-                  <tr>
-                    <td>$202,000 </td>
-                    <td>$2,400 </td>
-                  </tr>
-                  <tr>
-                    <td>$203,000 </td>
-                    <td>$1,800 </td>
-                  </tr>
-                  <tr>
-                    <td>$204,000 </td>
-                    <td>$1,200 </td>
-                  </tr>
-                  <tr>
-                    <td>$205,000 </td>
-                    <td>$600 </td>
-                  </tr>
-                  <tr>
-                    <td>$206,000 and over </td>
-                    <td>$0 😕 </td>
-                  </tr>
-                </tbody>
-              </Table>
             </Tab>
             <Tab eventKey="why" title="Why">
               As we've said, Roth IRAs are great for three reaons:
@@ -153,37 +92,38 @@ class RothMarriedNotJointlyTweenD extends React.Component {
             <Tab eventKey="how" title="How">
               <ul>
                 <li>
-                  The first thing you should do is put your money in a target
-                  date fund. Do it immediately, it's extremely low-risk and the
-                  earlier you do it, the better. Ask the people at the brokerage
-                  why people recommend a target date fund and they'll explain it
-                  to you.
+                  The first thing you should do is put your money in a target date fund. Do it immediately, it's extremely low-risk and the earlier you do it, the better. Ask the people at the brokerage why people recommend a target date fund and they'll explain it to you.
                 </li>
                 <li>
-                  Once that's set up, you can explore different investing
-                  strategies, if you want. But our advice is to just leave it in
-                  a target date fund and forget about it. This stratetgy is
-                  called "buy and hold". Trying to "time" the market by buying
-                  and selling only works if you can tell the future.
+                  Once that's set up, you can explore different investing strategies, if you want. But our advice is to just leave it in a target date fund and forget about it. This stratetgy is called "buy and hold". Trying to "time" the market by buying and selling only works if you can tell the future.
                 </li>
               </ul>
             </Tab>
           </Tabs>
         </Row>
-        <Row></Row>
-        <Row id="form" className="step"></Row>
+        <hr className="w-100" />
         <Row id="buttons" className="step">
           <Container>
             <Form.Group>
               <Form.Row>
-                <Col></Col>
+                <Col>
+                  {/* <Button
+                    className="no"
+                    variant="danger"
+                    size="lg"
+                    block
+                    onClick={this._no}
+                  >
+                    No
+                  </Button> */}
+                </Col>
                 <Col>
                   <Button
                     className="yes"
                     variant="primary"
                     size="lg"
                     block
-                    onClick={this._yes}
+                    onClick={this._next}
                   >
                     Continue
                   </Button>
@@ -207,4 +147,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(RothMarriedNotJointlyTweenD);
+})(RothMaxD);
