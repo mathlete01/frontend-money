@@ -5,6 +5,8 @@ import { updateCurrentProgress } from "../../actions/progressActions";
 import { updateCurrentUser } from "../../actions/userActions";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
+import Button from "react-bootstrap/Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 class Rung1Determination extends React.Component {
   _next = (event) => {
@@ -115,9 +117,12 @@ class Rung1Determination extends React.Component {
   render() {
     return (
       <Container className="directive">
+        <Row id="header" className="rowElementTopDetermination">
+          <h6>PRIORITY # {this.props.directives.length}</h6>
+          <hr className="w-100" />
+        </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h6>YOUR NEXT PRIORITY:</h6>
             <h3>{this.headline}</h3>
           </Container>
         </Row>

@@ -19,34 +19,34 @@ class DirectiveContainer extends React.Component {
   directive1 = () => {
     switch (true) {
       case this.props.directives[0] === "BackdoorRothIntro":
-        return <BackdoorRothIntro />;
+        return <BackdoorRothIntro directives = {this.props.directives}/>;
         break;
       case this.props.directives[0] === "Four01kMaxRec":
-        return <Four01kMaxRec />;
+        return <Four01kMaxRec directives = {this.props.directives} />;
         break;
       case this.props.directives[0] === "RothMarriedNotJointlyTweenD":
-        return <RothMarriedNotJointlyTweenD />;
+        return <RothMarriedNotJointlyTweenD directives = {this.props.directives} />;
         break;
       case this.props.directives[0] === "RothMarriedJointlyTweenD":
-        return <RothMarriedJointlyTweenD />;
+        return <RothMarriedJointlyTweenD directives = {this.props.directives} />;
         break;
       case this.props.directives[0] === "Four01kMaxRec":
-        return <Four01kMaxRec />;
+        return <Four01kMaxRec directives = {this.props.directives} />;
         break;
       case this.props.directives[0] === "RothRegD":
-        return <RothRegD />;
+        return <RothRegD directives = {this.props.directives} />;
         break;
       case this.props.directives[0] === "RothMaxD":
-        return <RothMaxD />;
+        return <RothMaxD directives = {this.props.directives} />;
         break;
       case this.props.directives[0] === "TaxableBrokerageIntro":
-        return <TaxableBrokerageIntro />;
+        return <TaxableBrokerageIntro directives = {this.props.directives} />;
         break;
       case this.props.directives[0] === "Rung1Determination":
-        return <Rung1Determination />;
+        return <Rung1Determination directives = {this.props.directives} />;
         break;
       case this.props.directives[0] === "RothSingleTweenD":
-        return <RothSingleTweenD />;
+        return <RothSingleTweenD directives = {this.props.directives} />;
         break;
     }
   };
@@ -54,34 +54,34 @@ class DirectiveContainer extends React.Component {
   directive2 = () => {
     switch (true) {
       case this.props.directives[1] === "BackdoorRothIntro":
-        return <BackdoorRothIntro />;
+        return <BackdoorRothIntro directives = {this.props.directives} />;
         break;
       case this.props.directives[1] === "Four01kMaxRec":
-        return <Four01kMaxRec />;
+        return <Four01kMaxRec directives = {this.props.directives} />;
         break;
       case this.props.directives[1] === "RothMarriedNotJointlyTweenD":
-        return <RothMarriedNotJointlyTweenD />;
+        return <RothMarriedNotJointlyTweenD directives = {this.props.directives} />;
         break;
       case this.props.directives[1] === "RothMarriedJointlyTweenD":
-        return <RothMarriedJointlyTweenD />;
+        return <RothMarriedJointlyTweenD directives = {this.props.directives} />;
         break;
       case this.props.directives[1] === "Four01kMaxRec":
-        return <Four01kMaxRec />;
+        return <Four01kMaxRec directives = {this.props.directives} />;
         break;
       case this.props.directives[1] === "RothRegD":
-        return <RothRegD />;
+        return <RothRegD directives = {this.props.directives} />;
         break;
       case this.props.directives[1] === "RothMaxD":
-        return <RothMaxD />;
+        return <RothMaxD directives = {this.props.directives} />;
         break;
       case this.props.directives[1] === "TaxableBrokerageIntro":
-        return <TaxableBrokerageIntro />;
+        return <TaxableBrokerageIntro directives = {this.props.directives} />;
         break;
       case this.props.directives[1] === "Rung1Determination":
-        return <Rung1Determination />;
+        return <Rung1Determination directives = {this.props.directives} />;
         break;
       case this.props.directives[1] === "RothSingleTweenD":
-        return <RothSingleTweenD />;
+        return <RothSingleTweenD directives = {this.props.directives} />;
         break;
     }
   };
@@ -89,34 +89,34 @@ class DirectiveContainer extends React.Component {
   directive3 = () => {
     switch (true) {
       case this.props.directives[2] === "BackdoorRothIntro":
-        return <BackdoorRothIntro />;
+        return <BackdoorRothIntro directives = {this.props.directives} />;
         break;
       case this.props.directives[2] === "Four01kMaxRec":
-        return <Four01kMaxRec />;
+        return <Four01kMaxRec directives = {this.props.directives} />;
         break;
       case this.props.directives[2] === "RothMarriedNotJointlyTweenD":
-        return <RothMarriedNotJointlyTweenD />;
+        return <RothMarriedNotJointlyTweenD directives = {this.props.directives} />;
         break;
       case this.props.directives[2] === "RothMarriedJointlyTweenD":
-        return <RothMarriedJointlyTweenD />;
+        return <RothMarriedJointlyTweenD directives = {this.props.directives} />;
         break;
       case this.props.directives[2] === "Four01kMaxRec":
-        return <Four01kMaxRec />;
+        return <Four01kMaxRec directives = {this.props.directives} />;
         break;
       case this.props.directives[2] === "RothRegD":
-        return <RothRegD />;
+        return <RothRegD directives = {this.props.directives} />;
         break;
       case this.props.directives[2] === "RothMaxD":
-        return <RothMaxD />;
+        return <RothMaxD directives = {this.props.directives} />;
         break;
       case this.props.directives[2] === "TaxableBrokerageIntro":
-        return <TaxableBrokerageIntro />;
+        return <TaxableBrokerageIntro directives = {this.props.directives} />;
         break;
       case this.props.directives[2] === "Rung1Determination":
-        return <Rung1Determination />;
+        return <Rung1Determination directives = {this.props.directives} />;
         break;
       case this.props.directives[2] === "RothSingleTweenD":
-        return <RothSingleTweenD />;
+        return <RothSingleTweenD directives = {this.props.directives} />;
         break;
     }
   };

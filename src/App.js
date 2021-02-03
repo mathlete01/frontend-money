@@ -37,6 +37,7 @@ class App extends React.Component {
   state = {
     user: "",
     directives: [],
+    // directives: ["Rung1Determination"],
   };
 
   renderForm = (routerProps) => {

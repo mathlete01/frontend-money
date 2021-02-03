@@ -11,15 +11,20 @@
 .rowElement {
   padding: 10px;
   margin: 0px;
-  background-color: white;
+}
+.rowElementTopDetermination {
+  /* padding-left: 20px;
+  margin-top: 21px; */
+  padding: 10px;
+  margin: 0px;
 }
 .directive {
-  margin-bottom: 20px;
-  padding: 20px;
+  /* margin-bottom: 30px; */
+  padding-bottom: 20px;
   background-color: white;
 }
 .step {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   padding: 0px;
   background-color: white;
 }
@@ -29,17 +34,25 @@
 body {
   /* background: blue; */
 }
+Button {
+  padding-left: 20px;
+  padding-top: 11px;
+}
+h6 {
+  padding-left: 20px;
+  padding-top: 11px;
+}
 .tab-content {
   margin: 15px 25px 15px 25px;
   width: 95%;
-  text-align: left; 
+  text-align: left;
 }
-.nav-tabs{
-  margin-left:15px; 
+.nav-tabs {
+  margin-left: 15px;
 }
-ul { 
-	text-align: left; 
-	}
+ul {
+  text-align: left;
+}
 .formField {
 }
 #title {
