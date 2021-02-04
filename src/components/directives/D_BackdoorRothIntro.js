@@ -20,21 +20,22 @@ class BackdoorRothIntro extends React.Component {
     this.props.handleNextStep("Four01kMaxOutQ");
   };
 
-
   render() {
-   
     return (
       <Container className="directive">
-        
+        <Row id="header" className="rowElementTopDetermination">
+          <h6>PRIORITY # {this.props.directives.length}</h6>
+          <hr className="w-100" />
+        </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h6>YOUR NEXT PRIORITY:</h6>
             <h3>Max-out a "Backdoor" Roth IRA</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Also known as a Roth IRA Conversion, the Backdoor Roth is a (totally legal) loophole you ought to take advantage of.
+            Also known as a Roth IRA Conversion, the Backdoor Roth is a (totally
+            legal) loophole you ought to take advantage of.
           </Container>
         </Row>
         <Row className="rowElement">
@@ -42,41 +43,55 @@ class BackdoorRothIntro extends React.Component {
             <Tab eventKey="what" title="What">
               <ul>
                 <li>
-                  You make a non-deductible contribution to a <i>traditional</i> IRA, then convert it to a <i>Roth</i> IRA.
+                  You make a non-deductible contribution to a <i>traditional</i>{" "}
+                  IRA, then convert it to a <i>Roth</i> IRA.
                 </li>
               </ul>
             </Tab>
             <Tab eventKey="why" title="Why">
               <ul>
                 <li>
-                As we've said, Roth IRAs are great, but there are income limits and you've exceeded those. 
-                This loophole allows anyone with earned income to contribute to a Roth IRA, regardless of income limits.
+                  As we've said, Roth IRAs are great, but there are income
+                  limits and you've exceeded those. This loophole allows anyone
+                  with earned income to contribute to a Roth IRA, regardless of
+                  income limits.
                 </li>
               </ul>
             </Tab>
             <Tab eventKey="where" title="Where">
-            <ul>
+              <ul>
                 <li>
-                  Do you already have an investment account at a discount brokerage? Do it there.
+                  Do you already have an investment account at a discount
+                  brokerage? Do it there.
                 </li>
                 <li>
-                  Otherwise, open an account at a discount brokerage like <a href="http://www.vanguard.com" target="_blank">Vanguard</a> (our favorite) or <a href="http://www.schwab.com" target="_blank">Schwab</a>.
+                  Otherwise, open an account at a discount brokerage like{" "}
+                  <a href="http://www.vanguard.com" target="_blank">
+                    Vanguard
+                  </a>{" "}
+                  (our favorite) or{" "}
+                  <a href="http://www.schwab.com" target="_blank">
+                    Schwab
+                  </a>
+                  .
                 </li>
               </ul>
             </Tab>
             <Tab eventKey="how" title="How">
               <ul>
                 <li>
-                  This is an oversimplification, but basically you (1) contribute up to $6k to a tranditional IRA, then (2) call up the brokerage and ask them to convert that IRA to a Roth IRA.
+                  This is an oversimplification, but basically you (1)
+                  contribute up to $6k to a tranditional IRA, then (2) call up
+                  the brokerage and ask them to convert that IRA to a Roth IRA.
                 </li>
                 <li>
-                  It's a bit complicated but totally doable. Call up your brokerage and ask them to explain it to you.
+                  It's a bit complicated but totally doable. Call up your
+                  brokerage and ask them to explain it to you.
                 </li>
               </ul>
             </Tab>
           </Tabs>
         </Row>
-        
       </Container>
     );
   }

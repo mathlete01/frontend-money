@@ -1,8 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { updateCurrentStep } from "../../actions/stepActions";
-import { updateCurrentProgress } from "../../actions/progressActions";
-// import { getCurrentUser, updateCurrentUser } from "../../actions/userActions";
 import { updateCurrentUser } from "../../actions/userActions";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -10,22 +8,22 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
+import { Tabs, Tab } from "react-bootstrap";
 
-class Rung1Step extends React.Component {
-  _next = (event) => {
-    event.preventDefault();
-    this.props.handleNextStep(this.props.nextStep);
-  };
-
+class S_BackdoorRothIntro extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
 
+  _next = (event) => {
+    event.preventDefault();
+    this.props.handleNextStep("Four01kMaxOutQ");
+  };
+
   render() {
-    if (this.props.currentStep !== "Rung1Step") {
+    if (this.props.currentStep !== "S_BackdoorRothIntro") {
       return null;
     }
-
     return (
       <Container className="step">
         <Row id="header" className="rowElement">
@@ -36,13 +34,13 @@ class Rung1Step extends React.Component {
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h3>Your first priority →</h3>
+            <h3>Your second priority ↘</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
           <Container>When you're ready, click "Continue"</Container>
         </Row>
-        <Row id="form" className="rowElement"></Row>
+
         <Row id="buttons" className="rowElement">
           <Container>
             <Form.Group>
@@ -72,13 +70,10 @@ const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
     currentUser: state.userReducer.currentUser,
-    currentProgress: state.progressReducer.currentProgress,
   };
 };
 
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-  // getCurrentUser,
-  updateCurrentProgress,
-})(Rung1Step);
+})(S_BackdoorRothIntro);

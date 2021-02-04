@@ -13,7 +13,7 @@ import { updateCurrentUser } from "../actions/userActions";
 class BothContainer extends React.Component {
   state = {
     directives: [],
-    // directives: ["Rung1Determination"],
+    // directives: ["Rung1Determination", "D_BackdoorRothIntro"],
     nextStep: ""
   };
 

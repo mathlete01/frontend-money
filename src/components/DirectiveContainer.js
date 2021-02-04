@@ -4,7 +4,7 @@ import Row from "react-bootstrap/Row";
 import { connect } from "react-redux";
 import { updateCurrentStep } from "../actions/stepActions";
 import { updateCurrentUser } from "../actions/userActions";
-import BackdoorRothIntro from "./directives/BackdoorRothIntro";
+import D_BackdoorRothIntro from "./directives/D_BackdoorRothIntro";
 import Four01kMaxRec from "./directives/Four01kMaxRec";
 import RothMarriedNotJointlyTweenD from "./directives/RothMarriedNotJointlyTweenD";
 import RothMarriedJointlyTweenD from "./directives/RothMarriedJointlyTweenD";
@@ -18,8 +18,8 @@ class DirectiveContainer extends React.Component {
   
   directive1 = () => {
     switch (true) {
-      case this.props.directives[0] === "BackdoorRothIntro":
-        return <BackdoorRothIntro directives = {this.props.directives}/>;
+      case this.props.directives[0] === "D_BackdoorRothIntro":
+        return <D_BackdoorRothIntro directives = {this.props.directives}/>;
         break;
       case this.props.directives[0] === "Four01kMaxRec":
         return <Four01kMaxRec directives = {this.props.directives} />;
@@ -53,8 +53,8 @@ class DirectiveContainer extends React.Component {
 
   directive2 = () => {
     switch (true) {
-      case this.props.directives[1] === "BackdoorRothIntro":
-        return <BackdoorRothIntro directives = {this.props.directives} />;
+      case this.props.directives[1] === "D_BackdoorRothIntro":
+        return <D_BackdoorRothIntro directives = {this.props.directives} />;
         break;
       case this.props.directives[1] === "Four01kMaxRec":
         return <Four01kMaxRec directives = {this.props.directives} />;
@@ -88,8 +88,8 @@ class DirectiveContainer extends React.Component {
 
   directive3 = () => {
     switch (true) {
-      case this.props.directives[2] === "BackdoorRothIntro":
-        return <BackdoorRothIntro directives = {this.props.directives} />;
+      case this.props.directives[2] === "D_BackdoorRothIntro":
+        return <D_BackdoorRothIntro directives = {this.props.directives} />;
         break;
       case this.props.directives[2] === "Four01kMaxRec":
         return <Four01kMaxRec directives = {this.props.directives} />;
@@ -127,11 +127,11 @@ class DirectiveContainer extends React.Component {
         <Row >
           {this.directive1()}
         </Row>
-        <Row></Row>
+        
         <Row >
           {this.directive2()}
         </Row>
-        <Row></Row>
+        
         <Row >
           {this.directive3()}
         </Row>

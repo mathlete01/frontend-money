@@ -31,6 +31,7 @@ import Container from "react-bootstrap/Container";
 import RothMarriedJointlyOverD from "./steps/RothMarriedJointlyOverD";
 import MoreToSpendQ from "./steps/MoreToSpendQ";
 import Rung1Step from "./steps/Rung1Step";
+import S_BackdoorRothIntro from "./steps/S_BackdoorRothIntro"
 
 class StepContainer extends React.Component {
   constructor(props) {
@@ -42,6 +43,7 @@ class StepContainer extends React.Component {
   }
 
   handleNextStep = (nextStep) => {
+    console.log(`StepContainer: handleNextStep: nextStep = `, nextStep)
     this.setState({
       path: [...this.state.path, nextStep],
     });
@@ -202,6 +204,11 @@ class StepContainer extends React.Component {
         />
 
         <MoreToSpendQ
+          handlePrevStep={this.handlePrevStep}
+          handleNextStep={this.handleNextStep}
+          handleNextDirective={this.props.handleNextDirective}
+        />
+        <S_BackdoorRothIntro
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
           handleNextDirective={this.props.handleNextDirective}
