@@ -19,7 +19,7 @@ class RothIntro extends React.Component {
   };
 
   _prev = () => {
-    this.props.setRow("row1Child");
+    this.props.setRow("row1");
     this.props.handlePrevStep();
   };
 
@@ -70,7 +70,7 @@ class RothIntro extends React.Component {
                     variant="primary"
                     size="lg"
                     block
-                    id="row2Child"
+                    id="row2"
                     value="RothSingleQ"
                     onClick={this._next}
                   >

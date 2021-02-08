@@ -74,7 +74,7 @@ class Four01kQ extends React.Component {
                     variant="danger"
                     size="lg"
                     block
-                    id="row1Child"
+                    id="row1"
                     value="CreditCardDebtQ"
                     onClick={this._no}
                   >
@@ -87,7 +87,7 @@ class Four01kQ extends React.Component {
                     variant="success"
                     size="lg"
                     block
-                    id="row1Child"
+                    id="row1"
                     value="Four01kMatch"
                     onClick={this._yes}
                   >

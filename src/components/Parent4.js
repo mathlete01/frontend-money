@@ -7,23 +7,23 @@ import ReactDOM from "react-dom";
 
 class Parent3 extends React.Component {
   state = {
-    row1Child: "",
-    row2Child: ""
+    row1: "",
+    row2: ""
   };
 
   setChild = (event, childName) => {
     console.log(`childName = `, childName);
     this.setState({
-      row1Child: childName,
+      row1: childName,
     });
   };
 
   loadChildInRow1 = () => {
     switch (true) {
-      case this.state.row1Child === "A":
+      case this.state.row1 === "A":
         return <ChildA />;
         break;
-      case this.state.row1Child === "B":
+      case this.state.row1 === "B":
         return <ChildB />;
         break;
     }
@@ -31,10 +31,10 @@ class Parent3 extends React.Component {
   
   loadChildInRow2 = () => {
     switch (true) {
-      case this.state.row1Child === "A":
+      case this.state.row1 === "A":
         return <ChildA />;
         break;
-      case this.state.row1Child === "B":
+      case this.state.row1 === "B":
         return <ChildB />;
         break;
     }

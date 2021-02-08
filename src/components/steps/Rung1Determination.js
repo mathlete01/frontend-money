@@ -14,13 +14,13 @@ import { Form, FormGroup, FormControl } from "react-bootstrap";
 class Rung1Determination extends React.Component {
   _next = (event) => {
     event.preventDefault();
-    this.props.setRow("row2Child");
+    this.props.setRow("row2");
     // this.props.handleNextStep(this.nextStep);
     this.props.setChild(event);
   };
 
   _prev = () => {
-    this.props.setRow("row1Child");
+    this.props.setRow("row1");
     this.props.handlePrevStep();
   };
 
@@ -171,7 +171,7 @@ class Rung1Determination extends React.Component {
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h6>YOUR NEXT PRIORITY:</h6>
+            <h6>YOUR #1 PRIORITY:</h6>
             <h3>{this.headline}</h3>
           </Container>
         </Row>
@@ -196,7 +196,7 @@ class Rung1Determination extends React.Component {
                     variant="primary"
                     size="lg"
                     block
-                    id="row2Child"
+                    id="row2"
                     value={this.nextStep}
                     onClick={this._next}
                   >

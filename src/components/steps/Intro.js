@@ -89,7 +89,7 @@ class Intro extends React.Component {
                 <Col></Col>
                 <Col>
                   <Button
-                    id="row1Child"
+                    id="row1"
                     value="LeftoverMoney"
                     className="yes"
                     variant="primary"

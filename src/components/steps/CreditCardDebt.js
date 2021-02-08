@@ -194,7 +194,7 @@ class CreditCardDebt extends React.Component {
                       variant="primary"
                       size="lg"
                       block
-                      id="row1Child"
+                      id="row1"
                       value="Rung1Determination"
                       onClick={this._next}
                     >

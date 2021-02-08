@@ -50,9 +50,9 @@ class StepContainer extends React.Component {
     this.state = {
       prevStep: "",
       path: [],
-      row1Child: "Intro",
-      row2Child: "",
-      currentRow: "row1Child",
+      row1: "Intro",
+      row2: "",
+      currentRow: "row1",
     };
   }
 
@@ -93,9 +93,9 @@ class StepContainer extends React.Component {
 
   loadChildInRow1 = () => {
     // console.log("loadChildInRow1 called");
-    // console.log(`this.state.row1Child = `, this.state.row1Child);
+    // console.log(`this.state.row1 = `, this.state.row1);
     switch (true) {
-      case this.state.row1Child === "Intro":
+      case this.state.row1 === "Intro":
         return (
           <Intro
             handlePrevStep={this.handlePrevStep}
@@ -104,7 +104,7 @@ class StepContainer extends React.Component {
           />
         );
         break;
-      case this.state.row1Child === "LeftoverMoney":
+      case this.state.row1 === "LeftoverMoney":
         return (
           <LeftoverMoney
             handlePrevStep={this.handlePrevStep}
@@ -113,7 +113,7 @@ class StepContainer extends React.Component {
           />
         );
         break;
-      case this.state.row1Child === "Four01kQ":
+      case this.state.row1 === "Four01kQ":
         return (
           <Four01kQ
             handlePrevStep={this.handlePrevStep}
@@ -122,7 +122,7 @@ class StepContainer extends React.Component {
           />
         );
         break;
-      case this.state.row1Child === "Four01kMatch":
+      case this.state.row1 === "Four01kMatch":
         return (
           <Four01kMatch
             handlePrevStep={this.handlePrevStep}
@@ -131,7 +131,7 @@ class StepContainer extends React.Component {
           />
         );
         break;
-      case this.state.row1Child === "Four01kContribution":
+      case this.state.row1 === "Four01kContribution":
         return (
           <Four01kContribution
             handlePrevStep={this.handlePrevStep}
@@ -140,7 +140,7 @@ class StepContainer extends React.Component {
           />
         );
         break;
-      case this.state.row1Child === "CreditCardDebtQ":
+      case this.state.row1 === "CreditCardDebtQ":
         return (
           <CreditCardDebtQ
             handlePrevStep={this.handlePrevStep}
@@ -149,7 +149,7 @@ class StepContainer extends React.Component {
           />
         );
         break;
-      case this.state.row1Child === "CreditCardDebt":
+      case this.state.row1 === "CreditCardDebt":
         return (
           <CreditCardDebt
             handlePrevStep={this.handlePrevStep}
@@ -158,7 +158,7 @@ class StepContainer extends React.Component {
           />
         );
         break;
-      case this.state.row1Child === "Rung1Determination":
+      case this.state.row1 === "Rung1Determination":
         return (
           <Rung1Determination
             handlePrevStep={this.handlePrevStep}
@@ -174,7 +174,7 @@ class StepContainer extends React.Component {
   loadChildInRow2 = () => {
     // console.log("loadChildInRow2 called");
     switch (true) {
-      case this.state.row2Child === "RothIntro":
+      case this.state.row2 === "RothIntro":
         return (
           <RothIntro
             handlePrevStep={this.handlePrevStep}
@@ -184,7 +184,7 @@ class StepContainer extends React.Component {
           />
         );
         break;
-      case this.state.row2Child === "RothSingleQ":
+      case this.state.row2 === "RothSingleQ":
         return (
           <RothSingleQ
             handlePrevStep={this.handlePrevStep}
@@ -193,7 +193,7 @@ class StepContainer extends React.Component {
           />
         );
         break;
-        case this.state.row2Child === "RothSingleMinQ":
+        case this.state.row2 === "RothSingleMinQ":
         return (
           <RothSingleMinQ
             handlePrevStep={this.handlePrevStep}
@@ -202,7 +202,7 @@ class StepContainer extends React.Component {
           />
         );
         break;
-        case this.state.row2Child === "RothMarriedJointlyQ":
+        case this.state.row2 === "RothMarriedJointlyQ":
         return (
           <RothMarriedJointlyQ
             handlePrevStep={this.handlePrevStep}
@@ -211,7 +211,7 @@ class StepContainer extends React.Component {
           />
         );
         break;
-      case this.state.row2Child === "DoneForNow":
+      case this.state.row2 === "DoneForNow":
         return (
           <DoneForNow
             handlePrevStep={this.handlePrevStep}

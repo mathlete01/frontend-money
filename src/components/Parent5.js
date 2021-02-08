@@ -6,8 +6,8 @@ import Button from "react-bootstrap/Button";
 
 class Parent5 extends React.Component {
   state = {
-    row1Child: "",
-    row2Child: "",
+    row1: "",
+    row2: "",
   };
 
   setChild = (event) => {
@@ -22,10 +22,10 @@ class Parent5 extends React.Component {
 
   loadChildInRow1 = () => {
     switch (true) {
-      case this.state.row1Child === "A":
+      case this.state.row1 === "A":
         return <ChildA />;
         break;
-      case this.state.row1Child === "B":
+      case this.state.row1 === "B":
         return <ChildB />;
         break;
     }
@@ -33,10 +33,10 @@ class Parent5 extends React.Component {
 
   loadChildInRow2 = () => {
     switch (true) {
-      case this.state.row2Child === "A":
+      case this.state.row2 === "A":
         return <ChildA />;
         break;
-      case this.state.row2Child === "B":
+      case this.state.row2 === "B":
         return <ChildB />;
         break;
     }
@@ -49,14 +49,14 @@ class Parent5 extends React.Component {
           Row 1
           <Button
             onClick={(event) => this.setChild(event)}
-            id="row1Child"
+            id="row1"
             value="A"
           >
             Load Child A in Row 1
           </Button>
           <Button
             onClick={(event) => this.setChild(event)}
-            id="row1Child"
+            id="row1"
             value="B"
           >
             Load Child B in Row 1
@@ -67,14 +67,14 @@ class Parent5 extends React.Component {
           Row 2
           <Button
             onClick={(event) => this.setChild(event)}
-            id="row2Child"
+            id="row2"
             value="A"
           >
             Load Child A in Row 2
           </Button>
           <Button
             onClick={(event) => this.setChild(event)}
-            id="row2Child"
+            id="row2"
             value="B"
           >
             Load Child B in Row 2
