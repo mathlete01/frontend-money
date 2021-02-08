@@ -17,19 +17,21 @@ class RothSingleQ extends React.Component {
   _yes = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { single: true });
-    this.props.handleNextStep("RothSingleMinQ");
+    // this.props.handleNextStep("RothSingleMinQ");
+    this.props.setChild(event);
   };
 
   _no = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { single: false });
-    this.props.handleNextStep("RothMarriedJointlyQ");
+    // this.props.handleNextStep("RothMarriedJointlyQ");
+    this.props.setChild(event);
   };
 
   render() {
-    if (this.props.currentStep !== "RothSingleQ") {
-      return null;
-    }
+    // if (this.props.currentStep !== "RothSingleQ") {
+    //   return null;
+    // }
     return (
       <Container className="step">
         <Row id="header" className="rowElement">
@@ -59,6 +61,8 @@ class RothSingleQ extends React.Component {
                     variant="danger"
                     size="lg"
                     block
+                    id="row2Child"
+                    value="RothMarriedJointlyQ"
                     onClick={this._no}
                   >
                     No
@@ -70,6 +74,8 @@ class RothSingleQ extends React.Component {
                     variant="success"
                     size="lg"
                     block
+                    id="row2Child"
+                    value="RothSingleMinQ"
                     onClick={this._yes}
                   >
                     Yes

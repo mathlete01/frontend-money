@@ -14,17 +14,19 @@ import { Form, FormGroup, FormControl } from "react-bootstrap";
 class RothIntro extends React.Component {
   _next = (event) => {
     event.preventDefault();
-    this.props.handleNextStep("RothSingleQ");
+    // this.props.handleNextStep("RothSingleQ");
+    this.props.setChild(event);
   };
 
   _prev = () => {
+    this.props.setRow("row1Child");
     this.props.handlePrevStep();
   };
 
   render() {
-    if (this.props.currentStep !== "RothIntro") {
-      return null;
-    }
+    // if (this.props.currentStep !== "RothIntro") {
+    //   return null;
+    // }
 
     return (
       <Container className="step">
@@ -68,6 +70,8 @@ class RothIntro extends React.Component {
                     variant="primary"
                     size="lg"
                     block
+                    id="row2Child"
+                    value="RothSingleQ"
                     onClick={this._next}
                   >
                     Continue

@@ -58,7 +58,7 @@ class Intro extends React.Component {
  
     //   return null;
     // }
-    console.log("Intro is in tha house")
+    // console.log("Intro is in tha house")
 
     // The markup for the Step 1 UI
     return (

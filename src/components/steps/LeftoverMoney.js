@@ -81,7 +81,7 @@ class LeftoverMoney extends React.Component {
     // if (this.props.currentStep !== "LeftoverMoney") {
     //   return null;
     // }
-    console.log("LeftoverMoney is in tha house")
+    // console.log("LeftoverMoney is in tha house")
     return (
       <Container className="step">
         <Row id="header" className="rowElement">

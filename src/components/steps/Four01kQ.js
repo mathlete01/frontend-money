@@ -40,7 +40,7 @@ class Four01kQ extends React.Component {
     // if (this.props.currentStep !== "Four01kQ") {
     //   return null;
     // }
-    console.log("Four01kQ is in tha house")
+    // console.log("Four01kQ is in tha house")
 
     return (
       <Container className="step">

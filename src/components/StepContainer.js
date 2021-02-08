@@ -80,6 +80,7 @@ class StepContainer extends React.Component {
 
   handlePrevStep = () => {
     console.log("handlePrevStep called")
+    console.log(`this.state.currentRow = `, this.state.currentRow)
     const i = this.state.path.length;
     this.setState((prevState) => ({
       path: prevState.path.filter((_, i) => i !== this.state.path.length - 1),
@@ -179,12 +180,31 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setChild={this.setChild}
+            setRow={this.setRow}
           />
         );
         break;
       case this.state.row2Child === "RothSingleQ":
         return (
           <RothSingleQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+          />
+        );
+        break;
+        case this.state.row2Child === "RothSingleMinQ":
+        return (
+          <RothSingleMinQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+          />
+        );
+        break;
+        case this.state.row2Child === "RothMarriedJointlyQ":
+        return (
+          <RothMarriedJointlyQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setChild={this.setChild}
@@ -216,7 +236,7 @@ class StepContainer extends React.Component {
         <Row name="row1" id="row1" className="row1">
           {this.loadChildInRow1()}
         </Row>
-        <Row>foo</Row>
+        
         <Row name="row2" id="row2" className="row2">
           {this.loadChildInRow2()}
         </Row>
