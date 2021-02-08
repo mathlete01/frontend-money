@@ -13,7 +13,6 @@ class RothMarriedNotJointlyOverD extends React.Component {
   _next = (event) => {
     event.preventDefault();
     this.props.setChild(event)
-v
   };
 
   

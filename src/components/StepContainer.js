@@ -64,6 +64,24 @@ class StepContainer extends React.Component {
     });
   };
 
+  clearRow = (row) => {
+    console.log(`clearRow called `)
+    switch (true) {
+      case row === "row2":
+        console.log(`clearRow: 2 called `)
+        return this.setState({
+          row2: "",
+        });
+        break;
+      case row === "row3":
+        console.log(`clearRow: 2 called `)
+        return this.setState({
+          row3: "",
+        });
+        break;
+    }
+  };
+
   setChild = (event) => {
     // from handleNextStep below
     const nextStep = event.target.value;
@@ -177,6 +195,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             setChild={this.setChild}
             setRow={this.setRow}
+            clearRow={this.clearRow}
           />
         );
         break;
@@ -254,155 +273,155 @@ class StepContainer extends React.Component {
           />
         );
         break;
-        case this.state.row2 === "RothSingleIncomeQ":
-          return (
-            <RothSingleIncomeQ
-              handlePrevStep={this.handlePrevStep}
-              handleNextStep={this.handleNextStep}
-              setChild={this.setChild}
-            />
-          );
-          break;
-        case this.state.row2 === "RothSingle50Q":
-          return (
-            <RothSingle50Q
-              handlePrevStep={this.handlePrevStep}
-              handleNextStep={this.handleNextStep}
-              setChild={this.setChild}
-            />
-          );
-          break;
-          case this.state.row2 === "RothRegD":
-            return (
-              <RothRegD
-                handlePrevStep={this.handlePrevStep}
-                handleNextStep={this.handleNextStep}
-                setChild={this.setChild}
-                setRow={this.setRow}
-              />
-            );
-            break
-            case this.state.row2 === "RothMaxD":
-          return (
-            <RothMaxD
-              handlePrevStep={this.handlePrevStep}
-              handleNextStep={this.handleNextStep}
-              setChild={this.setChild}
-              setRow={this.setRow}
-            />
-          );
-          break;
-          case this.state.row2 === "RothSingleUnderD":
-          return (
-            <RothSingleUnderD
-              handlePrevStep={this.handlePrevStep}
-              handleNextStep={this.handleNextStep}
-              setChild={this.setChild}
-            />
-          );
-          break;
-          case this.state.row2 === "RothMarriedJointlyQ":
-          return (
-            <RothMarriedJointlyQ
-              handlePrevStep={this.handlePrevStep}
-              handleNextStep={this.handleNextStep}
-              setChild={this.setChild}
-            />
-          );
-          break;
-          case this.state.row2 === "RothMarriedJointlyMinQ":
-          return (
-            <RothMarriedJointlyMinQ
-              handlePrevStep={this.handlePrevStep}
-              handleNextStep={this.handleNextStep}
-              setChild={this.setChild}
-            />
-          );
-          break;
-          case this.state.row2 === "RothMarriedJointlyIncomeQ":
-          return (
-            <RothMarriedJointlyIncomeQ
-              handlePrevStep={this.handlePrevStep}
-              handleNextStep={this.handleNextStep}
-              setChild={this.setChild}
-            />
-          );
-          break;
-          case this.state.row2 === "RothMarriedJointly50Q":
-          return (
-            <RothMarriedJointly50Q
-              handlePrevStep={this.handlePrevStep}
-              handleNextStep={this.handleNextStep}
-              setChild={this.setChild}
-            />
-          );
-          break;
-          case this.state.row2 === "RothMarriedNotJointlyMinQ":
-          return (
-            <RothMarriedNotJointlyMinQ
-              handlePrevStep={this.handlePrevStep}
-              handleNextStep={this.handleNextStep}
-              setChild={this.setChild}
-            />
-          );
-          break;
-          case this.state.row2 === "RothMarriedNotJointlyTweenD":
-          return (
-            <RothMarriedNotJointlyTweenD
-              handlePrevStep={this.handlePrevStep}
-              handleNextStep={this.handleNextStep}
-              setChild={this.setChild}
-              setRow={this.setRow}
-            />
-          );
-          break;
-          case this.state.row2 === "RothMarriedNotJointlyOverD":
-          return (
-            <RothMarriedNotJointlyOverD
-              handlePrevStep={this.handlePrevStep}
-              handleNextStep={this.handleNextStep}
-              setChild={this.setChild}
-            />
-          );
-          break;
-          case this.state.row2 === "RothMarriedJointlyMaxQ":
-          return (
-            <RothMarriedJointlyMaxQ
-              handlePrevStep={this.handlePrevStep}
-              handleNextStep={this.handleNextStep}
-              setChild={this.setChild}
-            />
-          );
-          break;
-          case this.state.row2 === "RothMarriedJointlyTweenD":
-          return (
-            <RothMarriedJointlyTweenD
-              handlePrevStep={this.handlePrevStep}
-              handleNextStep={this.handleNextStep}
-              setChild={this.setChild}
-              setRow={this.setRow}
-            />
-          );
-          break;
-          case this.state.row2 === "RothMarriedJointlyOverD":
-          return (
-            <RothMarriedJointlyOverD
-              handlePrevStep={this.handlePrevStep}
-              handleNextStep={this.handleNextStep}
-              setChild={this.setChild}
-            />
-          );
-          break;
-          case this.state.row2 === "TaxableBrokerageIntro":
-          return (
-            <TaxableBrokerageIntro
-              handlePrevStep={this.handlePrevStep}
-              handleNextStep={this.handleNextStep}
-              setChild={this.setChild}
-              setRow={this.setRow}
-            />
-          );
-          break;
+      case this.state.row2 === "RothSingleIncomeQ":
+        return (
+          <RothSingleIncomeQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+          />
+        );
+        break;
+      case this.state.row2 === "RothSingle50Q":
+        return (
+          <RothSingle50Q
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+          />
+        );
+        break;
+      case this.state.row2 === "RothRegD":
+        return (
+          <RothRegD
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+          />
+        );
+        break;
+      case this.state.row2 === "RothMaxD":
+        return (
+          <RothMaxD
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+          />
+        );
+        break;
+      case this.state.row2 === "RothSingleUnderD":
+        return (
+          <RothSingleUnderD
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+          />
+        );
+        break;
+      case this.state.row2 === "RothMarriedJointlyQ":
+        return (
+          <RothMarriedJointlyQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+          />
+        );
+        break;
+      case this.state.row2 === "RothMarriedJointlyMinQ":
+        return (
+          <RothMarriedJointlyMinQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+          />
+        );
+        break;
+      case this.state.row2 === "RothMarriedJointlyIncomeQ":
+        return (
+          <RothMarriedJointlyIncomeQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+          />
+        );
+        break;
+      case this.state.row2 === "RothMarriedJointly50Q":
+        return (
+          <RothMarriedJointly50Q
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+          />
+        );
+        break;
+      case this.state.row2 === "RothMarriedNotJointlyMinQ":
+        return (
+          <RothMarriedNotJointlyMinQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+          />
+        );
+        break;
+      case this.state.row2 === "RothMarriedNotJointlyTweenD":
+        return (
+          <RothMarriedNotJointlyTweenD
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+          />
+        );
+        break;
+      case this.state.row2 === "RothMarriedNotJointlyOverD":
+        return (
+          <RothMarriedNotJointlyOverD
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+          />
+        );
+        break;
+      case this.state.row2 === "RothMarriedJointlyMaxQ":
+        return (
+          <RothMarriedJointlyMaxQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+          />
+        );
+        break;
+      case this.state.row2 === "RothMarriedJointlyTweenD":
+        return (
+          <RothMarriedJointlyTweenD
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+          />
+        );
+        break;
+      case this.state.row2 === "RothMarriedJointlyOverD":
+        return (
+          <RothMarriedJointlyOverD
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+          />
+        );
+        break;
+      case this.state.row2 === "TaxableBrokerageIntro":
+        return (
+          <TaxableBrokerageIntro
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+          />
+        );
+        break;
     }
   };
 
@@ -415,10 +434,11 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             setChild={this.setChild}
             setRow={this.setRow}
+            clearRow={this.clearRow}
           />
         );
         break;
-        case this.state.row3 === "TaxableBrokerageIntro":
+      case this.state.row3 === "TaxableBrokerageIntro":
         return (
           <TaxableBrokerageIntro
             handlePrevStep={this.handlePrevStep}
@@ -428,7 +448,7 @@ class StepContainer extends React.Component {
           />
         );
         break;
-        case this.state.row3 === "BackdoorRothIntro":
+      case this.state.row3 === "BackdoorRothIntro":
         return (
           <BackdoorRothIntro
             handlePrevStep={this.handlePrevStep}

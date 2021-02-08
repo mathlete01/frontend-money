@@ -10,21 +10,23 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 
 class Four01kMaxOutQ extends React.Component {
-  _prev = () => {
-    this.props.setRow("row2");
-    this.props.handlePrevStep();
-  };
 
   _yes = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { four01k_max_out: true },this.props.currentStep);
-    this.props.handleNextStep("TaxableBrokerageIntro");
+    // this.props.handleNextStep("TaxableBrokerageIntro");
   };
 
   _no = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { four01k_max_out: false },this.props.currentStep);
-    this.props.handleNextStep("Four01kMaxRec");
+    // this.props.handleNextStep("Four01kMaxRec");
+  };
+
+  _prev = () => {
+    this.props.setRow("row2");
+    this.props.handlePrevStep();
+    this.props.clearRow("row3")
   };
 
   render() {

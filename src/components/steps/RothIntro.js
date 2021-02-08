@@ -20,6 +20,7 @@ class RothIntro extends React.Component {
   _prev = () => {
     this.props.setRow("row1");
     this.props.handlePrevStep();
+    this.props.clearRow("row2")
   };
 
   render() {

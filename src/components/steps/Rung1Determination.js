@@ -12,16 +12,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 
 class Rung1Determination extends React.Component {
+  
+  _prev = () => {
+    this.props.setRow("row1");
+    this.props.handlePrevStep();
+  };
+  
   _next = (event) => {
     event.preventDefault();
     this.props.setRow("row2");
     this.props.setChild(event);
   };
 
-  _prev = () => {
-    this.props.setRow("row1");
-    this.props.handlePrevStep();
-  };
+  
 
   makeDetermination = () => {
     const {
