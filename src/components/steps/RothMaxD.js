@@ -31,19 +31,19 @@ class RothMaxD extends React.Component {
     }
     return (
       <Container className="step">
-        <Row id="header" className="step">
+        <Row id="header" className="rowElement">
           <Button onClick={this._prev} variant="link">
             <FontAwesomeIcon icon="chevron-left" /> Back
           </Button>
           <hr className="w-100" />
         </Row>
-        <Row id="title" className="step">
+        <Row id="title" className="rowElement">
           <Container>
             <h6>YOUR NEXT PRIORITY:</h6>
             <h3>Max-out your Roth IRA</h3>
           </Container>
         </Row>
-        <Row id="body" className="step">
+        <Row id="body" className="rowElement">
           <Container>
             You can contribute up to $7k to a Roth IRA, so do it!
           </Container>
@@ -104,7 +104,7 @@ class RothMaxD extends React.Component {
           </Tabs>
         </Row>
         <hr className="w-100" />
-        <Row id="buttons" className="step">
+        <Row id="buttons" className="rowElement">
           <Container>
             <Form.Group>
               <Form.Row>

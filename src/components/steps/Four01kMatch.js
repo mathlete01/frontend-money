@@ -34,7 +34,8 @@ class Four01kMatch extends React.Component {
     this.props.updateCurrentUser(this.props.currentUser.id, {
       four01k_match: this.state.four01k_match
     },this.props.currentStep);
-    this.props.handleNextStep("Four01kContribution");
+    this.props.setChild(event);
+    // this.props.handleNextStep("Four01kContribution");
   };
 
   _prev = () => {
@@ -42,25 +43,25 @@ class Four01kMatch extends React.Component {
   };
 
   render() {
-    if (this.props.currentStep !== "Four01kMatch") {
-      return null;
-    }
+    // if (this.props.currentStep !== "Four01kMatch") {
+    //   return null;
+    // }
     return (
       <Container className="step">
-        <Row id="header" className="step">
+        <Row id="header" className="rowElement">
               <Button onClick={this._prev} variant="link"><FontAwesomeIcon icon="chevron-left" /> Back</Button>
           <hr className="w-100" /> 
         </Row>
-        <Row id="title" className="step">
+        <Row id="title" className="rowElement">
           <Container><h3>How much is the employer match?</h3></Container>
         </Row>
-        <Row id="body" className="step">
+        <Row id="body" className="rowElement">
           <Container>
             The "employer match" is the maximum percentage of your paycheck that
             they will contribute to your 401(k).
           </Container>
         </Row>
-        <Row id="form" className="step">
+        <Row id="form" className="rowElement">
           <Container>
             <Form.Group>
               <Form.Row>
@@ -90,7 +91,7 @@ class Four01kMatch extends React.Component {
             </Form.Group>
           </Container>
         </Row>
-        <Row id="buttons" className="step">
+        <Row id="buttons" className="rowElement">
           <Container>
             <Form.Group>
               <Form.Row>
@@ -103,6 +104,8 @@ class Four01kMatch extends React.Component {
                       variant="primary"
                       size="lg"
                       block
+                      id="row1Child"
+                    value="Four01kContribution"
                       onClick={this._next}
                     >
                       Next

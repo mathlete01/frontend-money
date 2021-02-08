@@ -14,7 +14,9 @@ import { Form, FormGroup, FormControl } from "react-bootstrap";
 class Rung1Determination extends React.Component {
   _next = (event) => {
     event.preventDefault();
-    this.props.handleNextStep(this.nextStep);
+    this.props.setRow("row2Child")
+    // this.props.handleNextStep(this.nextStep);
+    this.props.setChild(event);
   };
 
   _prev = () => {
@@ -22,7 +24,7 @@ class Rung1Determination extends React.Component {
   };
 
   makeDetermination = () => {
-    // console.log("makeDetermination called")
+    console.log("makeDetermination called")
     const {
       leftover_money,
       four01k,
@@ -30,12 +32,12 @@ class Rung1Determination extends React.Component {
       four01k_contribution,
       credit_card_debt,
     } = this.props.currentUser;
-    // console.log(`this.props.currentUser = `, this.props.currentUser);
-    // console.log(`leftover_money = `, leftover_money);
-    // console.log(`four01k = `, four01k);
-    // console.log(`four01k_match = `, four01k_match);
-    // console.log(`four01k_contribution = `, four01k_contribution);
-    // console.log(`credit_card_debt = `, credit_card_debt);
+    console.log(`this.props.currentUser = `, this.props.currentUser);
+    console.log(`leftover_money = `, leftover_money);
+    console.log(`four01k = `, four01k);
+    console.log(`four01k_match = `, four01k_match);
+    console.log(`four01k_contribution = `, four01k_contribution);
+    console.log(`credit_card_debt = `, credit_card_debt);
     switch (true) {
       // Case: No 401k and debt is tiny
       case four01k === false && credit_card_debt <= leftover_money:
@@ -114,10 +116,10 @@ class Rung1Determination extends React.Component {
     }
   };
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.currentStep !== this.props.currentStep) {
+  componentDidMount(prevProps, prevState) {
+    // if (prevProps.currentStep !== this.props.currentStep) {
       this.makeDetermination();
-    }
+    // }
   }
 
   render() {
@@ -125,32 +127,31 @@ class Rung1Determination extends React.Component {
     //   `Rung1Determination: render: this.props.currentUser = `,
     //   this.props.currentUser
     // );
-    if (this.props.currentStep !== "Rung1Determination") {
-      // Prop: The current step
-      // console.log(`this.props.currentStep = `, this.props.currentStep);
-      return null;
-    }
-    // The markup for the Step 1 UI
+    // if (this.props.currentStep !== "Rung1Determination") {
+    //   console.log(`this.props.currentStep = `, this.props.currentStep);
+    //   return null;
+    // }
+    console.log("Rung1Determination is in tha house")
 
     return (
       <Container className="step">
-        <Row id="header" className="step">
+        <Row id="header" className="rowElement">
           <Button onClick={this._prev} variant="link">
             <FontAwesomeIcon icon="chevron-left" /> Back
           </Button>
           <hr className="w-100" />
         </Row>
-        <Row id="title" className="step">
+        <Row id="title" className="rowElement">
           <Container>
             <h6>YOUR NEXT PRIORITY:</h6>
             <h3>{this.headline}</h3>
           </Container>
         </Row>
-        <Row id="body" className="step">
+        <Row id="body" className="rowElement">
           <Container>{this.advice}</Container>
         </Row>
-        <Row id="form" className="step"></Row>
-        <Row id="buttons" className="step">
+        <Row id="form" className="rowElement"></Row>
+        <Row id="buttons" className="rowElement">
           <Container>
             <Form.Group>
               <Form.Row>
@@ -161,6 +162,8 @@ class Rung1Determination extends React.Component {
                     variant="primary"
                     size="lg"
                     block
+                    id="row2Child"
+                    value={this.nextStep}
                     onClick={this._next}
                   >
                     Continue

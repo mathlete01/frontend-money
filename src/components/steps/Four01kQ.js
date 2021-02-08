@@ -19,13 +19,15 @@ class Four01kQ extends React.Component {
   _yes = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { four01k: true },this.props.currentStep);
-    this.props.handleNextStep("Four01kMatch");
+    // this.props.handleNextStep("Four01kMatch");
+    this.props.setChild(event);
   };
 
   _no = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { four01k: false },this.props.currentStep);
-    this.props.handleNextStep("CreditCardDebtQ");
+    // this.props.handleNextStep("CreditCardDebtQ");
+    this.props.setChild(event);
   };
 
   renderTooltip = (props) => (
@@ -35,31 +37,34 @@ class Four01kQ extends React.Component {
   );
 
   render() {
-    if (this.props.currentStep !== "Four01kQ") {
-      return null;
-    }
+    // if (this.props.currentStep !== "Four01kQ") {
+    //   return null;
+    // }
+    console.log("Four01kQ is in tha house")
+
     return (
       <Container className="step">
-        <Row id="header" className="step">
-          <Button onClick={this._prev} variant="link">
+        <Row id="header" className="rowElement">
+          <Button 
+          onClick={this._prev} variant="link">
             <FontAwesomeIcon icon="chevron-left" /> Back
           </Button>
           <hr className="w-100" />
         </Row>
-        <Row id="title" className="step">
+        <Row id="title" className="rowElement">
           <Container>
             <h3>Does your employer offer a 401(k) plan?</h3>
           </Container>
         </Row>
-        <Row id="body" className="step">
+        <Row id="body" className="rowElement">
           <Container>
             {/* A <OverlayTrigger overlay={this.renderTooltip}>401(k) plan</OverlayTrigger> */}
             A 401(k) plan is a retirement investment account that many companies
             offer their employees.
           </Container>
         </Row>
-        <Row id="form" className="step"></Row>
-        <Row id="buttons" className="step">
+        <Row id="form" className="rowElement"></Row>
+        <Row id="buttons" className="rowElement">
           <Container>
             <Form.Group>
               <Form.Row>
@@ -69,6 +74,8 @@ class Four01kQ extends React.Component {
                     variant="danger"
                     size="lg"
                     block
+                    id="row1Child"
+                    value="CreditCardDebtQ"
                     onClick={this._no}
                   >
                     No
@@ -80,6 +87,8 @@ class Four01kQ extends React.Component {
                     variant="success"
                     size="lg"
                     block
+                    id="row1Child"
+                    value="Four01kMatch"
                     onClick={this._yes}
                   >
                     Yes

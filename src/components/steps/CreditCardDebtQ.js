@@ -16,43 +16,45 @@ class CreditCardDebtQ extends React.Component {
 
   _yes = (event) => {
     event.preventDefault();
-    this.props.handleNextStep("CreditCardDebt");
+    // this.props.handleNextStep("CreditCardDebt");
+    this.props.setChild(event);
   };
 
   _no = (event) => {
     event.preventDefault();
-    this.props.handleNextStep("Rung1Determination");
+    // this.props.handleNextStep("Rung1Determination");
     this.props.updateCurrentUser(this.props.currentUser.id, {
       credit_card_debt: 0,
     },this.props.currentStep);
+    this.props.setChild(event);
   };
 
   render() {
-    if (this.props.currentStep !== "CreditCardDebtQ") {
-      return null;
-    }
+    // if (this.props.currentStep !== "CreditCardDebtQ") {
+    //   return null;
+    // }
     return (
       <Container className="step">
-        <Row id="header" className="step">
+        <Row id="header" className="rowElement">
           <Button onClick={this._prev} variant="link">
             <FontAwesomeIcon icon="chevron-left" /> Back
           </Button>
           <hr className="w-100" />
         </Row>
-        <Row id="title" className="step">
+        <Row id="title" className="rowElement">
           <Container>
             <h3>Do you have any credit card debt?</h3>
           </Container>
         </Row>
-        <Row id="body" className="step">
+        <Row id="body" className="rowElement">
           <Container>
             {/* A <OverlayTrigger overlay={this.renderTooltip}>401(k) plan</OverlayTrigger> */}
             The interest you pay on credit card debt is often 3 times the amount
             of interest you get from investments.
           </Container>
         </Row>
-        <Row id="form" className="step"></Row>
-        <Row id="buttons" className="step">
+        <Row id="form" className="rowElement"></Row>
+        <Row id="buttons" className="rowElement">
           <Container>
             <Form.Group>
               <Form.Row>
@@ -62,6 +64,8 @@ class CreditCardDebtQ extends React.Component {
                     variant="danger"
                     size="lg"
                     block
+                    id="row1Child"
+                    value="Rung1Determination"
                     onClick={this._no}
                   >
                     No
@@ -73,6 +77,8 @@ class CreditCardDebtQ extends React.Component {
                     variant="success"
                     size="lg"
                     block
+                    id="row1Child"
+                    value="CreditCardDebt"
                     onClick={this._yes}
                   >
                     Yes

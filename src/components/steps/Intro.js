@@ -12,11 +12,10 @@ const BASE_URL = "http://localhost:3000";
 const USERS_URL = `${BASE_URL}/users`;
 
 class Intro extends React.Component {
-  
   _next = (event) => {
     event.preventDefault();
-    this.props.handleNextStep("LeftoverMoney");
-    // debugger
+    // this.props.handleNextStep("LeftoverMoney");
+    this.props.setChild(event);
     if (Object.keys(this.props.currentUser).length === 0) {
       this.createUser();
     }
@@ -32,7 +31,7 @@ class Intro extends React.Component {
       user: {
         username: this.generateRandomString(),
         password: this.generateRandomString(),
-        current_step: "LeftoverMoney"
+        current_step: "LeftoverMoney",
       },
     };
     let configObj = {
@@ -55,38 +54,43 @@ class Intro extends React.Component {
   };
 
   render() {
-    if (this.props.currentStep !== "Intro") {
-      // Prop: The current step
-      return null;
-    }
+    // if (this.props.currentStep !== "Intro") {
+ 
+    //   return null;
+    // }
+    console.log("Intro is in tha house")
+
     // The markup for the Step 1 UI
     return (
       // <Container className="border step">
       <Container className="step">
-        <Row id="header" className="step">
+        <Row id="header" className="rowElement">
           {/* <Button onClick={this._prev} variant="link" disabled>
             <FontAwesomeIcon icon="chevron-left" /> Back
           </Button> */}
           {/* <hr className="w-100" /> */}
         </Row>
-        <Row id="title" className="step">
+        <Row id="title" className="rowElement">
           <Container>
             <h3>Wondering what money moves you should be making?</h3>
           </Container>
         </Row>
-        <Row id="body" className="step">
+        <Row id="body" className="rowElement">
           <Container>
-            This interactive quiz asks you a bunch of questions then tells you what you should do. Well, what are you waiting for?
+            This interactive quiz asks you a bunch of questions then tells you
+            what you should do. Well, what are you waiting for?
           </Container>
         </Row>
-        <Row id="form" className="step"></Row>
-        <Row id="buttons" className="step">
+        <Row id="form" className="rowElement"></Row>
+        <Row id="buttons" className="rowElement">
           <Container>
             <Form.Group>
               <Form.Row>
                 <Col></Col>
                 <Col>
                   <Button
+                    id="row1Child"
+                    value="LeftoverMoney"
                     className="yes"
                     variant="primary"
                     size="lg"

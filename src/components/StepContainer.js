@@ -39,49 +39,202 @@ import RothMarriedJointlyOverD from "./steps/RothMarriedJointlyOverD";
 import Four01kMaxRec from "./steps/Four01kMaxRec";
 import TaxableBrokerageIntro from "./steps/TaxableBrokerageIntro";
 import MoreToSpendQ from "./steps/MoreToSpendQ";
+import Parent5 from "./Parent5";
+import Row from "react-bootstrap/Row";
+import ChildA from "./ChildA";
+import ChildB from "./ChildB";
 
-
-class MasterForm extends React.Component {
+class StepContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       prevStep: "",
       path: [],
+      row1Child: "Intro",
+      row2Child: "",
+      currentRow: "row1Child",
     };
   }
 
-  handleNextStep = (nextStep) => {
+  setRow = (row) => {
+    this.setState({
+      currentRow: row,
+    });
+  };
+
+  setChild = (event) => {
+    // from handleNextStep below
+    const nextStep = event.target.value;
     this.setState({
       path: [...this.state.path, nextStep],
     });
     this.props.updateCurrentStep(nextStep);
+    // above
+    var stateObject = function () {
+      var returnObj = {};
+      returnObj[this.target.id] = this.target.value;
+      return returnObj;
+    }.bind(event)();
+    this.setState({ [event.target.id]: event.target.value });
   };
 
   handlePrevStep = () => {
+    console.log("handlePrevStep called")
     const i = this.state.path.length;
     this.setState((prevState) => ({
       path: prevState.path.filter((_, i) => i !== this.state.path.length - 1),
     }));
     const last = this.state.path.length - 2;
     this.props.updateCurrentStep(this.state.path[last]);
+    // console.log(`handlePrevStep: this.state.path[last] = `, this.state.path[last])
+    this.setState({ [this.state.currentRow]: this.state.path[last] });
   };
+
+  loadChildInRow1 = () => {
+    // console.log("loadChildInRow1 called");
+    // console.log(`this.state.row1Child = `, this.state.row1Child);
+    switch (true) {
+      case this.state.row1Child === "Intro":
+        return (
+          <Intro
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+          />
+        );
+        break;
+      case this.state.row1Child === "LeftoverMoney":
+        return (
+          <LeftoverMoney
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+          />
+        );
+        break;
+      case this.state.row1Child === "Four01kQ":
+        return (
+          <Four01kQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+          />
+        );
+        break;
+      case this.state.row1Child === "Four01kMatch":
+        return (
+          <Four01kMatch
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+          />
+        );
+        break;
+      case this.state.row1Child === "Four01kContribution":
+        return (
+          <Four01kContribution
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+          />
+        );
+        break;
+      case this.state.row1Child === "CreditCardDebtQ":
+        return (
+          <CreditCardDebtQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+          />
+        );
+        break;
+      case this.state.row1Child === "CreditCardDebt":
+        return (
+          <CreditCardDebt
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+          />
+        );
+        break;
+      case this.state.row1Child === "Rung1Determination":
+        return (
+          <Rung1Determination
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+          />
+        );
+        break;
+    }
+  };
+
+  loadChildInRow2 = () => {
+    // console.log("loadChildInRow2 called");
+    switch (true) {
+      case this.state.row2Child === "RothIntro":
+        return (
+          <RothIntro
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+          />
+        );
+        break;
+      case this.state.row2Child === "RothSingleQ":
+        return (
+          <RothSingleQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+          />
+        );
+        break;
+      case this.state.row2Child === "DoneForNow":
+        return (
+          <DoneForNow
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+          />
+        );
+        break;
+    }
+  };
+
+  // handleNextStep = (nextStep) => {
+  //   this.setState({
+  //     path: [...this.state.path, nextStep],
+  //   });
+  //   this.props.updateCurrentStep(nextStep);
+  // };
 
   render() {
     return (
-      <Container>
-        <RothSingle50Q
+      <Container className="stepContainer">
+        <Row name="row1" id="row1" className="row1">
+          {this.loadChildInRow1()}
+        </Row>
+        <Row>foo</Row>
+        <Row name="row2" id="row2" className="row2">
+          {this.loadChildInRow2()}
+        </Row>
+        {/* <Intro handleNextStep={this.handleNextStep} setChild={this.setChild} /> */}
+        {/* <Parent5 /> */}
+        {/* <RothSingle50Q
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
-        />
-        <CreditCardDebt
+        /> */}
+        {/* <CreditCardDebt
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
-        />
-        <CreditCardDebtQ
+        /> */}
+        {/* <CreditCardDebtQ
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
-        />
-        <DoneForNow
+        /> */}
+        {/* <DoneForNow
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
@@ -96,29 +249,29 @@ class MasterForm extends React.Component {
         <RothSingleMaxQ
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
-        />
-        <Four01kContribution
+        /> */}
+        {/* <Four01kContribution
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
-        />
-        <Four01kMatch
+        /> */}
+        {/* <Four01kMatch
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
-        />
-        <Four01kMaxOutQ
+        /> */}
+        {/* <Four01kMaxOutQ
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
-        />
-        <Four01kQ
+        /> */}
+        {/* <Four01kQ
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
-        />
-        <Intro handleNextStep={this.handleNextStep} />
-        <LeftoverMoney
+        /> */}
+
+        {/* <LeftoverMoney
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
-        />
-        <RothMarriedJointlyMinQ
+        /> */}
+        {/* <RothMarriedJointlyMinQ
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
@@ -126,7 +279,7 @@ class MasterForm extends React.Component {
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
-      
+
         <RothRegD
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
@@ -138,13 +291,13 @@ class MasterForm extends React.Component {
         <RothMaxD
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
-        />
-        
-        <Rung1Determination
+        /> */}
+
+        {/* <Rung1Determination
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
-        />
-        <SaveYourWork
+        /> */}
+        {/* <SaveYourWork
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
@@ -168,7 +321,7 @@ class MasterForm extends React.Component {
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
-         <RothSingleUnderD
+        <RothSingleUnderD
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
         />
@@ -211,8 +364,7 @@ class MasterForm extends React.Component {
         <MoreToSpendQ
           handlePrevStep={this.handlePrevStep}
           handleNextStep={this.handleNextStep}
-        />
-        
+        /> */}
       </Container>
     );
   }
@@ -228,4 +380,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(MasterForm);
+})(StepContainer);
