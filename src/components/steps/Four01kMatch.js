@@ -35,7 +35,6 @@ class Four01kMatch extends React.Component {
       four01k_match: this.state.four01k_match
     },this.props.currentStep);
     this.props.setChild(event);
-    // this.props.handleNextStep("Four01kContribution");
   };
 
   _prev = () => {
@@ -43,9 +42,6 @@ class Four01kMatch extends React.Component {
   };
 
   render() {
-    // if (this.props.currentStep !== "Four01kMatch") {
-    //   return null;
-    // }
     return (
       <Container className="step">
         <Row id="header" className="rowElement">
@@ -75,7 +71,6 @@ class Four01kMatch extends React.Component {
                       type="number"
                       min="0"
                       max="7"
-                      // defaultValue="3"
                       value={this.state.four01k_match ? this.state.four01k_match : 0}
                       id="four01k_match"
                       name="four01k_match"

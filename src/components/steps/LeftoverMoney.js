@@ -67,7 +67,6 @@ class LeftoverMoney extends React.Component {
       },
       this.props.currentStep
     );
-    // this.props.handleNextStep("Four01kQ");
     this.props.setChild(event);
   };
 
@@ -78,10 +77,6 @@ class LeftoverMoney extends React.Component {
   };
 
   render() {
-    // if (this.props.currentStep !== "LeftoverMoney") {
-    //   return null;
-    // }
-    // console.log("LeftoverMoney is in tha house")
     return (
       <Container className="step">
         <Row id="header" className="rowElement">

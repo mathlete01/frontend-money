@@ -48,10 +48,6 @@ class CreditCardDebt extends React.Component {
       const cc_2 = this.state.cc_2 ? this.state.cc_2 : 0;
       const cc_3 = this.state.cc_3 ? this.state.cc_3 : 0;
       const sum = parseInt(cc_1) + parseInt(cc_2) + parseInt(cc_3);
-      // console.log(`cc_1 = `, cc_1)
-      // console.log(`parseInt(cc_2) = `, parseInt(cc_2))
-      // console.log(`cc_3 = `, cc_3)
-      // console.log(`sum = `, sum)
       return sum;
     } else {
       return 0;
@@ -70,7 +66,6 @@ class CreditCardDebt extends React.Component {
       },
       this.props.currentStep
     );
-    // this.props.handleNextStep("Rung1Determination");
     this.props.setChild(event);
   };
 
@@ -79,9 +74,6 @@ class CreditCardDebt extends React.Component {
   };
 
   render() {
-    // if (this.props.currentStep !== "CreditCardDebt") {
-    //   return null;
-    // }
     return (
       <Container className="step">
         <Row id="header" className="rowElement">

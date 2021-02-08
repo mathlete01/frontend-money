@@ -19,14 +19,12 @@ class Four01kQ extends React.Component {
   _yes = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { four01k: true },this.props.currentStep);
-    // this.props.handleNextStep("Four01kMatch");
     this.props.setChild(event);
   };
 
   _no = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { four01k: false },this.props.currentStep);
-    // this.props.handleNextStep("CreditCardDebtQ");
     this.props.setChild(event);
   };
 
@@ -37,11 +35,6 @@ class Four01kQ extends React.Component {
   );
 
   render() {
-    // if (this.props.currentStep !== "Four01kQ") {
-    //   return null;
-    // }
-    // console.log("Four01kQ is in tha house")
-
     return (
       <Container className="step">
         <Row id="header" className="rowElement">

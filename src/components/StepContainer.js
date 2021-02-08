@@ -79,21 +79,16 @@ class StepContainer extends React.Component {
   };
 
   handlePrevStep = () => {
-    console.log("handlePrevStep called")
-    console.log(`this.state.currentRow = `, this.state.currentRow)
     const i = this.state.path.length;
     this.setState((prevState) => ({
       path: prevState.path.filter((_, i) => i !== this.state.path.length - 1),
     }));
     const last = this.state.path.length - 2;
     this.props.updateCurrentStep(this.state.path[last]);
-    // console.log(`handlePrevStep: this.state.path[last] = `, this.state.path[last])
     this.setState({ [this.state.currentRow]: this.state.path[last] });
   };
 
   loadChildInRow1 = () => {
-    // console.log("loadChildInRow1 called");
-    // console.log(`this.state.row1 = `, this.state.row1);
     switch (true) {
       case this.state.row1 === "Intro":
         return (
@@ -172,7 +167,6 @@ class StepContainer extends React.Component {
   };
 
   loadChildInRow2 = () => {
-    // console.log("loadChildInRow2 called");
     switch (true) {
       case this.state.row2 === "RothIntro":
         return (
@@ -223,13 +217,6 @@ class StepContainer extends React.Component {
     }
   };
 
-  // handleNextStep = (nextStep) => {
-  //   this.setState({
-  //     path: [...this.state.path, nextStep],
-  //   });
-  //   this.props.updateCurrentStep(nextStep);
-  // };
-
   render() {
     return (
       <Container className="stepContainer">
@@ -240,151 +227,6 @@ class StepContainer extends React.Component {
         <Row name="row2" id="row2" className="row2">
           {this.loadChildInRow2()}
         </Row>
-        {/* <Intro handleNextStep={this.handleNextStep} setChild={this.setChild} /> */}
-        {/* <Parent5 /> */}
-        {/* <RothSingle50Q
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        /> */}
-        {/* <CreditCardDebt
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        /> */}
-        {/* <CreditCardDebtQ
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        /> */}
-        {/* <DoneForNow
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        />
-        <RothSingleIncomeQ
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        />
-        <RothMarriedJointlyQ
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        />
-        <RothSingleMaxQ
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        /> */}
-        {/* <Four01kContribution
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        /> */}
-        {/* <Four01kMatch
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        /> */}
-        {/* <Four01kMaxOutQ
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        /> */}
-        {/* <Four01kQ
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        /> */}
-
-        {/* <LeftoverMoney
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        /> */}
-        {/* <RothMarriedJointlyMinQ
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        />
-        <RothMarriedJointlyMaxQ
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        />
-
-        <RothRegD
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        />
-        <RothIntro
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        />
-        <RothMaxD
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        /> */}
-
-        {/* <Rung1Determination
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        /> */}
-        {/* <SaveYourWork
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        />
-        <RothSingleTweenD
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        />
-        <RothSingleMinQ
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        />
-        <RothSingleOverD
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        />
-        <RothMarriedNotJointlyTweenD
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        />
-        <BackdoorRothIntro
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        />
-        <RothSingleUnderD
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        />
-        <RothSingleQ
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        />
-        <RothMarriedJointlyIncomeQ
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        />
-        <RothMarriedJointly50Q
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        />
-        <RothMarriedNotJointlyMinQ
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        />
-        <RothMarriedNotJointlyOverD
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        />
-        <TaxableBrokerageIntro
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        />
-        <Four01kMaxRec
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        />
-        <RothMarriedJointlyOverD
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        />
-        <RothMarriedJointlyTweenD
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        />
-        <MoreToSpendQ
-          handlePrevStep={this.handlePrevStep}
-          handleNextStep={this.handleNextStep}
-        /> */}
       </Container>
     );
   }

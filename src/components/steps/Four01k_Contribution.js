@@ -45,9 +45,6 @@ class Four01kContribution extends React.Component {
   };
 
   render() {
-    // if (this.props.currentStep !== "Four01kContribution") {
-    //   return null;
-    // }
     return (
       <Container className="step">
         <Row id="header" className="rowElement">

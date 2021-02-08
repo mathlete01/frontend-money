@@ -17,21 +17,16 @@ class RothSingleQ extends React.Component {
   _yes = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { single: true });
-    // this.props.handleNextStep("RothSingleMinQ");
     this.props.setChild(event);
   };
 
   _no = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { single: false });
-    // this.props.handleNextStep("RothMarriedJointlyQ");
     this.props.setChild(event);
   };
 
   render() {
-    // if (this.props.currentStep !== "RothSingleQ") {
-    //   return null;
-    // }
     return (
       <Container className="step">
         <Row id="header" className="rowElement">

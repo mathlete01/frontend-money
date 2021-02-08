@@ -16,13 +16,11 @@ class CreditCardDebtQ extends React.Component {
 
   _yes = (event) => {
     event.preventDefault();
-    // this.props.handleNextStep("CreditCardDebt");
     this.props.setChild(event);
   };
 
   _no = (event) => {
     event.preventDefault();
-    // this.props.handleNextStep("Rung1Determination");
     this.props.updateCurrentUser(this.props.currentUser.id, {
       credit_card_debt: 0,
     },this.props.currentStep);
@@ -30,9 +28,6 @@ class CreditCardDebtQ extends React.Component {
   };
 
   render() {
-    // if (this.props.currentStep !== "CreditCardDebtQ") {
-    //   return null;
-    // }
     return (
       <Container className="step">
         <Row id="header" className="rowElement">

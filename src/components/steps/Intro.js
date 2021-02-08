@@ -14,7 +14,6 @@ const USERS_URL = `${BASE_URL}/users`;
 class Intro extends React.Component {
   _next = (event) => {
     event.preventDefault();
-    // this.props.handleNextStep("LeftoverMoney");
     this.props.setChild(event);
     if (Object.keys(this.props.currentUser).length === 0) {
       this.createUser();
@@ -26,7 +25,6 @@ class Intro extends React.Component {
   };
 
   createUser = () => {
-    // console.log("createUser called")
     let formData = {
       user: {
         username: this.generateRandomString(),
@@ -54,21 +52,9 @@ class Intro extends React.Component {
   };
 
   render() {
-    // if (this.props.currentStep !== "Intro") {
- 
-    //   return null;
-    // }
-    // console.log("Intro is in tha house")
-
-    // The markup for the Step 1 UI
     return (
-      // <Container className="border step">
       <Container className="step">
         <Row id="header" className="rowElement">
-          {/* <Button onClick={this._prev} variant="link" disabled>
-            <FontAwesomeIcon icon="chevron-left" /> Back
-          </Button> */}
-          {/* <hr className="w-100" /> */}
         </Row>
         <Row id="title" className="rowElement">
           <Container>
