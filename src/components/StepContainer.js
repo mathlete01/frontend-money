@@ -196,6 +196,33 @@ class StepContainer extends React.Component {
           />
         );
         break;
+        case this.state.row2 === "RothSingleMaxQ":
+        return (
+          <RothSingleMaxQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+          />
+        );
+        break;
+        case this.state.row2 === "RothSingleOverD":
+        return (
+          <RothSingleOverD
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+          />
+        );
+        break;
+        case this.state.row2 === "BackdoorRothIntro":
+        return (
+          <BackdoorRothIntro
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+          />
+        );
+        break;
         case this.state.row2 === "RothMarriedJointlyQ":
         return (
           <RothMarriedJointlyQ

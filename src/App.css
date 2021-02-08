@@ -5,6 +5,28 @@
 .stepContainer {
   /* background-color: white; */
 }
+/* Inactive tab */
+/* .tab ul > li > a {
+  background-color:  rgb(250, 231, 168);
+  color: red;
+} */
+/* .tab ul > li > a:hover {
+  background-color: pink;
+} */
+
+/* Active tab */
+/* .tab ul > li.active > a,
+.tab ul > li.active > a:hover,
+.tab ul > li.active > a:focus {
+  background-color:  rgb(250, 231, 168);
+  color: rgb(250, 231, 168);
+} */
+
+/* Disabled tab */
+/* .tab ul > li.disabled > a {
+  background-color: lightgray;
+  color: darkgray;
+} */
 .directiveContainer {
   /* background-color: white; */
   /* margin: 100px; */

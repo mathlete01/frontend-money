@@ -17,19 +17,18 @@ class RothSingleMaxQ extends React.Component {
   _yes = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { single_between: true },this.props.currentStep);
-    this.props.handleNextStep("RothSingleTweenD");
+    this.props.setChild(event)
+
   };
 
   _no = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { single_between: false },this.props.currentStep);
-    this.props.handleNextStep("RothSingleOverD");
+    this.props.setChild(event)
+
   };
 
   render() {
-    if (this.props.currentStep !== "RothSingleMaxQ") {
-      return null;
-    }
     return (
       <Container className="step">
         <Row id="header" className="rowElement">
@@ -59,6 +58,8 @@ class RothSingleMaxQ extends React.Component {
                     variant="danger"
                     size="lg"
                     block
+                    id="row2"
+                    value="RothSingleOverD"
                     onClick={this._no}
                   >
                     No
@@ -70,6 +71,8 @@ class RothSingleMaxQ extends React.Component {
                     variant="success"
                     size="lg"
                     block
+                    id="row2"
+                    value="RothSingleTweenD"
                     onClick={this._yes}
                   >
                     Yes

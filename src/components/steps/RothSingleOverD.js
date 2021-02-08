@@ -12,7 +12,8 @@ import { Form, FormGroup, FormControl } from "react-bootstrap";
 class RothSingleOverD extends React.Component {
   _next = (event) => {
     event.preventDefault();
-    this.props.handleNextStep("BackdoorRothIntro");
+    // this.props.handleNextStep("BackdoorRothIntro");
+    this.props.setChild(event)
   };
 
   _prev = () => {
@@ -88,6 +89,8 @@ class RothSingleOverD extends React.Component {
                     variant="primary"
                     size="lg"
                     block
+                    id="row2"
+                    value="BackdoorRothIntro"
                     onClick={this._next}
                   >
                     Continue

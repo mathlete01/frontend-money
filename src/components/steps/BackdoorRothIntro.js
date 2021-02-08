@@ -9,26 +9,48 @@ import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { Tabs, Tab } from "react-bootstrap";
+import ReactDOM from "react-dom";
 
 class BackdoorRothIntro extends React.Component {
+  constructor(props) {
+    super();
+    this.state = {
+      // Takes active tab from props if it is defined there
+      activeTab: props.activeTab || 1,
+    };
+
+    // Bind the handleSelect function already here (not in the render function)
+    this.handleSelect = this.handleSelect.bind(this);
+  }
+
+  handleSelect(selectedTab) {
+    // The active tab must be set into the state so that
+    // the Tabs component knows about the change and re-renders.
+    this.setState({
+      activeTab: selectedTab,
+    });
+  }
+
   _prev = () => {
     this.props.handlePrevStep();
   };
 
   _next = (event) => {
     event.preventDefault();
-    this.props.handleNextStep("Four01kMaxOutQ");
+    this.props.setChild(event);
   };
 
-
   render() {
-    if (this.props.currentStep !== "BackdoorRothIntro") {
-      return null;
-    }
     return (
-      <Container className="step">
+      <Container className="directive">
         <Row id="header" className="rowElement">
-          <Button onClick={this._prev} variant="link">
+          <Button
+            onClick={this._prev}
+            variant="link"
+            disabled={
+              this.props.currentStep === "BackdoorRothIntro" ? false : true
+            }
+          >
             <FontAwesomeIcon icon="chevron-left" /> Back
           </Button>
           <hr className="w-100" />
@@ -41,43 +63,65 @@ class BackdoorRothIntro extends React.Component {
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Also known as a Roth IRA Conversion, the Backdoor Roth is a (totally legal) loophole you ought to take advantage of.
+            Also known as a Roth IRA Conversion, the Backdoor Roth is a (totally
+            legal) loophole you ought to take advantage of.
           </Container>
         </Row>
         <Row>
-          <Tabs defaultActiveKey="what" id="uncontrolled-tab-example">
+          <Tabs
+            defaultActiveKey="what"
+            id="uncontrolled-tab-example"
+            className="tab"
+            // activeKey={this.state.activeTab}
+            onSelect={this.handleSelect}
+          >
             <Tab eventKey="what" title="What">
               <ul>
                 <li>
-                  You make a non-deductible contribution to a <i>traditional</i> IRA, then convert it to a <i>Roth</i> IRA.
+                  You make a non-deductible contribution to a <i>traditional</i>{" "}
+                  IRA, then convert it to a <i>Roth</i> IRA.
                 </li>
               </ul>
             </Tab>
             <Tab eventKey="why" title="Why">
               <ul>
                 <li>
-                As we've said, Roth IRAs are great, but there are income limits and you've exceeded those. 
-                This loophole allows anyone with earned income to contribute to a Roth IRA, regardless of income limits.
+                  As we've said, Roth IRAs are great, but there are income
+                  limits and you've exceeded those. This loophole allows anyone
+                  with earned income to contribute to a Roth IRA, regardless of
+                  income limits.
                 </li>
               </ul>
             </Tab>
             <Tab eventKey="where" title="Where">
-            <ul>
+              <ul>
                 <li>
-                  Do you already have an investment account at a discount brokerage? Do it there.
+                  Do you already have an investment account at a discount
+                  brokerage? Do it there.
                 </li>
                 <li>
-                  Otherwise, open an account at a discount brokerage like <a href="http://www.vanguard.com" target="_blank">Vanguard</a> (our favorite) or <a href="http://www.schwab.com" target="_blank">Schwab</a>.
+                  Otherwise, open an account at a discount brokerage like{" "}
+                  <a href="http://www.vanguard.com" target="_blank">
+                    Vanguard
+                  </a>{" "}
+                  (our favorite) or{" "}
+                  <a href="http://www.schwab.com" target="_blank">
+                    Schwab
+                  </a>
+                  .
                 </li>
               </ul>
             </Tab>
             <Tab eventKey="how" title="How">
               <ul>
                 <li>
-                  This is an oversimplification, but basically you (1) contribute up to $6k to a tranditional IRA, then (2) call up the brokerage and ask them to convert that IRA to a Roth IRA.
+                  This is an oversimplification, but basically you (1)
+                  contribute up to $6k to a tranditional IRA, then (2) call up
+                  the brokerage and ask them to convert that IRA to a Roth IRA.
                 </li>
                 <li>
-                  It's a bit complicated but totally doable. Call up your brokerage and ask them to explain it to you.
+                  It's a bit complicated but totally doable. Call up your
+                  brokerage and ask them to explain it to you.
                 </li>
               </ul>
             </Tab>
@@ -88,14 +132,15 @@ class BackdoorRothIntro extends React.Component {
           <Container>
             <Form.Group>
               <Form.Row>
-                <Col>
-                </Col>
+                <Col></Col>
                 <Col>
                   <Button
                     className="yes"
                     variant="primary"
                     size="lg"
                     block
+                    id="row2"
+                    // value={this.nextStep}
                     onClick={this._next}
                   >
                     Continue
@@ -121,3 +166,5 @@ export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
 })(BackdoorRothIntro);
+
+ReactDOM.render(<BackdoorRothIntro />, document.getElementById("root"));

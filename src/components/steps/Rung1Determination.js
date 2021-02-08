@@ -122,8 +122,7 @@ class Rung1Determination extends React.Component {
           <Button
             onClick={this._prev}
             variant="link"
-            disabled={this.props.currentStep === "Rung1Determination" ? false : true}
-          >
+            disabled={this.props.currentStep === "Rung1Determination" ? false : true}>
             <FontAwesomeIcon icon="chevron-left" /> Back 
           </Button>
 
