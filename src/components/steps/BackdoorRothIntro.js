@@ -31,13 +31,15 @@ class BackdoorRothIntro extends React.Component {
     });
   }
 
-  _prev = () => {
-    this.props.handlePrevStep();
-  };
-
   _next = (event) => {
     event.preventDefault();
+    this.props.setRow("row3");
     this.props.setChild(event);
+  };
+
+  _prev = () => {
+    this.props.setRow("row2");
+    this.props.handlePrevStep();
   };
 
   render() {
@@ -133,14 +135,20 @@ class BackdoorRothIntro extends React.Component {
             <Form.Group>
               <Form.Row>
                 <Col></Col>
-                <Col>
+                <Col
+                  className={
+                    this.props.currentStep === "BackdoorRothIntro"
+                      ? ""
+                      : "hidden"
+                  }
+                >
                   <Button
                     className="yes"
                     variant="primary"
                     size="lg"
                     block
-                    id="row2"
-                    // value={this.nextStep}
+                    id="row3"
+                    value="Four01kMaxOutQ"
                     onClick={this._next}
                   >
                     Continue

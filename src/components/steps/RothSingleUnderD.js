@@ -12,7 +12,8 @@ import { Form, FormGroup, FormControl } from "react-bootstrap";
 class RothSingleUnderD extends React.Component {
   _next = (event) => {
     event.preventDefault();
-    this.props.handleNextStep("TaxableBrokerageIntro");
+    this.props.setChild(event)
+
   };
 
   _prev = () => {
@@ -20,9 +21,7 @@ class RothSingleUnderD extends React.Component {
   };
 
   render() {
-    if (this.props.currentStep !== "RothSingleUnderD") {
-      return null;
-    }
+  
     return (
       <Container className="step">
         <Row id="header" className="rowElement">
@@ -54,6 +53,8 @@ class RothSingleUnderD extends React.Component {
                     variant="primary"
                     size="lg"
                     block
+                    id="row2"
+                    value="TaxableBrokerageIntro"
                     onClick={this._next}
                   >
                     Continue

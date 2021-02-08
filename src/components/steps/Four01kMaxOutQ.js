@@ -11,6 +11,7 @@ import { Form, FormGroup, FormControl } from "react-bootstrap";
 
 class Four01kMaxOutQ extends React.Component {
   _prev = () => {
+    this.props.setRow("row2");
     this.props.handlePrevStep();
   };
 

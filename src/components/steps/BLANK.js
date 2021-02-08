@@ -9,7 +9,7 @@ import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 
-class BLANK_TITLE extends React.Component {
+class BLANK extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
@@ -21,7 +21,7 @@ class BLANK_TITLE extends React.Component {
   };
 
   render() {
-    if (this.props.currentStep !== "BLANK_TITLE") {
+    if (this.props.currentStep !== "BLANK") {
       return null;
     }
     return (
@@ -88,4 +88,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(BLANK_TITLE);
+})(BLANK);

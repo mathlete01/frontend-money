@@ -17,19 +17,19 @@ class RothMarriedJointlyMinQ extends React.Component {
   _yes = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { married_between: true },this.props.currentStep);
-    this.props.handleNextStep("RothMarriedJointlyIncomeQ");
+    this.props.setChild(event)
+
   };
 
   _no = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { married_between: false },this.props.currentStep);
-    this.props.handleNextStep("RothMarriedJointlyMaxQ");
+    this.props.setChild(event)
+
   };
 
   render() {
-    if (this.props.currentStep !== "RothMarriedJointlyMinQ") {
-      return null;
-    }
+ 
     return (
       <Container className="step">
         <Row id="header" className="rowElement">
@@ -59,6 +59,8 @@ class RothMarriedJointlyMinQ extends React.Component {
                     variant="danger"
                     size="lg"
                     block
+                    id="row2"
+                    value="RothMarriedJointlyMaxQ"
                     onClick={this._no}
                   >
                     No
@@ -70,6 +72,8 @@ class RothMarriedJointlyMinQ extends React.Component {
                     variant="success"
                     size="lg"
                     block
+                    id="row2"
+                    value="RothMarriedJointlyIncomeQ"
                     onClick={this._yes}
                   >
                     Yes

@@ -12,7 +12,8 @@ import { Form, FormGroup, FormControl } from "react-bootstrap";
 class RothMarriedNotJointlyOverD extends React.Component {
   _next = (event) => {
     event.preventDefault();
-    this.props.handleNextStep("BackdoorRothIntro");
+    this.props.setChild(event)
+v
   };
 
   
@@ -56,9 +57,7 @@ class RothMarriedNotJointlyOverD extends React.Component {
   // }
 
   render() {
-    if (this.props.currentStep !== "RothMarriedNotJointlyOverD") {
-      return null;
-    }
+  
     return (
       <Container className="step">
         <Row id="header" className="rowElement">
@@ -90,6 +89,8 @@ class RothMarriedNotJointlyOverD extends React.Component {
                     variant="primary"
                     size="lg"
                     block
+                    id="row2"
+                    value="BackdoorRothIntro"
                     onClick={this._next}
                   >
                     Continue

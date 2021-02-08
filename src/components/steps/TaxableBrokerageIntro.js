@@ -16,23 +16,30 @@ import { NavItem } from "react-bootstrap";
 import Navbar from "react-bootstrap/Navbar";
 
 class TaxableBrokerageIntro extends React.Component {
+  
+  _next = (event) => {
+    event.preventDefault();
+    this.props.setRow("row3");
+    this.props.setChild(event);
+  };
+
   _prev = () => {
+    this.props.setRow("row2");
     this.props.handlePrevStep();
   };
 
-  _next = (event) => {
-    event.preventDefault();
-    this.props.handleNextStep("DoneForNow");
-  };
-
   render() {
-    if (this.props.currentStep !== "TaxableBrokerageIntro") {
-      return null;
-    }
+   
     return (
-      <Container className="step">
+      <Container className="directive">
         <Row id="header" className="rowElement">
-          <Button onClick={this._prev} variant="link">
+        <Button
+            onClick={this._prev}
+            variant="link"
+            disabled={
+              this.props.currentStep === "TaxableBrokerageIntro" ? false : true
+            }
+          >
             <FontAwesomeIcon icon="chevron-left" /> Back
           </Button>
           <hr className="w-100" />
@@ -111,12 +118,20 @@ class TaxableBrokerageIntro extends React.Component {
                     No
                   </Button> */}
                 </Col>
-                <Col>
+                <Col
+                  className={
+                    this.props.currentStep === "TaxableBrokerageIntro"
+                      ? ""
+                      : "hidden"
+                  }
+                >
                   <Button
                     className="yes"
                     variant="primary"
                     size="lg"
                     block
+                    id="row2"
+                    value="DoneForNow"
                     onClick={this._next}
                   >
                     Continue

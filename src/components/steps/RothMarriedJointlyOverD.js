@@ -13,7 +13,7 @@ class RothMarriedJointlyOverD extends React.Component {
 
   _next = (event) => {
     event.preventDefault();
-    this.props.handleNextStep("BackdoorRothIntro");
+    this.props.setChild(event)
   };
 
   _prev = () => {
@@ -55,9 +55,7 @@ class RothMarriedJointlyOverD extends React.Component {
   // }
 
   render() {
-    if (this.props.currentStep !== "RothMarriedJointlyOverD") {
-      return null;
-    }
+  
     return (
       <Container className="step">
         <Row id="header" className="rowElement">
@@ -89,6 +87,8 @@ class RothMarriedJointlyOverD extends React.Component {
                     variant="primary"
                     size="lg"
                     block
+                    id="row2"
+                    value="BackdoorRothIntro"
                     onClick={this._next}
                   >
                     Continue

@@ -55,9 +55,7 @@ class RothSingleOverD extends React.Component {
   // }
 
   render() {
-    if (this.props.currentStep !== "RothSingleOverD") {
-      return null;
-    }
+  
     return (
       <Container className="step">
         <Row id="header" className="rowElement">

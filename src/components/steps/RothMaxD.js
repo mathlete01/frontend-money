@@ -12,27 +12,34 @@ import { Tabs, Tab } from "react-bootstrap";
 
 class RothMaxD extends React.Component {
   _prev = () => {
+    this.props.setRow("row2")
     this.props.handlePrevStep();
   };
 
   _next = (event) => {
     event.preventDefault();
+    this.props.setRow("row3")
     this.props.updateCurrentUser(
       this.props.currentUser.id,
       { roth_max: true },
       this.props.currentStep
     );
-    this.props.handleNextStep("Four01kMaxOutQ");
+    this.props.setChild(event)
+
   };
 
   render() {
-    if (this.props.currentStep !== "RothMaxD") {
-      return null;
-    }
+
     return (
-      <Container className="step">
+      <Container className="directive">
         <Row id="header" className="rowElement">
-          <Button onClick={this._prev} variant="link">
+        <Button
+            onClick={this._prev}
+            variant="link"
+            disabled={
+              this.props.currentStep === "RothMaxD" ? false : true
+            }
+          >
             <FontAwesomeIcon icon="chevron-left" /> Back
           </Button>
           <hr className="w-100" />
@@ -119,12 +126,20 @@ class RothMaxD extends React.Component {
                     No
                   </Button> */}
                 </Col>
-                <Col>
+                <Col
+                  className={
+                    this.props.currentStep === "RothMaxD"
+                      ? ""
+                      : "hidden"
+                  }
+                >
                   <Button
                     className="yes"
                     variant="primary"
                     size="lg"
                     block
+                    id="row2"
+                    value="Four01kMaxOutQ"
                     onClick={this._next}
                   >
                     Continue

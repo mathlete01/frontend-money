@@ -12,24 +12,30 @@ import Table from "react-bootstrap/Table";
 import { Tabs, Tab } from "react-bootstrap";
 
 class RothMarriedNotJointlyTweenD extends React.Component {
+ 
+  _next = (event) => {
+    event.preventDefault();
+    this.props.setRow("row3");
+    this.props.setChild(event);
+  };
+
   _prev = () => {
+    this.props.setRow("row2");
     this.props.handlePrevStep();
   };
 
-  _next = (event) => {
-    event.preventDefault();
-    // this.props.updateCurrentUser(this.props.currentUser.id, { BLANK_DB: true });
-    this.props.handleNextStep("Four01kMaxOutQ");
-  };
-
   render() {
-    if (this.props.currentStep !== "RothMarriedNotJointlyTweenD") {
-      return null;
-    }
+  
     return (
-      <Container className="step">
+      <Container className="directive">
         <Row id="header" className="rowElement">
-          <Button onClick={this._prev} variant="link">
+        <Button
+            onClick={this._prev}
+            variant="link"
+            disabled={
+              this.props.currentStep === "RothMarriedNotJointlyTweenD" ? false : true
+            }
+          >
             <FontAwesomeIcon icon="chevron-left" /> Back
           </Button>
           <hr className="w-100" />
@@ -177,12 +183,19 @@ class RothMarriedNotJointlyTweenD extends React.Component {
             <Form.Group>
               <Form.Row>
                 <Col></Col>
-                <Col>
-                  <Button
+                <Col
+                  className={
+                    this.props.currentStep === "RothMarriedNotJointlyTweenD"
+                      ? ""
+                      : "hidden"
+                  }
+                >                  <Button
                     className="yes"
                     variant="primary"
                     size="lg"
                     block
+                    id="row2"
+                    value="Four01kMaxOutQ"
                     onClick={this._next}
                   >
                     Continue
