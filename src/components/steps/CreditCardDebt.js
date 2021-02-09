@@ -186,8 +186,8 @@ class CreditCardDebt extends React.Component {
                       variant="primary"
                       size="lg"
                       block
-                      id="row1"
-                      value="Rung1Determination"
+                      id={this.props.currentRow}
+                      value="PriPostDebt"
                       onClick={this._next}
                     >
                       Next

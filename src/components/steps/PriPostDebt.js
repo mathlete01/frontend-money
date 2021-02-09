@@ -11,16 +11,18 @@ import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 
-class Rung1Determination extends React.Component {
+class PriPostDebt extends React.Component {
   
   _prev = () => {
-    this.props.setRow("row1");
+    // this.props.setRow("row1");
+    this.props.setRow(this.props.currentRow);
     this.props.handlePrevStep();
   };
   
   _next = (event) => {
     event.preventDefault();
-    this.props.setRow("row2");
+    // this.props.setRow("row2");
+    this.props.setRow(this.props.getNextRow());
     this.props.setChild(event);
   };
 
@@ -125,7 +127,7 @@ class Rung1Determination extends React.Component {
           <Button
             onClick={this._prev}
             variant="link"
-            disabled={this.props.currentStep === "Rung1Determination" ? false : true}>
+            disabled={this.props.currentStep === "PriPostDebt" ? false : true}>
             <FontAwesomeIcon icon="chevron-left" /> Back 
           </Button>
 
@@ -149,7 +151,7 @@ class Rung1Determination extends React.Component {
                 <Col></Col>
                 <Col
                   className={
-                    this.props.currentStep === "Rung1Determination"
+                    this.props.currentStep === "PriPostDebt"
                       ? ""
                       : "hidden"
                   }
@@ -159,7 +161,8 @@ class Rung1Determination extends React.Component {
                     variant="primary"
                     size="lg"
                     block
-                    id="row2"
+                    // id={this.props.currentRow}
+                    id={this.props.getNextRow()}
                     value={this.nextStep}
                     onClick={this._next}
                   >
@@ -188,4 +191,4 @@ export default connect(mapStateToProps, {
   updateCurrentUser,
   // getCurrentUser,
   updateCurrentProgress,
-})(Rung1Determination);
+})(PriPostDebt);

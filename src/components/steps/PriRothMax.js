@@ -9,48 +9,41 @@ import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { Tabs, Tab } from "react-bootstrap";
-import ReactDOM from "react-dom";
 
-class BackdoorRothIntro extends React.Component {
-  constructor(props) {
-    super();
-    this.state = {
-      // Takes active tab from props if it is defined there
-      activeTab: props.activeTab || 1,
-    };
-
-    // Bind the handleSelect function already here (not in the render function)
-    this.handleSelect = this.handleSelect.bind(this);
-  }
-
-  handleSelect(selectedTab) {
-    // The active tab must be set into the state so that
-    // the Tabs component knows about the change and re-renders.
-    this.setState({
-      activeTab: selectedTab,
-    });
-  }
+class PriRothMax extends React.Component {
+  _prev = () => {
+    // this.props.setRow("row2")
+    // this.props.handlePrevStep();
+    this.props.setRow(this.props.currentRow);
+    this.props.handlePrevStep();
+    this.props.clearRow(this.props.getNextRow())
+  };
 
   _next = (event) => {
     event.preventDefault();
-    this.props.setRow("row3");
-    this.props.setChild(event);
-  };
+    // this.props.setRow("row3")
+    this.props.setRow(this.props.getNextRow());
 
-  _prev = () => {
-    this.props.setRow("row2");
-    this.props.handlePrevStep();
+    this.props.updateCurrentUser(
+      this.props.currentUser.id,
+      { roth_max: true },
+      this.props.currentStep
+    );
+    this.props.setChild(event)
+    
+
   };
 
   render() {
+
     return (
       <Container className="directive">
         <Row id="header" className="rowElement">
-          <Button
+        <Button
             onClick={this._prev}
             variant="link"
             disabled={
-              this.props.currentStep === "BackdoorRothIntro" ? false : true
+              this.props.currentStep === "PriRothMax" ? false : true
             }
           >
             <FontAwesomeIcon icon="chevron-left" /> Back
@@ -60,40 +53,37 @@ class BackdoorRothIntro extends React.Component {
         <Row id="title" className="rowElement">
           <Container>
             <h6>YOUR NEXT PRIORITY:</h6>
-            <h3>Max-out a "Backdoor" Roth IRA</h3>
+            <h3>Max-out your Roth IRA</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Also known as a Roth IRA Conversion, the Backdoor Roth is a (totally
-            legal) loophole you ought to take advantage of.
+            You can contribute up to $7k to a Roth IRA, so do it!
           </Container>
         </Row>
         <Row>
-          <Tabs
-            defaultActiveKey="what"
-            id="uncontrolled-tab-example"
-            className="tab"
-            // activeKey={this.state.activeTab}
-            onSelect={this.handleSelect}
-          >
+          <Tabs defaultActiveKey="what" id="uncontrolled-tab-example">
             <Tab eventKey="what" title="What">
               <ul>
                 <li>
-                  You make a non-deductible contribution to a <i>traditional</i>{" "}
-                  IRA, then convert it to a <i>Roth</i> IRA.
+                  Every year, there is a maximum you can contribute to a Roth
+                  IRA. The maximum for someone age 50 or over is $7k.
                 </li>
               </ul>
             </Tab>
             <Tab eventKey="why" title="Why">
-              <ul>
+              As we've said, Roth IRAs are great for three reaons:
+              <ol>
+                <li>Your money grows tax-free</li>
                 <li>
-                  As we've said, Roth IRAs are great, but there are income
-                  limits and you've exceeded those. This loophole allows anyone
-                  with earned income to contribute to a Roth IRA, regardless of
-                  income limits.
+                  You don't pay taxes on it when you withdraw it upon retirement
                 </li>
-              </ul>
+                <li>
+                  You can withdraw your contributions (not your <i>earnings</i>,
+                  just your contributions) whenever you want. That makes it
+                  double as an Emergency Fund.
+                </li>
+              </ol>
             </Tab>
             <Tab eventKey="where" title="Where">
               <ul>
@@ -117,13 +107,10 @@ class BackdoorRothIntro extends React.Component {
             <Tab eventKey="how" title="How">
               <ul>
                 <li>
-                  This is an oversimplification, but basically you (1)
-                  contribute up to $6k to a tranditional IRA, then (2) call up
-                  the brokerage and ask them to convert that IRA to a Roth IRA.
+                  The first thing you should do is put your money in a target date fund. Do it immediately, it's extremely low-risk and the earlier you do it, the better. Ask the people at the brokerage why people recommend a target date fund and they'll explain it to you.
                 </li>
                 <li>
-                  It's a bit complicated but totally doable. Call up your
-                  brokerage and ask them to explain it to you.
+                  Once that's set up, you can explore different investing strategies, if you want. But our advice is to just leave it in a target date fund and forget about it. This stratetgy is called "buy and hold". Trying to "time" the market by buying and selling only works if you can tell the future.
                 </li>
               </ul>
             </Tab>
@@ -134,10 +121,20 @@ class BackdoorRothIntro extends React.Component {
           <Container>
             <Form.Group>
               <Form.Row>
-                <Col></Col>
+                <Col>
+                  {/* <Button
+                    className="no"
+                    variant="danger"
+                    size="lg"
+                    block
+                    onClick={this._no}
+                  >
+                    No
+                  </Button> */}
+                </Col>
                 <Col
                   className={
-                    this.props.currentStep === "BackdoorRothIntro"
+                    this.props.currentStep === "PriRothMax"
                       ? ""
                       : "hidden"
                   }
@@ -147,7 +144,8 @@ class BackdoorRothIntro extends React.Component {
                     variant="primary"
                     size="lg"
                     block
-                    id="row3"
+                    // id={this.props.currentRow}
+                    id={this.props.getNextRow()}
                     value="Four01kMaxOutQ"
                     onClick={this._next}
                   >
@@ -173,6 +171,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(BackdoorRothIntro);
-
-ReactDOM.render(<BackdoorRothIntro />, document.getElementById("root"));
+})(PriRothMax);

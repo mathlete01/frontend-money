@@ -59,7 +59,7 @@ class RothMarriedJointlyMaxQ extends React.Component {
                     variant="danger"
                     size="lg"
                     block
-                    id="row2"
+                    id={this.props.currentRow}
                     value="RothMarriedJointlyOverD"
                     onClick={this._no}
                   >
@@ -72,7 +72,7 @@ class RothMarriedJointlyMaxQ extends React.Component {
                     variant="success"
                     size="lg"
                     block
-                    id="row2"
+                    id={this.props.currentRow}
                     value="RothMarriedJointlyTweenD"
                     onClick={this._yes}
                   >

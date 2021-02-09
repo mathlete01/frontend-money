@@ -56,7 +56,7 @@ class RothSingleQ extends React.Component {
                     variant="danger"
                     size="lg"
                     block
-                    id="row2"
+                    id={this.props.currentRow}
                     value="RothMarriedJointlyQ"
                     onClick={this._no}
                   >
@@ -69,7 +69,7 @@ class RothSingleQ extends React.Component {
                     variant="success"
                     size="lg"
                     block
-                    id="row2"
+                    id={this.props.currentRow}
                     value="RothSingleMinQ"
                     onClick={this._yes}
                   >

@@ -18,9 +18,11 @@ class RothIntro extends React.Component {
   };
 
   _prev = () => {
-    this.props.setRow("row1");
+    // this.props.setRow("row1");
+    this.props.setRow(this.props.getPrevRow());
     this.props.handlePrevStep();
-    this.props.clearRow("row2")
+    this.props.clearRow(this.props.currentRow)
+    // this.props.clearRow("row2")
   };
 
   render() {
@@ -34,7 +36,7 @@ class RothIntro extends React.Component {
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h3>Ah, the legendary Roth IRA...</h3>
+            <h3>Let's talk about Roth IRAs</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
@@ -66,7 +68,8 @@ class RothIntro extends React.Component {
                     variant="primary"
                     size="lg"
                     block
-                    id="row2"
+                    // id={this.props.currentRow}
+                    id={this.props.currentRow}
                     value="RothSingleQ"
                     onClick={this._next}
                   >

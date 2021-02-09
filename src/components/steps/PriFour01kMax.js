@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { Tabs, Tab } from "react-bootstrap";
 
-class Four01kMaxRec extends React.Component {
+class PriFour01kMax extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
@@ -21,7 +21,7 @@ class Four01kMaxRec extends React.Component {
   };
 
   render() {
-    if (this.props.currentStep !== "Four01kMaxRec") {
+    if (this.props.currentStep !== "PriFour01kMax") {
       return null;
     }
     return (
@@ -117,4 +117,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(Four01kMaxRec);
+})(PriFour01kMax);

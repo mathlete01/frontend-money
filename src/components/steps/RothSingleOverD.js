@@ -12,7 +12,7 @@ import { Form, FormGroup, FormControl } from "react-bootstrap";
 class RothSingleOverD extends React.Component {
   _next = (event) => {
     event.preventDefault();
-    // this.props.handleNextStep("BackdoorRothIntro");
+    // this.props.handleNextStep("PriBackdoorRothIntro");
     this.props.setChild(event)
   };
 
@@ -41,7 +41,7 @@ class RothSingleOverD extends React.Component {
   //       break;
   //     // Case:  No 401K  --> Try for traditional IRA
   //     case four01k === false:
-  //       this.nextStep = "BackdoorRothIntro";
+  //       this.nextStep = "PriBackdoorRothIntro";
   //       break;
   //     default:
   //       this.advice = "Whoops, we've encountered an error. How embarassing.";
@@ -87,8 +87,8 @@ class RothSingleOverD extends React.Component {
                     variant="primary"
                     size="lg"
                     block
-                    id="row2"
-                    value="BackdoorRothIntro"
+                    id={this.props.currentRow}
+                    value="PriBackdoorRothIntro"
                     onClick={this._next}
                   >
                     Continue

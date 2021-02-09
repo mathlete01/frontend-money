@@ -42,7 +42,7 @@ class Parent3 extends React.Component {
   render() {
     return (
       <div>
-        <Row id="row1" name="row1">
+        <Row id={this.props.currentRow} name="row1">
           Row 1
           <Button onClick={(event) => this.setChild(event, "A")}>
             Load Child A in Row 1
@@ -52,7 +52,7 @@ class Parent3 extends React.Component {
           </Button>
           {this.loadChildInRow1()}
         </Row>
-        <Row id="row2" name="row2">
+        <Row id={this.props.currentRow} name="row2">
           Row 2
           <Button onClick={(event) => this.setChild(event, "A")}>
             Load Child A in Row 2

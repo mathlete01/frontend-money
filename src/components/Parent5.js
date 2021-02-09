@@ -49,14 +49,14 @@ class Parent5 extends React.Component {
           Row 1
           <Button
             onClick={(event) => this.setChild(event)}
-            id="row1"
+            id={this.props.currentRow}
             value="A"
           >
             Load Child A in Row 1
           </Button>
           <Button
             onClick={(event) => this.setChild(event)}
-            id="row1"
+            id={this.props.currentRow}
             value="B"
           >
             Load Child B in Row 1
@@ -67,14 +67,14 @@ class Parent5 extends React.Component {
           Row 2
           <Button
             onClick={(event) => this.setChild(event)}
-            id="row2"
+            id={this.props.currentRow}
             value="A"
           >
             Load Child A in Row 2
           </Button>
           <Button
             onClick={(event) => this.setChild(event)}
-            id="row2"
+            id={this.props.currentRow}
             value="B"
           >
             Load Child B in Row 2

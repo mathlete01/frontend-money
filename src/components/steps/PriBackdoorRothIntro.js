@@ -8,36 +8,42 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
-// import Tabs from "react-bootstrap/Tabs";
 import { Tabs, Tab } from "react-bootstrap";
-import TabContainer from "react-bootstrap/TabContainer";
-import Nav from "react-bootstrap/Nav";
-import { NavItem } from "react-bootstrap";
-import Navbar from "react-bootstrap/Navbar";
+import ReactDOM from "react-dom";
 
-class TaxableBrokerageIntro extends React.Component {
+class PriBackdoorRothIntro extends React.Component {
   
+
+  h
+
   _next = (event) => {
+    console.log(`event = `, event)
+    console.log(`event.target.id = `, event.target.id)
+    console.log(`event.target.value = `, event.target.value)
+    // event.preventDefault();
+    // this.props.setRow("row3");
+    // this.props.setChild(event);
     event.preventDefault();
-    this.props.setRow("row3");
+    this.props.setRow(this.props.getNextRow());
     this.props.setChild(event);
   };
 
   _prev = () => {
-    this.props.setRow("row2");
+    // this.props.setRow("row2");
+    this.props.setRow(this.props.currentRow);
     this.props.handlePrevStep();
+    this.props.clearRow(this.props.getNextRow())
   };
 
   render() {
-   
     return (
       <Container className="directive">
         <Row id="header" className="rowElement">
-        <Button
+          <Button
             onClick={this._prev}
             variant="link"
             disabled={
-              this.props.currentStep === "TaxableBrokerageIntro" ? false : true
+              this.props.currentStep === "PriBackdoorRothIntro" ? false : true
             }
           >
             <FontAwesomeIcon icon="chevron-left" /> Back
@@ -47,80 +53,84 @@ class TaxableBrokerageIntro extends React.Component {
         <Row id="title" className="rowElement">
           <Container>
             <h6>YOUR NEXT PRIORITY:</h6>
-            <h3>Invest in a Taxable Brokerage Account</h3>
+            <h3>Max-out a "Backdoor" Roth IRA</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Do you have more disposible income to put towards your financial
-            goals? If so, it's time to invest in a taxable brokerage account.
+            Also known as a Roth IRA Conversion, the Backdoor Roth is a (totally
+            legal) loophole you ought to take advantage of.
           </Container>
         </Row>
         <Row>
-          <Tabs defaultActiveKey="what" id="uncontrolled-tab-example">
+          <Tabs
+            defaultActiveKey="what"
+            id="uncontrolled-tab-example"
+            className="tab"
+            // activeKey={this.state.activeTab}
+            onSelect={this.handleSelect}
+          >
             <Tab eventKey="what" title="What">
               <ul>
                 <li>
-                  A taxable brokerage is just a plain old investment account.
-                </li>
-                <li>
-                  It's called "taxable" because it's not tax <i>advantaged</i>{" "}
-                  like it's cousins, IRAs and 401(k)s.
+                  You make a non-deductible contribution to a <i>traditional</i>{" "}
+                  IRA, then convert it to a <i>Roth</i> IRA.
                 </li>
               </ul>
             </Tab>
             <Tab eventKey="why" title="Why">
               <ul>
                 <li>
-                  You should <i>only</i> invest in a taxable brokerage account
-                  once you have maximized your tax <i>advantaged</i> accounts,
-                  like IRAs and 401(k)s. According to your choices, you've
-                  already explored those options.
+                  As we've said, Roth IRAs are great, but there are income
+                  limits and you've exceeded those. This loophole allows anyone
+                  with earned income to contribute to a Roth IRA, regardless of
+                  income limits.
                 </li>
               </ul>
             </Tab>
             <Tab eventKey="where" title="Where">
-            <ul>
+              <ul>
                 <li>
-                  Do you already have an investment account at a discount brokerage? Do it there.
+                  Do you already have an investment account at a discount
+                  brokerage? Do it there.
                 </li>
                 <li>
-                  Otherwise, open an account at a discount brokerage like <a href="http://www.vanguard.com" target="_blank">Vanguard</a> (our favorite) or <a href="http://www.schwab.com" target="_blank">Schwab</a>.
+                  Otherwise, open an account at a discount brokerage like{" "}
+                  <a href="http://www.vanguard.com" target="_blank">
+                    Vanguard
+                  </a>{" "}
+                  (our favorite) or{" "}
+                  <a href="http://www.schwab.com" target="_blank">
+                    Schwab
+                  </a>
+                  .
                 </li>
               </ul>
             </Tab>
             <Tab eventKey="how" title="How">
               <ul>
                 <li>
-                  The first thing you should do is put your money in a target date fund. Do it immediately, it's extremely low-risk and the earlier you do it, the better. Ask the people at the brokerage why people recommend a target date fund and they'll explain it to you.
+                  This is an oversimplification, but basically you (1)
+                  contribute up to $6k to a tranditional IRA, then (2) call up
+                  the brokerage and ask them to convert that IRA to a Roth IRA.
                 </li>
                 <li>
-                  Once that's set up, you can explore different investing strategies, if you want. But our advice is to just leave it in a target date fund and forget about it. This stratetgy is called "buy and hold". Trying to "time" the market by buying and selling only works if you can tell the future.
+                  It's a bit complicated but totally doable. Call up your
+                  brokerage and ask them to explain it to you.
                 </li>
               </ul>
             </Tab>
           </Tabs>
         </Row>
         <hr className="w-100" />
-        <Row id="form" className="rowElement"></Row>
         <Row id="buttons" className="rowElement">
           <Container>
             <Form.Group>
               <Form.Row>
-                <Col>
-                  {/* <Button
-                    className="no"
-                    variant="danger"
-                    size="lg"
-                    block
-                    onClick={this._no}
-                  >
-                    No
-                  </Button> */}
-                </Col>
+                <Col></Col>
                 <Col
                   className={
-                    this.props.currentStep === "TaxableBrokerageIntro"
+                    this.props.currentStep === "PriBackdoorRothIntro"
                       ? ""
                       : "hidden"
                   }
@@ -130,8 +140,10 @@ class TaxableBrokerageIntro extends React.Component {
                     variant="primary"
                     size="lg"
                     block
-                    id="row2"
-                    value="DoneForNow"
+                    // id={this.props.currentRow}
+                    id={this.props.getNextRow()}
+                    // id={this.props.getNextRow}
+                    value="Four01kMaxOutQ"
                     onClick={this._next}
                   >
                     Continue
@@ -156,4 +168,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(TaxableBrokerageIntro);
+})(PriBackdoorRothIntro);

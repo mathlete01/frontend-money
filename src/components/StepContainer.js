@@ -4,7 +4,7 @@ import CreditCardDebtQ from "./steps/CreditCardDebtQ";
 import DoneForNow from "./steps/DoneForNow";
 import RothSingleIncomeQ from "./steps/RothSingleIncomeQ";
 import RothMarriedJointlyQ from "./steps/RothMarriedJointlyQ";
-import Four01kContribution from "./steps/Four01k_Contribution";
+import Four01kContribution from "./steps/Four01kContribution";
 import Four01kMatch from "./steps/Four01kMatch";
 import Four01kMaxOutQ from "./steps/Four01kMaxOutQ";
 import Four01kQ from "./steps/Four01kQ";
@@ -14,35 +14,36 @@ import RothMarriedJointlyMinQ from "./steps/RothMarriedJointlyMinQ";
 import RothMarriedJointlyMaxQ from "./steps/RothMarriedJointlyMaxQ";
 import RothMarriedJointlyIncomeQ from "./steps/RothMarriedJointlyIncomeQ";
 import RothMarriedJointly50Q from "./steps/RothMarriedJointly50Q";
-import RothRegD from "./steps/RothRegD";
+import PriRothReg from "./steps/PriRothReg";
 import RothIntro from "./steps/RothIntro";
-import RothMaxD from "./steps/RothMaxD";
-import Rung1Determination from "./steps/Rung1Determination";
+import PriRothMax from "./steps/PriRothMax";
+import PriPostDebt from "./steps/PriPostDebt";
 import SaveYourWork from "./steps/SaveYourWork";
-import RothSingleTweenD from "./steps/RothSingleTweenD";
+import PriRothSingleTween from "./steps/PriRothSingleTween";
 import RothSingle50Q from "./steps/RothSingle50Q";
 import RothSingleMinQ from "./steps/RothSingleMinQ";
 import RothSingleMaxQ from "./steps/RothSingleMaxQ";
 import RothSingleOverD from "./steps/RothSingleOverD";
 import RothSingleUnderD from "./steps/RothSingleUnderD";
-import RothMarriedNotJointlyTweenD from "./steps/RothMarriedNotJointlyTweenD";
+import PriRothMarriedNotJointlyTween from "./steps/PriRothMarriedNotJointlyTween";
 import RothMarriedNotJointlyMinQ from "./steps/RothMarriedNotJointlyMinQ";
 import RothMarriedNotJointlyOverD from "./steps/RothMarriedNotJointlyOverD";
-import BackdoorRothIntro from "./steps/BackdoorRothIntro";
+import PriBackdoorRothIntro from "./steps/PriBackdoorRothIntro";
 import RothSingleQ from "./steps/RothSingleQ";
 import { connect } from "react-redux";
 import { updateCurrentStep } from "../actions/stepActions";
 import { updateCurrentUser } from "../actions/userActions";
 import Container from "react-bootstrap/Container";
-import RothMarriedJointlyTweenD from "./steps/RothMarriedJointlyTweenD";
+import PriRothMarriedJointlyTween from "./steps/PriRothMarriedJointlyTween";
 import RothMarriedJointlyOverD from "./steps/RothMarriedJointlyOverD";
-import Four01kMaxRec from "./steps/Four01kMaxRec";
-import TaxableBrokerageIntro from "./steps/TaxableBrokerageIntro";
+import PriFour01kMax from "./steps/PriFour01kMax";
+import PriTaxableBrokerageIntro from "./steps/PriTaxableBrokerageIntro";
 import MoreToSpendQ from "./steps/MoreToSpendQ";
 import Parent5 from "./Parent5";
 import Row from "react-bootstrap/Row";
 import ChildA from "./ChildA";
 import ChildB from "./ChildB";
+import NoDebt from "./steps/NoDebt";
 import BLANK from "./steps/BLANK";
 
 class StepContainer extends React.Component {
@@ -50,7 +51,8 @@ class StepContainer extends React.Component {
     super(props);
     this.state = {
       prevStep: "",
-      path: [],
+      stepPath: [],
+      rowPath: [],
       row1: "Intro",
       row2: "",
       row3: "",
@@ -64,17 +66,57 @@ class StepContainer extends React.Component {
     });
   };
 
+  getNextRow = () => {
+    switch (true) {
+      case this.state.currentRow === "row1":
+        return "row2";
+        break;
+      case this.state.currentRow === "row2":
+        return "row3";
+        break;
+      case this.state.currentRow === "row3":
+        return "row4";
+        break;
+      case this.state.currentRow === "row4":
+        return "row5";
+        break;
+      case this.state.currentRow === "row5":
+        return "row6";
+        break;
+    }
+  };
+
+  getPrevRow = () => {
+    switch (true) {
+      case this.state.currentRow === "row2":
+        return "row1";
+        break;
+      case this.state.currentRow === "row3":
+        return "row2";
+        break;
+      case this.state.currentRow === "row4":
+        return "row3";
+        break;
+      case this.state.currentRow === "row5":
+        return "row4";
+        break;
+      case this.state.currentRow === "row6":
+        return "row5";
+        break;
+    }
+  };
+
   clearRow = (row) => {
-    console.log(`clearRow called `)
+    console.log(`clearRow called `);
     switch (true) {
       case row === "row2":
-        console.log(`clearRow: 2 called `)
+        console.log(`clearRow: 2 called `);
         return this.setState({
           row2: "",
         });
         break;
       case row === "row3":
-        console.log(`clearRow: 2 called `)
+        console.log(`clearRow: 2 called `);
         return this.setState({
           row3: "",
         });
@@ -85,8 +127,12 @@ class StepContainer extends React.Component {
   setChild = (event) => {
     // from handleNextStep below
     const nextStep = event.target.value;
+    const nextRow = event.target.id;
     this.setState({
-      path: [...this.state.path, nextStep],
+      stepPath: [...this.state.stepPath, nextStep],
+    });
+    this.setState({
+      rowPath: [...this.state.rowPath, nextRow],
     });
     this.props.updateCurrentStep(nextStep);
     // above
@@ -99,68 +145,31 @@ class StepContainer extends React.Component {
   };
 
   handlePrevStep = () => {
-    const i = this.state.path.length;
+    const i = this.state.stepPath.length;
     this.setState((prevState) => ({
-      path: prevState.path.filter((_, i) => i !== this.state.path.length - 1),
+      stepPath: prevState.stepPath.filter((_, i) => i !== this.state.stepPath.length - 1),
     }));
-    const last = this.state.path.length - 2;
-    this.props.updateCurrentStep(this.state.path[last]);
-    this.setState({ [this.state.currentRow]: this.state.path[last] });
+    // this.setState((prevState) => ({
+    //   stepRow: prevState.stepRow.filter((_, i) => i !== this.state.stepRow.length - 1),
+    // }));
+    const last = this.state.stepPath.length - 2;
+    this.props.updateCurrentStep(this.state.stepPath[last]);
+    this.setState({ [this.state.currentRow]: this.state.stepPath[last] });
   };
 
   loadChildInRow1 = () => {
     switch (true) {
-      case this.state.row1 === "Intro":
+      case this.state.row1 === "PriBackdoorRothIntro":
         return (
-          <Intro
+          <PriBackdoorRothIntro
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setChild={this.setChild}
-          />
-        );
-        break;
-      case this.state.row1 === "LeftoverMoney":
-        return (
-          <LeftoverMoney
-            handlePrevStep={this.handlePrevStep}
-            handleNextStep={this.handleNextStep}
-            setChild={this.setChild}
-          />
-        );
-        break;
-      case this.state.row1 === "Four01kQ":
-        return (
-          <Four01kQ
-            handlePrevStep={this.handlePrevStep}
-            handleNextStep={this.handleNextStep}
-            setChild={this.setChild}
-          />
-        );
-        break;
-      case this.state.row1 === "Four01kMatch":
-        return (
-          <Four01kMatch
-            handlePrevStep={this.handlePrevStep}
-            handleNextStep={this.handleNextStep}
-            setChild={this.setChild}
-          />
-        );
-        break;
-      case this.state.row1 === "Four01kContribution":
-        return (
-          <Four01kContribution
-            handlePrevStep={this.handlePrevStep}
-            handleNextStep={this.handleNextStep}
-            setChild={this.setChild}
-          />
-        );
-        break;
-      case this.state.row1 === "CreditCardDebtQ":
-        return (
-          <CreditCardDebtQ
-            handlePrevStep={this.handlePrevStep}
-            handleNextStep={this.handleNextStep}
-            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
           />
         );
         break;
@@ -170,16 +179,487 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
           />
         );
         break;
-      case this.state.row1 === "Rung1Determination":
+      case this.state.row1 === "CreditCardDebtQ":
         return (
-          <Rung1Determination
+          <CreditCardDebtQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setChild={this.setChild}
             setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row1 === "DoneForNow":
+        return (
+          <DoneForNow
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row1 === "Four01kContribution":
+        return (
+          <Four01kContribution
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row1 === "Four01kMatch":
+        return (
+          <Four01kMatch
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row1 === "Four01kMaxOutQ":
+        return (
+          <Four01kMaxOutQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row1 === "PriFour01kMax":
+        return (
+          <PriFour01kMax
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row1 === "Four01kQ":
+        return (
+          <Four01kQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row1 === "Intro":
+        return (
+          <Intro
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row1 === "LeftoverMoney":
+        return (
+          <LeftoverMoney
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row1 === "NoDebt":
+        return (
+          <NoDebt
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row1 === "RothIntro":
+        return (
+          <RothIntro
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row1 === "RothMarriedJointly50Q":
+        return (
+          <RothMarriedJointly50Q
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row1 === "RothMarriedJointlyIncomeQ":
+        return (
+          <RothMarriedJointlyIncomeQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row1 === "RothMarriedJointlyMaxQ":
+        return (
+          <RothMarriedJointlyMaxQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row1 === "RothMarriedJointlyMinQ":
+        return (
+          <RothMarriedJointlyMinQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row1 === "RothMarriedJointlyOverD":
+        return (
+          <RothMarriedJointlyOverD
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row1 === "RothMarriedJointlyQ":
+        return (
+          <RothMarriedJointlyQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row1 === "PriRothMarriedJointlyTween":
+        return (
+          <PriRothMarriedJointlyTween
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row1 === "RothMarriedNotJointlyMinQ":
+        return (
+          <RothMarriedNotJointlyMinQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row1 === "RothMarriedNotJointlyOverD":
+        return (
+          <RothMarriedNotJointlyOverD
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row1 === "PriRothMarriedNotJointlyTween":
+        return (
+          <PriRothMarriedNotJointlyTween
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row1 === "PriRothMax":
+        return (
+          <PriRothMax
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row1 === "PriRothReg":
+        return (
+          <PriRothReg
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row1 === "RothSingle50Q":
+        return (
+          <RothSingle50Q
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row1 === "RothSingleIncomeQ":
+        return (
+          <RothSingleIncomeQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row1 === "RothSingleMaxQ":
+        return (
+          <RothSingleMaxQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row1 === "RothSingleMinQ":
+        return (
+          <RothSingleMinQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row1 === "RothSingleOverD":
+        return (
+          <RothSingleOverD
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row1 === "RothSingleQ":
+        return (
+          <RothSingleQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row1 === "PriRothSingleTween":
+        return (
+          <PriRothSingleTween
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row1 === "RothSingleUnderD":
+        return (
+          <RothSingleUnderD
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row1 === "PriPostDebt":
+        return (
+          <PriPostDebt
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row1 === "SaveYourWork":
+        return (
+          <SaveYourWork
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row1 === "PriTaxableBrokerageIntro":
+        return (
+          <PriTaxableBrokerageIntro
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
           />
         );
         break;
@@ -188,79 +668,45 @@ class StepContainer extends React.Component {
 
   loadChildInRow2 = () => {
     switch (true) {
-      case this.state.row2 === "RothIntro":
+      case this.state.row2 === "PriBackdoorRothIntro":
         return (
-          <RothIntro
+          <PriBackdoorRothIntro
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setChild={this.setChild}
             setRow={this.setRow}
             clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
           />
         );
         break;
-      case this.state.row2 === "RothSingleQ":
+      case this.state.row2 === "CreditCardDebt":
         return (
-          <RothSingleQ
-            handlePrevStep={this.handlePrevStep}
-            handleNextStep={this.handleNextStep}
-            setChild={this.setChild}
-          />
-        );
-        break;
-      case this.state.row2 === "RothSingleMinQ":
-        return (
-          <RothSingleMinQ
-            handlePrevStep={this.handlePrevStep}
-            handleNextStep={this.handleNextStep}
-            setChild={this.setChild}
-          />
-        );
-        break;
-      case this.state.row2 === "RothSingleMaxQ":
-        return (
-          <RothSingleMaxQ
-            handlePrevStep={this.handlePrevStep}
-            handleNextStep={this.handleNextStep}
-            setChild={this.setChild}
-          />
-        );
-        break;
-      case this.state.row2 === "RothSingleOverD":
-        return (
-          <RothSingleOverD
-            handlePrevStep={this.handlePrevStep}
-            handleNextStep={this.handleNextStep}
-            setChild={this.setChild}
-          />
-        );
-        break;
-      case this.state.row2 === "BackdoorRothIntro":
-        return (
-          <BackdoorRothIntro
+          <CreditCardDebt
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setChild={this.setChild}
             setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
           />
         );
         break;
-      case this.state.row2 === "RothMarriedJointlyQ":
+      case this.state.row2 === "CreditCardDebtQ":
         return (
-          <RothMarriedJointlyQ
-            handlePrevStep={this.handlePrevStep}
-            handleNextStep={this.handleNextStep}
-            setChild={this.setChild}
-          />
-        );
-        break;
-      case this.state.row2 === "RothSingleTweenD":
-        return (
-          <RothSingleTweenD
+          <CreditCardDebtQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setChild={this.setChild}
             setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
           />
         );
         break;
@@ -270,80 +716,137 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
           />
         );
         break;
-      case this.state.row2 === "RothSingleIncomeQ":
+      case this.state.row2 === "Four01kContribution":
         return (
-          <RothSingleIncomeQ
-            handlePrevStep={this.handlePrevStep}
-            handleNextStep={this.handleNextStep}
-            setChild={this.setChild}
-          />
-        );
-        break;
-      case this.state.row2 === "RothSingle50Q":
-        return (
-          <RothSingle50Q
-            handlePrevStep={this.handlePrevStep}
-            handleNextStep={this.handleNextStep}
-            setChild={this.setChild}
-          />
-        );
-        break;
-      case this.state.row2 === "RothRegD":
-        return (
-          <RothRegD
+          <Four01kContribution
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setChild={this.setChild}
             setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
           />
         );
         break;
-      case this.state.row2 === "RothMaxD":
+      case this.state.row2 === "Four01kMatch":
         return (
-          <RothMaxD
+          <Four01kMatch
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setChild={this.setChild}
             setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
           />
         );
         break;
-      case this.state.row2 === "RothSingleUnderD":
+      case this.state.row2 === "Four01kMaxOutQ":
         return (
-          <RothSingleUnderD
+          <Four01kMaxOutQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
           />
         );
         break;
-      case this.state.row2 === "RothMarriedJointlyQ":
+      case this.state.row2 === "PriFour01kMax":
         return (
-          <RothMarriedJointlyQ
+          <PriFour01kMax
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
           />
         );
         break;
-      case this.state.row2 === "RothMarriedJointlyMinQ":
+      case this.state.row2 === "Four01kQ":
         return (
-          <RothMarriedJointlyMinQ
+          <Four01kQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
           />
         );
         break;
-      case this.state.row2 === "RothMarriedJointlyIncomeQ":
+      case this.state.row2 === "Intro":
         return (
-          <RothMarriedJointlyIncomeQ
+          <Intro
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row2 === "LeftoverMoney":
+        return (
+          <LeftoverMoney
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row2 === "NoDebt":
+        return (
+          <NoDebt
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row2 === "RothIntro":
+        return (
+          <RothIntro
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
           />
         );
         break;
@@ -353,34 +856,25 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
           />
         );
         break;
-      case this.state.row2 === "RothMarriedNotJointlyMinQ":
+      case this.state.row2 === "RothMarriedJointlyIncomeQ":
         return (
-          <RothMarriedNotJointlyMinQ
-            handlePrevStep={this.handlePrevStep}
-            handleNextStep={this.handleNextStep}
-            setChild={this.setChild}
-          />
-        );
-        break;
-      case this.state.row2 === "RothMarriedNotJointlyTweenD":
-        return (
-          <RothMarriedNotJointlyTweenD
+          <RothMarriedJointlyIncomeQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setChild={this.setChild}
             setRow={this.setRow}
-          />
-        );
-        break;
-      case this.state.row2 === "RothMarriedNotJointlyOverD":
-        return (
-          <RothMarriedNotJointlyOverD
-            handlePrevStep={this.handlePrevStep}
-            handleNextStep={this.handleNextStep}
-            setChild={this.setChild}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
           />
         );
         break;
@@ -390,16 +884,25 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
           />
         );
         break;
-      case this.state.row2 === "RothMarriedJointlyTweenD":
+      case this.state.row2 === "RothMarriedJointlyMinQ":
         return (
-          <RothMarriedJointlyTweenD
+          <RothMarriedJointlyMinQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setChild={this.setChild}
             setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
           />
         );
         break;
@@ -409,16 +912,263 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
           />
         );
         break;
-      case this.state.row2 === "TaxableBrokerageIntro":
+      case this.state.row2 === "RothMarriedJointlyQ":
         return (
-          <TaxableBrokerageIntro
+          <RothMarriedJointlyQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setChild={this.setChild}
             setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row2 === "PriRothMarriedJointlyTween":
+        return (
+          <PriRothMarriedJointlyTween
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row2 === "RothMarriedNotJointlyMinQ":
+        return (
+          <RothMarriedNotJointlyMinQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row2 === "RothMarriedNotJointlyOverD":
+        return (
+          <RothMarriedNotJointlyOverD
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row2 === "PriRothMarriedNotJointlyTween":
+        return (
+          <PriRothMarriedNotJointlyTween
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row2 === "PriRothMax":
+        return (
+          <PriRothMax
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row2 === "PriRothReg":
+        return (
+          <PriRothReg
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row2 === "RothSingle50Q":
+        return (
+          <RothSingle50Q
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row2 === "RothSingleIncomeQ":
+        return (
+          <RothSingleIncomeQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row2 === "RothSingleMaxQ":
+        return (
+          <RothSingleMaxQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row2 === "RothSingleMinQ":
+        return (
+          <RothSingleMinQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row2 === "RothSingleOverD":
+        return (
+          <RothSingleOverD
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row2 === "RothSingleQ":
+        return (
+          <RothSingleQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row2 === "PriRothSingleTween":
+        return (
+          <PriRothSingleTween
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row2 === "RothSingleUnderD":
+        return (
+          <RothSingleUnderD
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row2 === "PriPostDebt":
+        return (
+          <PriPostDebt
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row2 === "SaveYourWork":
+        return (
+          <SaveYourWork
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row2 === "PriTaxableBrokerageIntro":
+        return (
+          <PriTaxableBrokerageIntro
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
           />
         );
         break;
@@ -427,6 +1177,90 @@ class StepContainer extends React.Component {
 
   loadChildInRow3 = () => {
     switch (true) {
+      case this.state.row3 === "PriBackdoorRothIntro":
+        return (
+          <PriBackdoorRothIntro
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row3 === "CreditCardDebt":
+        return (
+          <CreditCardDebt
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row3 === "CreditCardDebtQ":
+        return (
+          <CreditCardDebtQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row3 === "DoneForNow":
+        return (
+          <DoneForNow
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row3 === "Four01kContribution":
+        return (
+          <Four01kContribution
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row3 === "Four01kMatch":
+        return (
+          <Four01kMatch
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
       case this.state.row3 === "Four01kMaxOutQ":
         return (
           <Four01kMaxOutQ
@@ -435,26 +1269,415 @@ class StepContainer extends React.Component {
             setChild={this.setChild}
             setRow={this.setRow}
             clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
           />
         );
         break;
-      case this.state.row3 === "TaxableBrokerageIntro":
+      case this.state.row3 === "PriFour01kMax":
         return (
-          <TaxableBrokerageIntro
+          <PriFour01kMax
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setChild={this.setChild}
             setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
           />
         );
         break;
-      case this.state.row3 === "BackdoorRothIntro":
+      case this.state.row3 === "Four01kQ":
         return (
-          <BackdoorRothIntro
+          <Four01kQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setChild={this.setChild}
             setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row3 === "Intro":
+        return (
+          <Intro
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row3 === "LeftoverMoney":
+        return (
+          <LeftoverMoney
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row3 === "NoDebt":
+        return (
+          <NoDebt
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row3 === "RothIntro":
+        return (
+          <RothIntro
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row3 === "RothMarriedJointly50Q":
+        return (
+          <RothMarriedJointly50Q
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row3 === "RothMarriedJointlyIncomeQ":
+        return (
+          <RothMarriedJointlyIncomeQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row3 === "RothMarriedJointlyMaxQ":
+        return (
+          <RothMarriedJointlyMaxQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row3 === "RothMarriedJointlyMinQ":
+        return (
+          <RothMarriedJointlyMinQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row3 === "RothMarriedJointlyOverD":
+        return (
+          <RothMarriedJointlyOverD
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row3 === "RothMarriedJointlyQ":
+        return (
+          <RothMarriedJointlyQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row3 === "PriRothMarriedJointlyTween":
+        return (
+          <PriRothMarriedJointlyTween
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row3 === "RothMarriedNotJointlyMinQ":
+        return (
+          <RothMarriedNotJointlyMinQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row3 === "RothMarriedNotJointlyOverD":
+        return (
+          <RothMarriedNotJointlyOverD
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row3 === "PriRothMarriedNotJointlyTween":
+        return (
+          <PriRothMarriedNotJointlyTween
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row3 === "PriRothMax":
+        return (
+          <PriRothMax
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row3 === "PriRothReg":
+        return (
+          <PriRothReg
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row3 === "RothSingle50Q":
+        return (
+          <RothSingle50Q
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row3 === "RothSingleIncomeQ":
+        return (
+          <RothSingleIncomeQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row3 === "RothSingleMaxQ":
+        return (
+          <RothSingleMaxQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row3 === "RothSingleMinQ":
+        return (
+          <RothSingleMinQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row3 === "RothSingleOverD":
+        return (
+          <RothSingleOverD
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row3 === "RothSingleQ":
+        return (
+          <RothSingleQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row3 === "PriRothSingleTween":
+        return (
+          <PriRothSingleTween
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row3 === "RothSingleUnderD":
+        return (
+          <RothSingleUnderD
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row3 === "PriPostDebt":
+        return (
+          <PriPostDebt
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row3 === "SaveYourWork":
+        return (
+          <SaveYourWork
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row3 === "PriTaxableBrokerageIntro":
+        return (
+          <PriTaxableBrokerageIntro
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
           />
         );
         break;
@@ -463,13 +1686,507 @@ class StepContainer extends React.Component {
 
   loadChildInRow4 = () => {
     switch (true) {
-      case this.state.row4 === "BLANK":
+      case this.state.row4 === "PriBackdoorRothIntro":
         return (
-          <BLANK
+          <PriBackdoorRothIntro
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setChild={this.setChild}
             setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row4 === "CreditCardDebt":
+        return (
+          <CreditCardDebt
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row4 === "CreditCardDebtQ":
+        return (
+          <CreditCardDebtQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row4 === "DoneForNow":
+        return (
+          <DoneForNow
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row4 === "Four01kContribution":
+        return (
+          <Four01kContribution
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row4 === "Four01kMatch":
+        return (
+          <Four01kMatch
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row4 === "Four01kMaxOutQ":
+        return (
+          <Four01kMaxOutQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row4 === "PriFour01kMax":
+        return (
+          <PriFour01kMax
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row4 === "Four01kQ":
+        return (
+          <Four01kQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row4 === "Intro":
+        return (
+          <Intro
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row4 === "LeftoverMoney":
+        return (
+          <LeftoverMoney
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row4 === "NoDebt":
+        return (
+          <NoDebt
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row4 === "RothIntro":
+        return (
+          <RothIntro
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row4 === "RothMarriedJointly50Q":
+        return (
+          <RothMarriedJointly50Q
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row4 === "RothMarriedJointlyIncomeQ":
+        return (
+          <RothMarriedJointlyIncomeQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row4 === "RothMarriedJointlyMaxQ":
+        return (
+          <RothMarriedJointlyMaxQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row4 === "RothMarriedJointlyMinQ":
+        return (
+          <RothMarriedJointlyMinQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row4 === "RothMarriedJointlyOverD":
+        return (
+          <RothMarriedJointlyOverD
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row4 === "RothMarriedJointlyQ":
+        return (
+          <RothMarriedJointlyQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row4 === "PriRothMarriedJointlyTween":
+        return (
+          <PriRothMarriedJointlyTween
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row4 === "RothMarriedNotJointlyMinQ":
+        return (
+          <RothMarriedNotJointlyMinQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row4 === "RothMarriedNotJointlyOverD":
+        return (
+          <RothMarriedNotJointlyOverD
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row4 === "PriRothMarriedNotJointlyTween":
+        return (
+          <PriRothMarriedNotJointlyTween
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row4 === "PriRothMax":
+        return (
+          <PriRothMax
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row4 === "PriRothReg":
+        return (
+          <PriRothReg
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row4 === "RothSingle50Q":
+        return (
+          <RothSingle50Q
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row4 === "RothSingleIncomeQ":
+        return (
+          <RothSingleIncomeQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row4 === "RothSingleMaxQ":
+        return (
+          <RothSingleMaxQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row4 === "RothSingleMinQ":
+        return (
+          <RothSingleMinQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row4 === "RothSingleOverD":
+        return (
+          <RothSingleOverD
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row4 === "RothSingleQ":
+        return (
+          <RothSingleQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row4 === "PriRothSingleTween":
+        return (
+          <PriRothSingleTween
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row4 === "RothSingleUnderD":
+        return (
+          <RothSingleUnderD
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row4 === "PriPostDebt":
+        return (
+          <PriPostDebt
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row4 === "SaveYourWork":
+        return (
+          <SaveYourWork
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row4 === "PriTaxableBrokerageIntro":
+        return (
+          <PriTaxableBrokerageIntro
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
           />
         );
         break;
@@ -478,13 +2195,507 @@ class StepContainer extends React.Component {
 
   loadChildInRow5 = () => {
     switch (true) {
-      case this.state.row5 === "BLANK":
+      case this.state.row5 === "PriBackdoorRothIntro":
         return (
-          <BLANK
+          <PriBackdoorRothIntro
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setChild={this.setChild}
             setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row5 === "CreditCardDebt":
+        return (
+          <CreditCardDebt
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row5 === "CreditCardDebtQ":
+        return (
+          <CreditCardDebtQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row5 === "DoneForNow":
+        return (
+          <DoneForNow
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row5 === "Four01kContribution":
+        return (
+          <Four01kContribution
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row5 === "Four01kMatch":
+        return (
+          <Four01kMatch
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row5 === "Four01kMaxOutQ":
+        return (
+          <Four01kMaxOutQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row5 === "PriFour01kMax":
+        return (
+          <PriFour01kMax
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row5 === "Four01kQ":
+        return (
+          <Four01kQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row5 === "Intro":
+        return (
+          <Intro
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row5 === "LeftoverMoney":
+        return (
+          <LeftoverMoney
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row5 === "NoDebt":
+        return (
+          <NoDebt
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row5 === "RothIntro":
+        return (
+          <RothIntro
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row5 === "RothMarriedJointly50Q":
+        return (
+          <RothMarriedJointly50Q
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row5 === "RothMarriedJointlyIncomeQ":
+        return (
+          <RothMarriedJointlyIncomeQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row5 === "RothMarriedJointlyMaxQ":
+        return (
+          <RothMarriedJointlyMaxQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row5 === "RothMarriedJointlyMinQ":
+        return (
+          <RothMarriedJointlyMinQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row5 === "RothMarriedJointlyOverD":
+        return (
+          <RothMarriedJointlyOverD
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row5 === "RothMarriedJointlyQ":
+        return (
+          <RothMarriedJointlyQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row5 === "PriRothMarriedJointlyTween":
+        return (
+          <PriRothMarriedJointlyTween
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row5 === "RothMarriedNotJointlyMinQ":
+        return (
+          <RothMarriedNotJointlyMinQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row5 === "RothMarriedNotJointlyOverD":
+        return (
+          <RothMarriedNotJointlyOverD
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row5 === "PriRothMarriedNotJointlyTween":
+        return (
+          <PriRothMarriedNotJointlyTween
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row5 === "PriRothMax":
+        return (
+          <PriRothMax
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row5 === "PriRothReg":
+        return (
+          <PriRothReg
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row5 === "RothSingle50Q":
+        return (
+          <RothSingle50Q
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row5 === "RothSingleIncomeQ":
+        return (
+          <RothSingleIncomeQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row5 === "RothSingleMaxQ":
+        return (
+          <RothSingleMaxQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row5 === "RothSingleMinQ":
+        return (
+          <RothSingleMinQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row5 === "RothSingleOverD":
+        return (
+          <RothSingleOverD
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row5 === "RothSingleQ":
+        return (
+          <RothSingleQ
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row5 === "PriRothSingleTween":
+        return (
+          <PriRothSingleTween
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row5 === "RothSingleUnderD":
+        return (
+          <RothSingleUnderD
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row5 === "PriPostDebt":
+        return (
+          <PriPostDebt
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row5 === "SaveYourWork":
+        return (
+          <SaveYourWork
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
+          />
+        );
+        break;
+      case this.state.row5 === "PriTaxableBrokerageIntro":
+        return (
+          <PriTaxableBrokerageIntro
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            setChild={this.setChild}
+            setRow={this.setRow}
+            clearRow={this.clearRow}
+            getNextRow={this.getNextRow}
+            getPrevRow={this.getPrevRow}
+            currentRow={this.state.currentRow}
           />
         );
         break;
@@ -494,13 +2705,13 @@ class StepContainer extends React.Component {
   render() {
     return (
       <Container className="stepContainer">
-        <Row name="row1" id="row1" className="row1">
+        <Row name="row1" id={this.props.currentRow} className="row1">
           {this.loadChildInRow1()}
         </Row>
-        <Row name="row2" id="row2" className="row2">
+        <Row name="row2" id={this.props.currentRow} className="row2">
           {this.loadChildInRow2()}
         </Row>
-        <Row name="row3" id="row3" className="row3">
+        <Row name="row3" id={this.props.currentRow} className="row3">
           {this.loadChildInRow3()}
         </Row>
         <Row name="row4" id="row4" className="row4">

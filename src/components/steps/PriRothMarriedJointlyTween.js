@@ -11,21 +11,26 @@ import { Form, FormGroup, FormControl } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import { Tabs, Tab } from "react-bootstrap";
 
-class RothMarriedNotJointlyTweenD extends React.Component {
- 
+class PriRothMarriedJointlyTween extends React.Component {
   _next = (event) => {
+    // event.preventDefault();
+    // this.props.setRow("row3");
+    // this.props.setChild(event);
     event.preventDefault();
-    this.props.setRow("row3");
+    this.props.setRow(this.props.getNextRow());
     this.props.setChild(event);
   };
 
   _prev = () => {
-    this.props.setRow("row2");
+    // this.props.setRow("row2");
+    // this.props.handlePrevStep();
+    this.props.setRow(this.props.currentRow);
     this.props.handlePrevStep();
+    this.props.clearRow(this.props.getNextRow())
   };
 
   render() {
-  
+   
     return (
       <Container className="directive">
         <Row id="header" className="rowElement">
@@ -33,7 +38,7 @@ class RothMarriedNotJointlyTweenD extends React.Component {
             onClick={this._prev}
             variant="link"
             disabled={
-              this.props.currentStep === "RothMarriedNotJointlyTweenD" ? false : true
+              this.props.currentStep === "RothMarriedJointlyTweenD" ? false : true
             }
           >
             <FontAwesomeIcon icon="chevron-left" /> Back
@@ -43,17 +48,18 @@ class RothMarriedNotJointlyTweenD extends React.Component {
         <Row id="title" className="rowElement">
           <Container>
             <h6>YOUR NEXT PRIORITY:</h6>
-            <h3>Max-out your Roth IRA</h3>
+            <h3>Max-out Roth IRA</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Since your Modified Adjusted Gross Income as a couple will be less
-            than $10k, the amount you'll be able to contribute is reduced. Check
-            out the table below to see the maximum you're allowed to contribtue
-            to a Roth IRA based on your income.
+            Since your Modified Adjusted Gross Income as a couple will be than
+            $196k but less than $206k this year, the amount you'll be able to
+            contribute is reduced. Check out the table below to see the maximum
+            you're allowed to contribtue to a Roth IRA based on your income.
           </Container>
         </Row>
+
         <Row>
           <Tabs defaultActiveKey="what" id="uncontrolled-tab-example">
             <Tab eventKey="what" title="What">
@@ -76,47 +82,47 @@ class RothMarriedNotJointlyTweenD extends React.Component {
                 </thead>
                 <tbody>
                   <tr>
-                    <td>0</td>
+                    <td>under $196,000</td>
                     <td>$6,000</td>
                   </tr>
                   <tr>
-                    <td>$1,000 </td>
+                    <td>$197,000 </td>
                     <td>$5,400 </td>
                   </tr>
                   <tr>
-                    <td>$2,000 </td>
+                    <td>$198,000 </td>
                     <td>$4,800 </td>
                   </tr>
                   <tr>
-                    <td>$3,000 </td>
+                    <td>$199,000 </td>
                     <td>$4,200 </td>
                   </tr>
                   <tr>
-                    <td>$4,000 </td>
+                    <td>$200,000 </td>
                     <td>$3,600 </td>
                   </tr>
                   <tr>
-                    <td>$5,000 </td>
+                    <td>$201,000 </td>
                     <td>$3,000 </td>
                   </tr>
                   <tr>
-                    <td>$6,000 </td>
+                    <td>$202,000 </td>
                     <td>$2,400 </td>
                   </tr>
                   <tr>
-                    <td>$7,000 </td>
+                    <td>$203,000 </td>
                     <td>$1,800 </td>
                   </tr>
                   <tr>
-                    <td>$8,000 </td>
+                    <td>$204,000 </td>
                     <td>$1,200 </td>
                   </tr>
                   <tr>
-                    <td>$9,000 </td>
+                    <td>$205,000 </td>
                     <td>$600 </td>
                   </tr>
                   <tr>
-                    <td>$10,000 and over </td>
+                    <td>$206,000 and over </td>
                     <td>$0 😕 </td>
                   </tr>
                 </tbody>
@@ -175,7 +181,6 @@ class RothMarriedNotJointlyTweenD extends React.Component {
             </Tab>
           </Tabs>
         </Row>
-        <hr className="w-100" />
         <Row></Row>
         <Row id="form" className="rowElement"></Row>
         <Row id="buttons" className="rowElement">
@@ -185,7 +190,7 @@ class RothMarriedNotJointlyTweenD extends React.Component {
                 <Col></Col>
                 <Col
                   className={
-                    this.props.currentStep === "RothMarriedNotJointlyTweenD"
+                    this.props.currentStep === "RothMarriedJointlyTweenD"
                       ? ""
                       : "hidden"
                   }
@@ -194,9 +199,10 @@ class RothMarriedNotJointlyTweenD extends React.Component {
                     variant="primary"
                     size="lg"
                     block
-                    id="row2"
+                    // id={this.props.currentRow}
+                    id={this.props.getNextRow()}
                     value="Four01kMaxOutQ"
-                    onClick={this._next}
+                    onClick={this._yes}
                   >
                     Continue
                   </Button>
@@ -220,4 +226,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(RothMarriedNotJointlyTweenD);
+})(PriRothMarriedJointlyTween);

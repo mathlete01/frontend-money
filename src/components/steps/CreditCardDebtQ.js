@@ -59,8 +59,8 @@ class CreditCardDebtQ extends React.Component {
                     variant="danger"
                     size="lg"
                     block
-                    id="row1"
-                    value="Rung1Determination"
+                    id={this.props.currentRow}
+                    value="NoDebt"
                     onClick={this._no}
                   >
                     No
@@ -72,7 +72,7 @@ class CreditCardDebtQ extends React.Component {
                     variant="success"
                     size="lg"
                     block
-                    id="row1"
+                    id={this.props.currentRow}
                     value="CreditCardDebt"
                     onClick={this._yes}
                   >

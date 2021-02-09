@@ -75,7 +75,7 @@ class Intro extends React.Component {
                 <Col></Col>
                 <Col>
                   <Button
-                    id="row1"
+                    id={this.props.currentRow}
                     value="LeftoverMoney"
                     className="yes"
                     variant="primary"

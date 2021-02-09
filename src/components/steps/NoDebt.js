@@ -7,29 +7,21 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 
-class RothMarriedJointlyIncomeQ extends React.Component {
+class RothIntro extends React.Component {
+  _next = (event) => {
+    event.preventDefault();
+    this.props.setChild(event);
+  };
+
   _prev = () => {
     this.props.handlePrevStep();
   };
 
-  _yes = (event) => {
-    event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { earned_income: true },this.props.currentStep);
-    this.props.setChild(event)
-
-  };
-
-  _no = (event) => {
-    event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { earned_income: false },this.props.currentStep);
-    this.props.setChild(event)
-
-  };
-
   render() {
-  
     return (
       <Container className="step">
         <Row id="header" className="rowElement">
@@ -40,12 +32,12 @@ class RothMarriedJointlyIncomeQ extends React.Component {
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h3>Will you have any earned income this year?</h3>
+            <h3>No credit card debt!</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Earned income is income you'd make from wages, not from investments.
+          Ok, so your employer doesn't offer a 401(k) (boo), and you don't have any credit card debt (yay!). Let's make sure you qualify for a Roth IRA!
           </Container>
         </Row>
         <Row id="form" className="rowElement"></Row>
@@ -54,29 +46,19 @@ class RothMarriedJointlyIncomeQ extends React.Component {
             <Form.Group>
               <Form.Row>
                 <Col>
-                  <Button
-                    className="no"
-                    variant="danger"
-                    size="lg"
-                    block
-                    id={this.props.currentRow}
-                    value="RothSingleUnderD"
-                    onClick={this._no}
-                  >
-                    No
-                  </Button>
                 </Col>
                 <Col>
                   <Button
                     className="yes"
-                    variant="success"
+                    variant="primary"
                     size="lg"
                     block
+                    // id={this.props.currentRow}
                     id={this.props.currentRow}
-                    value="RothMarriedJointly50Q"
-                    onClick={this._yes}
+                    value="RothIntro"
+                    onClick={this._next}
                   >
-                    Yes
+                    Continue
                   </Button>
                 </Col>
               </Form.Row>
@@ -98,4 +80,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(RothMarriedJointlyIncomeQ);
+})(RothIntro);

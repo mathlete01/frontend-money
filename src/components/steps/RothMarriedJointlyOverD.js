@@ -41,7 +41,7 @@ class RothMarriedJointlyOverD extends React.Component {
   //       break;
   //     // Case:  No 401K  --> Try for traditional IRA
   //     case four01k === false:
-  //       this.nextStep = "BackdoorRothIntro";
+  //       this.nextStep = "PriBackdoorRothIntro";
   //       break;
   //     default:
   //       this.advice = "Whoops, we've encountered an error. How embarassing.";
@@ -87,8 +87,8 @@ class RothMarriedJointlyOverD extends React.Component {
                     variant="primary"
                     size="lg"
                     block
-                    id="row2"
-                    value="BackdoorRothIntro"
+                    id={this.props.currentRow}
+                    value="PriBackdoorRothIntro"
                     onClick={this._next}
                   >
                     Continue

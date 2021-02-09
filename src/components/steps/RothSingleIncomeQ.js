@@ -58,7 +58,7 @@ class RothSingleIncomeQ extends React.Component {
                     variant="danger"
                     size="lg"
                     block
-                    id="row2"
+                    id={this.props.currentRow}
                     value="RothSingleUnderD"
                     onClick={this._no}
                   >
@@ -71,7 +71,7 @@ class RothSingleIncomeQ extends React.Component {
                     variant="success"
                     size="lg"
                     block
-                    id="row2"
+                    id={this.props.currentRow}
                     value="RothSingle50Q"
                     onClick={this._yes}
                   >

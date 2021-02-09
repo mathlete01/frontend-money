@@ -53,7 +53,7 @@ class RothSingleUnderD extends React.Component {
                     variant="primary"
                     size="lg"
                     block
-                    id="row2"
+                    id={this.props.currentRow}
                     value="TaxableBrokerageIntro"
                     onClick={this._next}
                   >
