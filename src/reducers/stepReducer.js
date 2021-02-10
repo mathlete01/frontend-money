@@ -1,6 +1,7 @@
 let state;
 
 export function stepReducer(
+  // console.log(`3--StepReducer, this.state.currentStep = `, this.state.currentStep)
   state = {
     currentStep: "Intro",
   },

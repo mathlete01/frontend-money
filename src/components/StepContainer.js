@@ -46,6 +46,7 @@ import ChildB from "./ChildB";
 import NoDebt from "./steps/NoDebt";
 import BLANK from "./steps/BLANK";
 
+
 class StepContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -59,6 +60,13 @@ class StepContainer extends React.Component {
       currentRow: "row1",
     };
   }
+
+  componentDidMount() {
+    console.log(`this.props.currentStep = `, this.props.currentStep)
+    // this.props.updateCurrentStep(this.props.currentStep)
+    this.setState({ row1: this.props.currentStep });
+    }
+  
 
   setRow = (row) => {
     this.setState({
