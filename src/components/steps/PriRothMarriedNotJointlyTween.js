@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import { Tabs, Tab } from "react-bootstrap";
+import { updateCurrentRow } from "../../actions/rowActions";
 
 class PriRothMarriedNotJointlyTween extends React.Component {
  
@@ -221,10 +222,12 @@ const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
     currentUser: state.userReducer.currentUser,
+    currentRow: state.rowReducer.currentRow,
   };
 };
 
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
+  updateCurrentRow,
 })(PriRothMarriedNotJointlyTween);

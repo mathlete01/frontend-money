@@ -62,6 +62,7 @@ const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
     currentUser: state.userReducer.currentUser,
+    currentRow: state.rowReducer.currentRow,
   };
 };
 

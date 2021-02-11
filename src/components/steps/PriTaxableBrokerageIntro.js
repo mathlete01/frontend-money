@@ -14,6 +14,8 @@ import TabContainer from "react-bootstrap/TabContainer";
 import Nav from "react-bootstrap/Nav";
 import { NavItem } from "react-bootstrap";
 import Navbar from "react-bootstrap/Navbar";
+import { updateCurrentRow } from "../../actions/rowActions";
+
 
 class PriTaxableBrokerageIntro extends React.Component {
   
@@ -156,10 +158,12 @@ const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
     currentUser: state.userReducer.currentUser,
+    currentRow: state.rowReducer.currentRow,
   };
 };
 
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
+  updateCurrentRow,
 })(PriTaxableBrokerageIntro);

@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { Tabs, Tab } from "react-bootstrap";
 import ReactDOM from "react-dom";
+import { updateCurrentRow } from "../../actions/rowActions";
 
 class PriBackdoorRothIntro extends React.Component {
   
@@ -162,10 +163,12 @@ const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
     currentUser: state.userReducer.currentUser,
+    currentRow: state.rowReducer.currentRow,
   };
 };
 
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
+  updateCurrentRow,
 })(PriBackdoorRothIntro);

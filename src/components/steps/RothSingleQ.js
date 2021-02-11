@@ -8,6 +8,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
+import { updateCurrentRow } from "../../actions/rowActions";
 
 class RothSingleQ extends React.Component {
   _prev = () => {
@@ -89,10 +90,12 @@ const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
     currentUser: state.userReducer.currentUser,
+    currentRow: state.rowReducer.currentRow,
   };
 };
 
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
+  updateCurrentRow,
 })(RothSingleQ);

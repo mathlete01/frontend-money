@@ -9,8 +9,9 @@ import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { Tabs, Tab } from "react-bootstrap";
+import { updateCurrentRow } from "../../actions/rowActions";
 
-class PriFour01kMax extends React.Component {
+class PriFour01kMax extends React.Component { 
   _prev = () => {
     this.props.handlePrevStep();
   };
@@ -111,10 +112,12 @@ const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
     currentUser: state.userReducer.currentUser,
+    currentRow: state.rowReducer.currentRow,
   };
 };
 
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
+  updateCurrentRow,
 })(PriFour01kMax);
