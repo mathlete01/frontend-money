@@ -12,6 +12,14 @@ import { updateCurrentRow } from "../../actions/rowActions";
 
 class Four01kMaxOutQ extends React.Component {
 
+  _prev = () => {
+    // this.props.setRow("row2");
+    this.props.setRow(this.props.currentRow);
+    this.props.handlePrevStep();
+    this.props.clearRow(this.props.getNextRow())
+    // this.props.clearRow("row3")
+  };
+
   _yes = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { four01k_max_out: true },this.props.currentStep);
@@ -20,14 +28,6 @@ class Four01kMaxOutQ extends React.Component {
   _no = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { four01k_max_out: false },this.props.currentStep);
-  };
-
-  _prev = () => {
-    // this.props.setRow("row2");
-    this.props.setRow(this.props.currentRow);
-    this.props.handlePrevStep();
-    this.props.clearRow(this.props.getNextRow())
-    // this.props.clearRow("row3")
   };
 
   render() {

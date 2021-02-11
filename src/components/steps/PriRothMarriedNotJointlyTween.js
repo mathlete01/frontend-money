@@ -13,6 +13,14 @@ import { Tabs, Tab } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 
 class PriRothMarriedNotJointlyTween extends React.Component {
+
+  _prev = () => {
+    // this.props.setRow("row2");
+    // this.props.handlePrevStep();
+    this.props.setRow(this.props.currentRow);
+    this.props.handlePrevStep();
+    this.props.clearRow(this.props.getNextRow())
+  };
  
   _next = (event) => {
     // event.preventDefault();
@@ -21,14 +29,6 @@ class PriRothMarriedNotJointlyTween extends React.Component {
     event.preventDefault();
     this.props.setRow(this.props.getNextRow());
     this.props.setChild(event);
-  };
-
-  _prev = () => {
-    // this.props.setRow("row2");
-    // this.props.handlePrevStep();
-    this.props.setRow(this.props.currentRow);
-    this.props.handlePrevStep();
-    this.props.clearRow(this.props.getNextRow())
   };
 
   render() {

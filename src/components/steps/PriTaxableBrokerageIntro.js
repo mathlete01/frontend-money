@@ -19,6 +19,14 @@ import { updateCurrentRow } from "../../actions/rowActions";
 
 class PriTaxableBrokerageIntro extends React.Component {
   
+  _prev = () => {
+    // this.props.setRow("row2");
+    // this.props.handlePrevStep();
+    this.props.setRow(this.props.currentRow);
+    this.props.handlePrevStep();
+    this.props.clearRow(this.props.getNextRow())
+  };
+  
   _next = (event) => {
     event.preventDefault();
     // this.props.setRow("row3");
@@ -27,13 +35,6 @@ class PriTaxableBrokerageIntro extends React.Component {
     this.props.setChild(event);
   };
 
-  _prev = () => {
-    // this.props.setRow("row2");
-    // this.props.handlePrevStep();
-    this.props.setRow(this.props.currentRow);
-    this.props.handlePrevStep();
-    this.props.clearRow(this.props.getNextRow())
-  };
 
   render() {
    

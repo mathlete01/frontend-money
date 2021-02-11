@@ -18,6 +18,7 @@ class PriPostDebt extends React.Component {
     // this.props.setRow("row1");
     this.props.setRow(this.props.currentRow);
     this.props.handlePrevStep();
+    this.props.clearRow(this.props.getNextRow())
   };
   
   _next = (event) => {
@@ -63,7 +64,7 @@ class PriPostDebt extends React.Component {
         //   rung_2: true,
         // });
         break;
-      // Case:  401k contribution > 401k match and debt is big
+      // Case:  401k contribution > 401k match and debt is small
       case four01k_contribution > four01k_match &&
         credit_card_debt < leftover_money:
         this.headline = `Pay off your credit cards`;
@@ -75,6 +76,7 @@ class PriPostDebt extends React.Component {
         //   rung_3: true,
         // });
         break;
+        // Case:  401k contribution > 401k match and debt is big
       case four01k_contribution > four01k_match &&
         credit_card_debt > leftover_money:
         this.headline = `Reduce your 401(k) contribution and pay off your credit cards`;

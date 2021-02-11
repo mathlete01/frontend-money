@@ -60,7 +60,6 @@ class StepContainer extends React.Component {
   }
 
   setRow = (row) => {
-    console.log("setRow called, row=", row);
     this.props.updateCurrentRow(row);
   };
 
@@ -99,7 +98,7 @@ class StepContainer extends React.Component {
   };
 
   clearRow = (row) => {
-    console.log(`clearRow called `);
+    console.log(`clearRow called, row= `, row);
     switch (true) {
       case row === "row2":
         console.log(`clearRow: 2 called `);

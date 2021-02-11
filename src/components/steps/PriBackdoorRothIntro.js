@@ -14,9 +14,13 @@ import { updateCurrentRow } from "../../actions/rowActions";
 
 class PriBackdoorRothIntro extends React.Component {
   
-
-  h
-
+  _prev = () => {
+    // this.props.setRow("row2");
+    this.props.setRow(this.props.currentRow);
+    this.props.handlePrevStep();
+    this.props.clearRow(this.props.getNextRow())
+  };
+  
   _next = (event) => {
     console.log(`event = `, event)
     console.log(`event.target.id = `, event.target.id)
@@ -27,13 +31,6 @@ class PriBackdoorRothIntro extends React.Component {
     event.preventDefault();
     this.props.setRow(this.props.getNextRow());
     this.props.setChild(event);
-  };
-
-  _prev = () => {
-    // this.props.setRow("row2");
-    this.props.setRow(this.props.currentRow);
-    this.props.handlePrevStep();
-    this.props.clearRow(this.props.getNextRow())
   };
 
   render() {

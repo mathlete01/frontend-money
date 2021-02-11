@@ -13,6 +13,7 @@ import { Tabs, Tab } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 
 class PriRothSingleTween extends React.Component {
+  
   _prev = () => {
     // this.props.setRow("row2");
     // this.props.handlePrevStep();

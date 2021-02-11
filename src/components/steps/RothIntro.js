@@ -13,17 +13,18 @@ import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 
 class RothIntro extends React.Component {
+  
+  _prev = () => {
+    // this.props.setRow("row1");
+    this.props.setRow(this.props.currentRow);
+    this.props.handlePrevStep();
+    this.props.clearRow(this.props.getNextRow())
+    // this.props.clearRow("row2")
+  };
+  
   _next = (event) => {
     event.preventDefault();
     this.props.setChild(event);
-  };
-
-  _prev = () => {
-    // this.props.setRow("row1");
-    this.props.setRow(this.props.getPrevRow());
-    this.props.handlePrevStep();
-    this.props.clearRow(this.props.currentRow)
-    // this.props.clearRow("row2")
   };
 
   render() {
