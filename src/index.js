@@ -22,11 +22,11 @@ const enhancer = composeEnhancers(
   applyMiddleware(thunk),
   // other store enhancers if any
 );
-// const store = createStore(rootReducer, applyMiddleware(thunk));
 const store = createStore(rootReducer, enhancer);
 
 ReactDOM.render(
   <React.StrictMode>
+    {/* Provider is a component that wraps around our App component. It does two things: (1) it will alert our Redux app when there has been a change in state, and this will re-render our React app. Here we pass our store instance into Provider as a prop, making it available to all our other components. */}
     <Provider store={store}>
       <BrowserRouter>
         <App />

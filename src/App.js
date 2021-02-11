@@ -26,7 +26,7 @@ import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import StepContainer from "./components/StepContainer";
 import "./App.css";
-import Ladder from "./components/Ladder";
+// import Ladder from "./components/Ladder";
 import { Form, FormControl, NavItem } from "react-bootstrap";
 import background from "./img/Louis_Vuitton-blue.png";
 import logo from "./img/safari-pinned-tab.svg"

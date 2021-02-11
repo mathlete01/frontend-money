@@ -45,50 +45,51 @@ import ChildA from "./ChildA";
 import ChildB from "./ChildB";
 import NoDebt from "./steps/NoDebt";
 import BLANK from "./steps/BLANK";
-
+import { updateCurrentRow } from "../actions/rowActions";
 
 class StepContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      prevStep: "",
+      // prevStep: "",
       stepPath: [],
       rowPath: [],
       row1: "Intro",
       row2: "",
       row3: "",
-      currentRow: "row1",
+      // currentRow: "row1",
     };
   }
 
   componentDidMount() {
-    console.log(`this.props.currentStep = `, this.props.currentStep)
+    console.log(`this.props.currentStep = `, this.props.currentStep);
     // this.props.updateCurrentStep(this.props.currentStep)
     this.setState({ row1: this.props.currentStep });
-    }
-  
+  }
 
   setRow = (row) => {
-    this.setState({
-      currentRow: row,
-    });
+    console.log("setRow called, row=", row)
+    // this.setState({
+    //   currentRow: row,
+    // });
+    this.props.updateCurrentRow(row)
   };
 
   getNextRow = () => {
     switch (true) {
-      case this.state.currentRow === "row1":
+      case this.props.currentRow === "row1":
         return "row2";
         break;
-      case this.state.currentRow === "row2":
+      case this.props.currentRow === "row2":
         return "row3";
         break;
-      case this.state.currentRow === "row3":
+      case this.props.currentRow === "row3":
         return "row4";
         break;
-      case this.state.currentRow === "row4":
+      case this.props.currentRow === "row4":
         return "row5";
         break;
-      case this.state.currentRow === "row5":
+      case this.props.currentRow === "row5":
         return "row6";
         break;
     }
@@ -96,19 +97,19 @@ class StepContainer extends React.Component {
 
   getPrevRow = () => {
     switch (true) {
-      case this.state.currentRow === "row2":
+      case this.props.currentRow === "row2":
         return "row1";
         break;
-      case this.state.currentRow === "row3":
+      case this.props.currentRow === "row3":
         return "row2";
         break;
-      case this.state.currentRow === "row4":
+      case this.props.currentRow === "row4":
         return "row3";
         break;
-      case this.state.currentRow === "row5":
+      case this.props.currentRow === "row5":
         return "row4";
         break;
-      case this.state.currentRow === "row6":
+      case this.props.currentRow === "row6":
         return "row5";
         break;
     }
@@ -133,6 +134,7 @@ class StepContainer extends React.Component {
   };
 
   setChild = (event) => {
+    console.log("setChild called")
     // from handleNextStep below
     const nextStep = event.target.value;
     const nextRow = event.target.id;
@@ -152,17 +154,19 @@ class StepContainer extends React.Component {
     this.setState({ [event.target.id]: event.target.value });
   };
 
+  
   handlePrevStep = () => {
+    console.log("handlePrevStep called")
     const i = this.state.stepPath.length;
     this.setState((prevState) => ({
-      stepPath: prevState.stepPath.filter((_, i) => i !== this.state.stepPath.length - 1),
+      stepPath: prevState.stepPath.filter(
+        (_, i) => i !== this.state.stepPath.length - 1
+      ),
     }));
-    // this.setState((prevState) => ({
-    //   stepRow: prevState.stepRow.filter((_, i) => i !== this.state.stepRow.length - 1),
-    // }));
     const last = this.state.stepPath.length - 2;
     this.props.updateCurrentStep(this.state.stepPath[last]);
-    this.setState({ [this.state.currentRow]: this.state.stepPath[last] });
+    // this.setState({ [this.state.currentRow]: this.state.stepPath[last] });
+    this.setState({ [this.props.currentRow]: this.state.stepPath[last] });
   };
 
   loadChildInRow1 = () => {
@@ -303,7 +307,7 @@ class StepContainer extends React.Component {
             clearRow={this.clearRow}
             getNextRow={this.getNextRow}
             getPrevRow={this.getPrevRow}
-            currentRow={this.state.currentRow}
+            // currentRow={this.state.currentRow}
           />
         );
         break;
@@ -317,7 +321,7 @@ class StepContainer extends React.Component {
             clearRow={this.clearRow}
             getNextRow={this.getNextRow}
             getPrevRow={this.getPrevRow}
-            currentRow={this.state.currentRow}
+            // currentRow={this.state.currentRow}
           />
         );
         break;
@@ -639,7 +643,7 @@ class StepContainer extends React.Component {
             clearRow={this.clearRow}
             getNextRow={this.getNextRow}
             getPrevRow={this.getPrevRow}
-            currentRow={this.state.currentRow}
+            // currentRow={this.state.currentRow}
           />
         );
         break;
@@ -2737,10 +2741,12 @@ const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
     currentUser: state.userReducer.currentUser,
+    currentRow: state.rowReducer.currentRow,
   };
 };
 
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
+  updateCurrentRow,
 })(StepContainer);

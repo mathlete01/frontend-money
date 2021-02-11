@@ -10,6 +10,8 @@ import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import InputGroup from "react-bootstrap/InputGroup";
 import { Form, FormControl } from "react-bootstrap";
+import { updateCurrentRow } from "../../actions/rowActions";
+
 
 class LeftoverMoney extends React.Component {
   
@@ -259,14 +261,19 @@ class LeftoverMoney extends React.Component {
   }
 }
 
+// mapStateToProps is where we specify what slice of the state that we want to provide to our component through props. Here, we want to provide state.stepReducer.currentStep via a prop called currentStep and state. userReducer.currentUser via a prop called currentUser 
 const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
     currentUser: state.userReducer.currentUser,
+    currentRow: state.rowReducer.currentRow,
   };
 };
+
+// The connect function is linked to the store and listening to each change in the state that occurs. When a change occurs, it calls mapStateToProps(). We specify which component we are providing this data to at the very end.
 
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
+  updateCurrentRow,
 })(LeftoverMoney);

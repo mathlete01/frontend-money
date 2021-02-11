@@ -80,8 +80,8 @@ class DoneForNow extends React.Component {
 const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
-    currentUser: state.userReducer.currentUser
+    // currentUser: state.userReducer.currentUser
   };
 };
 
-export default connect(mapStateToProps, { updateCurrentStep, updateCurrentUser })(DoneForNow);
+export default connect(mapStateToProps, { updateCurrentStep })(DoneForNow);

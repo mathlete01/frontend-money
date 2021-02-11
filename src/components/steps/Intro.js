@@ -1,12 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
-import { updateCurrentStep } from "../../actions/stepActions";
 import { setCurrentUser } from "../../actions/userActions";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { Form, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { updateCurrentRow } from "../../actions/rowActions";
 
 const BASE_URL = "http://localhost:3000";
 const USERS_URL = `${BASE_URL}/users`;
@@ -95,11 +95,12 @@ class Intro extends React.Component {
   }
 }
 
+
 const mapStateToProps = (state) => {
   return {
-    currentStep: state.stepReducer.currentStep,
     currentUser: state.userReducer.currentUser,
+    currentRow: state.rowReducer.currentRow,
   };
 };
 
-export default connect(mapStateToProps, { setCurrentUser })(Intro);
+export default connect(mapStateToProps, { setCurrentUser, updateCurrentRow })(Intro);
