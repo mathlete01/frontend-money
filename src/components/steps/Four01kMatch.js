@@ -39,7 +39,7 @@ class Four01kMatch extends React.Component {
   };
 
   _prev = () => {
-    this.props.handlePrevStep("Four01k");
+    this.props.handlePrevStep();
   };
 
   render() {

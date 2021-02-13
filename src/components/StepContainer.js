@@ -92,8 +92,8 @@ class StepContainer extends React.Component {
         return "row4";
       case this.props.currentRow === "row6":
         return "row5";
-        default:
-          return null;
+      default:
+        return null;
     }
   };
 
@@ -102,21 +102,21 @@ class StepContainer extends React.Component {
     switch (true) {
       case row === "row2":
         console.log(`clearRow: 2 called `);
-        return this.setState({
+        this.setState({
           row2: "",
         });
       case row === "row3":
-        console.log(`clearRow: 2 called `);
-        return this.setState({
+        console.log(`clearRow: 3 called `);
+        this.setState({
           row3: "",
         });
-        default:
-          return null;
+      default:
+        return null;
     }
   };
 
   setChild = (event) => {
-    // console.log("setChild called");
+    console.log("setChild called");
     // from handleNextStep below
     const nextStep = event.target.value;
     const nextRow = event.target.id;
@@ -137,19 +137,48 @@ class StepContainer extends React.Component {
   };
 
   handlePrevStep = () => {
-    console.log("handlePrevStep called");
-    const i = this.state.stepPath.length;
+    const pathLength = this.state.stepPath.length;
+    const pathLengthMinus2 = pathLength - 2;
+    const prevRow = this.state.rowPath[pathLengthMinus2];
+    const currentRowV2 = this.state.rowPath[pathLength-1]
+    // console.log(`pathLengthMinus2 = `, pathLengthMinus2)
+    // console.log(`prevRow = `, prevRow)
+    console.log(`this.state.rowPath = `, this.state.rowPath)
+    console.log(`pathLength = `, pathLength)
+    console.log(`currentRowV2 = `, currentRowV2)
+    // If current row isn't the same as the previous row, clear the current row
+    // if (prevRow !== this.props.currentRow) {
+      if (prevRow !== currentRowV2) {
+      // this.setRow(this.getPrevRow());
+      // this.clearRow(this.props.currentRow);
+      this.clearRow(currentRowV2);
+    }
+    //remove the last element in the step array and the row array
     this.setState((prevState) => ({
       stepPath: prevState.stepPath.filter(
-        (_, i) => i !== this.state.stepPath.length - 1
+        (_, pathLength) => pathLength !== this.state.stepPath.length - 1
+      ),
+      rowPath: prevState.rowPath.filter(
+        (_, pathLength) => pathLength !== this.state.rowPath.length - 1
       ),
     }));
-    const last = this.state.stepPath.length - 2;
-    this.props.updateCurrentStep(this.state.stepPath[last]);
-    this.setState({ [this.props.currentRow]: this.state.stepPath[last] });
+    // Update the current step to be the previous step
+    // this.props.updateCurrentStep(this.state.stepPath[pathLengthMinus2]);
+    const updatedPathLength = this.state.stepPath.length;
+    console.log(`updatedPathLength = `, updatedPathLength)
+    console.log(`this.state.stepPath = `, this.state.stepPath)
+    console.log(`this.state.stepPath[updatedPathLength] = `, this.state.stepPath[updatedPathLength -1])
+    const myRow = this.state.rowPath[updatedPathLength - 2]
+    const myStep = this.state.stepPath[updatedPathLength - 2]
+    console.log(`myRow = `, myRow)
+    console.log(`myStep = `, myStep)
+    this.props.updateCurrentStep(myStep);
+    this.props.updateCurrentRow(myRow);
+    this.setState({ [myRow]: myStep })
   };
 
   loadChildInRow1 = () => {
+    console.log(`loadChildinRow1 called`)
     switch (true) {
       case this.state.row1 === "PriBackdoorRothIntro":
         return (
@@ -583,7 +612,7 @@ class StepContainer extends React.Component {
             getPrevRow={this.getPrevRow}
           />
         );
-        default:
+      default:
         return null;
     }
   };
@@ -1022,7 +1051,7 @@ class StepContainer extends React.Component {
             getPrevRow={this.getPrevRow}
           />
         );
-        default:
+      default:
         return null;
     }
   };
@@ -1461,7 +1490,7 @@ class StepContainer extends React.Component {
             getPrevRow={this.getPrevRow}
           />
         );
-        default:
+      default:
         return null;
     }
   };
@@ -1900,7 +1929,7 @@ class StepContainer extends React.Component {
             getPrevRow={this.getPrevRow}
           />
         );
-        default:
+      default:
         return null;
     }
   };
@@ -2339,8 +2368,8 @@ class StepContainer extends React.Component {
             getPrevRow={this.getPrevRow}
           />
         );
-        default:
-          return null;
+      default:
+        return null;
     }
   };
 

@@ -118,15 +118,6 @@ class PriRothReg extends React.Component {
             <Form.Group>
               <Form.Row>
                 <Col>
-                  {/* <Button
-                    className="no"
-                    variant="danger"
-                    size="lg"
-                    block
-                    onClick={this._no}
-                  >
-                    No
-                  </Button> */}
                 </Col>
                 <Col
                   className={

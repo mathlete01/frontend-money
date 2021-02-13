@@ -16,9 +16,9 @@ class PriPostDebt extends React.Component {
   
   _prev = () => {
     // this.props.setRow("row1");
-    this.props.setRow(this.props.currentRow);
+    // this.props.setRow(this.props.currentRow);
     this.props.handlePrevStep();
-    this.props.clearRow(this.props.getNextRow())
+    // this.props.clearRow(this.props.getNextRow())
   };
   
   _next = (event) => {
@@ -27,8 +27,6 @@ class PriPostDebt extends React.Component {
     this.props.setRow(this.props.getNextRow());
     this.props.setChild(event);
   };
-
-  
 
   makeDetermination = () => {
     const {
@@ -122,7 +120,6 @@ class PriPostDebt extends React.Component {
     this.makeDetermination();
     }
   
-
   render() {
     return (
       <Container className="directive">

@@ -42,7 +42,7 @@ class Four01kContribution extends React.Component {
   };
 
   _prev = () => {
-    this.props.handlePrevStep("Four01kMatch");
+    this.props.handlePrevStep();
   };
 
   render() {
