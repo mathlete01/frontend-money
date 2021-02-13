@@ -15,17 +15,10 @@ import { updateCurrentRow } from "../../actions/rowActions";
 class PriRothMarriedJointlyTween extends React.Component {
   
   _prev = () => {
-    // this.props.setRow("row2");
-    // this.props.handlePrevStep();
-    this.props.setRow(this.props.currentRow);
     this.props.handlePrevStep();
-    this.props.clearRow(this.props.getNextRow())
   };
   
   _next = (event) => {
-    // event.preventDefault();
-    // this.props.setRow("row3");
-    // this.props.handleNextStep(event);
     event.preventDefault();
     this.props.setRow(this.props.getNextRow());
     this.props.handleNextStep(event);
@@ -201,7 +194,6 @@ class PriRothMarriedJointlyTween extends React.Component {
                     variant="primary"
                     size="lg"
                     block
-                    // id={this.props.currentRow}
                     id={this.props.getNextRow()}
                     value="Four01kMaxOutQ"
                     onClick={this._yes}

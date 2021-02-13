@@ -80,35 +80,27 @@ class StepContainer extends React.Component {
     }
   };
 
-  getPrevRow = () => {
-    switch (true) {
-      case this.props.currentRow === "row2":
-        return "row1";
-      case this.props.currentRow === "row3":
-        return "row2";
-      case this.props.currentRow === "row4":
-        return "row3";
-      case this.props.currentRow === "row5":
-        return "row4";
-      case this.props.currentRow === "row6":
-        return "row5";
-      default:
-        return null;
-    }
-  };
-
   clearRow = (row) => {
-    console.log(`clearRow called, row= `, row);
     switch (true) {
       case row === "row2":
-        console.log(`clearRow: 2 called `);
         this.setState({
           row2: "",
         });
       case row === "row3":
-        console.log(`clearRow: 3 called `);
         this.setState({
           row3: "",
+        });
+        case row === "row4":
+        this.setState({
+          row4: "",
+        });
+        case row === "row5":
+        this.setState({
+          row5: "",
+        });
+        case row === "row6":
+        this.setState({
+          row6: "",
         });
       default:
         return null;
@@ -117,7 +109,6 @@ class StepContainer extends React.Component {
 
   handleNextStep = (event) => {
     console.log("handleNextStep called");
-    // from handleNextStep below
     const nextStep = event.target.value;
     const nextRow = event.target.id;
     this.setState({
@@ -127,7 +118,6 @@ class StepContainer extends React.Component {
       rowPath: [...this.state.rowPath, nextRow],
     });
     this.props.updateCurrentStep(nextStep);
-    // above
     var stateObject = function () {
       var returnObj = {};
       returnObj[this.target.id] = this.target.value;
@@ -172,9 +162,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row1 === "CreditCardDebt":
@@ -183,9 +171,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row1 === "CreditCardDebtQ":
@@ -194,9 +180,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row1 === "DoneForNow":
@@ -205,9 +189,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row1 === "Four01kContribution":
@@ -216,9 +198,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row1 === "Four01kMatch":
@@ -227,9 +207,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row1 === "Four01kMaxOutQ":
@@ -238,9 +216,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row1 === "PriFour01kMax":
@@ -249,9 +225,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row1 === "Four01kQ":
@@ -260,9 +234,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row1 === "Intro":
@@ -271,9 +243,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row1 === "LeftoverMoney":
@@ -282,9 +252,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row1 === "NoDebt":
@@ -293,9 +261,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row1 === "RothIntro":
@@ -304,9 +270,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row1 === "RothMarriedJointly50Q":
@@ -315,9 +279,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row1 === "RothMarriedJointlyIncomeQ":
@@ -326,9 +288,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row1 === "RothMarriedJointlyMaxQ":
@@ -337,9 +297,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row1 === "RothMarriedJointlyMinQ":
@@ -348,9 +306,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row1 === "RothMarriedJointlyOverD":
@@ -359,9 +315,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row1 === "RothMarriedJointlyQ":
@@ -370,9 +324,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row1 === "PriRothMarriedJointlyTween":
@@ -381,9 +333,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row1 === "RothMarriedNotJointlyMinQ":
@@ -392,9 +342,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row1 === "RothMarriedNotJointlyOverD":
@@ -403,9 +351,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row1 === "PriRothMarriedNotJointlyTween":
@@ -414,9 +360,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row1 === "PriRothMax":
@@ -425,9 +369,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row1 === "PriRothReg":
@@ -436,9 +378,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row1 === "RothSingle50Q":
@@ -447,9 +387,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row1 === "RothSingleIncomeQ":
@@ -458,9 +396,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row1 === "RothSingleMaxQ":
@@ -469,9 +405,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row1 === "RothSingleMinQ":
@@ -480,9 +414,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row1 === "RothSingleOverD":
@@ -491,9 +423,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row1 === "RothSingleQ":
@@ -502,9 +432,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row1 === "PriRothSingleTween":
@@ -513,9 +441,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row1 === "RothSingleUnderD":
@@ -524,9 +450,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row1 === "PriPostDebt":
@@ -535,9 +459,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row1 === "SaveYourWork":
@@ -546,9 +468,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row1 === "PriTaxableBrokerageIntro":
@@ -557,9 +477,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       default:
@@ -575,9 +493,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row2 === "CreditCardDebt":
@@ -586,9 +502,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row2 === "CreditCardDebtQ":
@@ -597,9 +511,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row2 === "DoneForNow":
@@ -608,9 +520,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row2 === "Four01kContribution":
@@ -619,9 +529,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row2 === "Four01kMatch":
@@ -630,9 +538,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row2 === "Four01kMaxOutQ":
@@ -641,9 +547,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row2 === "PriFour01kMax":
@@ -652,9 +556,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row2 === "Four01kQ":
@@ -663,9 +565,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row2 === "Intro":
@@ -674,9 +574,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row2 === "LeftoverMoney":
@@ -685,9 +583,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row2 === "NoDebt":
@@ -696,9 +592,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row2 === "RothIntro":
@@ -707,9 +601,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row2 === "RothMarriedJointly50Q":
@@ -718,9 +610,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row2 === "RothMarriedJointlyIncomeQ":
@@ -729,9 +619,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row2 === "RothMarriedJointlyMaxQ":
@@ -740,9 +628,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row2 === "RothMarriedJointlyMinQ":
@@ -751,9 +637,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row2 === "RothMarriedJointlyOverD":
@@ -762,9 +646,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row2 === "RothMarriedJointlyQ":
@@ -773,9 +655,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row2 === "PriRothMarriedJointlyTween":
@@ -784,9 +664,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row2 === "RothMarriedNotJointlyMinQ":
@@ -795,9 +673,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row2 === "RothMarriedNotJointlyOverD":
@@ -806,9 +682,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row2 === "PriRothMarriedNotJointlyTween":
@@ -817,9 +691,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row2 === "PriRothMax":
@@ -828,9 +700,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row2 === "PriRothReg":
@@ -839,9 +709,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row2 === "RothSingle50Q":
@@ -850,9 +718,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row2 === "RothSingleIncomeQ":
@@ -861,9 +727,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row2 === "RothSingleMaxQ":
@@ -872,9 +736,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row2 === "RothSingleMinQ":
@@ -883,9 +745,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row2 === "RothSingleOverD":
@@ -894,9 +754,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row2 === "RothSingleQ":
@@ -905,9 +763,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row2 === "PriRothSingleTween":
@@ -916,9 +772,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row2 === "RothSingleUnderD":
@@ -927,9 +781,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row2 === "PriPostDebt":
@@ -938,9 +790,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row2 === "SaveYourWork":
@@ -949,9 +799,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row2 === "PriTaxableBrokerageIntro":
@@ -960,9 +808,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       default:
@@ -978,9 +824,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row3 === "CreditCardDebt":
@@ -989,9 +833,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row3 === "CreditCardDebtQ":
@@ -1000,9 +842,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row3 === "DoneForNow":
@@ -1011,9 +851,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row3 === "Four01kContribution":
@@ -1022,9 +860,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row3 === "Four01kMatch":
@@ -1033,9 +869,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row3 === "Four01kMaxOutQ":
@@ -1044,9 +878,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row3 === "PriFour01kMax":
@@ -1055,9 +887,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row3 === "Four01kQ":
@@ -1066,9 +896,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row3 === "Intro":
@@ -1077,9 +905,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row3 === "LeftoverMoney":
@@ -1088,9 +914,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row3 === "NoDebt":
@@ -1099,9 +923,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row3 === "RothIntro":
@@ -1110,9 +932,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row3 === "RothMarriedJointly50Q":
@@ -1121,9 +941,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row3 === "RothMarriedJointlyIncomeQ":
@@ -1132,9 +950,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row3 === "RothMarriedJointlyMaxQ":
@@ -1143,9 +959,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row3 === "RothMarriedJointlyMinQ":
@@ -1154,9 +968,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row3 === "RothMarriedJointlyOverD":
@@ -1165,9 +977,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row3 === "RothMarriedJointlyQ":
@@ -1176,9 +986,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row3 === "PriRothMarriedJointlyTween":
@@ -1187,9 +995,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row3 === "RothMarriedNotJointlyMinQ":
@@ -1198,9 +1004,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row3 === "RothMarriedNotJointlyOverD":
@@ -1209,9 +1013,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row3 === "PriRothMarriedNotJointlyTween":
@@ -1220,9 +1022,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row3 === "PriRothMax":
@@ -1231,9 +1031,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row3 === "PriRothReg":
@@ -1242,9 +1040,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row3 === "RothSingle50Q":
@@ -1253,9 +1049,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row3 === "RothSingleIncomeQ":
@@ -1264,9 +1058,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row3 === "RothSingleMaxQ":
@@ -1275,9 +1067,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row3 === "RothSingleMinQ":
@@ -1286,9 +1076,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row3 === "RothSingleOverD":
@@ -1297,9 +1085,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row3 === "RothSingleQ":
@@ -1308,9 +1094,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row3 === "PriRothSingleTween":
@@ -1319,9 +1103,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row3 === "RothSingleUnderD":
@@ -1330,9 +1112,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row3 === "PriPostDebt":
@@ -1341,9 +1121,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row3 === "SaveYourWork":
@@ -1352,9 +1130,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row3 === "PriTaxableBrokerageIntro":
@@ -1363,9 +1139,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       default:
@@ -1381,9 +1155,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row4 === "CreditCardDebt":
@@ -1392,9 +1164,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row4 === "CreditCardDebtQ":
@@ -1403,9 +1173,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row4 === "DoneForNow":
@@ -1414,9 +1182,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row4 === "Four01kContribution":
@@ -1425,9 +1191,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row4 === "Four01kMatch":
@@ -1436,9 +1200,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row4 === "Four01kMaxOutQ":
@@ -1447,9 +1209,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row4 === "PriFour01kMax":
@@ -1458,9 +1218,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row4 === "Four01kQ":
@@ -1469,9 +1227,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row4 === "Intro":
@@ -1480,9 +1236,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row4 === "LeftoverMoney":
@@ -1491,9 +1245,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row4 === "NoDebt":
@@ -1502,9 +1254,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row4 === "RothIntro":
@@ -1513,9 +1263,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row4 === "RothMarriedJointly50Q":
@@ -1524,9 +1272,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row4 === "RothMarriedJointlyIncomeQ":
@@ -1535,9 +1281,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row4 === "RothMarriedJointlyMaxQ":
@@ -1546,9 +1290,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row4 === "RothMarriedJointlyMinQ":
@@ -1557,9 +1299,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row4 === "RothMarriedJointlyOverD":
@@ -1568,9 +1308,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row4 === "RothMarriedJointlyQ":
@@ -1579,9 +1317,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row4 === "PriRothMarriedJointlyTween":
@@ -1590,9 +1326,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row4 === "RothMarriedNotJointlyMinQ":
@@ -1601,9 +1335,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row4 === "RothMarriedNotJointlyOverD":
@@ -1612,9 +1344,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row4 === "PriRothMarriedNotJointlyTween":
@@ -1623,9 +1353,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row4 === "PriRothMax":
@@ -1634,9 +1362,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row4 === "PriRothReg":
@@ -1645,9 +1371,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row4 === "RothSingle50Q":
@@ -1656,9 +1380,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row4 === "RothSingleIncomeQ":
@@ -1667,9 +1389,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row4 === "RothSingleMaxQ":
@@ -1678,9 +1398,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row4 === "RothSingleMinQ":
@@ -1689,9 +1407,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row4 === "RothSingleOverD":
@@ -1700,9 +1416,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row4 === "RothSingleQ":
@@ -1711,9 +1425,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row4 === "PriRothSingleTween":
@@ -1722,9 +1434,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row4 === "RothSingleUnderD":
@@ -1733,9 +1443,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row4 === "PriPostDebt":
@@ -1744,9 +1452,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row4 === "SaveYourWork":
@@ -1755,9 +1461,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row4 === "PriTaxableBrokerageIntro":
@@ -1766,9 +1470,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       default:
@@ -1784,9 +1486,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row5 === "CreditCardDebt":
@@ -1795,9 +1495,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row5 === "CreditCardDebtQ":
@@ -1806,9 +1504,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row5 === "DoneForNow":
@@ -1817,9 +1513,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row5 === "Four01kContribution":
@@ -1828,9 +1522,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row5 === "Four01kMatch":
@@ -1839,9 +1531,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row5 === "Four01kMaxOutQ":
@@ -1850,9 +1540,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row5 === "PriFour01kMax":
@@ -1861,9 +1549,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row5 === "Four01kQ":
@@ -1872,9 +1558,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row5 === "Intro":
@@ -1883,9 +1567,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row5 === "LeftoverMoney":
@@ -1894,9 +1576,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row5 === "NoDebt":
@@ -1905,9 +1585,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row5 === "RothIntro":
@@ -1916,9 +1594,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row5 === "RothMarriedJointly50Q":
@@ -1927,9 +1603,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row5 === "RothMarriedJointlyIncomeQ":
@@ -1938,9 +1612,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row5 === "RothMarriedJointlyMaxQ":
@@ -1949,9 +1621,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row5 === "RothMarriedJointlyMinQ":
@@ -1960,9 +1630,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row5 === "RothMarriedJointlyOverD":
@@ -1971,9 +1639,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row5 === "RothMarriedJointlyQ":
@@ -1982,9 +1648,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row5 === "PriRothMarriedJointlyTween":
@@ -1993,9 +1657,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row5 === "RothMarriedNotJointlyMinQ":
@@ -2004,9 +1666,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row5 === "RothMarriedNotJointlyOverD":
@@ -2015,9 +1675,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row5 === "PriRothMarriedNotJointlyTween":
@@ -2026,9 +1684,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row5 === "PriRothMax":
@@ -2037,9 +1693,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row5 === "PriRothReg":
@@ -2048,9 +1702,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row5 === "RothSingle50Q":
@@ -2059,9 +1711,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row5 === "RothSingleIncomeQ":
@@ -2070,9 +1720,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row5 === "RothSingleMaxQ":
@@ -2081,9 +1729,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row5 === "RothSingleMinQ":
@@ -2092,9 +1738,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row5 === "RothSingleOverD":
@@ -2103,9 +1747,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row5 === "RothSingleQ":
@@ -2114,9 +1756,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row5 === "PriRothSingleTween":
@@ -2125,9 +1765,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row5 === "RothSingleUnderD":
@@ -2136,9 +1774,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row5 === "PriPostDebt":
@@ -2147,9 +1783,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row5 === "SaveYourWork":
@@ -2158,9 +1792,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       case this.state.row5 === "PriTaxableBrokerageIntro":
@@ -2169,9 +1801,7 @@ class StepContainer extends React.Component {
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
             setRow={this.setRow}
-            clearRow={this.clearRow}
             getNextRow={this.getNextRow}
-            getPrevRow={this.getPrevRow}
           />
         );
       default:

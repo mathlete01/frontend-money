@@ -13,11 +13,7 @@ import { updateCurrentRow } from "../../actions/rowActions";
 class Four01kMaxOutQ extends React.Component {
 
   _prev = () => {
-    // this.props.setRow("row2");
-    this.props.setRow(this.props.currentRow);
     this.props.handlePrevStep();
-    this.props.clearRow(this.props.getNextRow())
-    // this.props.clearRow("row3")
   };
 
   _yes = (event) => {
@@ -63,7 +59,6 @@ class Four01kMaxOutQ extends React.Component {
                     variant="danger"
                     size="lg"
                     block
-                    // id={this.props.currentRow}
                     id={this.props.getNextRow()}
                     value="Four01kMaxRec"
                     onClick={this._no}
@@ -77,7 +72,6 @@ class Four01kMaxOutQ extends React.Component {
                     variant="success"
                     size="lg"
                     block
-                    // id={this.props.currentRow}
                     id={this.props.getNextRow()}
                     value="TaxableBrokerageIntro"
                     onClick={this._yes}

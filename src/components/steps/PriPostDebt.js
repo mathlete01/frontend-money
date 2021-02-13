@@ -15,15 +15,11 @@ import { updateCurrentRow } from "../../actions/rowActions";
 class PriPostDebt extends React.Component {
   
   _prev = () => {
-    // this.props.setRow("row1");
-    // this.props.setRow(this.props.currentRow);
     this.props.handlePrevStep();
-    // this.props.clearRow(this.props.getNextRow())
   };
   
   _next = (event) => {
     event.preventDefault();
-    // this.props.setRow("row2");
     this.props.setRow(this.props.getNextRow());
     this.props.handleNextStep(event);
   };
@@ -161,7 +157,6 @@ class PriPostDebt extends React.Component {
                     variant="primary"
                     size="lg"
                     block
-                    // id={this.props.currentRow}
                     id={this.props.getNextRow()}
                     value={this.nextStep}
                     onClick={this._next}

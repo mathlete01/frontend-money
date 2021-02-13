@@ -20,16 +20,11 @@ import { updateCurrentRow } from "../../actions/rowActions";
 class PriTaxableBrokerageIntro extends React.Component {
   
   _prev = () => {
-    // this.props.setRow("row2");
-    // this.props.handlePrevStep();
-    this.props.setRow(this.props.currentRow);
     this.props.handlePrevStep();
-    this.props.clearRow(this.props.getNextRow())
   };
   
   _next = (event) => {
     event.preventDefault();
-    // this.props.setRow("row3");
     this.props.setRow(this.props.getNextRow());
 
     this.props.handleNextStep(event);
@@ -116,15 +111,6 @@ class PriTaxableBrokerageIntro extends React.Component {
             <Form.Group>
               <Form.Row>
                 <Col>
-                  {/* <Button
-                    className="no"
-                    variant="danger"
-                    size="lg"
-                    block
-                    onClick={this._no}
-                  >
-                    No
-                  </Button> */}
                 </Col>
                 <Col
                   className={
@@ -138,7 +124,6 @@ class PriTaxableBrokerageIntro extends React.Component {
                     variant="primary"
                     size="lg"
                     block
-                    // id={this.props.currentRow}
                     id={this.props.getNextRow()}
                     value="DoneForNow"
                     onClick={this._next}
