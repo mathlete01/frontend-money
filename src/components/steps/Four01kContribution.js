@@ -38,7 +38,7 @@ class Four01kContribution extends React.Component {
       four01k_contribution: this.state.four01k_contribution
     },this.props.currentStep);
     // this.props.handleNextStep("CreditCardDebtQ");
-    this.props.setChild(event);
+    this.props.handleNextStep(event);
   };
 
   _prev = () => {

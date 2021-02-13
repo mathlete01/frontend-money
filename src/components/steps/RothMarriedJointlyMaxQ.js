@@ -19,14 +19,14 @@ class RothMarriedJointlyMaxQ extends React.Component {
   _yes = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { married_max: true },this.props.currentStep);
-    this.props.setChild(event)
+    this.props.handleNextStep(event)
 
   };
 
   _no = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { married_max: false },this.props.currentStep);
-    this.props.setChild(event)
+    this.props.handleNextStep(event)
 
   };
 

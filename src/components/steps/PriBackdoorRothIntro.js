@@ -27,10 +27,10 @@ class PriBackdoorRothIntro extends React.Component {
     console.log(`event.target.value = `, event.target.value)
     // event.preventDefault();
     // this.props.setRow("row3");
-    // this.props.setChild(event);
+    // this.props.handleNextStep(event);
     event.preventDefault();
     this.props.setRow(this.props.getNextRow());
-    this.props.setChild(event);
+    this.props.handleNextStep(event);
   };
 
   render() {

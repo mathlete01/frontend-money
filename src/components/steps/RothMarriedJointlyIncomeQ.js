@@ -18,14 +18,14 @@ class RothMarriedJointlyIncomeQ extends React.Component {
   _yes = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { earned_income: true },this.props.currentStep);
-    this.props.setChild(event)
+    this.props.handleNextStep(event)
 
   };
 
   _no = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { earned_income: false },this.props.currentStep);
-    this.props.setChild(event)
+    this.props.handleNextStep(event)
 
   };
 

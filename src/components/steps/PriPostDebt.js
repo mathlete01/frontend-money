@@ -25,7 +25,7 @@ class PriPostDebt extends React.Component {
     event.preventDefault();
     // this.props.setRow("row2");
     this.props.setRow(this.props.getNextRow());
-    this.props.setChild(event);
+    this.props.handleNextStep(event);
   };
 
   makeDetermination = () => {

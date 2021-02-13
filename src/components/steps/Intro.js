@@ -14,7 +14,7 @@ const USERS_URL = `${BASE_URL}/users`;
 class Intro extends React.Component {
   _next = (event) => {
     event.preventDefault();
-    this.props.setChild(event);
+    this.props.handleNextStep(event);
     if (Object.keys(this.props.currentUser).length === 0) {
       this.createUser();
     }

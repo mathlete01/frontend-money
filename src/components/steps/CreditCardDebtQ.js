@@ -18,7 +18,7 @@ class CreditCardDebtQ extends React.Component {
 
   _yes = (event) => {
     event.preventDefault();
-    this.props.setChild(event);
+    this.props.handleNextStep(event);
   };
 
   _no = (event) => {
@@ -26,7 +26,7 @@ class CreditCardDebtQ extends React.Component {
     this.props.updateCurrentUser(this.props.currentUser.id, {
       credit_card_debt: 0,
     },this.props.currentStep);
-    this.props.setChild(event);
+    this.props.handleNextStep(event);
   };
 
   render() {

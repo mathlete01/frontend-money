@@ -13,7 +13,7 @@ import { updateCurrentRow } from "../../actions/rowActions";
 class RothMarriedNotJointlyOverD extends React.Component {
   _next = (event) => {
     event.preventDefault();
-    this.props.setChild(event)
+    this.props.handleNextStep(event)
   };
 
   

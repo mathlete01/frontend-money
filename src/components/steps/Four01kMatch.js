@@ -35,7 +35,7 @@ class Four01kMatch extends React.Component {
     this.props.updateCurrentUser(this.props.currentUser.id, {
       four01k_match: this.state.four01k_match
     },this.props.currentStep);
-    this.props.setChild(event);
+    this.props.handleNextStep(event);
   };
 
   _prev = () => {

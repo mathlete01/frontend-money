@@ -25,10 +25,10 @@ class PriRothMarriedNotJointlyTween extends React.Component {
   _next = (event) => {
     // event.preventDefault();
     // this.props.setRow("row3");
-    // this.props.setChild(event);
+    // this.props.handleNextStep(event);
     event.preventDefault();
     this.props.setRow(this.props.getNextRow());
-    this.props.setChild(event);
+    this.props.handleNextStep(event);
   };
 
   render() {

@@ -32,7 +32,7 @@ class PriTaxableBrokerageIntro extends React.Component {
     // this.props.setRow("row3");
     this.props.setRow(this.props.getNextRow());
 
-    this.props.setChild(event);
+    this.props.handleNextStep(event);
   };
 
 

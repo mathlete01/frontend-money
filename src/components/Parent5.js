@@ -10,7 +10,7 @@ class Parent5 extends React.Component {
     row2: "",
   };
 
-  setChild = (event) => {
+  handleNextStep = (event) => {
     var stateObject = function () {
       var returnObj = {};
       returnObj[this.target.id] = this.target.value;
@@ -48,14 +48,14 @@ class Parent5 extends React.Component {
         <Row >
           Row 1
           <Button
-            onClick={(event) => this.setChild(event)}
+            onClick={(event) => this.handleNextStep(event)}
             id={this.props.currentRow}
             value="A"
           >
             Load Child A in Row 1
           </Button>
           <Button
-            onClick={(event) => this.setChild(event)}
+            onClick={(event) => this.handleNextStep(event)}
             id={this.props.currentRow}
             value="B"
           >
@@ -66,14 +66,14 @@ class Parent5 extends React.Component {
         <Row >
           Row 2
           <Button
-            onClick={(event) => this.setChild(event)}
+            onClick={(event) => this.handleNextStep(event)}
             id={this.props.currentRow}
             value="A"
           >
             Load Child A in Row 2
           </Button>
           <Button
-            onClick={(event) => this.setChild(event)}
+            onClick={(event) => this.handleNextStep(event)}
             id={this.props.currentRow}
             value="B"
           >

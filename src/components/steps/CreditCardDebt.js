@@ -67,7 +67,7 @@ class CreditCardDebt extends React.Component {
       },
       this.props.currentStep
     );
-    this.props.setChild(event);
+    this.props.handleNextStep(event);
   };
 
   _prev = () => {

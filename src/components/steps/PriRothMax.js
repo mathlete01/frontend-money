@@ -30,7 +30,7 @@ class PriRothMax extends React.Component {
       { roth_max: true },
       this.props.currentStep
     );
-    this.props.setChild(event)
+    this.props.handleNextStep(event)
     
 
   };

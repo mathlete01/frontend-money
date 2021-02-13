@@ -16,7 +16,7 @@ import { updateCurrentRow } from "../../actions/rowActions";
 class RothIntro extends React.Component {
   _next = (event) => {
     event.preventDefault();
-    this.props.setChild(event);
+    this.props.handleNextStep(event);
   };
 
   _prev = () => {

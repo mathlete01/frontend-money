@@ -19,14 +19,14 @@ class RothSingleMinQ extends React.Component {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { single_max: true },this.props.currentStep);
     // this.props.handleNextStep("RothSingleIncomeQ");
-    this.props.setChild(event)
+    this.props.handleNextStep(event)
   };
 
   _no = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { single_max: false },this.props.currentStep);
     // this.props.handleNextStep("RothSingleMaxQ");
-    this.props.setChild(event)
+    this.props.handleNextStep(event)
   };
 
   render() {

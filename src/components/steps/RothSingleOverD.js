@@ -14,7 +14,7 @@ class RothSingleOverD extends React.Component {
   _next = (event) => {
     event.preventDefault();
     // this.props.handleNextStep("PriBackdoorRothIntro");
-    this.props.setChild(event)
+    this.props.handleNextStep(event)
   };
 
   _prev = () => {
