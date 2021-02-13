@@ -20,8 +20,8 @@ class PriRothSingleTween extends React.Component {
 
   _next = (event) => {
     event.preventDefault();
-    this.props.setRow(this.props.getNextRow());
-
+    // this.props.setRow(this.props.getNextRow());
+    this.props.updateCurrentRow(this.props.getNextRow());
     this.props.handleNextStep(event)
   };
 

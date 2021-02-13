@@ -18,7 +18,8 @@ class PriRothMax extends React.Component {
 
   _next = (event) => {
     event.preventDefault();
-    this.props.setRow(this.props.getNextRow());
+    // this.props.setRow(this.props.getNextRow());
+    this.props.updateCurrentRow(this.props.getNextRow());
     this.props.updateCurrentUser(
       this.props.currentUser.id,
       { roth_max: true },
