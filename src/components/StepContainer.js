@@ -52,6 +52,8 @@ class StepContainer extends React.Component {
       row1: "Intro",
       row2: "",
       row3: "",
+      row4: "",
+      row5: "",
     };
   }
 
@@ -59,21 +61,23 @@ class StepContainer extends React.Component {
     this.setState({ row1: this.props.currentStep });
   }
 
-  // setRow = (row) => {
-  //   this.props.updateCurrentRow(row);
-  // };
-
   getNextRow = () => {
+    console.log(`getNextRow: this.props.currentRow = `, this.props.currentRow);
     switch (true) {
       case this.props.currentRow === "row1":
+        console.log("getNextRow: return row2");
         return "row2";
       case this.props.currentRow === "row2":
+        console.log("getNextRow: return row3");
         return "row3";
       case this.props.currentRow === "row3":
+        console.log("getNextRow: return row4");
         return "row4";
       case this.props.currentRow === "row4":
+        console.log("getNextRow: return row5");
         return "row5";
       case this.props.currentRow === "row5":
+        console.log("getNextRow: return row6");
         return "row6";
       default:
         return null;
@@ -86,47 +90,67 @@ class StepContainer extends React.Component {
         this.setState({
           row2: "",
         });
+        break;
       case row === "row3":
         this.setState({
           row3: "",
         });
-        case row === "row4":
+        break;
+      case row === "row4":
         this.setState({
           row4: "",
         });
-        case row === "row5":
+        break;
+      case row === "row5":
         this.setState({
           row5: "",
         });
-        case row === "row6":
+        break;
+      case row === "row6":
         this.setState({
           row6: "",
         });
+        break;
       default:
         return null;
     }
   };
 
   handleNextStep = (event) => {
-    console.log("handleNextStep called");
-    const nextStep = event.target.value;
-    const nextRow = event.target.id;
+    let nextStep = event.target.value;
+    let nextRow = event.target.id;
+    // console.log(`handleNextStep this.props.currentRow = `, this.props.currentRow)
+    // console.log(`event = `, event);
+    // console.log(`nextStep = `, nextStep)
+    console.log(`this.props.currentRow = `, this.props.currentRow)
+    console.log(`nextRow = `, nextRow)
+    // console.log(`handleNextStep event.target.id = `, event.target.id);
+    // If current row isn't the same as the next, update the current row
+    if (this.props.currentRow !== nextRow) {
+      console.log(`IF STATEMENT RUN`);
+      this.props.updateCurrentRow(nextRow);
+    }
+    // add a new element to the step array and the row array
     this.setState({
       stepPath: [...this.state.stepPath, nextStep],
     });
     this.setState({
       rowPath: [...this.state.rowPath, nextRow],
     });
+    // Update the current step to be the next step
     this.props.updateCurrentStep(nextStep);
-    var stateObject = function () {
-      var returnObj = {};
-      returnObj[this.target.id] = this.target.value;
-      return returnObj;
-    }.bind(event)();
+    // console.log(`handleNextStep: updateCurrentRow: nextRow = `, nextRow)
+    this.props.updateCurrentRow(nextRow);
+    // var stateObject = function () {
+    //   var returnObj = {};
+    //   returnObj[this.target.id] = this.target.value;
+    //   return returnObj;
+    // }.bind(event)();
     this.setState({ [event.target.id]: event.target.value });
   };
 
   handlePrevStep = () => {
+    console.log(`*** clearRow called `)
     const pathLength = this.state.stepPath.length;
     const pathLengthMinus2 = pathLength - 2;
     const prevRow = this.state.rowPath[pathLengthMinus2];
@@ -154,14 +178,14 @@ class StepContainer extends React.Component {
   };
 
   loadChildInRow1 = () => {
-    console.log(`loadChildinRow1 called`);
     switch (true) {
       case this.state.row1 === "PriBackdoorRothIntro":
         return (
           <PriBackdoorRothIntro
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // // setRow={this.setRow}
+            // setRow={this.setRow}
+            rowNum="1"
             getNextRow={this.getNextRow}
           />
         );
@@ -170,7 +194,7 @@ class StepContainer extends React.Component {
           <CreditCardDebt
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="1"
             getNextRow={this.getNextRow}
           />
         );
@@ -179,7 +203,7 @@ class StepContainer extends React.Component {
           <CreditCardDebtQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="1"
             getNextRow={this.getNextRow}
           />
         );
@@ -188,7 +212,7 @@ class StepContainer extends React.Component {
           <DoneForNow
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="1"
             getNextRow={this.getNextRow}
           />
         );
@@ -197,7 +221,7 @@ class StepContainer extends React.Component {
           <Four01kContribution
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="1"
             getNextRow={this.getNextRow}
           />
         );
@@ -206,7 +230,7 @@ class StepContainer extends React.Component {
           <Four01kMatch
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="1"
             getNextRow={this.getNextRow}
           />
         );
@@ -215,7 +239,7 @@ class StepContainer extends React.Component {
           <Four01kMaxOutQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="1"
             getNextRow={this.getNextRow}
           />
         );
@@ -224,7 +248,7 @@ class StepContainer extends React.Component {
           <PriFour01kMax
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="1"
             getNextRow={this.getNextRow}
           />
         );
@@ -233,7 +257,7 @@ class StepContainer extends React.Component {
           <Four01kQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="1"
             getNextRow={this.getNextRow}
           />
         );
@@ -242,7 +266,7 @@ class StepContainer extends React.Component {
           <Intro
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="1"
             getNextRow={this.getNextRow}
           />
         );
@@ -251,7 +275,7 @@ class StepContainer extends React.Component {
           <LeftoverMoney
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="1"
             getNextRow={this.getNextRow}
           />
         );
@@ -260,7 +284,7 @@ class StepContainer extends React.Component {
           <NoDebt
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="1"
             getNextRow={this.getNextRow}
           />
         );
@@ -269,7 +293,7 @@ class StepContainer extends React.Component {
           <RothIntro
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="1"
             getNextRow={this.getNextRow}
           />
         );
@@ -278,7 +302,7 @@ class StepContainer extends React.Component {
           <RothMarriedJointly50Q
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="1"
             getNextRow={this.getNextRow}
           />
         );
@@ -287,7 +311,7 @@ class StepContainer extends React.Component {
           <RothMarriedJointlyIncomeQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="1"
             getNextRow={this.getNextRow}
           />
         );
@@ -296,7 +320,7 @@ class StepContainer extends React.Component {
           <RothMarriedJointlyMaxQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="1"
             getNextRow={this.getNextRow}
           />
         );
@@ -305,7 +329,7 @@ class StepContainer extends React.Component {
           <RothMarriedJointlyMinQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="1"
             getNextRow={this.getNextRow}
           />
         );
@@ -314,7 +338,7 @@ class StepContainer extends React.Component {
           <RothMarriedJointlyOverD
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="1"
             getNextRow={this.getNextRow}
           />
         );
@@ -323,7 +347,7 @@ class StepContainer extends React.Component {
           <RothMarriedJointlyQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="1"
             getNextRow={this.getNextRow}
           />
         );
@@ -332,7 +356,7 @@ class StepContainer extends React.Component {
           <PriRothMarriedJointlyTween
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="1"
             getNextRow={this.getNextRow}
           />
         );
@@ -341,7 +365,7 @@ class StepContainer extends React.Component {
           <RothMarriedNotJointlyMinQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="1"
             getNextRow={this.getNextRow}
           />
         );
@@ -350,7 +374,7 @@ class StepContainer extends React.Component {
           <RothMarriedNotJointlyOverD
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="1"
             getNextRow={this.getNextRow}
           />
         );
@@ -359,7 +383,7 @@ class StepContainer extends React.Component {
           <PriRothMarriedNotJointlyTween
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="1"
             getNextRow={this.getNextRow}
           />
         );
@@ -368,7 +392,7 @@ class StepContainer extends React.Component {
           <PriRothMax
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="1"
             getNextRow={this.getNextRow}
           />
         );
@@ -377,7 +401,7 @@ class StepContainer extends React.Component {
           <PriRothReg
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="1"
             getNextRow={this.getNextRow}
           />
         );
@@ -386,7 +410,7 @@ class StepContainer extends React.Component {
           <RothSingle50Q
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="1"
             getNextRow={this.getNextRow}
           />
         );
@@ -395,7 +419,7 @@ class StepContainer extends React.Component {
           <RothSingleIncomeQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="1"
             getNextRow={this.getNextRow}
           />
         );
@@ -404,7 +428,7 @@ class StepContainer extends React.Component {
           <RothSingleMaxQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="1"
             getNextRow={this.getNextRow}
           />
         );
@@ -413,7 +437,7 @@ class StepContainer extends React.Component {
           <RothSingleMinQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="1"
             getNextRow={this.getNextRow}
           />
         );
@@ -422,7 +446,7 @@ class StepContainer extends React.Component {
           <RothSingleOverD
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="1"
             getNextRow={this.getNextRow}
           />
         );
@@ -431,7 +455,7 @@ class StepContainer extends React.Component {
           <RothSingleQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="1"
             getNextRow={this.getNextRow}
           />
         );
@@ -440,7 +464,7 @@ class StepContainer extends React.Component {
           <PriRothSingleTween
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="1"
             getNextRow={this.getNextRow}
           />
         );
@@ -449,7 +473,7 @@ class StepContainer extends React.Component {
           <RothSingleUnderD
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="1"
             getNextRow={this.getNextRow}
           />
         );
@@ -458,7 +482,7 @@ class StepContainer extends React.Component {
           <PriPostDebt
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="1"
             getNextRow={this.getNextRow}
           />
         );
@@ -467,7 +491,7 @@ class StepContainer extends React.Component {
           <SaveYourWork
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="1"
             getNextRow={this.getNextRow}
           />
         );
@@ -476,7 +500,7 @@ class StepContainer extends React.Component {
           <PriTaxableBrokerageIntro
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="1"
             getNextRow={this.getNextRow}
           />
         );
@@ -492,7 +516,7 @@ class StepContainer extends React.Component {
           <PriBackdoorRothIntro
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="2"
             getNextRow={this.getNextRow}
           />
         );
@@ -501,7 +525,7 @@ class StepContainer extends React.Component {
           <CreditCardDebt
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="2"
             getNextRow={this.getNextRow}
           />
         );
@@ -510,7 +534,7 @@ class StepContainer extends React.Component {
           <CreditCardDebtQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="2"
             getNextRow={this.getNextRow}
           />
         );
@@ -519,7 +543,7 @@ class StepContainer extends React.Component {
           <DoneForNow
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="2"
             getNextRow={this.getNextRow}
           />
         );
@@ -528,7 +552,7 @@ class StepContainer extends React.Component {
           <Four01kContribution
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="2"
             getNextRow={this.getNextRow}
           />
         );
@@ -537,7 +561,7 @@ class StepContainer extends React.Component {
           <Four01kMatch
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="2"
             getNextRow={this.getNextRow}
           />
         );
@@ -546,7 +570,7 @@ class StepContainer extends React.Component {
           <Four01kMaxOutQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="2"
             getNextRow={this.getNextRow}
           />
         );
@@ -555,7 +579,7 @@ class StepContainer extends React.Component {
           <PriFour01kMax
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="2"
             getNextRow={this.getNextRow}
           />
         );
@@ -564,7 +588,7 @@ class StepContainer extends React.Component {
           <Four01kQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="2"
             getNextRow={this.getNextRow}
           />
         );
@@ -573,7 +597,7 @@ class StepContainer extends React.Component {
           <Intro
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="2"
             getNextRow={this.getNextRow}
           />
         );
@@ -582,7 +606,7 @@ class StepContainer extends React.Component {
           <LeftoverMoney
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="2"
             getNextRow={this.getNextRow}
           />
         );
@@ -591,7 +615,7 @@ class StepContainer extends React.Component {
           <NoDebt
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="2"
             getNextRow={this.getNextRow}
           />
         );
@@ -600,7 +624,7 @@ class StepContainer extends React.Component {
           <RothIntro
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="2"
             getNextRow={this.getNextRow}
           />
         );
@@ -609,7 +633,7 @@ class StepContainer extends React.Component {
           <RothMarriedJointly50Q
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="2"
             getNextRow={this.getNextRow}
           />
         );
@@ -618,7 +642,7 @@ class StepContainer extends React.Component {
           <RothMarriedJointlyIncomeQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="2"
             getNextRow={this.getNextRow}
           />
         );
@@ -627,7 +651,7 @@ class StepContainer extends React.Component {
           <RothMarriedJointlyMaxQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="2"
             getNextRow={this.getNextRow}
           />
         );
@@ -636,7 +660,7 @@ class StepContainer extends React.Component {
           <RothMarriedJointlyMinQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="2"
             getNextRow={this.getNextRow}
           />
         );
@@ -645,7 +669,7 @@ class StepContainer extends React.Component {
           <RothMarriedJointlyOverD
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="2"
             getNextRow={this.getNextRow}
           />
         );
@@ -654,7 +678,7 @@ class StepContainer extends React.Component {
           <RothMarriedJointlyQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="2"
             getNextRow={this.getNextRow}
           />
         );
@@ -663,7 +687,7 @@ class StepContainer extends React.Component {
           <PriRothMarriedJointlyTween
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="2"
             getNextRow={this.getNextRow}
           />
         );
@@ -672,7 +696,7 @@ class StepContainer extends React.Component {
           <RothMarriedNotJointlyMinQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="2"
             getNextRow={this.getNextRow}
           />
         );
@@ -681,7 +705,7 @@ class StepContainer extends React.Component {
           <RothMarriedNotJointlyOverD
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="2"
             getNextRow={this.getNextRow}
           />
         );
@@ -690,7 +714,7 @@ class StepContainer extends React.Component {
           <PriRothMarriedNotJointlyTween
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="2"
             getNextRow={this.getNextRow}
           />
         );
@@ -699,7 +723,7 @@ class StepContainer extends React.Component {
           <PriRothMax
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="2"
             getNextRow={this.getNextRow}
           />
         );
@@ -708,7 +732,7 @@ class StepContainer extends React.Component {
           <PriRothReg
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="2"
             getNextRow={this.getNextRow}
           />
         );
@@ -717,7 +741,7 @@ class StepContainer extends React.Component {
           <RothSingle50Q
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="2"
             getNextRow={this.getNextRow}
           />
         );
@@ -726,7 +750,7 @@ class StepContainer extends React.Component {
           <RothSingleIncomeQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="2"
             getNextRow={this.getNextRow}
           />
         );
@@ -735,7 +759,7 @@ class StepContainer extends React.Component {
           <RothSingleMaxQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="2"
             getNextRow={this.getNextRow}
           />
         );
@@ -744,7 +768,7 @@ class StepContainer extends React.Component {
           <RothSingleMinQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="2"
             getNextRow={this.getNextRow}
           />
         );
@@ -753,7 +777,7 @@ class StepContainer extends React.Component {
           <RothSingleOverD
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="2"
             getNextRow={this.getNextRow}
           />
         );
@@ -762,7 +786,7 @@ class StepContainer extends React.Component {
           <RothSingleQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="2"
             getNextRow={this.getNextRow}
           />
         );
@@ -771,7 +795,7 @@ class StepContainer extends React.Component {
           <PriRothSingleTween
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="2"
             getNextRow={this.getNextRow}
           />
         );
@@ -780,7 +804,7 @@ class StepContainer extends React.Component {
           <RothSingleUnderD
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="2"
             getNextRow={this.getNextRow}
           />
         );
@@ -789,7 +813,7 @@ class StepContainer extends React.Component {
           <PriPostDebt
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="2"
             getNextRow={this.getNextRow}
           />
         );
@@ -798,7 +822,7 @@ class StepContainer extends React.Component {
           <SaveYourWork
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="2"
             getNextRow={this.getNextRow}
           />
         );
@@ -807,7 +831,7 @@ class StepContainer extends React.Component {
           <PriTaxableBrokerageIntro
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="2"
             getNextRow={this.getNextRow}
           />
         );
@@ -823,7 +847,7 @@ class StepContainer extends React.Component {
           <PriBackdoorRothIntro
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="3"
             getNextRow={this.getNextRow}
           />
         );
@@ -832,7 +856,7 @@ class StepContainer extends React.Component {
           <CreditCardDebt
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="3"
             getNextRow={this.getNextRow}
           />
         );
@@ -841,7 +865,7 @@ class StepContainer extends React.Component {
           <CreditCardDebtQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="3"
             getNextRow={this.getNextRow}
           />
         );
@@ -850,7 +874,7 @@ class StepContainer extends React.Component {
           <DoneForNow
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="3"
             getNextRow={this.getNextRow}
           />
         );
@@ -859,7 +883,7 @@ class StepContainer extends React.Component {
           <Four01kContribution
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="3"
             getNextRow={this.getNextRow}
           />
         );
@@ -868,7 +892,7 @@ class StepContainer extends React.Component {
           <Four01kMatch
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="3"
             getNextRow={this.getNextRow}
           />
         );
@@ -877,7 +901,7 @@ class StepContainer extends React.Component {
           <Four01kMaxOutQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="3"
             getNextRow={this.getNextRow}
           />
         );
@@ -886,7 +910,7 @@ class StepContainer extends React.Component {
           <PriFour01kMax
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="3"
             getNextRow={this.getNextRow}
           />
         );
@@ -895,7 +919,7 @@ class StepContainer extends React.Component {
           <Four01kQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="3"
             getNextRow={this.getNextRow}
           />
         );
@@ -904,7 +928,7 @@ class StepContainer extends React.Component {
           <Intro
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="3"
             getNextRow={this.getNextRow}
           />
         );
@@ -913,7 +937,7 @@ class StepContainer extends React.Component {
           <LeftoverMoney
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="3"
             getNextRow={this.getNextRow}
           />
         );
@@ -922,7 +946,7 @@ class StepContainer extends React.Component {
           <NoDebt
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="3"
             getNextRow={this.getNextRow}
           />
         );
@@ -931,7 +955,7 @@ class StepContainer extends React.Component {
           <RothIntro
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="3"
             getNextRow={this.getNextRow}
           />
         );
@@ -940,7 +964,7 @@ class StepContainer extends React.Component {
           <RothMarriedJointly50Q
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="3"
             getNextRow={this.getNextRow}
           />
         );
@@ -949,7 +973,7 @@ class StepContainer extends React.Component {
           <RothMarriedJointlyIncomeQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="3"
             getNextRow={this.getNextRow}
           />
         );
@@ -958,7 +982,7 @@ class StepContainer extends React.Component {
           <RothMarriedJointlyMaxQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="3"
             getNextRow={this.getNextRow}
           />
         );
@@ -967,7 +991,7 @@ class StepContainer extends React.Component {
           <RothMarriedJointlyMinQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="3"
             getNextRow={this.getNextRow}
           />
         );
@@ -976,7 +1000,7 @@ class StepContainer extends React.Component {
           <RothMarriedJointlyOverD
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="3"
             getNextRow={this.getNextRow}
           />
         );
@@ -985,7 +1009,7 @@ class StepContainer extends React.Component {
           <RothMarriedJointlyQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="3"
             getNextRow={this.getNextRow}
           />
         );
@@ -994,7 +1018,7 @@ class StepContainer extends React.Component {
           <PriRothMarriedJointlyTween
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="3"
             getNextRow={this.getNextRow}
           />
         );
@@ -1003,7 +1027,7 @@ class StepContainer extends React.Component {
           <RothMarriedNotJointlyMinQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="3"
             getNextRow={this.getNextRow}
           />
         );
@@ -1012,7 +1036,7 @@ class StepContainer extends React.Component {
           <RothMarriedNotJointlyOverD
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="3"
             getNextRow={this.getNextRow}
           />
         );
@@ -1021,7 +1045,7 @@ class StepContainer extends React.Component {
           <PriRothMarriedNotJointlyTween
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="3"
             getNextRow={this.getNextRow}
           />
         );
@@ -1030,7 +1054,7 @@ class StepContainer extends React.Component {
           <PriRothMax
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="3"
             getNextRow={this.getNextRow}
           />
         );
@@ -1039,7 +1063,7 @@ class StepContainer extends React.Component {
           <PriRothReg
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="3"
             getNextRow={this.getNextRow}
           />
         );
@@ -1048,7 +1072,7 @@ class StepContainer extends React.Component {
           <RothSingle50Q
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="3"
             getNextRow={this.getNextRow}
           />
         );
@@ -1057,7 +1081,7 @@ class StepContainer extends React.Component {
           <RothSingleIncomeQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="3"
             getNextRow={this.getNextRow}
           />
         );
@@ -1066,7 +1090,7 @@ class StepContainer extends React.Component {
           <RothSingleMaxQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="3"
             getNextRow={this.getNextRow}
           />
         );
@@ -1075,7 +1099,7 @@ class StepContainer extends React.Component {
           <RothSingleMinQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="3"
             getNextRow={this.getNextRow}
           />
         );
@@ -1084,7 +1108,7 @@ class StepContainer extends React.Component {
           <RothSingleOverD
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="3"
             getNextRow={this.getNextRow}
           />
         );
@@ -1093,7 +1117,7 @@ class StepContainer extends React.Component {
           <RothSingleQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="3"
             getNextRow={this.getNextRow}
           />
         );
@@ -1102,7 +1126,7 @@ class StepContainer extends React.Component {
           <PriRothSingleTween
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="3"
             getNextRow={this.getNextRow}
           />
         );
@@ -1111,7 +1135,7 @@ class StepContainer extends React.Component {
           <RothSingleUnderD
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="3"
             getNextRow={this.getNextRow}
           />
         );
@@ -1120,7 +1144,7 @@ class StepContainer extends React.Component {
           <PriPostDebt
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="3"
             getNextRow={this.getNextRow}
           />
         );
@@ -1129,7 +1153,7 @@ class StepContainer extends React.Component {
           <SaveYourWork
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="3"
             getNextRow={this.getNextRow}
           />
         );
@@ -1138,7 +1162,7 @@ class StepContainer extends React.Component {
           <PriTaxableBrokerageIntro
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="3"
             getNextRow={this.getNextRow}
           />
         );
@@ -1154,7 +1178,7 @@ class StepContainer extends React.Component {
           <PriBackdoorRothIntro
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="4"
             getNextRow={this.getNextRow}
           />
         );
@@ -1163,7 +1187,7 @@ class StepContainer extends React.Component {
           <CreditCardDebt
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="4"
             getNextRow={this.getNextRow}
           />
         );
@@ -1172,7 +1196,7 @@ class StepContainer extends React.Component {
           <CreditCardDebtQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="4"
             getNextRow={this.getNextRow}
           />
         );
@@ -1181,7 +1205,7 @@ class StepContainer extends React.Component {
           <DoneForNow
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="4"
             getNextRow={this.getNextRow}
           />
         );
@@ -1190,7 +1214,7 @@ class StepContainer extends React.Component {
           <Four01kContribution
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="4"
             getNextRow={this.getNextRow}
           />
         );
@@ -1199,7 +1223,7 @@ class StepContainer extends React.Component {
           <Four01kMatch
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="4"
             getNextRow={this.getNextRow}
           />
         );
@@ -1208,7 +1232,7 @@ class StepContainer extends React.Component {
           <Four01kMaxOutQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="4"
             getNextRow={this.getNextRow}
           />
         );
@@ -1217,7 +1241,7 @@ class StepContainer extends React.Component {
           <PriFour01kMax
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="4"
             getNextRow={this.getNextRow}
           />
         );
@@ -1226,7 +1250,7 @@ class StepContainer extends React.Component {
           <Four01kQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="4"
             getNextRow={this.getNextRow}
           />
         );
@@ -1235,7 +1259,7 @@ class StepContainer extends React.Component {
           <Intro
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="4"
             getNextRow={this.getNextRow}
           />
         );
@@ -1244,7 +1268,7 @@ class StepContainer extends React.Component {
           <LeftoverMoney
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="4"
             getNextRow={this.getNextRow}
           />
         );
@@ -1253,7 +1277,7 @@ class StepContainer extends React.Component {
           <NoDebt
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="4"
             getNextRow={this.getNextRow}
           />
         );
@@ -1262,7 +1286,7 @@ class StepContainer extends React.Component {
           <RothIntro
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="4"
             getNextRow={this.getNextRow}
           />
         );
@@ -1271,7 +1295,7 @@ class StepContainer extends React.Component {
           <RothMarriedJointly50Q
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="4"
             getNextRow={this.getNextRow}
           />
         );
@@ -1280,7 +1304,7 @@ class StepContainer extends React.Component {
           <RothMarriedJointlyIncomeQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="4"
             getNextRow={this.getNextRow}
           />
         );
@@ -1289,7 +1313,7 @@ class StepContainer extends React.Component {
           <RothMarriedJointlyMaxQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="4"
             getNextRow={this.getNextRow}
           />
         );
@@ -1298,7 +1322,7 @@ class StepContainer extends React.Component {
           <RothMarriedJointlyMinQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="4"
             getNextRow={this.getNextRow}
           />
         );
@@ -1307,7 +1331,7 @@ class StepContainer extends React.Component {
           <RothMarriedJointlyOverD
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="4"
             getNextRow={this.getNextRow}
           />
         );
@@ -1316,7 +1340,7 @@ class StepContainer extends React.Component {
           <RothMarriedJointlyQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="4"
             getNextRow={this.getNextRow}
           />
         );
@@ -1325,7 +1349,7 @@ class StepContainer extends React.Component {
           <PriRothMarriedJointlyTween
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="4"
             getNextRow={this.getNextRow}
           />
         );
@@ -1334,7 +1358,7 @@ class StepContainer extends React.Component {
           <RothMarriedNotJointlyMinQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="4"
             getNextRow={this.getNextRow}
           />
         );
@@ -1343,7 +1367,7 @@ class StepContainer extends React.Component {
           <RothMarriedNotJointlyOverD
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="4"
             getNextRow={this.getNextRow}
           />
         );
@@ -1352,7 +1376,7 @@ class StepContainer extends React.Component {
           <PriRothMarriedNotJointlyTween
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="4"
             getNextRow={this.getNextRow}
           />
         );
@@ -1361,7 +1385,7 @@ class StepContainer extends React.Component {
           <PriRothMax
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="4"
             getNextRow={this.getNextRow}
           />
         );
@@ -1370,7 +1394,7 @@ class StepContainer extends React.Component {
           <PriRothReg
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="4"
             getNextRow={this.getNextRow}
           />
         );
@@ -1379,7 +1403,7 @@ class StepContainer extends React.Component {
           <RothSingle50Q
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="4"
             getNextRow={this.getNextRow}
           />
         );
@@ -1388,7 +1412,7 @@ class StepContainer extends React.Component {
           <RothSingleIncomeQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="4"
             getNextRow={this.getNextRow}
           />
         );
@@ -1397,7 +1421,7 @@ class StepContainer extends React.Component {
           <RothSingleMaxQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="4"
             getNextRow={this.getNextRow}
           />
         );
@@ -1406,7 +1430,7 @@ class StepContainer extends React.Component {
           <RothSingleMinQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="4"
             getNextRow={this.getNextRow}
           />
         );
@@ -1415,7 +1439,7 @@ class StepContainer extends React.Component {
           <RothSingleOverD
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="4"
             getNextRow={this.getNextRow}
           />
         );
@@ -1424,7 +1448,7 @@ class StepContainer extends React.Component {
           <RothSingleQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="4"
             getNextRow={this.getNextRow}
           />
         );
@@ -1433,7 +1457,7 @@ class StepContainer extends React.Component {
           <PriRothSingleTween
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="4"
             getNextRow={this.getNextRow}
           />
         );
@@ -1442,7 +1466,7 @@ class StepContainer extends React.Component {
           <RothSingleUnderD
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="4"
             getNextRow={this.getNextRow}
           />
         );
@@ -1451,7 +1475,7 @@ class StepContainer extends React.Component {
           <PriPostDebt
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="4"
             getNextRow={this.getNextRow}
           />
         );
@@ -1460,7 +1484,7 @@ class StepContainer extends React.Component {
           <SaveYourWork
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="4"
             getNextRow={this.getNextRow}
           />
         );
@@ -1469,7 +1493,7 @@ class StepContainer extends React.Component {
           <PriTaxableBrokerageIntro
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="4"
             getNextRow={this.getNextRow}
           />
         );
@@ -1485,7 +1509,7 @@ class StepContainer extends React.Component {
           <PriBackdoorRothIntro
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="5"
             getNextRow={this.getNextRow}
           />
         );
@@ -1494,7 +1518,7 @@ class StepContainer extends React.Component {
           <CreditCardDebt
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="5"
             getNextRow={this.getNextRow}
           />
         );
@@ -1503,7 +1527,7 @@ class StepContainer extends React.Component {
           <CreditCardDebtQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="5"
             getNextRow={this.getNextRow}
           />
         );
@@ -1512,7 +1536,7 @@ class StepContainer extends React.Component {
           <DoneForNow
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="5"
             getNextRow={this.getNextRow}
           />
         );
@@ -1521,7 +1545,7 @@ class StepContainer extends React.Component {
           <Four01kContribution
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="5"
             getNextRow={this.getNextRow}
           />
         );
@@ -1530,7 +1554,7 @@ class StepContainer extends React.Component {
           <Four01kMatch
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="5"
             getNextRow={this.getNextRow}
           />
         );
@@ -1539,7 +1563,7 @@ class StepContainer extends React.Component {
           <Four01kMaxOutQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="5"
             getNextRow={this.getNextRow}
           />
         );
@@ -1548,7 +1572,7 @@ class StepContainer extends React.Component {
           <PriFour01kMax
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="5"
             getNextRow={this.getNextRow}
           />
         );
@@ -1557,7 +1581,7 @@ class StepContainer extends React.Component {
           <Four01kQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="5"
             getNextRow={this.getNextRow}
           />
         );
@@ -1566,7 +1590,7 @@ class StepContainer extends React.Component {
           <Intro
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="5"
             getNextRow={this.getNextRow}
           />
         );
@@ -1575,7 +1599,7 @@ class StepContainer extends React.Component {
           <LeftoverMoney
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="5"
             getNextRow={this.getNextRow}
           />
         );
@@ -1584,7 +1608,7 @@ class StepContainer extends React.Component {
           <NoDebt
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="5"
             getNextRow={this.getNextRow}
           />
         );
@@ -1593,7 +1617,7 @@ class StepContainer extends React.Component {
           <RothIntro
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="5"
             getNextRow={this.getNextRow}
           />
         );
@@ -1602,7 +1626,7 @@ class StepContainer extends React.Component {
           <RothMarriedJointly50Q
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="5"
             getNextRow={this.getNextRow}
           />
         );
@@ -1611,7 +1635,7 @@ class StepContainer extends React.Component {
           <RothMarriedJointlyIncomeQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="5"
             getNextRow={this.getNextRow}
           />
         );
@@ -1620,7 +1644,7 @@ class StepContainer extends React.Component {
           <RothMarriedJointlyMaxQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="5"
             getNextRow={this.getNextRow}
           />
         );
@@ -1629,7 +1653,7 @@ class StepContainer extends React.Component {
           <RothMarriedJointlyMinQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="5"
             getNextRow={this.getNextRow}
           />
         );
@@ -1638,7 +1662,7 @@ class StepContainer extends React.Component {
           <RothMarriedJointlyOverD
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="5"
             getNextRow={this.getNextRow}
           />
         );
@@ -1647,7 +1671,7 @@ class StepContainer extends React.Component {
           <RothMarriedJointlyQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="5"
             getNextRow={this.getNextRow}
           />
         );
@@ -1656,7 +1680,7 @@ class StepContainer extends React.Component {
           <PriRothMarriedJointlyTween
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="5"
             getNextRow={this.getNextRow}
           />
         );
@@ -1665,7 +1689,7 @@ class StepContainer extends React.Component {
           <RothMarriedNotJointlyMinQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="5"
             getNextRow={this.getNextRow}
           />
         );
@@ -1674,7 +1698,7 @@ class StepContainer extends React.Component {
           <RothMarriedNotJointlyOverD
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="5"
             getNextRow={this.getNextRow}
           />
         );
@@ -1683,7 +1707,7 @@ class StepContainer extends React.Component {
           <PriRothMarriedNotJointlyTween
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="5"
             getNextRow={this.getNextRow}
           />
         );
@@ -1692,7 +1716,7 @@ class StepContainer extends React.Component {
           <PriRothMax
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="5"
             getNextRow={this.getNextRow}
           />
         );
@@ -1701,7 +1725,7 @@ class StepContainer extends React.Component {
           <PriRothReg
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="5"
             getNextRow={this.getNextRow}
           />
         );
@@ -1710,7 +1734,7 @@ class StepContainer extends React.Component {
           <RothSingle50Q
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="5"
             getNextRow={this.getNextRow}
           />
         );
@@ -1719,7 +1743,7 @@ class StepContainer extends React.Component {
           <RothSingleIncomeQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="5"
             getNextRow={this.getNextRow}
           />
         );
@@ -1728,7 +1752,7 @@ class StepContainer extends React.Component {
           <RothSingleMaxQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="5"
             getNextRow={this.getNextRow}
           />
         );
@@ -1737,7 +1761,7 @@ class StepContainer extends React.Component {
           <RothSingleMinQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="5"
             getNextRow={this.getNextRow}
           />
         );
@@ -1746,7 +1770,7 @@ class StepContainer extends React.Component {
           <RothSingleOverD
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="5"
             getNextRow={this.getNextRow}
           />
         );
@@ -1755,7 +1779,7 @@ class StepContainer extends React.Component {
           <RothSingleQ
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="5"
             getNextRow={this.getNextRow}
           />
         );
@@ -1764,7 +1788,7 @@ class StepContainer extends React.Component {
           <PriRothSingleTween
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="5"
             getNextRow={this.getNextRow}
           />
         );
@@ -1773,7 +1797,7 @@ class StepContainer extends React.Component {
           <RothSingleUnderD
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="5"
             getNextRow={this.getNextRow}
           />
         );
@@ -1782,7 +1806,7 @@ class StepContainer extends React.Component {
           <PriPostDebt
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="5"
             getNextRow={this.getNextRow}
           />
         );
@@ -1791,7 +1815,7 @@ class StepContainer extends React.Component {
           <SaveYourWork
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="5"
             getNextRow={this.getNextRow}
           />
         );
@@ -1800,7 +1824,7 @@ class StepContainer extends React.Component {
           <PriTaxableBrokerageIntro
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
+            rowNum="5"
             getNextRow={this.getNextRow}
           />
         );
@@ -1812,13 +1836,13 @@ class StepContainer extends React.Component {
   render() {
     return (
       <Container className="stepContainer">
-        <Row name="row1" id={this.props.currentRow} className="row1">
+        <Row name="row1" id="row1" className="row1">
           {this.loadChildInRow1()}
         </Row>
-        <Row name="row2" id={this.props.currentRow} className="row2">
+        <Row name="row2" id="row2" className="row2">
           {this.loadChildInRow2()}
         </Row>
-        <Row name="row3" id={this.props.currentRow} className="row3">
+        <Row name="row3" id="row3" className="row3">
           {this.loadChildInRow3()}
         </Row>
         <Row name="row4" id="row4" className="row4">

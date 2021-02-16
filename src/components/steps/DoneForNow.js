@@ -17,13 +17,10 @@ class DoneForNow extends React.Component {
 
   _yes = (event) => {
     event.preventDefault();
-    this.props.handleNextStep("CreditCardDebt");
+    this.props.handleNextStep(event);
   };
 
   render() {
-    if (this.props.currentStep !== "DoneForNow") {
-      return null;
-    }
     return (
         <Container className="step">
         <Row id="header" className="rowElement">
@@ -63,6 +60,7 @@ class DoneForNow extends React.Component {
                     className="yes"
                     variant="primary"
                     size="lg"
+                    id={this.props.currentRow}
                     block
                     onClick={this._next}
                   >

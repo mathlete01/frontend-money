@@ -15,28 +15,31 @@ import { Form, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 
 class Four01kContribution extends React.Component {
-
   state = {
-    four01k_contribution: this.props.currentUser.four01k_contribution
-  }
+    four01k_contribution: this.props.currentUser.four01k_contribution,
+  };
 
   checkValid = () => {
     if (this.state.four01k_contribution > 0) {
       return true;
     }
-  }
+  };
 
   handleChange = (event) => {
-    this.setState ({
-      [event.target.name]: event.target.value
-    })
-  }
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  };
 
   _next = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, {
-      four01k_contribution: this.state.four01k_contribution
-    },this.props.currentStep);
+    this.props.updateCurrentUser(
+      this.props.currentUser.id,
+      {
+        four01k_contribution: this.state.four01k_contribution,
+      },
+      this.props.currentStep
+    );
     // this.props.handleNextStep("CreditCardDebtQ");
     this.props.handleNextStep(event);
   };
@@ -80,11 +83,15 @@ class Four01kContribution extends React.Component {
                       min="0"
                       max="100"
                       // defaultValue="6"
-                      value={this.state.four01k_contribution ? this.state.four01k_contribution : 0}
+                      value={
+                        this.state.four01k_contribution
+                          ? this.state.four01k_contribution
+                          : 0
+                      }
                       id="four01k_contribution"
                       name="four01k_contribution"
                       size="lg"
-                      onChange={this.handleChange} 
+                      onChange={this.handleChange}
                     />
                     <InputGroup.Append>
                       <InputGroup.Text>%</InputGroup.Text>
@@ -101,23 +108,23 @@ class Four01kContribution extends React.Component {
               <Form.Row>
                 <Col></Col>
                 <Col>
-                  {this.checkValid() ? (
-                    <Button
-                      className="yes"
-                      variant="primary"
-                      size="lg"
-                      block
-                      id={this.props.currentRow}
+                  {/* {this.checkValid() ? ( */}
+                  <Button
+                    className="yes"
+                    variant="primary"
+                    size="lg"
+                    block
+                    id={this.props.currentRow}
                     value="CreditCardDebtQ"
-                      onClick={this._next}
-                    >
-                      Next
-                    </Button>
-                  ) : (
+                    onClick={this._next}
+                  >
+                    Next
+                  </Button>
+                  {/* ) : (
                     <Button className="yes" variant="primary" size="lg" block disabled>
                       Next
                     </Button>
-                  )}
+                  )} */}
                 </Col>
               </Form.Row>
             </Form.Group>

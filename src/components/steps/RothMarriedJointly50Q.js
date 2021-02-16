@@ -61,7 +61,7 @@ class RothMarriedJointly50Q extends React.Component {
                     size="lg"
                     block
                     id={this.props.currentRow}
-                    value="RothMaxD"
+                    value="PriRothMax"
                     onClick={this._no}
                   >
                     No
@@ -74,7 +74,7 @@ class RothMarriedJointly50Q extends React.Component {
                     size="lg"
                     block
                     id={this.props.currentRow}
-                    value="RothRegD"
+                    value="PriRothReg"
                     onClick={this._yes}
                   >
                     Yes

@@ -13,28 +13,28 @@ import { Tabs, Tab } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 
 class PriRothMarriedJointlyTween extends React.Component {
-  
   _prev = () => {
     this.props.handlePrevStep();
   };
-  
+
   _next = (event) => {
     event.preventDefault();
-    // this.props.setRow(this.props.getNextRow());
-    this.props.updateCurrentRow(this.props.getNextRow());
+    console.log(`*** HELLOFROM THE OUTSIIIIDE`)
+    // this.props.updateCurrentRow(this.props.getNextRow());
     this.props.handleNextStep(event);
   };
 
   render() {
-   
     return (
       <Container className="directive">
         <Row id="header" className="rowElement">
-        <Button
+          <Button
             onClick={this._prev}
             variant="link"
             disabled={
-              this.props.currentStep === "RothMarriedJointlyTweenD" ? false : true
+              this.props.currentStep === "PriRothMarriedJointlyTween"
+                ? false
+                : true
             }
           >
             <FontAwesomeIcon icon="chevron-left" /> Back
@@ -43,16 +43,17 @@ class PriRothMarriedJointlyTween extends React.Component {
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h6>YOUR NEXT PRIORITY:</h6>
+            <h6>YOUR # {this.props.rowNum} PRIORITY:</h6>
             <h3>Max-out Roth IRA</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Since your Modified Adjusted Gross Income as a couple will be than
-            $196k but less than $206k this year, the amount you'll be able to
-            contribute is reduced. Check out the table below to see the maximum
-            you're allowed to contribtue to a Roth IRA based on your income.
+            Since your Modified Adjusted Gross Income as a couple will be more
+            than $196k but less than $206k this year, the amount you'll be able
+            to contribute is reduced. Check out the table below to see the
+            maximum you're allowed to contribtue to a Roth IRA based on your
+            income.
           </Container>
         </Row>
 
@@ -186,18 +187,24 @@ class PriRothMarriedJointlyTween extends React.Component {
                 <Col></Col>
                 <Col
                   className={
-                    this.props.currentStep === "RothMarriedJointlyTweenD"
+                    this.props.currentStep === "PriRothMarriedJointlyTween"
                       ? ""
                       : "hidden"
                   }
-                >                  <Button
+                >
+                  {" "}
+                  <Button
                     className="yes"
                     variant="primary"
                     size="lg"
                     block
                     id={this.props.getNextRow()}
-                    value="Four01kMaxOutQ"
-                    onClick={this._yes}
+                    value={
+                      this.props.currentUser.four01k
+                        ? "Four01kMaxOutQ"
+                        : "PriTaxableBrokerageIntro"
+                    }
+                    onClick={this._next}
                   >
                     Continue
                   </Button>

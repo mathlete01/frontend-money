@@ -74,7 +74,7 @@ class RothMarriedNotJointlyMinQ extends React.Component {
                     size="lg"
                     block
                     id={this.props.currentRow}
-                    value="RothMarriedNotJointlyTweenD"
+                    value="PriRothMarriedNotJointlyTween"
                     onClick={this._yes}
                   >
                     Yes

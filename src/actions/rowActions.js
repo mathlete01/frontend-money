@@ -8,6 +8,7 @@
 // }
 
 export const updateCurrentRow = (nextRow) => {
+  console.log(`updateCurrentRow: nextRow = `, nextRow)
   return (dispatch) => {
     dispatch({
       type: "UPDATE_ROW",

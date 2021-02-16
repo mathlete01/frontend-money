@@ -73,7 +73,7 @@ class RothSingleMaxQ extends React.Component {
                     size="lg"
                     block
                     id={this.props.currentRow}
-                    value="RothSingleTweenD"
+                    value="PriRothSingleTween"
                     onClick={this._yes}
                   >
                     Yes

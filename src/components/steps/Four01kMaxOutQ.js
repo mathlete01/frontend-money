@@ -19,11 +19,13 @@ class Four01kMaxOutQ extends React.Component {
   _yes = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { four01k_max_out: true },this.props.currentStep);
+    this.props.handleNextStep(event);
   };
 
   _no = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { four01k_max_out: false },this.props.currentStep);
+    this.props.handleNextStep(event);
   };
 
   render() {
@@ -59,8 +61,8 @@ class Four01kMaxOutQ extends React.Component {
                     variant="danger"
                     size="lg"
                     block
-                    id={this.props.getNextRow()}
-                    value="Four01kMaxRec"
+                    id={this.props.currentRow}
+                    value="PriFour01kMax"
                     onClick={this._no}
                   >
                     No
@@ -72,8 +74,8 @@ class Four01kMaxOutQ extends React.Component {
                     variant="success"
                     size="lg"
                     block
-                    id={this.props.getNextRow()}
-                    value="TaxableBrokerageIntro"
+                    id={this.props.currentRow}
+                    value="PriTaxableBrokerageIntro"
                     onClick={this._yes}
                   >
                     Yes

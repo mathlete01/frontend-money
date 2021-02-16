@@ -13,17 +13,35 @@ import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 
 class PriPostDebt extends React.Component {
-  
   _prev = () => {
     this.props.handlePrevStep();
   };
-  
+
   _next = (event) => {
     event.preventDefault();
-    // this.props.setRow(this.props.getNextRow());
-    this.props.updateCurrentRow(this.props.getNextRow());
+    // this.props.updateCurrentRow(this.props.getNextRow());
     this.props.handleNextStep(event);
   };
+
+  // getPriorityNum = () => {
+  //   switch (true) {
+  //     case this.props.row1 === "PriPostDebt":
+  //       return 1;
+  //       break;
+  //     case this.props.row2 === "PriPostDebt":
+  //       return 2;
+  //       break;
+  //     case this.props.row3 === "PriPostDebt":
+  //       return 3;
+  //       break;
+  //     case this.props.row4 === "PriPostDebt":
+  //       return 4;
+  //       break;
+  //     case this.props.row5 === "PriPostDebt":
+  //       return 5;
+  //       break;
+  //   }
+  // };
 
   makeDetermination = () => {
     const {
@@ -71,7 +89,7 @@ class PriPostDebt extends React.Component {
         //   rung_3: true,
         // });
         break;
-        // Case:  401k contribution > 401k match and debt is big
+      // Case:  401k contribution > 401k match and debt is big
       case four01k_contribution > four01k_match &&
         credit_card_debt > leftover_money:
         this.headline = `Reduce your 401(k) contribution and pay off your credit cards`;
@@ -115,8 +133,8 @@ class PriPostDebt extends React.Component {
 
   componentDidMount(prevProps, prevState) {
     this.makeDetermination();
-    }
-  
+  }
+
   render() {
     return (
       <Container className="directive">
@@ -124,16 +142,17 @@ class PriPostDebt extends React.Component {
           <Button
             onClick={this._prev}
             variant="link"
-            disabled={this.props.currentStep === "PriPostDebt" ? false : true}>
-            <FontAwesomeIcon icon="chevron-left" /> Back 
+            disabled={this.props.currentStep === "PriPostDebt" ? false : true}
+          >
+            <FontAwesomeIcon icon="chevron-left" /> Back
           </Button>
 
           <hr className="w-100" />
-         
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h6>YOUR #1 PRIORITY:</h6>
+            {/* <h6>YOUR # {this.getPriorityNum()} PRIORITY:</h6> */}
+            <h6>YOUR # {this.props.rowNum} PRIORITY:</h6>
             <h3>{this.headline}</h3>
           </Container>
         </Row>
@@ -148,9 +167,7 @@ class PriPostDebt extends React.Component {
                 <Col></Col>
                 <Col
                   className={
-                    this.props.currentStep === "PriPostDebt"
-                      ? ""
-                      : "hidden"
+                    this.props.currentStep === "PriPostDebt" ? "" : "hidden"
                   }
                 >
                   <Button

@@ -9,7 +9,7 @@ import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { Tabs, Tab } from "react-bootstrap";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 import { updateCurrentRow } from "../../actions/rowActions";
 
 class PriBackdoorRothIntro extends React.Component {
@@ -20,8 +20,7 @@ class PriBackdoorRothIntro extends React.Component {
   
   _next = (event) => {
     event.preventDefault();
-    // this.props.setRow(this.props.getNextRow());
-    this.props.updateCurrentRow(this.props.getNextRow());
+    // this.props.updateCurrentRow(this.props.getNextRow());
     this.props.handleNextStep(event);
   };
 
@@ -42,7 +41,7 @@ class PriBackdoorRothIntro extends React.Component {
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h6>YOUR NEXT PRIORITY:</h6>
+            <h6>YOUR # {this.props.rowNum} PRIORITY:</h6>
             <h3>Max-out a "Backdoor" Roth IRA</h3>
           </Container>
         </Row>
@@ -131,7 +130,8 @@ class PriBackdoorRothIntro extends React.Component {
                     size="lg"
                     block
                     id={this.props.getNextRow()}
-                    value="Four01kMaxOutQ"
+                    value={this.props.currentUser.four01k ? "Four01kMaxOutQ" : "PriTaxableBrokerageIntro"}
+                    onClick={this._next}
                     onClick={this._next}
                   >
                     Continue

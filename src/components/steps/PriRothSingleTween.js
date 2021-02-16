@@ -20,10 +20,10 @@ class PriRothSingleTween extends React.Component {
 
   _next = (event) => {
     event.preventDefault();
-    // this.props.setRow(this.props.getNextRow());
-    this.props.updateCurrentRow(this.props.getNextRow());
+    // this.props.updateCurrentRow(this.props.getNextRow());
     this.props.handleNextStep(event)
   };
+
 
   render() {
     return (
@@ -39,7 +39,7 @@ class PriRothSingleTween extends React.Component {
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h6>YOUR NEXT PRIORITY:</h6>
+            <h6>YOUR # {this.props.rowNum} PRIORITY:</h6>
             <h3>Max-out your Roth IRA</h3>
           </Container>
         </Row>
@@ -190,7 +190,7 @@ class PriRothSingleTween extends React.Component {
                     size="lg"
                     block
                     id={this.props.getNextRow()}
-                    value="Four01kMaxOutQ"
+                    value={this.props.currentUser.four01k ? "Four01kMaxOutQ" : "PriTaxableBrokerageIntro"}
                     onClick={this._next}
                   >
                     Continue

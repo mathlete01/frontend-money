@@ -18,7 +18,8 @@ class PriFour01kMax extends React.Component {
 
   _next = (event) => {
     event.preventDefault();
-    this.props.handleNextStep("DoneForNow");
+    // this.props.updateCurrentRow(this.props.getNextRow());
+    this.props.handleNextStep(event);
   };
 
   render() {
@@ -26,7 +27,7 @@ class PriFour01kMax extends React.Component {
       return null;
     }
     return (
-      <Container className="step">
+      <Container className="directive">
         <Row id="header" className="rowElement">
           <Button onClick={this._prev} variant="link">
             <FontAwesomeIcon icon="chevron-left" /> Back
@@ -35,7 +36,7 @@ class PriFour01kMax extends React.Component {
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h6>YOUR NEXT PRIORITY:</h6>
+            <h6>YOUR # {this.props.rowNum} PRIORITY:</h6>
             <h3>Max-out your 401(k)</h3>
           </Container>
         </Row>
@@ -94,6 +95,8 @@ class PriFour01kMax extends React.Component {
                     variant="primary"
                     size="lg"
                     block
+                    id={this.props.getNextRow()}
+                    value="PriTaxableBrokerageIntro"
                     onClick={this._next}
                   >
                     Okay

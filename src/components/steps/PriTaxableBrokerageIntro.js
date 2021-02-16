@@ -25,11 +25,9 @@ class PriTaxableBrokerageIntro extends React.Component {
   
   _next = (event) => {
     event.preventDefault();
-    // this.props.setRow(this.props.getNextRow());
-    this.props.updateCurrentRow(this.props.getNextRow());
+    // this.props.updateCurrentRow(this.props.getNextRow());
     this.props.handleNextStep(event);
   };
-
 
   render() {
    
@@ -49,7 +47,7 @@ class PriTaxableBrokerageIntro extends React.Component {
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h6>YOUR NEXT PRIORITY:</h6>
+            <h6>YOUR # {this.props.rowNum} PRIORITY:</h6>
             <h3>Invest in a Taxable Brokerage Account</h3>
           </Container>
         </Row>
@@ -125,6 +123,12 @@ class PriTaxableBrokerageIntro extends React.Component {
                     size="lg"
                     block
                     id={this.props.getNextRow()}
+                    // NOTE: The above code should work, but it always returns the current row as opposed to the next row. Because of this, I wrote the hack below.
+                    // id={
+                    //   this.props.currentRow === "row2"
+                    //   ? "row3"
+                    //   : "row4"
+                    // }
                     value="DoneForNow"
                     onClick={this._next}
                   >
