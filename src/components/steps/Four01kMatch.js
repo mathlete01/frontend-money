@@ -94,7 +94,7 @@ class Four01kMatch extends React.Component {
                 <Col>
                 </Col>
                 <Col>
-                  {this.checkValid() ? (
+                  {/* {this.checkValid() ? ( */}
                     <Button
                       className="yes"
                       variant="primary"
@@ -106,11 +106,11 @@ class Four01kMatch extends React.Component {
                     >
                       Next
                     </Button>
-                  ) : (
+                  {/* ) : (
                     <Button className="yes" variant="primary" size="lg" block disabled>
                       Next
                     </Button>
-                  )}
+                  )} */}
                 </Col>
               </Form.Row>
             </Form.Group>

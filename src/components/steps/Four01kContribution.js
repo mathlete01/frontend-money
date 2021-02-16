@@ -20,7 +20,7 @@ class Four01kContribution extends React.Component {
   };
 
   checkValid = () => {
-    if (this.state.four01k_contribution > 0) {
+    if (this.state.four01k_contribution > -1) {
       return true;
     }
   };
