@@ -26,9 +26,10 @@ import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import StepContainer from "./components/StepContainer";
 import "./App.css";
-import Ladder from "./components/Ladder";
+// import Ladder from "./components/Ladder";
 import { Form, FormControl, NavItem } from "react-bootstrap";
-import background from "./img/Louis_Vuitton-blue.png"
+import background from "./img/Louis_Vuitton-blue.png";
+import logo from "./img/safari-pinned-tab.svg"
 
 library.add(faSwimmingPool, faCoffee, faHandPointLeft, faChevronLeft);
 
@@ -80,7 +81,7 @@ class App extends React.Component {
   };
 
   handleAuthFetch = (credentialObj, endpoint) => {
-    console.log(`handleAuthFetch: credentialObj = `, credentialObj);
+    console.log(`1--handleAuthFetch: credentialObj = `, credentialObj);
     fetch(endpoint, {
       method: "POST",
       headers: {
@@ -107,14 +108,27 @@ class App extends React.Component {
 
   render() {
     return (
-      <div style={{ backgroundImage: `url(${background})`,
-      // backgroundRepeat: 'repeat',
-      // height: "100%", 
-      }} id="bg">
-      {/* <div> */}
+      <div
+        style={{
+          backgroundImage: `url(${background})`,
+          // backgroundRepeat: 'repeat',
+          // height: "100%",
+        }}
+        id="bg"
+      >
+        {/* <div> */}
         <Navbar>
-          <Navbar.Brand>Money Moves</Navbar.Brand>
-
+          <Navbar.Brand></Navbar.Brand>
+          <Navbar.Brand href="#home">
+            <img
+              alt=""
+              src={logo}
+              width="27"
+              height="27"
+              className="d-inline-block align-top"
+            />{" "}
+            Debtor to Investor
+          </Navbar.Brand>
           <Switch>
             <Route path="/" exact component={this.handleHome} />
             <Route path="/login" exact component={this.renderForm} />
@@ -165,6 +179,7 @@ const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
     currentUser: state.userReducer.currentUser,
+    currentRow: state.rowReducer.currentRow,
   };
 };
 

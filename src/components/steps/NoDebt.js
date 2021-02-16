@@ -7,66 +7,60 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
+import { updateCurrentRow } from "../../actions/rowActions";
 
-class BLANK_TITLE extends React.Component {
+
+class RothIntro extends React.Component {
+  _next = (event) => {
+    event.preventDefault();
+    this.props.handleNextStep(event);
+  };
+
   _prev = () => {
     this.props.handlePrevStep();
   };
 
-  _next = (event) => {
-    event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { BLANK_DB: true },this.props.currentStep);
-    this.props.handleNextStep("BLANK_NEXT");
-  };
-
   render() {
-    if (this.props.currentStep !== "BLANK_TITLE") {
-      return null;
-    }
     return (
       <Container className="step">
-        <Row id="header" className="step">
+        <Row id="header" className="rowElement">
           <Button onClick={this._prev} variant="link">
             <FontAwesomeIcon icon="chevron-left" /> Back
           </Button>
           <hr className="w-100" />
         </Row>
-        <Row id="title" className="step">
+        <Row id="title" className="rowElement">
           <Container>
-            <h3>BLANK_QUESTION</h3>
+            <h3>No credit card debt!</h3>
           </Container>
         </Row>
-        <Row id="body" className="step">
+        <Row id="body" className="rowElement">
           <Container>
-            BLANK_BODY
+          Ok, so your employer doesn't offer a 401(k) (boo), and you don't have any credit card debt (yay!). Let's make sure you qualify for a Roth IRA!
           </Container>
         </Row>
-        <Row id="form" className="step"></Row>
-        <Row id="buttons" className="step">
+        <Row id="form" className="rowElement"></Row>
+        <Row id="buttons" className="rowElement">
           <Container>
             <Form.Group>
               <Form.Row>
                 <Col>
-                  {/* <Button
-                    className="no"
-                    variant="danger"
-                    size="lg"
-                    block
-                    onClick={this._no}
-                  >
-                    No
-                  </Button> */}
                 </Col>
                 <Col>
                   <Button
                     className="yes"
-                    variant="success"
+                    variant="primary"
                     size="lg"
                     block
+                    // id={this.props.currentRow}
+                    id={this.props.currentRow}
+                    value="RothIntro"
                     onClick={this._next}
                   >
-                    Yes
+                    Continue
                   </Button>
                 </Col>
               </Form.Row>
@@ -82,10 +76,12 @@ const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
     currentUser: state.userReducer.currentUser,
+    currentRow: state.rowReducer.currentRow,
   };
 };
 
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(BLANK_TITLE);
+  updateCurrentRow,
+})(RothIntro);

@@ -8,6 +8,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
+import { updateCurrentRow } from "../../actions/rowActions";
 
 class RothSingleQ extends React.Component {
   _prev = () => {
@@ -17,39 +18,36 @@ class RothSingleQ extends React.Component {
   _yes = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { single: true });
-    this.props.handleNextStep("RothSingleMinQ");
+    this.props.handleNextStep(event);
   };
 
   _no = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { single: false });
-    this.props.handleNextStep("RothMarriedJointlyQ");
+    this.props.handleNextStep(event);
   };
 
   render() {
-    if (this.props.currentStep !== "RothSingleQ") {
-      return null;
-    }
     return (
       <Container className="step">
-        <Row id="header" className="step">
+        <Row id="header" className="rowElement">
           <Button onClick={this._prev} variant="link">
             <FontAwesomeIcon icon="chevron-left" /> Back
           </Button>
           <hr className="w-100" />
         </Row>
-        <Row id="title" className="step">
+        <Row id="title" className="rowElement">
           <Container>
             <h3>Are you single?</h3>
           </Container>
         </Row>
-        <Row id="body" className="step">
+        <Row id="body" className="rowElement">
           <Container>
             Your marriage status can affect the amount you're allowed to contribute to a Roth IRA. 
           </Container>
         </Row>
-        <Row id="form" className="step"></Row>
-        <Row id="buttons" className="step">
+        <Row id="form" className="rowElement"></Row>
+        <Row id="buttons" className="rowElement">
           <Container>
             <Form.Group>
               <Form.Row>
@@ -59,6 +57,8 @@ class RothSingleQ extends React.Component {
                     variant="danger"
                     size="lg"
                     block
+                    id={this.props.currentRow}
+                    value="RothMarriedJointlyQ"
                     onClick={this._no}
                   >
                     No
@@ -70,6 +70,8 @@ class RothSingleQ extends React.Component {
                     variant="success"
                     size="lg"
                     block
+                    id={this.props.currentRow}
+                    value="RothSingleMinQ"
                     onClick={this._yes}
                   >
                     Yes
@@ -88,10 +90,12 @@ const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
     currentUser: state.userReducer.currentUser,
+    currentRow: state.rowReducer.currentRow,
   };
 };
 
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
+  updateCurrentRow,
 })(RothSingleQ);

@@ -1,49 +1,96 @@
-.containerContainer {
+.bothContainer {
   margin-top: 30px;
-  /* padding-left: ($spacer-x * .5); */
-  /* padding-right: ($spacer-x * .5); */
+  margin-bottom: 30px;
+}
+.stepContainer {
+  /* background-color: white; */
+}
+/* Inactive tab */
+/* .tab ul > li > a {
+  background-color:  rgb(250, 231, 168);
+  color: red;
+} */
+/* .tab ul > li > a:hover {
+  background-color: pink;
+} */
+
+/* Active tab */
+/* .tab ul > li.active > a,
+.tab ul > li.active > a:hover,
+.tab ul > li.active > a:focus {
+  background-color:  rgb(250, 231, 168);
+  color: rgb(250, 231, 168);
+} */
+
+/* Disabled tab */
+/* .tab ul > li.disabled > a {
+  background-color: lightgray;
+  color: darkgray;
+} */
+.directiveContainer {
+  /* background-color: white; */
+  /* margin: 100px; */
+  /* padding: 100px; */
+}
+.rowElement {
+  padding: 10px;
+  margin: 0px;
+}
+.hidden { 
+  display:none; 
+}
+.rowElementTopDetermination {
+  /* padding-left: 20px;
+  margin-top: 21px; */
+  padding: 10px;
+  margin: 0px;
+}
+.directive {
+  padding-bottom: 20px;
+  padding: 0px;
+  background-color: rgb(250, 231, 168);
+  margin-bottom: 20px;  
+}
+.step {
+  margin-bottom: 20px;
+  padding: 0px;
   background-color: white;
 }
 .alert {
   width: 100%;
 }
+.disabled {
+  color: gray;
+}
 body {
   /* background: blue; */
 }
-.step {
-  padding: 10px;
-  margin: 0px;
+Button {
+  padding-left: 20px;
+  padding-top: 11px;
+}
+h6 {
+  /* padding-left: 20px; */
+  padding-top: 11px;
 }
 .tab-content {
-  /* padding: 10px; */
   margin: 15px 25px 15px 25px;
   width: 95%;
-  text-align: left; 
+  text-align: left;
 }
-.nav-tabs{
-  margin-left:15px; 
+.nav-tabs {
+  margin-left: 15px;
 }
-ul { 
-	/* display: inline-block;  */
-	text-align: left; 
-	}
+ul {
+  text-align: left;
+}
 .formField {
 }
 #title {
-  /* line-height: 1.428;   */
 }
 .no {
-  /* variant:"danger"; */
 }
-/* #body {
-      
-}
-#formText {
 
-}
-#formField {
-
-} */
 #bg {
   height: 100vh;
   overflow-y: scroll;

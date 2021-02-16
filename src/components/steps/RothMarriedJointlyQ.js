@@ -8,6 +8,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
+import { updateCurrentRow } from "../../actions/rowActions";
 
 class RothMarriedJointlyQ extends React.Component {
   _prev = () => {
@@ -17,39 +18,39 @@ class RothMarriedJointlyQ extends React.Component {
   _yes = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { filing_jointly: true },this.props.currentStep);
-    this.props.handleNextStep("RothMarriedJointlyMinQ");
+    this.props.handleNextStep(event)
+
   };
 
   _no = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { filing_jointly: false },this.props.currentStep);
-    this.props.handleNextStep("RothMarriedNotJointlyMinQ");
+    this.props.handleNextStep(event)
+
   };
 
   render() {
-    if (this.props.currentStep !== "RothMarriedJointlyQ") {
-      return null;
-    }
+  
     return (
       <Container className="step">
-        <Row id="header" className="step">
+        <Row id="header" className="rowElement">
           <Button onClick={this._prev} variant="link">
             <FontAwesomeIcon icon="chevron-left" /> Back
           </Button>
           <hr className="w-100" />
         </Row>
-        <Row id="title" className="step">
+        <Row id="title" className="rowElement">
           <Container>
             <h3>Will you be filing your taxes jointly?</h3>
           </Container>
         </Row>
-        <Row id="body" className="step">
+        <Row id="body" className="rowElement">
           <Container>
             Some married people choose to file their taxes as a single person because it's beneficial to them, tax-wise.
           </Container>
         </Row>
-        <Row id="form" className="step"></Row>
-        <Row id="buttons" className="step">
+        <Row id="form" className="rowElement"></Row>
+        <Row id="buttons" className="rowElement">
           <Container>
             <Form.Group>
               <Form.Row>
@@ -59,6 +60,8 @@ class RothMarriedJointlyQ extends React.Component {
                     variant="danger"
                     size="lg"
                     block
+                    id={this.props.currentRow}
+                    value="RothMarriedNotJointlyMinQ"
                     onClick={this._no}
                   >
                     No
@@ -70,6 +73,8 @@ class RothMarriedJointlyQ extends React.Component {
                     variant="success"
                     size="lg"
                     block
+                    id={this.props.currentRow}
+                    value="RothMarriedJointlyMinQ"
                     onClick={this._yes}
                   >
                     Yes
@@ -88,10 +93,12 @@ const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
     currentUser: state.userReducer.currentUser,
+    currentRow: state.rowReducer.currentRow,
   };
 };
 
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
+  updateCurrentRow,
 })(RothMarriedJointlyQ);

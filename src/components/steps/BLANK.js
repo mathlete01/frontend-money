@@ -10,27 +10,23 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 
-class SaveYourWork extends React.Component {
+class BLANK extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
 
-  _yes = (event) => {
+  _next = (event) => {
     event.preventDefault();
-    this.props.handleNextStep("CreditCardDebt");
-  };
-
-  _no = (event) => {
-    event.preventDefault();
-    this.props.handleNextStep("Determination");
+    this.props.updateCurrentUser(this.props.currentUser.id, { BLANK_DB: true },this.props.currentStep);
+    this.props.handleNextStep("BLANK_NEXT");
   };
 
   render() {
-    if (this.props.currentStep !== "SaveYourWork") {
+    if (this.props.currentStep !== "BLANK") {
       return null;
     }
     return (
-        <Container className="step">
+      <Container className="step">
         <Row id="header" className="rowElement">
           <Button onClick={this._prev} variant="link">
             <FontAwesomeIcon icon="chevron-left" /> Back
@@ -39,12 +35,12 @@ class SaveYourWork extends React.Component {
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h3>Save your work</h3>
+            <h3>BLANK_QUESTION</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-          Let's save your work now so you can come back here for your next goal!
+            BLANK_BODY
           </Container>
         </Row>
         <Row id="form" className="rowElement"></Row>
@@ -66,12 +62,12 @@ class SaveYourWork extends React.Component {
                 <Col>
                   <Button
                     className="yes"
-                    variant="primary"
+                    variant="success"
                     size="lg"
                     block
                     onClick={this._next}
                   >
-                    Okay
+                    Yes
                   </Button>
                 </Col>
               </Form.Row>
@@ -86,8 +82,13 @@ class SaveYourWork extends React.Component {
 const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
-    currentUser: state.userReducer.currentUser
+    currentUser: state.userReducer.currentUser,
+    currentRow: state.rowReducer.currentRow,
   };
 };
 
-export default connect(mapStateToProps, { updateCurrentStep, updateCurrentUser })(SaveYourWork);
+export default connect(mapStateToProps, {
+  updateCurrentStep,
+  updateCurrentUser,
+  updateCurrentRow,
+})(BLANK);

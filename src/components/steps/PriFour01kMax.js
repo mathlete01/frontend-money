@@ -9,36 +9,38 @@ import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { Tabs, Tab } from "react-bootstrap";
+import { updateCurrentRow } from "../../actions/rowActions";
 
-class Four01kMaxRec extends React.Component {
+class PriFour01kMax extends React.Component { 
   _prev = () => {
     this.props.handlePrevStep();
   };
 
   _next = (event) => {
     event.preventDefault();
-    this.props.handleNextStep("DoneForNow");
+    // this.props.updateCurrentRow(this.props.getNextRow());
+    this.props.handleNextStep(event);
   };
 
   render() {
-    if (this.props.currentStep !== "Four01kMaxRec") {
+    if (this.props.currentStep !== "PriFour01kMax") {
       return null;
     }
     return (
-      <Container className="step">
-        <Row id="header" className="step">
+      <Container className="directive">
+        <Row id="header" className="rowElement">
           <Button onClick={this._prev} variant="link">
             <FontAwesomeIcon icon="chevron-left" /> Back
           </Button>
           <hr className="w-100" />
         </Row>
-        <Row id="title" className="step">
+        <Row id="title" className="rowElement">
           <Container>
-            <h6>YOUR NEXT PRIORITY:</h6>
+            <h6>YOUR # {this.props.rowNum} PRIORITY:</h6>
             <h3>Max-out your 401(k)</h3>
           </Container>
         </Row>
-        <Row id="body" className="step">
+        <Row id="body" className="rowElement">
           <Container>
             They may be poorly named, but they are maybe the best investment you can get your hands on.
           </Container>
@@ -80,8 +82,8 @@ class Four01kMaxRec extends React.Component {
           </Tabs>
         </Row>
         <hr className="w-100" />
-        <Row id="form" className="step"></Row>
-        <Row id="buttons" className="step">
+        <Row id="form" className="rowElement"></Row>
+        <Row id="buttons" className="rowElement">
           <Container>
             <Form.Group>
               <Form.Row>
@@ -93,6 +95,8 @@ class Four01kMaxRec extends React.Component {
                     variant="primary"
                     size="lg"
                     block
+                    id={this.props.getNextRow()}
+                    value="PriTaxableBrokerageIntro"
                     onClick={this._next}
                   >
                     Okay
@@ -111,10 +115,12 @@ const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
     currentUser: state.userReducer.currentUser,
+    currentRow: state.rowReducer.currentRow,
   };
 };
 
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(Four01kMaxRec);
+  updateCurrentRow,
+})(PriFour01kMax);

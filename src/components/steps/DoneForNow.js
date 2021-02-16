@@ -8,6 +8,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
+import { updateCurrentRow } from "../../actions/rowActions";
 
 class DoneForNow extends React.Component {
   _prev = () => {
@@ -16,33 +17,30 @@ class DoneForNow extends React.Component {
 
   _yes = (event) => {
     event.preventDefault();
-    this.props.handleNextStep("CreditCardDebt");
+    this.props.handleNextStep(event);
   };
 
   render() {
-    if (this.props.currentStep !== "DoneForNow") {
-      return null;
-    }
     return (
         <Container className="step">
-        <Row id="header" className="step">
+        <Row id="header" className="rowElement">
           <Button onClick={this._prev} variant="link">
             <FontAwesomeIcon icon="chevron-left" /> Back
           </Button>
           <hr className="w-100" />
         </Row>
-        <Row id="title" className="step">
+        <Row id="title" className="rowElement">
           <Container>
             <h3>You've got your marching orders</h3>
           </Container>
         </Row>
-        <Row id="body" className="step">
+        <Row id="body" className="rowElement">
           <Container>
           Let's save your work now so you can come back here for your next goal!
           </Container>
         </Row>
-        <Row id="form" className="step"></Row>
-        <Row id="buttons" className="step">
+        <Row id="form" className="rowElement"></Row>
+        <Row id="buttons" className="rowElement">
           <Container>
             <Form.Group>
               <Form.Row>
@@ -62,6 +60,7 @@ class DoneForNow extends React.Component {
                     className="yes"
                     variant="primary"
                     size="lg"
+                    id={this.props.currentRow}
                     block
                     onClick={this._next}
                   >
@@ -80,8 +79,8 @@ class DoneForNow extends React.Component {
 const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
-    currentUser: state.userReducer.currentUser
+    // currentUser: state.userReducer.currentUser
   };
 };
 
-export default connect(mapStateToProps, { updateCurrentStep, updateCurrentUser })(DoneForNow);
+export default connect(mapStateToProps, { updateCurrentStep })(DoneForNow);

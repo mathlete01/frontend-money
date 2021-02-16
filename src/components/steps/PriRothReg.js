@@ -8,44 +8,47 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
+import Table from 'react-bootstrap/Table'
 import { Tabs, Tab } from "react-bootstrap";
+import { updateCurrentRow } from "../../actions/rowActions";
 
-class RothMaxD extends React.Component {
+class PriRothReg extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
 
   _next = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(
-      this.props.currentUser.id,
-      { roth_max: true },
-      this.props.currentStep
-    );
-    this.props.handleNextStep("Four01kMaxOutQ");
+    // this.props.updateCurrentRow(this.props.getNextRow());
+    this.props.updateCurrentUser(this.props.currentUser.id, { roth_eligable: true },this.props.currentStep);
+    this.props.handleNextStep(event)
   };
 
   render() {
-    if (this.props.currentStep !== "RothMaxD") {
-      return null;
-    }
+  
     return (
-      <Container className="step">
-        <Row id="header" className="step">
-          <Button onClick={this._prev} variant="link">
+      <Container className="directive">
+        <Row id="header" className="rowElement">
+        <Button
+            onClick={this._prev}
+            variant="link"
+            disabled={
+              this.props.currentStep === "PriRothReg" ? false : true
+            }
+          >
             <FontAwesomeIcon icon="chevron-left" /> Back
           </Button>
           <hr className="w-100" />
         </Row>
-        <Row id="title" className="step">
+        <Row id="title" className="rowElement">
           <Container>
-            <h6>YOUR NEXT PRIORITY:</h6>
+            <h6>YOUR # {this.props.rowNum} PRIORITY:</h6>
             <h3>Max-out your Roth IRA</h3>
           </Container>
         </Row>
-        <Row id="body" className="step">
+        <Row id="body" className="rowElement">
           <Container>
-            You can contribute up to $7k to a Roth IRA, so do it!
+            You can contribute up to $6k to a Roth IRA, so do it!
           </Container>
         </Row>
         <Row>
@@ -54,7 +57,7 @@ class RothMaxD extends React.Component {
               <ul>
                 <li>
                   Every year, there is a maximum you can contribute to a Roth
-                  IRA. The maximum for someone age 50 or over is $7k.
+                  IRA. The maximum for someone below 50 is $6k.
                 </li>
               </ul>
             </Tab>
@@ -104,27 +107,26 @@ class RothMaxD extends React.Component {
           </Tabs>
         </Row>
         <hr className="w-100" />
-        <Row id="buttons" className="step">
+        <Row id="buttons" className="rowElement">
           <Container>
             <Form.Group>
               <Form.Row>
                 <Col>
-                  {/* <Button
-                    className="no"
-                    variant="danger"
-                    size="lg"
-                    block
-                    onClick={this._no}
-                  >
-                    No
-                  </Button> */}
                 </Col>
-                <Col>
+                <Col
+                  className={
+                    this.props.currentStep === "PriRothReg"
+                      ? ""
+                      : "hidden"
+                  }
+                >
                   <Button
                     className="yes"
                     variant="primary"
                     size="lg"
                     block
+                    id={this.props.getNextRow()}
+                    value={this.props.currentUser.four01k ? "Four01kMaxOutQ" : "PriTaxableBrokerageIntro"}
                     onClick={this._next}
                   >
                     Continue
@@ -143,10 +145,12 @@ const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
     currentUser: state.userReducer.currentUser,
+    currentRow: state.rowReducer.currentRow,
   };
 };
 
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(RothMaxD);
+  updateCurrentRow,
+})(PriRothReg);

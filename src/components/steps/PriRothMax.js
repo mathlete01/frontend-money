@@ -8,45 +8,52 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
-// import Tabs from "react-bootstrap/Tabs";
 import { Tabs, Tab } from "react-bootstrap";
-import TabContainer from "react-bootstrap/TabContainer";
-import Nav from "react-bootstrap/Nav";
-import { NavItem } from "react-bootstrap";
-import Navbar from "react-bootstrap/Navbar";
+import { updateCurrentRow } from "../../actions/rowActions";
 
-class TaxableBrokerageIntro extends React.Component {
+class PriRothMax extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
 
   _next = (event) => {
     event.preventDefault();
-    this.props.handleNextStep("DoneForNow");
+    // this.props.updateCurrentRow(this.props.getNextRow());
+    this.props.updateCurrentUser(
+      this.props.currentUser.id,
+      { roth_max: true },
+      this.props.currentStep
+    );
+    this.props.handleNextStep(event)
+    
+
   };
 
   render() {
-    if (this.props.currentStep !== "TaxableBrokerageIntro") {
-      return null;
-    }
+
     return (
-      <Container className="step">
-        <Row id="header" className="step">
-          <Button onClick={this._prev} variant="link">
+      <Container className="directive">
+        <Row id="header" className="rowElement">
+        <Button
+            onClick={this._prev}
+            variant="link"
+            disabled={
+              this.props.currentStep === "PriRothMax" ? false : true
+            }
+          >
             <FontAwesomeIcon icon="chevron-left" /> Back
           </Button>
           <hr className="w-100" />
         </Row>
-        <Row id="title" className="step">
+        <Row id="title" className="rowElement">
           <Container>
-            <h6>YOUR NEXT PRIORITY:</h6>
-            <h3>Invest in a Taxable Brokerage Account</h3>
+            <h6>YOUR # {this.props.rowNum} PRIORITY:</h6>
+            <h3>Max-out your Roth IRA</h3>
           </Container>
         </Row>
-        <Row id="body" className="step">
+        <Row id="body" className="rowElement">
           <Container>
-            Do you have more disposible income to put towards your financial
-            goals? If so, it's time to invest in a taxable brokerage account.
+            You can contribute up to $7k to a Roth IRA, so do it!
           </Container>
         </Row>
         <Row>
@@ -54,31 +61,41 @@ class TaxableBrokerageIntro extends React.Component {
             <Tab eventKey="what" title="What">
               <ul>
                 <li>
-                  A taxable brokerage is just a plain old investment account.
-                </li>
-                <li>
-                  It's called "taxable" because it's not tax <i>advantaged</i>{" "}
-                  like it's cousins, IRAs and 401(k)s.
+                  Every year, there is a maximum you can contribute to a Roth
+                  IRA. The maximum for someone age 50 or over is $7k.
                 </li>
               </ul>
             </Tab>
             <Tab eventKey="why" title="Why">
-              <ul>
+              As we've said, Roth IRAs are great for three reaons:
+              <ol>
+                <li>Your money grows tax-free</li>
                 <li>
-                  You should <i>only</i> invest in a taxable brokerage account
-                  once you have maximized your tax <i>advantaged</i> accounts,
-                  like IRAs and 401(k)s. According to your choices, you've
-                  already explored those options.
+                  You don't pay taxes on it when you withdraw it upon retirement
                 </li>
-              </ul>
+                <li>
+                  You can withdraw your contributions (not your <i>earnings</i>,
+                  just your contributions) whenever you want. That makes it
+                  double as an Emergency Fund.
+                </li>
+              </ol>
             </Tab>
             <Tab eventKey="where" title="Where">
-            <ul>
+              <ul>
                 <li>
-                  Do you already have an investment account at a discount brokerage? Do it there.
+                  Do you already have an investment account at a discount
+                  brokerage? Do it there.
                 </li>
                 <li>
-                  Otherwise, open an account at a discount brokerage like <a href="http://www.vanguard.com" target="_blank">Vanguard</a> (our favorite) or <a href="http://www.schwab.com" target="_blank">Schwab</a>.
+                  Otherwise, open an account at a discount brokerage like{" "}
+                  <a href="http://www.vanguard.com" target="_blank">
+                    Vanguard
+                  </a>{" "}
+                  (our favorite) or{" "}
+                  <a href="http://www.schwab.com" target="_blank">
+                    Schwab
+                  </a>
+                  .
                 </li>
               </ul>
             </Tab>
@@ -95,28 +112,26 @@ class TaxableBrokerageIntro extends React.Component {
           </Tabs>
         </Row>
         <hr className="w-100" />
-        <Row id="form" className="step"></Row>
-        <Row id="buttons" className="step">
+        <Row id="buttons" className="rowElement">
           <Container>
             <Form.Group>
               <Form.Row>
                 <Col>
-                  {/* <Button
-                    className="no"
-                    variant="danger"
-                    size="lg"
-                    block
-                    onClick={this._no}
-                  >
-                    No
-                  </Button> */}
                 </Col>
-                <Col>
+                <Col
+                  className={
+                    this.props.currentStep === "PriRothMax"
+                      ? ""
+                      : "hidden"
+                  }
+                >
                   <Button
                     className="yes"
                     variant="primary"
                     size="lg"
                     block
+                    id={this.props.getNextRow()}
+                    value={this.props.currentUser.four01k ? "Four01kMaxOutQ" : "PriTaxableBrokerageIntro"}
                     onClick={this._next}
                   >
                     Continue
@@ -135,10 +150,12 @@ const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
     currentUser: state.userReducer.currentUser,
+    currentRow: state.rowReducer.currentRow,
   };
 };
 
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-})(TaxableBrokerageIntro);
+  updateCurrentRow,
+})(PriRothMax);

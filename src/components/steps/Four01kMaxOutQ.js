@@ -8,8 +8,10 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
+import { updateCurrentRow } from "../../actions/rowActions";
 
 class Four01kMaxOutQ extends React.Component {
+
   _prev = () => {
     this.props.handlePrevStep();
   };
@@ -17,13 +19,13 @@ class Four01kMaxOutQ extends React.Component {
   _yes = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { four01k_max_out: true },this.props.currentStep);
-    this.props.handleNextStep("TaxableBrokerageIntro");
+    this.props.handleNextStep(event);
   };
 
   _no = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { four01k_max_out: false },this.props.currentStep);
-    this.props.handleNextStep("Four01kMaxRec");
+    this.props.handleNextStep(event);
   };
 
   render() {
@@ -32,24 +34,24 @@ class Four01kMaxOutQ extends React.Component {
     }
     return (
       <Container className="step">
-        <Row id="header" className="step">
+        <Row id="header" className="rowElement">
           <Button onClick={this._prev} variant="link">
             <FontAwesomeIcon icon="chevron-left" /> Back
           </Button>
           <hr className="w-100" />
         </Row>
-        <Row id="title" className="step">
+        <Row id="title" className="rowElement">
           <Container>
             <h3>Are you maxxing-out your 401(k)?</h3>
           </Container>
         </Row>
-        <Row id="body" className="step">
+        <Row id="body" className="rowElement">
           <Container>
             Got any more disposible income? If so, your #1 priority is to contribute as much as you can to your 401k. 
           </Container>
         </Row>
-        <Row id="form" className="step"></Row>
-        <Row id="buttons" className="step">
+        <Row id="form" className="rowElement"></Row>
+        <Row id="buttons" className="rowElement">
           <Container>
             <Form.Group>
               <Form.Row>
@@ -59,6 +61,8 @@ class Four01kMaxOutQ extends React.Component {
                     variant="danger"
                     size="lg"
                     block
+                    id={this.props.currentRow}
+                    value="PriFour01kMax"
                     onClick={this._no}
                   >
                     No
@@ -70,6 +74,8 @@ class Four01kMaxOutQ extends React.Component {
                     variant="success"
                     size="lg"
                     block
+                    id={this.props.currentRow}
+                    value="PriTaxableBrokerageIntro"
                     onClick={this._yes}
                   >
                     Yes
@@ -88,10 +94,12 @@ const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
     currentUser: state.userReducer.currentUser,
+    currentRow: state.rowReducer.currentRow,
   };
 };
 
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
+  updateCurrentRow,
 })(Four01kMaxOutQ);

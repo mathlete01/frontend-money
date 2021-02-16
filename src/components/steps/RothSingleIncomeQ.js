@@ -8,6 +8,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
+import { updateCurrentRow } from "../../actions/rowActions";
 
 class RothSingleIncomeQ extends React.Component {
   _prev = () => {
@@ -17,39 +18,38 @@ class RothSingleIncomeQ extends React.Component {
   _yes = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { earned_income: true },this.props.currentStep);
-    this.props.handleNextStep("RothSingle50Q");
+    this.props.handleNextStep(event)
   };
 
   _no = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { earned_income: false },this.props.currentStep);
-    this.props.handleNextStep("RothSingleUnderD");
+    this.props.handleNextStep(event)
+
   };
 
   render() {
-    if (this.props.currentStep !== "RothSingleIncomeQ") {
-      return null;
-    }
+   
     return (
       <Container className="step">
-        <Row id="header" className="step">
+        <Row id="header" className="rowElement">
           <Button onClick={this._prev} variant="link">
             <FontAwesomeIcon icon="chevron-left" /> Back
           </Button>
           <hr className="w-100" />
         </Row>
-        <Row id="title" className="step">
+        <Row id="title" className="rowElement">
           <Container>
             <h3>Will you have any earned income this year?</h3>
           </Container>
         </Row>
-        <Row id="body" className="step">
+        <Row id="body" className="rowElement">
           <Container>
             Earned income is income you'd make from wages, not from investments.
           </Container>
         </Row>
-        <Row id="form" className="step"></Row>
-        <Row id="buttons" className="step">
+        <Row id="form" className="rowElement"></Row>
+        <Row id="buttons" className="rowElement">
           <Container>
             <Form.Group>
               <Form.Row>
@@ -59,6 +59,8 @@ class RothSingleIncomeQ extends React.Component {
                     variant="danger"
                     size="lg"
                     block
+                    id={this.props.currentRow}
+                    value="RothSingleUnderD"
                     onClick={this._no}
                   >
                     No
@@ -70,6 +72,8 @@ class RothSingleIncomeQ extends React.Component {
                     variant="success"
                     size="lg"
                     block
+                    id={this.props.currentRow}
+                    value="RothSingle50Q"
                     onClick={this._yes}
                   >
                     Yes
@@ -88,10 +92,12 @@ const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
     currentUser: state.userReducer.currentUser,
+    currentRow: state.rowReducer.currentRow,
   };
 };
 
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
+  updateCurrentRow,
 })(RothSingleIncomeQ);

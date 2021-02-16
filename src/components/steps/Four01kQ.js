@@ -10,6 +10,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
+import { updateCurrentRow } from "../../actions/rowActions";
+
 
 class Four01kQ extends React.Component {
   _prev = () => {
@@ -19,13 +21,13 @@ class Four01kQ extends React.Component {
   _yes = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { four01k: true },this.props.currentStep);
-    this.props.handleNextStep("Four01kMatch");
+    this.props.handleNextStep(event);
   };
 
   _no = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { four01k: false },this.props.currentStep);
-    this.props.handleNextStep("CreditCardDebtQ");
+    this.props.handleNextStep(event);
   };
 
   renderTooltip = (props) => (
@@ -35,31 +37,29 @@ class Four01kQ extends React.Component {
   );
 
   render() {
-    if (this.props.currentStep !== "Four01kQ") {
-      return null;
-    }
     return (
       <Container className="step">
-        <Row id="header" className="step">
-          <Button onClick={this._prev} variant="link">
+        <Row id="header" className="rowElement">
+          <Button 
+          onClick={this._prev} variant="link">
             <FontAwesomeIcon icon="chevron-left" /> Back
           </Button>
           <hr className="w-100" />
         </Row>
-        <Row id="title" className="step">
+        <Row id="title" className="rowElement">
           <Container>
             <h3>Does your employer offer a 401(k) plan?</h3>
           </Container>
         </Row>
-        <Row id="body" className="step">
+        <Row id="body" className="rowElement">
           <Container>
             {/* A <OverlayTrigger overlay={this.renderTooltip}>401(k) plan</OverlayTrigger> */}
             A 401(k) plan is a retirement investment account that many companies
             offer their employees.
           </Container>
         </Row>
-        <Row id="form" className="step"></Row>
-        <Row id="buttons" className="step">
+        <Row id="form" className="rowElement"></Row>
+        <Row id="buttons" className="rowElement">
           <Container>
             <Form.Group>
               <Form.Row>
@@ -69,6 +69,8 @@ class Four01kQ extends React.Component {
                     variant="danger"
                     size="lg"
                     block
+                    id={this.props.currentRow}
+                    value="CreditCardDebtQ"
                     onClick={this._no}
                   >
                     No
@@ -80,6 +82,8 @@ class Four01kQ extends React.Component {
                     variant="success"
                     size="lg"
                     block
+                    id={this.props.currentRow}
+                    value="Four01kMatch"
                     onClick={this._yes}
                   >
                     Yes
@@ -98,10 +102,12 @@ const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
     currentUser: state.userReducer.currentUser,
+    currentRow: state.rowReducer.currentRow,
   };
 };
 
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
+  updateCurrentRow,
 })(Four01kQ);

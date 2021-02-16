@@ -1,22 +1,20 @@
 import React from "react";
 import { connect } from "react-redux";
-import { updateCurrentStep } from "../../actions/stepActions";
 import { setCurrentUser } from "../../actions/userActions";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { Form, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { updateCurrentRow } from "../../actions/rowActions";
 
 const BASE_URL = "http://localhost:3000";
 const USERS_URL = `${BASE_URL}/users`;
 
 class Intro extends React.Component {
-  
   _next = (event) => {
     event.preventDefault();
-    this.props.handleNextStep("LeftoverMoney");
-    // debugger
+    this.props.handleNextStep(event);
     if (Object.keys(this.props.currentUser).length === 0) {
       this.createUser();
     }
@@ -27,12 +25,11 @@ class Intro extends React.Component {
   };
 
   createUser = () => {
-    // console.log("createUser called")
     let formData = {
       user: {
         username: this.generateRandomString(),
         password: this.generateRandomString(),
-        current_step: "LeftoverMoney"
+        current_step: "LeftoverMoney",
       },
     };
     let configObj = {
@@ -55,38 +52,31 @@ class Intro extends React.Component {
   };
 
   render() {
-    if (this.props.currentStep !== "Intro") {
-      // Prop: The current step
-      return null;
-    }
-    // The markup for the Step 1 UI
     return (
-      // <Container className="border step">
       <Container className="step">
-        <Row id="header" className="step">
-          {/* <Button onClick={this._prev} variant="link" disabled>
-            <FontAwesomeIcon icon="chevron-left" /> Back
-          </Button> */}
-          {/* <hr className="w-100" /> */}
+        <Row id="header" className="rowElement">
         </Row>
-        <Row id="title" className="step">
+        <Row id="title" className="rowElement">
           <Container>
             <h3>Wondering what money moves you should be making?</h3>
           </Container>
         </Row>
-        <Row id="body" className="step">
+        <Row id="body" className="rowElement">
           <Container>
-            This interactive quiz asks you a bunch of questions then tells you what you should do. Well, what are you waiting for?
+            This interactive quiz asks you a bunch of questions then tells you
+            what you should do. Well, what are you waiting for?
           </Container>
         </Row>
-        <Row id="form" className="step"></Row>
-        <Row id="buttons" className="step">
+        <Row id="form" className="rowElement"></Row>
+        <Row id="buttons" className="rowElement">
           <Container>
             <Form.Group>
               <Form.Row>
                 <Col></Col>
                 <Col>
                   <Button
+                    id={this.props.currentRow}
+                    value="LeftoverMoney"
                     className="yes"
                     variant="primary"
                     size="lg"
@@ -105,11 +95,12 @@ class Intro extends React.Component {
   }
 }
 
+
 const mapStateToProps = (state) => {
   return {
-    currentStep: state.stepReducer.currentStep,
     currentUser: state.userReducer.currentUser,
+    currentRow: state.rowReducer.currentRow,
   };
 };
 
-export default connect(mapStateToProps, { setCurrentUser })(Intro);
+export default connect(mapStateToProps, { setCurrentUser, updateCurrentRow })(Intro);

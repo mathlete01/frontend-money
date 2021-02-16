@@ -10,6 +10,8 @@ import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import InputGroup from "react-bootstrap/InputGroup";
 import { Form, FormControl } from "react-bootstrap";
+import { updateCurrentRow } from "../../actions/rowActions";
+
 
 class LeftoverMoney extends React.Component {
   
@@ -56,7 +58,6 @@ class LeftoverMoney extends React.Component {
   };
 
   _next = (event) => {
-    console.log(`_next: updateCurrentUser called, this.calcLeftoverMoney() =`, this.calcLeftoverMoney());
     event.preventDefault();
     this.props.updateCurrentUser(
       this.props.currentUser.id,
@@ -68,7 +69,7 @@ class LeftoverMoney extends React.Component {
       },
       this.props.currentStep
     );
-    this.props.handleNextStep("Four01kQ");
+    this.props.handleNextStep(event);
   };
 
   checkValid = () => {
@@ -78,31 +79,28 @@ class LeftoverMoney extends React.Component {
   };
 
   render() {
-    if (this.props.currentStep !== "LeftoverMoney") {
-      return null;
-    }
     return (
       <Container className="step">
-        <Row id="header" className="step">
+        <Row id="header" className="rowElement">
           <Button onClick={this._prev} variant="link" disabled>
             <FontAwesomeIcon icon="chevron-left" /> Back
           </Button>
           <hr className="w-100" />
         </Row>
-        <Row id="title" className="step">
+        <Row id="title" className="rowElement">
           <Container>
             <h3>
               How much money do you have every month to put towards your goals?
             </h3>
           </Container>
         </Row>
-        <Row id="body" className="step">
+        <Row id="body" className="rowElement">
           <Container>
             Estimations are fine, you can always come back and update the
             numbers later.
           </Container>
         </Row>
-        <Row id="form" className="step">
+        <Row id="form" className="rowElement">
           <Container>
             <Form.Group>
               <Form.Row>
@@ -134,7 +132,7 @@ class LeftoverMoney extends React.Component {
             </Form.Group>
           </Container>
         </Row>
-        <Row id="form" className="step">
+        <Row id="form" className="rowElement">
           <Container>
             <Form.Group>
               <Form.Row>
@@ -164,7 +162,7 @@ class LeftoverMoney extends React.Component {
             </Form.Group>
           </Container>
         </Row>
-        <Row id="form" className="step">
+        <Row id="form" className="rowElement">
           <Container>
             <Form.Group>
               <Form.Row>
@@ -196,7 +194,7 @@ class LeftoverMoney extends React.Component {
             </Form.Group>
           </Container>
         </Row>
-        <Row id="form" className="step">
+        <Row id="form" className="rowElement">
           <Container>
             <Form.Group>
               <Form.Row>
@@ -224,7 +222,7 @@ class LeftoverMoney extends React.Component {
             </Form.Group>
           </Container>
         </Row>
-        <Row id="buttons" className="step">
+        <Row id="buttons" className="rowElement">
           <Container>
             <Form.Group>
               <Form.Row>
@@ -236,6 +234,8 @@ class LeftoverMoney extends React.Component {
                       variant="primary"
                       size="lg"
                       block
+                      id={this.props.currentRow}
+                    value="Four01kQ"
                       onClick={this._next}
                     >
                       Next
@@ -261,14 +261,19 @@ class LeftoverMoney extends React.Component {
   }
 }
 
+// mapStateToProps is where we specify what slice of the state that we want to provide to our component through props. Here, we want to provide state.stepReducer.currentStep via a prop called currentStep and state. userReducer.currentUser via a prop called currentUser 
 const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
     currentUser: state.userReducer.currentUser,
+    currentRow: state.rowReducer.currentRow,
   };
 };
+
+// The connect function is linked to the store and listening to each change in the state that occurs. When a change occurs, it calls mapStateToProps(). We specify which component we are providing this data to at the very end.
 
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
+  updateCurrentRow,
 })(LeftoverMoney);
