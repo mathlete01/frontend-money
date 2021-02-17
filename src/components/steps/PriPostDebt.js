@@ -31,8 +31,10 @@ class PriPostDebt extends React.Component {
       four01k_contribution,
       credit_card_debt,
     } = this.props.currentUser;
+    const quarterLeftoverMoney = leftover_money/4
     console.log(`this.props.currentUser = `, this.props.currentUser);
     console.log(`leftover_money = `, leftover_money);
+    console.log(`quarterLeftoverMoney = `, quarterLeftoverMoney);
     console.log(`four01k = `, four01k);
     console.log(`four01k_match = `, four01k_match);
     console.log(`four01k_contribution = `, four01k_contribution);
@@ -54,7 +56,7 @@ class PriPostDebt extends React.Component {
         this.nextStep = "RothIntro";
         break;
       // Case:  No 401k /  No Debt
-      // case four01k === false && credit_card_debt < 1:
+      // case four01k === false && credit_card_debt === 0:
       //   console.log("*** No 401k /  No Debt");
       //   this.headline = `Congrats, you have no credit card debt! 🏆`;
       //   this.advice =
@@ -62,7 +64,7 @@ class PriPostDebt extends React.Component {
       //   this.nextStep = "RothIntro";
       //   break;
       // Case:  Contribution > Match / No Debt
-      // case four01k_contribution > four01k_match && credit_card_debt < 1:
+      // case four01k_contribution > four01k_match && credit_card_debt === 0:
       //   console.log("*** Contribution > Match / No Debt");
       //   this.headline = `Congrats, you have no credit card debt! 🏆`;
       //   this.advice =
@@ -84,7 +86,7 @@ class PriPostDebt extends React.Component {
         this.nextStep = "RothIntro";
         break;
       // Case:  Contribution < Match / No Debt
-      case four01k_contribution < four01k_match && credit_card_debt < 1:
+      case four01k_contribution < four01k_match && credit_card_debt < quarterLeftoverMoney:
         console.log("*** Contribution < Match / No Debt");
         this.headline = `Let's nudge up your 401(k) contribution 🧮`;
         this.advice = `You should to increase your 401(k) contribution from ${four01k_contribution}% to ${four01k_match}%. The employer match is free money, so take advantage of it! Next, let's see if you qualify for a Roth IRA...`;
@@ -105,7 +107,7 @@ class PriPostDebt extends React.Component {
         this.nextStep = "RothIntro";
         break;
       // Case:  Contribution = Match / No Debt
-      // case four01k_contribution === four01k_match && credit_card_debt < 1:
+      // case four01k_contribution === four01k_match && credit_card_debt === 0:
       //   console.log("*** Contribution = Match / No Debt");
       //   this.headline = `No credit card debt!`;
       //   this.advice = `Well done--you're correct to restrict your 401(k) contribution to the company match of ${four01k_match}%. And no credit card debt--fantastic! Next, let's see if you qualify for a Roth IRA...`;

@@ -58,13 +58,12 @@ class Intro extends React.Component {
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h3>Wondering what money moves you should be making? 🧐</h3>
+            <h3>Interest should be <i>earned</i>, not paid</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            This interactive quiz asks you a bunch of questions then tells you
-            what you should do. Well, what are you waiting for?
+          Wondering how to get started with investing? This interactive quiz asks you a series of questions, then delivers a personalized plan to transform you from a debtor to an investor.
           </Container>
         </Row>
         <Row id="form" className="rowElement"></Row>

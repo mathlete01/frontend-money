@@ -34,7 +34,7 @@ class RothIntro extends React.Component {
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h3>Let's talk about Roth IRAs 🧑🏻‍🏫</h3>
+            <h3>Let's talk about Roth IRAs 🤓</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">

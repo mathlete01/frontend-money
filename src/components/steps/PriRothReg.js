@@ -20,7 +20,10 @@ class PriRothReg extends React.Component {
   _next = (event) => {
     event.preventDefault();
     // this.props.updateCurrentRow(this.props.getNextRow());
-    this.props.updateCurrentUser(this.props.currentUser.id, { roth_eligable: true },this.props.currentStep);
+    this.props.updateCurrentUser(this.props.currentUser.id, { 
+      roth_eligable: true,
+      roth_max: 6000 
+    },this.props.currentStep);
     this.props.handleNextStep(event)
   };
 
@@ -43,7 +46,7 @@ class PriRothReg extends React.Component {
         <Row id="title" className="rowElement">
           <Container>
             <h6>YOUR # {this.props.rowNum} PRIORITY:</h6>
-            <h3>Max-out Roth IRA 🥚📈</h3>
+            <h3>Max-out a Roth IRA 🥚📈</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">

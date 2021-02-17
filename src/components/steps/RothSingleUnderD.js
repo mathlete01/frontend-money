@@ -13,6 +13,7 @@ import { updateCurrentRow } from "../../actions/rowActions";
 class RothSingleUnderD extends React.Component {
   _next = (event) => {
     event.preventDefault();
+    this.props.updateCurrentUser(this.props.currentUser.id, { earned_income: false },this.props.currentStep);
     this.props.handleNextStep(event)
 
   };
