@@ -27,7 +27,7 @@ class PriFour01kMax extends React.Component {
       return null;
     }
     return (
-      <Container className="directive">
+      <Container className="priority">
         <Row id="header" className="rowElement">
           <Button onClick={this._prev} variant="link">
             <FontAwesomeIcon icon="chevron-left" /> Back
@@ -96,10 +96,16 @@ class PriFour01kMax extends React.Component {
                     size="lg"
                     block
                     id={this.props.getNextRow()}
-                    value="PriTaxableBrokerageIntro"
+                    id="row4"
+                    // id="row5"
+                    // id="row5"
+                    // value="PriTaxableBrokerageIntro"
+                    value="PriTaxableBrokerageAgain"
+
+                    // value="DoneForNow"
                     onClick={this._next}
                   >
-                    Okay
+                    Continue Below ↓
                   </Button>
                 </Col>
               </Form.Row>

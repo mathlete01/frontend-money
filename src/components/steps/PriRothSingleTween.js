@@ -27,7 +27,7 @@ class PriRothSingleTween extends React.Component {
 
   render() {
     return (
-      <Container className="directive">
+      <Container className="priority">
         <Row id="header" className="rowElement">
         <Button
             onClick={this._prev}
@@ -190,10 +190,13 @@ class PriRothSingleTween extends React.Component {
                     size="lg"
                     block
                     id={this.props.getNextRow()}
+                    // id="row3"
                     value={this.props.currentUser.four01k ? "Four01kMaxOutQ" : "PriTaxableBrokerageIntro"}
+                    // value= "PriTaxableBrokerageIntro"
+                    // value= "Four01kMaxOutQ"
                     onClick={this._next}
                   >
-                    Continue
+                    Continue Below ↓
                   </Button>
                 </Col>
               </Form.Row>

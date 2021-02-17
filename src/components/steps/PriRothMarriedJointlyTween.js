@@ -26,7 +26,7 @@ class PriRothMarriedJointlyTween extends React.Component {
 
   render() {
     return (
-      <Container className="directive">
+      <Container className="priority">
         <Row id="header" className="rowElement">
           <Button
             onClick={this._prev}
@@ -206,7 +206,7 @@ class PriRothMarriedJointlyTween extends React.Component {
                     }
                     onClick={this._next}
                   >
-                    Continue
+                    Continue Below ↓
                   </Button>
                 </Col>
               </Form.Row>

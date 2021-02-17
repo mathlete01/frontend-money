@@ -62,10 +62,11 @@ class Four01kMaxOutQ extends React.Component {
                     size="lg"
                     block
                     id={this.props.currentRow}
-                    value="PriFour01kMax"
+                    // value="PriFour01kMax"
+                    value="PriTaxableBrokerageAgain"
                     onClick={this._no}
                   >
-                    No
+                    ...xableBrokerageAgain
                   </Button>
                 </Col>
                 <Col>
@@ -78,7 +79,7 @@ class Four01kMaxOutQ extends React.Component {
                     value="PriTaxableBrokerageIntro"
                     onClick={this._yes}
                   >
-                    Yes
+                    ...xableBrokerageIntro
                   </Button>
                 </Col>
               </Form.Row>

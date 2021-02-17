@@ -17,7 +17,7 @@ import Navbar from "react-bootstrap/Navbar";
 import { updateCurrentRow } from "../../actions/rowActions";
 
 
-class PriTaxableBrokerageIntro extends React.Component {
+class PriTaxableBrokerageAgain extends React.Component {
   
   _prev = () => {
     this.props.handlePrevStep();
@@ -38,7 +38,7 @@ class PriTaxableBrokerageIntro extends React.Component {
             onClick={this._prev}
             variant="link"
             disabled={
-              this.props.currentStep === "PriTaxableBrokerageIntro" ? false : true
+              this.props.currentStep === "PriTaxableBrokerageAgain" ? false : true
             }
           >
             <FontAwesomeIcon icon="chevron-left" /> Back
@@ -48,7 +48,7 @@ class PriTaxableBrokerageIntro extends React.Component {
         <Row id="title" className="rowElement">
           <Container>
             <h6>YOUR # {this.props.rowNum} PRIORITY:</h6>
-            <h3>Invest in a Taxable Brokerage Account</h3>
+            <h3>PriTaxableBrokerageAgain</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
@@ -112,7 +112,7 @@ class PriTaxableBrokerageIntro extends React.Component {
                 </Col>
                 <Col
                   className={
-                    this.props.currentStep === "PriTaxableBrokerageIntro"
+                    this.props.currentStep === "PriTaxableBrokerageAgain"
                       ? ""
                       : "hidden"
                   }
@@ -122,8 +122,8 @@ class PriTaxableBrokerageIntro extends React.Component {
                     variant="primary"
                     size="lg"
                     block
-                    // id={this.props.getNextRow()}
-                    id="row5"
+                    id={this.props.getNextRow()}
+                    // id="row5"
                     // id="row4"
                     // NOTE: The above code should work, but it always returns the current row as opposed to the next row. Because of this, I wrote the hack below.
                     // id={
@@ -132,7 +132,7 @@ class PriTaxableBrokerageIntro extends React.Component {
                     //   : "row4"
                     // }
                     // value="DoneForNow"
-                    value="Done4Now"
+                    value="PriTaxableBrokerageIntro"
                     // value="PriFour01kMax"
                     // value="Four01kMaxOutQ"
                     onClick={this._next}
@@ -161,4 +161,4 @@ export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
   updateCurrentRow,
-})(PriTaxableBrokerageIntro);
+})(PriTaxableBrokerageAgain);

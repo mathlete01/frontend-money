@@ -17,7 +17,7 @@ import Navbar from "react-bootstrap/Navbar";
 import { updateCurrentRow } from "../../actions/rowActions";
 
 
-class PriTaxableBrokerageIntro extends React.Component {
+class Done4Now extends React.Component {
   
   _prev = () => {
     this.props.handlePrevStep();
@@ -32,13 +32,16 @@ class PriTaxableBrokerageIntro extends React.Component {
   render() {
    
     return (
-      <Container className="priority">
+      <Container className="step">
         <Row id="header" className="rowElement">
         <Button
             onClick={this._prev}
             variant="link"
+            // disabled={
+            //   this.props.currentStep === "Done4Now" ? false : true
+            // }
             disabled={
-              this.props.currentStep === "PriTaxableBrokerageIntro" ? false : true
+              false
             }
           >
             <FontAwesomeIcon icon="chevron-left" /> Back
@@ -47,8 +50,7 @@ class PriTaxableBrokerageIntro extends React.Component {
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h6>YOUR # {this.props.rowNum} PRIORITY:</h6>
-            <h3>Invest in a Taxable Brokerage Account</h3>
+            <h3>Done4Now</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
@@ -112,33 +114,12 @@ class PriTaxableBrokerageIntro extends React.Component {
                 </Col>
                 <Col
                   className={
-                    this.props.currentStep === "PriTaxableBrokerageIntro"
+                    this.props.currentStep === "Done4Now"
                       ? ""
                       : "hidden"
                   }
                 >
-                  <Button
-                    className="yes"
-                    variant="primary"
-                    size="lg"
-                    block
-                    // id={this.props.getNextRow()}
-                    id="row5"
-                    // id="row4"
-                    // NOTE: The above code should work, but it always returns the current row as opposed to the next row. Because of this, I wrote the hack below.
-                    // id={
-                    //   this.props.currentRow === "row2"
-                    //   ? "row3"
-                    //   : "row4"
-                    // }
-                    // value="DoneForNow"
-                    value="Done4Now"
-                    // value="PriFour01kMax"
-                    // value="Four01kMaxOutQ"
-                    onClick={this._next}
-                  >
-                    Continue Below ↓
-                  </Button>
+               
                 </Col>
               </Form.Row>
             </Form.Group>
@@ -161,4 +142,4 @@ export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
   updateCurrentRow,
-})(PriTaxableBrokerageIntro);
+})(Done4Now);
