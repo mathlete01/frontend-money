@@ -10,58 +10,27 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 
-class MoreToSpendQ extends React.Component {
+class BLANK_TITLE extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
 
   _yes = (event) => {
     event.preventDefault();
-    this.props.handleNextStep(this.nextStep);
+    this.props.updateCurrentUser(this.props.currentUser.id, { BLANK_DB: true });
+    this.props.handleNextStep("BLANK_YES");
   };
 
   _no = (event) => {
     event.preventDefault();
-    this.props.handleNextStep("DoneForNow");
+    this.props.updateCurrentUser(this.props.currentUser.id, { BLANK_DB: false });
+    this.props.handleNextStep("BLANK_NO");
   };
-
-  _prev = () => {
-    this.props.handlePrevStep();
-  };
-
-  makeDetermination = () => {
-    // console.log("makeDetermination called");
-    const {
-      leftover_money,
-      four01k,
-      four01k_match,
-      four01k_contribution,
-      credit_card_debt,
-    } = this.props.currentUser;
-    switch (true) {
-      // Case: Yes 401k --> are you maxing it out?
-      case four01k === true:
-        this.nextStep = "Four01kMaxOutQ"
-        break;
-      // Case:  No 401K  --> Try for traditional IRA
-      case four01k === false:
-        this.nextStep = "PriBackdoorRothIntro";
-        break;
-      default:
-        this.advice = "Whoops, we've encountered an error. How embarassing.";
-    }
-  };
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.currentStep !== this.props.currentStep) {
-      this.makeDetermination();
-    }
-  }
 
   render() {
-    if (this.props.currentStep !== "MoreToSpendQ") {
-      return null;
-    }
+    // if (this.props.currentStep !== "BLANK_TITLE") {
+    //   return null;
+    // }
     return (
       <Container className="step">
         <Row id="header" className="rowElement">
@@ -72,7 +41,7 @@ class MoreToSpendQ extends React.Component {
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h3>Do you have any more money to put towards your goals?</h3>
+            <h3>BLANK_QUESTION</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
@@ -93,7 +62,7 @@ class MoreToSpendQ extends React.Component {
                     block
                     onClick={this._no}
                   >
-                    I'm all tapped out
+                    No
                   </Button>
                 </Col>
                 <Col>
@@ -104,7 +73,7 @@ class MoreToSpendQ extends React.Component {
                     block
                     onClick={this._yes}
                   >
-                    I've got some more
+                    Yes
                   </Button>
                 </Col>
               </Form.Row>
@@ -128,4 +97,4 @@ export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
   updateCurrentRow,
-})(MoreToSpendQ);
+})(BLANK_TITLE);

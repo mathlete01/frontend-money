@@ -23,13 +23,19 @@ class PriFour01kMax extends React.Component {
   };
 
   render() {
-    if (this.props.currentStep !== "PriFour01kMax") {
-      return null;
-    }
+    // if (this.props.currentStep !== "PriFour01kMax") {
+    //   return null;
+    // }
     return (
       <Container className="priority">
         <Row id="header" className="rowElement">
-          <Button onClick={this._prev} variant="link">
+        <Button
+            onClick={this._prev}
+            variant="link"
+            disabled={
+              this.props.currentStep === "PriFour01kMax" ? false : true
+            }
+          >
             <FontAwesomeIcon icon="chevron-left" /> Back
           </Button>
           <hr className="w-100" />
@@ -89,20 +95,22 @@ class PriFour01kMax extends React.Component {
               <Form.Row>
                 <Col>
                 </Col>
-                <Col>
+                <Col
+                  className={
+                    this.props.currentStep === "PriFour01kMax"
+                      ? ""
+                      : "hidden"
+                  }
+                >
                   <Button
                     className="yes"
                     variant="primary"
                     size="lg"
                     block
                     id={this.props.getNextRow()}
-                    id="row4"
-                    // id="row5"
-                    // id="row5"
-                    // value="PriTaxableBrokerageIntro"
-                    value="PriTaxableBrokerageAgain"
+ 
+                    value="PriTaxableBrokerageIntro"
 
-                    // value="DoneForNow"
                     onClick={this._next}
                   >
                     Continue Below ↓

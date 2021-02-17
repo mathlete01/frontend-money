@@ -10,27 +10,60 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 
-class SaveYourWork extends React.Component {
+class MoreToSpendQ extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
 
   _yes = (event) => {
     event.preventDefault();
-    this.props.handleNextStep("CreditCardDebt");
+    this.props.handleNextStep(this.nextStep);
   };
 
   _no = (event) => {
     event.preventDefault();
-    this.props.handleNextStep("Determination");
+    this.props.handleNextStep("DoneForNow");
   };
 
-  render() {
-    if (this.props.currentStep !== "SaveYourWork") {
-      return null;
+  _prev = () => {
+    this.props.handlePrevStep();
+  };
+
+  makeDetermination = () => {
+    // console.log("makeDetermination called");
+    const {
+      leftover_money,
+      four01k,
+      four01k_match,
+      four01k_contribution,
+      credit_card_debt,
+    } = this.props.currentUser;
+    switch (true) {
+      // Case: Yes 401k --> are you maxing it out?
+      case four01k === true:
+        this.nextStep = "Four01kMaxOutQ"
+        break;
+      // Case:  No 401K  --> Try for traditional IRA
+      case four01k === false:
+        this.nextStep = "PriBackdoorRothIntro";
+        break;
+      default:
+        this.advice = "Whoops, we've encountered an error. How embarassing.";
     }
+  };
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.currentStep !== this.props.currentStep) {
+      this.makeDetermination();
+    }
+  }
+
+  render() {
+    // if (this.props.currentStep !== "MoreToSpendQ") {
+    //   return null;
+    // }
     return (
-        <Container className="step">
+      <Container className="step">
         <Row id="header" className="rowElement">
           <Button onClick={this._prev} variant="link">
             <FontAwesomeIcon icon="chevron-left" /> Back
@@ -39,12 +72,12 @@ class SaveYourWork extends React.Component {
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h3>Save your work</h3>
+            <h3>Do you have any more money to put towards your goals?</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-          Let's save your work now so you can come back here for your next goal!
+            BLANK_BODY
           </Container>
         </Row>
         <Row id="form" className="rowElement"></Row>
@@ -53,25 +86,25 @@ class SaveYourWork extends React.Component {
             <Form.Group>
               <Form.Row>
                 <Col>
-                  {/* <Button
+                  <Button
                     className="no"
                     variant="danger"
                     size="lg"
                     block
                     onClick={this._no}
                   >
-                    No
-                  </Button> */}
+                    I'm all tapped out
+                  </Button>
                 </Col>
                 <Col>
                   <Button
                     className="yes"
-                    variant="primary"
+                    variant="success"
                     size="lg"
                     block
-                    onClick={this._next}
+                    onClick={this._yes}
                   >
-                    Okay
+                    I've got some more
                   </Button>
                 </Col>
               </Form.Row>
@@ -86,8 +119,13 @@ class SaveYourWork extends React.Component {
 const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
-    currentUser: state.userReducer.currentUser
+    currentUser: state.userReducer.currentUser,
+    currentRow: state.rowReducer.currentRow,
   };
 };
 
-export default connect(mapStateToProps, { updateCurrentStep, updateCurrentUser })(SaveYourWork);
+export default connect(mapStateToProps, {
+  updateCurrentStep,
+  updateCurrentUser,
+  updateCurrentRow,
+})(MoreToSpendQ);

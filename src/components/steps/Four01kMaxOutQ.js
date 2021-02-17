@@ -29,9 +29,9 @@ class Four01kMaxOutQ extends React.Component {
   };
 
   render() {
-    if (this.props.currentStep !== "Four01kMaxOutQ") {
-      return null;
-    }
+    // if (this.props.currentStep !== "Four01kMaxOutQ") {
+    //   return null;
+    // }
     return (
       <Container className="step">
         <Row id="header" className="rowElement">
@@ -62,11 +62,11 @@ class Four01kMaxOutQ extends React.Component {
                     size="lg"
                     block
                     id={this.props.currentRow}
-                    // value="PriFour01kMax"
-                    value="PriTaxableBrokerageAgain"
+                    value="PriFour01kMax"
+                    // value="PriFour01kMMax"
                     onClick={this._no}
                   >
-                    ...xableBrokerageAgain
+                    No
                   </Button>
                 </Col>
                 <Col>
@@ -79,7 +79,7 @@ class Four01kMaxOutQ extends React.Component {
                     value="PriTaxableBrokerageIntro"
                     onClick={this._yes}
                   >
-                    ...xableBrokerageIntro
+                    Yes
                   </Button>
                 </Col>
               </Form.Row>

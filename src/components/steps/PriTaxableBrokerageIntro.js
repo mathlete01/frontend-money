@@ -124,17 +124,7 @@ class PriTaxableBrokerageIntro extends React.Component {
                     block
                     // id={this.props.getNextRow()}
                     id="row5"
-                    // id="row4"
-                    // NOTE: The above code should work, but it always returns the current row as opposed to the next row. Because of this, I wrote the hack below.
-                    // id={
-                    //   this.props.currentRow === "row2"
-                    //   ? "row3"
-                    //   : "row4"
-                    // }
-                    // value="DoneForNow"
-                    value="Done4Now"
-                    // value="PriFour01kMax"
-                    // value="Four01kMaxOutQ"
+                    value="DoneForNow"
                     onClick={this._next}
                   >
                     Continue Below ↓

@@ -17,7 +17,7 @@ import Navbar from "react-bootstrap/Navbar";
 import { updateCurrentRow } from "../../actions/rowActions";
 
 
-class PriTaxableBrokerageAgain extends React.Component {
+class PriFour01kMMax extends React.Component {
   
   _prev = () => {
     this.props.handlePrevStep();
@@ -38,7 +38,7 @@ class PriTaxableBrokerageAgain extends React.Component {
             onClick={this._prev}
             variant="link"
             disabled={
-              this.props.currentStep === "PriTaxableBrokerageAgain" ? false : true
+              this.props.currentStep === "PriFour01kMMax" ? false : true
             }
           >
             <FontAwesomeIcon icon="chevron-left" /> Back
@@ -48,7 +48,7 @@ class PriTaxableBrokerageAgain extends React.Component {
         <Row id="title" className="rowElement">
           <Container>
             <h6>YOUR # {this.props.rowNum} PRIORITY:</h6>
-            <h3>PriTaxableBrokerageAgain</h3>
+            <h3>PriFour01kMMax</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
@@ -112,7 +112,7 @@ class PriTaxableBrokerageAgain extends React.Component {
                 </Col>
                 <Col
                   className={
-                    this.props.currentStep === "PriTaxableBrokerageAgain"
+                    this.props.currentStep === "PriFour01kMMax"
                       ? ""
                       : "hidden"
                   }
@@ -161,4 +161,4 @@ export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
   updateCurrentRow,
-})(PriTaxableBrokerageAgain);
+})(PriFour01kMMax);

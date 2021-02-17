@@ -18,7 +18,6 @@ import PriRothReg from "./steps/PriRothReg";
 import RothIntro from "./steps/RothIntro";
 import PriRothMax from "./steps/PriRothMax";
 import PriPostDebt from "./steps/PriPostDebt";
-import SaveYourWork from "./steps/SaveYourWork";
 import PriRothSingleTween from "./steps/PriRothSingleTween";
 import RothSingle50Q from "./steps/RothSingle50Q";
 import RothSingleMinQ from "./steps/RothSingleMinQ";
@@ -42,8 +41,6 @@ import Row from "react-bootstrap/Row";
 import NoDebt from "./steps/NoDebt";
 // import BLANK from "./steps/BLANK";
 import { updateCurrentRow } from "../actions/rowActions";
-import Done4Now from "./steps/Done4Now";
-import PriTaxableBrokerageAgain from "./steps/PriTaxableBrokerageAgain";
 
 class StepContainer extends React.Component {
   constructor(props) {
@@ -488,15 +485,7 @@ class StepContainer extends React.Component {
             getNextRow={this.getNextRow}
           />
         );
-      case this.state.row1 === "SaveYourWork":
-        return (
-          <SaveYourWork
-            handlePrevStep={this.handlePrevStep}
-            handleNextStep={this.handleNextStep}
-            rowNum="1"
-            getNextRow={this.getNextRow}
-          />
-        );
+  
       case this.state.row1 === "PriTaxableBrokerageIntro":
         return (
           <PriTaxableBrokerageIntro
@@ -513,15 +502,6 @@ class StepContainer extends React.Component {
 
   loadChildInRow2 = () => {
     switch (true) {
-      case this.state.row2 === "PriTaxableBrokerageAgain":
-        return (
-          <PriTaxableBrokerageAgain
-            handlePrevStep={this.handlePrevStep}
-            handleNextStep={this.handleNextStep}
-            rowNum="2"
-            getNextRow={this.getNextRow}
-          />
-        );
       case this.state.row2 === "PriBackdoorRothIntro":
         return (
           <PriBackdoorRothIntro
@@ -828,15 +808,7 @@ class StepContainer extends React.Component {
             getNextRow={this.getNextRow}
           />
         );
-      case this.state.row2 === "SaveYourWork":
-        return (
-          <SaveYourWork
-            handlePrevStep={this.handlePrevStep}
-            handleNextStep={this.handleNextStep}
-            rowNum="2"
-            getNextRow={this.getNextRow}
-          />
-        );
+
       case this.state.row2 === "PriTaxableBrokerageIntro":
         return (
           <PriTaxableBrokerageIntro
@@ -853,24 +825,6 @@ class StepContainer extends React.Component {
 
   loadChildInRow3 = () => {
     switch (true) {
-      case this.state.row3 === "PriTaxableBrokerageAgain":
-        return (
-          <PriTaxableBrokerageAgain
-            handlePrevStep={this.handlePrevStep}
-            handleNextStep={this.handleNextStep}
-            rowNum="3"
-            getNextRow={this.getNextRow}
-          />
-        );
-      case this.state.row3 === "Done4Now":
-        return (
-          <Done4Now
-            handlePrevStep={this.handlePrevStep}
-            handleNextStep={this.handleNextStep}
-            rowNum="3"
-            getNextRow={this.getNextRow}
-          />
-        );
       case this.state.row3 === "PriBackdoorRothIntro":
         return (
           <PriBackdoorRothIntro
@@ -1177,15 +1131,7 @@ class StepContainer extends React.Component {
             getNextRow={this.getNextRow}
           />
         );
-      case this.state.row3 === "SaveYourWork":
-        return (
-          <SaveYourWork
-            handlePrevStep={this.handlePrevStep}
-            handleNextStep={this.handleNextStep}
-            rowNum="3"
-            getNextRow={this.getNextRow}
-          />
-        );
+
       case this.state.row3 === "PriTaxableBrokerageIntro":
         return (
           <PriTaxableBrokerageIntro
@@ -1202,24 +1148,6 @@ class StepContainer extends React.Component {
 
   loadChildInRow4 = () => {
     switch (true) {
-      case this.state.row4 === "PriTaxableBrokerageAgain":
-        return (
-          <PriTaxableBrokerageAgain
-            handlePrevStep={this.handlePrevStep}
-            handleNextStep={this.handleNextStep}
-            rowNum="4"
-            getNextRow={this.getNextRow}
-          />
-        );
-      case this.state.row4 === "Done4Now":
-        return (
-          <Done4Now
-            handlePrevStep={this.handlePrevStep}
-            handleNextStep={this.handleNextStep}
-            rowNum="4"
-            getNextRow={this.getNextRow}
-          />
-        );
       case this.state.row4 === "PriBackdoorRothIntro":
         return (
           <PriBackdoorRothIntro
@@ -1526,15 +1454,7 @@ class StepContainer extends React.Component {
             getNextRow={this.getNextRow}
           />
         );
-      case this.state.row4 === "SaveYourWork":
-        return (
-          <SaveYourWork
-            handlePrevStep={this.handlePrevStep}
-            handleNextStep={this.handleNextStep}
-            rowNum="4"
-            getNextRow={this.getNextRow}
-          />
-        );
+
       case this.state.row4 === "PriTaxableBrokerageIntro":
         return (
           <PriTaxableBrokerageIntro
@@ -1551,24 +1471,6 @@ class StepContainer extends React.Component {
 
   loadChildInRow5 = () => {
     switch (true) {
-      case this.state.row5 === "PriTaxableBrokerageAgain":
-        return (
-          <PriTaxableBrokerageAgain
-            handlePrevStep={this.handlePrevStep}
-            handleNextStep={this.handleNextStep}
-            rowNum="5"
-            getNextRow={this.getNextRow}
-          />
-        );
-      case this.state.row5 === "Done4Now":
-        return (
-          <Done4Now
-            handlePrevStep={this.handlePrevStep}
-            handleNextStep={this.handleNextStep}
-            rowNum="5"
-            getNextRow={this.getNextRow}
-          />
-        );
       case this.state.row5 === "PriBackdoorRothIntro":
         return (
           <PriBackdoorRothIntro
@@ -1875,15 +1777,7 @@ class StepContainer extends React.Component {
             getNextRow={this.getNextRow}
           />
         );
-      case this.state.row5 === "SaveYourWork":
-        return (
-          <SaveYourWork
-            handlePrevStep={this.handlePrevStep}
-            handleNextStep={this.handleNextStep}
-            rowNum="5"
-            getNextRow={this.getNextRow}
-          />
-        );
+
       case this.state.row5 === "PriTaxableBrokerageIntro":
         return (
           <PriTaxableBrokerageIntro

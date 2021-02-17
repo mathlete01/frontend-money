@@ -10,27 +10,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 
-class BLANK_TITLE extends React.Component {
+class BLANK extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
 
-  _yes = (event) => {
+  _next = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { BLANK_DB: true });
-    this.props.handleNextStep("BLANK_YES");
-  };
-
-  _no = (event) => {
-    event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { BLANK_DB: false });
-    this.props.handleNextStep("BLANK_NO");
+    this.props.updateCurrentUser(this.props.currentUser.id, { BLANK_DB: true },this.props.currentStep);
+    this.props.handleNextStep("BLANK_NEXT");
   };
 
   render() {
-    if (this.props.currentStep !== "BLANK_TITLE") {
-      return null;
-    }
+    // if (this.props.currentStep !== "BLANK") {
+    //   return null;
+    // }
     return (
       <Container className="step">
         <Row id="header" className="rowElement">
@@ -55,7 +49,7 @@ class BLANK_TITLE extends React.Component {
             <Form.Group>
               <Form.Row>
                 <Col>
-                  <Button
+                  {/* <Button
                     className="no"
                     variant="danger"
                     size="lg"
@@ -63,7 +57,7 @@ class BLANK_TITLE extends React.Component {
                     onClick={this._no}
                   >
                     No
-                  </Button>
+                  </Button> */}
                 </Col>
                 <Col>
                   <Button
@@ -71,7 +65,7 @@ class BLANK_TITLE extends React.Component {
                     variant="success"
                     size="lg"
                     block
-                    onClick={this._yes}
+                    onClick={this._next}
                   >
                     Yes
                   </Button>
@@ -97,4 +91,4 @@ export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
   updateCurrentRow,
-})(BLANK_TITLE);
+})(BLANK);
