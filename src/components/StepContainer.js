@@ -61,22 +61,22 @@ class StepContainer extends React.Component {
   }
 
   getNextRow = () => {
-    console.log(`getNextRow: this.props.currentRow = `, this.props.currentRow);
+    // console.log(`getNextRow: this.props.currentRow = `, this.props.currentRow);
     switch (true) {
       case this.props.currentRow === "row1":
-        console.log("getNextRow: return row2");
+        // console.log("getNextRow: return row2");
         return "row2";
       case this.props.currentRow === "row2":
-        console.log("getNextRow: return row3");
+        // console.log("getNextRow: return row3");
         return "row3";
       case this.props.currentRow === "row3":
-        console.log("getNextRow: return row4");
+        // console.log("getNextRow: return row4");
         return "row4";
       case this.props.currentRow === "row4":
-        console.log("getNextRow: return row5");
+        // console.log("getNextRow: return row5");
         return "row5";
       case this.props.currentRow === "row5":
-        console.log("getNextRow: return row6");
+        // console.log("getNextRow: return row6");
         return "row6";
       default:
         return null;
@@ -118,12 +118,6 @@ class StepContainer extends React.Component {
   handleNextStep = (event) => {
     let nextStep = event.target.value;
     let nextRow = event.target.id;
-    // console.log(`handleNextStep this.props.currentRow = `, this.props.currentRow)
-    // console.log(`event = `, event);
-    // console.log(`nextStep = `, nextStep)
-    console.log(`this.props.currentRow = `, this.props.currentRow)
-    console.log(`nextRow = `, nextRow)
-    // console.log(`handleNextStep event.target.id = `, event.target.id);
     // If current row isn't the same as the next, update the current row
     if (this.props.currentRow !== nextRow) {
       console.log(`IF STATEMENT RUN`);
@@ -138,18 +132,11 @@ class StepContainer extends React.Component {
     });
     // Update the current step to be the next step
     this.props.updateCurrentStep(nextStep);
-    // console.log(`handleNextStep: updateCurrentRow: nextRow = `, nextRow)
     this.props.updateCurrentRow(nextRow);
-    // var stateObject = function () {
-    //   var returnObj = {};
-    //   returnObj[this.target.id] = this.target.value;
-    //   return returnObj;
-    // }.bind(event)();
     this.setState({ [event.target.id]: event.target.value });
   };
 
   handlePrevStep = () => {
-    console.log(`*** clearRow called `)
     const pathLength = this.state.stepPath.length;
     const pathLengthMinus2 = pathLength - 2;
     const prevRow = this.state.rowPath[pathLengthMinus2];

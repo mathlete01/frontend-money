@@ -41,14 +41,14 @@ class PriTaxableBrokerageIntro extends React.Component {
               this.props.currentStep === "PriTaxableBrokerageIntro" ? false : true
             }
           >
-            <FontAwesomeIcon icon="chevron-left" /> Back
+            👈 Back
           </Button>
           <hr className="w-100" />
         </Row>
         <Row id="title" className="rowElement">
           <Container>
             <h6>YOUR # {this.props.rowNum} PRIORITY:</h6>
-            <h3>Invest in a Taxable Brokerage Account</h3>
+            <h3>Contribute to a Taxable Brokerage Account 🏦📈</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
@@ -123,11 +123,12 @@ class PriTaxableBrokerageIntro extends React.Component {
                     size="lg"
                     block
                     // id={this.props.getNextRow()}
+                    // Dynamic code above should work, but doesnt, so it's hard-coded below
                     id="row5"
                     value="DoneForNow"
                     onClick={this._next}
                   >
-                    Continue Below ↓
+                    Continue Below 👇
                   </Button>
                 </Col>
               </Form.Row>

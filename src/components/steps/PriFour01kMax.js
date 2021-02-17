@@ -36,14 +36,14 @@ class PriFour01kMax extends React.Component {
               this.props.currentStep === "PriFour01kMax" ? false : true
             }
           >
-            <FontAwesomeIcon icon="chevron-left" /> Back
+            👈 Back
           </Button>
           <hr className="w-100" />
         </Row>
         <Row id="title" className="rowElement">
           <Container>
             <h6>YOUR # {this.props.rowNum} PRIORITY:</h6>
-            <h3>Max-out your 401(k)</h3>
+            <h3>Max-out your 401(k) 🏢📈</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
@@ -113,7 +113,7 @@ class PriFour01kMax extends React.Component {
 
                     onClick={this._next}
                   >
-                    Continue Below ↓
+                    Continue Below 👇
                   </Button>
                 </Col>
               </Form.Row>
