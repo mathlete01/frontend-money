@@ -28,7 +28,8 @@ import StepContainer from "./components/StepContainer";
 import "./App.css";
 // import Ladder from "./components/Ladder";
 import { Form, FormControl, NavItem } from "react-bootstrap";
-import background from "./img/Louis_Vuitton-blue.png";
+// import background from "./img/Louis_Vuitton-blue.png";
+import background from "./img/wallpaper_sky_01.svg";
 import logo from "./img/safari-pinned-tab.svg"
 
 library.add(faSwimmingPool, faCoffee, faHandPointLeft, faChevronLeft);
@@ -117,7 +118,7 @@ class App extends React.Component {
         id="bg"
       >
         {/* <div> */}
-        <Navbar>
+        <Navbar variant="light">
           <Navbar.Brand></Navbar.Brand>
           <Navbar.Brand href="#home">
             <img

@@ -19,14 +19,12 @@ class PriRothMarriedJointlyTween extends React.Component {
 
   _next = (event) => {
     event.preventDefault();
-    console.log(`*** HELLOFROM THE OUTSIIIIDE`)
-    // this.props.updateCurrentRow(this.props.getNextRow());
     this.props.handleNextStep(event);
   };
 
   render() {
     return (
-      <Container className="directive">
+      <Container className="priority">
         <Row id="header" className="rowElement">
           <Button
             onClick={this._prev}
@@ -37,14 +35,14 @@ class PriRothMarriedJointlyTween extends React.Component {
                 : true
             }
           >
-            <FontAwesomeIcon icon="chevron-left" /> Back
+            👈 Back
           </Button>
           <hr className="w-100" />
         </Row>
         <Row id="title" className="rowElement">
           <Container>
             <h6>YOUR # {this.props.rowNum} PRIORITY:</h6>
-            <h3>Max-out Roth IRA</h3>
+            <h3>Max-out a Roth IRA 🥚📈</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
@@ -206,7 +204,7 @@ class PriRothMarriedJointlyTween extends React.Component {
                     }
                     onClick={this._next}
                   >
-                    Continue
+                    Continue Below 👇
                   </Button>
                 </Col>
               </Form.Row>

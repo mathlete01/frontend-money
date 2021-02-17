@@ -83,14 +83,14 @@ class LeftoverMoney extends React.Component {
       <Container className="step">
         <Row id="header" className="rowElement">
           <Button onClick={this._prev} variant="link" disabled>
-            <FontAwesomeIcon icon="chevron-left" /> Back
+            👈 Back
           </Button>
           <hr className="w-100" />
         </Row>
         <Row id="title" className="rowElement">
           <Container>
             <h3>
-              How much money do you have every month to put towards your goals?
+              How much money do you have every month to put towards your goals? 🥅
             </h3>
           </Container>
         </Row>

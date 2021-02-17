@@ -29,25 +29,25 @@ class Four01kMaxOutQ extends React.Component {
   };
 
   render() {
-    if (this.props.currentStep !== "Four01kMaxOutQ") {
-      return null;
-    }
+    // if (this.props.currentStep !== "Four01kMaxOutQ") {
+    //   return null;
+    // }
     return (
       <Container className="step">
         <Row id="header" className="rowElement">
           <Button onClick={this._prev} variant="link">
-            <FontAwesomeIcon icon="chevron-left" /> Back
+            👈 Back
           </Button>
           <hr className="w-100" />
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h3>Are you maxxing-out your 401(k)?</h3>
+            <h3>Are you maxxing-out your 401(k)? 🤑</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Got any more disposible income? If so, your #1 priority is to contribute as much as you can to your 401k. 
+            Got any more disposible income? If so, you should contribute as much as you can to your 401(k). 
           </Container>
         </Row>
         <Row id="form" className="rowElement"></Row>
@@ -63,6 +63,7 @@ class Four01kMaxOutQ extends React.Component {
                     block
                     id={this.props.currentRow}
                     value="PriFour01kMax"
+                    // value="PriFour01kMMax"
                     onClick={this._no}
                   >
                     No

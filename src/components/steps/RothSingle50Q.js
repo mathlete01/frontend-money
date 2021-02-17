@@ -34,13 +34,13 @@ class RothSingle50Q extends React.Component {
       <Container className="step">
         <Row id="header" className="rowElement">
           <Button onClick={this._prev} variant="link">
-            <FontAwesomeIcon icon="chevron-left" /> Back
+            👈 Back
           </Button>
           <hr className="w-100" />
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h3>Are you younger than 50?</h3>
+            <h3>Are you younger than 50? 👶</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">

@@ -10,6 +10,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import thunk from "redux-thunk";
 import rootReducer from "./reducers/rootReducer.js";
 import { BrowserRouter } from "react-router-dom";
+import "./style/fonts/Spartan-Regular.ttf"
+import "./style/fonts/Spartan-SemiBold.ttf"
 
 const composeEnhancers =
   typeof window === 'object' &&

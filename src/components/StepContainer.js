@@ -18,7 +18,6 @@ import PriRothReg from "./steps/PriRothReg";
 import RothIntro from "./steps/RothIntro";
 import PriRothMax from "./steps/PriRothMax";
 import PriPostDebt from "./steps/PriPostDebt";
-import SaveYourWork from "./steps/SaveYourWork";
 import PriRothSingleTween from "./steps/PriRothSingleTween";
 import RothSingle50Q from "./steps/RothSingle50Q";
 import RothSingleMinQ from "./steps/RothSingleMinQ";
@@ -62,22 +61,22 @@ class StepContainer extends React.Component {
   }
 
   getNextRow = () => {
-    console.log(`getNextRow: this.props.currentRow = `, this.props.currentRow);
+    // console.log(`getNextRow: this.props.currentRow = `, this.props.currentRow);
     switch (true) {
       case this.props.currentRow === "row1":
-        console.log("getNextRow: return row2");
+        // console.log("getNextRow: return row2");
         return "row2";
       case this.props.currentRow === "row2":
-        console.log("getNextRow: return row3");
+        // console.log("getNextRow: return row3");
         return "row3";
       case this.props.currentRow === "row3":
-        console.log("getNextRow: return row4");
+        // console.log("getNextRow: return row4");
         return "row4";
       case this.props.currentRow === "row4":
-        console.log("getNextRow: return row5");
+        // console.log("getNextRow: return row5");
         return "row5";
       case this.props.currentRow === "row5":
-        console.log("getNextRow: return row6");
+        // console.log("getNextRow: return row6");
         return "row6";
       default:
         return null;
@@ -119,12 +118,6 @@ class StepContainer extends React.Component {
   handleNextStep = (event) => {
     let nextStep = event.target.value;
     let nextRow = event.target.id;
-    // console.log(`handleNextStep this.props.currentRow = `, this.props.currentRow)
-    // console.log(`event = `, event);
-    // console.log(`nextStep = `, nextStep)
-    console.log(`this.props.currentRow = `, this.props.currentRow)
-    console.log(`nextRow = `, nextRow)
-    // console.log(`handleNextStep event.target.id = `, event.target.id);
     // If current row isn't the same as the next, update the current row
     if (this.props.currentRow !== nextRow) {
       console.log(`IF STATEMENT RUN`);
@@ -139,18 +132,11 @@ class StepContainer extends React.Component {
     });
     // Update the current step to be the next step
     this.props.updateCurrentStep(nextStep);
-    // console.log(`handleNextStep: updateCurrentRow: nextRow = `, nextRow)
     this.props.updateCurrentRow(nextRow);
-    // var stateObject = function () {
-    //   var returnObj = {};
-    //   returnObj[this.target.id] = this.target.value;
-    //   return returnObj;
-    // }.bind(event)();
     this.setState({ [event.target.id]: event.target.value });
   };
 
   handlePrevStep = () => {
-    console.log(`*** clearRow called `)
     const pathLength = this.state.stepPath.length;
     const pathLengthMinus2 = pathLength - 2;
     const prevRow = this.state.rowPath[pathLengthMinus2];
@@ -486,15 +472,7 @@ class StepContainer extends React.Component {
             getNextRow={this.getNextRow}
           />
         );
-      case this.state.row1 === "SaveYourWork":
-        return (
-          <SaveYourWork
-            handlePrevStep={this.handlePrevStep}
-            handleNextStep={this.handleNextStep}
-            rowNum="1"
-            getNextRow={this.getNextRow}
-          />
-        );
+  
       case this.state.row1 === "PriTaxableBrokerageIntro":
         return (
           <PriTaxableBrokerageIntro
@@ -817,15 +795,7 @@ class StepContainer extends React.Component {
             getNextRow={this.getNextRow}
           />
         );
-      case this.state.row2 === "SaveYourWork":
-        return (
-          <SaveYourWork
-            handlePrevStep={this.handlePrevStep}
-            handleNextStep={this.handleNextStep}
-            rowNum="2"
-            getNextRow={this.getNextRow}
-          />
-        );
+
       case this.state.row2 === "PriTaxableBrokerageIntro":
         return (
           <PriTaxableBrokerageIntro
@@ -1148,15 +1118,7 @@ class StepContainer extends React.Component {
             getNextRow={this.getNextRow}
           />
         );
-      case this.state.row3 === "SaveYourWork":
-        return (
-          <SaveYourWork
-            handlePrevStep={this.handlePrevStep}
-            handleNextStep={this.handleNextStep}
-            rowNum="3"
-            getNextRow={this.getNextRow}
-          />
-        );
+
       case this.state.row3 === "PriTaxableBrokerageIntro":
         return (
           <PriTaxableBrokerageIntro
@@ -1479,15 +1441,7 @@ class StepContainer extends React.Component {
             getNextRow={this.getNextRow}
           />
         );
-      case this.state.row4 === "SaveYourWork":
-        return (
-          <SaveYourWork
-            handlePrevStep={this.handlePrevStep}
-            handleNextStep={this.handleNextStep}
-            rowNum="4"
-            getNextRow={this.getNextRow}
-          />
-        );
+
       case this.state.row4 === "PriTaxableBrokerageIntro":
         return (
           <PriTaxableBrokerageIntro
@@ -1810,15 +1764,7 @@ class StepContainer extends React.Component {
             getNextRow={this.getNextRow}
           />
         );
-      case this.state.row5 === "SaveYourWork":
-        return (
-          <SaveYourWork
-            handlePrevStep={this.handlePrevStep}
-            handleNextStep={this.handleNextStep}
-            rowNum="5"
-            getNextRow={this.getNextRow}
-          />
-        );
+
       case this.state.row5 === "PriTaxableBrokerageIntro":
         return (
           <PriTaxableBrokerageIntro

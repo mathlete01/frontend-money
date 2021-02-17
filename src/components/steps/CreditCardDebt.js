@@ -19,6 +19,7 @@ class CreditCardDebt extends React.Component {
         cc_1: this.props.currentUser.cc_1,
         cc_2: this.props.currentUser.cc_2,
         cc_3: this.props.currentUser.cc_3,
+        credit_card_debt: this.props.currentUser.credit_card_debt,
       });
     }
   }
@@ -79,13 +80,13 @@ class CreditCardDebt extends React.Component {
       <Container className="step">
         <Row id="header" className="rowElement">
           <Button onClick={this._prev} variant="link">
-            <FontAwesomeIcon icon="chevron-left" /> Back
+            👈 Back
           </Button>
           <hr className="w-100" />
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h3>How much credit card debt do you have?</h3>
+            <h3>How much credit card debt do you have? 🤔</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">

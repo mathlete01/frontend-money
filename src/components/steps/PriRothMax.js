@@ -32,7 +32,7 @@ class PriRothMax extends React.Component {
   render() {
 
     return (
-      <Container className="directive">
+      <Container className="priority">
         <Row id="header" className="rowElement">
         <Button
             onClick={this._prev}
@@ -41,14 +41,14 @@ class PriRothMax extends React.Component {
               this.props.currentStep === "PriRothMax" ? false : true
             }
           >
-            <FontAwesomeIcon icon="chevron-left" /> Back
+            👈 Back
           </Button>
           <hr className="w-100" />
         </Row>
         <Row id="title" className="rowElement">
           <Container>
             <h6>YOUR # {this.props.rowNum} PRIORITY:</h6>
-            <h3>Max-out your Roth IRA</h3>
+            <h3>Max-out your Roth IRA 🥚📈</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
@@ -134,7 +134,7 @@ class PriRothMax extends React.Component {
                     value={this.props.currentUser.four01k ? "Four01kMaxOutQ" : "PriTaxableBrokerageIntro"}
                     onClick={this._next}
                   >
-                    Continue
+                    Continue Below 👇
                   </Button>
                 </Col>
               </Form.Row>

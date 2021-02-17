@@ -20,7 +20,7 @@ class Four01kContribution extends React.Component {
   };
 
   checkValid = () => {
-    if (this.state.four01k_contribution > 0) {
+    if (this.state.four01k_contribution > -1) {
       return true;
     }
   };
@@ -53,13 +53,13 @@ class Four01kContribution extends React.Component {
       <Container className="step">
         <Row id="header" className="rowElement">
           <Button onClick={this._prev} variant="link">
-            <FontAwesomeIcon icon="chevron-left" /> Back
+            👈 Back
           </Button>
           <hr className="w-100" />
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h3>How much are you contributing to your 401(k)?</h3>
+            <h3>How much are you contributing to your 401(k)? 🧮</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">

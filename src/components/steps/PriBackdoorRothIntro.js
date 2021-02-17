@@ -26,7 +26,7 @@ class PriBackdoorRothIntro extends React.Component {
 
   render() {
     return (
-      <Container className="directive">
+      <Container className="priority">
         <Row id="header" className="rowElement">
           <Button
             onClick={this._prev}
@@ -35,14 +35,14 @@ class PriBackdoorRothIntro extends React.Component {
               this.props.currentStep === "PriBackdoorRothIntro" ? false : true
             }
           >
-            <FontAwesomeIcon icon="chevron-left" /> Back
+            👈 Back
           </Button>
           <hr className="w-100" />
         </Row>
         <Row id="title" className="rowElement">
           <Container>
             <h6>YOUR # {this.props.rowNum} PRIORITY:</h6>
-            <h3>Max-out a "Backdoor" Roth IRA</h3>
+            <h3>Max-out a "Backdoor" Roth IRA 🚪</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
@@ -134,7 +134,7 @@ class PriBackdoorRothIntro extends React.Component {
                     onClick={this._next}
                     onClick={this._next}
                   >
-                    Continue
+                    Continue Below 👇
                   </Button>
                 </Col>
               </Form.Row>

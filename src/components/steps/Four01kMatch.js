@@ -46,11 +46,11 @@ class Four01kMatch extends React.Component {
     return (
       <Container className="step">
         <Row id="header" className="rowElement">
-              <Button onClick={this._prev} variant="link"><FontAwesomeIcon icon="chevron-left" /> Back</Button>
+              <Button onClick={this._prev} variant="link">👈 Back</Button>
           <hr className="w-100" /> 
         </Row>
         <Row id="title" className="rowElement">
-          <Container><h3>How much is the employer match?</h3></Container>
+          <Container><h3>How much is the employer 401(k) match? 🏢</h3></Container>
         </Row>
         <Row id="body" className="rowElement">
           <Container>
@@ -94,7 +94,7 @@ class Four01kMatch extends React.Component {
                 <Col>
                 </Col>
                 <Col>
-                  {this.checkValid() ? (
+                  {/* {this.checkValid() ? ( */}
                     <Button
                       className="yes"
                       variant="primary"
@@ -106,11 +106,11 @@ class Four01kMatch extends React.Component {
                     >
                       Next
                     </Button>
-                  ) : (
+                  {/* ) : (
                     <Button className="yes" variant="primary" size="lg" block disabled>
                       Next
                     </Button>
-                  )}
+                  )} */}
                 </Col>
               </Form.Row>
             </Form.Group>
