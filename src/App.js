@@ -82,7 +82,7 @@ class App extends React.Component {
   };
 
   handleAuthFetch = (credentialObj, endpoint) => {
-    console.log(`1--handleAuthFetch: credentialObj = `, credentialObj);
+    console.log(`handleAuthFetch: credentialObj = `, credentialObj);
     fetch(endpoint, {
       method: "POST",
       headers: {
