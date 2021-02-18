@@ -32,11 +32,12 @@ class PriFour01kMax extends React.Component {
         <Button
             onClick={this._prev}
             variant="link"
+            className="backBtn"
             disabled={
               this.props.currentStep === "PriFour01kMax" ? false : true
             }
           >
-            👈 Back
+            👈 BACK
           </Button>
           <hr className="w-100" />
         </Row>
@@ -48,7 +49,7 @@ class PriFour01kMax extends React.Component {
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            They may be poorly named, but they are maybe the best investment you can get your hands on.
+            401(k)s have an inscrutable name, but they are maybe the best investment you can get your hands on.
           </Container>
         </Row>
         <Row>

@@ -41,8 +41,8 @@ class Four01kQ extends React.Component {
       <Container className="step">
         <Row id="header" className="rowElement">
           <Button 
-          onClick={this._prev} variant="link">
-            👈 Back
+          onClick={this._prev} variant="link" className="backBtn">
+            👈 BACK
           </Button>
           <hr className="w-100" />
         </Row>

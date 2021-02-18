@@ -78,12 +78,14 @@ class LeftoverMoney extends React.Component {
     }
   };
 
+  handleFocus = (event) => event.target.select();
+
   render() {
     return (
       <Container className="step">
         <Row id="header" className="rowElement">
-          <Button onClick={this._prev} variant="link" disabled>
-            👈 Back
+          <Button onClick={this._prev} variant="link" className="backBtn" disabled>
+            👈 BACK
           </Button>
           <hr className="w-100" />
         </Row>
@@ -119,12 +121,13 @@ class LeftoverMoney extends React.Component {
                       value={
                         this.state.monthly_income
                           ? this.state.monthly_income
-                          : 0
+                          : "0"
                       }
                       id="monthly_income"
                       name="monthly_income"
                       size="lg"
                       onChange={this.handleChange}
+                      onFocus={this.handleFocus} 
                     />
                   </InputGroup>
                 </Col>
@@ -155,6 +158,7 @@ class LeftoverMoney extends React.Component {
                       name="monthly_bills"
                       size="lg"
                       onChange={this.handleChange}
+                      onFocus={this.handleFocus} 
                     />
                   </InputGroup>
                 </Col>
@@ -187,6 +191,7 @@ class LeftoverMoney extends React.Component {
                       name="monthly_spending"
                       size="lg"
                       onChange={this.handleChange}
+                      onFocus={this.handleFocus} 
                     />
                   </InputGroup>
                 </Col>

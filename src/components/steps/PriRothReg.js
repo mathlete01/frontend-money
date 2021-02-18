@@ -20,7 +20,10 @@ class PriRothReg extends React.Component {
   _next = (event) => {
     event.preventDefault();
     // this.props.updateCurrentRow(this.props.getNextRow());
-    this.props.updateCurrentUser(this.props.currentUser.id, { roth_eligable: true },this.props.currentStep);
+    this.props.updateCurrentUser(this.props.currentUser.id, { 
+      roth_eligable: true,
+      roth_max: 6000 
+    },this.props.currentStep);
     this.props.handleNextStep(event)
   };
 
@@ -32,18 +35,19 @@ class PriRothReg extends React.Component {
         <Button
             onClick={this._prev}
             variant="link"
+            className="backBtn"
             disabled={
               this.props.currentStep === "PriRothReg" ? false : true
             }
           >
-            👈 Back
+            👈 BACK
           </Button>
           <hr className="w-100" />
         </Row>
         <Row id="title" className="rowElement">
           <Container>
             <h6>YOUR # {this.props.rowNum} PRIORITY:</h6>
-            <h3>Max-out Roth IRA 🥚📈</h3>
+            <h3>Max-out a Roth IRA 🥚📈</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">

@@ -2,39 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Spartan&display=swap');
 /* </style> */
 
-.bothContainer {
+.mainContainer {
   margin-top: 30px;
   margin-bottom: 30px;
-}
-.stepContainer {
-  /* background-color: white; */
-}
-/* Inactive tab */
-/* .tab ul > li > a {
-  background-color:  rgb(250, 231, 168);
-  color: red;
-} */
-/* .tab ul > li > a:hover {
-  background-color: pink;
-} */
-
-/* Active tab */
-/* .tab ul > li.active > a,
-.tab ul > li.active > a:hover,
-.tab ul > li.active > a:focus {
-  background-color:  rgb(250, 231, 168);
-  color: rgb(250, 231, 168);
-} */
-
-/* Disabled tab */
-/* .tab ul > li.disabled > a {
-  background-color: lightgray;
-  color: darkgray;
-} */
-.priorityContainer {
-  /* background-color: white; */
-  /* margin: 100px; */
-  /* padding: 100px; */
 }
 .rowElement {
   padding: 10px;
@@ -42,12 +12,6 @@
 }
 .hidden { 
   display:none; 
-}
-.rowElementTopDetermination {
-  /* padding-left: 20px;
-  margin-top: 21px; */
-  padding: 10px;
-  margin: 0px;
 }
 .priority {
   padding-bottom: 20px;
@@ -59,9 +23,6 @@
   margin-bottom: 20px;
   padding: 0px;
   background-color: white;
-}
-.alert {
-  width: 100%;
 }
 .disabled {
   color: gray;
@@ -76,6 +37,9 @@ Button {
 h6 {
   /* padding-left: 20px; */
   padding-top: 11px;
+  font-size: revert;
+  font-weight: bold;
+  /* font-family: 'Spartan'; */
 }
 .tab-content {
   margin: 15px 25px 15px 25px;
@@ -98,4 +62,67 @@ ul {
 #bg {
   height: 100vh;
   overflow-y: scroll;
+}
+/* #root {
+  font-family: 'Spartan';
+  font-weight: 500;
+} */
+a.navbar-brand {
+  font-weight: 600;
+  font-family: 'Spartan';
+}
+h3 {
+  font-weight: 800 !important;
+  font-size: x-large !important;
+  font-family: 'Spartan';
+}
+button.btn.btn-primary {
+  font-weight: 600;
+  font-size: medium;
+  font-family: 'Spartan';
+}
+/* .form-control {
+  display: block;
+  width: 100%;
+  height: calc(1.5em + .75rem + 2px);
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  font-family: 'Spartan';
+} */
+a.nav-link {
+  font-size: small;
+  font-weight: 600;
+  font-family: 'Spartan';
+}
+.backBtn {
+  font-size: small !important;
+  font-weight: 600 !important;
+  font-family: 'Spartan';
+}
+/* label.form-label {
+  font-size: larger;
+} */
+.nav-tabs .nav-item.show .nav-link, .nav-tabs {
+  color: #495057;
+  background-color: rgb(250, 231, 168)  !important;
+  border-color: #b8b8b8 #b8b8b8 #b8b8b8  !important;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  color: #495057;
+  background-color: rgb(250, 231, 168) !important;
+  border-color: #b8b8b8 #b8b8b8 #FAE7A8 !important;
+}
+.nav-tabs .nav-link:focus {
+  border-color: #b8b8b8 #b8b8b8 #FAE7A8 !important;
+}
+.nav-tabs .nav-link:hover {
+  border-color: #b8b8b8 #b8b8b8 #FAE7A8 !important;
 }

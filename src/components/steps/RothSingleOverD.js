@@ -13,7 +13,7 @@ import { updateCurrentRow } from "../../actions/rowActions";
 class RothSingleOverD extends React.Component {
   _next = (event) => {
     event.preventDefault();
-    // this.props.handleNextStep("PriBackdoorRothIntro");
+    this.props.updateCurrentUser(this.props.currentUser.id, { roth_eligable: false },this.props.currentStep);
     this.props.handleNextStep(event)
   };
 
@@ -60,8 +60,9 @@ class RothSingleOverD extends React.Component {
     return (
       <Container className="step">
         <Row id="header" className="rowElement">
-          <Button onClick={this._prev} variant="link">
-            👈 Back
+          <Button 
+          onClick={this._prev} variant="link" className="backBtn">
+            👈 BACK
           </Button>
           <hr className="w-100" />
         </Row>

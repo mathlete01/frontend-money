@@ -48,18 +48,21 @@ class Four01kContribution extends React.Component {
     this.props.handlePrevStep();
   };
 
+  handleFocus = (event) => event.target.select();
+
   render() {
     return (
       <Container className="step">
         <Row id="header" className="rowElement">
-          <Button onClick={this._prev} variant="link">
-            👈 Back
+          <Button 
+          onClick={this._prev} variant="link" className="backBtn">
+            👈 BACK
           </Button>
           <hr className="w-100" />
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h3>How much are you contributing to your 401(k)? 🧮</h3>
+            <h3>How much are you contributing to your 401(k)? 💵</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
@@ -92,6 +95,7 @@ class Four01kContribution extends React.Component {
                       name="four01k_contribution"
                       size="lg"
                       onChange={this.handleChange}
+                      onFocus={this.handleFocus} 
                     />
                     <InputGroup.Append>
                       <InputGroup.Text>%</InputGroup.Text>

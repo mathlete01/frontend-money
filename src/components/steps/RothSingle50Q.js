@@ -17,13 +17,13 @@ class RothSingle50Q extends React.Component {
 
   _yes = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { RothRegD: true },this.props.currentStep);
+    this.props.updateCurrentUser(this.props.currentUser.id, { roth_max: true },this.props.currentStep);
     this.props.handleNextStep(event)
   };
 
   _no = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { RothRegD: false },this.props.currentStep);
+    this.props.updateCurrentUser(this.props.currentUser.id, { roth_max: false },this.props.currentStep);
     this.props.handleNextStep(event)
 
   };
@@ -33,8 +33,9 @@ class RothSingle50Q extends React.Component {
     return (
       <Container className="step">
         <Row id="header" className="rowElement">
-          <Button onClick={this._prev} variant="link">
-            👈 Back
+          <Button 
+          onClick={this._prev} variant="link" className="backBtn">
+            👈 BACK
           </Button>
           <hr className="w-100" />
         </Row>
