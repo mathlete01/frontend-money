@@ -37,11 +37,12 @@ class PriRothMax extends React.Component {
         <Button
             onClick={this._prev}
             variant="link"
+            className="backBtn"
             disabled={
               this.props.currentStep === "PriRothMax" ? false : true
             }
           >
-            👈 Back
+            👈 BACK
           </Button>
           <hr className="w-100" />
         </Row>

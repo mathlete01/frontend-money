@@ -35,11 +35,12 @@ class PriRothReg extends React.Component {
         <Button
             onClick={this._prev}
             variant="link"
+            className="backBtn"
             disabled={
               this.props.currentStep === "PriRothReg" ? false : true
             }
           >
-            👈 Back
+            👈 BACK
           </Button>
           <hr className="w-100" />
         </Row>

@@ -32,11 +32,12 @@ class PriRothMarriedNotJointlyTween extends React.Component {
         <Button
             onClick={this._prev}
             variant="link"
+            className="backBtn"
             disabled={
               this.props.currentStep === "PriRothMarriedNotJointlyTween" ? false : true
             }
           >
-            👈 Back
+            👈 BACK
           </Button>
           <hr className="w-100" />
         </Row>

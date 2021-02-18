@@ -82,8 +82,8 @@ class LeftoverMoney extends React.Component {
     return (
       <Container className="step">
         <Row id="header" className="rowElement">
-          <Button onClick={this._prev} variant="link" disabled>
-            👈 Back
+          <Button onClick={this._prev} variant="link" className="backBtn" disabled>
+            👈 BACK
           </Button>
           <hr className="w-100" />
         </Row>

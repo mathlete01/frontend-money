@@ -30,7 +30,7 @@ import "./App.css";
 import { Form, FormControl, NavItem } from "react-bootstrap";
 // import background from "./img/Louis_Vuitton-blue.png";
 import background from "./img/wallpaper_sky_01.svg";
-import logo from "./img/safari-pinned-tab.svg"
+import logo from "./img/safari-pinned-tab.svg";
 
 library.add(faSwimmingPool, faCoffee, faHandPointLeft, faChevronLeft);
 
@@ -112,14 +112,10 @@ class App extends React.Component {
       <div
         style={{
           backgroundImage: `url(${background})`,
-          // backgroundRepeat: 'repeat',
-          // height: "100%",
         }}
         id="bg"
       >
-        {/* <div> */}
         <Navbar variant="light">
-          <Navbar.Brand></Navbar.Brand>
           <Navbar.Brand href="#home">
             <img
               alt=""
@@ -130,13 +126,6 @@ class App extends React.Component {
             />{" "}
             Debtor to Investor
           </Navbar.Brand>
-          <Switch>
-            <Route path="/" exact component={this.handleHome} />
-            <Route path="/login" exact component={this.renderForm} />
-            <Route path="/signup" exact component={this.renderForm} />
-            <Route component={NotFound} />
-          </Switch>
-
           <Navbar.Collapse className="justify-content-end">
             <Nav>
               <NavItem href="/">
@@ -161,13 +150,24 @@ class App extends React.Component {
             </Nav>
           </Navbar.Collapse>
         </Navbar>
+        <Navbar>
+          <Navbar.Collapse className="justify-content-end">
+            <Row>
+              <Switch>
+                <Route path="/" exact component={this.handleHome} />
+                <Route path="/login" exact component={this.renderForm} />
+                <Route path="/signup" exact component={this.renderForm} />
+                <Route component={NotFound} />
+              </Switch>
+            </Row>
+          </Navbar.Collapse>
+        </Navbar>
         <Container>
           <Row>
             <Col></Col>
-            <Col md={8} className="containerContainer">
+            <Col md={8} className="bothContainer">
               <StepContainer className="h-100" />
             </Col>
-
             <Col></Col>
           </Row>
         </Container>

@@ -46,7 +46,7 @@ class Four01kMatch extends React.Component {
     return (
       <Container className="step">
         <Row id="header" className="rowElement">
-              <Button onClick={this._prev} variant="link">👈 Back</Button>
+              <Button onClick={this._prev} variant="link" className="backBtn">👈 BACK</Button>
           <hr className="w-100" /> 
         </Row>
         <Row id="title" className="rowElement">
