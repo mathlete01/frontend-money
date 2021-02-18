@@ -27,6 +27,8 @@ class Credentials extends React.Component {
     });
   };
 
+  handleFocus = (event) => event.target.select();
+
   render() {
     return (
         <Form onSubmit={this.handleSubmit}>

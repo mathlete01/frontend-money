@@ -165,7 +165,7 @@ class App extends React.Component {
         <Container>
           <Row>
             <Col></Col>
-            <Col md={8} className="bothContainer">
+            <Col md={8} className="mainContainer">
               <StepContainer className="h-100" />
             </Col>
             <Col></Col>

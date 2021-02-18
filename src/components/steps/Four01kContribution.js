@@ -48,6 +48,8 @@ class Four01kContribution extends React.Component {
     this.props.handlePrevStep();
   };
 
+  handleFocus = (event) => event.target.select();
+
   render() {
     return (
       <Container className="step">
@@ -93,6 +95,7 @@ class Four01kContribution extends React.Component {
                       name="four01k_contribution"
                       size="lg"
                       onChange={this.handleChange}
+                      onFocus={this.handleFocus} 
                     />
                     <InputGroup.Append>
                       <InputGroup.Text>%</InputGroup.Text>

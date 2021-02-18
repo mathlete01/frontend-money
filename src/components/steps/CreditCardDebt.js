@@ -75,6 +75,8 @@ class CreditCardDebt extends React.Component {
     this.props.handlePrevStep();
   };
 
+  handleFocus = (event) => event.target.select();
+
   render() {
     return (
       <Container className="step">
@@ -114,6 +116,7 @@ class CreditCardDebt extends React.Component {
                       name="cc_1"
                       size="lg"
                       onChange={this.handleChange}
+                      onFocus={this.handleFocus} 
                     />
                   </InputGroup>
                 </Col>
@@ -142,6 +145,7 @@ class CreditCardDebt extends React.Component {
                       name="cc_2"
                       size="lg"
                       onChange={this.handleChange}
+                      onFocus={this.handleFocus} 
                     />
                   </InputGroup>
                 </Col>
@@ -170,6 +174,7 @@ class CreditCardDebt extends React.Component {
                       name="cc_3"
                       size="lg"
                       onChange={this.handleChange}
+                      onFocus={this.handleFocus} 
                     />
                   </InputGroup>
                 </Col>
