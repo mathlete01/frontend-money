@@ -6,15 +6,15 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
-// import Tabs from "react-bootstrap/Tabs";
 import { Tabs, Tab } from "react-bootstrap";
 import TabContainer from "react-bootstrap/TabContainer";
 import Nav from "react-bootstrap/Nav";
 import { NavItem } from "react-bootstrap";
 import Navbar from "react-bootstrap/Navbar";
 import { updateCurrentRow } from "../../actions/rowActions";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 
 
 class PriTaxableBrokerageIntro extends React.Component {

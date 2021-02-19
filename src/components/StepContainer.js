@@ -39,8 +39,9 @@ import PriFour01kMax from "./steps/PriFour01kMax";
 import PriTaxableBrokerageIntro from "./steps/PriTaxableBrokerageIntro";
 import Row from "react-bootstrap/Row";
 import NoDebt from "./steps/NoDebt";
-// import BLANK from "./steps/BLANK";
 import { updateCurrentRow } from "../actions/rowActions";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 
 class StepContainer extends React.Component {
   constructor(props) {
@@ -55,6 +56,10 @@ class StepContainer extends React.Component {
       row5: "",
     };
   }
+
+  renderTooltip = (props, tooltipTxt) => {
+    return <Tooltip {...props}>{tooltipTxt}</Tooltip>;
+  };
 
   componentDidMount() {
     this.setState({ row1: this.props.currentStep });
@@ -170,9 +175,9 @@ class StepContainer extends React.Component {
           <PriBackdoorRothIntro
             handlePrevStep={this.handlePrevStep}
             handleNextStep={this.handleNextStep}
-            // setRow={this.setRow}
             rowNum="1"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row1 === "CreditCardDebt":
@@ -182,6 +187,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="1"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row1 === "CreditCardDebtQ":
@@ -191,6 +197,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="1"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row1 === "DoneForNow":
@@ -200,6 +207,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="1"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row1 === "Four01kContribution":
@@ -209,6 +217,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="1"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row1 === "Four01kMatch":
@@ -218,6 +227,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="1"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row1 === "Four01kMaxOutQ":
@@ -227,6 +237,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="1"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row1 === "PriFour01kMax":
@@ -236,6 +247,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="1"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row1 === "Four01kQ":
@@ -245,6 +257,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="1"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row1 === "Intro":
@@ -254,6 +267,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="1"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row1 === "LeftoverMoney":
@@ -263,6 +277,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="1"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row1 === "NoDebt":
@@ -272,6 +287,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="1"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row1 === "RothIntro":
@@ -281,6 +297,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="1"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row1 === "RothMarriedJointly50Q":
@@ -290,6 +307,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="1"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row1 === "RothMarriedJointlyIncomeQ":
@@ -299,6 +317,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="1"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row1 === "RothMarriedJointlyMaxQ":
@@ -308,6 +327,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="1"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row1 === "RothMarriedJointlyMinQ":
@@ -317,6 +337,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="1"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row1 === "RothMarriedJointlyOverD":
@@ -326,6 +347,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="1"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row1 === "RothMarriedJointlyQ":
@@ -335,6 +357,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="1"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row1 === "PriRothMarriedJointlyTween":
@@ -344,6 +367,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="1"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row1 === "RothMarriedNotJointlyMinQ":
@@ -353,6 +377,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="1"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row1 === "RothMarriedNotJointlyOverD":
@@ -362,6 +387,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="1"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row1 === "PriRothMarriedNotJointlyTween":
@@ -371,6 +397,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="1"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row1 === "PriRothMax":
@@ -380,6 +407,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="1"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row1 === "PriRothReg":
@@ -389,6 +417,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="1"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row1 === "RothSingle50Q":
@@ -398,6 +427,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="1"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row1 === "RothSingleIncomeQ":
@@ -407,6 +437,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="1"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row1 === "RothSingleMaxQ":
@@ -416,6 +447,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="1"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row1 === "RothSingleMinQ":
@@ -425,6 +457,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="1"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row1 === "RothSingleOverD":
@@ -434,6 +467,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="1"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row1 === "RothSingleQ":
@@ -443,6 +477,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="1"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row1 === "PriRothSingleTween":
@@ -452,6 +487,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="1"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row1 === "RothSingleUnderD":
@@ -461,6 +497,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="1"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row1 === "PriPostDebt":
@@ -470,6 +507,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="1"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
   
@@ -480,6 +518,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="1"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       default:
@@ -496,6 +535,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="2"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row2 === "CreditCardDebt":
@@ -505,6 +545,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="2"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row2 === "CreditCardDebtQ":
@@ -514,6 +555,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="2"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row2 === "DoneForNow":
@@ -523,6 +565,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="2"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row2 === "Four01kContribution":
@@ -532,6 +575,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="2"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row2 === "Four01kMatch":
@@ -541,6 +585,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="2"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row2 === "Four01kMaxOutQ":
@@ -550,6 +595,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="2"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row2 === "PriFour01kMax":
@@ -559,6 +605,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="2"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row2 === "Four01kQ":
@@ -568,6 +615,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="2"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row2 === "Intro":
@@ -577,6 +625,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="2"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row2 === "LeftoverMoney":
@@ -586,6 +635,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="2"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row2 === "NoDebt":
@@ -595,6 +645,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="2"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row2 === "RothIntro":
@@ -604,6 +655,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="2"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row2 === "RothMarriedJointly50Q":
@@ -613,6 +665,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="2"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row2 === "RothMarriedJointlyIncomeQ":
@@ -622,6 +675,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="2"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row2 === "RothMarriedJointlyMaxQ":
@@ -631,6 +685,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="2"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row2 === "RothMarriedJointlyMinQ":
@@ -640,6 +695,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="2"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row2 === "RothMarriedJointlyOverD":
@@ -649,6 +705,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="2"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row2 === "RothMarriedJointlyQ":
@@ -658,6 +715,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="2"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row2 === "PriRothMarriedJointlyTween":
@@ -667,6 +725,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="2"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row2 === "RothMarriedNotJointlyMinQ":
@@ -676,6 +735,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="2"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row2 === "RothMarriedNotJointlyOverD":
@@ -685,6 +745,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="2"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row2 === "PriRothMarriedNotJointlyTween":
@@ -694,6 +755,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="2"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row2 === "PriRothMax":
@@ -703,6 +765,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="2"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row2 === "PriRothReg":
@@ -712,6 +775,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="2"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row2 === "RothSingle50Q":
@@ -721,6 +785,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="2"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row2 === "RothSingleIncomeQ":
@@ -730,6 +795,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="2"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row2 === "RothSingleMaxQ":
@@ -739,6 +805,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="2"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row2 === "RothSingleMinQ":
@@ -748,6 +815,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="2"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row2 === "RothSingleOverD":
@@ -757,6 +825,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="2"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row2 === "RothSingleQ":
@@ -766,6 +835,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="2"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row2 === "PriRothSingleTween":
@@ -775,6 +845,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="2"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row2 === "RothSingleUnderD":
@@ -784,6 +855,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="2"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row2 === "PriPostDebt":
@@ -793,6 +865,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="2"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
 
@@ -803,6 +876,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="2"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       default:
@@ -819,6 +893,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="3"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row3 === "CreditCardDebt":
@@ -828,6 +903,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="3"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row3 === "CreditCardDebtQ":
@@ -837,6 +913,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="3"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row3 === "DoneForNow":
@@ -846,6 +923,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="3"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row3 === "Four01kContribution":
@@ -855,6 +933,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="3"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row3 === "Four01kMatch":
@@ -864,6 +943,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="3"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row3 === "Four01kMaxOutQ":
@@ -873,6 +953,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="3"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row3 === "PriFour01kMax":
@@ -882,6 +963,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="3"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row3 === "Four01kQ":
@@ -891,6 +973,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="3"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row3 === "Intro":
@@ -900,6 +983,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="3"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row3 === "LeftoverMoney":
@@ -909,6 +993,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="3"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row3 === "NoDebt":
@@ -918,6 +1003,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="3"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row3 === "RothIntro":
@@ -927,6 +1013,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="3"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row3 === "RothMarriedJointly50Q":
@@ -936,6 +1023,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="3"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row3 === "RothMarriedJointlyIncomeQ":
@@ -945,6 +1033,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="3"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row3 === "RothMarriedJointlyMaxQ":
@@ -954,6 +1043,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="3"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row3 === "RothMarriedJointlyMinQ":
@@ -963,6 +1053,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="3"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row3 === "RothMarriedJointlyOverD":
@@ -972,6 +1063,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="3"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row3 === "RothMarriedJointlyQ":
@@ -981,6 +1073,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="3"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row3 === "PriRothMarriedJointlyTween":
@@ -990,6 +1083,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="3"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row3 === "RothMarriedNotJointlyMinQ":
@@ -999,6 +1093,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="3"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row3 === "RothMarriedNotJointlyOverD":
@@ -1008,6 +1103,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="3"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row3 === "PriRothMarriedNotJointlyTween":
@@ -1017,6 +1113,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="3"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row3 === "PriRothMax":
@@ -1026,6 +1123,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="3"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row3 === "PriRothReg":
@@ -1035,6 +1133,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="3"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row3 === "RothSingle50Q":
@@ -1044,6 +1143,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="3"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row3 === "RothSingleIncomeQ":
@@ -1053,6 +1153,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="3"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row3 === "RothSingleMaxQ":
@@ -1062,6 +1163,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="3"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row3 === "RothSingleMinQ":
@@ -1071,6 +1173,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="3"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row3 === "RothSingleOverD":
@@ -1080,6 +1183,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="3"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row3 === "RothSingleQ":
@@ -1089,6 +1193,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="3"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row3 === "PriRothSingleTween":
@@ -1098,6 +1203,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="3"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row3 === "RothSingleUnderD":
@@ -1107,6 +1213,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="3"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row3 === "PriPostDebt":
@@ -1116,6 +1223,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="3"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
 
@@ -1126,6 +1234,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="3"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       default:
@@ -1142,6 +1251,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="4"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row4 === "CreditCardDebt":
@@ -1151,6 +1261,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="4"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row4 === "CreditCardDebtQ":
@@ -1160,6 +1271,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="4"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row4 === "DoneForNow":
@@ -1169,6 +1281,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="4"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row4 === "Four01kContribution":
@@ -1178,6 +1291,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="4"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row4 === "Four01kMatch":
@@ -1187,6 +1301,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="4"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row4 === "Four01kMaxOutQ":
@@ -1196,6 +1311,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="4"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row4 === "PriFour01kMax":
@@ -1205,6 +1321,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="4"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row4 === "Four01kQ":
@@ -1214,6 +1331,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="4"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row4 === "Intro":
@@ -1223,6 +1341,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="4"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row4 === "LeftoverMoney":
@@ -1232,6 +1351,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="4"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row4 === "NoDebt":
@@ -1241,6 +1361,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="4"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row4 === "RothIntro":
@@ -1250,6 +1371,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="4"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row4 === "RothMarriedJointly50Q":
@@ -1259,6 +1381,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="4"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row4 === "RothMarriedJointlyIncomeQ":
@@ -1268,6 +1391,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="4"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row4 === "RothMarriedJointlyMaxQ":
@@ -1277,6 +1401,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="4"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row4 === "RothMarriedJointlyMinQ":
@@ -1286,6 +1411,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="4"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row4 === "RothMarriedJointlyOverD":
@@ -1295,6 +1421,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="4"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row4 === "RothMarriedJointlyQ":
@@ -1304,6 +1431,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="4"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row4 === "PriRothMarriedJointlyTween":
@@ -1313,6 +1441,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="4"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row4 === "RothMarriedNotJointlyMinQ":
@@ -1322,6 +1451,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="4"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row4 === "RothMarriedNotJointlyOverD":
@@ -1331,6 +1461,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="4"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row4 === "PriRothMarriedNotJointlyTween":
@@ -1340,6 +1471,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="4"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row4 === "PriRothMax":
@@ -1349,6 +1481,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="4"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row4 === "PriRothReg":
@@ -1358,6 +1491,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="4"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row4 === "RothSingle50Q":
@@ -1367,6 +1501,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="4"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row4 === "RothSingleIncomeQ":
@@ -1376,6 +1511,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="4"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row4 === "RothSingleMaxQ":
@@ -1385,6 +1521,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="4"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row4 === "RothSingleMinQ":
@@ -1394,6 +1531,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="4"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row4 === "RothSingleOverD":
@@ -1403,6 +1541,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="4"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row4 === "RothSingleQ":
@@ -1412,6 +1551,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="4"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row4 === "PriRothSingleTween":
@@ -1421,6 +1561,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="4"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row4 === "RothSingleUnderD":
@@ -1430,6 +1571,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="4"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row4 === "PriPostDebt":
@@ -1439,6 +1581,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="4"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
 
@@ -1449,6 +1592,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="4"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       default:
@@ -1465,6 +1609,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="5"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row5 === "CreditCardDebt":
@@ -1474,6 +1619,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="5"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row5 === "CreditCardDebtQ":
@@ -1483,6 +1629,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="5"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row5 === "DoneForNow":
@@ -1492,6 +1639,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="5"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row5 === "Four01kContribution":
@@ -1501,6 +1649,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="5"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row5 === "Four01kMatch":
@@ -1510,6 +1659,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="5"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row5 === "Four01kMaxOutQ":
@@ -1519,6 +1669,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="5"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row5 === "PriFour01kMax":
@@ -1528,6 +1679,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="5"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row5 === "Four01kQ":
@@ -1537,6 +1689,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="5"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row5 === "Intro":
@@ -1546,6 +1699,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="5"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row5 === "LeftoverMoney":
@@ -1555,6 +1709,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="5"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row5 === "NoDebt":
@@ -1564,6 +1719,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="5"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row5 === "RothIntro":
@@ -1573,6 +1729,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="5"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row5 === "RothMarriedJointly50Q":
@@ -1582,6 +1739,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="5"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row5 === "RothMarriedJointlyIncomeQ":
@@ -1591,6 +1749,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="5"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row5 === "RothMarriedJointlyMaxQ":
@@ -1600,6 +1759,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="5"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row5 === "RothMarriedJointlyMinQ":
@@ -1609,6 +1769,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="5"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row5 === "RothMarriedJointlyOverD":
@@ -1618,6 +1779,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="5"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row5 === "RothMarriedJointlyQ":
@@ -1627,6 +1789,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="5"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row5 === "PriRothMarriedJointlyTween":
@@ -1636,6 +1799,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="5"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row5 === "RothMarriedNotJointlyMinQ":
@@ -1645,6 +1809,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="5"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row5 === "RothMarriedNotJointlyOverD":
@@ -1654,6 +1819,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="5"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row5 === "PriRothMarriedNotJointlyTween":
@@ -1663,6 +1829,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="5"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row5 === "PriRothMax":
@@ -1672,6 +1839,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="5"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row5 === "PriRothReg":
@@ -1681,6 +1849,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="5"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row5 === "RothSingle50Q":
@@ -1690,6 +1859,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="5"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row5 === "RothSingleIncomeQ":
@@ -1699,6 +1869,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="5"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row5 === "RothSingleMaxQ":
@@ -1708,6 +1879,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="5"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row5 === "RothSingleMinQ":
@@ -1717,6 +1889,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="5"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row5 === "RothSingleOverD":
@@ -1726,6 +1899,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="5"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row5 === "RothSingleQ":
@@ -1735,6 +1909,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="5"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row5 === "PriRothSingleTween":
@@ -1744,6 +1919,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="5"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row5 === "RothSingleUnderD":
@@ -1753,6 +1929,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="5"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       case this.state.row5 === "PriPostDebt":
@@ -1762,6 +1939,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="5"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
 
@@ -1772,6 +1950,7 @@ class StepContainer extends React.Component {
             handleNextStep={this.handleNextStep}
             rowNum="5"
             getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
           />
         );
       default:

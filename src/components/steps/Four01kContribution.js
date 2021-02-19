@@ -8,11 +8,11 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Nav from "react-bootstrap/Nav";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import { Form, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 
 class Four01kContribution extends React.Component {
   state = {
@@ -68,7 +68,7 @@ class Four01kContribution extends React.Component {
         <Row id="body" className="rowElement">
           <Container>
             Usually an employee's contributions are capped at a specific
-            maximumm percentage.
+            maximum percentage.
           </Container>
         </Row>
         <Row id="form" className="rowElement">

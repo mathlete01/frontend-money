@@ -6,10 +6,10 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Tooltip from "react-bootstrap/Tooltip";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 
 
 class Four01kQ extends React.Component {
@@ -43,13 +43,21 @@ class Four01kQ extends React.Component {
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h3>Does your employer offer a 401(k) plan? 📈</h3>
+            <h3>Does your employer offer a <OverlayTrigger
+          placement="top"
+          delay={{ show: 250, hide: 400 }}
+          overlay={(props) => this.props.renderTooltip(props, "A 401(k) plan is a retirement investment account that many companies offer their employees.")}
+        ><a href="#" class="tooltiptext">401(k) plan</a></OverlayTrigger>? 📈</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            A 401(k) plan is a retirement investment account that many companies
-            offer their employees.
+            {/* A 401(k) plan is a retirement investment account that many companies
+            offer their employees. */}
+            <i>Tip: roll over any <OverlayTrigger
+          placement="top"
+          delay={{ show: 250, hide: 400 }}
+          overlay={(props) => this.props.renderTooltip(props, "Yeah, just like that!")} ><a href="#" class="tooltiptext">highlighted</a></OverlayTrigger> text to see a definition</i>
           </Container>
         </Row>
         <Row id="form" className="rowElement"></Row>

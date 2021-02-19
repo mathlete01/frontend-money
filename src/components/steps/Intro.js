@@ -10,17 +10,11 @@ import { updateCurrentRow } from "../../actions/rowActions";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
+
 const BASE_URL = "http://localhost:3000";
 const USERS_URL = `${BASE_URL}/users`;
 
-const renderTooltip = props => (
-  <Tooltip id="button-tooltip" {...props}>
-    Simple tooltip
-  </Tooltip>
-);
-
 class Intro extends React.Component {
-
   _next = (event) => {
     event.preventDefault();
     this.props.handleNextStep(event);
@@ -73,22 +67,9 @@ class Intro extends React.Component {
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Wondering how to get started with <OverlayTrigger
-                    placement="top"
-                    content="hello?"
-                    delay={{ show: 250, hide: 400 }}
-                    overlay={renderTooltip}
-                  ><a href="#">investing</a></OverlayTrigger>? This interactive quiz
-            asks you a series of questions, then <OverlayTrigger
-                    placement="top"
-                    delay={{ show: 250, hide: 400 }}
-                    overlay={renderTooltip}
-                  ><a href="#" class="dotted">delivers</a></OverlayTrigger> a personalized plan to
-            transform you from a debtor to an <OverlayTrigger
-                    placement="top"
-                    delay={{ show: 250, hide: 400 }}
-                    overlay={renderTooltip}
-                  ><a href="#"><mark>investor</mark></a></OverlayTrigger>.
+            Wondering how to get started with investing? This interactive quiz
+            asks you a series of questions, then delivers a personalized plan to
+            transform you from a debtor to an investor.
           </Container>
         </Row>
         <Row id="form" className="rowElement"></Row>
@@ -98,23 +79,17 @@ class Intro extends React.Component {
               <Form.Row>
                 <Col></Col>
                 <Col>
-                  <OverlayTrigger
-                    placement="top"
-                    delay={{ show: 250, hide: 400 }}
-                    overlay={renderTooltip}
+                  <Button
+                    id={this.props.currentRow}
+                    value="LeftoverMoney"
+                    className="yes"
+                    variant="primary"
+                    size="lg"
+                    block
+                    onClick={this._next}
                   >
-                    <Button
-                      id={this.props.currentRow}
-                      value="LeftoverMoney"
-                      className="yes"
-                      variant="primary"
-                      size="lg"
-                      block
-                      onClick={this._next}
-                    >
-                      Let's go 👉
-                    </Button>
-                  </OverlayTrigger>
+                    Let's go 👉
+                  </Button>
                 </Col>
               </Form.Row>
             </Form.Group>
