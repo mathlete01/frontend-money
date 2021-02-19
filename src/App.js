@@ -21,7 +21,7 @@ import {
   faHandPointLeft,
   faChevronLeft,
 } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import StepContainer from "./components/StepContainer";

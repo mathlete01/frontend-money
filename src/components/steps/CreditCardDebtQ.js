@@ -6,9 +6,10 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 
 
 class CreditCardDebtQ extends React.Component {
@@ -46,7 +47,6 @@ class CreditCardDebtQ extends React.Component {
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            {/* A <OverlayTrigger overlay={this.renderTooltip}>401(k) plan</OverlayTrigger> */}
             The interest you pay on credit card debt is often 3 times the amount
             of interest you get from investments.
           </Container>

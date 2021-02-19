@@ -7,6 +7,9 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { Form, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
+
 
 const BASE_URL = "http://localhost:3000";
 const USERS_URL = `${BASE_URL}/users`;
@@ -54,16 +57,19 @@ class Intro extends React.Component {
   render() {
     return (
       <Container className="step">
-        <Row id="header" className="rowElement">
-        </Row>
+        <Row id="header" className="rowElement"></Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h3>Interest should be <i>earned</i>, not paid</h3>
+            <h3>
+              Interest should be <i>earned</i>, not paid
+            </h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-          Wondering how to get started with investing? This interactive quiz asks you a series of questions, then delivers a personalized plan to transform you from a debtor to an investor.
+            Wondering how to get started with investing? This interactive quiz
+            asks you a series of questions, then delivers a personalized plan to
+            transform you from a debtor to an investor.
           </Container>
         </Row>
         <Row id="form" className="rowElement"></Row>
@@ -94,7 +100,6 @@ class Intro extends React.Component {
   }
 }
 
-
 const mapStateToProps = (state) => {
   return {
     currentUser: state.userReducer.currentUser,
@@ -102,4 +107,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { setCurrentUser, updateCurrentRow })(Intro);
+export default connect(mapStateToProps, { setCurrentUser, updateCurrentRow })(
+  Intro
+);

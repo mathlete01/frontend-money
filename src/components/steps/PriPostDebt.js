@@ -1,8 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { updateCurrentStep } from "../../actions/stepActions";
-// import { updateCurrentProgress } from "../../actions/progressActions";
-// import { getCurrentUser, updateCurrentUser } from "../../actions/userActions";
 import { updateCurrentUser } from "../../actions/userActions";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -10,6 +8,8 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 
 class PriPostDebt extends React.Component {
   _prev = () => {

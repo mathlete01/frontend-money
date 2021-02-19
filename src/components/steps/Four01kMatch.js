@@ -6,11 +6,11 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import { Form, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 
 class Four01kMatch extends React.Component {
 
@@ -50,12 +50,16 @@ class Four01kMatch extends React.Component {
           <hr className="w-100" /> 
         </Row>
         <Row id="title" className="rowElement">
-          <Container><h3>How much is the employer 401(k) match? 🏢</h3></Container>
+          <Container><h3>How much is the employer <OverlayTrigger
+          placement="top"
+          delay={{ show: 250, hide: 400 }}
+          overlay={(props) => this.props.renderTooltip(props, "The employer match is the maximum percentage of your paycheck that the company will contribute to your 401(k)")}
+        ><a href="#" class="tooltiptext">401(k) match</a></OverlayTrigger>? 🏢</h3></Container>
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            The "employer match" is the maximum percentage of your paycheck that
-            they will contribute to your 401(k).
+            {/* The "employer match" is the maximum percentage of your paycheck that
+            they will contribute to your 401(k). */}
           </Container>
         </Row>
         <Row id="form" className="rowElement">
