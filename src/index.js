@@ -12,6 +12,7 @@ import rootReducer from "./reducers/rootReducer.js";
 import { BrowserRouter } from "react-router-dom";
 import "./style/fonts/Spartan-Regular.ttf"
 import "./style/fonts/Spartan-SemiBold.ttf"
+import TestTooltip from "./components/steps/TestTooltip.js";
 
 const composeEnhancers =
   typeof window === 'object' &&
@@ -31,7 +32,8 @@ ReactDOM.render(
     {/* Provider is a component that wraps around our App component. It does two things: (1) it will alert our Redux app when there has been a change in state, and this will re-render our React app. Here we pass our store instance into Provider as a prop, making it available to all our other components. */}
     <Provider store={store}>
       <BrowserRouter>
-        <App />
+        {/* <App /> */}
+        <TestTooltip />
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,

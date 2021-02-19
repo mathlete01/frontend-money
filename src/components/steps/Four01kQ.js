@@ -7,7 +7,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
@@ -30,11 +29,7 @@ class Four01kQ extends React.Component {
     this.props.handleNextStep(event);
   };
 
-  renderTooltip = (props) => (
-    <Tooltip id="button-tooltip" {...props}>
-      Simple tooltip
-    </Tooltip>
-  );
+ 
 
   render() {
     return (
@@ -53,7 +48,6 @@ class Four01kQ extends React.Component {
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            {/* A <OverlayTrigger overlay={this.renderTooltip}>401(k) plan</OverlayTrigger> */}
             A 401(k) plan is a retirement investment account that many companies
             offer their employees.
           </Container>

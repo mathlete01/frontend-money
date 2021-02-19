@@ -46,7 +46,6 @@ class CreditCardDebtQ extends React.Component {
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            {/* A <OverlayTrigger overlay={this.renderTooltip}>401(k) plan</OverlayTrigger> */}
             The interest you pay on credit card debt is often 3 times the amount
             of interest you get from investments.
           </Container>
