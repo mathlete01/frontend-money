@@ -58,8 +58,6 @@ class RothSingleIncomeQ extends React.Component {
                 <Col>
                   <Button
                     className="no"
-                    variant="danger"
-                    
                     block
                     id={this.props.currentRow}
                     value="RothSingleUnderD"
@@ -70,9 +68,7 @@ class RothSingleIncomeQ extends React.Component {
                 </Col>
                 <Col>
                   <Button
-                    className="yes"
-                    variant="success"
-                    
+                    className="yeah"
                     block
                     id={this.props.currentRow}
                     value="RothSingle50Q"

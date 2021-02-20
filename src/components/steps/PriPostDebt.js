@@ -202,9 +202,7 @@ class PriPostDebt extends React.Component {
                   }
                 >
                   <Button
-                    className="yes"
-                    variant="primary"
-                    
+                    className="continue"
                     block
                     id={this.props.getNextRow()}
                     value={this.nextStep}

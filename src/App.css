@@ -56,19 +56,6 @@ ul {
 }
 #title {
 }
-.yes {
-  background-color: #00BC3E;
-  outline-style: none !important;
-}
-.no {
-  background-color: #9335D8 !important;
-  outline-style: none !important;
-  outline-color: white;
-}
-.continue {
-  background-color:#007BFF !important;
-  outline-style: none !important;
-}
 
 #bg {
   height: 100vh;
@@ -87,10 +74,18 @@ h3 {
   font-size: x-large !important;
   /* font-family: 'Work Sans'; */
 }
-button.btn.btn-primary {
-  font-weight: 600;
-  font-size: medium;
-  /* font-family: 'Work Sans'; */
+button.btn.btn-primary.yeah {
+  background-color: #00BC3E;
+  border-color: #FFFFFF !important;
+}
+button.btn.btn-primary.no {
+  /* background-color: #9335D8; */
+  background-color: #F4635E;
+  border-color: #FFFFFF !important;
+}
+button.btn.btn-primary.continue {
+  background-color: #007BFF;
+  border-color: #FFFFFF !important;
 }
 a.nav-link {
   font-size: small;

@@ -236,9 +236,7 @@ class LeftoverMoney extends React.Component {
                 <Col>
                   {this.checkValid() ? (
                     <Button
-                      className="yes"
-                      variant="primary"
-                      // 
+                      className="yeah"
                       block
                       id={this.props.currentRow}
                     value="Four01kQ"
@@ -248,9 +246,7 @@ class LeftoverMoney extends React.Component {
                     </Button>
                   ) : (
                     <Button
-                      className="yes"
-                      variant="primary"
-                      // 
+                      className="yeah"
                       block
                       disabled
                     >

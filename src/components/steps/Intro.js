@@ -83,8 +83,6 @@ class Intro extends React.Component {
                     id={this.props.currentRow}
                     value="LeftoverMoney"
                     className="continue"
-                    // variant="primary"
-                    
                     block
                     onClick={this._next}
                   >

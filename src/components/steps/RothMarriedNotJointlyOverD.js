@@ -87,9 +87,7 @@ class RothMarriedNotJointlyOverD extends React.Component {
                 </Col>
                 <Col>
                   <Button
-                    className="yes"
-                    variant="primary"
-                    
+                    className="continue"
                     block
                     id={this.props.currentRow}
                     value="PriBackdoorRothIntro"

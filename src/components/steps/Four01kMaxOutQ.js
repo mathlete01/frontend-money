@@ -60,8 +60,6 @@ class Four01kMaxOutQ extends React.Component {
                 <Col>
                   <Button
                     className="no"
-                    variant="danger"
-                    
                     block
                     id={this.props.currentRow}
                     value="PriFour01kMax"
@@ -73,9 +71,7 @@ class Four01kMaxOutQ extends React.Component {
                 </Col>
                 <Col>
                   <Button
-                    className="yes"
-                    variant="success"
-                    
+                    className="yeah"
                     block
                     id={this.props.currentRow}
                     value="PriTaxableBrokerageIntro"

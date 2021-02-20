@@ -119,10 +119,7 @@ class PriTaxableBrokerageIntro extends React.Component {
                   }
                 >
                   <Button
-                    className="yes"
-                    variant="primary"
-                    
-                    block
+                    className="continue"
                     // id={this.props.getNextRow()}
                     // Dynamic code above should work, but doesnt, so it's hard-coded below
                     id="row5"

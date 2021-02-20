@@ -190,7 +190,7 @@ class CreditCardDebt extends React.Component {
                 <Col>
                   {this.checkValid() ? (
                     <Button
-                      className="yes"
+                      className="continue"
                       variant="primary"
                       
                       block
@@ -202,7 +202,7 @@ class CreditCardDebt extends React.Component {
                     </Button>
                   ) : (
                     <Button
-                      className="yes"
+                      className="continue"
                       variant="primary"
                       
                       block

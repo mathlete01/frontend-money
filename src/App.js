@@ -146,10 +146,9 @@ class App extends React.Component {
               <NavItem href="/">
                 {/* <Nav.Link as={Link} to="/" onClick={this.handleLogout}> */}
                 {/* {this.props.currentStep === "Intro" ? return null : return( */}
-                <Button  to="/" onClick={this.handleLogout}  size="sm">
-                  Start Over
+                <Button  to="/" onClick={this.handleLogout}  size="sm"
+                  className={ this.props.currentStep === "Intro" ? "hidden" : "" }>Start Over
                 </Button>
-                {/* )} */}
               </NavItem>
             </Nav>
           </Navbar.Collapse>

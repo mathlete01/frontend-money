@@ -187,15 +187,10 @@ class PriRothSingleTween extends React.Component {
                   }
                 >
                   <Button
-                    className="yes"
-                    variant="primary"
-                    
+                    className="continue"
                     block
                     id={this.props.getNextRow()}
-                    // id="row3"
                     value={this.props.currentUser.four01k ? "Four01kMaxOutQ" : "PriTaxableBrokerageIntro"}
-                    // value= "PriTaxableBrokerageIntro"
-                    // value= "Four01kMaxOutQ"
                     onClick={this._next}
                   >
                     Continue Below 👇
