@@ -101,7 +101,7 @@ class Four01kMatch extends React.Component {
                   {/* {this.checkValid() ? ( */}
                     <Button
                       className="yes"
-                      variant="primary"
+                      // variant="primary"
                       
                       block
                       id={this.props.currentRow}

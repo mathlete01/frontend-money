@@ -82,8 +82,8 @@ class Intro extends React.Component {
                   <Button
                     id={this.props.currentRow}
                     value="LeftoverMoney"
-                    className="yes"
-                    variant="primary"
+                    className="continue"
+                    // variant="primary"
                     
                     block
                     onClick={this._next}

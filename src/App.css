@@ -56,7 +56,18 @@ ul {
 }
 #title {
 }
+.yes {
+  background-color: #00BC3E;
+  outline-style: none !important;
+}
 .no {
+  background-color: #9335D8 !important;
+  outline-style: none !important;
+  outline-color: white;
+}
+.continue {
+  background-color:#007BFF !important;
+  outline-style: none !important;
 }
 
 #bg {

@@ -30,10 +30,10 @@ import "./App.css";
 import { Form, FormControl, NavItem } from "react-bootstrap";
 // import background from "./img/Louis_Vuitton-blue.png";
 import background from "./img/wallpaper_sky_01.svg";
-// import background from "./img/BlueSky-03@2x.svg";
-import logo from "./img/safari-pinned-tab.svg";
-
-library.add(faSwimmingPool, faCoffee, faHandPointLeft, faChevronLeft);
+// import logo from "./img/safari-pinned-tab.svg";
+// import logo from "./img/wordmark_d2i_box_white.svg"
+import logo from "./img/wordmark_d2i_white.svg"
+// library.add(faSwimmingPool, faCoffee, faHandPointLeft, faChevronLeft);
 
 class App extends React.Component {
   state = {
@@ -113,7 +113,6 @@ class App extends React.Component {
       <div
         style={{
           backgroundImage: `url(${background})`,
-          // transform: "scale(0.5)"
         }}
         id="bg"
       >
@@ -122,14 +121,14 @@ class App extends React.Component {
             <img
               alt=""
               src={logo}
-              width="27"
-              height="27"
+              width="100"
+              height="100"
               className="d-inline-block align-top"
             />{" "}
-            Debtor to Investor
+            {/* Debtor to Investor */}
           </Navbar.Brand>
           <Navbar.Collapse className="justify-content-end">
-            <Nav>
+            {/* <Nav>
               <NavItem href="/">
                 <Nav.Link as={Link} to="/login">
                   Log in
@@ -142,12 +141,15 @@ class App extends React.Component {
                   Sign up
                 </Nav.Link>
               </NavItem>
-            </Nav>
+            </Nav> */}
             <Nav>
               <NavItem href="/">
-                <Nav.Link as={Link} to="/" onClick={this.handleLogout}>
-                  Log out
-                </Nav.Link>
+                {/* <Nav.Link as={Link} to="/" onClick={this.handleLogout}> */}
+                {/* {this.props.currentStep === "Intro" ? return null : return( */}
+                <Button  to="/" onClick={this.handleLogout}  size="sm">
+                  Start Over
+                </Button>
+                {/* )} */}
               </NavItem>
             </Nav>
           </Navbar.Collapse>

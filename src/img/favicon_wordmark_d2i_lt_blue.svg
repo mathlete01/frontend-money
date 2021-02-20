@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="640px" height="640px" viewBox="0 0 640 640" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>wordmark_d2i_white copy</title>
+    <g id="wordmark_d2i_white-copy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M560,240 L559.999,300 L620,300 L620,340 L559.999,340 L560,400 L520,400 L519.999,340 L460,340 L460,300 L519.999,300 L520,240 L560,240 Z" id="Plus" fill="#007BFF"></path>
+        <path d="M346,240 L426,320 L346,400 L316,370 L346,340 L346,339.999 L220,340 L220,300 L345.999,299.999 L316,270 L346,240 Z" id="Arrow" fill="#007BFF"></path>
+        <polygon id="Minus" fill="#007BFF" points="20 300 20 340 180 340 180 300"></polygon>
+    </g>
+</svg>
