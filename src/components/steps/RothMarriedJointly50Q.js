@@ -64,7 +64,7 @@ class RothMarriedJointly50Q extends React.Component {
               <Form.Row>
                 <Col>
                   <Button
-                    className="no"
+                    variant="nope"
                     block
                     id={this.props.currentRow}
                     value="PriRothMax"
@@ -75,7 +75,7 @@ class RothMarriedJointly50Q extends React.Component {
                 </Col>
                 <Col>
                   <Button
-                    className="yeah"
+                    variant="yeah"
                     block
                     id={this.props.currentRow}
                     value="PriRothReg"

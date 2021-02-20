@@ -192,7 +192,7 @@ class PriRothMarriedNotJointlyTween extends React.Component {
                       : "hidden"
                   }
                 >                  <Button
-                    className="continue"
+                    variant="continue"
                     block
                     id={this.props.getNextRow()}
                     value={this.props.currentUser.four01k ? "Four01kMaxOutQ" : "PriTaxableBrokerageIntro"}

@@ -48,7 +48,7 @@ class DoneForNow extends React.Component {
               <Form.Row>
                 <Col>
                   {/* <Button
-                    className="no"
+                    variant="nope"
                     block
                     onClick={this._no}
                   >
@@ -57,7 +57,7 @@ class DoneForNow extends React.Component {
                 </Col>
                 <Col>
                   {/* <Button
-                    className="yeah"
+                    variant="yeah"
                     variant="primary"
                     
                     id={this.props.currentRow}

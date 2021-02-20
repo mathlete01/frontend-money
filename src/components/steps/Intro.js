@@ -77,12 +77,30 @@ class Intro extends React.Component {
           <Container>
             <Form.Group>
               <Form.Row>
-                <Col></Col>
+                {/* <Col><Button
+                    id={this.props.currentRow}
+                    value="LeftoverMoney"
+                    variant="nope"
+                    block
+                    onClick={this._next}
+                  >
+                    Let's go 👉
+                  </Button></Col>
+                <Col><Button
+                    id={this.props.currentRow}
+                    value="LeftoverMoney"
+                    variant="yeah"
+                    block
+                    onClick={this._next}
+                  >
+                    Let's go 👉
+                  </Button></Col> */}
+                  <Col></Col>
                 <Col>
                   <Button
                     id={this.props.currentRow}
                     value="LeftoverMoney"
-                    className="continue"
+                    variant="continue"
                     block
                     onClick={this._next}
                   >

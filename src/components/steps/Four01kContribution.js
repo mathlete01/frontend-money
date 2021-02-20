@@ -114,7 +114,7 @@ class Four01kContribution extends React.Component {
                 <Col>
                   {/* {this.checkValid() ? ( */}
                   <Button
-                    className="continue"
+                    variant="continue"
                     block
                     id={this.props.currentRow}
                     value="CreditCardDebtQ"
@@ -123,7 +123,7 @@ class Four01kContribution extends React.Component {
                     Next
                   </Button>
                   {/* ) : (
-                    <Button className="yeah" variant="primary"  block disabled>
+                    <Button variant="yeah" variant="primary"  block disabled>
                       Next
                     </Button>
                   )} */}

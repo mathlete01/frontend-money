@@ -53,7 +53,7 @@ class RothSingleUnderD extends React.Component {
                 </Col>
                 <Col>
                   <Button
-                    className="continue"
+                    variant="continue"
                     block
                     id={this.props.currentRow}
                     value={this.props.currentUser.four01k ? "Four01kMaxOutQ" : "PriTaxableBrokerageIntro"}

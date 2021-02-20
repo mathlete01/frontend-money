@@ -105,7 +105,7 @@ class PriFour01kMax extends React.Component {
                   }
                 >
                   <Button
-                    className="continue"
+                    variant="continue"
                     block
                     id={this.props.getNextRow()}
  
