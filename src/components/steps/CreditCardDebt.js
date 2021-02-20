@@ -191,11 +191,10 @@ class CreditCardDebt extends React.Component {
                   {this.checkValid() ? (
                     <Button
                       variant="continue"
-                      variant="primary"
-                      
                       block
                       id={this.props.currentRow}
-                      value="PriPostDebt"
+                      // value="PriPostDebt"
+                      value="PaySchedule"
                       onClick={this._next}
                     >
                       Next
@@ -203,8 +202,6 @@ class CreditCardDebt extends React.Component {
                   ) : (
                     <Button
                       variant="continue"
-                      variant="primary"
-                      
                       block
                       disabled
                     >

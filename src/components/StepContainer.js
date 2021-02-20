@@ -35,6 +35,7 @@ import RothMarriedJointlyOverD from "./steps/RothMarriedJointlyOverD";
 import PriFour01kMax from "./steps/PriFour01kMax";
 import PriTaxableBrokerageIntro from "./steps/PriTaxableBrokerageIntro";
 import NoDebt from "./steps/NoDebt";
+import PaySchedule from "./steps/PaySchedule";
 
 import { connect } from "react-redux";
 import { updateCurrentStep } from "../actions/stepActions";
@@ -174,6 +175,16 @@ class StepContainer extends React.Component {
 
   loadChildInRow1 = () => {
     switch (true) {
+      case this.state.row1 === "PaySchedule":
+        return (
+          <PaySchedule
+            handlePrevStep={this.handlePrevStep}
+            handleNextStep={this.handleNextStep}
+            rowNum="1"
+            getNextRow={this.getNextRow}
+            renderTooltip={this.renderTooltip}
+          />
+        );
       case this.state.row1 === "PriBackdoorRothIntro":
         return (
           <PriBackdoorRothIntro
