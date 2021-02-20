@@ -16,7 +16,6 @@ export const updateCardDebts = (id, cardDebtObj) => {
           },
           body: JSON.stringify(formData)
         };
-        // fetch(`${PROGRESSES_URL}`, configOb)
         fetch("http://localhost:3000/credit_card_debts", configOb)
         
           .then((res) => res.json())

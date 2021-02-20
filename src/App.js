@@ -30,6 +30,7 @@ import "./App.css";
 import { Form, FormControl, NavItem } from "react-bootstrap";
 // import background from "./img/Louis_Vuitton-blue.png";
 import background from "./img/wallpaper_sky_01.svg";
+// import background from "./img/BlueSky-03@2x.svg";
 import logo from "./img/safari-pinned-tab.svg";
 
 library.add(faSwimmingPool, faCoffee, faHandPointLeft, faChevronLeft);
@@ -112,6 +113,7 @@ class App extends React.Component {
       <div
         style={{
           backgroundImage: `url(${background})`,
+          // transform: "scale(0.5)"
         }}
         id="bg"
       >

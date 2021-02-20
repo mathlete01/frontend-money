@@ -1,4 +1,5 @@
 import React from "react";
+
 import CreditCardDebt from "./steps/CreditCardDebt";
 import CreditCardDebtQ from "./steps/CreditCardDebtQ";
 import DoneForNow from "./steps/DoneForNow";
@@ -29,17 +30,20 @@ import RothMarriedNotJointlyMinQ from "./steps/RothMarriedNotJointlyMinQ";
 import RothMarriedNotJointlyOverD from "./steps/RothMarriedNotJointlyOverD";
 import PriBackdoorRothIntro from "./steps/PriBackdoorRothIntro";
 import RothSingleQ from "./steps/RothSingleQ";
-import { connect } from "react-redux";
-import { updateCurrentStep } from "../actions/stepActions";
-import { updateCurrentUser } from "../actions/userActions";
-import Container from "react-bootstrap/Container";
 import PriRothMarriedJointlyTween from "./steps/PriRothMarriedJointlyTween";
 import RothMarriedJointlyOverD from "./steps/RothMarriedJointlyOverD";
 import PriFour01kMax from "./steps/PriFour01kMax";
 import PriTaxableBrokerageIntro from "./steps/PriTaxableBrokerageIntro";
-import Row from "react-bootstrap/Row";
 import NoDebt from "./steps/NoDebt";
+
+import { connect } from "react-redux";
+import { updateCurrentStep } from "../actions/stepActions";
+import { updateCurrentUser } from "../actions/userActions";
+import { updateCurrentClick } from "../actions/clickActions";
 import { updateCurrentRow } from "../actions/rowActions";
+
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
@@ -125,7 +129,6 @@ class StepContainer extends React.Component {
     let nextRow = event.target.id;
     // If current row isn't the same as the next, update the current row
     if (this.props.currentRow !== nextRow) {
-      console.log(`IF STATEMENT RUN`);
       this.props.updateCurrentRow(nextRow);
     }
     // add a new element to the step array and the row array
@@ -138,6 +141,7 @@ class StepContainer extends React.Component {
     // Update the current step to be the next step
     this.props.updateCurrentStep(nextStep);
     this.props.updateCurrentRow(nextRow);
+    // this.props.updateCurrentClick(3,5,7)
     this.setState({ [event.target.id]: event.target.value });
   };
 
@@ -1986,6 +1990,7 @@ const mapStateToProps = (state) => {
     currentStep: state.stepReducer.currentStep,
     currentUser: state.userReducer.currentUser,
     currentRow: state.rowReducer.currentRow,
+    // currentClick: state.clickReducer.currentClick
   };
 };
 
@@ -1993,4 +1998,5 @@ export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
   updateCurrentRow,
+  // updateCurrentClick,
 })(StepContainer);
