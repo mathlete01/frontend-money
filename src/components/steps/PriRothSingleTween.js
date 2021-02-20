@@ -189,7 +189,7 @@ class PriRothSingleTween extends React.Component {
                   <Button
                     className="yes"
                     variant="primary"
-                    size="lg"
+                    
                     block
                     id={this.props.getNextRow()}
                     // id="row3"

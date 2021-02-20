@@ -128,7 +128,7 @@ class PriRothReg extends React.Component {
                   <Button
                     className="yes"
                     variant="primary"
-                    size="lg"
+                    
                     block
                     id={this.props.getNextRow()}
                     value={this.props.currentUser.four01k ? "Four01kMaxOutQ" : "PriTaxableBrokerageIntro"}

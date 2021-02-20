@@ -50,7 +50,7 @@ class DoneForNow extends React.Component {
                   {/* <Button
                     className="no"
                     variant="danger"
-                    size="lg"
+                    
                     block
                     onClick={this._no}
                   >
@@ -61,7 +61,7 @@ class DoneForNow extends React.Component {
                   {/* <Button
                     className="yes"
                     variant="primary"
-                    size="lg"
+                    
                     id={this.props.currentRow}
                     block
                     onClick={this._next}

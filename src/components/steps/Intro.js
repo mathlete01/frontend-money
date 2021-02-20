@@ -84,7 +84,7 @@ class Intro extends React.Component {
                     value="LeftoverMoney"
                     className="yes"
                     variant="primary"
-                    size="lg"
+                    
                     block
                     onClick={this._next}
                   >

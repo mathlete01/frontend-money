@@ -88,7 +88,7 @@ class RothSingleOverD extends React.Component {
                   <Button
                     className="yes"
                     variant="primary"
-                    size="lg"
+                    
                     block
                     id={this.props.currentRow}
                     value="PriBackdoorRothIntro"

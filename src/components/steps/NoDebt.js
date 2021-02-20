@@ -53,7 +53,7 @@ class RothIntro extends React.Component {
                   <Button
                     className="yes"
                     variant="primary"
-                    size="lg"
+                    
                     block
                     // id={this.props.currentRow}
                     id={this.props.currentRow}
