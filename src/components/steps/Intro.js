@@ -61,15 +61,13 @@ class Intro extends React.Component {
         <Row id="title" className="rowElement">
           <Container>
             <h3>
-              Interest should be <i>earned</i>, not paid
+              Interest should be <i>earned</i>, not paid 🙂
             </h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Wondering how to get started with investing? This interactive quiz
-            asks you a series of questions, then delivers a personalized plan to
-            transform you from a debtor to an investor.
+            Wondering how to get started with investing? <br /><br /> This interactive quiz asks you a series of questions, then delivers a personalized plan to transform you from a debtor to an investor.
           </Container>
         </Row>
         <Row id="form" className="rowElement"></Row>

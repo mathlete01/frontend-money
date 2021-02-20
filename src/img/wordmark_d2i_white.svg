@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="640px" height="480px" viewBox="0 0 640 480" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>wordmark_d2i_white</title>
-    <g id="wordmark_d2i_white" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <title>wordmark_d2i_white copy 3</title>
+    <g id="wordmark_d2i_white-copy-3" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <path d="M560,160 L559.999,220 L620,220 L620,260 L559.999,260 L560,320 L520,320 L519.999,260 L460,260 L460,220 L519.999,220 L520,160 L560,160 Z" id="Plus" fill="#FFFFFF"></path>
         <path d="M346,160 L426,240 L346,320 L316,290 L346,260 L346,259.999 L220,260 L220,220 L345.999,219.999 L316,190 L346,160 Z" id="Arrow" fill="#FFFFFF"></path>
         <polygon id="Minus" fill="#FFFFFF" points="20 220 20 260 180 260 180 220"></polygon>
-        <text id="DEBTOR" font-family="Metropolis-Bold, Metropolis" font-size="118" font-weight="bold" letter-spacing="23.6" fill="#FFFFFF">
-            <tspan x="11.636" y="122">DEBTOR</tspan>
+        <text id="DEBTOR-TO" font-family="Metropolis-Bold, Metropolis" font-size="104" font-weight="bold" fill="#FFFFFF">
+            <tspan x="13.616" y="122">DEBTOR TO</tspan>
         </text>
-        <text id="INVESTOR" font-family="Metropolis-Bold, Metropolis" font-size="118" font-weight="bold" fill="#FFFFFF">
-            <tspan x="13.321" y="439">INVESTOR</tspan>
+        <text id="INVESTOR" font-family="Metropolis-Bold, Metropolis" font-size="104" font-weight="bold" letter-spacing="13.2" fill="#FFFFFF">
+            <tspan x="14.288" y="439">I</tspan>
+            <tspan x="57.336" y="439" letter-spacing="9.7">NV</tspan>
+            <tspan x="235.336" y="439">E</tspan>
+            <tspan x="315.2" y="439" letter-spacing="9.2">ST</tspan>
+            <tspan x="462.352" y="439" letter-spacing="8.2">OR</tspan>
         </text>
     </g>
 </svg>
