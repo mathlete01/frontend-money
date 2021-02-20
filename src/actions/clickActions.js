@@ -1,11 +1,12 @@
-export const updateCurrentProgress = (id, level) => {
+export const updateCurrentClick = (userID, stepID, rowID) => {
   // debugger
     return (dispatch) => {
       const BASE_URL = "http://localhost:3000";
-      const PROGRESSES_URL = `${BASE_URL}/rungs`;
+      const PROGRESSES_URL = `${BASE_URL}/clicks`;
       const formData = {
-        user_id: id,
-        ...level
+        user_id: userID,
+        steps_id: stepID,
+        rows_id: rowID,
       };
       let token = localStorage.getItem("token")
       const configOb = {
@@ -17,14 +18,14 @@ export const updateCurrentProgress = (id, level) => {
         },
         body: JSON.stringify(formData)
       };
-      fetch("http://localhost:3000/rungs", configOb)
+      fetch("http://localhost:3000/clicks", configOb)
       
         .then((res) => res.json())
         // .then((data) => console.log(data))
         .then((data) => {
           dispatch({
-            type: "UPDATE_PROGRESS",
-            newProgress: data,
+            type: "UPDATE_CLICKS",
+            newClicks: data,
           });
         });
     };
