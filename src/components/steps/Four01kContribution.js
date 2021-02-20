@@ -93,7 +93,7 @@ class Four01kContribution extends React.Component {
                       }
                       id="four01k_contribution"
                       name="four01k_contribution"
-                      size="lg"
+                      
                       onChange={this.handleChange}
                       onFocus={this.handleFocus} 
                     />
@@ -114,9 +114,7 @@ class Four01kContribution extends React.Component {
                 <Col>
                   {/* {this.checkValid() ? ( */}
                   <Button
-                    className="yes"
-                    variant="primary"
-                    size="lg"
+                    variant="continue"
                     block
                     id={this.props.currentRow}
                     value="CreditCardDebtQ"
@@ -125,7 +123,7 @@ class Four01kContribution extends React.Component {
                     Next
                   </Button>
                   {/* ) : (
-                    <Button className="yes" variant="primary" size="lg" block disabled>
+                    <Button variant="yeah" variant="primary"  block disabled>
                       Next
                     </Button>
                   )} */}

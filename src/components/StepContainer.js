@@ -1990,7 +1990,7 @@ const mapStateToProps = (state) => {
     currentStep: state.stepReducer.currentStep,
     currentUser: state.userReducer.currentUser,
     currentRow: state.rowReducer.currentRow,
-    // currentClick: state.clickReducer.currentClick
+    currentClick: state.clickReducer.currentClick
   };
 };
 
@@ -1998,5 +1998,5 @@ export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
   updateCurrentRow,
-  // updateCurrentClick,
+  updateCurrentClick,
 })(StepContainer);

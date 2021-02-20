@@ -13,7 +13,7 @@ const rootReducer = combineReducers({
     // progressReducer: progressReducer,
     // cardDebtReducer: cardDebtReducer,
     rowReducer: rowReducer,
-    // clickReducer: clickReducer,
+    clickReducer: clickReducer,
 })
 
 export default rootReducer;

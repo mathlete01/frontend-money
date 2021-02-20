@@ -57,9 +57,7 @@ class RothSingleMinQ extends React.Component {
               <Form.Row>
                 <Col>
                   <Button
-                    className="no"
-                    variant="danger"
-                    size="lg"
+                    variant="nope"
                     block
                     id={this.props.currentRow}
                     value={"RothSingleMaxQ"}
@@ -70,9 +68,7 @@ class RothSingleMinQ extends React.Component {
                 </Col>
                 <Col>
                   <Button
-                    className="yes"
-                    variant="success"
-                    size="lg"
+                    variant="yeah"
                     block
                     id={this.props.currentRow}
                     value={"RothSingleIncomeQ"}

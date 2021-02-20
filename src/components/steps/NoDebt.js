@@ -51,9 +51,7 @@ class RothIntro extends React.Component {
                 </Col>
                 <Col>
                   <Button
-                    className="yes"
-                    variant="primary"
-                    size="lg"
+                    variant="continue"
                     block
                     // id={this.props.currentRow}
                     id={this.props.currentRow}

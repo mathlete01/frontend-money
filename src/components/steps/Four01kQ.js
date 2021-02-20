@@ -54,7 +54,7 @@ class Four01kQ extends React.Component {
           <Container>
             {/* A 401(k) plan is a retirement investment account that many companies
             offer their employees. */}
-            <i>Tip: roll over any <OverlayTrigger
+            <i>Tip: roll over <OverlayTrigger
           placement="top"
           delay={{ show: 250, hide: 400 }}
           overlay={(props) => this.props.renderTooltip(props, "Yeah, just like that!")} ><a href="#" class="tooltiptext">highlighted</a></OverlayTrigger> text to see a definition</i>
@@ -67,9 +67,7 @@ class Four01kQ extends React.Component {
               <Form.Row>
                 <Col>
                   <Button
-                    className="no"
-                    variant="danger"
-                    size="lg"
+                    variant="nope"
                     block
                     id={this.props.currentRow}
                     value="CreditCardDebtQ"
@@ -80,9 +78,7 @@ class Four01kQ extends React.Component {
                 </Col>
                 <Col>
                   <Button
-                    className="yes"
-                    variant="success"
-                    size="lg"
+                    variant="yeah"
                     block
                     id={this.props.currentRow}
                     value="Four01kMatch"

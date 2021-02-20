@@ -126,7 +126,7 @@ class LeftoverMoney extends React.Component {
                       }
                       id="monthly_income"
                       name="monthly_income"
-                      size="lg"
+                      // 
                       onChange={this.handleChange}
                       onFocus={this.handleFocus} 
                     />
@@ -141,7 +141,7 @@ class LeftoverMoney extends React.Component {
             <Form.Group>
               <Form.Row>
                 <Col id="formText">
-                  <Form.Label>Monthly Bills</Form.Label>
+                  <Form.Label >Monthly Bills</Form.Label>
                 </Col>
                 <Col>
                   <InputGroup>
@@ -157,7 +157,7 @@ class LeftoverMoney extends React.Component {
                       }
                       id="monthly_bills"
                       name="monthly_bills"
-                      size="lg"
+                      // 
                       onChange={this.handleChange}
                       onFocus={this.handleFocus} 
                     />
@@ -190,7 +190,7 @@ class LeftoverMoney extends React.Component {
                       }
                       id="monthly_spending"
                       name="monthly_spending"
-                      size="lg"
+                      // 
                       onChange={this.handleChange}
                       onFocus={this.handleFocus} 
                     />
@@ -220,7 +220,7 @@ class LeftoverMoney extends React.Component {
                       readOnly
                       id="leftover_money"
                       name="leftover_money"
-                      size="lg"
+                      // 
                     />
                   </InputGroup>
                 </Col>
@@ -236,9 +236,7 @@ class LeftoverMoney extends React.Component {
                 <Col>
                   {this.checkValid() ? (
                     <Button
-                      className="yes"
-                      variant="primary"
-                      size="lg"
+                      variant="yeah"
                       block
                       id={this.props.currentRow}
                     value="Four01kQ"
@@ -248,9 +246,7 @@ class LeftoverMoney extends React.Component {
                     </Button>
                   ) : (
                     <Button
-                      className="yes"
-                      variant="primary"
-                      size="lg"
+                      variant="yeah"
                       block
                       disabled
                     >

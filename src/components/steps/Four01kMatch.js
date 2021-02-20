@@ -79,7 +79,7 @@ class Four01kMatch extends React.Component {
                       value={this.state.four01k_match ? this.state.four01k_match : 0}
                       id="four01k_match"
                       name="four01k_match"
-                      size="lg"
+                      
                       onChange={this.handleChange} 
                     />
                     <InputGroup.Append>
@@ -100,9 +100,7 @@ class Four01kMatch extends React.Component {
                 <Col>
                   {/* {this.checkValid() ? ( */}
                     <Button
-                      className="yes"
-                      variant="primary"
-                      size="lg"
+                      variant="continue"
                       block
                       id={this.props.currentRow}
                     value="Four01kContribution"
@@ -111,7 +109,7 @@ class Four01kMatch extends React.Component {
                       Next
                     </Button>
                   {/* ) : (
-                    <Button className="yes" variant="primary" size="lg" block disabled>
+                    <Button variant="yeah" variant="primary"  block disabled>
                       Next
                     </Button>
                   )} */}

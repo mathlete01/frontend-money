@@ -114,7 +114,7 @@ class CreditCardDebt extends React.Component {
                       value={this.state.cc_1 ? this.state.cc_1 : 0}
                       id="cc_1"
                       name="cc_1"
-                      size="lg"
+                      // 
                       onChange={this.handleChange}
                       onFocus={this.handleFocus} 
                     />
@@ -143,7 +143,7 @@ class CreditCardDebt extends React.Component {
                       value={this.state.cc_2 ? this.state.cc_2 : 0}
                       id="cc_2"
                       name="cc_2"
-                      size="lg"
+                      // 
                       onChange={this.handleChange}
                       onFocus={this.handleFocus} 
                     />
@@ -172,7 +172,7 @@ class CreditCardDebt extends React.Component {
                       value={this.state.cc_3 ? this.state.cc_3 : 0}
                       id="cc_3"
                       name="cc_3"
-                      size="lg"
+                      // 
                       onChange={this.handleChange}
                       onFocus={this.handleFocus} 
                     />
@@ -190,9 +190,9 @@ class CreditCardDebt extends React.Component {
                 <Col>
                   {this.checkValid() ? (
                     <Button
-                      className="yes"
+                      variant="continue"
                       variant="primary"
-                      size="lg"
+                      
                       block
                       id={this.props.currentRow}
                       value="PriPostDebt"
@@ -202,9 +202,9 @@ class CreditCardDebt extends React.Component {
                     </Button>
                   ) : (
                     <Button
-                      className="yes"
+                      variant="continue"
                       variant="primary"
-                      size="lg"
+                      
                       block
                       disabled
                     >

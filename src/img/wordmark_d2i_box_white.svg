@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="640px" height="640px" viewBox="0 0 640 640" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>wordmark_d2i_box_white</title>
+    <g id="wordmark_d2i_box_white" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M540,240 L539.999,300 L600,300 L600,340 L539.999,340 L540,400 L500,400 L499.999,340 L440,340 L440,300 L499.999,300 L500,240 L540,240 Z" id="Plus" fill="#FFFFFF"></path>
+        <path d="M346,240 L426,320 L346,400 L316,370 L346,340 L346,339.999 L220,340 L220,300 L345.999,299.999 L316,270 L346,240 Z" id="Arrow" fill="#FFFFFF"></path>
+        <polygon id="Minus" fill="#FFFFFF" points="40 300 40 340 200 340 200 300"></polygon>
+        <text id="DEBTOR" font-family="Metropolis-Bold, Metropolis" font-size="110" font-weight="bold" letter-spacing="22" fill="#FFFFFF">
+            <tspan x="32.22" y="197">DEBTOR</tspan>
+        </text>
+        <text id="INVESTOR" font-family="Metropolis-Bold, Metropolis" font-size="110" font-weight="bold" fill="#FFFFFF">
+            <tspan x="35.045" y="519">INVESTOR</tspan>
+        </text>
+        <rect id="Rectangle" stroke="#FFFFFF" stroke-width="20" x="10" y="10" width="620" height="620"></rect>
+    </g>
+</svg>
