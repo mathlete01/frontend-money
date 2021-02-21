@@ -7,9 +7,10 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
+import { Tabs, Tab } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
+// import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+// import Tooltip from "react-bootstrap/Tooltip";
 
 class PriPostDebt extends React.Component {
   _prev = () => {
@@ -21,6 +22,32 @@ class PriPostDebt extends React.Component {
     // this.props.updateCurrentRow(this.props.getNextRow());
     this.props.handleNextStep(event);
   };
+
+  debtSum = () => {
+    if (this.props.currentUser.credit_card_debt > this.props.currentUser.leftover_money){
+      console.log(`debtSum = `, "big")
+      // this.calcPayPeriodsMakeDetermination()
+      this.makeDetermination()
+      return ("big")
+    } else {
+      console.log(`debtSum = `, "small")
+      this.makeDetermination()
+      return ("small")
+    }
+  }
+
+  // calcPayPeriodsMakeDetermination = () => {
+  //   const payPeriodCount = this.props.currentUser.credit_card_debt / this.props.currentUser.leftover_money
+  //   console.log(`payPeriodCount = `, payPeriodCount)
+  //   this.makeDetermination()
+  //   return payPeriodCount
+  // }
+
+  calcPayPeriods = () => {
+    const payPeriodCount = Math.round(this.props.currentUser.credit_card_debt / this.props.currentUser.leftover_money)
+    console.log(`payPeriodCount = `, payPeriodCount)
+    return payPeriodCount
+  }
 
   makeDetermination = () => {
     // debugger
@@ -48,7 +75,10 @@ class PriPostDebt extends React.Component {
       case four01k === false && credit_card_debt <= leftover_money:
         console.log("*** No 401k / Small Debt");
         this.headline = `Pay off your credit card debt 💳🧾`;
-        this.advice = `Ok, so you've got a bit of credit card debt, but you have enough money left over after bills and spending money to pay it off in a month. So, do it. Next, let's make sure you qualify for a Roth IRA!`;
+        this.advice = ``;
+        this.what = `The total credit card debt you've listed here is $${credit_card_debt}. The $${leftover_money} you have left over after bills and spending money is more than enough to pay it off in under a month, so, do it.`
+        this.why = `The interest you pay on credit cards is often *three times* as much as the interest you could earn on investments. So, credit card debt is like a negative investment!`
+        this.how = `Use the Debt Snowball method: Apply all your leftover money the smallest debt you have, and pay just the minimum payment on your other cards. Once your smallest debt is paid off, move on to the next smallest. This method works well because it gives you success earlier than prioritizing the card with the highest interest rate. That early success is is a powerful motivator to get it all paid off.`
         this.nextStep = "RothIntro";
         break;
       // Case:  No 401k /  Big Debt
@@ -56,31 +86,20 @@ class PriPostDebt extends React.Component {
         console.log("*** No 401k /  Big Debt");
         this.headline = `Pay off your credit card debt 💳🧾`;
         this.advice =
-          "The interest you pay on credit cards is often THREE TIMES as much as the interest you could earn on investments. So, credit card debt is like a negative investent! First, target the smallest debt you have, then the next smallest. Next, let's see if you qualify for a Roth IRA...";
+          ``
+        this.what = `The total credit card debt you've listed here is $${credit_card_debt}. Apply the $${leftover_money} of monthly leftover money and you can pay off your debt in about ${this.calcPayPeriods()} pay periods.`
+        this.why = `The interest you pay on credit cards is often *three times* as much as the interest you could earn on investments. So, credit card debt is like a negative investment!`
+        this.how = `Use the Debt Snowball method: Apply all your leftover money the smallest debt you have, and pay just the minimum payment on your other cards. Once your smallest debt is paid off, move on to the next smallest. This method works well because it gives you success earlier than prioritizing the card with the highest interest rate. That early success is is a powerful motivator to get it all paid off.`
         this.nextStep = "RothIntro";
         break;
-      // Case:  No 401k /  No Debt
-      // case four01k === false && credit_card_debt === 0:
-      //   console.log("*** No 401k /  No Debt");
-      //   this.headline = `Congrats, you have no credit card debt! 🏆`;
-      //   this.advice =
-      //     "Fantastic. Next, let's see if you qualify for a Roth IRA...";
-      //   this.nextStep = "RothIntro";
-      //   break;
-      // Case:  Contribution > Match / No Debt
-      // case four01k_contribution > four01k_match && credit_card_debt === 0:
-      //   console.log("*** Contribution > Match / No Debt");
-      //   this.headline = `Congrats, you have no credit card debt! 🏆`;
-      //   this.advice =
-      //     "...*and*, your 401(k) contribution is more than the company match--well done!. Next, let's see if you qualify for a Roth IRA...";
-      //   this.nextStep = "RothIntro";
-      //   break;
-      // Case:  Contribution > Match / Small Debt
       case four01k_contribution > four01k_match &&
         credit_card_debt < leftover_money:
         console.log("*** Contribution > Match / Small Debt");
         this.headline = `Pay off your credit card debt 💳🧾`;
-        this.advice = `Ok, so you've got a bit of credit card debt, but you have enough money left over after bills and spending money to pay it off in a month. So, PAY THE DAMN DEBT OFF THIS MONTH, YO. Next, let's see if you qualify for a Roth IRA...`;
+        this.advice = ``;
+        this.what = `The total credit card debt you've listed here is $${credit_card_debt}. Apply the $${leftover_money} of monthly leftover money and you can pay off your debt in about ${this.calcPayPeriods()} pay periods.`
+        this.why = `The interest you pay on credit cards is often *three times* as much as the interest you could earn on investments. So, credit card debt is like a negative investment!`
+        this.how = `Use the Debt Snowball method: Apply all your leftover money the smallest debt you have, and pay just the minimum payment on your other cards. Once your smallest debt is paid off, move on to the next smallest. This method works well because it gives you success earlier than prioritizing the card with the highest interest rate. That early success is is a powerful motivator to get it all paid off.`
         this.nextStep = "RothIntro";
         break;
       // Case:  Contribution > Match / Big Debt
@@ -88,7 +107,10 @@ class PriPostDebt extends React.Component {
         credit_card_debt > leftover_money:
         console.log("*** Contribution > Match / Big Debt");
         this.headline = `Reduce your 401(k) contribution 🧮 and pay off your credit cards 💳`;
-        this.advice = `While it's great that you are taking advantage of your 401(k), right now paying off credit card debt is your top priority. To that end, let's give you more money to pay off your debt: Temporarily reduce your 401(k) contribution from ${four01k_contribution}% to ${four01k_match}% and use the increased take-home pay to pay off your cards, starting with smallest debt you owe then the next smallest, and so on. Next, let's see if you qualify for a Roth IRA...`;
+        this.advice = ``;
+        this.what = `While it's great that you are taking advantage of your 401(k), right now paying off your $${credit_card_debt} credit card debt is your top priority. To that end, let's give you more money to pay off your debt.Apply the $${leftover_money} of monthly leftover money and you can pay off your debt in about ${this.calcPayPeriods()} pay periods.`
+        this.why = `The interest you pay on credit cards is often *three times* as much as the interest you could earn on investments. So, credit card debt is like a negative investment! A wise move is to temporarily reduce your 401(k) contribution from ${four01k_contribution}% to ${four01k_match}% and use the increased take-home pay to pay off your cards `
+        this.how = `Use the Debt Snowball method: Apply all your leftover money the smallest debt you have, and pay just the minimum payment on your other cards. Once your smallest debt is paid off, move on to the next smallest. This method works well because it gives you success earlier than prioritizing the card with the highest interest rate. That early success is is a powerful motivator to get it all paid off.`
         this.nextStep = "RothIntro";
         break;
       // Case:  Contribution < Match / No Debt
@@ -96,7 +118,10 @@ class PriPostDebt extends React.Component {
         credit_card_debt < quarterLeftoverMoney:
         console.log("*** Contribution < Match / No Debt");
         this.headline = `Let's nudge up your 401(k) contribution 🧮`;
-        this.advice = `You should to increase your 401(k) contribution from ${four01k_contribution}% to ${four01k_match}%. The employer match is free money, so take advantage of it! Next, let's see if you qualify for a Roth IRA...`;
+        this.advice = ``;
+        this.what = `While it's great that you are taking advantage of your 401(k), you should to increase your 401(k) contribution from ${four01k_contribution}% to ${four01k_match}%.`
+        this.why = `The employer match is free money, so take advantage of it!`
+        this.how = `Your HR resource at work can explain or show you how to change your contribution percentage.`
         this.nextStep = "RothIntro";
         break;
       // Case:  Contribution < Match / Big Debt
@@ -104,7 +129,10 @@ class PriPostDebt extends React.Component {
         credit_card_debt > leftover_money:
         console.log("*** Contribution < Match / Big Debt");
         this.headline = `Increase your 401(k) contribution 📈 and pay off your credit cards 💳`;
-        this.advice = `Right now, your top priority is to pay off your credit card debt. But before you do anything, you should to increase your 401(k) contribution from ${four01k_contribution}% to ${four01k_match}%. The employer match is free money, so take advantage of it! Make that change now, then focus on paying off your cards, starting with smallest debt you owe then the next smallest, and so on. Next, let's see if you qualify for a Roth IRA...`;
+        this.advice = ``;
+        this.what = `Right now, your top priority is to pay off your credit card debt. But before you do anything, you should to increase your 401(k) contribution from ${four01k_contribution}% to ${four01k_match}%.`
+        this.why = `The employer match is free money, so take advantage of it!`
+        this.how = `Use the Debt Snowball method: Apply all your leftover money the smallest debt you have, and pay just the minimum payment on your other cards. Once your smallest debt is paid off, move on to the next smallest. This method works well because it gives you success earlier than prioritizing the card with the highest interest rate. That early success is is a powerful motivator to get it all paid off.`
         this.nextStep = "RothIntro";
         break;
       // Case:  Contribution < Match / Small Debt
@@ -113,21 +141,19 @@ class PriPostDebt extends React.Component {
         console.log("*** Contribution < Match / Small Debt");
         this.headline = `Increase your 401(k) contribution 📈 and pay off your credit cards 💳`;
         this.advice = `Ok, so you've got a bit of credit card debt, but you have enough money left over after bills and spending money to pay it off in a month. So, PAY THE DAMN DEBT OFF THIS MONTH, YO. But before you do anything, you should to increase your 401(k) contribution from ${four01k_contribution}% to ${four01k_match}%. The employer match is free money, so take advantage of it! Make that change now. Next, let's see if you qualify for a Roth IRA...`;
+        this.what = `While it's great that you are taking advantage of your 401(k), you should to increase your 401(k) contribution from ${four01k_contribution}% to ${four01k_match}%.`
+        this.why = `The employer match is free money, so take advantage of it!`
+        this.how = `Your HR resource at work can explain or show you how to change your contribution percentage.`
         this.nextStep = "RothIntro";
         break;
-      // Case:  Contribution = Match / No Debt
-      // case four01k_contribution === four01k_match && credit_card_debt === 0:
-      //   console.log("*** Contribution = Match / No Debt");
-      //   this.headline = `No credit card debt!`;
-      //   this.advice = `Well done--you're correct to restrict your 401(k) contribution to the company match of ${four01k_match}%. And no credit card debt--fantastic! Next, let's see if you qualify for a Roth IRA...`;
-      //   this.nextStep = "RothIntro";
-      //   break;
-      // Case:  Contribution = Match / Big Debt
       case four01k_contribution === four01k_match &&
         credit_card_debt > leftover_money:
         console.log("*** Contribution = Match / Big Debt");
         this.headline = `Pay off your credit card debt 💳🧾`;
-        this.advice = `Well done--you're correct to restrict your 401(k) contribution to the company match of ${four01k_match}%. For now, focus on paying off your debt, starting with smallest cc then working your way up. Next, let's see if you qualify for a Roth IRA...`;
+        this.advice = ``;
+        this.what = `Well done--you're correct to restrict your 401(k) contribution to the company match of ${four01k_match}%.`
+        this.why = `The employer match is free money, so take advantage of it!`
+        this.how = `Use the Debt Snowball method: Apply all your leftover money the smallest debt you have, and pay just the minimum payment on your other cards. Once your smallest debt is paid off, move on to the next smallest. This method works well because it gives you success earlier than prioritizing the card with the highest interest rate. That early success is is a powerful motivator to get it all paid off.`
         this.nextStep = "RothIntro";
         break;
       // Case:  Contribution = Match / Small Debt
@@ -135,7 +161,10 @@ class PriPostDebt extends React.Component {
         credit_card_debt < leftover_money:
         console.log("*** Contribution = Match / Small Debt");
         this.headline = `Pay off your credit card debt 💳🧾`;
-        this.advice = `Ok, so you've got a bit of credit card debt, but you have enough money left over after bills and spending money to pay it off in a month. So, PAY THE DAMN DEBT OFF THIS MONTH, YO. Oh, and regarding your 401(k), you're correct to restrict your 401(k) contribution to the company match of ${four01k_match}%. Next, let's see if you qualify for a Roth IRA...`;
+        this.advice = ``;
+        this.what = `Well done--you're correct to restrict your 401(k) contribution to the company match of ${four01k_match}%.`
+        this.why = `The employer match is free money, so take advantage of it!`
+        this.how = `Use the Debt Snowball method: Apply all your leftover money the smallest debt you have, and pay just the minimum payment on your other cards. Once your smallest debt is paid off, move on to the next smallest. This method works well because it gives you success earlier than prioritizing the card with the highest interest rate. That early success is is a powerful motivator to get it all paid off.`
         this.nextStep = "RothIntro";
         break;
       default:
@@ -147,16 +176,10 @@ class PriPostDebt extends React.Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    // console.log("* * * PriPostDebt: ComponentDidUpdate");
     if (prevProps.currentUser !== this.props.currentUser) {
-      this.makeDetermination()
+      this.debtSum()
     }
   }
-
-  // componentDidMount(prevProps, prevState) {
-  //   console.log("PriPostDebt: ComponentDidMount");
-  //   this.makeDetermination();
-  // }
 
   render() {
     if (this.props.currentUser.credit_card_debt === null) {
@@ -190,7 +213,25 @@ class PriPostDebt extends React.Component {
         <Row id="body" className="rowElement">
           <Container>{this.advice}</Container>
         </Row>
-        <Row id="form" className="rowElement"></Row>
+        <Row>
+          <Tabs
+            defaultActiveKey="what"
+            id="uncontrolled-tab-example"
+            className="tab"
+            // activeKey={this.state.activeTab}
+            onSelect={this.handleSelect}
+          >
+            <Tab eventKey="what" title="What">
+              {this.what}
+            </Tab>
+            <Tab eventKey="why" title="Why">
+              {this.why}
+            </Tab>
+            <Tab eventKey="how" title="How">
+              {this.how}
+            </Tab>
+          </Tabs>
+        </Row>
         <Row id="buttons" className="rowElement">
           <Container>
             <Form.Group>
