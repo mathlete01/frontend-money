@@ -1,11 +1,14 @@
 {
   "hosting": {
-    "public": "build",
+    "public": "dist/debtor-to-investor",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
     ],
+    "headers": [
+      {"source": "/service-worker.js", "headers": [{"key": "Cache-Control", "value": "no-cache"}]}
+      ],
     "rewrites": [
       {
         "source": "**",
