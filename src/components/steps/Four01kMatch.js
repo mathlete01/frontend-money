@@ -42,6 +42,8 @@ class Four01kMatch extends React.Component {
     this.props.handlePrevStep();
   };
 
+  handleFocus = (event) => event.target.select();
+
   render() {
     return (
       <Container className="step">
@@ -79,7 +81,7 @@ class Four01kMatch extends React.Component {
                       value={this.state.four01k_match ? this.state.four01k_match : 0}
                       id="four01k_match"
                       name="four01k_match"
-                      
+                      onFocus={this.handleFocus} 
                       onChange={this.handleChange} 
                     />
                     <InputGroup.Append>

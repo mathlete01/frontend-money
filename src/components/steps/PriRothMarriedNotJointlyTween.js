@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+import InputGroup from "react-bootstrap/InputGroup";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import { Tabs, Tab } from "react-bootstrap";
@@ -21,8 +22,55 @@ class PriRothMarriedNotJointlyTween extends React.Component {
  
   _next = (event) => {
     event.preventDefault();
-    // this.props.updateCurrentRow(this.props.getNextRow());
+    this.props.updateCurrentUser(this.props.currentUser.id, {
+      magi: this.state.magi
+    },this.props.currentStep);
     this.props.handleNextStep(event);
+  };
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.currentUser !== this.props.currentUser) {
+      this.setState({
+        magi: this.props.currentUser.magi,
+      });
+    }
+  }
+
+  handleFocus = (event) => event.target.select();
+
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  state = {
+    magi: this.props.currentUser.magi,
+  };
+
+  numberWithCommas = (x) =>  {
+    return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+}
+
+  calcRothMaxNotJointly = () => {
+    const magi = this.state.magi
+    const incomeMin = 0
+    const incomeMax = 10000
+    const divider = 10000
+    const contributionLimitYoung = 6000
+    switch (true){
+      case magi <incomeMin:
+        return 0
+        break;
+      case magi >= incomeMax:
+        return 0
+        break;
+      case magi > incomeMin && magi < incomeMax:
+        const num = contributionLimitYoung - (((magi - incomeMin)/ divider) * contributionLimitYoung)
+        const rothMax = (Math.round(num))
+        return rothMax
+        break
+    }
   };
 
   render() {
@@ -78,48 +126,39 @@ class PriRothMarriedNotJointlyTween extends React.Component {
                 </thead>
                 <tbody>
                   <tr>
-                    <td>0</td>
-                    <td>$6,000</td>
-                  </tr>
-                  <tr>
-                    <td>$1,000 </td>
-                    <td>$5,400 </td>
-                  </tr>
-                  <tr>
-                    <td>$2,000 </td>
-                    <td>$4,800 </td>
-                  </tr>
-                  <tr>
-                    <td>$3,000 </td>
-                    <td>$4,200 </td>
-                  </tr>
-                  <tr>
-                    <td>$4,000 </td>
-                    <td>$3,600 </td>
-                  </tr>
-                  <tr>
-                    <td>$5,000 </td>
-                    <td>$3,000 </td>
-                  </tr>
-                  <tr>
-                    <td>$6,000 </td>
-                    <td>$2,400 </td>
-                  </tr>
-                  <tr>
-                    <td>$7,000 </td>
-                    <td>$1,800 </td>
-                  </tr>
-                  <tr>
-                    <td>$8,000 </td>
-                    <td>$1,200 </td>
-                  </tr>
-                  <tr>
-                    <td>$9,000 </td>
-                    <td>$600 </td>
-                  </tr>
-                  <tr>
-                    <td>$10,000 and over </td>
-                    <td>$0 😕 </td>
+                    <td>
+                      <InputGroup>
+                        <InputGroup.Prepend>
+                          <InputGroup.Text>$</InputGroup.Text>
+                        </InputGroup.Prepend>
+                        <FormControl
+                          className="formField"
+                          type="number"
+                          min="0"
+                          value={this.state.magi ? this.state.magi : 0}
+                          id="magi"
+                          name="magi"
+                          onChange={this.handleChange}
+                          onFocus={this.handleFocus}
+                        />
+                      </InputGroup>
+                    </td>
+                    <td>
+                      <InputGroup>
+                        <InputGroup.Prepend>
+                          <InputGroup.Text>$</InputGroup.Text>
+                        </InputGroup.Prepend>
+                        <FormControl
+                          className="formField"
+                          type="number"
+                          min="0"
+                          value={this.numberWithCommas(this.calcRothMaxNotJointly())}
+                          readOnly
+                          id="rothMax"
+                          name="rothMax"
+                        />
+                      </InputGroup>
+                    </td>
                   </tr>
                 </tbody>
               </Table>
@@ -192,7 +231,9 @@ class PriRothMarriedNotJointlyTween extends React.Component {
                       : "hidden"
                   }
                 >                  <Button
-                    variant="continue"
+                    className="yes"
+                    variant="primary"
+                    size="lg"
                     block
                     id={this.props.getNextRow()}
                     value={this.props.currentUser.four01k ? "Four01kMaxOutQ" : "PriTaxableBrokerageIntro"}

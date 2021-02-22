@@ -21,6 +21,9 @@ class PriRothSingleTween extends React.Component {
 
   _next = (event) => {
     event.preventDefault();
+    this.props.updateCurrentUser(this.props.currentUser.id, {
+      magi: this.state.magi
+    },this.props.currentStep);
     this.props.handleNextStep(event);
   };
 
@@ -28,7 +31,6 @@ class PriRothSingleTween extends React.Component {
     if (prevProps.currentUser !== this.props.currentUser) {
       this.setState({
         magi: this.props.currentUser.magi,
-        // rothMaxYoung: this.props.currentUser.roth_max,
       });
     }
   }
@@ -36,7 +38,6 @@ class PriRothSingleTween extends React.Component {
   handleFocus = (event) => event.target.select();
 
   handleChange = (event) => {
-    console.log(`handleChange called`);
     this.setState({
       [event.target.name]: event.target.value,
     });
@@ -46,6 +47,10 @@ class PriRothSingleTween extends React.Component {
     magi: this.props.currentUser.magi,
     // rothMaxYoung: this.props.currentUser.roth_max,
   };
+
+  numberWithCommas = (x) =>  {
+    return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+}
 
   calcRothMaxSingleYoung = () => {
     const magi = this.state.magi
@@ -62,7 +67,7 @@ class PriRothSingleTween extends React.Component {
         break;
       case magi >= incomeMin && magi < incomeMax:
         const num = contributionLimitYoung - (((magi - incomeMin)/ divider) * contributionLimitYoung)
-        const rothMaxYoung = (Math.round(num * 100) / 100).toFixed(2)
+        const rothMaxYoung = (Math.round(num))
         return rothMaxYoung
         break
     }
@@ -83,8 +88,8 @@ class PriRothSingleTween extends React.Component {
         break;
       case magi >= incomeMin && magi < incomeMax:
         const num = contributionLimitOld - (((magi - incomeMin)/ divider) * contributionLimitOld)
-        const rothMaxYoung = (Math.round(num * 100) / 100).toFixed(2)
-        return rothMaxYoung
+        const rothMaxOld = (Math.round(num))
+        return rothMaxOld
         break
     }
   };
@@ -148,6 +153,7 @@ class PriRothSingleTween extends React.Component {
                         <FormControl
                           className="formField"
                           type="number"
+                          min="0"
                           value={this.state.magi ? this.state.magi : 0}
                           id="magi"
                           name="magi"
@@ -163,8 +169,9 @@ class PriRothSingleTween extends React.Component {
                         </InputGroup.Prepend>
                         <FormControl
                           className="formField"
-                          type="number"
-                          value={this.calcRothMaxSingleYoung()}
+                          type="string"
+                          min="0"
+                          value={this.numberWithCommas(this.calcRothMaxSingleYoung())}
                           readOnly
                           id="rothMaxYoung"
                           name="rothMaxYoung"
@@ -178,8 +185,9 @@ class PriRothSingleTween extends React.Component {
                         </InputGroup.Prepend>
                         <FormControl
                           className="formField"
-                          type="number"
-                          value={this.calcRothMaxSingleOld()}
+                          type="string"
+                          min="0"
+                          value={this.numberWithCommas(this.calcRothMaxSingleOld())}
                           readOnly
                           id="rothMaxOld"
                           name="rothMaxOld"

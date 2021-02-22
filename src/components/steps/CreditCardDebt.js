@@ -77,6 +77,10 @@ class CreditCardDebt extends React.Component {
 
   handleFocus = (event) => event.target.select();
 
+  numberWithCommas = (x) =>  {
+    return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+}
+
   render() {
     return (
       <Container className="step">
@@ -109,9 +113,9 @@ class CreditCardDebt extends React.Component {
                     </InputGroup.Prepend>
                     <FormControl
                       className="formField"
-                      type="number"
+                      type="string"
                       min="0"
-                      value={this.state.cc_1 ? this.state.cc_1 : 0}
+                      value={this.numberWithCommas(this.state.cc_1 ? this.state.cc_1 : 0)}
                       id="cc_1"
                       name="cc_1"
                       // 
@@ -138,9 +142,9 @@ class CreditCardDebt extends React.Component {
                     </InputGroup.Prepend>
                     <FormControl
                       className="formField"
-                      type="number"
+                      type="string"
                       min="0"
-                      value={this.state.cc_2 ? this.state.cc_2 : 0}
+                      value={this.numberWithCommas(this.state.cc_2 ? this.state.cc_2 : 0)}
                       id="cc_2"
                       name="cc_2"
                       // 
@@ -167,9 +171,9 @@ class CreditCardDebt extends React.Component {
                     </InputGroup.Prepend>
                     <FormControl
                       className="formField"
-                      type="number"
+                      type="string"
                       min="0"
-                      value={this.state.cc_3 ? this.state.cc_3 : 0}
+                      value={this.numberWithCommas(this.state.cc_3 ? this.state.cc_3 : 0)}
                       id="cc_3"
                       name="cc_3"
                       // 
