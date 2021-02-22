@@ -113,6 +113,7 @@ class App extends React.Component {
       <div
         style={{
           backgroundImage: `url(${background})`,
+          backgroundSize:'cover'
         }}
         id="bg"
       >

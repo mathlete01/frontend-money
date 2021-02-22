@@ -100,6 +100,7 @@ class PaySchedule extends React.Component {
                       label="Every Week"
                       name="formHorizontalRadios"
                       id="every_week"
+                      checked={this.state.pay_schedule === "every_week" ? true : false}
                       onChange={this.handleChange}
                     />
                     <Form.Check
@@ -107,6 +108,7 @@ class PaySchedule extends React.Component {
                       label="Every Other Week"
                       name="formHorizontalRadios"
                       id="every_other_week"
+                      checked={this.state.pay_schedule === "every_other_week" ? true : false}
                       onChange={this.handleChange}
                     />
                     <Form.Check
@@ -114,6 +116,7 @@ class PaySchedule extends React.Component {
                       label="Twice a Month"
                       name="formHorizontalRadios"
                       id="twice_a_month"
+                      checked={this.state.pay_schedule === "twice_a_month" ? true : false}
                       onChange={this.handleChange}
                     />
                     <Form.Check
@@ -121,6 +124,7 @@ class PaySchedule extends React.Component {
                       label="Once a Month"
                       name="formHorizontalRadios"
                       id="once_a_month"
+                      checked={this.state.pay_schedule === "once_a_month" ? true : false}
                       onChange={this.handleChange}
                     />
                   </fieldset>
