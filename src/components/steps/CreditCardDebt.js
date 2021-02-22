@@ -32,9 +32,9 @@ class CreditCardDebt extends React.Component {
   };
 
   checkValid = () => {
-    if (this.state.cc_1 > 0) {
+    // if (this.state.cc_1 > 0) {
       return true;
-    }
+    // }
   };
 
   handleChange = (event) => {
