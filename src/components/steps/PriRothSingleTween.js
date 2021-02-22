@@ -28,7 +28,7 @@ class PriRothSingleTween extends React.Component {
     if (prevProps.currentUser !== this.props.currentUser) {
       this.setState({
         magi: this.props.currentUser.magi,
-        rothMax: this.props.currentUser.roth_max,
+        // rothMaxYoung: this.props.currentUser.roth_max,
       });
     }
   }
@@ -44,7 +44,7 @@ class PriRothSingleTween extends React.Component {
 
   state = {
     magi: this.props.currentUser.magi,
-    rothMax: this.props.currentUser.roth_max,
+    // rothMaxYoung: this.props.currentUser.roth_max,
   };
 
   calcRothMaxSingleYoung = () => {
@@ -52,18 +52,39 @@ class PriRothSingleTween extends React.Component {
     const incomeMin = 125000
     const incomeMax = 140000
     const divider = 15000
-    const contributionLimit = 6000
+    const contributionLimitYoung = 6000
     switch (true){
       case magi <incomeMin:
-        return contributionLimit
+        return contributionLimitYoung
         break;
       case magi >= incomeMax:
         return 0
         break;
       case magi >= incomeMin && magi < incomeMax:
-        const num = contributionLimit - (((magi - incomeMin)/ divider) * contributionLimit)
-        const rothMax = (Math.round(num * 100) / 100).toFixed(2)
-        return rothMax
+        const num = contributionLimitYoung - (((magi - incomeMin)/ divider) * contributionLimitYoung)
+        const rothMaxYoung = (Math.round(num * 100) / 100).toFixed(2)
+        return rothMaxYoung
+        break
+    }
+  };
+
+  calcRothMaxSingleOld = () => {
+    const magi = this.state.magi
+    const incomeMin = 125000
+    const incomeMax = 140000
+    const divider = 15000
+    const contributionLimitOld = 7000
+    switch (true){
+      case magi <incomeMin:
+        return contributionLimitOld
+        break;
+      case magi >= incomeMax:
+        return 0
+        break;
+      case magi >= incomeMin && magi < incomeMax:
+        const num = contributionLimitOld - (((magi - incomeMin)/ divider) * contributionLimitOld)
+        const rothMaxYoung = (Math.round(num * 100) / 100).toFixed(2)
+        return rothMaxYoung
         break
     }
   };
@@ -92,7 +113,7 @@ class PriRothSingleTween extends React.Component {
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Since you'll make more than $124k but less than $139k this year, the
+            Since you'll make more than $125k but less than $140k this year, the
             amount you'll be able to contribute is reduced.
           </Container>
         </Row>
@@ -114,6 +135,7 @@ class PriRothSingleTween extends React.Component {
                   <tr>
                     <th>Your Modified Adjusted Gross Income (MAGI)</th>
                     <th>Max Contribution if under 50</th>
+                    <th>Max Contribution if over 50</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -126,13 +148,9 @@ class PriRothSingleTween extends React.Component {
                         <FormControl
                           className="formField"
                           type="number"
-                          min="122000"
-                          max="139000"
-                          // value="131000"
-                          value={this.state.magi ? this.state.magi : 131000}
+                          value={this.state.magi ? this.state.magi : 0}
                           id="magi"
                           name="magi"
-                          //
                           onChange={this.handleChange}
                           onFocus={this.handleFocus}
                         />
@@ -148,9 +166,23 @@ class PriRothSingleTween extends React.Component {
                           type="number"
                           value={this.calcRothMaxSingleYoung()}
                           readOnly
-                          id="rothMax"
-                          name="rothMax"
-                          //
+                          id="rothMaxYoung"
+                          name="rothMaxYoung"
+                        />
+                      </InputGroup>
+                    </td>
+                    <td>
+                      <InputGroup>
+                        <InputGroup.Prepend>
+                          <InputGroup.Text>$</InputGroup.Text>
+                        </InputGroup.Prepend>
+                        <FormControl
+                          className="formField"
+                          type="number"
+                          value={this.calcRothMaxSingleOld()}
+                          readOnly
+                          id="rothMaxOld"
+                          name="rothMaxOld"
                         />
                       </InputGroup>
                     </td>
