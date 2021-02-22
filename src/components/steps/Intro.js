@@ -83,8 +83,8 @@ class Intro extends React.Component {
                     onClick={this._next}
                   >
                     Let's go 👉
-                  </Button></Col>
-                <Col><Button
+                  </Button></Col> */}
+                {/* <Col><Button
                     id={this.props.currentRow}
                     value="LeftoverMoney"
                     variant="yeah"

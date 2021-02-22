@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
+import InputGroup from "react-bootstrap/InputGroup";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import { Tabs, Tab } from "react-bootstrap";
@@ -14,28 +15,98 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
 class PriRothSingleTween extends React.Component {
-  
   _prev = () => {
     this.props.handlePrevStep();
   };
 
   _next = (event) => {
     event.preventDefault();
-    // this.props.updateCurrentRow(this.props.getNextRow());
-    this.props.handleNextStep(event)
+    this.props.updateCurrentUser(this.props.currentUser.id, {
+      magi: this.state.magi
+    },this.props.currentStep);
+    this.props.handleNextStep(event);
   };
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.currentUser !== this.props.currentUser) {
+      this.setState({
+        magi: this.props.currentUser.magi,
+      });
+    }
+  }
+
+  handleFocus = (event) => event.target.select();
+
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  state = {
+    magi: this.props.currentUser.magi,
+    // rothMaxYoung: this.props.currentUser.roth_max,
+  };
+
+  numberWithCommas = (x) =>  {
+    return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+}
+
+  calcRothMaxSingleYoung = () => {
+    const magi = this.state.magi
+    const incomeMin = 125000
+    const incomeMax = 140000
+    const divider = 15000
+    const contributionLimitYoung = 6000
+    switch (true){
+      case magi <incomeMin:
+        return contributionLimitYoung
+        break;
+      case magi >= incomeMax:
+        return 0
+        break;
+      case magi >= incomeMin && magi < incomeMax:
+        const num = contributionLimitYoung - (((magi - incomeMin)/ divider) * contributionLimitYoung)
+        const rothMaxYoung = (Math.round(num))
+        return rothMaxYoung
+        break
+    }
+  };
+
+  calcRothMaxSingleOld = () => {
+    const magi = this.state.magi
+    const incomeMin = 125000
+    const incomeMax = 140000
+    const divider = 15000
+    const contributionLimitOld = 7000
+    switch (true){
+      case magi <incomeMin:
+        return contributionLimitOld
+        break;
+      case magi >= incomeMax:
+        return 0
+        break;
+      case magi >= incomeMin && magi < incomeMax:
+        const num = contributionLimitOld - (((magi - incomeMin)/ divider) * contributionLimitOld)
+        const rothMaxOld = (Math.round(num))
+        return rothMaxOld
+        break
+    }
+  };
 
   render() {
     return (
       <Container className="priority">
         <Row id="header" className="rowElement">
-        <Button
+          <Button
             onClick={this._prev}
             variant="link"
             className="backBtn"
-            disabled={this.props.currentStep === "PriRothSingleTween" ? false : true}>
-            👈 BACK 
+            disabled={
+              this.props.currentStep === "PriRothSingleTween" ? false : true
+            }
+          >
+            👈 BACK
           </Button>
           <hr className="w-100" />
         </Row>
@@ -47,7 +118,7 @@ class PriRothSingleTween extends React.Component {
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Since you'll make more than $124k but less than $139k this year, the
+            Since you'll make more than $125k but less than $140k this year, the
             amount you'll be able to contribute is reduced.
           </Container>
         </Row>
@@ -69,52 +140,60 @@ class PriRothSingleTween extends React.Component {
                   <tr>
                     <th>Your Modified Adjusted Gross Income (MAGI)</th>
                     <th>Max Contribution if under 50</th>
+                    <th>Max Contribution if over 50</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>under $124,000</td>
-                    <td>$6,000</td>
-                  </tr>
-                  <tr>
-                    <td>$125,500 </td>
-                    <td>$5,400 </td>
-                  </tr>
-                  <tr>
-                    <td>$127,000 </td>
-                    <td>$4,800 </td>
-                  </tr>
-                  <tr>
-                    <td>$128,500 </td>
-                    <td>$4,200 </td>
-                  </tr>
-                  <tr>
-                    <td>$130,000 </td>
-                    <td>$3,600 </td>
-                  </tr>
-                  <tr>
-                    <td>$131,500 </td>
-                    <td>$3,000 </td>
-                  </tr>
-                  <tr>
-                    <td>$133,000 </td>
-                    <td>$2,400 </td>
-                  </tr>
-                  <tr>
-                    <td>$134,500 </td>
-                    <td>$1,800 </td>
-                  </tr>
-                  <tr>
-                    <td>$136,000 </td>
-                    <td>$1,200 </td>
-                  </tr>
-                  <tr>
-                    <td>$137,500 </td>
-                    <td>$600 </td>
-                  </tr>
-                  <tr>
-                    <td>$139,000 and over </td>
-                    <td>$0 😕 </td>
+                    <td>
+                      <InputGroup>
+                        <InputGroup.Prepend>
+                          <InputGroup.Text>$</InputGroup.Text>
+                        </InputGroup.Prepend>
+                        <FormControl
+                          className="formField"
+                          type="number"
+                          min="0"
+                          value={this.state.magi ? this.state.magi : 0}
+                          id="magi"
+                          name="magi"
+                          onChange={this.handleChange}
+                          onFocus={this.handleFocus}
+                        />
+                      </InputGroup>
+                    </td>
+                    <td>
+                      <InputGroup>
+                        <InputGroup.Prepend>
+                          <InputGroup.Text>$</InputGroup.Text>
+                        </InputGroup.Prepend>
+                        <FormControl
+                          className="formField"
+                          type="string"
+                          min="0"
+                          value={this.numberWithCommas(this.calcRothMaxSingleYoung())}
+                          readOnly
+                          id="rothMaxYoung"
+                          name="rothMaxYoung"
+                        />
+                      </InputGroup>
+                    </td>
+                    <td>
+                      <InputGroup>
+                        <InputGroup.Prepend>
+                          <InputGroup.Text>$</InputGroup.Text>
+                        </InputGroup.Prepend>
+                        <FormControl
+                          className="formField"
+                          type="string"
+                          min="0"
+                          value={this.numberWithCommas(this.calcRothMaxSingleOld())}
+                          readOnly
+                          id="rothMaxOld"
+                          name="rothMaxOld"
+                        />
+                      </InputGroup>
+                    </td>
                   </tr>
                 </tbody>
               </Table>
@@ -190,7 +269,11 @@ class PriRothSingleTween extends React.Component {
                     variant="continue"
                     block
                     id={this.props.getNextRow()}
-                    value={this.props.currentUser.four01k ? "Four01kMaxOutQ" : "PriTaxableBrokerageIntro"}
+                    value={
+                      this.props.currentUser.four01k
+                        ? "Four01kMaxOutQ"
+                        : "PriTaxableBrokerageIntro"
+                    }
                     onClick={this._next}
                   >
                     Continue Below 👇

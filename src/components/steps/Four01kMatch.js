@@ -7,10 +7,10 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
-import { Form, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { Form, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
+// import Tooltip from "react-bootstrap/Tooltip";
 
 class Four01kMatch extends React.Component {
 
@@ -42,6 +42,8 @@ class Four01kMatch extends React.Component {
     this.props.handlePrevStep();
   };
 
+  handleFocus = (event) => event.target.select();
+
   render() {
     return (
       <Container className="step">
@@ -54,7 +56,7 @@ class Four01kMatch extends React.Component {
           placement="top"
           delay={{ show: 250, hide: 400 }}
           overlay={(props) => this.props.renderTooltip(props, "The employer match is the maximum percentage of your paycheck that the company will contribute to your 401(k)")}
-        ><a href="#" class="tooltiptext">401(k) match</a></OverlayTrigger>? 🏢</h3></Container>
+        ><a href="#" className="tooltiptext">401(k) match</a></OverlayTrigger>? 🏢</h3></Container>
         </Row>
         <Row id="body" className="rowElement">
           <Container>
@@ -79,7 +81,7 @@ class Four01kMatch extends React.Component {
                       value={this.state.four01k_match ? this.state.four01k_match : 0}
                       id="four01k_match"
                       name="four01k_match"
-                      
+                      onFocus={this.handleFocus} 
                       onChange={this.handleChange} 
                     />
                     <InputGroup.Append>

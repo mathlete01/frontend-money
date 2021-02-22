@@ -41,6 +41,10 @@ class LeftoverMoney extends React.Component {
     });
   };
 
+  numberWithCommas = (x) =>  {
+    return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+}
+
   calcLeftoverMoney = () => {
     if (
       this.state.monthly_income &&
@@ -117,12 +121,10 @@ class LeftoverMoney extends React.Component {
                     </InputGroup.Prepend>
                     <FormControl
                       className="formField"
-                      type="number"
+                      type="string"
                       min="0"
                       value={
-                        this.state.monthly_income
-                          ? this.state.monthly_income
-                          : "0"
+                        this.numberWithCommas(this.state.monthly_income ? this.state.monthly_income : 0)
                       }
                       id="monthly_income"
                       name="monthly_income"
@@ -150,10 +152,10 @@ class LeftoverMoney extends React.Component {
                     </InputGroup.Prepend>
                     <FormControl
                       className="formField"
-                      type="number"
+                      type="string"
                       min="0"
                       value={
-                        this.state.monthly_bills ? this.state.monthly_bills : 0
+                        this.numberWithCommas(this.state.monthly_bills ? this.state.monthly_bills : 0)
                       }
                       id="monthly_bills"
                       name="monthly_bills"
@@ -181,12 +183,10 @@ class LeftoverMoney extends React.Component {
                     </InputGroup.Prepend>
                     <FormControl
                       className="formField"
-                      type="number"
+                      type="string"
                       min="0"
                       value={
-                        this.state.monthly_spending
-                          ? this.state.monthly_spending
-                          : 0
+                        this.numberWithCommas(this.state.monthly_spending ? this.state.monthly_spending : 0)
                       }
                       id="monthly_spending"
                       name="monthly_spending"
@@ -214,9 +214,9 @@ class LeftoverMoney extends React.Component {
                     </InputGroup.Prepend>
                     <FormControl
                       className="formField"
-                      type="number"
+                      type="string"
                       min="0"
-                      value={this.calcLeftoverMoney()}
+                      value={this.numberWithCommas(this.calcLeftoverMoney())}
                       readOnly
                       id="leftover_money"
                       name="leftover_money"

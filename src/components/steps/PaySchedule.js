@@ -12,32 +12,48 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
 class PaySchedule extends React.Component {
-
-    componentDidUpdate(prevProps, prevState) {
-        if (prevProps.currentUser !== this.props.currentUser) {
-          this.setState({
-            pay_schedule: this.props.currentUser.pay_schedule,
-          });
-        }
-      }
-
-      state = {
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.currentUser !== this.props.currentUser) {
+      this.setState({
         pay_schedule: this.props.currentUser.pay_schedule,
-      };
+      });
+    }
+  }
 
-      checkValid = () => {
-        if (this.state.pay_schedule !== null) {
-          return true;
-        }
-      };
+  state = {
+    pay_schedule: this.props.currentUser.pay_schedule,
+  };
 
-    handleChange = (event) => {
-        console.log(`handleChange: event.target.id=`, event.target.id)
-        this.setState({
-          pay_schedule: event.target.id,
-        });
-        // this.calcSum();
-      };
+  checkValid = () => {
+    if (this.state.pay_schedule !== null) {
+      return true;
+    }
+  };
+
+  // debtSum = () => {
+  //   if (this.props.currentUser.credit_card_debt > this.props.currentUser.leftover_money){
+  //     console.log(`debtSum = `, "big")
+  //     this.calcPayPeriods()
+  //     return ("big")
+  //   } else {
+  //     console.log(`debtSum = `, "small")
+  //     return ("small")
+  //   }
+  // }
+
+  // calcPayPeriods = () => {
+  //   const payPeriodCount = this.props.currentUser.credit_card_debt / this.props.currentUser.leftover_money
+  //   console.log(`payPeriodCount = `, payPeriodCount)
+  //   return payPeriodCount
+  // }
+
+  handleChange = (event) => {
+    // console.log(`handleChange: event.target.id=`, event.target.id);
+    this.setState({
+      pay_schedule: event.target.id,
+    });
+    // this.debtSum();
+  };
 
   _prev = () => {
     this.props.handlePrevStep();
@@ -45,7 +61,11 @@ class PaySchedule extends React.Component {
 
   _next = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { pay_schedule: this.state.pay_schedule },this.props.currentStep);
+    this.props.updateCurrentUser(
+      this.props.currentUser.id,
+      { pay_schedule: this.state.pay_schedule },
+      this.props.currentStep
+    );
     this.props.handleNextStep(event);
   };
 
@@ -60,21 +80,18 @@ class PaySchedule extends React.Component {
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h3>
-              How often do you receive a paycheck? 💵
-            </h3>
+            <h3>How often do you receive a paycheck? 💵</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
-          <Container>
-          </Container>
+          <Container></Container>
         </Row>
         <Row id="form" className="rowElement">
           <Container>
             <Form.Group>
               <Form.Row>
                 <Col id="formText">
-                  <Form.Label>Pay Schedule</Form.Label>
+                  <Form.Label>Pay Schedule:</Form.Label>
                 </Col>
                 <Col>
                   <fieldset>
@@ -83,6 +100,7 @@ class PaySchedule extends React.Component {
                       label="Every Week"
                       name="formHorizontalRadios"
                       id="every_week"
+                      checked={this.state.pay_schedule === "every_week" ? true : false}
                       onChange={this.handleChange}
                     />
                     <Form.Check
@@ -90,6 +108,7 @@ class PaySchedule extends React.Component {
                       label="Every Other Week"
                       name="formHorizontalRadios"
                       id="every_other_week"
+                      checked={this.state.pay_schedule === "every_other_week" ? true : false}
                       onChange={this.handleChange}
                     />
                     <Form.Check
@@ -97,13 +116,15 @@ class PaySchedule extends React.Component {
                       label="Twice a Month"
                       name="formHorizontalRadios"
                       id="twice_a_month"
+                      checked={this.state.pay_schedule === "twice_a_month" ? true : false}
                       onChange={this.handleChange}
                     />
-                     <Form.Check
+                    <Form.Check
                       type="radio"
                       label="Once a Month"
                       name="formHorizontalRadios"
                       id="once_a_month"
+                      checked={this.state.pay_schedule === "once_a_month" ? true : false}
                       onChange={this.handleChange}
                     />
                   </fieldset>
@@ -118,24 +139,20 @@ class PaySchedule extends React.Component {
               <Form.Row>
                 <Col></Col>
                 <Col>
-                {this.checkValid() ? (
-                  <Button
-                    variant="continue"
-                    block
-                    id={this.props.currentRow}
-                    value="PriPostDebt"
-                    onClick={this._next}
-                  >
-                    Continue
-                  </Button>
-                  ) : (
+                  {this.checkValid() ? (
                     <Button
-                    variant="continue"
-                    block
-                    disabled
-                  >
-                    Continue
-                  </Button>
+                      variant="continue"
+                      block
+                      id={this.props.currentRow}
+                      value="PriPostDebt"
+                      onClick={this._next}
+                    >
+                      Continue
+                    </Button>
+                  ) : (
+                    <Button variant="continue" block disabled>
+                      Continue
+                    </Button>
                   )}
                 </Col>
               </Form.Row>
