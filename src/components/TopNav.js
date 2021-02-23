@@ -46,7 +46,7 @@ class TopNav extends React.Component {
   handleLogin = (credentialObj) => {
     // debugger
     console.log(`handleLogin: credentialObj = `, credentialObj);
-    this.handleAuthFetch(credentialObj, "http://localhost:3000/login");
+    this.handleAuthFetch(credentialObj, process.env.REACT_APP_BASE_URL+"/login");
   };
 
   handleLogout = () => {
@@ -60,7 +60,7 @@ class TopNav extends React.Component {
     // debugger
     console.log(`handleSignup: credentialObj = `, credentialObj);
     if (Object.keys(this.props.currentUser).length === 0) {
-      this.handleAuthFetch(credentialObj, "http://localhost:3000/users");
+      this.handleAuthFetch(credentialObj, process.env.REACT_APP_BASE_URL+"/users");
     } else {
       this.props.updateCurrentUser(
         this.props.currentUser.id,

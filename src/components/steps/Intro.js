@@ -11,8 +11,10 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
 
-// const BASE_URL = "http://localhost:3000";
-const BASE_URL = "https://pure-waters-30920.herokuapp.com"
+
+const BASE_URL = process.env.REACT_APP_BASE_URL
+console.log("Base url", BASE_URL)
+// "https://pure-waters-30920.herokuapp.com"
 const USERS_URL = `${BASE_URL}/users`;
 
 class Intro extends React.Component {

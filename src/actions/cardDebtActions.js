@@ -1,9 +1,7 @@
 export const updateCardDebts = (id, cardDebtObj) => {
     // debugger
       return (dispatch) => {
-        // const BASE_URL = "http://localhost:3000";
-        const BASE_URL = "https://pure-waters-30920.herokuapp.com"
-        const PROGRESSES_URL = `${BASE_URL}/credit_card_debts`;
+        const PROGRESSES_URL = `${process.env.REACT_APP_BASE_URL}/credit_card_debts`;
         const formData = {
           user_id: id,
           ...cardDebtObj
@@ -17,7 +15,7 @@ export const updateCardDebts = (id, cardDebtObj) => {
           },
           body: JSON.stringify(formData)
         };
-        fetch("http://localhost:3000/credit_card_debts", configOb)
+        fetch(`${process.env.REACT_APP_BASE_URL}/credit_card_debts`, configOb)
         
           .then((res) => res.json())
           // .then((data) => console.log(data))

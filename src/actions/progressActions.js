@@ -1,8 +1,7 @@
 export const updateCurrentProgress = (id, level) => {
   // debugger
     return (dispatch) => {
-      // const BASE_URL = "http://localhost:3000";
-      const BASE_URL = "https://pure-waters-30920.herokuapp.com"
+      const BASE_URL = process.env.REACT_APP_BASE_URL
       const PROGRESSES_URL = `${BASE_URL}/rungs`;
       const formData = {
         user_id: id,
@@ -18,7 +17,7 @@ export const updateCurrentProgress = (id, level) => {
         },
         body: JSON.stringify(formData)
       };
-      fetch("http://localhost:3000/rungs", configOb)
+      fetch(BASE_URL+"/rungs", configOb)
       
         .then((res) => res.json())
         // .then((data) => console.log(data))
