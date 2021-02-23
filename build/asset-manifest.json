@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.440f3115.chunk.css",
+    "main.js": "/static/js/main.8ab9c109.chunk.js",
+    "main.js.map": "/static/js/main.8ab9c109.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.4e3f9d93.js",
+    "runtime-main.js.map": "/static/js/runtime-main.4e3f9d93.js.map",
+    "static/css/2.31ff0196.chunk.css": "/static/css/2.31ff0196.chunk.css",
+    "static/js/2.bf1858b4.chunk.js": "/static/js/2.bf1858b4.chunk.js",
+    "static/js/2.bf1858b4.chunk.js.map": "/static/js/2.bf1858b4.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.31ff0196.chunk.css.map": "/static/css/2.31ff0196.chunk.css.map",
+    "static/css/main.440f3115.chunk.css.map": "/static/css/main.440f3115.chunk.css.map",
+    "static/js/2.bf1858b4.chunk.js.LICENSE.txt": "/static/js/2.bf1858b4.chunk.js.LICENSE.txt",
+    "static/media/wallpaper_sky_01.da77858d.svg": "/static/media/wallpaper_sky_01.da77858d.svg",
+    "static/media/wordmark_d2i_white.5f789a85.svg": "/static/media/wordmark_d2i_white.5f789a85.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4e3f9d93.js",
+    "static/css/2.31ff0196.chunk.css",
+    "static/js/2.bf1858b4.chunk.js",
+    "static/css/main.440f3115.chunk.css",
+    "static/js/main.8ab9c109.chunk.js"
+  ]
+}
