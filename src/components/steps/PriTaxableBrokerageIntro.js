@@ -58,8 +58,8 @@ class PriTaxableBrokerageIntro extends React.Component {
             goals? If so, it's time to invest in a taxable brokerage account.
           </Container>
         </Row>
-        <Row>
-          <Tabs defaultActiveKey="what" id="uncontrolled-tab-example">
+        <Row id="tabs" className="rowElement">
+        <Tabs defaultActiveKey="what" id="uncontrolled-tab-example">
             <Tab eventKey="what" title="What">
               <ul>
                 <li>

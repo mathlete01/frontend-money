@@ -53,13 +53,7 @@ class PriBackdoorRothIntro extends React.Component {
           </Container>
         </Row>
         <Row>
-          <Tabs
-            defaultActiveKey="what"
-            id="uncontrolled-tab-example"
-            className="tab"
-            // activeKey={this.state.activeTab}
-            onSelect={this.handleSelect}
-          >
+        <Tabs defaultActiveKey="what" id="uncontrolled-tab-example">
             <Tab eventKey="what" title="What">
               <ul>
                 <li>

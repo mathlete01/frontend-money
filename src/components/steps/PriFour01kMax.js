@@ -53,8 +53,8 @@ class PriFour01kMax extends React.Component {
             401(k)s have an inscrutable name, but they are maybe the best investment you can get your hands on.
           </Container>
         </Row>
-        <Row>
-          <Tabs defaultActiveKey="what" id="uncontrolled-tab-example">
+        <Row id="tabs" className="rowElement">
+        <Tabs defaultActiveKey="what" id="uncontrolled-tab-example">
             <Tab eventKey="what" title="What">
               <ul>
                 <li>
