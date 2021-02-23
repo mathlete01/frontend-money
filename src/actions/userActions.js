@@ -9,7 +9,8 @@ export const setCurrentUser = (currentUser) => {
 
 export const getCurrentUser = (id, currentUser) => {
   return (dispatch) => {
-    const BASE_URL = "http://localhost:3000";
+    // const BASE_URL = "http://localhost:3000";
+    const BASE_URL = "https://pure-waters-30920.herokuapp.com"
     const USERS_URL = `${BASE_URL}/users`;
     const SPECIFIC_USER = `${USERS_URL}/${id}`;
 
@@ -27,7 +28,8 @@ export const getCurrentUser = (id, currentUser) => {
 export const updateCurrentUser = (id, dataObj, currentStep) => {
   console.log(`updateCurrentUser id = `, id, `dataObj = `, dataObj, `currentStep = `, currentStep);
   return (dispatch) => {
-    const BASE_URL = "http://localhost:3000";
+    // const BASE_URL = "http://localhost:3000";
+    const BASE_URL = "https://pure-waters-30920.herokuapp.com"
     const USERS_URL = `${BASE_URL}/users`;
     const SPECIFIC_USER = `${USERS_URL}/${id}`;
     const formData = {
@@ -59,7 +61,8 @@ export const updateCurrentUser = (id, dataObj, currentStep) => {
 
 export const loginCurrentUser = (userObj) => {
   return (dispatch) => {
-    const BASE_URL = "http://localhost:3000";
+    // const BASE_URL = "http://localhost:3000";
+    const BASE_URL = "https://pure-waters-30920.herokuapp.com"
     const USERS_URL = `${BASE_URL}/login`;
     let token = localStorage.getItem("token");
     const configObj = {
