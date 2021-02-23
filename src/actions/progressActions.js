@@ -1,7 +1,8 @@
 export const updateCurrentProgress = (id, level) => {
   // debugger
     return (dispatch) => {
-      const BASE_URL = "http://localhost:3000";
+      // const BASE_URL = "http://localhost:3000";
+      const BASE_URL = "https://pure-waters-30920.herokuapp.com"
       const PROGRESSES_URL = `${BASE_URL}/rungs`;
       const formData = {
         user_id: id,
