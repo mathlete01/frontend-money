@@ -122,8 +122,8 @@ class PriRothSingleTween extends React.Component {
             amount you'll be able to contribute is reduced.
           </Container>
         </Row>
-        <Row>
-          <Tabs defaultActiveKey="what" id="uncontrolled-tab-example">
+        <Row id="tabs" className="rowElement">
+        <Tabs defaultActiveKey="what" id="uncontrolled-tab-example">
             <Tab eventKey="what" title="What">
               <ul>
                 <li>

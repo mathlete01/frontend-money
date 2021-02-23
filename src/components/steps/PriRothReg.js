@@ -56,8 +56,8 @@ class PriRothReg extends React.Component {
             You can contribute up to $6k to a Roth IRA, so do it!
           </Container>
         </Row>
-        <Row>
-          <Tabs defaultActiveKey="what" id="uncontrolled-tab-example">
+        <Row id="tabs" className="rowElement">
+        <Tabs defaultActiveKey="what" id="uncontrolled-tab-example">
             <Tab eventKey="what" title="What">
               <ul>
                 <li>

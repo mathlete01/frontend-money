@@ -104,8 +104,8 @@ class PriRothMarriedNotJointlyTween extends React.Component {
             to a Roth IRA based on your income.
           </Container>
         </Row>
-        <Row>
-          <Tabs defaultActiveKey="what" id="uncontrolled-tab-example">
+        <Row id="tabs" className="rowElement">
+        <Tabs defaultActiveKey="what" id="uncontrolled-tab-example">
             <Tab eventKey="what" title="What">
               <ul>
                 <li>
