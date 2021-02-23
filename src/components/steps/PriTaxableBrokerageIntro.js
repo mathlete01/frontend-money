@@ -16,13 +16,11 @@ import { updateCurrentRow } from "../../actions/rowActions";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
-
 class PriTaxableBrokerageIntro extends React.Component {
-  
   _prev = () => {
     this.props.handlePrevStep();
   };
-  
+
   _next = (event) => {
     event.preventDefault();
     // this.props.updateCurrentRow(this.props.getNextRow());
@@ -30,16 +28,17 @@ class PriTaxableBrokerageIntro extends React.Component {
   };
 
   render() {
-   
     return (
       <Container className="priority">
         <Row id="header" className="rowElement">
-        <Button
+          <Button
             onClick={this._prev}
             variant="link"
             className="backBtn"
             disabled={
-              this.props.currentStep === "PriTaxableBrokerageIntro" ? false : true
+              this.props.currentStep === "PriTaxableBrokerageIntro"
+                ? false
+                : true
             }
           >
             👈 BACK
@@ -59,7 +58,7 @@ class PriTaxableBrokerageIntro extends React.Component {
           </Container>
         </Row>
         <Row id="tabs" className="rowElement">
-        <Tabs defaultActiveKey="what" id="uncontrolled-tab-example">
+          <Tabs defaultActiveKey="what" id="uncontrolled-tab-example">
             <Tab eventKey="what" title="What">
               <ul>
                 <li>
@@ -82,22 +81,39 @@ class PriTaxableBrokerageIntro extends React.Component {
               </ul>
             </Tab>
             <Tab eventKey="where" title="Where">
-            <ul>
+              <ul>
                 <li>
-                  Do you already have an investment account at a discount brokerage? Do it there.
+                  Do you already have an investment account at a discount
+                  brokerage? Do it there.
                 </li>
                 <li>
-                  Otherwise, open an account at a discount brokerage like <a href="http://www.vanguard.com" target="_blank">Vanguard</a> (our favorite) or <a href="http://www.schwab.com" target="_blank">Schwab</a>.
+                  Otherwise, open an account at a discount brokerage like{" "}
+                  <a href="http://www.vanguard.com" target="_blank">
+                    Vanguard
+                  </a>{" "}
+                  (our favorite) or{" "}
+                  <a href="http://www.schwab.com" target="_blank">
+                    Schwab
+                  </a>
+                  .
                 </li>
               </ul>
             </Tab>
             <Tab eventKey="how" title="How">
               <ul>
                 <li>
-                  The first thing you should do is put your money in a target date fund. Do it immediately, it's extremely low-risk and the earlier you do it, the better. Ask the people at the brokerage why people recommend a target date fund and they'll explain it to you.
+                  The first thing you should do is put your money in a target
+                  date fund. Do it immediately, it's extremely low-risk and the
+                  earlier you do it, the better. Ask the people at the brokerage
+                  why people recommend a target date fund and they'll explain it
+                  to you.
                 </li>
                 <li>
-                  Once that's set up, you can explore different investing strategies, if you want. But our advice is to just leave it in a target date fund and forget about it. This stratetgy is called "buy and hold". Trying to "time" the market by buying and selling only works if you can tell the future.
+                  Once that's set up, you can explore different investing
+                  strategies, if you want. But our advice is to just leave it in
+                  a target date fund and forget about it. This stratetgy is
+                  called "buy and hold". Trying to "time" the market by buying
+                  and selling only works if you can tell the future.
                 </li>
               </ul>
             </Tab>
@@ -109,8 +125,7 @@ class PriTaxableBrokerageIntro extends React.Component {
           <Container>
             <Form.Group>
               <Form.Row>
-                <Col>
-                </Col>
+                <Col></Col>
                 <Col
                   className={
                     this.props.currentStep === "PriTaxableBrokerageIntro"
