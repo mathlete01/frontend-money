@@ -48,7 +48,7 @@ class PriTaxableBrokerageIntro extends React.Component {
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h4>YOUR # {this.props.rowNum} PRIORITY:</h4>
+            <h5>YOUR # {this.props.rowNum} PRIORITY:</h5>
             <h3>Contribute to a Taxable Brokerage Account 🏦📈</h3>
           </Container>
         </Row>

@@ -203,7 +203,7 @@ class PriPostDebt extends React.Component {
         <Row id="title" className="rowElement">
           <Container>
             {/* <h6>YOUR # {this.getPriorityNum()} PRIORITY:</h6> */}
-            <h4>YOUR # {this.props.rowNum} PRIORITY:</h4>
+            <h5>YOUR # {this.props.rowNum} PRIORITY:</h5>
             <h3>{this.headline}</h3>
           </Container>
         </Row>
