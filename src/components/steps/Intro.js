@@ -64,7 +64,7 @@ class Intro extends React.Component {
         <Row id="title" className="rowElement">
           <Container>
             <h3>
-              Interest should be <i>earned</i>, not paid! 🙂
+              Interest should be <i>earned</i>, not paid... 🙂
             </h3>
           </Container>
         </Row>
