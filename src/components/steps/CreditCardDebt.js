@@ -78,7 +78,7 @@ class CreditCardDebt extends React.Component {
   handleFocus = (event) => event.target.select();
 
   numberWithCommas = (x) =>  {
-    return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+    return x.toLocaleString()
 }
 
   render() {

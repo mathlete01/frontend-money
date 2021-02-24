@@ -70,27 +70,46 @@ class StepContainer extends React.Component {
     this.setState({ row1: this.props.currentStep });
   }
 
+  // getNextRow = () => {
+  //   switch (true) {
+  //     case this.props.currentRow === "row1":
+  //       return "row2";
+  //     case this.props.currentRow === "row2":
+  //       return "row3";
+  //     case this.props.currentRow === "row3":
+  //       return "row4";
+  //     case this.props.currentRow === "row4":
+  //       return "row5";
+  //     case this.props.currentRow === "row5":
+  //       return "row6";
+  //     default:
+  //       return null;
+  //   }
+  // };
+
+  // New and improved way below!
   getNextRow = () => {
-    // console.log(`getNextRow: this.props.currentRow = `, this.props.currentRow);
-    switch (true) {
-      case this.props.currentRow === "row1":
-        // console.log("getNextRow: return row2");
-        return "row2";
-      case this.props.currentRow === "row2":
-        // console.log("getNextRow: return row3");
-        return "row3";
-      case this.props.currentRow === "row3":
-        // console.log("getNextRow: return row4");
-        return "row4";
-      case this.props.currentRow === "row4":
-        // console.log("getNextRow: return row5");
-        return "row5";
-      case this.props.currentRow === "row5":
-        // console.log("getNextRow: return row6");
-        return "row6";
+    let nextRow = null;
+    switch (this.props.currentRow) {
+      case "row1":
+        nextRow = "row2";
+        break;
+      case "row2":
+        nextRow = "row3";
+        break;
+      case "row3":
+        nextRow = "row4";
+        break;
+      case "row4":
+        nextRow = "row5";
+        break;
+      case "row5":
+        nextRow = "row6";
+        break;
       default:
-        return null;
+        break;
     }
+    return nextRow;
   };
 
   clearRow = (row) => {
@@ -525,7 +544,7 @@ class StepContainer extends React.Component {
             renderTooltip={this.renderTooltip}
           />
         );
-  
+
       case this.state.row1 === "PriTaxableBrokerageIntro":
         return (
           <PriTaxableBrokerageIntro
@@ -2001,7 +2020,7 @@ const mapStateToProps = (state) => {
     currentStep: state.stepReducer.currentStep,
     currentUser: state.userReducer.currentUser,
     currentRow: state.rowReducer.currentRow,
-    currentClick: state.clickReducer.currentClick
+    currentClick: state.clickReducer.currentClick,
   };
 };
 
