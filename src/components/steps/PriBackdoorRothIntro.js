@@ -52,14 +52,8 @@ class PriBackdoorRothIntro extends React.Component {
             legal) loophole you ought to take advantage of.
           </Container>
         </Row>
-        <Row>
-          <Tabs
-            defaultActiveKey="what"
-            id="uncontrolled-tab-example"
-            className="tab"
-            // activeKey={this.state.activeTab}
-            onSelect={this.handleSelect}
-          >
+        <Row id="tabs" className="rowElement">
+          <Tabs defaultActiveKey="what" id="uncontrolled-tab-example">
             <Tab eventKey="what" title="What">
               <ul>
                 <li>

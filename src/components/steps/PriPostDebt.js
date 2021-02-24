@@ -210,14 +210,8 @@ class PriPostDebt extends React.Component {
         <Row id="body" className="rowElement">
           <Container>{this.advice}</Container>
         </Row>
-        <Row>
-          <Tabs
-            defaultActiveKey="what"
-            id="uncontrolled-tab-example"
-            className="tab"
-            // activeKey={this.state.activeTab}
-            onSelect={this.handleSelect}
-          >
+        <Row id="tabs" className="rowElement">
+          <Tabs defaultActiveKey="what" id="uncontrolled-tab-example">
             <Tab eventKey="what" title="What">
               {this.what}
             </Tab>
