@@ -70,7 +70,7 @@ class Intro extends React.Component {
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Wondering how to get started with investing? <br /><br /> This interactive quiz asks you a series of questions, then delivers a personalized plan to transform you from a debtor to an investor.
+            Wondering how to get started with investing? <br /><br /> This interactive quiz asks you a series of questions, then delivers a personalized plan to transform you from a debtor to an investor.  
           </Container>
         </Row>
         <Row id="form" className="rowElement"></Row>
