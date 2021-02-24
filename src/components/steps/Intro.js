@@ -116,7 +116,7 @@ class Intro extends React.Component {
     );
   }
 }
-
+   
 const mapStateToProps = (state) => {
   return {
     currentUser: state.userReducer.currentUser,
