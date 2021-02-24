@@ -42,7 +42,7 @@ class PriBackdoorRothIntro extends React.Component {
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h6>YOUR # {this.props.rowNum} PRIORITY:</h6>
+            <h5>YOUR # {this.props.rowNum} PRIORITY:</h5>
             <h3>Max-out a "Backdoor" Roth IRA 🚪</h3>
           </Container>
         </Row>

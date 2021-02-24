@@ -44,7 +44,7 @@ class PriFour01kMax extends React.Component {
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h6>YOUR # {this.props.rowNum} PRIORITY:</h6>
+            <h5>YOUR # {this.props.rowNum} PRIORITY:</h5>
             <h3>Max-out your 401(k) 🏢📈</h3>
           </Container>
         </Row>
