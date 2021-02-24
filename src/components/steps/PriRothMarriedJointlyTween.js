@@ -21,9 +21,13 @@ class PriRothMarriedJointlyTween extends React.Component {
 
   _next = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, {
-      magi: this.state.magi
-    },this.props.currentStep);
+    this.props.updateCurrentUser(
+      this.props.currentUser.id,
+      {
+        magi: this.state.magi,
+      },
+      this.props.currentStep
+    );
     this.props.handleNextStep(event);
   };
 
@@ -47,49 +51,53 @@ class PriRothMarriedJointlyTween extends React.Component {
     magi: this.props.currentUser.magi,
   };
 
-  numberWithCommas = (x) =>  {
+  numberWithCommas = (x) => {
     return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-}
+  };
 
   calcRothMaxJointlyYoung = () => {
-    const magi = this.state.magi
-    const incomeMin = 198000
-    const incomeMax = 208000
-    const divider = 10000
-    const contributionLimitYoung = 6000
-    switch (true){
-      case magi <incomeMin:
-        return contributionLimitYoung
+    const magi = this.state.magi;
+    const incomeMin = 198000;
+    const incomeMax = 208000;
+    const divider = 10000;
+    const contributionLimitYoung = 6000;
+    switch (true) {
+      case magi < incomeMin:
+        return contributionLimitYoung;
         break;
       case magi >= incomeMax:
-        return 0
+        return 0;
         break;
       case magi >= incomeMin && magi < incomeMax:
-        const num = contributionLimitYoung - (((magi - incomeMin)/ divider) * contributionLimitYoung)
-        const rothMaxYoung = (Math.round(num))
-        return rothMaxYoung
-        break
+        const num =
+          contributionLimitYoung -
+          ((magi - incomeMin) / divider) * contributionLimitYoung;
+        const rothMaxYoung = Math.round(num);
+        return rothMaxYoung;
+        break;
     }
   };
 
   calcRothMaxJointlyOld = () => {
-    const magi = this.state.magi
-    const incomeMin = 198000
-    const incomeMax = 208000
-    const divider = 10000
-    const contributionLimitOld = 7000
-    switch (true){
-      case magi <incomeMin:
-        return contributionLimitOld
+    const magi = this.state.magi;
+    const incomeMin = 198000;
+    const incomeMax = 208000;
+    const divider = 10000;
+    const contributionLimitOld = 7000;
+    switch (true) {
+      case magi < incomeMin:
+        return contributionLimitOld;
         break;
       case magi >= incomeMax:
-        return 0
+        return 0;
         break;
       case magi >= incomeMin && magi < incomeMax:
-        const num = contributionLimitOld - (((magi - incomeMin)/ divider) * contributionLimitOld)
-        const rothMaxOld = (Math.round(num))
-        return rothMaxOld
-        break
+        const num =
+          contributionLimitOld -
+          ((magi - incomeMin) / divider) * contributionLimitOld;
+        const rothMaxOld = Math.round(num);
+        return rothMaxOld;
+        break;
     }
   };
 
@@ -140,7 +148,7 @@ class PriRothMarriedJointlyTween extends React.Component {
                 </li>
               </ul>
               <Table striped bordered hover>
-              <thead>
+                <thead>
                   <tr>
                     <th>Your Modified Adjusted Gross Income (MAGI)</th>
                     <th>Max Contribution if under 50</th>
@@ -175,7 +183,9 @@ class PriRothMarriedJointlyTween extends React.Component {
                           className="formField"
                           type="string"
                           min="0"
-                          value={this.numberWithCommas(this.calcRothMaxJointlyYoung())}
+                          value={this.numberWithCommas(
+                            this.calcRothMaxJointlyYoung()
+                          )}
                           readOnly
                           id="rothMaxYoung"
                           name="rothMaxYoung"
@@ -191,7 +201,9 @@ class PriRothMarriedJointlyTween extends React.Component {
                           className="formField"
                           type="string"
                           min="0"
-                          value={this.numberWithCommas(this.calcRothMaxJointlyOld())}
+                          value={this.numberWithCommas(
+                            this.calcRothMaxJointlyOld()
+                          )}
                           readOnly
                           id="rothMaxOld"
                           name="rothMaxOld"
@@ -200,7 +212,6 @@ class PriRothMarriedJointlyTween extends React.Component {
                     </td>
                   </tr>
                 </tbody>
-                
               </Table>
             </Tab>
             <Tab eventKey="why" title="Why">

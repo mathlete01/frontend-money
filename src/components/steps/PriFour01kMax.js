@@ -12,7 +12,7 @@ import { updateCurrentRow } from "../../actions/rowActions";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
-class PriFour01kMax extends React.Component { 
+class PriFour01kMax extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
@@ -30,13 +30,11 @@ class PriFour01kMax extends React.Component {
     return (
       <Container className="priority">
         <Row id="header" className="rowElement">
-        <Button
+          <Button
             onClick={this._prev}
             variant="link"
             className="backBtn"
-            disabled={
-              this.props.currentStep === "PriFour01kMax" ? false : true
-            }
+            disabled={this.props.currentStep === "PriFour01kMax" ? false : true}
           >
             👈 BACK
           </Button>
@@ -50,7 +48,8 @@ class PriFour01kMax extends React.Component {
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            401(k)s have an inscrutable name, but they are maybe the best investment you can get your hands on.
+            401(k)s have an inscrutable name, but they are maybe the best
+            investment you can get your hands on.
           </Container>
         </Row>
         <Row id="tabs" className="rowElement">
@@ -58,32 +57,42 @@ class PriFour01kMax extends React.Component {
             <Tab eventKey="what" title="What">
               <ul>
                 <li>
-                  401(k)s are tax-advantaged retirement accounts that many employers offer their employees as a perk.
+                  401(k)s are tax-advantaged retirement accounts that many
+                  employers offer their employees as a perk.
                 </li>
               </ul>
             </Tab>
             <Tab eventKey="why" title="Why">
               <ul>
                 <li>
-                The two big deals about a 401(k) are (1) many companies will match your contributions up to a limit, and (2) you contributions are taken out pre-tax.
+                  The two big deals about a 401(k) are (1) many companies will
+                  match your contributions up to a limit, and (2) you
+                  contributions are taken out pre-tax.
                 </li>
                 <li>
-                  For example, if your paycheck is $1,000 and you contribute $100 per paycheck to your 401(k), you're only being taxed on $900 of your income!
+                  For example, if your paycheck is $1,000 and you contribute
+                  $100 per paycheck to your 401(k), you're only being taxed on
+                  $900 of your income!
                 </li>
               </ul>
             </Tab>
             <Tab eventKey="where" title="Where">
-            <ul>
+              <ul>
                 <li>
-                  If it's offered by your employer, it's in an account at whatever brokerage your employer chose. 
+                  If it's offered by your employer, it's in an account at
+                  whatever brokerage your employer chose.
                 </li>
-                <li>You can't change where the funds are unless you leave the company and do what's called a "rollover".</li>
+                <li>
+                  You can't change where the funds are unless you leave the
+                  company and do what's called a "rollover".
+                </li>
               </ul>
             </Tab>
             <Tab eventKey="how" title="How">
               <ul>
-              <li>
-                  Talk to your HR person and they'll explain how to change your contribution level.
+                <li>
+                  Talk to your HR person and they'll explain how to change your
+                  contribution level.
                 </li>
               </ul>
             </Tab>
@@ -95,22 +104,17 @@ class PriFour01kMax extends React.Component {
           <Container>
             <Form.Group>
               <Form.Row>
-                <Col>
-                </Col>
+                <Col></Col>
                 <Col
                   className={
-                    this.props.currentStep === "PriFour01kMax"
-                      ? ""
-                      : "hidden"
+                    this.props.currentStep === "PriFour01kMax" ? "" : "hidden"
                   }
                 >
                   <Button
                     variant="continue"
                     block
                     id={this.props.getNextRow()}
- 
                     value="PriTaxableBrokerageIntro"
-
                     onClick={this._next}
                   >
                     Continue Below 👇

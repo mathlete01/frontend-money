@@ -15,16 +15,19 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
 class PriRothMarriedNotJointlyTween extends React.Component {
-
   _prev = () => {
     this.props.handlePrevStep();
   };
- 
+
   _next = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, {
-      magi: this.state.magi
-    },this.props.currentStep);
+    this.props.updateCurrentUser(
+      this.props.currentUser.id,
+      {
+        magi: this.state.magi,
+      },
+      this.props.currentStep
+    );
     this.props.handleNextStep(event);
   };
 
@@ -48,42 +51,45 @@ class PriRothMarriedNotJointlyTween extends React.Component {
     magi: this.props.currentUser.magi,
   };
 
-  numberWithCommas = (x) =>  {
+  numberWithCommas = (x) => {
     return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-}
+  };
 
   calcRothMaxNotJointly = () => {
-    const magi = this.state.magi
-    const incomeMin = 0
-    const incomeMax = 10000
-    const divider = 10000
-    const contributionLimitYoung = 6000
-    switch (true){
-      case magi <incomeMin:
-        return 0
+    const magi = this.state.magi;
+    const incomeMin = 0;
+    const incomeMax = 10000;
+    const divider = 10000;
+    const contributionLimitYoung = 6000;
+    switch (true) {
+      case magi < incomeMin:
+        return 0;
         break;
       case magi >= incomeMax:
-        return 0
+        return 0;
         break;
       case magi > incomeMin && magi < incomeMax:
-        const num = contributionLimitYoung - (((magi - incomeMin)/ divider) * contributionLimitYoung)
-        const rothMax = (Math.round(num))
-        return rothMax
-        break
+        const num =
+          contributionLimitYoung -
+          ((magi - incomeMin) / divider) * contributionLimitYoung;
+        const rothMax = Math.round(num);
+        return rothMax;
+        break;
     }
   };
 
   render() {
-  
     return (
       <Container className="priority">
         <Row id="header" className="rowElement">
-        <Button
+          <Button
             onClick={this._prev}
             variant="link"
             className="backBtn"
             disabled={
-              this.props.currentStep === "PriRothMarriedNotJointlyTween" ? false : true
+              this.props.currentStep === "PriRothMarriedNotJointlyTween"
+                ? false
+                : true
             }
           >
             👈 BACK
@@ -152,7 +158,9 @@ class PriRothMarriedNotJointlyTween extends React.Component {
                           className="formField"
                           type="number"
                           min="0"
-                          value={this.numberWithCommas(this.calcRothMaxNotJointly())}
+                          value={this.numberWithCommas(
+                            this.calcRothMaxNotJointly()
+                          )}
                           readOnly
                           id="rothMax"
                           name="rothMax"
@@ -230,13 +238,19 @@ class PriRothMarriedNotJointlyTween extends React.Component {
                       ? ""
                       : "hidden"
                   }
-                >                  <Button
+                >
+                  {" "}
+                  <Button
                     className="yes"
                     variant="primary"
                     size="lg"
                     block
                     id={this.props.getNextRow()}
-                    value={this.props.currentUser.four01k ? "Four01kMaxOutQ" : "PriTaxableBrokerageIntro"}
+                    value={
+                      this.props.currentUser.four01k
+                        ? "Four01kMaxOutQ"
+                        : "PriTaxableBrokerageIntro"
+                    }
                     onClick={this._next}
                   >
                     Continue Below 👇

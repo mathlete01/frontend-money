@@ -25,23 +25,18 @@ class PriRothMax extends React.Component {
       { roth_max: 7000 },
       this.props.currentStep
     );
-    this.props.handleNextStep(event)
-    
-
+    this.props.handleNextStep(event);
   };
 
   render() {
-
     return (
       <Container className="priority">
         <Row id="header" className="rowElement">
-        <Button
+          <Button
             onClick={this._prev}
             variant="link"
             className="backBtn"
-            disabled={
-              this.props.currentStep === "PriRothMax" ? false : true
-            }
+            disabled={this.props.currentStep === "PriRothMax" ? false : true}
           >
             👈 BACK
           </Button>
@@ -104,10 +99,18 @@ class PriRothMax extends React.Component {
             <Tab eventKey="how" title="How">
               <ul>
                 <li>
-                  The first thing you should do is put your money in a target date fund. Do it immediately, it's extremely low-risk and the earlier you do it, the better. Ask the people at the brokerage why people recommend a target date fund and they'll explain it to you.
+                  The first thing you should do is put your money in a target
+                  date fund. Do it immediately, it's extremely low-risk and the
+                  earlier you do it, the better. Ask the people at the brokerage
+                  why people recommend a target date fund and they'll explain it
+                  to you.
                 </li>
                 <li>
-                  Once that's set up, you can explore different investing strategies, if you want. But our advice is to just leave it in a target date fund and forget about it. This stratetgy is called "buy and hold". Trying to "time" the market by buying and selling only works if you can tell the future.
+                  Once that's set up, you can explore different investing
+                  strategies, if you want. But our advice is to just leave it in
+                  a target date fund and forget about it. This stratetgy is
+                  called "buy and hold". Trying to "time" the market by buying
+                  and selling only works if you can tell the future.
                 </li>
               </ul>
             </Tab>
@@ -118,20 +121,21 @@ class PriRothMax extends React.Component {
           <Container>
             <Form.Group>
               <Form.Row>
-                <Col>
-                </Col>
+                <Col></Col>
                 <Col
                   className={
-                    this.props.currentStep === "PriRothMax"
-                      ? ""
-                      : "hidden"
+                    this.props.currentStep === "PriRothMax" ? "" : "hidden"
                   }
                 >
                   <Button
                     variant="continue"
                     block
                     id={this.props.getNextRow()}
-                    value={this.props.currentUser.four01k ? "Four01kMaxOutQ" : "PriTaxableBrokerageIntro"}
+                    value={
+                      this.props.currentUser.four01k
+                        ? "Four01kMaxOutQ"
+                        : "PriTaxableBrokerageIntro"
+                    }
                     onClick={this._next}
                   >
                     Continue Below 👇

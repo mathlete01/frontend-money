@@ -21,9 +21,13 @@ class PriRothSingleTween extends React.Component {
 
   _next = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, {
-      magi: this.state.magi
-    },this.props.currentStep);
+    this.props.updateCurrentUser(
+      this.props.currentUser.id,
+      {
+        magi: this.state.magi,
+      },
+      this.props.currentStep
+    );
     this.props.handleNextStep(event);
   };
 
@@ -48,49 +52,53 @@ class PriRothSingleTween extends React.Component {
     // rothMaxYoung: this.props.currentUser.roth_max,
   };
 
-  numberWithCommas = (x) =>  {
+  numberWithCommas = (x) => {
     return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-}
+  };
 
   calcRothMaxSingleYoung = () => {
-    const magi = this.state.magi
-    const incomeMin = 125000
-    const incomeMax = 140000
-    const divider = 15000
-    const contributionLimitYoung = 6000
-    switch (true){
-      case magi <incomeMin:
-        return contributionLimitYoung
+    const magi = this.state.magi;
+    const incomeMin = 125000;
+    const incomeMax = 140000;
+    const divider = 15000;
+    const contributionLimitYoung = 6000;
+    switch (true) {
+      case magi < incomeMin:
+        return contributionLimitYoung;
         break;
       case magi >= incomeMax:
-        return 0
+        return 0;
         break;
       case magi >= incomeMin && magi < incomeMax:
-        const num = contributionLimitYoung - (((magi - incomeMin)/ divider) * contributionLimitYoung)
-        const rothMaxYoung = (Math.round(num))
-        return rothMaxYoung
-        break
+        const num =
+          contributionLimitYoung -
+          ((magi - incomeMin) / divider) * contributionLimitYoung;
+        const rothMaxYoung = Math.round(num);
+        return rothMaxYoung;
+        break;
     }
   };
 
   calcRothMaxSingleOld = () => {
-    const magi = this.state.magi
-    const incomeMin = 125000
-    const incomeMax = 140000
-    const divider = 15000
-    const contributionLimitOld = 7000
-    switch (true){
-      case magi <incomeMin:
-        return contributionLimitOld
+    const magi = this.state.magi;
+    const incomeMin = 125000;
+    const incomeMax = 140000;
+    const divider = 15000;
+    const contributionLimitOld = 7000;
+    switch (true) {
+      case magi < incomeMin:
+        return contributionLimitOld;
         break;
       case magi >= incomeMax:
-        return 0
+        return 0;
         break;
       case magi >= incomeMin && magi < incomeMax:
-        const num = contributionLimitOld - (((magi - incomeMin)/ divider) * contributionLimitOld)
-        const rothMaxOld = (Math.round(num))
-        return rothMaxOld
-        break
+        const num =
+          contributionLimitOld -
+          ((magi - incomeMin) / divider) * contributionLimitOld;
+        const rothMaxOld = Math.round(num);
+        return rothMaxOld;
+        break;
     }
   };
 
@@ -171,7 +179,9 @@ class PriRothSingleTween extends React.Component {
                           className="formField"
                           type="string"
                           min="0"
-                          value={this.numberWithCommas(this.calcRothMaxSingleYoung())}
+                          value={this.numberWithCommas(
+                            this.calcRothMaxSingleYoung()
+                          )}
                           readOnly
                           id="rothMaxYoung"
                           name="rothMaxYoung"
@@ -187,7 +197,9 @@ class PriRothSingleTween extends React.Component {
                           className="formField"
                           type="string"
                           min="0"
-                          value={this.numberWithCommas(this.calcRothMaxSingleOld())}
+                          value={this.numberWithCommas(
+                            this.calcRothMaxSingleOld()
+                          )}
                           readOnly
                           id="rothMaxOld"
                           name="rothMaxOld"

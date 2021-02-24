@@ -13,11 +13,10 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
 class PriBackdoorRothIntro extends React.Component {
-  
   _prev = () => {
     this.props.handlePrevStep();
   };
-  
+
   _next = (event) => {
     event.preventDefault();
     // this.props.updateCurrentRow(this.props.getNextRow());
@@ -123,7 +122,11 @@ class PriBackdoorRothIntro extends React.Component {
                     variant="continue"
                     block
                     id={this.props.getNextRow()}
-                    value={this.props.currentUser.four01k ? "Four01kMaxOutQ" : "PriTaxableBrokerageIntro"}
+                    value={
+                      this.props.currentUser.four01k
+                        ? "Four01kMaxOutQ"
+                        : "PriTaxableBrokerageIntro"
+                    }
                     onClick={this._next}
                   >
                     Continue Below 👇
