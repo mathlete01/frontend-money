@@ -13,7 +13,7 @@ import Tooltip from "react-bootstrap/Tooltip";
 
 
 const BASE_URL = process.env.REACT_APP_BASE_URL
-console.log("REACT_APP_BASE_URL:", BASE_URL)
+console.log("REACT_APP_BASE_URL:", BASE_URL, 1000)
 // "https://pure-waters-30920.herokuapp.com"
 const USERS_URL = `${BASE_URL}/users`;
 
