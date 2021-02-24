@@ -13,7 +13,7 @@ import Tooltip from "react-bootstrap/Tooltip";
 
 
 const BASE_URL = process.env.REACT_APP_BASE_URL
-console.log("Base url", BASE_URL)
+console.log("REACT_APP_BASE_URL:", BASE_URL)
 // "https://pure-waters-30920.herokuapp.com"
 const USERS_URL = `${BASE_URL}/users`;
 
@@ -64,7 +64,7 @@ class Intro extends React.Component {
         <Row id="title" className="rowElement">
           <Container>
             <h3>
-              Interest should be <i>earned</i>, not paid? 🙂
+              Interest should be <i>earned</i>, not paid 🤓
             </h3>
           </Container>
         </Row>
