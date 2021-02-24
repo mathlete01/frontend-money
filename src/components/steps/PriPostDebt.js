@@ -124,8 +124,7 @@ class PriPostDebt extends React.Component {
         this.nextStep = "RothIntro";
         break;
       // Case:  Contribution < Match / Big Debt
-      case four01k_contribution < four01k_match &&
-        credit_card_debt > leftover_money:
+      case four01k_contribution < four01k_match && credit_card_debt > leftover_money:
         console.log("*** Contribution < Match / Big Debt");
         this.headline = `Increase your 401(k) contribution 📈 and pay off your credit cards 💳`;
         this.advice = ``;
@@ -135,8 +134,7 @@ class PriPostDebt extends React.Component {
         this.nextStep = "RothIntro";
         break;
       // Case:  Contribution < Match / Small Debt
-      case four01k_contribution < four01k_match &&
-        credit_card_debt > leftover_money:
+      case four01k_contribution < four01k_match && credit_card_debt < leftover_money:
         console.log("*** Contribution < Match / Small Debt");
         this.headline = `Increase your 401(k) contribution 📈 and pay off your credit cards 💳`;
         this.advice = `Ok, so you've got a bit of credit card debt, but you have enough money left over after bills and spending money to pay it off in a month. So, PAY THE DAMN DEBT OFF THIS MONTH, YO. But before you do anything, you should to increase your 401(k) contribution from ${four01k_contribution}% to ${four01k_match}%. The employer match is free money, so take advantage of it! Make that change now. Next, let's see if you qualify for a Roth IRA...`;
@@ -212,14 +210,8 @@ class PriPostDebt extends React.Component {
         <Row id="body" className="rowElement">
           <Container>{this.advice}</Container>
         </Row>
-        <Row>
-          <Tabs
-            defaultActiveKey="what"
-            id="uncontrolled-tab-example"
-            className="tab"
-            // activeKey={this.state.activeTab}
-            onSelect={this.handleSelect}
-          >
+        <Row id="tabs" className="rowElement">
+          <Tabs defaultActiveKey="what" id="uncontrolled-tab-example">
             <Tab eventKey="what" title="What">
               {this.what}
             </Tab>
