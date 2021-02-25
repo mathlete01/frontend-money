@@ -63,8 +63,8 @@ class PriPostDebt extends React.Component {
     console.log(`four01k_contribution = `, four01k_contribution);
     console.log(`credit_card_debt = `, credit_card_debt);
     switch (true) {
-      // No Debt--No 401k: --> Roth IRA Intro
-      // No Debt--Contribution > Match: --> Roth IRA Intro
+      // !No Debt--No 401k: --> Roth IRA Intro
+      // !No Debt--Contribution > Match: --> Roth IRA Intro
       // No Debt--Contribution < Match 
       case credit_card_debt < quarterLeftoverMoney && four01k_contribution < four01k_match:
         console.log("// No Debt--Contribution < Match");

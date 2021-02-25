@@ -37,7 +37,7 @@ class RothIntro extends React.Component {
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-          Ok, so your employer doesn't offer a 401(k) (boo), and you don't have any credit card debt (yay!). Let's make sure you qualify for a Roth IRA!
+          That's fantastic! Next, let's make sure you qualify for a Roth IRA!
           </Container>
         </Row>
         <Row id="form" className="rowElement"></Row>

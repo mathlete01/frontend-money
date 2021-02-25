@@ -23,7 +23,11 @@ class Four01kQ extends React.Component {
 
   _no = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { four01k: false },this.props.currentStep);
+    this.props.updateCurrentUser(this.props.currentUser.id, { 
+      four01k: false,
+      four01k_match: 0,
+      four01k_contribution: 0
+     },this.props.currentStep);
     this.props.handleNextStep(event);
   };
 
