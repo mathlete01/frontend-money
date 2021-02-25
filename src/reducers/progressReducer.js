@@ -1,4 +1,4 @@
-let state;
+// let state;
 
 export function progressReducer(
   state = {

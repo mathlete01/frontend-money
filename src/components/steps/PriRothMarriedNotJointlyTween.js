@@ -186,11 +186,11 @@ class PriRothMarriedNotJointlyTween extends React.Component {
                 </li>
                 <li>
                   Otherwise, open an account at a discount brokerage like{" "}
-                  <a href="http://www.vanguard.com" target="_blank">
+                  <a href="http://www.vanguard.com" target="_blank" rel="noreferrer">
                     Vanguard
                   </a>{" "}
                   (our favorite) or{" "}
-                  <a href="http://www.schwab.com" target="_blank">
+                  <a href="http://www.schwab.com" target="_blank" rel="noreferrer">
                     Schwab
                   </a>
                   .
