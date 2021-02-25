@@ -249,9 +249,7 @@ class PriPostDebt extends React.Component {
           <Container>
             <h5>YOUR # {this.props.rowNum} PRIORITY:</h5>
             <h3>{this.headline ? this.headline : 
-            <Spinner animation="border" role="status">
-              <span className="sr-only">Loading...</span>
-            </Spinner>}</h3>
+            <Spinner animation="border" role="status" size="sm" variant="primary" />}</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
