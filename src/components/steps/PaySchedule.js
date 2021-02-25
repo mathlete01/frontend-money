@@ -127,11 +127,11 @@ class PaySchedule extends React.Component {
                       value="PriPostDebt"
                       onClick={this._next}
                     >
-                      Continue
+                      Next
                     </Button>
                   ) : (
                     <Button variant="continue" block disabled>
-                      Continue
+                      Next
                     </Button>
                   )}
                 </Col>

@@ -57,7 +57,7 @@ class RothSingleOverD extends React.Component {
                     value="PriBackdoorRothIntro"
                     onClick={this._next}
                   >
-                    Continue 👉
+                    Next 👉
                   </Button>
                 </Col>
               </Form.Row>

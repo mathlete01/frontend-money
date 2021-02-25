@@ -58,7 +58,7 @@ class RothSingleUnderD extends React.Component {
                     value={this.props.currentUser.four01k ? "Four01kMaxOutQ" : "PriTaxableBrokerageIntro"}
                     onClick={this._next}
                   >
-                    Continue 👉
+                    Next 👉
                   </Button>
                 </Col>
               </Form.Row>

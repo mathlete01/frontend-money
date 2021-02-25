@@ -117,7 +117,7 @@ class Four01kContribution extends React.Component {
                     Next
                   </Button>
                   {/* ) : (
-                    <Button variant="yeah" variant="primary"  block disabled>
+                    <Button variant="continue" block disabled>
                       Next
                     </Button>
                   )} */}

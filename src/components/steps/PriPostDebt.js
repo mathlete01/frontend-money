@@ -23,7 +23,6 @@ class PriPostDebt extends React.Component {
   debtSum = () => {
     if (this.props.currentUser.credit_card_debt > this.props.currentUser.leftover_money){
       console.log(`debtSum = `, "big")
-      // this.calcMonthsMakeDetermination()
       this.makeDetermination()
       return ("big")
     } else {
@@ -44,7 +43,6 @@ class PriPostDebt extends React.Component {
 }
 
   makeDetermination = () => {
-    // debugger
     console.log(
       `makeDetermination: Before: this.props.currentUser.credit_card_debt = `,
       this.props.currentUser.credit_card_debt

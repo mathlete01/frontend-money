@@ -56,7 +56,7 @@ class RothIntro extends React.Component {
                     value="RothIntro"
                     onClick={this._next}
                   >
-                    Continue 👉
+                    Next 👉
                   </Button>
                 </Col>
               </Form.Row>
