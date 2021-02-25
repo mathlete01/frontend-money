@@ -9,31 +9,48 @@ import Button from "react-bootstrap/Button";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 
-
 class CreditCardDebtQ extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
   };
 
   _yes = (event) => {
+    console.log(`YES chosen`)
     event.preventDefault();
     this.props.handleNextStep(event);
   };
 
   _no = (event) => {
+    console.log(`NO chosen`)
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, {
-      credit_card_debt: 0,
-    },this.props.currentStep);
+    this.props.updateCurrentUser(
+      this.props.currentUser.id,
+      {
+        credit_card_debt: 0,
+      },
+      this.props.currentStep
+    );
     this.props.handleNextStep(event);
   };
+
+  four01kEvaluation = () => {
+    console.log(`this.props.currentUser.four01k = `, this.props.currentUser.four01k)
+    console.log(`this.props.currentUser.four01k_match = `, this.props.currentUser.four01k_match)
+    console.log(`this.props.currentUser.four01k_contribution = `, this.props.currentUser.four01k_contribution)
+    if(this.props.currentUser.four01k === true && this.props.currentUser.four01k_contribution < this.props.currentUser.four01k_match){
+      console.log(`YES: increaase contribution`)
+      return "PriPostDebt"
+    }else{
+      console.log(`NO: proceed to next step`)
+      return "NoDebt"
+    }
+  }
 
   render() {
     return (
       <Container className="step">
         <Row id="header" className="rowElement">
-          <Button 
-          onClick={this._prev} variant="link" className="backBtn">
+          <Button onClick={this._prev} variant="link" className="backBtn">
             👈 BACK
           </Button>
           <hr className="w-100" />
@@ -59,9 +76,9 @@ class CreditCardDebtQ extends React.Component {
                     variant="nope"
                     block
                     id={this.props.currentRow}
-                    value="NoDebt"
-                    // onClick={this._no}
-                    onClick={this.props.currentUser.four01k_contribution < this.props.currentUser.four01k_match ? this._yes : this._no}
+                    // value="NoDebt"
+                    value={this.four01kEvaluation()}
+                    onClick={this._no}
                   >
                     No
                   </Button>

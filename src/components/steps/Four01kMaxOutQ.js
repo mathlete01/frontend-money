@@ -10,20 +10,27 @@ import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 
 class Four01kMaxOutQ extends React.Component {
-
   _prev = () => {
     this.props.handlePrevStep();
   };
 
   _yes = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { four01k_max_out: true },this.props.currentStep);
+    this.props.updateCurrentUser(
+      this.props.currentUser.id,
+      { four01k_max_out: true },
+      this.props.currentStep
+    );
     this.props.handleNextStep(event);
   };
 
   _no = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { four01k_max_out: false },this.props.currentStep);
+    this.props.updateCurrentUser(
+      this.props.currentUser.id,
+      { four01k_max_out: false },
+      this.props.currentStep
+    );
     this.props.handleNextStep(event);
   };
 
@@ -31,8 +38,7 @@ class Four01kMaxOutQ extends React.Component {
     return (
       <Container className="step">
         <Row id="header" className="rowElement">
-          <Button 
-          onClick={this._prev} variant="link" className="backBtn">
+          <Button onClick={this._prev} variant="link" className="backBtn">
             👈 BACK
           </Button>
           <hr className="w-100" />
@@ -44,7 +50,8 @@ class Four01kMaxOutQ extends React.Component {
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Got any more disposible income? If so, you should contribute as much as you can to your 401(k). 
+            Got any more disposible income? If so, you should contribute as much
+            as you can to your 401(k).
           </Container>
         </Row>
         <Row id="form" className="rowElement"></Row>
