@@ -1,6 +1,5 @@
 import React from "react";
-import { Route, Switch, withRouter, Link, NavLink } from "react-router-dom";
-// import Body from "./components/xBody";
+import { Route, Switch, withRouter} from "react-router-dom";
 import NotFound from "./NotFound";
 import Credentials from "./components/Credentials";
 import { connect } from "react-redux";
@@ -14,26 +13,13 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Navbar from "react-bootstrap/Navbar";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import {
-  faSwimmingPool,
-  faCoffee,
-  faHandPointLeft,
-  faChevronLeft,
-} from "@fortawesome/free-solid-svg-icons";
-
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import StepContainer from "./components/StepContainer";
 import "./App.css";
-// import Ladder from "./components/Ladder";
-import { Form, FormControl, NavItem } from "react-bootstrap";
-// import background from "./img/Louis_Vuitton-blue.png";
+import { NavItem } from "react-bootstrap";
 import background from "./img/wallpaper_sky_01.svg";
-// import logo from "./img/safari-pinned-tab.svg";
-// import logo from "./img/wordmark_d2i_box_white.svg"
 import logo from "./img/wordmark_d2i_white.svg"
-// library.add(faSwimmingPool, faCoffee, faHandPointLeft, faChevronLeft);
 
 class App extends React.Component {
   state = {
@@ -51,13 +37,11 @@ class App extends React.Component {
   };
 
   handleLogin = (credentialObj) => {
-    // debugger
     console.log(`handleLogin: credentialObj = `, credentialObj);
     this.handleAuthFetch(credentialObj, process.env.REACT_APP_BASE_URL+"/login");
   };
 
   handleLogout = () => {
-    // console.log("Logout called");
     localStorage.clear();
     this.props.setCurrentUser({});
     this.props.history.push("/");
@@ -65,7 +49,6 @@ class App extends React.Component {
   };
 
   handleSignup = (credentialObj) => {
-    // debugger
     console.log(`handleSignup: credentialObj = `, credentialObj);
     if (Object.keys(this.props.currentUser).length === 0) {
       this.handleAuthFetch(credentialObj, process.env.REACT_APP_BASE_URL+"/users");
@@ -126,27 +109,10 @@ class App extends React.Component {
               height="100"
               className="d-inline-block align-top"
             />{" "}
-            {/* Debtor to Investor */}
           </Navbar.Brand>
           <Navbar.Collapse className="justify-content-end">
-            {/* <Nav>
-              <NavItem href="/">
-                <Nav.Link as={Link} to="/login">
-                  Log in
-                </Nav.Link>
-              </NavItem>
-            </Nav>
             <Nav>
               <NavItem href="/">
-                <Nav.Link as={Link} to="/signup">
-                  Sign up
-                </Nav.Link>
-              </NavItem>
-            </Nav> */}
-            <Nav>
-              <NavItem href="/">
-                {/* <Nav.Link as={Link} to="/" onClick={this.handleLogout}> */}
-                {/* {this.props.currentStep === "Intro" ? return null : return( */}
                 <Button  to="/" onClick={this.handleLogout}  size="sm"
                   className={ this.props.currentStep === "Intro" ? "hidden" : "" }>Start Over
                 </Button>

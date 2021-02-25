@@ -13,13 +13,8 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Navbar from "react-bootstrap/Navbar";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import {
-  faSwimmingPool,
-  faCoffee,
-  faHandPointLeft,
-  faChevronLeft,
-} from "@fortawesome/free-solid-svg-icons";
+
+
 
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
