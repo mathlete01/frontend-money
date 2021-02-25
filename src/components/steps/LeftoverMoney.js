@@ -239,7 +239,7 @@ class LeftoverMoney extends React.Component {
                       variant="continue"
                       block
                       id={this.props.currentRow}
-                    value="Four01kQ"
+                      value="Four01kQ"
                       onClick={this._next}
                     >
                       Next
