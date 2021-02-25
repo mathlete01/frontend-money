@@ -60,7 +60,8 @@ class CreditCardDebtQ extends React.Component {
                     block
                     id={this.props.currentRow}
                     value="NoDebt"
-                    onClick={this._no}
+                    // onClick={this._no}
+                    onClick={this.props.currentUser.four01k_contribution < this.props.currentUser.four01k_match ? this._yes : this._no}
                   >
                     No
                   </Button>

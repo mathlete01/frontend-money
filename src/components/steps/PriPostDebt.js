@@ -63,19 +63,22 @@ class PriPostDebt extends React.Component {
     console.log(`four01k_contribution = `, four01k_contribution);
     console.log(`credit_card_debt = `, credit_card_debt);
     switch (true) {
-      // Case: No 401k / Small Debt
-      case four01k === false && credit_card_debt <= leftover_money:
-        console.log("*** No 401k / Small Debt");
-        this.headline = `Pay off your credit card debt 💳🧾`;
+      // No Debt--No 401k: --> Roth IRA Intro
+      // No Debt--Contribution > Match: --> Roth IRA Intro
+      // No Debt--Contribution < Match 
+      case credit_card_debt < quarterLeftoverMoney && four01k_contribution < four01k_match:
+        console.log("// No Debt--Contribution < Match");
+        this.headline = `Let's nudge up your 401(k) contribution 🧮`;
         this.advice = ``;
-        this.what = `The total credit card debt you've listed here is $${this.numberWithCommas(credit_card_debt)}. The $${this.numberWithCommas(leftover_money)} you have left over after bills and spending money is more than enough to pay it off in under a month, so, do it.`
-        this.why = `The interest you pay on credit cards is often *three times* as much as the interest you could earn on investments. So, credit card debt is like a negative investment!`
-        this.how = `Use the Debt Snowball method: Apply all your leftover money the smallest debt you have, and pay just the minimum payment on your other cards. Once your smallest debt is paid off, move on to the next smallest. This method works well because it gives you success earlier than prioritizing the card with the highest interest rate. That early success is is a powerful motivator to get it all paid off.`
+        this.what = `While it's great that you are taking advantage of your 401(k), you should to increase your 401(k) contribution from ${four01k_contribution}% to ${four01k_match}%.`
+        this.why = `The employer match is free money, so take advantage of it!`
+        this.how = `Your HR resource at work can explain or show you how to change your contribution percentage.`
         this.nextStep = "RothIntro";
-        break;
-      // Case:  No 401k /  Big Debt
-      case four01k === false && credit_card_debt > leftover_money:
-        console.log("*** No 401k /  Big Debt");
+        break;  
+      // No Debt--Contribution == Match: --> Roth IRA Intro
+      // Big Debt--No 401k
+      case credit_card_debt > leftover_money && four01k === false:
+        console.log("// Big Debt--No 401k");
         this.headline = `Pay off your credit card debt 💳🧾`;
         this.advice =
           ``
@@ -84,21 +87,9 @@ class PriPostDebt extends React.Component {
         this.how = `Use the Debt Snowball method: Apply all your leftover money the smallest debt you have, and pay just the minimum payment on your other cards. Once your smallest debt is paid off, move on to the next smallest. This method works well because it gives you success earlier than prioritizing the card with the highest interest rate. That early success is is a powerful motivator to get it all paid off.`
         this.nextStep = "RothIntro";
         break;
-        // Case:  Contribution > Match / Small Debt
-      case four01k_contribution > four01k_match &&
-        credit_card_debt < leftover_money:
-        console.log("*** Contribution > Match / Small Debt");
-        this.headline = `Pay off your credit card debt 💳🧾`;
-        this.advice = ``;
-        this.what = `The total credit card debt you've listed here is $${this.numberWithCommas(credit_card_debt)}. Apply the $${this.numberWithCommas(leftover_money)} of monthly leftover money and you can pay off your debt in about ${this.calcMonths()} months.`
-        this.why = `The interest you pay on credit cards is often *three times* as much as the interest you could earn on investments. So, credit card debt is like a negative investment!`
-        this.how = `Use the Debt Snowball method: Apply all your leftover money the smallest debt you have, and pay just the minimum payment on your other cards. Once your smallest debt is paid off, move on to the next smallest. This method works well because it gives you success earlier than prioritizing the card with the highest interest rate. That early success is is a powerful motivator to get it all paid off.`
-        this.nextStep = "RothIntro";
-        break;
-      // Case:  Contribution > Match / Big Debt
-      case four01k_contribution > four01k_match &&
-        credit_card_debt > leftover_money:
-        console.log("*** Contribution > Match / Big Debt");
+      // Big Debt--Contribution > Match
+      case credit_card_debt > leftover_money && four01k_contribution > four01k_match:
+        console.log("// Big Debt--Contribution > Match");
         this.headline = `Reduce your 401(k) contribution 🧮 and pay off your credit cards 💳`;
         this.advice = ``;
         this.what = `While it's great that you are taking advantage of your 401(k), right now paying off your $${this.numberWithCommas(credit_card_debt)} credit card debt is your top priority. To that end, let's give you more money to pay off your debt.Apply the $${this.numberWithCommas(leftover_money)} of monthly leftover money and you can pay off your debt in about ${this.calcMonths()} months.`
@@ -106,20 +97,9 @@ class PriPostDebt extends React.Component {
         this.how = `Use the Debt Snowball method: Apply all your leftover money the smallest debt you have, and pay just the minimum payment on your other cards. Once your smallest debt is paid off, move on to the next smallest. This method works well because it gives you success earlier than prioritizing the card with the highest interest rate. That early success is is a powerful motivator to get it all paid off.`
         this.nextStep = "RothIntro";
         break;
-      // Case:  Contribution < Match / No Debt
-      case four01k_contribution < four01k_match &&
-        credit_card_debt < quarterLeftoverMoney:
-        console.log("*** Contribution < Match / No Debt");
-        this.headline = `Let's nudge up your 401(k) contribution 🧮`;
-        this.advice = ``;
-        this.what = `While it's great that you are taking advantage of your 401(k), you should to increase your 401(k) contribution from ${four01k_contribution}% to ${four01k_match}%.`
-        this.why = `The employer match is free money, so take advantage of it!`
-        this.how = `Your HR resource at work can explain or show you how to change your contribution percentage.`
-        this.nextStep = "RothIntro";
-        break;
-      // Case:  Contribution < Match / Big Debt
-      case four01k_contribution < four01k_match && credit_card_debt > leftover_money:
-        console.log("*** Contribution < Match / Big Debt");
+      // Big Debt--Contribution < Match 
+      case credit_card_debt > leftover_money && four01k_contribution < four01k_match:
+        console.log("// Big Debt--Contribution < Match ");
         this.headline = `Increase your 401(k) contribution 📈 and pay off your credit cards 💳`;
         this.advice = ``;
         this.what = `Right now, your top priority is to pay off your credit card debt. The total credit card debt you've listed here is $${this.numberWithCommas(credit_card_debt)}. Apply the $${this.numberWithCommas(leftover_money)} of monthly leftover money and you can pay off your debt in about ${this.calcMonths()} months. But before you do anything, you should to increase your 401(k) contribution from ${four01k_contribution}% to ${four01k_match}%.`
@@ -127,20 +107,9 @@ class PriPostDebt extends React.Component {
         this.how = `Use the Debt Snowball method: Apply all your leftover money the smallest debt you have, and pay just the minimum payment on your other cards. Once your smallest debt is paid off, move on to the next smallest. This method works well because it gives you success earlier than prioritizing the card with the highest interest rate. That early success is is a powerful motivator to get it all paid off.`
         this.nextStep = "RothIntro";
         break;
-      // Case:  Contribution < Match / Small Debt
-      case four01k_contribution < four01k_match && credit_card_debt < leftover_money:
-        console.log("*** Contribution < Match / Small Debt");
-        this.headline = `Increase your 401(k) contribution 📈 and pay off your credit cards 💳`;
-        this.advice = ``;
-        this.what = `The total credit card debt you've listed here is $${this.numberWithCommas(credit_card_debt)}. The $${this.numberWithCommas(leftover_money)} you have left over after bills and spending money is more than enough to pay it off in under a month, so, do it. While it's great that you are taking advantage of your 401(k), you should to increase your 401(k) contribution from ${four01k_contribution}% to ${four01k_match}%.`
-        this.why = `The employer match is free money, so take advantage of it!`
-        this.how = `Your HR resource at work can explain or show you how to change your contribution percentage.`
-        this.nextStep = "RothIntro";
-        break;
-        // Case: Contribution = Match / Big Debt
-      case four01k === true && four01k_contribution > 0 && four01k_contribution === four01k_match &&
-        credit_card_debt > leftover_money:
-        console.log("*** Contribution = Match / Big Debt");
+        // Big Debt--Contribution == Match
+      case credit_card_debt > leftover_money && four01k === true && four01k_contribution > 0 && four01k_contribution === four01k_match:
+        console.log("// Big Debt--Contribution == Match");
         this.headline = `Pay off your credit card debt 💳🧾`;
         this.advice = ``;
         this.what = `Well done--you're correct to restrict your 401(k) contribution to the company match of ${four01k_match}%. Right now, your top priority is to pay off your credit card debt.  The total credit card debt you've listed here is $${this.numberWithCommas(credit_card_debt)}. Apply the $${this.numberWithCommas(leftover_money)} of monthly leftover money and you can pay off your debt in about ${this.calcMonths()} months.`
@@ -148,10 +117,40 @@ class PriPostDebt extends React.Component {
         this.how = `Use the Debt Snowball method: Apply all your leftover money the smallest debt you have, and pay just the minimum payment on your other cards. Once your smallest debt is paid off, move on to the next smallest. This method works well because it gives you success earlier than prioritizing the card with the highest interest rate. That early success is is a powerful motivator to get it all paid off.`
         this.nextStep = "RothIntro";
         break;
-      // Case:  Contribution = Match / Small Debt
-      case four01k === true && four01k_contribution > 0 && four01k_contribution === four01k_match &&
-        credit_card_debt < leftover_money:
-        console.log("*** Contribution = Match / Small Debt");
+
+         // Small Debt--No 401k
+      case credit_card_debt <= leftover_money && credit_card_debt > quarterLeftoverMoney && four01k === false:
+        console.log("// Small Debt--No 401k");
+        this.headline = `Pay off your credit card debt 💳🧾`;
+        this.advice = ``;
+        this.what = `The total credit card debt you've listed here is $${this.numberWithCommas(credit_card_debt)}. The $${this.numberWithCommas(leftover_money)} you have left over after bills and spending money is more than enough to pay it off in under a month, so, do it.`
+        this.why = `The interest you pay on credit cards is often *three times* as much as the interest you could earn on investments. So, credit card debt is like a negative investment!`
+        this.how = `Use the Debt Snowball method: Apply all your leftover money the smallest debt you have, and pay just the minimum payment on your other cards. Once your smallest debt is paid off, move on to the next smallest. This method works well because it gives you success earlier than prioritizing the card with the highest interest rate. That early success is is a powerful motivator to get it all paid off.`
+        this.nextStep = "RothIntro";
+        break;
+        // Small Debt--Contribution > Match
+      case credit_card_debt < leftover_money && credit_card_debt > quarterLeftoverMoney && four01k_contribution > four01k_match:
+        console.log("// Small Debt--Contribution > Match");
+        this.headline = `Pay off your credit card debt 💳🧾`;
+        this.advice = ``;
+        this.what = `The total credit card debt you've listed here is $${this.numberWithCommas(credit_card_debt)}. Apply the $${this.numberWithCommas(leftover_money)} of monthly leftover money and you can pay off your debt in about ${this.calcMonths()} months.`
+        this.why = `The interest you pay on credit cards is often *three times* as much as the interest you could earn on investments. So, credit card debt is like a negative investment!`
+        this.how = `Use the Debt Snowball method: Apply all your leftover money the smallest debt you have, and pay just the minimum payment on your other cards. Once your smallest debt is paid off, move on to the next smallest. This method works well because it gives you success earlier than prioritizing the card with the highest interest rate. That early success is is a powerful motivator to get it all paid off.`
+        this.nextStep = "RothIntro";
+        break;
+      // Small Debt--Contribution < Match 
+      case credit_card_debt < leftover_money && credit_card_debt > quarterLeftoverMoney && four01k_contribution < four01k_match:
+        console.log("// Small Debt--Contribution < Match ");
+        this.headline = `Increase your 401(k) contribution 📈 and pay off your credit cards 💳`;
+        this.advice = ``;
+        this.what = `The total credit card debt you've listed here is $${this.numberWithCommas(credit_card_debt)}. The $${this.numberWithCommas(leftover_money)} you have left over after bills and spending money is more than enough to pay it off in under a month, so, do it. While it's great that you are taking advantage of your 401(k), you should to increase your 401(k) contribution from ${four01k_contribution}% to ${four01k_match}%.`
+        this.why = `The employer match is free money, so take advantage of it!`
+        this.how = `Your HR resource at work can explain or show you how to change your contribution percentage.`
+        this.nextStep = "RothIntro";
+        break;
+      // Small Debt--Contribution == Match
+      case credit_card_debt < leftover_money && credit_card_debt > quarterLeftoverMoney && four01k === true && four01k_contribution > 0 && four01k_contribution === four01k_match:
+        console.log("// Small Debt--Contribution == Match");
         this.headline = `Pay off your credit card debt 💳🧾`;
         this.advice = ``;
         this.what = `Well done--you're correct to restrict your 401(k) contribution to the company match of ${four01k_match}%.`
@@ -159,6 +158,7 @@ class PriPostDebt extends React.Component {
         this.how = `Use the Debt Snowball method: Apply all your leftover money the smallest debt you have, and pay just the minimum payment on your other cards. Once your smallest debt is paid off, move on to the next smallest. This method works well because it gives you success earlier than prioritizing the card with the highest interest rate. That early success is is a powerful motivator to get it all paid off.`
         this.nextStep = "RothIntro";
         break;
+
       default:
         this.headline = "Whoops, we've encountered an error 🙊";
         this.advice = "How embarassing...";

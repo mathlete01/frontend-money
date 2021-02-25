@@ -109,11 +109,11 @@ class Four01kMatch extends React.Component {
                     >
                       Next
                     </Button>
-                  {/* ) : (
-                    <Button variant="yeah" variant="primary"  block disabled>
+                   {/* ) : (
+                    <Button variant="continue"  block disabled>
                       Next
                     </Button>
-                  )} */}
+                  )}  */}
                 </Col>
               </Form.Row>
             </Form.Group>
