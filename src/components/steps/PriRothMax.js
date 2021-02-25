@@ -9,8 +9,7 @@ import Button from "react-bootstrap/Button";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { Tabs, Tab } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
+
 
 class PriRothMax extends React.Component {
   _prev = () => {
@@ -19,7 +18,6 @@ class PriRothMax extends React.Component {
 
   _next = (event) => {
     event.preventDefault();
-    // this.props.updateCurrentRow(this.props.getNextRow());
     this.props.updateCurrentUser(
       this.props.currentUser.id,
       { roth_max: 7000 },

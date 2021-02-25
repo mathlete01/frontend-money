@@ -9,8 +9,6 @@ import Button from "react-bootstrap/Button";
 import { Form } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-// import Tooltip from "react-bootstrap/Tooltip";
-
 
 class Four01kQ extends React.Component {
   _prev = () => {
@@ -30,7 +28,6 @@ class Four01kQ extends React.Component {
   };
 
  
-
   render() {
     return (
       <Container className="step">

@@ -8,8 +8,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
+
 
 class RothMarriedJointlyQ extends React.Component {
   _prev = () => {

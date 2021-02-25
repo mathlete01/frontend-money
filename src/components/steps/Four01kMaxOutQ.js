@@ -8,8 +8,6 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
 
 class Four01kMaxOutQ extends React.Component {
 
@@ -30,9 +28,6 @@ class Four01kMaxOutQ extends React.Component {
   };
 
   render() {
-    // if (this.props.currentStep !== "Four01kMaxOutQ") {
-    //   return null;
-    // }
     return (
       <Container className="step">
         <Row id="header" className="rowElement">

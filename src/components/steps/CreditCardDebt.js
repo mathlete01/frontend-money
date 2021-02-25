@@ -9,8 +9,6 @@ import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import { Form, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
 
 class CreditCardDebt extends React.Component {
 

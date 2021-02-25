@@ -10,14 +10,11 @@ import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import { Form, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
 
 
 class LeftoverMoney extends React.Component {
   
   componentDidUpdate(prevProps, prevState) {
-    // console.log("LeftoverMoney: ComponentDidUpdate");
     if (prevProps.currentUser !== this.props.currentUser) {
       this.setState({
         monthly_income: this.props.currentUser.monthly_income,

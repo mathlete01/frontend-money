@@ -1,22 +1,19 @@
 import React from "react";
-import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import Form from "react-bootstrap/Form";
 import { loginCurrentUser } from "../actions/userActions";
 import { connect } from "react-redux";
+import { Form, FormControl } from "react-bootstrap";
 
 class Credentials extends React.Component {
   state = {
     username: "",
     password: "",
-    // password: "!iCPWC?L,2o?V!\2aR,e')'#}nDIlQUJ"
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
-    // this.props.loginCurrentUser(this.state);
     this.props.handleSubmit(this.state);
   };
 

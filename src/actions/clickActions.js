@@ -1,8 +1,6 @@
 export const updateCurrentClick = (userID, stepID, rowID) => {
-  // debugger
     return (dispatch) => {
       const BASE_URL = process.env.REACT_APP_BASE_URL
-      const PROGRESSES_URL = `${BASE_URL}/clicks`;
       const formData = {
         user_id: userID,
         steps_id: stepID,

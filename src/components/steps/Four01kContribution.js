@@ -6,13 +6,9 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import Nav from "react-bootstrap/Nav";
 import InputGroup from "react-bootstrap/InputGroup";
-import { Form, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
 
 class Four01kContribution extends React.Component {
   state = {
@@ -40,7 +36,6 @@ class Four01kContribution extends React.Component {
       },
       this.props.currentStep
     );
-    // this.props.handleNextStep("CreditCardDebtQ");
     this.props.handleNextStep(event);
   };
 
@@ -85,7 +80,6 @@ class Four01kContribution extends React.Component {
                       type="number"
                       min="0"
                       max="100"
-                      // defaultValue="6"
                       value={
                         this.state.four01k_contribution
                           ? this.state.four01k_contribution

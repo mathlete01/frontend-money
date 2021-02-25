@@ -8,13 +8,8 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { Tabs, Tab } from "react-bootstrap";
-import TabContainer from "react-bootstrap/TabContainer";
-import Nav from "react-bootstrap/Nav";
-import { NavItem } from "react-bootstrap";
-import Navbar from "react-bootstrap/Navbar";
 import { updateCurrentRow } from "../../actions/rowActions";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
+
 
 
 class PriTaxableBrokerageIntro extends React.Component {
@@ -25,7 +20,6 @@ class PriTaxableBrokerageIntro extends React.Component {
   
   _next = (event) => {
     event.preventDefault();
-    // this.props.updateCurrentRow(this.props.getNextRow());
     this.props.handleNextStep(event);
   };
 
@@ -87,7 +81,7 @@ class PriTaxableBrokerageIntro extends React.Component {
                   Do you already have an investment account at a discount brokerage? Do it there.
                 </li>
                 <li>
-                  Otherwise, open an account at a discount brokerage like <a href="http://www.vanguard.com" target="_blank">Vanguard</a> (our favorite) or <a href="http://www.schwab.com" target="_blank">Schwab</a>.
+                  Otherwise, open an account at a discount brokerage like <a href="http://www.vanguard.com" target="_blank" rel="noreferrer" >Vanguard</a> (our favorite) or <a href="http://www.schwab.com" target="_blank" rel="noreferrer" >Schwab</a>.
                 </li>
               </ul>
             </Tab>

@@ -7,14 +7,9 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { Form, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
-
-
 
 const BASE_URL = process.env.REACT_APP_BASE_URL
 console.log("REACT_APP_BASE_URL:", BASE_URL, 1000)
-// "https://pure-waters-30920.herokuapp.com"
 const USERS_URL = `${BASE_URL}/users`;
 
 class Intro extends React.Component {

@@ -11,8 +11,7 @@ import { Form, FormGroup, FormControl } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import { Tabs, Tab } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
+
 
 class PriRothMarriedNotJointlyTween extends React.Component {
 
@@ -70,6 +69,8 @@ class PriRothMarriedNotJointlyTween extends React.Component {
         const rothMax = (Math.round(num))
         return rothMax
         break
+        default:
+          return null
     }
   };
 

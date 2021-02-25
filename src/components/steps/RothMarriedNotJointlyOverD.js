@@ -8,8 +8,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
+
 
 class RothMarriedNotJointlyOverD extends React.Component {
   _next = (event) => {
@@ -23,39 +22,6 @@ class RothMarriedNotJointlyOverD extends React.Component {
     this.props.handlePrevStep();
   };
 
-  // _next = (event) => {
-  //   event.preventDefault();
-  //   this.props.handleNextStep(this.nextStep);
-  // };
-
-  // makeDetermination = () => {
-  //   // console.log("makeDetermination called");
-  //   const {
-  //     leftover_money,
-  //     four01k,
-  //     four01k_match,
-  //     four01k_contribution,
-  //     credit_card_debt,
-  //   } = this.props.currentUser;
-  //   switch (true) {
-  //     // Case: Yes 401k --> are you maxing it out?
-  //     case four01k === true:
-  //       this.nextStep = "Four01kMaxOutQ"
-  //       break;
-  //     // Case:  No 401K  --> Try for traditional IRA
-  //     case four01k === false:
-  //       this.nextStep = "PriBackdoorRothIntro";
-  //       break;
-  //     default:
-  //       this.advice = "Whoops, we've encountered an error. How embarassing.";
-  //   }
-  // };
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (prevProps.currentStep !== this.props.currentStep) {
-  //     this.makeDetermination();
-  //   }
-  // }
 
   render() {
   

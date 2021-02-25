@@ -1,5 +1,4 @@
 import React from "react";
-
 import CreditCardDebt from "./steps/CreditCardDebt";
 import CreditCardDebtQ from "./steps/CreditCardDebtQ";
 import DoneForNow from "./steps/DoneForNow";
@@ -45,7 +44,6 @@ import { updateCurrentRow } from "../actions/rowActions";
 
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
 class StepContainer extends React.Component {
@@ -69,23 +67,6 @@ class StepContainer extends React.Component {
   componentDidMount() {
     this.setState({ row1: this.props.currentStep });
   }
-
-  // getNextRow = () => {
-  //   switch (true) {
-  //     case this.props.currentRow === "row1":
-  //       return "row2";
-  //     case this.props.currentRow === "row2":
-  //       return "row3";
-  //     case this.props.currentRow === "row3":
-  //       return "row4";
-  //     case this.props.currentRow === "row4":
-  //       return "row5";
-  //     case this.props.currentRow === "row5":
-  //       return "row6";
-  //     default:
-  //       return null;
-  //   }
-  // };
 
   // New and improved way below!
   getNextRow = () => {

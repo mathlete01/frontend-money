@@ -9,8 +9,7 @@ import Button from "react-bootstrap/Button";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { Tabs, Tab } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
+
 
 class PriFour01kMax extends React.Component { 
   _prev = () => {
@@ -19,14 +18,10 @@ class PriFour01kMax extends React.Component {
 
   _next = (event) => {
     event.preventDefault();
-    // this.props.updateCurrentRow(this.props.getNextRow());
     this.props.handleNextStep(event);
   };
 
   render() {
-    // if (this.props.currentStep !== "PriFour01kMax") {
-    //   return null;
-    // }
     return (
       <Container className="priority">
         <Row id="header" className="rowElement">

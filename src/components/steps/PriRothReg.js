@@ -10,8 +10,7 @@ import { Form, FormGroup, FormControl } from "react-bootstrap";
 import Table from 'react-bootstrap/Table'
 import { Tabs, Tab } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
+
 
 class PriRothReg extends React.Component {
   _prev = () => {
@@ -20,7 +19,6 @@ class PriRothReg extends React.Component {
 
   _next = (event) => {
     event.preventDefault();
-    // this.props.updateCurrentRow(this.props.getNextRow());
     this.props.updateCurrentUser(this.props.currentUser.id, { 
       roth_eligable: true,
       roth_max: 6000 

@@ -8,8 +8,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
+
 
 class RothSingleMinQ extends React.Component {
   _prev = () => {
@@ -19,14 +18,12 @@ class RothSingleMinQ extends React.Component {
   _yes = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { single_max: true },this.props.currentStep);
-    // this.props.handleNextStep("RothSingleIncomeQ");
     this.props.handleNextStep(event)
   };
 
   _no = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { single_max: false },this.props.currentStep);
-    // this.props.handleNextStep("RothSingleMaxQ");
     this.props.handleNextStep(event)
   };
 

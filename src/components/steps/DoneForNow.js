@@ -1,15 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 import { updateCurrentStep } from "../../actions/stepActions";
-import { updateCurrentUser } from "../../actions/userActions";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
-import { updateCurrentRow } from "../../actions/rowActions";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
 
 class DoneForNow extends React.Component {
   _prev = () => {
@@ -47,25 +43,8 @@ class DoneForNow extends React.Component {
             <Form.Group>
               <Form.Row>
                 <Col>
-                  {/* <Button
-                    variant="nope"
-                    block
-                    onClick={this._no}
-                  >
-                    No
-                  </Button> */}
                 </Col>
                 <Col>
-                  {/* <Button
-                    variant="yeah"
-                    variant="primary"
-                    
-                    id={this.props.currentRow}
-                    block
-                    onClick={this._next}
-                  >
-                    Okay
-                  </Button> */}
                 </Col>
               </Form.Row>
             </Form.Group>
@@ -79,7 +58,6 @@ class DoneForNow extends React.Component {
 const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
-    // currentUser: state.userReducer.currentUser
   };
 };
 

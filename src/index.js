@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { createStore, applyMiddleware, compose } from "redux";
-import { stepReducer } from "./reducers/stepReducer.js";
 import "./index.css";
 import App from "./App";
 import { Provider } from "react-redux";
@@ -10,7 +9,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import thunk from "redux-thunk";
 import rootReducer from "./reducers/rootReducer.js";
 import { BrowserRouter } from "react-router-dom";
-import TestTooltip from "./components/steps/TestTooltip.js";
 
 const composeEnhancers =
   typeof window === 'object' &&
@@ -31,7 +29,6 @@ ReactDOM.render(
     <Provider store={store}>
       <BrowserRouter>
         <App />
-        {/* <TestTooltip /> */}
       </BrowserRouter>
     </Provider>
   </React.StrictMode>,

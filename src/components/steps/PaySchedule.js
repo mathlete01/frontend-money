@@ -8,8 +8,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
+
 
 class PaySchedule extends React.Component {
   componentDidUpdate(prevProps, prevState) {
@@ -30,29 +29,10 @@ class PaySchedule extends React.Component {
     }
   };
 
-  // debtSum = () => {
-  //   if (this.props.currentUser.credit_card_debt > this.props.currentUser.leftover_money){
-  //     console.log(`debtSum = `, "big")
-  //     this.calcPayPeriods()
-  //     return ("big")
-  //   } else {
-  //     console.log(`debtSum = `, "small")
-  //     return ("small")
-  //   }
-  // }
-
-  // calcPayPeriods = () => {
-  //   const payPeriodCount = this.props.currentUser.credit_card_debt / this.props.currentUser.leftover_money
-  //   console.log(`payPeriodCount = `, payPeriodCount)
-  //   return payPeriodCount
-  // }
-
   handleChange = (event) => {
-    // console.log(`handleChange: event.target.id=`, event.target.id);
     this.setState({
       pay_schedule: event.target.id,
     });
-    // this.debtSum();
   };
 
   _prev = () => {

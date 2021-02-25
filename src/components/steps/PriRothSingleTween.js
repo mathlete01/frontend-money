@@ -11,8 +11,7 @@ import { Form, FormGroup, FormControl } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import { Tabs, Tab } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Tooltip from "react-bootstrap/Tooltip";
+
 
 class PriRothSingleTween extends React.Component {
   _prev = () => {
@@ -45,7 +44,6 @@ class PriRothSingleTween extends React.Component {
 
   state = {
     magi: this.props.currentUser.magi,
-    // rothMaxYoung: this.props.currentUser.roth_max,
   };
 
   numberWithCommas = (x) =>  {
@@ -70,6 +68,8 @@ class PriRothSingleTween extends React.Component {
         const rothMaxYoung = (Math.round(num))
         return rothMaxYoung
         break
+        default:
+          return null
     }
   };
 
@@ -91,6 +91,8 @@ class PriRothSingleTween extends React.Component {
         const rothMaxOld = (Math.round(num))
         return rothMaxOld
         break
+        default:
+          return null
     }
   };
 
