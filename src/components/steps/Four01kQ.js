@@ -55,12 +55,6 @@ class Four01kQ extends React.Component {
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            {/* A 401(k) plan is a retirement investment account that many companies
-            offer their employees. */}
-            <i>Tip: roll over <OverlayTrigger
-          placement="top"
-          delay={{ show: 250, hide: 400 }}
-          overlay={(props) => this.props.renderTooltip(props, "Yeah, just like that!")} ><a href="#" className="tooltiptext">highlighted</a></OverlayTrigger> text to see a definition</i>
           </Container>
         </Row>
         <Row id="form" className="rowElement"></Row>

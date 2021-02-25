@@ -20,8 +20,12 @@ import "./App.css";
 import { NavItem } from "react-bootstrap";
 import background from "./img/wallpaper_sky_01.svg";
 import logo from "./img/wordmark_d2i_white.svg"
+import Tooltip from "react-bootstrap/Tooltip";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Toast from "react-bootstrap/Toast";
 
 class App extends React.Component {
+
   state = {
     user: "",
   };
@@ -91,6 +95,36 @@ class App extends React.Component {
       });
   };
 
+  renderTooltip = (props, tooltipTxt) => {
+    return <Tooltip {...props}>{tooltipTxt}</Tooltip>;
+  };
+
+  showToast = () => {
+    if(this.props.currentStep === "Four01kQ"){
+      return (
+        <Toast style={{
+          position: 'absolute',
+          top: 15,
+          right: 15,
+        }} 
+        onClose={this.show=false}
+        >
+          <Toast.Header>
+            <strong className="mr-auto">💡 Tip</strong>
+          </Toast.Header>
+          <Toast.Body>
+          <i>Roll over <OverlayTrigger
+          placement="top"
+          delay={{ show: 250, hide: 400 }}
+          overlay={(props) => this.renderTooltip(props, "Yeah, just like that!")} ><a href="#" className="tooltiptext">highlighted</a></OverlayTrigger> text to see a definition</i>
+          </Toast.Body>
+        </Toast>
+      )
+    }else{
+      return null
+    }
+  }
+
   render() {
     return (
       <div
@@ -110,6 +144,7 @@ class App extends React.Component {
               className="d-inline-block align-top"
             />{" "}
           </Navbar.Brand>
+          {this.showToast()}
           <Navbar.Collapse className="justify-content-end">
             <Nav>
               <NavItem href="/">
