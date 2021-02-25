@@ -13,6 +13,7 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
 class CreditCardDebt extends React.Component {
+
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.currentUser !== this.props.currentUser) {
       this.setState({
@@ -21,6 +22,7 @@ class CreditCardDebt extends React.Component {
         cc_3: this.props.currentUser.cc_3,
         credit_card_debt: this.props.currentUser.credit_card_debt,
       });
+      console.log(`componentDidUpdate: this.props.currentUser.credit_card_debt = `, this.props.currentUser.credit_card_debt)
     }
   }
 
@@ -31,55 +33,58 @@ class CreditCardDebt extends React.Component {
     credit_card_debt: this.props.currentUser.credit_card_debt,
   };
 
-  checkValid = () => {
-    // if (this.state.cc_1 > 0) {
-      return true;
-    // }
-  };
-
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value,
     });
-    this.calcSum();
+    // this.calcSum();
+    console.log(`handleChange: this.props.currentUser.credit_card_debt = `, this.props.currentUser.credit_card_debt)
   };
-
-  calcSum = () => {
-    if (this.state.cc_1 > 0) {
-      const cc_1 = this.state.cc_1;
-      const cc_2 = this.state.cc_2 ? this.state.cc_2 : 0;
-      const cc_3 = this.state.cc_3 ? this.state.cc_3 : 0;
-      const sum = parseInt(cc_1) + parseInt(cc_2) + parseInt(cc_3);
-      return sum;
-    } else {
-      return 0;
-    }
-  };
-
-  _next = (event) => {
-    event.preventDefault();
-    this.props.updateCurrentUser(
-      this.props.currentUser.id,
-      {
-        cc_1: this.state.cc_1,
-        cc_2: this.state.cc_2,
-        cc_3: this.state.cc_3,
-        credit_card_debt: this.calcSum(),
-      },
-      this.props.currentStep
-    );
-    this.props.handleNextStep(event);
-  };
-
-  _prev = () => {
-    this.props.handlePrevStep();
-  };
-
-  handleFocus = (event) => event.target.select();
 
   numberWithCommas = (x) =>  {
     return x.toLocaleString()
 }
+
+calcSum = () => {
+  if (this.state.cc_1 > 0) {
+    const cc_1 = this.state.cc_1;
+    const cc_2 = this.state.cc_2 ? this.state.cc_2 : 0;
+    const cc_3 = this.state.cc_3 ? this.state.cc_3 : 0;
+    const sum = parseInt(cc_1) + parseInt(cc_2) + parseInt(cc_3);
+    this.props.currentUser.credit_card_debt = sum
+    return sum;
+  } else {
+    return 0;
+  }
+};
+
+_next = (event) => {
+  event.preventDefault();
+  this.props.updateCurrentUser(
+    this.props.currentUser.id,
+    {
+      cc_1: this.state.cc_1,
+      cc_2: this.state.cc_2,
+      cc_3: this.state.cc_3,
+      credit_card_debt: this.calcSum(),
+    },
+    this.props.currentStep
+  );
+  console.log(`_next: this.calcSum() = `, this.calcSum())
+  this.props.handleNextStep(event);
+};
+
+_prev = () => {
+  this.props.handlePrevStep();
+};
+
+  checkValid = () => {
+    if (this.calcSum() > 0) {
+      return true;
+    }
+  };
+  
+  handleFocus = (event) => event.target.select();
 
   render() {
     return (
@@ -197,7 +202,6 @@ class CreditCardDebt extends React.Component {
                       variant="continue"
                       block
                       id={this.props.currentRow}
-                      // value="PriPostDebt"
                       value="PaySchedule"
                       onClick={this._next}
                     >

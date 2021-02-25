@@ -25,6 +25,7 @@ class LeftoverMoney extends React.Component {
         monthly_spending: this.props.currentUser.monthly_spending,
         leftover_money: this.props.currentUser.leftover_money,
       });
+      console.log(`componentDidUpdate: this.props.currentUser.leftover_money = `, this.props.currentUser.leftover_money)
     }
   }
 
@@ -39,6 +40,7 @@ class LeftoverMoney extends React.Component {
     this.setState({
       [event.target.name]: event.target.value,
     });
+    console.log(`handleChange: this.props.currentUser.leftover_money = `, this.props.currentUser.leftover_money)
   };
 
   numberWithCommas = (x) =>  {
@@ -74,6 +76,7 @@ class LeftoverMoney extends React.Component {
       },
       this.props.currentStep
     );
+    console.log(`_next: this.calcLeftoverMoney() = `, this.calcLeftoverMoney())
     this.props.handleNextStep(event);
   };
 

@@ -46,8 +46,6 @@ class PriPostDebt extends React.Component {
     return x.toLocaleString()
 }
 
-
-
   makeDetermination = () => {
     // debugger
     console.log(
