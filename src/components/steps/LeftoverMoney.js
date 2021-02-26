@@ -124,7 +124,7 @@ class LeftoverMoney extends React.Component {
                       type="string"
                       min="0"
                       value={
-                        this.numberWithCommas(this.state.monthly_income ? this.state.monthly_income : 0)
+                        this.numberWithCommas(this.state.monthly_income ? this.state.monthly_income : "")
                       }
                       id="monthly_income"
                       name="monthly_income"
@@ -155,7 +155,7 @@ class LeftoverMoney extends React.Component {
                       type="string"
                       min="0"
                       value={
-                        this.numberWithCommas(this.state.monthly_bills ? this.state.monthly_bills : 0)
+                        this.numberWithCommas(this.state.monthly_bills ? this.state.monthly_bills : "")
                       }
                       id="monthly_bills"
                       name="monthly_bills"
@@ -186,7 +186,7 @@ class LeftoverMoney extends React.Component {
                       type="string"
                       min="0"
                       value={
-                        this.numberWithCommas(this.state.monthly_spending ? this.state.monthly_spending : 0)
+                        this.numberWithCommas(this.state.monthly_spending ? this.state.monthly_spending : "")
                       }
                       id="monthly_spending"
                       name="monthly_spending"
