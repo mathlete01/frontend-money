@@ -46,7 +46,7 @@ class RothSingle50Q extends React.Component {
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-          Your age is yet another factor that affects how much you're allowed to contribute.
+          {/* Your age is yet another factor that affects how much you're allowed to contribute. */}
           </Container>
         </Row>
         <Row id="form" className="rowElement"></Row>

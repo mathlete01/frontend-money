@@ -39,7 +39,12 @@ class RothSingleOverD extends React.Component {
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Ok, since you'll make more than $140K in 2021, you're not eligible to contribute to a regular Roth IRA. But--and this is a big but--anyone with earned income can contribute to a Backdoor Roth IRA! What's that? Well, let me tell you...
+            Ok, since you'll make more than $140K in 2021, you're not eligible to contribute to a regular Roth IRA. But--and this is a big but--anyone with <OverlayTrigger
+          placement="top"
+          // defaultShow="true"
+          delay={{ show: 250, hide: 400 }}
+          overlay={(props) => this.props.renderTooltip(props, "Earned income is income you'd make from wages, not from investments")}
+        ><a href="#" className="tooltiptext">earned income</a></OverlayTrigger> can contribute to a Backdoor Roth IRA! What's that? Well, let me tell you...
           </Container>
         </Row>
         <Row id="form" className="rowElement"></Row>

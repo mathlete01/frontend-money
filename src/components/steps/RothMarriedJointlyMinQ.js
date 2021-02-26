@@ -42,7 +42,7 @@ class RothMarriedJointlyMinQ extends React.Component {
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h3>As a couple, will your Modified Adjusted Gross Income be less than $198,000 in 2021? 💰</h3>
+            <h3>As a couple, will your pre-tax income be less than $198,000 in 2021? 💰</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">

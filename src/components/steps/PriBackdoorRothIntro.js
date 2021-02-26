@@ -45,7 +45,7 @@ class PriBackdoorRothIntro extends React.Component {
             <h3><OverlayTrigger
           placement="top"
           delay={{ show: 250, hide: 400 }}
-          overlay={(props) => this.props.renderTooltip(props, "Meaning: contribute the maximum amount you're allowed to every year.")}
+          overlay={(props) => this.props.renderTooltip(props, "Meaning: contribute the maximum amount you're allowed to every year")}
         ><a href="#" className="tooltiptext">Max-out</a></OverlayTrigger> a "Backdoor" Roth IRA 🚪</h3>
           </Container>
         </Row>
@@ -69,9 +69,12 @@ class PriBackdoorRothIntro extends React.Component {
               <ul>
                 <li>
                   As we've said, Roth IRAs are great, but there are income
-                  limits and you've exceeded those. This loophole allows anyone
-                  with earned income to contribute to a Roth IRA, regardless of
-                  income limits.
+                  limits and you've exceeded those. This loophole allows anyone with <OverlayTrigger
+          placement="top"
+          // defaultShow="true"
+          delay={{ show: 250, hide: 400 }}
+          overlay={(props) => this.props.renderTooltip(props, "Earned income is income you'd make from wages, not from investments")}
+        ><a href="#" className="tooltiptext">earned income</a></OverlayTrigger> to contribute to a Roth IRA, regardless of income limits.
                 </li>
               </ul>
             </Tab>
@@ -83,13 +86,13 @@ class PriBackdoorRothIntro extends React.Component {
                 </li>
                 <li>
                   Otherwise, open an account at a discount brokerage like{" "}
-                  <a href="http://www.vanguard.com" target="_blank" rel="noreferrer">
+                  <a href="https://investor.vanguard.com/ira/roth-conversion" target="_blank" rel="noreferrer">
                     Vanguard
-                  </a>{" "}
-                  (our favorite) or{" "}
-                  <a href="http://www.schwab.com" target="_blank" rel="noreferrer">
+                  </a>,
+                  <a href="https://www.schwab.com/resource-center/insights/content/backdoor-roth-is-it-right-you" target="_blank" rel="noreferrer">
                     Schwab
-                  </a>
+                  </a>, or
+                  <a href="https://www.fidelity.com/viewpoints/retirement/earn-too-much-contribute-Roth-IRA-conversion" target="_blank" rel="noreferrer">Fidelity</a>.
                   .
                 </li>
               </ul>

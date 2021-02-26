@@ -51,14 +51,13 @@ class Four01kMaxOutQ extends React.Component {
           placement="top"
           // defaultShow="true"
           delay={{ show: 250, hide: 400 }}
-          overlay={(props) => this.props.renderTooltip(props, "Contributing the maximum amount you're allowed to every year.")}
+          overlay={(props) => this.props.renderTooltip(props, "Contributing the maximum amount you're allowed to every year")}
         ><a href="#" className="tooltiptext">maxxing-out</a></OverlayTrigger> your 401(k)? 🤑</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Got any more disposible income? If so, you should contribute as much
-            as you can to your 401(k).
+            Got any more disposible income? If so, you should contribute as much as you can to your 401(k).
           </Container>
         </Row>
         <Row id="form" className="rowElement"></Row>

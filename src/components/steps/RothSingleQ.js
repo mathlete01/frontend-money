@@ -8,6 +8,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
 
 class RothSingleQ extends React.Component {
@@ -39,12 +40,17 @@ class RothSingleQ extends React.Component {
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h3>Are you single? 👀</h3>
+            <h3>Are you <OverlayTrigger
+          placement="top"
+          // defaultShow="true"
+          delay={{ show: 250, hide: 400 }}
+          overlay={(props) => this.props.renderTooltip(props, "Your marriage status can affect the amount you're allowed to contribute to a Roth IRA")}
+        ><a href="#" className="tooltiptext">single</a></OverlayTrigger>? 👀</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Your marriage status can affect the amount you're allowed to contribute to a Roth IRA. 
+             
           </Container>
         </Row>
         <Row id="form" className="rowElement"></Row>

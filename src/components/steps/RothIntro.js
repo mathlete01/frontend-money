@@ -47,7 +47,7 @@ class RothIntro extends React.Component {
                 <li>
                   You can withdraw your contributions (not your <i>earnings</i>,
                   just your contributions) whenever you want. That makes it
-                  double as an Emergency Fund.
+                  double as an Emergency Fund!
                 </li>
               </ol>
           </Container>

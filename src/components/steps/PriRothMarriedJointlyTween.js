@@ -121,17 +121,13 @@ class PriRothMarriedJointlyTween extends React.Component {
             <h3><OverlayTrigger
           placement="top"
           delay={{ show: 250, hide: 400 }}
-          overlay={(props) => this.props.renderTooltip(props, "Meaning: contribute the maximum amount you're allowed to every year.")}
+          overlay={(props) => this.props.renderTooltip(props, "Meaning: contribute the maximum amount you're allowed to every year")}
         ><a href="#" className="tooltiptext">Max-out</a></OverlayTrigger> a Roth IRA 🥚📈</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Since your Modified Adjusted Gross Income as a couple will be more
-            than $198k but less than $208k in 2021, the amount you'll be able
-            to contribute is reduced. Check out the table below to see the
-            maximum you're allowed to contribtue to a Roth IRA based on your
-            income.
+            Since your income as a couple will be more than $198k but less than $208k in 2021, the amount you'll be able to contribute is reduced.
           </Container>
         </Row>
         <Row id="tabs" className="rowElement">
@@ -143,14 +139,18 @@ class PriRothMarriedJointlyTween extends React.Component {
                   IRA.
                 </li>
                 <li>
-                  Check out the table below to see the maximum you're allowed to
-                  contribtue to a Roth IRA based on your income.
+                Type in your estimated income below to see the maximum you're allowed to contribtue to a Roth IRA.
                 </li>
               </ul>
               <Table striped bordered hover>
               <thead>
                   <tr>
-                    <th>Your Modified Adjusted Gross Income (MAGI)</th>
+                    <th>Your <OverlayTrigger
+          placement="top"
+          // defaultShow="true"
+          delay={{ show: 250, hide: 400 }}
+          overlay={(props) => this.props.renderTooltip(props, "Your income as a couple before taxes are taken away")}
+        ><a href="#" className="tooltiptext">Gross Income</a></OverlayTrigger></th>
                     <th>Max Contribution if under 50</th>
                     <th>Max Contribution if over 50</th>
                   </tr>
@@ -233,13 +233,13 @@ class PriRothMarriedJointlyTween extends React.Component {
                 </li>
                 <li>
                   Otherwise, open an account at a discount brokerage like{" "}
-                  <a href="http://www.vanguard.com" target="_blank" rel="noreferrer">
+                  <a href="https://investor.vanguard.com/ira/roth-ira" target="_blank" rel="noreferrer">
                     Vanguard
-                  </a>{" "}
-                  (our favorite) or{" "}
-                  <a href="http://www.schwab.com" target="_blank" rel="noreferrer">
+                  </a>,
+                  <a href="https://www.schwab.com/ira" target="_blank" rel="noreferrer">
                     Schwab
-                  </a>
+                  </a>, or
+                  <a href="https://www.fidelity.com/retirement-ira/roth-ira" target="_blank" rel="noreferrer">Fidelity</a>.
                   .
                 </li>
               </ul>

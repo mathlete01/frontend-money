@@ -8,6 +8,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
 
 class RothSingleIncomeQ extends React.Component {
@@ -41,12 +42,17 @@ class RothSingleIncomeQ extends React.Component {
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h3>Will you have any earned income in 2021? 💵</h3>
+            <h3>Will you have any <OverlayTrigger
+          placement="top"
+          // defaultShow="true"
+          delay={{ show: 250, hide: 400 }}
+          overlay={(props) => this.props.renderTooltip(props, "Earned income is income you'd make from wages, not from investments")}
+        ><a href="#" className="tooltiptext">earned income</a></OverlayTrigger> in 2021? 💵</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Earned income is income you'd make from wages, not from investments.
+            {/* Earned income is income you'd make from wages, not from investments. */}
           </Container>
         </Row>
         <Row id="form" className="rowElement"></Row>

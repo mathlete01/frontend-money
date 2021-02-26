@@ -99,16 +99,14 @@ class PriRothMarriedNotJointlyTween extends React.Component {
           placement="top"
           // defaultShow="true"
           delay={{ show: 250, hide: 400 }}
-          overlay={(props) => this.props.renderTooltip(props, "Meaning: contribute the maximum amount you're allowed to every year.")}
+          overlay={(props) => this.props.renderTooltip(props, "Meaning: contribute the maximum amount you're allowed to every year")}
         ><a href="#" className="tooltiptext">Max-out</a></OverlayTrigger> a Roth IRA 🥚📈</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Since your Modified Adjusted Gross Income as a couple will be less
-            than $10k, the amount you'll be able to contribute is reduced. Check
-            out the table below to see the maximum you're allowed to contribtue
-            to a Roth IRA based on your income.
+            Since your income as a couple will be less
+            than $10k, the amount you'll be able to contribute is reduced. 
           </Container>
         </Row>
         <Row id="tabs" className="rowElement">
@@ -120,14 +118,18 @@ class PriRothMarriedNotJointlyTween extends React.Component {
                   IRA.
                 </li>
                 <li>
-                  Check out the table below to see the maximum you're allowed to
-                  contribtue to a Roth IRA based on your income.
+                Type in your estimated income below to see the maximum you're allowed to contribtue to a Roth IRA.
                 </li>
               </ul>
               <Table striped bordered hover>
                 <thead>
                   <tr>
-                    <th>Your Modified Adjusted Gross Income (MAGI)</th>
+                    <th>Your <OverlayTrigger
+          placement="top"
+          // defaultShow="true"
+          delay={{ show: 250, hide: 400 }}
+          overlay={(props) => this.props.renderTooltip(props, "Your income as a couple before taxes are taken away")}
+        ><a href="#" className="tooltiptext">Gross Income</a></OverlayTrigger></th>
                     <th>Max Contribution if under 50</th>
                   </tr>
                 </thead>

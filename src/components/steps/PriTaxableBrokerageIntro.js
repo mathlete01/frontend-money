@@ -81,7 +81,15 @@ class PriTaxableBrokerageIntro extends React.Component {
                   Do you already have an investment account at a discount brokerage? Do it there.
                 </li>
                 <li>
-                  Otherwise, open an account at a discount brokerage like <a href="http://www.vanguard.com" target="_blank" rel="noreferrer" >Vanguard</a> (our favorite) or <a href="http://www.schwab.com" target="_blank" rel="noreferrer" >Schwab</a>.
+                  Otherwise, open an account at a discount brokerage like{" "}
+                  <a href="https://investor.vanguard.com/investing/joint-account-individual-account" target="_blank" rel="noreferrer">
+                    Vanguard
+                  </a>,
+                  <a href="https://www.schwab.com/brokerage" target="_blank" rel="noreferrer">
+                    Schwab
+                  </a>, or
+                  <a href="https://www.fidelity.com/trading/the-fidelity-account" target="_blank" rel="noreferrer">Fidelity</a>.
+                  .
                 </li>
               </ul>
             </Tab>
