@@ -83,7 +83,7 @@ class Four01kContribution extends React.Component {
                       value={
                         this.state.four01k_contribution
                           ? this.state.four01k_contribution
-                          : 0
+                          : ""
                       }
                       id="four01k_contribution"
                       name="four01k_contribution"
