@@ -84,10 +84,10 @@ class PriBackdoorRothIntro extends React.Component {
                   Otherwise, open an account at a discount brokerage like{" "}
                   <a href="https://investor.vanguard.com/ira/roth-conversion" target="_blank" rel="noreferrer">
                     Vanguard
-                  </a>,
+                  </a>, 
                   <a href="https://www.schwab.com/resource-center/insights/content/backdoor-roth-is-it-right-you" target="_blank" rel="noreferrer">
                     Schwab
-                  </a>, or
+                  </a>, or 
                   <a href="https://www.fidelity.com/viewpoints/retirement/earn-too-much-contribute-Roth-IRA-conversion" target="_blank" rel="noreferrer">Fidelity</a>.
                   .
                 </li>
@@ -96,7 +96,7 @@ class PriBackdoorRothIntro extends React.Component {
             <Tab eventKey="how" title="How">
               <ul>
                 <li>
-                  This is an oversimplification, but basically you (1) contribute up to $6k to a traditional IRA, then (2) call up the brokerage and ask them to convert that IRA to a Roth IRA.
+                  This is an oversimplification, but basically you (1) contribute up to $6k to a tranditional IRA, then (2) call up the brokerage and ask them to convert that IRA to a Roth IRA.
                 </li>
                 <li>
                   It's a bit complicated but totally doable. Call up your brokerage and ask them to explain it to you.
