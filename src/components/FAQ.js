@@ -65,15 +65,15 @@ class FAQ extends React.Component {
               </Accordion.Toggle>
             </Card.Header>
             <Accordion.Collapse eventKey="0">
-              <Card.Body>My name is Matty Sallin. Learn more about me and my motivations in the About Me section!</Card.Body>
+              <Card.Body>My name is Matty. Learn more about me and my motivations in the <a href="/about">About</a> section!</Card.Body>
             </Accordion.Collapse>
           </Card>
         </Accordion>
-        <Row className="rowElement"></Row>
-        <Row className="signature">
+        <Row className="signature"><p>Got other questions?{" "} <a href="mailto:msallin@gmail.com">Get in touch!</a></p></Row>
+        {/* <Row className="signature">
           <p>More questions?{" "}
             <a href="mailto:msallin@gmail.com">Get in touch!</a></p>
-        </Row>
+        </Row> */}
         <Row className="mainContainer"></Row>
       </Container>
     );
