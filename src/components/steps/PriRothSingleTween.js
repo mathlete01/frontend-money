@@ -126,8 +126,7 @@ class PriRothSingleTween extends React.Component {
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Since you'll make more than $125k but less than $140k in 2021, the
-            amount you'll be able to contribute is reduced.
+            Since you'll make more than $125k but less than $140k in 2021, the amount you'll be able to contribute is reduced.
           </Container>
         </Row>
         <Row id="tabs" className="rowElement">
@@ -135,12 +134,10 @@ class PriRothSingleTween extends React.Component {
             <Tab eventKey="what" title="What">
               <ul>
                 <li>
-                  Every year, there is a maximum you can contribute to a Roth
-                  IRA.
+                  Every year, there is a maximum you can contribute to a Roth IRA.
                 </li>
                 <li>
-                  Check out the table below to see the maximum you're allowed to
-                  contribtue to a Roth IRA based on your income.
+                Type in your estimated income below to see the maximum you're allowed to contribute to a Roth IRA.
                 </li>
               </ul>
               <Table striped bordered hover>
@@ -212,7 +209,7 @@ class PriRothSingleTween extends React.Component {
               </Table>
             </Tab>
             <Tab eventKey="why" title="Why">
-              As we've said, Roth IRAs are great for three reaons:
+              As we've said, Roth IRAs are great for three reasons:
               <ol>
                 <li>Your money grows tax-free</li>
                 <li>
@@ -228,8 +225,7 @@ class PriRothSingleTween extends React.Component {
             <Tab eventKey="where" title="Where">
               <ul>
                 <li>
-                  Do you already have an investment account at a discount
-                  brokerage? Do it there.
+                  Do you already have an investment account at a brokerage? Do it there.
                 </li>
                 <li>
                   Otherwise, open an account at a discount brokerage like{" "}

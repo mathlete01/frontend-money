@@ -73,7 +73,7 @@ class PriRothMax extends React.Component {
               </ul>
             </Tab>
             <Tab eventKey="why" title="Why">
-              As we've said, Roth IRAs are great for three reaons:
+              As we've said, Roth IRAs are great for three reasons:
               <ol>
                 <li>Your money grows tax-free</li>
                 <li>
@@ -89,8 +89,7 @@ class PriRothMax extends React.Component {
             <Tab eventKey="where" title="Where">
               <ul>
                 <li>
-                  Do you already have an investment account at a discount
-                  brokerage? Do it there.
+                  Do you already have an investment account at a brokerage? Do it there.
                 </li>
                 <li>
                   Otherwise, open an account at a discount brokerage like{" "}
