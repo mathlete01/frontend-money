@@ -166,7 +166,7 @@ class PriRothMarriedJointlyTween extends React.Component {
                           className="formField"
                           type="number"
                           min="0"
-                          value={this.state.magi ? this.state.magi : 0}
+                          value={this.state.magi ? this.state.magi : ""}
                           id="magi"
                           name="magi"
                           onChange={this.handleChange}

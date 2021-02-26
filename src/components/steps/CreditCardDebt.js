@@ -118,7 +118,7 @@ _prev = () => {
                       className="formField"
                       type="string"
                       min="0"
-                      value={this.numberWithCommas(this.state.cc_1 ? this.state.cc_1 : 0)}
+                      value={this.numberWithCommas(this.state.cc_1 ? this.state.cc_1 : "")}
                       id="cc_1"
                       name="cc_1"
                       // 
@@ -147,7 +147,7 @@ _prev = () => {
                       className="formField"
                       type="string"
                       min="0"
-                      value={this.numberWithCommas(this.state.cc_2 ? this.state.cc_2 : 0)}
+                      value={this.numberWithCommas(this.state.cc_2 ? this.state.cc_2 : "")}
                       id="cc_2"
                       name="cc_2"
                       // 
@@ -176,7 +176,7 @@ _prev = () => {
                       className="formField"
                       type="string"
                       min="0"
-                      value={this.numberWithCommas(this.state.cc_3 ? this.state.cc_3 : 0)}
+                      value={this.numberWithCommas(this.state.cc_3 ? this.state.cc_3 : "")}
                       id="cc_3"
                       name="cc_3"
                       // 
