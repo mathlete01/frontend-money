@@ -127,15 +127,16 @@ class App extends React.Component {
         <Toast
           style={{
             position: "absolute",
-            top: 15,
+            top: 0,
             right: 15,
+            zIndex: '1'
           }}
           onClose={(this.show = false)}
         >
           <Toast.Header>
             <strong className="mr-auto">💡 Tip</strong>
           </Toast.Header>
-          <Toast.Body>
+          <Toast.Body className="toastText">
             <i>
               Roll over{" "}
               <OverlayTrigger
@@ -210,12 +211,6 @@ class App extends React.Component {
           {this.showToast()}
         </Nav>
         <Container className="header">
-          {/* <div className="tagline">
-            <i>
-              An personalized roadmap to transform you from a debtor to an
-              investor
-            </i>
-          </div> */}
           <Row>
             <Col></Col>
             <Col md={8} className="header">
