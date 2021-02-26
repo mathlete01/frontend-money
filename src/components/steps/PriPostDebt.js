@@ -95,7 +95,7 @@ class PriPostDebt extends React.Component {
           leftover_money
         )} of monthly leftover money and you can pay off your debt in about ${this.calcMonths()} months.`;
         this.why = `The interest you pay on credit cards is often *three times* as much as the interest you could earn on investments. So, credit card debt is like a negative investment!`;
-        this.how = `Use the Debt Snowball method: Apply all your leftover money the smallest debt you have, and pay just the minimum payment on your other cards. Once your smallest debt is paid off, move on to the next smallest. This method works well because it gives you success earlier than prioritizing the card with the highest interest rate. That early success is is a powerful motivator to get it all paid off.`;
+        this.how = `Use the Debt Snowball method: Apply all your leftover money to the smallest debt you have, and pay just the minimum payment on your other cards. Once your smallest debt is paid off, move on to the next smallest. This method works well because it gives you success earlier than prioritizing the card with the highest interest rate. That early success is is a powerful motivator to get it all paid off.`;
         this.nextStep = "RothIntro";
         break;
       // Big Debt--Contribution > Match
@@ -110,7 +110,7 @@ class PriPostDebt extends React.Component {
           leftover_money
         )} of monthly leftover money and you can pay off your debt in about ${this.calcMonths()} months.`;
         this.why = `The interest you pay on credit cards is often *three times* as much as the interest you could earn on investments. So, credit card debt is like a negative investment! A wise move is to temporarily reduce your 401(k) contribution from ${four01k_contribution}% to ${four01k_match}% and use the increased take-home pay to pay off your cards `;
-        this.how = `Use the Debt Snowball method: Apply all your leftover money the smallest debt you have, and pay just the minimum payment on your other cards. Once your smallest debt is paid off, move on to the next smallest. This method works well because it gives you success earlier than prioritizing the card with the highest interest rate. That early success is is a powerful motivator to get it all paid off.`;
+        this.how = `Use the Debt Snowball method: Apply all your leftover money to the smallest debt you have, and pay just the minimum payment on your other cards. Once your smallest debt is paid off, move on to the next smallest. This method works well because it gives you success earlier than prioritizing the card with the highest interest rate. That early success is is a powerful motivator to get it all paid off.`;
         this.nextStep = "RothIntro";
         break;
       // Big Debt--Contribution < Match
@@ -125,7 +125,7 @@ class PriPostDebt extends React.Component {
           leftover_money
         )} of monthly leftover money and you can pay off your debt in about ${this.calcMonths()} months. But before you do anything, you should to increase your 401(k) contribution from ${four01k_contribution}% to ${four01k_match}%.`;
         this.why = `The employer match is free money, so take advantage of it!`;
-        this.how = `Use the Debt Snowball method: Apply all your leftover money the smallest debt you have, and pay just the minimum payment on your other cards. Once your smallest debt is paid off, move on to the next smallest. This method works well because it gives you success earlier than prioritizing the card with the highest interest rate. That early success is is a powerful motivator to get it all paid off.`;
+        this.how = `Use the Debt Snowball method: Apply all your leftover money to the smallest debt you have, and pay just the minimum payment on your other cards. Once your smallest debt is paid off, move on to the next smallest. This method works well because it gives you success earlier than prioritizing the card with the highest interest rate. That early success is is a powerful motivator to get it all paid off.`;
         this.nextStep = "RothIntro";
         break;
       // Big Debt--Contribution == Match
@@ -142,7 +142,7 @@ class PriPostDebt extends React.Component {
           leftover_money
         )} of monthly leftover money and you can pay off your debt in about ${this.calcMonths()} months.`;
         this.why = `The employer match is free money, so take advantage of it!`;
-        this.how = `Use the Debt Snowball method: Apply all your leftover money the smallest debt you have, and pay just the minimum payment on your other cards. Once your smallest debt is paid off, move on to the next smallest. This method works well because it gives you success earlier than prioritizing the card with the highest interest rate. That early success is is a powerful motivator to get it all paid off.`;
+        this.how = `Use the Debt Snowball method: Apply all your leftover money to the smallest debt you have, and pay just the minimum payment on your other cards. Once your smallest debt is paid off, move on to the next smallest. This method works well because it gives you success earlier than prioritizing the card with the highest interest rate. That early success is is a powerful motivator to get it all paid off.`;
         this.nextStep = "RothIntro";
         break;
 
@@ -159,7 +159,7 @@ class PriPostDebt extends React.Component {
           leftover_money
         )} you have left over after bills and spending money is more than enough to pay it off in under a month, so, do it.`;
         this.why = `The interest you pay on credit cards is often *three times* as much as the interest you could earn on investments. So, credit card debt is like a negative investment!`;
-        this.how = `Use the Debt Snowball method: Apply all your leftover money the smallest debt you have, and pay just the minimum payment on your other cards. Once your smallest debt is paid off, move on to the next smallest. This method works well because it gives you success earlier than prioritizing the card with the highest interest rate. That early success is is a powerful motivator to get it all paid off.`;
+        this.how = `Use the Debt Snowball method: Apply all your leftover money to the smallest debt you have, and pay just the minimum payment on your other cards. Once your smallest debt is paid off, move on to the next smallest. This method works well because it gives you success earlier than prioritizing the card with the highest interest rate. That early success is is a powerful motivator to get it all paid off.`;
         this.nextStep = "RothIntro";
         break;
       // Small Debt--Contribution > Match
@@ -175,7 +175,7 @@ class PriPostDebt extends React.Component {
           leftover_money
         )} of monthly leftover money and you can pay off your debt in about ${this.calcMonths()} months.`;
         this.why = `The interest you pay on credit cards is often *three times* as much as the interest you could earn on investments. So, credit card debt is like a negative investment!`;
-        this.how = `Use the Debt Snowball method: Apply all your leftover money the smallest debt you have, and pay just the minimum payment on your other cards. Once your smallest debt is paid off, move on to the next smallest. This method works well because it gives you success earlier than prioritizing the card with the highest interest rate. That early success is is a powerful motivator to get it all paid off.`;
+        this.how = `Use the Debt Snowball method: Apply all your leftover money to the smallest debt you have, and pay just the minimum payment on your other cards. Once your smallest debt is paid off, move on to the next smallest. This method works well because it gives you success earlier than prioritizing the card with the highest interest rate. That early success is is a powerful motivator to get it all paid off.`;
         this.nextStep = "RothIntro";
         break;
       // Small Debt--Contribution < Match
@@ -205,7 +205,7 @@ class PriPostDebt extends React.Component {
         this.advice = ``;
         this.what = `Well done--you're correct to restrict your 401(k) contribution to the company match of ${four01k_match}%.`;
         this.why = `The employer match is free money, so take advantage of it!`;
-        this.how = `Use the Debt Snowball method: Apply all your leftover money the smallest debt you have, and pay just the minimum payment on your other cards. Once your smallest debt is paid off, move on to the next smallest. This method works well because it gives you success earlier than prioritizing the card with the highest interest rate. That early success is is a powerful motivator to get it all paid off.`;
+        this.how = `Use the Debt Snowball method: Apply all your leftover money to the smallest debt you have, and pay just the minimum payment on your other cards. Once your smallest debt is paid off, move on to the next smallest. This method works well because it gives you success earlier than prioritizing the card with the highest interest rate. That early success is is a powerful motivator to get it all paid off.`;
         this.nextStep = "RothIntro";
         break;
 
