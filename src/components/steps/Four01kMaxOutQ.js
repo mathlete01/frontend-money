@@ -57,7 +57,7 @@ class Four01kMaxOutQ extends React.Component {
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Got any more disposible income? If so, you should contribute as much as you can to your 401(k).
+            Got any more disposable income? If so, you should contribute as much as you can to your 401(k).
           </Container>
         </Row>
         <Row id="form" className="rowElement"></Row>

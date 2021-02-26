@@ -217,7 +217,7 @@ class PriRothMarriedNotJointlyTween extends React.Component {
                 <li>
                   Once that's set up, you can explore different investing
                   strategies, if you want. But our advice is to just leave it in
-                  a target date fund and forget about it. This stratetgy is
+                  a target date fund and forget about it. This strategy is
                   called "buy and hold". Trying to "time" the market by buying
                   and selling only works if you can tell the future.
                 </li>

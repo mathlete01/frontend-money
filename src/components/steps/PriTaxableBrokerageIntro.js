@@ -48,8 +48,7 @@ class PriTaxableBrokerageIntro extends React.Component {
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Do you have more disposible income to put towards your financial
-            goals? If so, it's time to invest in a taxable brokerage account.
+            Do you have more disposable income to put towards your financial goals? If so, it's time to invest in a taxable brokerage account.
           </Container>
         </Row>
         <Row id="tabs" className="rowElement">
@@ -60,8 +59,7 @@ class PriTaxableBrokerageIntro extends React.Component {
                   A taxable brokerage is just a plain old investment account.
                 </li>
                 <li>
-                  It's called "taxable" because it's not tax <i>advantaged</i>{" "}
-                  like it's cousins, IRAs and 401(k)s.
+                  It's called "taxable" because it's not tax <i>advantaged</i> like it's cousins, IRAs and 401(k)s.
                 </li>
               </ul>
             </Tab>
@@ -78,7 +76,7 @@ class PriTaxableBrokerageIntro extends React.Component {
             <Tab eventKey="where" title="Where">
             <ul>
                 <li>
-                  Do you already have an investment account at a discount brokerage? Do it there.
+                  Do you already have an investment account at a brokerage? Do it there.
                 </li>
                 <li>
                   Otherwise, open an account at a discount brokerage like{" "}
@@ -99,7 +97,7 @@ class PriTaxableBrokerageIntro extends React.Component {
                   The first thing you should do is put your money in a target date fund. Do it immediately, it's extremely low-risk and the earlier you do it, the better. Ask the people at the brokerage why people recommend a target date fund and they'll explain it to you.
                 </li>
                 <li>
-                  Once that's set up, you can explore different investing strategies, if you want. But our advice is to just leave it in a target date fund and forget about it. This stratetgy is called "buy and hold". Trying to "time" the market by buying and selling only works if you can tell the future.
+                  Once that's set up, you can explore different investing strategies, if you want. But our advice is to just leave it in a target date fund and forget about it. This strategy is called "buy and hold". Trying to "time" the market by buying and selling only works if you can tell the future.
                 </li>
               </ul>
             </Tab>
