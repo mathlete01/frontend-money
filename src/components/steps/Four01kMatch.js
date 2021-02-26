@@ -77,7 +77,7 @@ class Four01kMatch extends React.Component {
                       type="number"
                       min="0"
                       max="7"
-                      value={this.state.four01k_match ? this.state.four01k_match : 0}
+                      value={this.state.four01k_match ? this.state.four01k_match : ""}
                       id="four01k_match"
                       name="four01k_match"
                       onFocus={this.handleFocus} 
