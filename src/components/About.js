@@ -45,7 +45,7 @@ class About extends React.Component {
             </p>
             <p>
               Got questions that are frequenly asked? Check out the{" "}
-              <a href="www.DebtorToInvestor.com/faq">FAQ</a>.
+              <a href="/faq">FAQ</a>.
             </p>
             <p>
               Got other questions?{" "}
