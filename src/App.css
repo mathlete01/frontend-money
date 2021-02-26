@@ -175,10 +175,15 @@ a.nav-link {
   border-color: #b8b8b8 #b8b8b8 #FAE7A8 !important;
 }
 .nav-tabs .nav-link:focus {
+  color: #495057;
   border-color: #b8b8b8 #b8b8b8 #FAE7A8 !important;
 }
 .nav-tabs .nav-link:hover {
+  color: #495057;
   border-color: #b8b8b8 #b8b8b8 #FAE7A8 !important;
+}
+.toastText {
+  color: black;
 }
 .tooltiptext {
   /* text-decoration-line: underline; */
@@ -191,5 +196,17 @@ a.nav-link {
 }
 a:hover {
   text-decoration: none;
+  color: black;
+}
+a#uncontrolled-tab-example-tab-why {
+  color: black;
+}
+a#uncontrolled-tab-example-tab-what {
+  color: black;
+}
+a#uncontrolled-tab-example-tab-how {
+  color: black;
+}
+a#uncontrolled-tab-example-tab-where {
   color: black;
 }

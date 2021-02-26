@@ -59,7 +59,7 @@ class Intro extends React.Component {
         <Row id="title" className="rowElement">
           <Container>
             <h2><b>
-              A personalized roadmap to transform you from a Debtor to an Investor 📉👉📈
+              A personalized roadmap to transform you from a <i>Debtor</i> to an <i>Investor</i> 📉👉📈
               </b></h2>
           </Container>
         </Row>
