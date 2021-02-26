@@ -3,12 +3,35 @@
 /* </style> */
 
 .mainContainer {
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 .rowElement {
   padding: 10px;
   margin: 0px;
+}
+.header {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.logo {
+  position: absolute;
+  left: 15px;
+}
+.topnav {
+  position: absolute;
+  right: 15px;
+  color: black;
+}
+.tagline {
+  text-align: center;
+  color: white;
+}
+.signature {
+  text-align: right !important;
+}
+.nav {
+  color: white
 }
 .hidden { 
   display:none; 
@@ -17,6 +40,12 @@
   padding-bottom: 20px;
   padding: 0px;
   background-color: rgb(250, 231, 168);
+  margin-bottom: 20px;  
+}
+.page {
+  padding-bottom: 20px;
+  padding: 0px;
+  background-color: white;
   margin-bottom: 20px;  
 }
 .step {
@@ -122,7 +151,7 @@ button.btn.btn-continue:active {
 a.nav-link {
   font-size: small;
   font-weight: 600;
-  /* font-family: 'Work Sans'; */
+  color:white;
 }
 .backBtn {
   font-size: small !important;
@@ -131,6 +160,9 @@ a.nav-link {
 }
 /* label.form-label {
   font-size: larger;
+} */
+/* .card-header {
+  background: border-box
 } */
 .nav-tabs .nav-item.show .nav-link, .nav-tabs {
   color: #495057;
@@ -161,7 +193,3 @@ a:hover {
   text-decoration: none;
   color: black;
 }
-/* .bg {
-  background: url("./img/BlueSky-03@2x.svg");
-  opacity: 0.99;
-} */

@@ -1,6 +1,6 @@
 import React from "react";
-import { Route, Switch, withRouter} from "react-router-dom";
-import NotFound from "./NotFound";
+import { Route, Switch, withRouter, Link, NavLink } from "react-router-dom";
+// import NotFound from "./NotFound";
 import Credentials from "./components/Credentials";
 import { connect } from "react-redux";
 import { updateCurrentStep } from "./actions/stepActions";
@@ -19,30 +19,49 @@ import StepContainer from "./components/StepContainer";
 import "./App.css";
 import { NavItem } from "react-bootstrap";
 import background from "./img/wallpaper_sky_01.svg";
-import logo from "./img/wordmark_d2i_white.svg"
+import logo from "./img/wordmark_d2i_white.svg";
 import Tooltip from "react-bootstrap/Tooltip";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Toast from "react-bootstrap/Toast";
+import About from "./components/About";
+import HireMe from "./components/HireMe";
+import FAQ from "./components/FAQ";
+import Figure from "react-bootstrap/Figure";
 
 class App extends React.Component {
-
   state = {
     user: "",
   };
 
   renderForm = (routerProps) => {
-    if (routerProps.location.pathname === "/login") {
-      return <Credentials name="Login Form" handleSubmit={this.handleLogin} />;
-    } else if (routerProps.location.pathname === "/signup") {
-      return (
-        <Credentials name="Signup Form" handleSubmit={this.handleSignup} />
-      );
+    switch (routerProps.location.pathname) {
+      case "/login":
+        return (
+          <Credentials name="Login Form" handleSubmit={this.handleLogin} />
+        );
+      case "/signup":
+        return (
+          <Credentials name="Signup Form" handleSubmit={this.handleSignup} />
+        );
+      case "/":
+        return <StepContainer className="h-100" />;
+      case "/about":
+        return <About className="h-100" />;
+      case "/hireme":
+        return <HireMe className="h-100" />;
+      case "/faq":
+        return <FAQ className="h-100" />;
+      default:
+        break;
     }
   };
 
   handleLogin = (credentialObj) => {
     console.log(`handleLogin: credentialObj = `, credentialObj);
-    this.handleAuthFetch(credentialObj, process.env.REACT_APP_BASE_URL+"/login");
+    this.handleAuthFetch(
+      credentialObj,
+      process.env.REACT_APP_BASE_URL + "/login"
+    );
   };
 
   handleLogout = () => {
@@ -55,7 +74,10 @@ class App extends React.Component {
   handleSignup = (credentialObj) => {
     console.log(`handleSignup: credentialObj = `, credentialObj);
     if (Object.keys(this.props.currentUser).length === 0) {
-      this.handleAuthFetch(credentialObj, process.env.REACT_APP_BASE_URL+"/users");
+      this.handleAuthFetch(
+        credentialObj,
+        process.env.REACT_APP_BASE_URL + "/users"
+      );
     } else {
       this.props.updateCurrentUser(
         this.props.currentUser.id,
@@ -100,78 +122,109 @@ class App extends React.Component {
   };
 
   showToast = () => {
-    if(this.props.currentStep === "Four01kQ"){
+    if (this.props.currentStep === "Four01kQ") {
       return (
-        <Toast style={{
-          position: 'absolute',
-          top: 15,
-          right: 15,
-        }} 
-        onClose={this.show=false}
+        <Toast
+          style={{
+            position: "absolute",
+            top: 15,
+            right: 15,
+          }}
+          onClose={(this.show = false)}
         >
           <Toast.Header>
             <strong className="mr-auto">💡 Tip</strong>
           </Toast.Header>
           <Toast.Body>
-          <i>Roll over <OverlayTrigger
-          placement="top"
-          delay={{ show: 250, hide: 400 }}
-          overlay={(props) => this.renderTooltip(props, "Yeah, just like that!")} ><a href="#" className="tooltiptext">highlighted</a></OverlayTrigger> text to see a definition</i>
+            <i>
+              Roll over{" "}
+              <OverlayTrigger
+                placement="top"
+                delay={{ show: 250, hide: 400 }}
+                overlay={(props) =>
+                  this.renderTooltip(props, "Yeah, just like that!")
+                }
+              >
+                <a href="#" className="tooltiptext">
+                  highlighted
+                </a>
+              </OverlayTrigger>{" "}
+              text to see a definition
+            </i>
           </Toast.Body>
         </Toast>
-      )
-    }else{
-      return null
+      );
+    } else {
+      return null;
     }
-  }
+  };
 
   render() {
     return (
       <div
         style={{
           backgroundImage: `url(${background})`,
-          backgroundSize:'cover'
+          backgroundSize: "cover",
         }}
         id="bg"
       >
-        <Navbar variant="light">
-          <Navbar.Brand href="#home">
+        <Nav>
+          <NavItem href="/">
+          <Nav.Link as={Link} to="/">
             <img
-              alt=""
+              className="logo"
               src={logo}
-              width="100"
-              height="100"
-              className="d-inline-block align-top"
-            />{" "}
-          </Navbar.Brand>
+              width="90"
+              height="90"
+              alt="Debtor to Investor"
+            />
+            </Nav.Link>
+          </NavItem>
+        </Nav>
+        <Nav className="topnav" defaultActiveKey="/home">
+          <NavItem href="/">
+            <Nav.Link as={Link} to="/">
+              Home
+            </Nav.Link>
+          </NavItem>
+          <NavItem href="/">
+            <Nav.Link as={Link} to="/about">
+              About
+            </Nav.Link>
+          </NavItem>
+          <NavItem href="/">
+            <Nav.Link as={Link} to="/faq">
+              FAQ
+            </Nav.Link>
+          </NavItem>
+          <NavItem href="/">
+            <Nav.Link as={Link} to="/hireme">
+              Hire Me!
+            </Nav.Link>
+          </NavItem>
+          <Switch>
+            <Route path="/" exact component={this.handleHome} />
+            <Route path="/login" exact component={this.renderForm} />
+            <Route path="/signup" exact component={this.renderForm} />
+          </Switch>
           {this.showToast()}
-          <Navbar.Collapse className="justify-content-end">
-            <Nav>
-              <NavItem href="/">
-                <Button  to="/" onClick={this.handleLogout}  size="sm"
-                  className={ this.props.currentStep === "Intro" ? "hidden" : "" }>Start Over
-                </Button>
-              </NavItem>
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>
-        <Navbar>
-          <Navbar.Collapse className="justify-content-end">
-            <Row>
-              <Switch>
-                <Route path="/" exact component={this.handleHome} />
-                <Route path="/login" exact component={this.renderForm} />
-                <Route path="/signup" exact component={this.renderForm} />
-                <Route component={NotFound} />
-              </Switch>
-            </Row>
-          </Navbar.Collapse>
-        </Navbar>
-        <Container>
+        </Nav>
+        <Container className="header">
+          {/* <div className="tagline">
+            <i>
+              An personalized roadmap to transform you from a debtor to an
+              investor
+            </i>
+          </div> */}
           <Row>
             <Col></Col>
-            <Col md={8} className="mainContainer">
-              <StepContainer className="h-100" />
+            <Col md={8} className="header">
+              <Switch>
+                <Route path="/about" exact component={this.renderForm} />
+                <Route path="/" exact component={this.renderForm} />
+                <Route path="/hireme" exact component={this.renderForm} />
+                <Route path="/faq" exact component={this.renderForm} />
+              </Switch>
             </Col>
             <Col></Col>
           </Row>

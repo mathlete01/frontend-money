@@ -58,9 +58,9 @@ class Intro extends React.Component {
         <Row id="header" className="rowElement"></Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h3>
-              Interest should be <i>earned</i>, not paid 🤓
-            </h3>
+            <h2><b>
+              A personalized roadmap to transform you from a Debtor to an Investor 📉👉📈
+              </b></h2>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
