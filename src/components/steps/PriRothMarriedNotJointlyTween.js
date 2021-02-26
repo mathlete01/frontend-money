@@ -105,8 +105,7 @@ class PriRothMarriedNotJointlyTween extends React.Component {
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Since your income as a couple will be less
-            than $10k, the amount you'll be able to contribute is reduced. 
+            Since your income as a couple will be less than $10k, the amount you'll be able to contribute is reduced. 
           </Container>
         </Row>
         <Row id="tabs" className="rowElement">
@@ -114,8 +113,7 @@ class PriRothMarriedNotJointlyTween extends React.Component {
             <Tab eventKey="what" title="What">
               <ul>
                 <li>
-                  Every year, there is a maximum you can contribute to a Roth
-                  IRA.
+                  Every year, there is a maximum you can contribute to a Roth IRA.
                 </li>
                 <li>
                 Type in your estimated income below to see the maximum you're allowed to contribute to a Roth IRA.
@@ -180,9 +178,7 @@ class PriRothMarriedNotJointlyTween extends React.Component {
                   You don't pay taxes on it when you withdraw it upon retirement
                 </li>
                 <li>
-                  You can withdraw your contributions (not your <i>earnings</i>,
-                  just your contributions) whenever you want. That makes it
-                  double as an Emergency Fund.
+                  You can withdraw your contributions (not your <i>earnings</i>, just your contributions) whenever you want. That makes it double as an Emergency Fund.
                 </li>
               </ol>
             </Tab>
