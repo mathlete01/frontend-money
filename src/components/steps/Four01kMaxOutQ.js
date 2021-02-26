@@ -8,6 +8,8 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+
 
 class Four01kMaxOutQ extends React.Component {
   _prev = () => {
@@ -45,7 +47,12 @@ class Four01kMaxOutQ extends React.Component {
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h3>Are you maxxing-out your 401(k)? 🤑</h3>
+            <h3>Are you <h3><OverlayTrigger
+          placement="top"
+          // defaultShow="true"
+          delay={{ show: 250, hide: 400 }}
+          overlay={(props) => this.props.renderTooltip(props, "Contributing the maximum amount you're allowed to every year.")}
+        ><a href="#" className="tooltiptext">maxxing-out</a></OverlayTrigger> a Roth IRA 🥚📈</h3> your 401(k)? 🤑</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">

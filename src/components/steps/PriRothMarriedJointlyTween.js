@@ -11,6 +11,7 @@ import { Form, FormGroup, FormControl } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
 import { Tabs, Tab } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
 
 class PriRothMarriedJointlyTween extends React.Component {
@@ -117,13 +118,17 @@ class PriRothMarriedJointlyTween extends React.Component {
         <Row id="title" className="rowElement">
           <Container>
             <h5>YOUR # {this.props.rowNum} PRIORITY:</h5>
-            <h3>Max-out a Roth IRA 🥚📈</h3>
+            <h3><OverlayTrigger
+          placement="top"
+          delay={{ show: 250, hide: 400 }}
+          overlay={(props) => this.props.renderTooltip(props, "Meaning: contribute the maximum amount you're allowed to every year.")}
+        ><a href="#" className="tooltiptext">Max-out</a></OverlayTrigger> a Roth IRA 🥚📈</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
           <Container>
             Since your Modified Adjusted Gross Income as a couple will be more
-            than $198k but less than $208k this year, the amount you'll be able
+            than $198k but less than $208k in 2021, the amount you'll be able
             to contribute is reduced. Check out the table below to see the
             maximum you're allowed to contribtue to a Roth IRA based on your
             income.

@@ -9,6 +9,7 @@ import Button from "react-bootstrap/Button";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { Tabs, Tab } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
 
 class PriRothMax extends React.Component {
@@ -48,12 +49,17 @@ class PriRothMax extends React.Component {
         <Row id="title" className="rowElement">
           <Container>
             <h5>YOUR # {this.props.rowNum} PRIORITY:</h5>
-            <h3>Max-out a Roth IRA 🥚📈</h3>
+            <h3><OverlayTrigger
+          placement="top"
+          // defaultShow="true"
+          delay={{ show: 250, hide: 400 }}
+          overlay={(props) => this.props.renderTooltip(props, "Meaning: contribute the maximum amount you're allowed to every year.")}
+        ><a href="#" className="tooltiptext">Max-out</a></OverlayTrigger> a Roth IRA 🥚📈</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            You can contribute up to $7k to a Roth IRA, so do it!
+            You can contribute an extra $1,000--up to $7,000--to your Roth IRA! 📈💰
           </Container>
         </Row>
         <Row id="tabs" className="rowElement">
