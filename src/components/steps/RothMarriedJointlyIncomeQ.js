@@ -42,7 +42,7 @@ class RothMarriedJointlyIncomeQ extends React.Component {
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h3>Will you have any earned income this year? 💵</h3>
+            <h3>Will you have any earned income in 2021? 💵</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">

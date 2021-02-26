@@ -34,7 +34,7 @@ class DoneForNow extends React.Component {
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-          Let's save your work now so you can come back here for your next goal!
+          Based on the answers you've given, we've given you a set of common-sense priorities based on the best practices of Personal Finance Gurus like Suze Orman, Ramit Sethi and Dave Ramsey. Got questions? Go to <a href="/faq">FAQ</a>. To learn more about this project, visit <a href="/about">About</a>. Want to ask us something? <a href="mailto:msallin@gmail.com">Get in touch!</a>
           </Container>
         </Row>
         <Row id="form" className="rowElement"></Row>

@@ -9,6 +9,7 @@ import Button from "react-bootstrap/Button";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { Tabs, Tab } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
 
 class PriBackdoorRothIntro extends React.Component {
@@ -41,13 +42,17 @@ class PriBackdoorRothIntro extends React.Component {
         <Row id="title" className="rowElement">
           <Container>
             <h5>YOUR # {this.props.rowNum} PRIORITY:</h5>
-            <h3>Max-out a "Backdoor" Roth IRA 🚪</h3>
+            <h3><OverlayTrigger
+          placement="top"
+          delay={{ show: 250, hide: 400 }}
+          overlay={(props) => this.props.renderTooltip(props, "Meaning: contribute the maximum amount you're allowed to every year.")}
+        ><a href="#" className="tooltiptext">Max-out</a></OverlayTrigger> a "Backdoor" Roth IRA 🚪</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Also known as a Roth IRA Conversion, the Backdoor Roth is a (totally
-            legal) loophole you ought to take advantage of.
+            So, your income is too high to contribute to a Roth IRA in the standard way. Not only is that a good problem to have, but you're in luck--you can still do a Roth contribution through something known as a Roth IRA Conversion. More commonly known as a Backdoor Roth, it'sa (totally
+            legal) loophole you should take advantage of.
           </Container>
         </Row>
         <Row id="tabs" className="rowElement">
