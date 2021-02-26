@@ -51,7 +51,7 @@ class PriRothReg extends React.Component {
           placement="top"
           // defaultShow="true"
           delay={{ show: 250, hide: 400 }}
-          overlay={(props) => this.props.renderTooltip(props, "Meaning: contribute the maximum amount you're allowed to every year.")}
+          overlay={(props) => this.props.renderTooltip(props, "Meaning: contribute the maximum amount you're allowed to every year")}
         ><a href="#" className="tooltiptext">Max-out</a></OverlayTrigger> a Roth IRA 🥚📈</h3>
           </Container>
         </Row>
@@ -92,13 +92,13 @@ class PriRothReg extends React.Component {
                 </li>
                 <li>
                   Otherwise, open an account at a discount brokerage like{" "}
-                  <a href="http://www.vanguard.com" target="_blank" rel="noreferrer">
+                  <a href="https://investor.vanguard.com/ira/roth-ira" target="_blank" rel="noreferrer">
                     Vanguard
-                  </a>{" "}
-                  (our favorite) or{" "}
-                  <a href="http://www.schwab.com" target="_blank" rel="noreferrer">
+                  </a>,
+                  <a href="https://www.schwab.com/ira" target="_blank" rel="noreferrer">
                     Schwab
-                  </a>
+                  </a>, or
+                  <a href="https://www.fidelity.com/retirement-ira/roth-ira" target="_blank" rel="noreferrer">Fidelity</a>.
                   .
                 </li>
               </ul>

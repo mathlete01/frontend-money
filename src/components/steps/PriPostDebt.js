@@ -78,7 +78,7 @@ class PriPostDebt extends React.Component {
         console.log("// No Debt--Contribution < Match");
         this.headline = `Let's nudge up your 401(k) contribution 🧮`;
         this.advice = ``;
-        this.what = `While it's great that you are taking advantage of your 401(k), you should to increase your 401(k) contribution from ${four01k_contribution}% to ${four01k_match}%.`;
+        this.what = `While it's great that you are taking advantage of your 401(k), you should to increase your contribution from ${four01k_contribution}% to ${four01k_match}%.`;
         this.why = `The employer match is free money, so take advantage of it!`;
         this.how = `Your HR resource at work can explain or show you how to change your contribution percentage.`;
         this.nextStep = "RothIntro";
@@ -106,7 +106,7 @@ class PriPostDebt extends React.Component {
         this.advice = ``;
         this.what = `While it's great that you are taking advantage of your 401(k), right now paying off your $${this.numberWithCommas(
           credit_card_debt
-        )} credit card debt is your top priority. To that end, let's give you more money to pay off your debt.Apply the $${this.numberWithCommas(
+        )} credit card debt is your top priority. To that end, let's give you more money to pay off your debt. Apply the $${this.numberWithCommas(
           leftover_money
         )} of monthly leftover money and you can pay off your debt in about ${this.calcMonths()} months.`;
         this.why = `The interest you pay on credit cards is often *three times* as much as the interest you could earn on investments. So, credit card debt is like a negative investment! A wise move is to temporarily reduce your 401(k) contribution from ${four01k_contribution}% to ${four01k_match}% and use the increased take-home pay to pay off your cards `;
@@ -301,7 +301,6 @@ const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
     currentUser: state.userReducer.currentUser,
-    // currentProgress: state.progressReducer.currentProgress,
     currentRow: state.rowReducer.currentRow,
   };
 };
@@ -309,7 +308,5 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateCurrentStep,
   updateCurrentUser,
-  // getCurrentUser,
-  // updateCurrentProgress,
   updateCurrentRow,
 })(PriPostDebt);

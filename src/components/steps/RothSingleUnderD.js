@@ -8,6 +8,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
 
 class RothSingleUnderD extends React.Component {
@@ -35,12 +36,17 @@ class RothSingleUnderD extends React.Component {
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h3>You must have earned income to contribute to a Roth IRA (any IRA, actually) 🥺</h3>
+            <h3>You must have <OverlayTrigger
+          placement="top"
+          // defaultShow="true"
+          delay={{ show: 250, hide: 400 }}
+          overlay={(props) => this.props.renderTooltip(props, "Earned income is income you'd make from wages, not from investments")}
+        ><a href="#" className="tooltiptext">earned income</a></OverlayTrigger> to contribute to a Roth IRA (any IRA, actually) 🥺</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-          Unfortunately, you can't contribute to either a Roth IRA or a Traditional IRA if you don't have any earned income this year. 
+          {/* Unfortunately, you can't contribute to either a Roth IRA or a Traditional IRA if you don't have any earned income this year.  */}
           </Container>
         </Row>
         <Row id="form" className="rowElement"></Row>

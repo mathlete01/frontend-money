@@ -8,6 +8,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
 
 class RothMarriedJointlyQ extends React.Component {
@@ -42,12 +43,17 @@ class RothMarriedJointlyQ extends React.Component {
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h3>Will you be filing your taxes jointly? 👯</h3>
+            <h3>Will you be filing your taxes <OverlayTrigger
+          placement="top"
+          // defaultShow="true"
+          delay={{ show: 250, hide: 400 }}
+          overlay={(props) => this.props.renderTooltip(props, "Some married people choose to file their taxes as a single person because it's beneficial to them, tax-wise")}
+        ><a href="#" className="tooltiptext">jointly</a></OverlayTrigger>? 👯</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Some married people choose to file their taxes as a single person because it's beneficial to them, tax-wise.
+            
           </Container>
         </Row>
         <Row id="form" className="rowElement"></Row>

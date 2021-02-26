@@ -48,7 +48,7 @@ class Four01kQ extends React.Component {
           placement="top"
           // defaultShow="true"
           delay={{ show: 250, hide: 400 }}
-          overlay={(props) => this.props.renderTooltip(props, "A 401(k) plan is a retirement investment account that many companies offer their employees.")}
+          overlay={(props) => this.props.renderTooltip(props, "A 401(k) plan is a retirement investment account that many companies offer their employees")}
         ><a href="#" className="tooltiptext">401(k) plan</a></OverlayTrigger>? 📈</h3>
           </Container>
         </Row>

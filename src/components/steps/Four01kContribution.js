@@ -62,8 +62,8 @@ class Four01kContribution extends React.Component {
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Usually an employee's contributions are capped at a specific
-            maximum percentage.
+            {/* Usually an employee's contributions are capped at a specific
+            maximum percentage. */}
           </Container>
         </Row>
         <Row id="form" className="rowElement">

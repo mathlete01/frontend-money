@@ -62,8 +62,8 @@ class CreditCardDebtQ extends React.Component {
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            The interest you pay on credit card debt is often 3 times the amount
-            of interest you get from investments.
+            💡This is important because the interest you pay on credit card debt is often <i>3 times</i> the amount
+            of interest you earn from investments. In other words, the interest you'd pay on a credit card debt of $100 could be more than the interest you earn on an investment of $300..!
           </Container>
         </Row>
         <Row id="form" className="rowElement"></Row>

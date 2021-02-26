@@ -8,6 +8,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
 
 class RothSingleMaxQ extends React.Component {
@@ -41,12 +42,17 @@ class RothSingleMaxQ extends React.Component {
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h3>Will you earn less than $140,000 in 2021? 💰</h3>
+            <h3>Will you earn <OverlayTrigger
+          placement="top"
+          // defaultShow="true"
+          delay={{ show: 250, hide: 400 }}
+          overlay={(props) => this.props.renderTooltip(props, "That's the maximum amount you can earn to qualify for a Roth IRA if you file your taxes as a single person")}
+        ><a href="#" className="tooltiptext">less than $140,000</a></OverlayTrigger> in 2021? 💰</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            That's the maximum amount you can earn to qualify for a Roth IRA if you file your taxes as a single person.
+            
           </Container>
         </Row>
         <Row id="form" className="rowElement"></Row>

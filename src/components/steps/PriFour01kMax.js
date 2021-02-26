@@ -45,13 +45,13 @@ class PriFour01kMax extends React.Component {
           placement="top"
           // defaultShow="true"
           delay={{ show: 250, hide: 400 }}
-          overlay={(props) => this.props.renderTooltip(props, "Meaning: contribute the maximum amount you're allowed to every year.")}
+          overlay={(props) => this.props.renderTooltip(props, "Meaning: contribute the maximum amount you're allowed to every year")}
         ><a href="#" className="tooltiptext">Max-out</a></OverlayTrigger> your 401(k) 🏢📈</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            401(k)s have an inscrutable name, but they are maybe the best investment you can get your hands on.
+            401(k)s have an inscrutable name, but they are the best investment you can get your hands on.
           </Container>
         </Row>
         <Row id="tabs" className="rowElement">
@@ -66,7 +66,7 @@ class PriFour01kMax extends React.Component {
             <Tab eventKey="why" title="Why">
               <ul>
                 <li>
-                The two big deals about a 401(k) are (1) many companies will match your contributions up to a limit, and (2) you contributions are taken out pre-tax.
+                The two big deals about a 401(k) are (1) most companies will match your contributions up to a limit, and (2) you contributions are taken out pre-tax.
                 </li>
                 <li>
                   For example, if your paycheck is $1,000 and you contribute $100 per paycheck to your 401(k), you're only being taxed on $900 of your income!

@@ -100,7 +100,7 @@ _prev = () => {
           </Container>
         </Row>
         <Row id="body" className="rowElement">
-          <Container>C'mon, let's add it all up.</Container>
+          <Container>Estimations are fine, you can always come back and update the numbers later.</Container>
         </Row>
         <Row id="form" className="rowElement">
           <Container>
