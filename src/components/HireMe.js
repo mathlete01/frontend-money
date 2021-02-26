@@ -19,7 +19,8 @@ class HireMe extends React.Component {
           <Col md={7}>
             <p>
               After focusing on User Experience for years, I recently decided to get back into
-              programming. I just completed a Software Engineering course and this is my capstone project. I've deployed it in hopes that it would help people climb the ladder out of debt and into financial security.
+              programming. In Spring 2021 I completed a <a href="https://flatironschool.com/career-courses/coding-bootcamp/online" target="_blank" rel="noreferrer">Software Engineering course at Flatiron School</a>
+ and this is my capstone project. I've deployed it in hopes that it would help people climb the ladder out of debt and into financial security.
             </p>
             <p>
               I've learned a tremendous amount about frontend engineering, backend engineering, and the mechanics of web
