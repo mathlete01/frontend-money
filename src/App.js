@@ -57,7 +57,7 @@ class App extends React.Component {
   };
 
   handleLogin = (credentialObj) => {
-    console.log(`handleLogin: credentialObj = `, credentialObj);
+    // console.log(`handleLogin: credentialObj = `, credentialObj);
     this.handleAuthFetch(
       credentialObj,
       process.env.REACT_APP_BASE_URL + "/login"
@@ -72,7 +72,7 @@ class App extends React.Component {
   };
 
   handleSignup = (credentialObj) => {
-    console.log(`handleSignup: credentialObj = `, credentialObj);
+    // console.log(`handleSignup: credentialObj = `, credentialObj);
     if (Object.keys(this.props.currentUser).length === 0) {
       this.handleAuthFetch(
         credentialObj,
@@ -92,7 +92,7 @@ class App extends React.Component {
   };
 
   handleAuthFetch = (credentialObj, endpoint) => {
-    console.log(`handleAuthFetch: credentialObj = `, credentialObj);
+    // console.log(`handleAuthFetch: credentialObj = `, credentialObj);
     fetch(endpoint, {
       method: "POST",
       headers: {
@@ -112,7 +112,7 @@ class App extends React.Component {
           this.props.setCurrentUser(data.user);
           this.props.updateCurrentStep(data.user.current_step);
         } else {
-          console.log(`data = `, data);
+          // console.log(`data = `, data);
         }
       });
   };

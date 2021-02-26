@@ -25,7 +25,7 @@ export const getCurrentUser = (id, currentUser) => {
 };
 
 export const updateCurrentUser = (id, dataObj, currentStep) => {
-  console.log(`updateCurrentUser id = `, id, `dataObj = `, dataObj, `currentStep = `, currentStep);
+  // console.log(`updateCurrentUser id = `, id, `dataObj = `, dataObj, `currentStep = `, currentStep);
   return (dispatch) => {
     
     const BASE_URL = process.env.REACT_APP_BASE_URL

@@ -15,13 +15,13 @@ class CreditCardDebtQ extends React.Component {
   };
 
   _yes = (event) => {
-    console.log(`YES chosen`)
+    // console.log(`YES chosen`)
     event.preventDefault();
     this.props.handleNextStep(event);
   };
 
   _no = (event) => {
-    console.log(`NO chosen`)
+    // console.log(`NO chosen`)
     event.preventDefault();
     this.props.updateCurrentUser(
       this.props.currentUser.id,
@@ -34,14 +34,14 @@ class CreditCardDebtQ extends React.Component {
   };
 
   four01kEvaluation = () => {
-    console.log(`this.props.currentUser.four01k = `, this.props.currentUser.four01k)
-    console.log(`this.props.currentUser.four01k_match = `, this.props.currentUser.four01k_match)
-    console.log(`this.props.currentUser.four01k_contribution = `, this.props.currentUser.four01k_contribution)
+    // console.log(`this.props.currentUser.four01k = `, this.props.currentUser.four01k)
+    // console.log(`this.props.currentUser.four01k_match = `, this.props.currentUser.four01k_match)
+    // console.log(`this.props.currentUser.four01k_contribution = `, this.props.currentUser.four01k_contribution)
     if(this.props.currentUser.four01k === true && this.props.currentUser.four01k_contribution < this.props.currentUser.four01k_match){
-      console.log(`YES: increaase contribution`)
+      // console.log(`YES: increaase contribution`)
       return "PriPostDebt"
     }else{
-      console.log(`NO: proceed to next step`)
+      // console.log(`NO: proceed to next step`)
       return "NoDebt"
     }
   }

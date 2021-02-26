@@ -20,7 +20,7 @@ class CreditCardDebt extends React.Component {
         cc_3: this.props.currentUser.cc_3,
         credit_card_debt: this.props.currentUser.credit_card_debt,
       });
-      console.log(`componentDidUpdate: this.props.currentUser.credit_card_debt = `, this.props.currentUser.credit_card_debt)
+      // console.log(`componentDidUpdate: this.props.currentUser.credit_card_debt = `, this.props.currentUser.credit_card_debt)
     }
   }
 
@@ -36,7 +36,7 @@ class CreditCardDebt extends React.Component {
       [event.target.name]: event.target.value,
     });
     // this.calcSum();
-    console.log(`handleChange: this.props.currentUser.credit_card_debt = `, this.props.currentUser.credit_card_debt)
+    // console.log(`handleChange: this.props.currentUser.credit_card_debt = `, this.props.currentUser.credit_card_debt)
   };
 
   numberWithCommas = (x) =>  {
@@ -68,7 +68,7 @@ _next = (event) => {
     },
     this.props.currentStep
   );
-  console.log(`_next: this.calcSum() = `, this.calcSum())
+  // console.log(`_next: this.calcSum() = `, this.calcSum())
   this.props.handleNextStep(event);
 };
 
