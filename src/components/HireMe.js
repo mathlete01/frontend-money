@@ -18,15 +18,12 @@ class HireMe extends React.Component {
         <Row id="body" className="rowElement">
           <Col md={7}>
             <p>
-              After a long absence, I recently decided to get back into
-              programming. I recently completed a Software Engineering course at
-              Flatiron School and this is my capstone project. I've deployed it
-              in hopes that it would help people climb the ladder out of debt
-              and into financial security.
+              After focusing on User Experience for years, I recently decided to get back into
+              programming. I just completed a Software Engineering course and this is my capstone project. I've deployed it in hopes that it would help people climb the ladder out of debt and into financial security.
             </p>
             <p>
-              I've learned a tremendous amount about the mechanics of web
-              applications.
+              I've learned a tremendous amount about frontend engineering, backend engineering, and the mechanics of web
+              applications. I'm looking forward to applying new programming skills and my old UX skills to a new job opportunity. This web app was built in Rails/React, but I'm eager to learn more programming languages going forward. 
             </p>
             <p>
               Wanna know more?{" "}
