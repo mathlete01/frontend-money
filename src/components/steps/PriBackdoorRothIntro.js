@@ -51,8 +51,7 @@ class PriBackdoorRothIntro extends React.Component {
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            So, your income is too high to contribute to a Roth IRA in the standard way. Not only is that a good problem to have, but you're in luck--you can still do a Roth contribution through something known as a Roth IRA Conversion. More commonly known as a Backdoor Roth, it'sa (totally
-            legal) loophole you should take advantage of.
+            So, your income is too high to contribute to a Roth IRA in the standard way. Not only is that a good problem to have, but you're in luck--you can still do a Roth contribution through something known as a Roth IRA Conversion. More commonly known as a Backdoor Roth, it's a (totally legal) loophole you should take advantage of.
           </Container>
         </Row>
         <Row id="tabs" className="rowElement">
@@ -60,16 +59,14 @@ class PriBackdoorRothIntro extends React.Component {
             <Tab eventKey="what" title="What">
               <ul>
                 <li>
-                  You make a non-deductible contribution to a <i>traditional</i>{" "}
-                  IRA, then convert it to a <i>Roth</i> IRA.
+                  You make a non-deductible contribution to a <i>traditional</i> IRA, then convert it to a <i>Roth</i> IRA.
                 </li>
               </ul>
             </Tab>
             <Tab eventKey="why" title="Why">
               <ul>
                 <li>
-                  As we've said, Roth IRAs are great, but there are income
-                  limits and you've exceeded those. This loophole allows anyone with <OverlayTrigger
+                  As we've said, Roth IRAs are great, but there are income limits and you've exceeded those. This loophole allows anyone with <OverlayTrigger
           placement="top"
           // defaultShow="true"
           delay={{ show: 250, hide: 400 }}
@@ -81,8 +78,7 @@ class PriBackdoorRothIntro extends React.Component {
             <Tab eventKey="where" title="Where">
               <ul>
                 <li>
-                  Do you already have an investment account at a discount
-                  brokerage? Do it there.
+                  Do you already have an investment account at a brokerage? Do it there.
                 </li>
                 <li>
                   Otherwise, open an account at a discount brokerage like{" "}
@@ -100,13 +96,10 @@ class PriBackdoorRothIntro extends React.Component {
             <Tab eventKey="how" title="How">
               <ul>
                 <li>
-                  This is an oversimplification, but basically you (1)
-                  contribute up to $6k to a tranditional IRA, then (2) call up
-                  the brokerage and ask them to convert that IRA to a Roth IRA.
+                  This is an oversimplification, but basically you (1) contribute up to $6k to a traditional IRA, then (2) call up the brokerage and ask them to convert that IRA to a Roth IRA.
                 </li>
                 <li>
-                  It's a bit complicated but totally doable. Call up your
-                  brokerage and ask them to explain it to you.
+                  It's a bit complicated but totally doable. Call up your brokerage and ask them to explain it to you.
                 </li>
               </ul>
             </Tab>
