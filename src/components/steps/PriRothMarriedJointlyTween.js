@@ -234,12 +234,11 @@ class PriRothMarriedJointlyTween extends React.Component {
                   Otherwise, open an account at a discount brokerage like{" "}
                   <a href="https://investor.vanguard.com/ira/roth-ira" target="_blank" rel="noreferrer">
                     Vanguard
-                  </a>, 
+                  </a>,{" "} 
                   <a href="https://www.schwab.com/ira" target="_blank" rel="noreferrer">
                     Schwab
-                  </a>, or 
+                  </a>, or{" "} 
                   <a href="https://www.fidelity.com/retirement-ira/roth-ira" target="_blank" rel="noreferrer">Fidelity</a>.
-                  .
                 </li>
               </ul>
             </Tab>
