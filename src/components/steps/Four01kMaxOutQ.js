@@ -52,7 +52,7 @@ class Four01kMaxOutQ extends React.Component {
           // defaultShow="true"
           delay={{ show: 250, hide: 400 }}
           overlay={(props) => this.props.renderTooltip(props, "Contributing the maximum amount you're allowed to every year")}
-        ><a href="#" className="tooltiptext">maxxing-out</a></OverlayTrigger> your 401(k)? 🤑</h3>
+        ><a href="#" className="tooltiptext">maxing-out</a></OverlayTrigger> your 401(k)? 🤑</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">

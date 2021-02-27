@@ -9,7 +9,7 @@ import { Form, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL
-console.log("REACT_APP_BASE_URL:", BASE_URL, new Date())
+// console.log("REACT_APP_BASE_URL:", BASE_URL, new Date())
 const USERS_URL = `${BASE_URL}/users`;
 
 class Intro extends React.Component {
