@@ -62,20 +62,20 @@ class PriPostDebt extends React.Component {
       credit_card_debt,
     } = this.props.currentUser;
     const quarterLeftoverMoney = leftover_money / 4;
-    // console.log(`this.props.currentUser = `, this.props.currentUser);
-    // console.log(`leftover_money = `, leftover_money);
-    // console.log(`quarterLeftoverMoney = `, quarterLeftoverMoney);
-    // console.log(`four01k = `, four01k);
-    // console.log(`four01k_match = `, four01k_match);
-    // console.log(`four01k_contribution = `, four01k_contribution);
-    // console.log(`credit_card_debt = `, credit_card_debt);
+    console.log(`this.props.currentUser = `, this.props.currentUser);
+    console.log(`leftover_money = `, leftover_money);
+    console.log(`quarterLeftoverMoney = `, quarterLeftoverMoney);
+    console.log(`four01k = `, four01k);
+    console.log(`four01k_match = `, four01k_match);
+    console.log(`four01k_contribution = `, four01k_contribution);
+    console.log(`credit_card_debt = `, credit_card_debt);
     switch (true) {
       // !No Debt--No 401k: --> Roth IRA Intro
       // !No Debt--Contribution > Match: --> Roth IRA Intro
       // No Debt--Contribution < Match
       case credit_card_debt < quarterLeftoverMoney &&
         four01k_contribution < four01k_match:
-        // console.log("// No Debt--Contribution < Match");
+        console.log("// No Debt--Contribution < Match");
         this.headline = `Let's nudge up your 401(k) contribution 🧮`;
         this.advice = ``;
         this.what = `While it's great that you are taking advantage of your 401(k), you should to increase your contribution from ${four01k_contribution}% to ${four01k_match}%.`;
@@ -86,7 +86,7 @@ class PriPostDebt extends React.Component {
       // No Debt--Contribution == Match: --> Roth IRA Intro
       // Big Debt--No 401k
       case credit_card_debt > leftover_money && four01k === false:
-        // console.log("// Big Debt--No 401k");
+        console.log("// Big Debt--No 401k");
         this.headline = `Pay off your credit card debt 💳🧾`;
         this.advice = ``;
         this.what = `The total credit card debt you've listed here is $${this.numberWithCommas(
@@ -101,7 +101,7 @@ class PriPostDebt extends React.Component {
       // Big Debt--Contribution > Match
       case credit_card_debt > leftover_money &&
         four01k_contribution > four01k_match:
-        // console.log("// Big Debt--Contribution > Match");
+        console.log("// Big Debt--Contribution > Match");
         this.headline = `Reduce your 401(k) contribution 🧮 and pay off your credit cards 💳`;
         this.advice = ``;
         this.what = `While it's great that you are taking advantage of your 401(k), right now paying off your $${this.numberWithCommas(
@@ -116,7 +116,7 @@ class PriPostDebt extends React.Component {
       // Big Debt--Contribution < Match
       case credit_card_debt > leftover_money &&
         four01k_contribution < four01k_match:
-        // console.log("// Big Debt--Contribution < Match ");
+        console.log("// Big Debt--Contribution < Match ");
         this.headline = `Increase your 401(k) contribution 📈 and pay off your credit cards 💳`;
         this.advice = ``;
         this.what = `Right now, your top priority is to pay off your credit card debt. The total credit card debt you've listed here is $${this.numberWithCommas(
@@ -133,7 +133,7 @@ class PriPostDebt extends React.Component {
         four01k === true &&
         four01k_contribution > 0 &&
         four01k_contribution === four01k_match:
-        // console.log("// Big Debt--Contribution == Match");
+        console.log("// Big Debt--Contribution == Match");
         this.headline = `Pay off your credit card debt 💳🧾`;
         this.advice = ``;
         this.what = `Well done--you're correct to restrict your 401(k) contribution to the company match of ${four01k_match}%. Right now, your top priority is to pay off your credit card debt.  The total credit card debt you've listed here is $${this.numberWithCommas(
@@ -150,7 +150,7 @@ class PriPostDebt extends React.Component {
       case credit_card_debt <= leftover_money &&
         credit_card_debt > quarterLeftoverMoney &&
         four01k === false:
-        // console.log("// Small Debt--No 401k");
+        console.log("// Small Debt--No 401k");
         this.headline = `Pay off your credit card debt 💳🧾`;
         this.advice = ``;
         this.what = `The total credit card debt you've listed here is $${this.numberWithCommas(
@@ -166,7 +166,7 @@ class PriPostDebt extends React.Component {
       case credit_card_debt < leftover_money &&
         credit_card_debt > quarterLeftoverMoney &&
         four01k_contribution > four01k_match:
-        // console.log("// Small Debt--Contribution > Match");
+        console.log("// Small Debt--Contribution > Match");
         this.headline = `Pay off your credit card debt 💳🧾`;
         this.advice = ``;
         this.what = `The total credit card debt you've listed here is $${this.numberWithCommas(
@@ -182,7 +182,7 @@ class PriPostDebt extends React.Component {
       case credit_card_debt < leftover_money &&
         credit_card_debt > quarterLeftoverMoney &&
         four01k_contribution < four01k_match:
-        // console.log("// Small Debt--Contribution < Match ");
+        console.log("// Small Debt--Contribution < Match ");
         this.headline = `Increase your 401(k) contribution 📈 and pay off your credit cards 💳`;
         this.advice = ``;
         this.what = `The total credit card debt you've listed here is $${this.numberWithCommas(
@@ -200,7 +200,7 @@ class PriPostDebt extends React.Component {
         four01k === true &&
         four01k_contribution > 0 &&
         four01k_contribution === four01k_match:
-        // console.log("// Small Debt--Contribution == Match");
+        console.log("// Small Debt--Contribution == Match");
         this.headline = `Pay off your credit card debt 💳🧾`;
         this.advice = ``;
         this.what = `Well done--you're correct to restrict your 401(k) contribution to the company match of ${four01k_match}%.`;
@@ -224,13 +224,9 @@ class PriPostDebt extends React.Component {
   }
 
   render() {
-    if (this.props.currentUser.credit_card_debt === null) {
-      // console.log(
-      //   `render:null: this.props.currentUser.credit_card_debt = `,
-      //   this.props.currentUser.credit_card_debt
-      // );
-      return null;
-    }
+    // if (this.props.currentUser.credit_card_debt === null) {
+    //   return null;
+    // }
     return (
       <Container className="priority">
         <Row id="header" className="rowElement">
