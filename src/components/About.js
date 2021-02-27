@@ -22,7 +22,7 @@ class About extends React.Component {
               impact on your life depending on how well you manage your money.
               But the subject of Personal Finance is dull, complex, and
               intimidating, so most people never properly manage their debt or
-              take advatage of investment.
+              take advantage of investment.
             </p>
             <p>
               I used to be one of those people myself, until I made a New Year's
