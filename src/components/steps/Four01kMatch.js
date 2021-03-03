@@ -9,7 +9,7 @@ import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import { Form, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+  import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
 class Four01kMatch extends React.Component {
 
@@ -76,7 +76,8 @@ class Four01kMatch extends React.Component {
                     className="formField"
                       type="number"
                       min="0"
-                      max="7"
+                      // max="7"
+                      maxlength="1"
                       value={this.state.four01k_match ? this.state.four01k_match : ""}
                       id="four01k_match"
                       name="four01k_match"

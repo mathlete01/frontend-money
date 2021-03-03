@@ -91,7 +91,8 @@ class Four01kContribution extends React.Component {
                       className="formField"
                       type="number"
                       min="0"
-                      max="100"
+                      // max="100"
+                      maxlength="2"
                       value={
                         this.state.four01k_contribution
                           ? this.state.four01k_contribution
