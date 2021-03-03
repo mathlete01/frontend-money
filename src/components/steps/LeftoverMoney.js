@@ -112,7 +112,11 @@ class LeftoverMoney extends React.Component {
             <Form.Group>
               <Form.Row>
                 <Col id="formText">
-                  <Form.Label>Monthly Income</Form.Label>
+                  <Form.Label><OverlayTrigger
+          placement="top"
+          delay={{ show: 250, hide: 400 }}
+          overlay={(props) => this.props.renderTooltip(props, "Your after-tax, take-home pay")}
+        ><a href="#" className="tooltiptext">Monthly Income</a></OverlayTrigger></Form.Label>
                 </Col>
                 <Col>
                   <InputGroup>
@@ -143,7 +147,11 @@ class LeftoverMoney extends React.Component {
             <Form.Group>
               <Form.Row>
                 <Col id="formText">
-                  <Form.Label >Monthly Bills</Form.Label>
+                  <Form.Label ><OverlayTrigger
+          placement="top"
+          delay={{ show: 250, hide: 400 }}
+          overlay={(props) => this.props.renderTooltip(props, "All your recurring expenses, including groceries, transportation costs, babysitters, etc.")}
+        ><a href="#" className="tooltiptext">Monthly Bills</a></OverlayTrigger></Form.Label>
                 </Col>
                 <Col>
                   <InputGroup>
@@ -174,7 +182,11 @@ class LeftoverMoney extends React.Component {
             <Form.Group>
               <Form.Row>
                 <Col id="formText">
-                  <Form.Label>Monthly Spending Money</Form.Label>
+                  <Form.Label><OverlayTrigger
+          placement="top"
+          delay={{ show: 250, hide: 400 }}
+          overlay={(props) => this.props.renderTooltip(props, "How much you need for non-bill purchases, like dining out, movies, clothes, haircuts, etc.")}
+        ><a href="#" className="tooltiptext">Monthly Spending Money</a></OverlayTrigger></Form.Label>
                 </Col>
                 <Col>
                   <InputGroup>
