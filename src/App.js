@@ -23,15 +23,18 @@ import logo from "./img/wordmark_d2i_white.svg";
 import Tooltip from "react-bootstrap/Tooltip";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Toast from "react-bootstrap/Toast";
-import ToastHeader from 'react-bootstrap/ToastHeader'
 import About from "./components/About";
 import HireMe from "./components/HireMe";
 import FAQ from "./components/FAQ";
 import Figure from "react-bootstrap/Figure";
+import { BrowserView, MobileView } from "react-device-detect";
+
 
 class App extends React.Component {
+
   state = {
     user: "",
+    showToast: true
   };
 
   renderForm = (routerProps) => {
@@ -122,36 +125,60 @@ class App extends React.Component {
     return <Tooltip {...props}>{tooltipTxt}</Tooltip>;
   };
 
+  hideToast = () => {
+    this.setState({
+      showToast: false,
+    });
+    console.log(`this.state.showToast = `, this.state.showToast)
+  };
+
   showToast = () => {
-    if (this.props.currentStep === "LeftoverMoney") {
+    if (this.props.currentStep === "LeftoverMoney" && this.state.showToast === true) {
       return (
         <Toast
           style={{
             position: "absolute",
             top: 0,
             right: 15,
-            zIndex: '1'
+            zIndex: "1",
           }}
-          onClose={(this.show = false)}
+          onClose = {this.hideToast}  
         >
-          <ToastHeader closeButton={false} >
+          <Toast.Header>
             <strong className="mr-auto">💡 Tip</strong>
-          </ToastHeader>
+          </Toast.Header>
           <Toast.Body className="toastText">
             <i>
-              Roll over{" "}
-              <OverlayTrigger
-                placement="top"
-                delay={{ show: 250, hide: 400 }}
-                overlay={(props) =>
-                  this.renderTooltip(props, "Yeah, just like that!")
-                }
-              >
-                <a href="#" className="tooltiptext">
-                  highlighted
-                </a>
-              </OverlayTrigger>{" "}
-              text to see a definition
+              <BrowserView>
+                Roll over{" "}
+                <OverlayTrigger
+                  placement="top"
+                  delay={{ show: 250, hide: 400 }}
+                  overlay={(props) =>
+                    this.renderTooltip(props, "Yeah, just like that!")
+                  }
+                >
+                  <a href="#" className="tooltiptext">
+                    highlighted
+                  </a>
+                </OverlayTrigger>{" "}
+                text to see a definition
+              </BrowserView>
+              <MobileView>
+                Click{" "}
+                <OverlayTrigger
+                  placement="top"
+                  delay={{ show: 250, hide: 400 }}
+                  overlay={(props) =>
+                    this.renderTooltip(props, "Yeah, just like that!")
+                  }
+                >
+                  <a href="#" className="tooltiptext">
+                    highlighted
+                  </a>
+                </OverlayTrigger>{" "}
+                text to see a definition
+              </MobileView>
             </i>
           </Toast.Body>
         </Toast>
@@ -172,14 +199,14 @@ class App extends React.Component {
       >
         <Nav>
           <NavItem href="/">
-          <Nav.Link as={Link} to="/">
-            <img
-              className="logo"
-              src={logo}
-              width="90"
-              height="90"
-              alt="Debtor to Investor"
-            />
+            <Nav.Link as={Link} to="/">
+              <img
+                className="logo"
+                src={logo}
+                width="90"
+                height="90"
+                alt="Debtor to Investor"
+              />
             </Nav.Link>
           </NavItem>
         </Nav>
