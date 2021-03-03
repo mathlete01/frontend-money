@@ -122,7 +122,7 @@ class App extends React.Component {
   };
 
   showToast = () => {
-    if (this.props.currentStep === "Intro") {
+    if (this.props.currentStep === "LeftoverMoney") {
       return (
         <Toast
           style={{
