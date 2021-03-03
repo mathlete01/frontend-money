@@ -23,6 +23,7 @@ import logo from "./img/wordmark_d2i_white.svg";
 import Tooltip from "react-bootstrap/Tooltip";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Toast from "react-bootstrap/Toast";
+import ToastHeader from 'react-bootstrap/ToastHeader'
 import About from "./components/About";
 import HireMe from "./components/HireMe";
 import FAQ from "./components/FAQ";
@@ -133,9 +134,9 @@ class App extends React.Component {
           }}
           onClose={(this.show = false)}
         >
-          <Toast.Header>
+          <ToastHeader closeButton={false} >
             <strong className="mr-auto">💡 Tip</strong>
-          </Toast.Header>
+          </ToastHeader>
           <Toast.Body className="toastText">
             <i>
               Roll over{" "}
