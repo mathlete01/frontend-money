@@ -140,7 +140,7 @@ class PriRothMarriedNotJointlyTween extends React.Component {
                         </InputGroup.Prepend>
                         <FormControl
                           className="formField"
-                          type="number"
+                          type="string"
                           min="0"
                           value={this.state.magi ? this.state.magi : ""}
                           id="magi"
@@ -157,7 +157,7 @@ class PriRothMarriedNotJointlyTween extends React.Component {
                         </InputGroup.Prepend>
                         <FormControl
                           className="formField"
-                          type="number"
+                          type="string"
                           min="0"
                           value={this.numberWithCommas(this.calcRothMaxNotJointly())}
                           readOnly

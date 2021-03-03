@@ -162,7 +162,7 @@ class PriRothSingleTween extends React.Component {
                         </InputGroup.Prepend>
                         <FormControl
                           className="formField"
-                          type="number"
+                          type="string"
                           min="0"
                           value={this.state.magi ? this.state.magi : ""}
                           id="magi"
@@ -179,7 +179,7 @@ class PriRothSingleTween extends React.Component {
                         </InputGroup.Prepend>
                         <FormControl
                           className="formField"
-                          type="number"
+                          type="string"
                           min="0"
                           value={this.numberWithCommas(this.calcRothMaxSingleYoung())}
                           readOnly
@@ -195,7 +195,7 @@ class PriRothSingleTween extends React.Component {
                         </InputGroup.Prepend>
                         <FormControl
                           className="formField"
-                          type="number"
+                          type="string"
                           min="0"
                           value={this.numberWithCommas(this.calcRothMaxSingleOld())}
                           readOnly
