@@ -116,7 +116,7 @@ _prev = () => {
                     </InputGroup.Prepend>
                     <FormControl
                       className="formField"
-                      type="string"
+                      type="number"
                       min="0"
                       value={this.numberWithCommas(this.state.cc_1 ? this.state.cc_1 : "")}
                       id="cc_1"
@@ -145,7 +145,7 @@ _prev = () => {
                     </InputGroup.Prepend>
                     <FormControl
                       className="formField"
-                      type="string"
+                      type="number"
                       min="0"
                       value={this.numberWithCommas(this.state.cc_2 ? this.state.cc_2 : "")}
                       id="cc_2"
@@ -174,7 +174,7 @@ _prev = () => {
                     </InputGroup.Prepend>
                     <FormControl
                       className="formField"
-                      type="string"
+                      type="number"
                       min="0"
                       value={this.numberWithCommas(this.state.cc_3 ? this.state.cc_3 : "")}
                       id="cc_3"

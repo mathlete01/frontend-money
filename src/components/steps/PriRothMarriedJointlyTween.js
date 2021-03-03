@@ -181,7 +181,7 @@ class PriRothMarriedJointlyTween extends React.Component {
                         </InputGroup.Prepend>
                         <FormControl
                           className="formField"
-                          type="string"
+                          type="number"
                           min="0"
                           value={this.numberWithCommas(this.calcRothMaxJointlyYoung())}
                           readOnly
@@ -197,7 +197,7 @@ class PriRothMarriedJointlyTween extends React.Component {
                         </InputGroup.Prepend>
                         <FormControl
                           className="formField"
-                          type="string"
+                          type="number"
                           min="0"
                           value={this.numberWithCommas(this.calcRothMaxJointlyOld())}
                           readOnly

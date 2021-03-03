@@ -12,9 +12,7 @@ import { Form, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
-
 class LeftoverMoney extends React.Component {
-  
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.currentUser !== this.props.currentUser) {
       this.setState({
@@ -41,9 +39,11 @@ class LeftoverMoney extends React.Component {
     // console.log(`handleChange: this.props.currentUser.leftover_money = `, this.props.currentUser.leftover_money)
   };
 
-  numberWithCommas = (x) =>  {
-    return x.toLocaleString()
-}
+  numberWithCommas = (amount) => {
+    return amount.toLocaleString()
+    // return amount.toLocaleString(navigator.language, { minimumFractionDigits: 0 });
+    // return (amount.replace(/\D/g, "")) || "".toLocaleString();
+  };
 
   calcLeftoverMoney = () => {
     if (
@@ -55,11 +55,11 @@ class LeftoverMoney extends React.Component {
       const bills = this.state.monthly_bills;
       const spending = this.state.monthly_spending;
       const difference = income - (parseInt(bills) + parseInt(spending));
-      this.props.currentUser.leftover_money = difference
+      this.props.currentUser.leftover_money = difference;
       return difference;
-    }else{
-      return (0)
-    } 
+    } else {
+      return 0;
+    }
   };
 
   _next = (event) => {
@@ -90,7 +90,12 @@ class LeftoverMoney extends React.Component {
     return (
       <Container className="step">
         <Row id="header" className="rowElement">
-          <Button onClick={this._prev} variant="link" className="backBtn" disabled>
+          <Button
+            onClick={this._prev}
+            variant="link"
+            className="backBtn"
+            disabled
+          >
             👈 BACK
           </Button>
           <hr className="w-100" />
@@ -98,14 +103,16 @@ class LeftoverMoney extends React.Component {
         <Row id="title" className="rowElement">
           <Container>
             <h3>
-              How much money do you have every month to put towards your goals? 🥅
+              How much money do you have every month to put towards your goals?
+              🥅
             </h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
           <Container>
             Estimations are fine, you can always come back and update the
-            numbers later.
+            numbers later. 
+            {/* If you're in a couple, enter your combined income, bills, and spending money. */}
           </Container>
         </Row>
         <Row id="form" className="rowElement">
@@ -113,11 +120,22 @@ class LeftoverMoney extends React.Component {
             <Form.Group>
               <Form.Row>
                 <Col id="formText">
-                  <Form.Label><OverlayTrigger
-          placement="top"
-          delay={{ show: 250, hide: 400 }}
-          overlay={(props) => this.props.renderTooltip(props, "Your after-tax, take-home pay")}
-        ><a href="#" className="tooltiptext">Monthly Income</a></OverlayTrigger></Form.Label>
+                  <Form.Label>
+                    <OverlayTrigger
+                      placement="top"
+                      delay={{ show: 250, hide: 400 }}
+                      overlay={(props) =>
+                        this.props.renderTooltip(
+                          props,
+                          "Your after-tax, take-home pay"
+                        )
+                      }
+                    >
+                      <a href="#" className="tooltiptext">
+                        Monthly Income
+                      </a>
+                    </OverlayTrigger>
+                  </Form.Label>
                 </Col>
                 <Col>
                   <InputGroup>
@@ -126,16 +144,18 @@ class LeftoverMoney extends React.Component {
                     </InputGroup.Prepend>
                     <FormControl
                       className="formField"
-                      type="string"
+                      type="number"
                       min="0"
-                      value={
-                        this.numberWithCommas(this.state.monthly_income ? this.state.monthly_income : "")
-                      }
+                      value={this.numberWithCommas(
+                        this.state.monthly_income
+                          ? this.state.monthly_income
+                          : ""
+                      )}
                       id="monthly_income"
                       name="monthly_income"
-                      // 
+                      //
                       onChange={this.handleChange}
-                      onFocus={this.handleFocus} 
+                      onFocus={this.handleFocus}
                     />
                   </InputGroup>
                 </Col>
@@ -148,11 +168,22 @@ class LeftoverMoney extends React.Component {
             <Form.Group>
               <Form.Row>
                 <Col id="formText">
-                  <Form.Label ><OverlayTrigger
-          placement="top"
-          delay={{ show: 250, hide: 400 }}
-          overlay={(props) => this.props.renderTooltip(props, "All your recurring expenses, including groceries, transportation costs, babysitters, etc.")}
-        ><a href="#" className="tooltiptext">Monthly Bills</a></OverlayTrigger></Form.Label>
+                  <Form.Label>
+                    <OverlayTrigger
+                      placement="top"
+                      delay={{ show: 250, hide: 400 }}
+                      overlay={(props) =>
+                        this.props.renderTooltip(
+                          props,
+                          "All your recurring expenses, including groceries, transportation costs, babysitters, etc."
+                        )
+                      }
+                    >
+                      <a href="#" className="tooltiptext">
+                        Monthly Bills
+                      </a>
+                    </OverlayTrigger>
+                  </Form.Label>
                 </Col>
                 <Col>
                   <InputGroup>
@@ -161,16 +192,16 @@ class LeftoverMoney extends React.Component {
                     </InputGroup.Prepend>
                     <FormControl
                       className="formField"
-                      type="string"
+                      type="number"
                       min="0"
-                      value={
-                        this.numberWithCommas(this.state.monthly_bills ? this.state.monthly_bills : "")
-                      }
+                      value={this.numberWithCommas(
+                        this.state.monthly_bills ? this.state.monthly_bills : ""
+                      )}
                       id="monthly_bills"
                       name="monthly_bills"
-                      // 
+                      //
                       onChange={this.handleChange}
-                      onFocus={this.handleFocus} 
+                      onFocus={this.handleFocus}
                     />
                   </InputGroup>
                 </Col>
@@ -183,11 +214,22 @@ class LeftoverMoney extends React.Component {
             <Form.Group>
               <Form.Row>
                 <Col id="formText">
-                  <Form.Label><OverlayTrigger
-          placement="top"
-          delay={{ show: 250, hide: 400 }}
-          overlay={(props) => this.props.renderTooltip(props, "How much you need for non-bill purchases, like dining out, movies, clothes, haircuts, etc.")}
-        ><a href="#" className="tooltiptext">Monthly Spending Money</a></OverlayTrigger></Form.Label>
+                  <Form.Label>
+                    <OverlayTrigger
+                      placement="top"
+                      delay={{ show: 250, hide: 400 }}
+                      overlay={(props) =>
+                        this.props.renderTooltip(
+                          props,
+                          "How much you need for non-bill purchases, like dining out, movies, clothes, haircuts, etc."
+                        )
+                      }
+                    >
+                      <a href="#" className="tooltiptext">
+                        Monthly Spending Money
+                      </a>
+                    </OverlayTrigger>
+                  </Form.Label>
                 </Col>
                 <Col>
                   <InputGroup>
@@ -196,16 +238,18 @@ class LeftoverMoney extends React.Component {
                     </InputGroup.Prepend>
                     <FormControl
                       className="formField"
-                      type="string"
+                      type="number"
                       min="0"
-                      value={
-                        this.numberWithCommas(this.state.monthly_spending ? this.state.monthly_spending : "")
-                      }
+                      value={this.numberWithCommas(
+                        this.state.monthly_spending
+                          ? this.state.monthly_spending
+                          : ""
+                      )}
                       id="monthly_spending"
                       name="monthly_spending"
-                      // 
+                      //
                       onChange={this.handleChange}
-                      onFocus={this.handleFocus} 
+                      onFocus={this.handleFocus}
                     />
                   </InputGroup>
                 </Col>
@@ -233,7 +277,7 @@ class LeftoverMoney extends React.Component {
                       readOnly
                       id="leftover_money"
                       name="leftover_money"
-                      // 
+                      //
                     />
                   </InputGroup>
                 </Col>
@@ -258,11 +302,7 @@ class LeftoverMoney extends React.Component {
                       Next
                     </Button>
                   ) : (
-                    <Button
-                      variant="continue"
-                      block
-                      disabled
-                    >
+                    <Button variant="continue" block disabled>
                       Next
                     </Button>
                   )}
@@ -276,7 +316,7 @@ class LeftoverMoney extends React.Component {
   }
 }
 
-// mapStateToProps is where we specify what slice of the state that we want to provide to our component through props. Here, we want to provide state.stepReducer.currentStep via a prop called currentStep and state. userReducer.currentUser via a prop called currentUser 
+// mapStateToProps is where we specify what slice of the state that we want to provide to our component through props. Here, we want to provide state.stepReducer.currentStep via a prop called currentStep and state. userReducer.currentUser via a prop called currentUser
 const mapStateToProps = (state) => {
   return {
     currentStep: state.stepReducer.currentStep,
