@@ -3,6 +3,8 @@
 #root {
   font-family: 'Work Sans';
   font-weight: 500;
+  /* --yellow: rgb(250, 231, 168);  */
+  /* --yellow: #FFF1CE;  */
   --yellow: rgb(255, 255, 162);
 }
 .mainContainer {
@@ -45,8 +47,6 @@
   padding-bottom: 20px;
   padding: 0px;
   margin-bottom: 20px;  
-  /* background-color: rgb(250, 231, 168); */
-  /* background-color: #FFF1CE; */
   background-color: var(--yellow);
 }
 .page {
@@ -62,9 +62,6 @@
 }
 .disabled {
   color: gray;
-}
-body {
-  /* background: blue; */
 }
 Button {
   padding-left: 20px;
@@ -88,10 +85,6 @@ h6 {
 ul {
   text-align: left;
 }
-.formField {
-}
-#title {
-}
 
 #bg {
   height: 100vh;
@@ -99,12 +92,10 @@ ul {
 }
 a.navbar-brand {
   font-weight: 600;
-  /* font-family: 'Work Sans'; */
 }
 h3 {
   font-weight: 800 !important;
   font-size: x-large !important;
-  /* font-family: 'Work Sans'; */
 }
 button.btn.btn-nope {
   background-color: #b787e2;
@@ -159,14 +150,7 @@ a.nav-link {
 .backBtn {
   font-size: small !important;
   font-weight: 600 !important;
-  /* font-family: 'Work Sans'; */
 }
-/* label.form-label {
-  font-size: larger;
-} */
-/* .card-header {
-  background: border-box
-} */
 .nav-tabs .nav-item.show .nav-link, .nav-tabs {
   color: #495057;
   background-color: var(--yellow)  !important;
