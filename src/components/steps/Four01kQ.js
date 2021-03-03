@@ -44,11 +44,11 @@ class Four01kQ extends React.Component {
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h3>Does your employer offer a <OverlayTrigger
+            <h3>Does your employer offer a retirement investment account like a <OverlayTrigger
           placement="top"
           // defaultShow="true"
           delay={{ show: 250, hide: 400 }}
-          overlay={(props) => this.props.renderTooltip(props, "A 401(k) plan is a retirement investment account that many companies offer their employees")}
+          overlay={(props) => this.props.renderTooltip(props, "...or 403(b) or 457 or Thrift Savings Plan")}
         ><a href="#" className="tooltiptext">401(k) plan</a></OverlayTrigger>? 📈</h3>
           </Container>
         </Row>

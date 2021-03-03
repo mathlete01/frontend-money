@@ -54,8 +54,8 @@ class Four01kMatch extends React.Component {
           <Container><h3>How much is the employer <OverlayTrigger
           placement="top"
           delay={{ show: 250, hide: 400 }}
-          overlay={(props) => this.props.renderTooltip(props, "The employer match is the maximum percentage of your paycheck that the company will contribute to your 401(k)")}
-        ><a href="#" className="tooltiptext">401(k) match</a></OverlayTrigger>? 🏢</h3></Container>
+          overlay={(props) => this.props.renderTooltip(props, "The employer match is the maximum percentage of your paycheck that the company will contribute to your 401(k) or 403(b) or 457 plan or Thrift Savings Plan")}
+        ><a href="#" className="tooltiptext">match</a></OverlayTrigger>? 🏢</h3></Container>
         </Row>
         <Row id="body" className="rowElement">
           <Container>
@@ -68,7 +68,7 @@ class Four01kMatch extends React.Component {
             <Form.Group>
               <Form.Row>
                 <Col id="formText" >
-                  <Form.Label >Employer Match</Form.Label>
+                  <Form.Label >Percentage of your Paycheck</Form.Label>
                 </Col>
                 <Col >
                   <InputGroup >

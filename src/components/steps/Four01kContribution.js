@@ -57,7 +57,17 @@ class Four01kContribution extends React.Component {
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h3>How much are you contributing to your 401(k)? 💵</h3>
+            <h3>How much are you <OverlayTrigger
+          placement="top"
+          // defaultShow="true"
+          delay={{ show: 250, hide: 400 }}
+          overlay={(props) => this.props.renderTooltip(props, "The maximum you can contribute in 2021 is $19,500")}
+        ><a href="#" className="tooltiptext">contributing</a></OverlayTrigger> to your <OverlayTrigger
+          placement="top"
+          // defaultShow="true"
+          delay={{ show: 250, hide: 400 }}
+          overlay={(props) => this.props.renderTooltip(props, "...or 403(b) or 457 or Thrift Savings Plan")}
+        ><a href="#" className="tooltiptext">401(k) plan</a></OverlayTrigger>? 💵</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
