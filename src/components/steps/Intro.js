@@ -11,7 +11,7 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
 
 const BASE_URL = process.env.REACT_APP_BASE_URL
-// console.log("REACT_APP_BASE_URL:", BASE_URL, new Date())
+console.log("REACT_APP_BASE_URL:", BASE_URL, 1745)
 const USERS_URL = `${BASE_URL}/users`;
 
 class Intro extends React.Component {
