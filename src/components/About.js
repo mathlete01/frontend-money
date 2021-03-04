@@ -54,7 +54,6 @@ class About extends React.Component {
             </p>
             -Matty
           </Col>
-          <Col ></Col>
           <Col md={5}>
             <Figure>
               <Figure.Image width={100} height={100} src={selfie} />
