@@ -32,8 +32,8 @@ class HireMe extends React.Component {
             </p>
             -Matty
           </Col>
-          <Col md={1}></Col>
-          <Col md={4}>
+          <Col ></Col>
+          <Col md={5}>
             <Figure>
               <Figure.Image width={100} height={100} src={selfie} />
               {/* <Figure.Caption>Matty</Figure.Caption> */}
@@ -49,8 +49,7 @@ class HireMe extends React.Component {
                 rel="noreferrer"
               >
                 LinkedIn
-              </a>
-              •{" "}
+              </a>{" "}•{" "}
               <a
                 href="http://www.mathlete.com"
                 target="_blank"
