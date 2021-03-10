@@ -13,7 +13,6 @@ import { Tabs, Tab } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
-
 class PriRothSingleTween extends React.Component {
   _prev = () => {
     this.props.handlePrevStep();
@@ -21,9 +20,13 @@ class PriRothSingleTween extends React.Component {
 
   _next = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, {
-      magi: this.state.magi
-    },this.props.currentStep);
+    this.props.updateCurrentUser(
+      this.props.currentUser.id,
+      {
+        magi: this.state.magi,
+      },
+      this.props.currentStep
+    );
     this.props.handleNextStep(event);
   };
 
@@ -47,53 +50,60 @@ class PriRothSingleTween extends React.Component {
     magi: this.props.currentUser.magi,
   };
 
-  numberWithCommas = (x) =>  {
-    return x.toLocaleString()
-}
+  numberWithCommas = (x) => {
+    return x.toLocaleString();
+  };
 
   calcRothMaxSingleYoung = () => {
-    const magi = this.state.magi
-    const incomeMin = 125000
-    const incomeMax = 140000
-    const divider = 15000
-    const contributionLimitYoung = 6000
-    switch (true){
-      case magi <incomeMin:
-        return contributionLimitYoung
-        break;
+    const magi = this.state.magi;
+    const incomeMin = 125000;
+    const incomeMax = 140000;
+    const divider = 15000;
+    const contributionLimitYoung = 6000;
+    switch (true) {
+      case magi < incomeMin:
+        return contributionLimitYoung;
       case magi >= incomeMax:
-        return 0
-        break;
+        return 0;
+
       case magi >= incomeMin && magi < incomeMax:
-        const num = contributionLimitYoung - (((magi - incomeMin)/ divider) * contributionLimitYoung)
-        const rothMaxYoung = (Math.round(num))
-        return rothMaxYoung
-        break
-        default:
-          return null
+        // eslint-disable-next-line no-case-declarations
+        const num =
+          contributionLimitYoung -
+          ((magi - incomeMin) / divider) * contributionLimitYoung;
+        // eslint-disable-next-line no-case-declarations
+        const rothMaxYoung = Math.round(num);
+        return rothMaxYoung;
+
+      default:
+        return null;
     }
   };
 
   calcRothMaxSingleOld = () => {
-    const magi = this.state.magi
-    const incomeMin = 125000
-    const incomeMax = 140000
-    const divider = 15000
-    const contributionLimitOld = 7000
-    switch (true){
-      case magi <incomeMin:
-        return contributionLimitOld
-        break;
+    const magi = this.state.magi;
+    const incomeMin = 125000;
+    const incomeMax = 140000;
+    const divider = 15000;
+    const contributionLimitOld = 7000;
+    switch (true) {
+      case magi < incomeMin:
+        return contributionLimitOld;
+
       case magi >= incomeMax:
-        return 0
-        break;
+        return 0;
+
       case magi >= incomeMin && magi < incomeMax:
-        const num = contributionLimitOld - (((magi - incomeMin)/ divider) * contributionLimitOld)
-        const rothMaxOld = (Math.round(num))
-        return rothMaxOld
-        break
-        default:
-          return null
+        // eslint-disable-next-line no-case-declarations
+        const num =
+          contributionLimitOld -
+          ((magi - incomeMin) / divider) * contributionLimitOld;
+        // eslint-disable-next-line no-case-declarations
+        const rothMaxOld = Math.round(num);
+        return rothMaxOld;
+
+      default:
+        return null;
     }
   };
 
@@ -116,17 +126,30 @@ class PriRothSingleTween extends React.Component {
         <Row id="title" className="rowElement">
           <Container>
             <h5>YOUR # {this.props.rowNum} PRIORITY:</h5>
-            <h3><OverlayTrigger
-          placement="top"
-          // defaultShow="true"
-          delay={{ show: 250, hide: 400 }}
-          overlay={(props) => this.props.renderTooltip(props, "Meaning: contribute the maximum amount you're allowed to every year")}
-        ><a href="#" className="tooltiptext">Max-out</a></OverlayTrigger> a Roth IRA 🥚📈</h3>
+            <h3>
+              <OverlayTrigger
+                placement="top"
+                // defaultShow="true"
+                delay={{ show: 250, hide: 400 }}
+                overlay={(props) =>
+                  this.props.renderTooltip(
+                    props,
+                    "Meaning: contribute the maximum amount you're allowed to every year"
+                  )
+                }
+              >
+                <a href="#" className="tooltiptext">
+                  Max-out
+                </a>
+              </OverlayTrigger>{" "}
+              a Roth IRA 🥚📈
+            </h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Since you'll make more than $125k but less than $140k in 2021, the amount you'll be able to contribute is reduced.
+            Since you'll make more than $125k but less than $140k in 2021, the
+            amount you'll be able to contribute is reduced.
           </Container>
         </Row>
         <Row id="tabs" className="rowElement">
@@ -134,21 +157,35 @@ class PriRothSingleTween extends React.Component {
             <Tab eventKey="what" title="What">
               <ul>
                 <li>
-                  Every year, there is a maximum you can contribute to a Roth IRA.
+                  Every year, there is a maximum you can contribute to a Roth
+                  IRA.
                 </li>
                 <li>
-                Type in your estimated income below to see the maximum you're allowed to contribute to a Roth IRA.
+                  Type in your estimated income below to see the maximum you're
+                  allowed to contribute to a Roth IRA.
                 </li>
               </ul>
               <Table striped bordered hover>
                 <thead>
                   <tr>
-                    <th>Your <OverlayTrigger
-          placement="top"
-          // defaultShow="true"
-          delay={{ show: 250, hide: 400 }}
-          overlay={(props) => this.props.renderTooltip(props, "Your income before taxes are taken away")}
-        ><a href="#" className="tooltiptext">Gross Income</a></OverlayTrigger></th>
+                    <th>
+                      Your{" "}
+                      <OverlayTrigger
+                        placement="top"
+                        // defaultShow="true"
+                        delay={{ show: 250, hide: 400 }}
+                        overlay={(props) =>
+                          this.props.renderTooltip(
+                            props,
+                            "Your income before taxes are taken away"
+                          )
+                        }
+                      >
+                        <a href="#" className="tooltiptext">
+                          Gross Income
+                        </a>
+                      </OverlayTrigger>
+                    </th>
                     <th>Max Contribution if under 50</th>
                     <th>Max Contribution if over 50</th>
                   </tr>
@@ -181,7 +218,9 @@ class PriRothSingleTween extends React.Component {
                           className="formField"
                           type="string"
                           min="0"
-                          value={this.numberWithCommas(this.calcRothMaxSingleYoung())}
+                          value={this.numberWithCommas(
+                            this.calcRothMaxSingleYoung()
+                          )}
                           readOnly
                           id="rothMaxYoung"
                           name="rothMaxYoung"
@@ -197,7 +236,9 @@ class PriRothSingleTween extends React.Component {
                           className="formField"
                           type="string"
                           min="0"
-                          value={this.numberWithCommas(this.calcRothMaxSingleOld())}
+                          value={this.numberWithCommas(
+                            this.calcRothMaxSingleOld()
+                          )}
                           readOnly
                           id="rothMaxOld"
                           name="rothMaxOld"
@@ -225,17 +266,35 @@ class PriRothSingleTween extends React.Component {
             <Tab eventKey="where" title="Where">
               <ul>
                 <li>
-                  Do you already have an investment account at a brokerage? Do it there.
+                  Do you already have an investment account at a brokerage? Do
+                  it there.
                 </li>
                 <li>
                   Otherwise, open an account at a discount brokerage like{" "}
-                  <a href="https://investor.vanguard.com/ira/roth-ira" target="_blank" rel="noreferrer">
+                  <a
+                    href="https://investor.vanguard.com/ira/roth-ira"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     Vanguard
-                  </a>,{" "} 
-                  <a href="https://www.schwab.com/ira" target="_blank" rel="noreferrer">
+                  </a>
+                  ,{" "}
+                  <a
+                    href="https://www.schwab.com/ira"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     Schwab
-                  </a>, or{" "} 
-                  <a href="https://www.fidelity.com/retirement-ira/roth-ira" target="_blank" rel="noreferrer">Fidelity</a>.
+                  </a>
+                  , or{" "}
+                  <a
+                    href="https://www.fidelity.com/retirement-ira/roth-ira"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Fidelity
+                  </a>
+                  .
                 </li>
               </ul>
             </Tab>

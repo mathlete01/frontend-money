@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch, withRouter, Link, NavLink } from "react-router-dom";
+import { Route, Switch, withRouter, Link } from "react-router-dom";
 // import NotFound from "./NotFound";
 import Credentials from "./components/Credentials";
 import { connect } from "react-redux";
@@ -12,9 +12,7 @@ import {
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-import Button from "react-bootstrap/Button";
 import StepContainer from "./components/StepContainer";
 import "./App.css";
 import { NavItem } from "react-bootstrap";
@@ -26,15 +24,12 @@ import Toast from "react-bootstrap/Toast";
 import About from "./components/About";
 import HireMe from "./components/HireMe";
 import FAQ from "./components/FAQ";
-import Figure from "react-bootstrap/Figure";
 import { BrowserView, MobileView } from "react-device-detect";
 
-
 class App extends React.Component {
-
   state = {
     user: "",
-    showToast: true
+    showToast: true,
   };
 
   renderForm = (routerProps) => {
@@ -64,19 +59,23 @@ class App extends React.Component {
     // console.log(`handleLogin: credentialObj = `, credentialObj);
     this.handleAuthFetch(
       credentialObj,
+      // eslint-disable-next-line no-undef
       process.env.REACT_APP_BASE_URL + "/login"
     );
   };
 
   handleLogout = () => {
     localStorage.clear();
+    // eslint-disable-next-line react/prop-types
     this.props.setCurrentUser({});
+    // eslint-disable-next-line react/prop-types
     this.props.history.push("/");
     window.location.reload(false);
   };
 
   handleSignup = (credentialObj) => {
     // console.log(`handleSignup: credentialObj = `, credentialObj);
+    // eslint-disable-next-line react/prop-types
     if (Object.keys(this.props.currentUser).length === 0) {
       this.handleAuthFetch(
         credentialObj,
@@ -129,11 +128,14 @@ class App extends React.Component {
     this.setState({
       showToast: false,
     });
-    console.log(`this.state.showToast = `, this.state.showToast)
+    console.log(`this.state.showToast = `, this.state.showToast);
   };
 
   showToast = () => {
-    if (this.props.currentStep === "LeftoverMoney" && this.state.showToast === true) {
+    if (
+      this.props.currentStep === "LeftoverMoney" &&
+      this.state.showToast === true
+    ) {
       return (
         <Toast
           style={{
@@ -142,7 +144,7 @@ class App extends React.Component {
             right: 15,
             zIndex: "1",
           }}
-          onClose = {this.hideToast}  
+          onClose={this.hideToast}
         >
           <Toast.Header>
             <strong className="mr-auto">💡 Tip</strong>

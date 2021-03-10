@@ -60,15 +60,17 @@ class PriRothMarriedJointlyTween extends React.Component {
     switch (true){
       case magi <incomeMin:
         return contributionLimitYoung
-        break;
+        
       case magi >= incomeMax:
         return 0
-        break;
+     
       case magi >= incomeMin && magi < incomeMax:
+        // eslint-disable-next-line no-case-declarations
         const num = contributionLimitYoung - (((magi - incomeMin)/ divider) * contributionLimitYoung)
+        // eslint-disable-next-line no-case-declarations
         const rothMaxYoung = (Math.round(num))
         return rothMaxYoung
-        break
+     
         default:
           return null
     }
@@ -83,15 +85,17 @@ class PriRothMarriedJointlyTween extends React.Component {
     switch (true){
       case magi <incomeMin:
         return contributionLimitOld
-        break;
+      
       case magi >= incomeMax:
         return 0
-        break;
+       
       case magi >= incomeMin && magi < incomeMax:
+        // eslint-disable-next-line no-case-declarations
         const num = contributionLimitOld - (((magi - incomeMin)/ divider) * contributionLimitOld)
+        // eslint-disable-next-line no-case-declarations
         const rothMaxOld = (Math.round(num))
         return rothMaxOld
-        break
+       
         default:
           return null
     }

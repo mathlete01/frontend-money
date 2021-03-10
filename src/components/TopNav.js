@@ -21,6 +21,7 @@ import Button from "react-bootstrap/Button";
 import NotFound from "./../NotFound";
 import { Form, FormControl, NavItem } from "react-bootstrap";
 
+// eslint-disable-next-line no-undef
 library.add(faSwimmingPool, faCoffee, faHandPointLeft, faChevronLeft);
 
 class TopNav extends React.Component {
