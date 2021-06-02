@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Switch, withRouter, Link, NavLink } from "react-router-dom";
-// import Body from "./components/xBody";
 import Credentials from "./Credentials";
 import { connect } from "react-redux";
 import { updateCurrentStep } from "./../actions/stepActions";
@@ -13,9 +12,6 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Navbar from "react-bootstrap/Navbar";
-
-
-
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 import NotFound from "./../NotFound";
@@ -40,9 +36,11 @@ class TopNav extends React.Component {
   };
 
   handleLogin = (credentialObj) => {
-    // debugger
     // console.log(`handleLogin: credentialObj = `, credentialObj);
-    this.handleAuthFetch(credentialObj, process.env.REACT_APP_BASE_URL+"/login");
+    this.handleAuthFetch(
+      credentialObj,
+      process.env.REACT_APP_BASE_URL + "/login"
+    );
   };
 
   handleLogout = () => {
@@ -53,10 +51,12 @@ class TopNav extends React.Component {
   };
 
   handleSignup = (credentialObj) => {
-    // debugger
     // console.log(`handleSignup: credentialObj = `, credentialObj);
     if (Object.keys(this.props.currentUser).length === 0) {
-      this.handleAuthFetch(credentialObj, process.env.REACT_APP_BASE_URL+"/users");
+      this.handleAuthFetch(
+        credentialObj,
+        process.env.REACT_APP_BASE_URL + "/users"
+      );
     } else {
       this.props.updateCurrentUser(
         this.props.currentUser.id,
@@ -102,14 +102,14 @@ class TopNav extends React.Component {
         <div>
           <Navbar>
             <Navbar.Brand>Make Money Moves</Navbar.Brand>
-                <Switch>
-                  <Route path="/" exact component={this.handleHome} />
-                  <Route path="/login" exact component={this.renderForm} />
-                  <Route path="/signup" exact component={this.renderForm} />
-                  <Route component={NotFound} />
-                </Switch>
+            <Switch>
+              <Route path="/" exact component={this.handleHome} />
+              <Route path="/login" exact component={this.renderForm} />
+              <Route path="/signup" exact component={this.renderForm} />
+              <Route component={NotFound} />
+            </Switch>
             <Navbar.Collapse className="justify-content-end">
-            <Nav>
+              <Nav>
                 <NavItem href="/">
                   <Nav.Link as={Link} to="/login">
                     Log in
