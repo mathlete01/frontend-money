@@ -9,9 +9,8 @@ import { Form, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
-
-const BASE_URL = process.env.REACT_APP_BASE_URL
-console.log("REACT_APP_BASE_URL:", BASE_URL, 1745)
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+// console.log("REACT_APP_BASE_URL:", BASE_URL, 1745)
 const USERS_URL = `${BASE_URL}/users`;
 
 class Intro extends React.Component {
@@ -60,14 +59,19 @@ class Intro extends React.Component {
         <Row id="header" className="rowElement"></Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h2><b>
-              A personalized roadmap to transform you from a <i>Debtor</i> to an <i>Investor</i> 📉👉📈
-              </b></h2>
+            <h2>
+              <b>
+                A personalized roadmap to transform you from a <i>Debtor</i> to
+                an <i>Investor</i> 📉👉📈
+              </b>
+            </h2>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Wondering how to get started with investing? <br /><br /> This interactive quiz asks you a series of questions, then creates a plan to transform you from a debtor to an investor.  
+            Wondering how to get started with investing? <br />
+            <br /> This interactive quiz asks you a series of questions, then
+            creates a plan to transform you from a debtor to an investor.
           </Container>
         </Row>
         <Row id="form" className="rowElement"></Row>
@@ -93,7 +97,7 @@ class Intro extends React.Component {
                   >
                     Let's go 👉
                   </Button></Col> */}
-                  <Col></Col>
+                <Col></Col>
                 <Col>
                   <Button
                     id={this.props.currentRow}
