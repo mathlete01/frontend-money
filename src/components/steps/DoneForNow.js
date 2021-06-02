@@ -19,10 +19,9 @@ class DoneForNow extends React.Component {
 
   render() {
     return (
-        <Container className="step">
+      <Container className="step">
         <Row id="header" className="rowElement">
-          <Button 
-          onClick={this._prev} variant="link" className="backBtn">
+          <Button onClick={this._prev} variant="link" className="backBtn">
             👈 BACK
           </Button>
           <hr className="w-100" />
@@ -34,7 +33,21 @@ class DoneForNow extends React.Component {
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-          Based on your answers, we've given you a set of common-sense priorities based on the best practices of Personal Finance Gurus like Suze Orman, Ramit Sethi and Dave Ramsey. All that's left is for you to implement them!<br></br>Got questions? Go to <a href="/faq">FAQ</a>. To learn more about this project, visit <a href="/about">About</a>. Want to ask us something? <a href="mailto:msallin@gmail.com">Get in touch!</a>
+            Based on your answers, we've given you a set of common-sense
+            priorities based on the best practices of Personal Finance Gurus
+            like Suze Orman, Ramit Sethi and Dave Ramsey. All that's left is for
+            you to implement them!
+            <p>
+              Got questions? Go to <a href="/faq">FAQ</a>.
+            </p>
+            <p>
+              To learn more about this project, visit <a href="/about">About</a>
+              .
+            </p>
+            <p>
+              Want to ask us something?{" "}
+              <a href="mailto:msallin@gmail.com">Get in touch!</a>
+            </p>
           </Container>
         </Row>
         <Row id="form" className="rowElement"></Row>
@@ -42,10 +55,8 @@ class DoneForNow extends React.Component {
           <Container>
             <Form.Group>
               <Form.Row>
-                <Col>
-                </Col>
-                <Col>
-                </Col>
+                <Col></Col>
+                <Col></Col>
               </Form.Row>
             </Form.Group>
           </Container>
