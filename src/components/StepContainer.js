@@ -35,13 +35,11 @@ import PriFour01kMax from "./steps/PriFour01kMax";
 import PriTaxableBrokerageIntro from "./steps/PriTaxableBrokerageIntro";
 import NoDebt from "./steps/NoDebt";
 import PaySchedule from "./steps/PaySchedule";
-
 import { connect } from "react-redux";
 import { updateCurrentStep } from "../actions/stepActions";
 import { updateCurrentUser } from "../actions/userActions";
 import { updateCurrentClick } from "../actions/clickActions";
 import { updateCurrentRow } from "../actions/rowActions";
-
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Tooltip from "react-bootstrap/Tooltip";
@@ -68,7 +66,7 @@ class StepContainer extends React.Component {
     this.setState({ row1: this.props.currentStep });
   }
 
-  // New and improved way below!
+  // New and improved way to use Switch statement below!
   getNextRow = () => {
     let nextRow = null;
     switch (this.props.currentRow) {
@@ -142,7 +140,6 @@ class StepContainer extends React.Component {
     // Update the current step to be the next step
     this.props.updateCurrentStep(nextStep);
     this.props.updateCurrentRow(nextRow);
-    // this.props.updateCurrentClick(3,5,7)
     this.setState({ [event.target.id]: event.target.value });
   };
 
@@ -173,9 +170,377 @@ class StepContainer extends React.Component {
     this.setState({ [myRow]: myStep });
   };
 
+  // loadChildInRow1 = () => {
+  //   switch (true) {
+  //     case this.state.row1 === "PaySchedule":
+  //       return (
+  //         <PaySchedule
+  //           handlePrevStep={this.handlePrevStep}
+  //           handleNextStep={this.handleNextStep}
+  //           rowNum="1"
+  //           getNextRow={this.getNextRow}
+  //           renderTooltip={this.renderTooltip}
+  //         />
+  //       );
+  //     case this.state.row1 === "PriBackdoorRothIntro":
+  //       return (
+  //         <PriBackdoorRothIntro
+  //           handlePrevStep={this.handlePrevStep}
+  //           handleNextStep={this.handleNextStep}
+  //           rowNum="1"
+  //           getNextRow={this.getNextRow}
+  //           renderTooltip={this.renderTooltip}
+  //         />
+  //       );
+  //     case this.state.row1 === "CreditCardDebt":
+  //       return (
+  //         <CreditCardDebt
+  //           handlePrevStep={this.handlePrevStep}
+  //           handleNextStep={this.handleNextStep}
+  //           rowNum="1"
+  //           getNextRow={this.getNextRow}
+  //           renderTooltip={this.renderTooltip}
+  //         />
+  //       );
+  //     case this.state.row1 === "CreditCardDebtQ":
+  //       return (
+  //         <CreditCardDebtQ
+  //           handlePrevStep={this.handlePrevStep}
+  //           handleNextStep={this.handleNextStep}
+  //           rowNum="1"
+  //           getNextRow={this.getNextRow}
+  //           renderTooltip={this.renderTooltip}
+  //         />
+  //       );
+  //     case this.state.row1 === "DoneForNow":
+  //       return (
+  //         <DoneForNow
+  //           handlePrevStep={this.handlePrevStep}
+  //           handleNextStep={this.handleNextStep}
+  //           rowNum="1"
+  //           getNextRow={this.getNextRow}
+  //           renderTooltip={this.renderTooltip}
+  //         />
+  //       );
+  //     case this.state.row1 === "Four01kContribution":
+  //       return (
+  //         <Four01kContribution
+  //           handlePrevStep={this.handlePrevStep}
+  //           handleNextStep={this.handleNextStep}
+  //           rowNum="1"
+  //           getNextRow={this.getNextRow}
+  //           renderTooltip={this.renderTooltip}
+  //         />
+  //       );
+  //     case this.state.row1 === "Four01kMatch":
+  //       return (
+  //         <Four01kMatch
+  //           handlePrevStep={this.handlePrevStep}
+  //           handleNextStep={this.handleNextStep}
+  //           rowNum="1"
+  //           getNextRow={this.getNextRow}
+  //           renderTooltip={this.renderTooltip}
+  //         />
+  //       );
+  //     case this.state.row1 === "Four01kMaxOutQ":
+  //       return (
+  //         <Four01kMaxOutQ
+  //           handlePrevStep={this.handlePrevStep}
+  //           handleNextStep={this.handleNextStep}
+  //           rowNum="1"
+  //           getNextRow={this.getNextRow}
+  //           renderTooltip={this.renderTooltip}
+  //         />
+  //       );
+  //     case this.state.row1 === "PriFour01kMax":
+  //       return (
+  //         <PriFour01kMax
+  //           handlePrevStep={this.handlePrevStep}
+  //           handleNextStep={this.handleNextStep}
+  //           rowNum="1"
+  //           getNextRow={this.getNextRow}
+  //           renderTooltip={this.renderTooltip}
+  //         />
+  //       );
+  //     case this.state.row1 === "Four01kQ":
+  //       return (
+  //         <Four01kQ
+  //           handlePrevStep={this.handlePrevStep}
+  //           handleNextStep={this.handleNextStep}
+  //           rowNum="1"
+  //           getNextRow={this.getNextRow}
+  //           renderTooltip={this.renderTooltip}
+  //         />
+  //       );
+  //     case this.state.row1 === "Intro":
+  //       return (
+  //         <Intro
+  //           handlePrevStep={this.handlePrevStep}
+  //           handleNextStep={this.handleNextStep}
+  //           rowNum="1"
+  //           getNextRow={this.getNextRow}
+  //           renderTooltip={this.renderTooltip}
+  //         />
+  //       );
+  //     case this.state.row1 === "LeftoverMoney":
+  //       return (
+  //         <LeftoverMoney
+  //           handlePrevStep={this.handlePrevStep}
+  //           handleNextStep={this.handleNextStep}
+  //           rowNum="1"
+  //           getNextRow={this.getNextRow}
+  //           renderTooltip={this.renderTooltip}
+  //         />
+  //       );
+  //     case this.state.row1 === "NoDebt":
+  //       return (
+  //         <NoDebt
+  //           handlePrevStep={this.handlePrevStep}
+  //           handleNextStep={this.handleNextStep}
+  //           rowNum="1"
+  //           getNextRow={this.getNextRow}
+  //           renderTooltip={this.renderTooltip}
+  //         />
+  //       );
+  //     case this.state.row1 === "RothIntro":
+  //       return (
+  //         <RothIntro
+  //           handlePrevStep={this.handlePrevStep}
+  //           handleNextStep={this.handleNextStep}
+  //           rowNum="1"
+  //           getNextRow={this.getNextRow}
+  //           renderTooltip={this.renderTooltip}
+  //         />
+  //       );
+  //     case this.state.row1 === "RothMarriedJointly50Q":
+  //       return (
+  //         <RothMarriedJointly50Q
+  //           handlePrevStep={this.handlePrevStep}
+  //           handleNextStep={this.handleNextStep}
+  //           rowNum="1"
+  //           getNextRow={this.getNextRow}
+  //           renderTooltip={this.renderTooltip}
+  //         />
+  //       );
+  //     case this.state.row1 === "RothMarriedJointlyIncomeQ":
+  //       return (
+  //         <RothMarriedJointlyIncomeQ
+  //           handlePrevStep={this.handlePrevStep}
+  //           handleNextStep={this.handleNextStep}
+  //           rowNum="1"
+  //           getNextRow={this.getNextRow}
+  //           renderTooltip={this.renderTooltip}
+  //         />
+  //       );
+  //     case this.state.row1 === "RothMarriedJointlyMaxQ":
+  //       return (
+  //         <RothMarriedJointlyMaxQ
+  //           handlePrevStep={this.handlePrevStep}
+  //           handleNextStep={this.handleNextStep}
+  //           rowNum="1"
+  //           getNextRow={this.getNextRow}
+  //           renderTooltip={this.renderTooltip}
+  //         />
+  //       );
+  //     case this.state.row1 === "RothMarriedJointlyMinQ":
+  //       return (
+  //         <RothMarriedJointlyMinQ
+  //           handlePrevStep={this.handlePrevStep}
+  //           handleNextStep={this.handleNextStep}
+  //           rowNum="1"
+  //           getNextRow={this.getNextRow}
+  //           renderTooltip={this.renderTooltip}
+  //         />
+  //       );
+  //     case this.state.row1 === "RothMarriedJointlyOverD":
+  //       return (
+  //         <RothMarriedJointlyOverD
+  //           handlePrevStep={this.handlePrevStep}
+  //           handleNextStep={this.handleNextStep}
+  //           rowNum="1"
+  //           getNextRow={this.getNextRow}
+  //           renderTooltip={this.renderTooltip}
+  //         />
+  //       );
+  //     case this.state.row1 === "RothMarriedJointlyQ":
+  //       return (
+  //         <RothMarriedJointlyQ
+  //           handlePrevStep={this.handlePrevStep}
+  //           handleNextStep={this.handleNextStep}
+  //           rowNum="1"
+  //           getNextRow={this.getNextRow}
+  //           renderTooltip={this.renderTooltip}
+  //         />
+  //       );
+  //     case this.state.row1 === "PriRothMarriedJointlyTween":
+  //       return (
+  //         <PriRothMarriedJointlyTween
+  //           handlePrevStep={this.handlePrevStep}
+  //           handleNextStep={this.handleNextStep}
+  //           rowNum="1"
+  //           getNextRow={this.getNextRow}
+  //           renderTooltip={this.renderTooltip}
+  //         />
+  //       );
+  //     case this.state.row1 === "RothMarriedNotJointlyMinQ":
+  //       return (
+  //         <RothMarriedNotJointlyMinQ
+  //           handlePrevStep={this.handlePrevStep}
+  //           handleNextStep={this.handleNextStep}
+  //           rowNum="1"
+  //           getNextRow={this.getNextRow}
+  //           renderTooltip={this.renderTooltip}
+  //         />
+  //       );
+  //     case this.state.row1 === "RothMarriedNotJointlyOverD":
+  //       return (
+  //         <RothMarriedNotJointlyOverD
+  //           handlePrevStep={this.handlePrevStep}
+  //           handleNextStep={this.handleNextStep}
+  //           rowNum="1"
+  //           getNextRow={this.getNextRow}
+  //           renderTooltip={this.renderTooltip}
+  //         />
+  //       );
+  //     case this.state.row1 === "PriRothMarriedNotJointlyTween":
+  //       return (
+  //         <PriRothMarriedNotJointlyTween
+  //           handlePrevStep={this.handlePrevStep}
+  //           handleNextStep={this.handleNextStep}
+  //           rowNum="1"
+  //           getNextRow={this.getNextRow}
+  //           renderTooltip={this.renderTooltip}
+  //         />
+  //       );
+  //     case this.state.row1 === "PriRothMax":
+  //       return (
+  //         <PriRothMax
+  //           handlePrevStep={this.handlePrevStep}
+  //           handleNextStep={this.handleNextStep}
+  //           rowNum="1"
+  //           getNextRow={this.getNextRow}
+  //           renderTooltip={this.renderTooltip}
+  //         />
+  //       );
+  //     case this.state.row1 === "PriRothReg":
+  //       return (
+  //         <PriRothReg
+  //           handlePrevStep={this.handlePrevStep}
+  //           handleNextStep={this.handleNextStep}
+  //           rowNum="1"
+  //           getNextRow={this.getNextRow}
+  //           renderTooltip={this.renderTooltip}
+  //         />
+  //       );
+  //     case this.state.row1 === "RothSingle50Q":
+  //       return (
+  //         <RothSingle50Q
+  //           handlePrevStep={this.handlePrevStep}
+  //           handleNextStep={this.handleNextStep}
+  //           rowNum="1"
+  //           getNextRow={this.getNextRow}
+  //           renderTooltip={this.renderTooltip}
+  //         />
+  //       );
+  //     case this.state.row1 === "RothSingleIncomeQ":
+  //       return (
+  //         <RothSingleIncomeQ
+  //           handlePrevStep={this.handlePrevStep}
+  //           handleNextStep={this.handleNextStep}
+  //           rowNum="1"
+  //           getNextRow={this.getNextRow}
+  //           renderTooltip={this.renderTooltip}
+  //         />
+  //       );
+  //     case this.state.row1 === "RothSingleMaxQ":
+  //       return (
+  //         <RothSingleMaxQ
+  //           handlePrevStep={this.handlePrevStep}
+  //           handleNextStep={this.handleNextStep}
+  //           rowNum="1"
+  //           getNextRow={this.getNextRow}
+  //           renderTooltip={this.renderTooltip}
+  //         />
+  //       );
+  //     case this.state.row1 === "RothSingleMinQ":
+  //       return (
+  //         <RothSingleMinQ
+  //           handlePrevStep={this.handlePrevStep}
+  //           handleNextStep={this.handleNextStep}
+  //           rowNum="1"
+  //           getNextRow={this.getNextRow}
+  //           renderTooltip={this.renderTooltip}
+  //         />
+  //       );
+  //     case this.state.row1 === "RothSingleOverD":
+  //       return (
+  //         <RothSingleOverD
+  //           handlePrevStep={this.handlePrevStep}
+  //           handleNextStep={this.handleNextStep}
+  //           rowNum="1"
+  //           getNextRow={this.getNextRow}
+  //           renderTooltip={this.renderTooltip}
+  //         />
+  //       );
+  //     case this.state.row1 === "RothSingleQ":
+  //       return (
+  //         <RothSingleQ
+  //           handlePrevStep={this.handlePrevStep}
+  //           handleNextStep={this.handleNextStep}
+  //           rowNum="1"
+  //           getNextRow={this.getNextRow}
+  //           renderTooltip={this.renderTooltip}
+  //         />
+  //       );
+  //     case this.state.row1 === "PriRothSingleTween":
+  //       return (
+  //         <PriRothSingleTween
+  //           handlePrevStep={this.handlePrevStep}
+  //           handleNextStep={this.handleNextStep}
+  //           rowNum="1"
+  //           getNextRow={this.getNextRow}
+  //           renderTooltip={this.renderTooltip}
+  //         />
+  //       );
+  //     case this.state.row1 === "RothSingleUnderD":
+  //       return (
+  //         <RothSingleUnderD
+  //           handlePrevStep={this.handlePrevStep}
+  //           handleNextStep={this.handleNextStep}
+  //           rowNum="1"
+  //           getNextRow={this.getNextRow}
+  //           renderTooltip={this.renderTooltip}
+  //         />
+  //       );
+  //     case this.state.row1 === "PriPostDebt":
+  //       return (
+  //         <PriPostDebt
+  //           handlePrevStep={this.handlePrevStep}
+  //           handleNextStep={this.handleNextStep}
+  //           rowNum="1"
+  //           getNextRow={this.getNextRow}
+  //           renderTooltip={this.renderTooltip}
+  //         />
+  //       );
+
+  //     case this.state.row1 === "PriTaxableBrokerageIntro":
+  //       return (
+  //         <PriTaxableBrokerageIntro
+  //           handlePrevStep={this.handlePrevStep}
+  //           handleNextStep={this.handleNextStep}
+  //           rowNum="1"
+  //           getNextRow={this.getNextRow}
+  //           renderTooltip={this.renderTooltip}
+  //         />
+  //       );
+  //     default:
+  //       return null;
+  //   }
+  // };
+
   loadChildInRow1 = () => {
-    switch (true) {
-      case this.state.row1 === "PaySchedule":
+    switch (this.state.row1) {
+      case "PaySchedule":
         return (
           <PaySchedule
             handlePrevStep={this.handlePrevStep}
@@ -185,7 +550,7 @@ class StepContainer extends React.Component {
             renderTooltip={this.renderTooltip}
           />
         );
-      case this.state.row1 === "PriBackdoorRothIntro":
+      case "PriBackdoorRothIntro":
         return (
           <PriBackdoorRothIntro
             handlePrevStep={this.handlePrevStep}
@@ -195,7 +560,7 @@ class StepContainer extends React.Component {
             renderTooltip={this.renderTooltip}
           />
         );
-      case this.state.row1 === "CreditCardDebt":
+      case "CreditCardDebt":
         return (
           <CreditCardDebt
             handlePrevStep={this.handlePrevStep}
@@ -205,7 +570,7 @@ class StepContainer extends React.Component {
             renderTooltip={this.renderTooltip}
           />
         );
-      case this.state.row1 === "CreditCardDebtQ":
+      case "CreditCardDebtQ":
         return (
           <CreditCardDebtQ
             handlePrevStep={this.handlePrevStep}
@@ -215,7 +580,7 @@ class StepContainer extends React.Component {
             renderTooltip={this.renderTooltip}
           />
         );
-      case this.state.row1 === "DoneForNow":
+      case "DoneForNow":
         return (
           <DoneForNow
             handlePrevStep={this.handlePrevStep}
@@ -225,7 +590,7 @@ class StepContainer extends React.Component {
             renderTooltip={this.renderTooltip}
           />
         );
-      case this.state.row1 === "Four01kContribution":
+      case "Four01kContribution":
         return (
           <Four01kContribution
             handlePrevStep={this.handlePrevStep}
@@ -235,7 +600,7 @@ class StepContainer extends React.Component {
             renderTooltip={this.renderTooltip}
           />
         );
-      case this.state.row1 === "Four01kMatch":
+      case "Four01kMatch":
         return (
           <Four01kMatch
             handlePrevStep={this.handlePrevStep}
@@ -245,7 +610,7 @@ class StepContainer extends React.Component {
             renderTooltip={this.renderTooltip}
           />
         );
-      case this.state.row1 === "Four01kMaxOutQ":
+      case "Four01kMaxOutQ":
         return (
           <Four01kMaxOutQ
             handlePrevStep={this.handlePrevStep}
@@ -255,7 +620,7 @@ class StepContainer extends React.Component {
             renderTooltip={this.renderTooltip}
           />
         );
-      case this.state.row1 === "PriFour01kMax":
+      case "PriFour01kMax":
         return (
           <PriFour01kMax
             handlePrevStep={this.handlePrevStep}
@@ -265,7 +630,7 @@ class StepContainer extends React.Component {
             renderTooltip={this.renderTooltip}
           />
         );
-      case this.state.row1 === "Four01kQ":
+      case "Four01kQ":
         return (
           <Four01kQ
             handlePrevStep={this.handlePrevStep}
@@ -275,7 +640,7 @@ class StepContainer extends React.Component {
             renderTooltip={this.renderTooltip}
           />
         );
-      case this.state.row1 === "Intro":
+      case "Intro":
         return (
           <Intro
             handlePrevStep={this.handlePrevStep}
@@ -285,7 +650,7 @@ class StepContainer extends React.Component {
             renderTooltip={this.renderTooltip}
           />
         );
-      case this.state.row1 === "LeftoverMoney":
+      case "LeftoverMoney":
         return (
           <LeftoverMoney
             handlePrevStep={this.handlePrevStep}
@@ -295,7 +660,7 @@ class StepContainer extends React.Component {
             renderTooltip={this.renderTooltip}
           />
         );
-      case this.state.row1 === "NoDebt":
+      case "NoDebt":
         return (
           <NoDebt
             handlePrevStep={this.handlePrevStep}
@@ -305,7 +670,7 @@ class StepContainer extends React.Component {
             renderTooltip={this.renderTooltip}
           />
         );
-      case this.state.row1 === "RothIntro":
+      case "RothIntro":
         return (
           <RothIntro
             handlePrevStep={this.handlePrevStep}
@@ -315,7 +680,7 @@ class StepContainer extends React.Component {
             renderTooltip={this.renderTooltip}
           />
         );
-      case this.state.row1 === "RothMarriedJointly50Q":
+      case "RothMarriedJointly50Q":
         return (
           <RothMarriedJointly50Q
             handlePrevStep={this.handlePrevStep}
@@ -325,7 +690,7 @@ class StepContainer extends React.Component {
             renderTooltip={this.renderTooltip}
           />
         );
-      case this.state.row1 === "RothMarriedJointlyIncomeQ":
+      case "RothMarriedJointlyIncomeQ":
         return (
           <RothMarriedJointlyIncomeQ
             handlePrevStep={this.handlePrevStep}
@@ -335,7 +700,7 @@ class StepContainer extends React.Component {
             renderTooltip={this.renderTooltip}
           />
         );
-      case this.state.row1 === "RothMarriedJointlyMaxQ":
+      case "RothMarriedJointlyMaxQ":
         return (
           <RothMarriedJointlyMaxQ
             handlePrevStep={this.handlePrevStep}
@@ -345,7 +710,7 @@ class StepContainer extends React.Component {
             renderTooltip={this.renderTooltip}
           />
         );
-      case this.state.row1 === "RothMarriedJointlyMinQ":
+      case "RothMarriedJointlyMinQ":
         return (
           <RothMarriedJointlyMinQ
             handlePrevStep={this.handlePrevStep}
@@ -355,7 +720,7 @@ class StepContainer extends React.Component {
             renderTooltip={this.renderTooltip}
           />
         );
-      case this.state.row1 === "RothMarriedJointlyOverD":
+      case "RothMarriedJointlyOverD":
         return (
           <RothMarriedJointlyOverD
             handlePrevStep={this.handlePrevStep}
@@ -365,7 +730,7 @@ class StepContainer extends React.Component {
             renderTooltip={this.renderTooltip}
           />
         );
-      case this.state.row1 === "RothMarriedJointlyQ":
+      case "RothMarriedJointlyQ":
         return (
           <RothMarriedJointlyQ
             handlePrevStep={this.handlePrevStep}
@@ -375,7 +740,7 @@ class StepContainer extends React.Component {
             renderTooltip={this.renderTooltip}
           />
         );
-      case this.state.row1 === "PriRothMarriedJointlyTween":
+      case "PriRothMarriedJointlyTween":
         return (
           <PriRothMarriedJointlyTween
             handlePrevStep={this.handlePrevStep}
@@ -385,7 +750,7 @@ class StepContainer extends React.Component {
             renderTooltip={this.renderTooltip}
           />
         );
-      case this.state.row1 === "RothMarriedNotJointlyMinQ":
+      case "RothMarriedNotJointlyMinQ":
         return (
           <RothMarriedNotJointlyMinQ
             handlePrevStep={this.handlePrevStep}
@@ -395,7 +760,7 @@ class StepContainer extends React.Component {
             renderTooltip={this.renderTooltip}
           />
         );
-      case this.state.row1 === "RothMarriedNotJointlyOverD":
+      case "RothMarriedNotJointlyOverD":
         return (
           <RothMarriedNotJointlyOverD
             handlePrevStep={this.handlePrevStep}
@@ -405,7 +770,7 @@ class StepContainer extends React.Component {
             renderTooltip={this.renderTooltip}
           />
         );
-      case this.state.row1 === "PriRothMarriedNotJointlyTween":
+      case "PriRothMarriedNotJointlyTween":
         return (
           <PriRothMarriedNotJointlyTween
             handlePrevStep={this.handlePrevStep}
@@ -415,7 +780,7 @@ class StepContainer extends React.Component {
             renderTooltip={this.renderTooltip}
           />
         );
-      case this.state.row1 === "PriRothMax":
+      case "PriRothMax":
         return (
           <PriRothMax
             handlePrevStep={this.handlePrevStep}
@@ -425,7 +790,7 @@ class StepContainer extends React.Component {
             renderTooltip={this.renderTooltip}
           />
         );
-      case this.state.row1 === "PriRothReg":
+      case "PriRothReg":
         return (
           <PriRothReg
             handlePrevStep={this.handlePrevStep}
@@ -435,7 +800,7 @@ class StepContainer extends React.Component {
             renderTooltip={this.renderTooltip}
           />
         );
-      case this.state.row1 === "RothSingle50Q":
+      case "RothSingle50Q":
         return (
           <RothSingle50Q
             handlePrevStep={this.handlePrevStep}
@@ -445,7 +810,7 @@ class StepContainer extends React.Component {
             renderTooltip={this.renderTooltip}
           />
         );
-      case this.state.row1 === "RothSingleIncomeQ":
+      case "RothSingleIncomeQ":
         return (
           <RothSingleIncomeQ
             handlePrevStep={this.handlePrevStep}
@@ -455,7 +820,7 @@ class StepContainer extends React.Component {
             renderTooltip={this.renderTooltip}
           />
         );
-      case this.state.row1 === "RothSingleMaxQ":
+      case "RothSingleMaxQ":
         return (
           <RothSingleMaxQ
             handlePrevStep={this.handlePrevStep}
@@ -465,7 +830,7 @@ class StepContainer extends React.Component {
             renderTooltip={this.renderTooltip}
           />
         );
-      case this.state.row1 === "RothSingleMinQ":
+      case "RothSingleMinQ":
         return (
           <RothSingleMinQ
             handlePrevStep={this.handlePrevStep}
@@ -475,7 +840,7 @@ class StepContainer extends React.Component {
             renderTooltip={this.renderTooltip}
           />
         );
-      case this.state.row1 === "RothSingleOverD":
+      case "RothSingleOverD":
         return (
           <RothSingleOverD
             handlePrevStep={this.handlePrevStep}
@@ -485,7 +850,7 @@ class StepContainer extends React.Component {
             renderTooltip={this.renderTooltip}
           />
         );
-      case this.state.row1 === "RothSingleQ":
+      case "RothSingleQ":
         return (
           <RothSingleQ
             handlePrevStep={this.handlePrevStep}
@@ -495,7 +860,7 @@ class StepContainer extends React.Component {
             renderTooltip={this.renderTooltip}
           />
         );
-      case this.state.row1 === "PriRothSingleTween":
+      case "PriRothSingleTween":
         return (
           <PriRothSingleTween
             handlePrevStep={this.handlePrevStep}
@@ -505,7 +870,7 @@ class StepContainer extends React.Component {
             renderTooltip={this.renderTooltip}
           />
         );
-      case this.state.row1 === "RothSingleUnderD":
+      case "RothSingleUnderD":
         return (
           <RothSingleUnderD
             handlePrevStep={this.handlePrevStep}
@@ -515,7 +880,7 @@ class StepContainer extends React.Component {
             renderTooltip={this.renderTooltip}
           />
         );
-      case this.state.row1 === "PriPostDebt":
+      case "PriPostDebt":
         return (
           <PriPostDebt
             handlePrevStep={this.handlePrevStep}
@@ -526,7 +891,7 @@ class StepContainer extends React.Component {
           />
         );
 
-      case this.state.row1 === "PriTaxableBrokerageIntro":
+      case "PriTaxableBrokerageIntro":
         return (
           <PriTaxableBrokerageIntro
             handlePrevStep={this.handlePrevStep}

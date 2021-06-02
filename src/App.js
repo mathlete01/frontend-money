@@ -1,6 +1,5 @@
 import React from "react";
 import { Route, Switch, withRouter, Link } from "react-router-dom";
-// import NotFound from "./NotFound";
 import Credentials from "./components/Credentials";
 import { connect } from "react-redux";
 import { updateCurrentStep } from "./actions/stepActions";
