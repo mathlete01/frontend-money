@@ -13,18 +13,20 @@ import { Tabs, Tab } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
-
 class PriRothMarriedNotJointlyTween extends React.Component {
-
   _prev = () => {
     this.props.handlePrevStep();
   };
- 
+
   _next = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, {
-      magi: this.state.magi
-    },this.props.currentStep);
+    this.props.updateCurrentUser(
+      this.props.currentUser.id,
+      {
+        magi: this.state.magi,
+      },
+      this.props.currentStep
+    );
     this.props.handleNextStep(event);
   };
 
@@ -48,46 +50,70 @@ class PriRothMarriedNotJointlyTween extends React.Component {
     magi: this.props.currentUser.magi,
   };
 
-  numberWithCommas = (x) =>  {
-    return x.toLocaleString()
-}
+  numberWithCommas = (x) => {
+    return x.toLocaleString();
+  };
 
   calcRothMaxNotJointly = () => {
-    const magi = this.state.magi
-    const incomeMin = 0
-    const incomeMax = 10000
-    const divider = 10000
-    const contributionLimitYoung = 6000
-    switch (true){
-      case magi <incomeMin:
-        return 0
-        
-      case magi >= incomeMax:
-        return 0
-      
-      case magi > incomeMin && magi < incomeMax:
-        // eslint-disable-next-line no-case-declarations
-        const num = contributionLimitYoung - (((magi - incomeMin)/ divider) * contributionLimitYoung)
-        // eslint-disable-next-line no-case-declarations
-        const rothMax = (Math.round(num))
-        return rothMax
-      
-        default:
-          return null
+    console.log(`calcRothMaxNotJointly called`);
+    const magi = this.state.magi;
+    const incomeMin = 0;
+    const incomeMax = 10000;
+    const divider = 10000;
+    const contributionLimitYoung = 6000;
+    if (magi < incomeMin) {
+      console.log(`magi < incomeMin`);
+      return 0;
+    } else if (magi >= incomeMax) {
+      console.log(`magi >= incomeMax`);
+      return 0;
+    } else if (magi > incomeMin && magi < incomeMax) {
+      console.log(`magi > incomeMin && magi < incomeMax`);
+      const num =
+        contributionLimitYoung -
+        ((magi - incomeMin) / divider) * contributionLimitYoung;
+      const rothMax = Math.round(num);
+      return rothMax;
     }
   };
 
+  // calcRothMaxNotJointly = () => {
+  //   const magi = this.state.magi
+  //   const incomeMin = 0
+  //   const incomeMax = 10000
+  //   const divider = 10000
+  //   const contributionLimitYoung = 6000
+  //   switch (true){
+  //     case magi <incomeMin:
+  //       return 0
+
+  //     case magi >= incomeMax:
+  //       return 0
+
+  //     case magi > incomeMin && magi < incomeMax:
+  //       // eslint-disable-next-line no-case-declarations
+  //       const num = contributionLimitYoung - (((magi - incomeMin)/ divider) * contributionLimitYoung)
+  //       // eslint-disable-next-line no-case-declarations
+  //       const rothMax = (Math.round(num))
+  //       return rothMax
+
+  //       default:
+  //         return null
+  //   }
+  // };
+
   render() {
-  
     return (
       <Container className="priority">
         <Row id="header" className="rowElement">
-        <Button
+          <Button
             onClick={this._prev}
             variant="link"
             className="backBtn"
             disabled={
-              this.props.currentStep === "PriRothMarriedNotJointlyTween" ? false : true
+              this.props.currentStep === "PriRothMarriedNotJointlyTween"
+                ? false
+                : true
             }
           >
             👈 BACK
@@ -97,17 +123,30 @@ class PriRothMarriedNotJointlyTween extends React.Component {
         <Row id="title" className="rowElement">
           <Container>
             <h5>YOUR # {this.props.rowNum} PRIORITY:</h5>
-            <h3><OverlayTrigger
-          placement="top"
-          // defaultShow="true"
-          delay={{ show: 250, hide: 400 }}
-          overlay={(props) => this.props.renderTooltip(props, "Meaning: contribute the maximum amount you're allowed to every year")}
-        ><a href="#" className="tooltiptext">Max-out</a></OverlayTrigger> a Roth IRA 🥚📈</h3>
+            <h3>
+              <OverlayTrigger
+                placement="top"
+                // defaultShow="true"
+                delay={{ show: 250, hide: 400 }}
+                overlay={(props) =>
+                  this.props.renderTooltip(
+                    props,
+                    "Meaning: contribute the maximum amount you're allowed to every year"
+                  )
+                }
+              >
+                <a href="#" className="tooltiptext">
+                  Max-out
+                </a>
+              </OverlayTrigger>{" "}
+              a Roth IRA 🥚📈
+            </h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Since your income as a couple will be less than $10k, the amount you'll be able to contribute is reduced. 
+            Since your income as a couple will be less than $10k, the amount
+            you'll be able to contribute is reduced.
           </Container>
         </Row>
         <Row id="tabs" className="rowElement">
@@ -115,21 +154,35 @@ class PriRothMarriedNotJointlyTween extends React.Component {
             <Tab eventKey="what" title="What">
               <ul>
                 <li>
-                  Every year, there is a maximum you can contribute to a Roth IRA.
+                  Every year, there is a maximum you can contribute to a Roth
+                  IRA.
                 </li>
                 <li>
-                Type in your estimated income below to see the maximum you're allowed to contribute to a Roth IRA.
+                  Type in your estimated income below to see the maximum you're
+                  allowed to contribute to a Roth IRA.
                 </li>
               </ul>
               <Table striped bordered hover>
                 <thead>
                   <tr>
-                    <th>Your <OverlayTrigger
-          placement="top"
-          // defaultShow="true"
-          delay={{ show: 250, hide: 400 }}
-          overlay={(props) => this.props.renderTooltip(props, "Your income as a couple before taxes are taken away")}
-        ><a href="#" className="tooltiptext">Gross Income</a></OverlayTrigger></th>
+                    <th>
+                      Your{" "}
+                      <OverlayTrigger
+                        placement="top"
+                        // defaultShow="true"
+                        delay={{ show: 250, hide: 400 }}
+                        overlay={(props) =>
+                          this.props.renderTooltip(
+                            props,
+                            "Your income as a couple before taxes are taken away"
+                          )
+                        }
+                      >
+                        <a href="#" className="tooltiptext">
+                          Gross Income
+                        </a>
+                      </OverlayTrigger>
+                    </th>
                     <th>Max Contribution if under 50</th>
                   </tr>
                 </thead>
@@ -161,7 +214,9 @@ class PriRothMarriedNotJointlyTween extends React.Component {
                           className="formField"
                           type="string"
                           min="0"
-                          value={this.numberWithCommas(this.calcRothMaxNotJointly())}
+                          value={this.numberWithCommas(
+                            this.calcRothMaxNotJointly()
+                          )}
                           readOnly
                           id="rothMax"
                           name="rothMax"
@@ -180,22 +235,33 @@ class PriRothMarriedNotJointlyTween extends React.Component {
                   You don't pay taxes on it when you withdraw it upon retirement
                 </li>
                 <li>
-                  You can withdraw your contributions (not your <i>earnings</i>, just your contributions) whenever you want. That makes it double as an Emergency Fund.
+                  You can withdraw your contributions (not your <i>earnings</i>,
+                  just your contributions) whenever you want. That makes it
+                  double as an Emergency Fund.
                 </li>
               </ol>
             </Tab>
             <Tab eventKey="where" title="Where">
               <ul>
                 <li>
-                  Do you already have an investment account at a brokerage? Do it there.
+                  Do you already have an investment account at a brokerage? Do
+                  it there.
                 </li>
                 <li>
                   Otherwise, open an account at a discount brokerage like{" "}
-                  <a href="http://www.vanguard.com" target="_blank" rel="noreferrer">
+                  <a
+                    href="http://www.vanguard.com"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     Vanguard
                   </a>{" "}
                   (our favorite) or{" "}
-                  <a href="http://www.schwab.com" target="_blank" rel="noreferrer">
+                  <a
+                    href="http://www.schwab.com"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     Schwab
                   </a>
                   .
@@ -236,13 +302,19 @@ class PriRothMarriedNotJointlyTween extends React.Component {
                       ? ""
                       : "hidden"
                   }
-                >                  <Button
+                >
+                  {" "}
+                  <Button
                     className="yes"
                     variant="primary"
                     size="lg"
                     block
                     id={this.props.getNextRow()}
-                    value={this.props.currentUser.four01k ? "Four01kMaxOutQ" : "PriTaxableBrokerageIntro"}
+                    value={
+                      this.props.currentUser.four01k
+                        ? "Four01kMaxOutQ"
+                        : "PriTaxableBrokerageIntro"
+                    }
                     onClick={this._next}
                   >
                     Continue Below 👇
