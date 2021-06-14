@@ -93,28 +93,28 @@ class StepContainer extends React.Component {
 
   clearRow = (row) => {
     console.log("clearRow called, row = ", row);
-    switch (true) {
-      case row === "row2":
+    switch (row) {
+      case "row2":
         this.setState({
           row2: "",
         });
         break;
-      case row === "row3":
+      case "row3":
         this.setState({
           row3: "",
         });
         break;
-      case row === "row4":
+      case "row4":
         this.setState({
           row4: "",
         });
         break;
-      case row === "row5":
+      case "row5":
         this.setState({
           row5: "",
         });
         break;
-      case row === "row6":
+      case "row6":
         this.setState({
           row6: "",
         });
@@ -123,6 +123,39 @@ class StepContainer extends React.Component {
         return null;
     }
   };
+
+  // clearRow = (row) => {
+  //   console.log("clearRow called, row = ", row);
+  //   switch (true) {
+  //     case row === "row2":
+  //       this.setState({
+  //         row2: "",
+  //       });
+  //       break;
+  //     case row === "row3":
+  //       this.setState({
+  //         row3: "",
+  //       });
+  //       break;
+  //     case row === "row4":
+  //       this.setState({
+  //         row4: "",
+  //       });
+  //       break;
+  //     case row === "row5":
+  //       this.setState({
+  //         row5: "",
+  //       });
+  //       break;
+  //     case row === "row6":
+  //       this.setState({
+  //         row6: "",
+  //       });
+  //       break;
+  //     default:
+  //       return null;
+  //   }
+  // };
 
   handleNextStep = (event) => {
     let nextStep = event.target.value;
