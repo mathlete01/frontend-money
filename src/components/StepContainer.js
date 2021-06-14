@@ -92,6 +92,7 @@ class StepContainer extends React.Component {
   };
 
   clearRow = (row) => {
+    console.log("clearRow called");
     switch (true) {
       case row === "row2":
         this.setState({
