@@ -46,7 +46,8 @@ class PriPostDebt extends React.Component {
   };
 
   numberWithCommas = (x) => {
-    return x.toLocaleString();
+    // return x.toLocaleString();
+    return x;
   };
 
   makeDetermination = () => {
