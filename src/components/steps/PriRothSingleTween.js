@@ -50,11 +50,6 @@ class PriRothSingleTween extends React.Component {
     magi: this.props.currentUser.magi,
   };
 
-  numberWithCommas = (x) => {
-    // return x.toLocaleString();
-    return x;
-  };
-
   calcRothMaxSingleYoung = () => {
     const magi = this.state.magi;
     const incomeMin = 125000;
@@ -219,9 +214,7 @@ class PriRothSingleTween extends React.Component {
                           className="formField"
                           type="string"
                           min="0"
-                          value={this.numberWithCommas(
-                            this.calcRothMaxSingleYoung()
-                          )}
+                          value={this.calcRothMaxSingleYoung()}
                           readOnly
                           id="rothMaxYoung"
                           name="rothMaxYoung"
@@ -237,9 +230,7 @@ class PriRothSingleTween extends React.Component {
                           className="formField"
                           type="string"
                           min="0"
-                          value={this.numberWithCommas(
-                            this.calcRothMaxSingleOld()
-                          )}
+                          value={this.calcRothMaxSingleOld()}
                           readOnly
                           id="rothMaxOld"
                           name="rothMaxOld"

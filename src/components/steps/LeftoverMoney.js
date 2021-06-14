@@ -39,13 +39,6 @@ class LeftoverMoney extends React.Component {
     // console.log(`handleChange: this.props.currentUser.leftover_money = `, this.props.currentUser.leftover_money)
   };
 
-  numberWithCommas = (amount) => {
-    // return amount.toLocaleString()
-    // return amount.toLocaleString(navigator.language, { minimumFractionDigits: 0 });
-    // return (amount.replace(/\D/g, "")) || "".toLocaleString();
-    return x;
-  };
-
   calcLeftoverMoney = () => {
     if (
       this.state.monthly_income &&
@@ -147,11 +140,11 @@ class LeftoverMoney extends React.Component {
                       className="formField"
                       type="string"
                       min="0"
-                      value={this.numberWithCommas(
+                      value={
                         this.state.monthly_income
                           ? this.state.monthly_income
                           : ""
-                      )}
+                      }
                       id="monthly_income"
                       name="monthly_income"
                       //
@@ -195,9 +188,9 @@ class LeftoverMoney extends React.Component {
                       className="formField"
                       type="string"
                       min="0"
-                      value={this.numberWithCommas(
+                      value={
                         this.state.monthly_bills ? this.state.monthly_bills : ""
-                      )}
+                      }
                       id="monthly_bills"
                       name="monthly_bills"
                       //
@@ -241,11 +234,11 @@ class LeftoverMoney extends React.Component {
                       className="formField"
                       type="string"
                       min="0"
-                      value={this.numberWithCommas(
+                      value={
                         this.state.monthly_spending
                           ? this.state.monthly_spending
                           : ""
-                      )}
+                      }
                       id="monthly_spending"
                       name="monthly_spending"
                       //
@@ -274,7 +267,7 @@ class LeftoverMoney extends React.Component {
                       className="formField"
                       type="string"
                       min="0"
-                      value={this.numberWithCommas(this.calcLeftoverMoney())}
+                      value={this.calcLeftoverMoney()}
                       readOnly
                       id="leftover_money"
                       name="leftover_money"
