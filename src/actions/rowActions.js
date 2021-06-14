@@ -1,5 +1,3 @@
-
-
 export const updateCurrentRow = (nextRow) => {
   return (dispatch) => {
     dispatch({
@@ -10,8 +8,9 @@ export const updateCurrentRow = (nextRow) => {
 };
 
 export const clearCurrentRow = (row) => {
-  switch (true) {
-    case row === "row2":
+  console.log("clearCurrentRow called, row = ", row);
+  switch (row) {
+    case "row2":
       return (dispatch) => {
         dispatch({
           type: "CLEAR_ROW",
@@ -46,7 +45,7 @@ export const clearCurrentRow = (row) => {
           row6: "",
         });
       };
-      default: 
-      return null
+    default:
+      return null;
   }
 };
