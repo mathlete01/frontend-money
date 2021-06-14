@@ -11,7 +11,6 @@ import { Form, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 
 class CreditCardDebt extends React.Component {
-
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.currentUser !== this.props.currentUser) {
       this.setState({
@@ -39,57 +38,57 @@ class CreditCardDebt extends React.Component {
     // console.log(`handleChange: this.props.currentUser.credit_card_debt = `, this.props.currentUser.credit_card_debt)
   };
 
-  numberWithCommas = (x) =>  {
-    return x.toLocaleString()
-}
+  numberWithCommas = (x) => {
+    // return x.toLocaleString()
+    return x;
+  };
 
-calcSum = () => {
-  if (this.state.cc_1 > 0) {
-    const cc_1 = this.state.cc_1;
-    const cc_2 = this.state.cc_2 ? this.state.cc_2 : 0;
-    const cc_3 = this.state.cc_3 ? this.state.cc_3 : 0;
-    const sum = parseInt(cc_1) + parseInt(cc_2) + parseInt(cc_3);
-    this.props.currentUser.credit_card_debt = sum
-    return sum;
-  } else {
-    return 0;
-  }
-};
+  calcSum = () => {
+    if (this.state.cc_1 > 0) {
+      const cc_1 = this.state.cc_1;
+      const cc_2 = this.state.cc_2 ? this.state.cc_2 : 0;
+      const cc_3 = this.state.cc_3 ? this.state.cc_3 : 0;
+      const sum = parseInt(cc_1) + parseInt(cc_2) + parseInt(cc_3);
+      this.props.currentUser.credit_card_debt = sum;
+      return sum;
+    } else {
+      return 0;
+    }
+  };
 
-_next = (event) => {
-  event.preventDefault();
-  this.props.updateCurrentUser(
-    this.props.currentUser.id,
-    {
-      cc_1: this.state.cc_1,
-      cc_2: this.state.cc_2,
-      cc_3: this.state.cc_3,
-      credit_card_debt: this.calcSum(),
-    },
-    this.props.currentStep
-  );
-  // console.log(`_next: this.calcSum() = `, this.calcSum())
-  this.props.handleNextStep(event);
-};
+  _next = (event) => {
+    event.preventDefault();
+    this.props.updateCurrentUser(
+      this.props.currentUser.id,
+      {
+        cc_1: this.state.cc_1,
+        cc_2: this.state.cc_2,
+        cc_3: this.state.cc_3,
+        credit_card_debt: this.calcSum(),
+      },
+      this.props.currentStep
+    );
+    // console.log(`_next: this.calcSum() = `, this.calcSum())
+    this.props.handleNextStep(event);
+  };
 
-_prev = () => {
-  this.props.handlePrevStep();
-};
+  _prev = () => {
+    this.props.handlePrevStep();
+  };
 
   checkValid = () => {
     if (this.calcSum() > 0) {
       return true;
     }
   };
-  
+
   handleFocus = (event) => event.target.select();
 
   render() {
     return (
       <Container className="step">
         <Row id="header" className="rowElement">
-          <Button 
-          onClick={this._prev} variant="link" className="backBtn">
+          <Button onClick={this._prev} variant="link" className="backBtn">
             👈 BACK
           </Button>
           <hr className="w-100" />
@@ -100,7 +99,10 @@ _prev = () => {
           </Container>
         </Row>
         <Row id="body" className="rowElement">
-          <Container>Estimations are fine, you can always come back and update the numbers later.</Container>
+          <Container>
+            Estimations are fine, you can always come back and update the
+            numbers later.
+          </Container>
         </Row>
         <Row id="form" className="rowElement">
           <Container>
@@ -118,12 +120,14 @@ _prev = () => {
                       className="formField"
                       type="string"
                       min="0"
-                      value={this.numberWithCommas(this.state.cc_1 ? this.state.cc_1 : "")}
+                      value={this.numberWithCommas(
+                        this.state.cc_1 ? this.state.cc_1 : ""
+                      )}
                       id="cc_1"
                       name="cc_1"
-                      // 
+                      //
                       onChange={this.handleChange}
-                      onFocus={this.handleFocus} 
+                      onFocus={this.handleFocus}
                     />
                   </InputGroup>
                 </Col>
@@ -147,12 +151,14 @@ _prev = () => {
                       className="formField"
                       type="string"
                       min="0"
-                      value={this.numberWithCommas(this.state.cc_2 ? this.state.cc_2 : "")}
+                      value={this.numberWithCommas(
+                        this.state.cc_2 ? this.state.cc_2 : ""
+                      )}
                       id="cc_2"
                       name="cc_2"
-                      // 
+                      //
                       onChange={this.handleChange}
-                      onFocus={this.handleFocus} 
+                      onFocus={this.handleFocus}
                     />
                   </InputGroup>
                 </Col>
@@ -176,12 +182,14 @@ _prev = () => {
                       className="formField"
                       type="string"
                       min="0"
-                      value={this.numberWithCommas(this.state.cc_3 ? this.state.cc_3 : "")}
+                      value={this.numberWithCommas(
+                        this.state.cc_3 ? this.state.cc_3 : ""
+                      )}
                       id="cc_3"
                       name="cc_3"
-                      // 
+                      //
                       onChange={this.handleChange}
-                      onFocus={this.handleFocus} 
+                      onFocus={this.handleFocus}
                     />
                   </InputGroup>
                 </Col>
@@ -206,11 +214,7 @@ _prev = () => {
                       Next
                     </Button>
                   ) : (
-                    <Button
-                      variant="continue"
-                      block
-                      disabled
-                    >
+                    <Button variant="continue" block disabled>
                       Next
                     </Button>
                   )}

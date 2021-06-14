@@ -40,9 +40,10 @@ class LeftoverMoney extends React.Component {
   };
 
   numberWithCommas = (amount) => {
-    return amount.toLocaleString()
+    // return amount.toLocaleString()
     // return amount.toLocaleString(navigator.language, { minimumFractionDigits: 0 });
     // return (amount.replace(/\D/g, "")) || "".toLocaleString();
+    return x;
   };
 
   calcLeftoverMoney = () => {
@@ -111,7 +112,7 @@ class LeftoverMoney extends React.Component {
         <Row id="body" className="rowElement">
           <Container>
             Estimations are fine, you can always come back and update the
-            numbers later. 
+            numbers later.
             {/* If you're in a couple, enter your combined income, bills, and spending money. */}
           </Container>
         </Row>

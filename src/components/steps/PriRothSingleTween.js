@@ -51,7 +51,8 @@ class PriRothSingleTween extends React.Component {
   };
 
   numberWithCommas = (x) => {
-    return x.toLocaleString();
+    // return x.toLocaleString();
+    return x;
   };
 
   calcRothMaxSingleYoung = () => {
