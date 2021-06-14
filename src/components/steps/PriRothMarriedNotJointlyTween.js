@@ -50,11 +50,6 @@ class PriRothMarriedNotJointlyTween extends React.Component {
     magi: this.props.currentUser.magi,
   };
 
-  numberWithCommas = (x) => {
-    // return x.toLocaleString();
-    return x;
-  };
-
   calcRothMaxNotJointly = () => {
     console.log(`calcRothMaxNotJointly called`);
     const magi = this.state.magi;
@@ -215,9 +210,7 @@ class PriRothMarriedNotJointlyTween extends React.Component {
                           className="formField"
                           type="string"
                           min="0"
-                          value={this.numberWithCommas(
-                            this.calcRothMaxNotJointly()
-                          )}
+                          value={this.calcRothMaxNotJointly()}
                           readOnly
                           id="rothMax"
                           name="rothMax"

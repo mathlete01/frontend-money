@@ -38,11 +38,6 @@ class CreditCardDebt extends React.Component {
     // console.log(`handleChange: this.props.currentUser.credit_card_debt = `, this.props.currentUser.credit_card_debt)
   };
 
-  numberWithCommas = (x) => {
-    // return x.toLocaleString()
-    return x;
-  };
-
   calcSum = () => {
     if (this.state.cc_1 > 0) {
       const cc_1 = this.state.cc_1;
@@ -120,9 +115,7 @@ class CreditCardDebt extends React.Component {
                       className="formField"
                       type="string"
                       min="0"
-                      value={this.numberWithCommas(
-                        this.state.cc_1 ? this.state.cc_1 : ""
-                      )}
+                      value={this.state.cc_1 ? this.state.cc_1 : ""}
                       id="cc_1"
                       name="cc_1"
                       //
@@ -151,9 +144,7 @@ class CreditCardDebt extends React.Component {
                       className="formField"
                       type="string"
                       min="0"
-                      value={this.numberWithCommas(
-                        this.state.cc_2 ? this.state.cc_2 : ""
-                      )}
+                      value={this.state.cc_2 ? this.state.cc_2 : ""}
                       id="cc_2"
                       name="cc_2"
                       //
@@ -182,9 +173,7 @@ class CreditCardDebt extends React.Component {
                       className="formField"
                       type="string"
                       min="0"
-                      value={this.numberWithCommas(
-                        this.state.cc_3 ? this.state.cc_3 : ""
-                      )}
+                      value={this.state.cc_3 ? this.state.cc_3 : ""}
                       id="cc_3"
                       name="cc_3"
                       //
