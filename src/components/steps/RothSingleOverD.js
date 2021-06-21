@@ -10,42 +10,59 @@ import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
-
 class RothSingleOverD extends React.Component {
-  _next = (event) => {
-    event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { roth_eligable: false },this.props.currentStep);
-    this.props.handleNextStep(event)
-  };
-
   _prev = () => {
     this.props.handlePrevStep();
   };
 
+  _next = (event) => {
+    event.preventDefault();
+    this.props.updateCurrentUser(
+      this.props.currentUser.id,
+      { roth_eligable: false },
+      this.props.currentStep
+    );
+    this.props.handleNextStep(event);
+  };
+
   render() {
-  
     return (
       <Container className="step">
         <Row id="header" className="rowElement">
-          <Button 
-          onClick={this._prev} variant="link" className="backBtn">
+          <Button onClick={this._prev} variant="link" className="backBtn">
             👈 BACK
           </Button>
           <hr className="w-100" />
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h3>Your income is too high to contribute to a regular Roth IRA 🎩</h3>
+            <h3>
+              Your income is too high to contribute to a regular Roth IRA 🎩
+            </h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Ok, since you'll make more than $140K in 2021, you're not eligible to contribute to a regular Roth IRA. But--and this is a big but--anyone with <OverlayTrigger
-          placement="top"
-          // defaultShow="true"
-          delay={{ show: 250, hide: 400 }}
-          overlay={(props) => this.props.renderTooltip(props, "Earned income is income you'd make from wages, not from investments")}
-        ><a href="#" className="tooltiptext">earned income</a></OverlayTrigger> can contribute to a Backdoor Roth IRA! What's that? Well, let me tell you...
+            Ok, since you'll make more than $140K in 2021, you're not eligible
+            to contribute to a regular Roth IRA. But--and this is a big
+            but--anyone with{" "}
+            <OverlayTrigger
+              placement="top"
+              // defaultShow="true"
+              delay={{ show: 250, hide: 400 }}
+              overlay={(props) =>
+                this.props.renderTooltip(
+                  props,
+                  "Earned income is income you'd make from wages, not from investments"
+                )
+              }
+            >
+              <a href="#" className="tooltiptext">
+                earned income
+              </a>
+            </OverlayTrigger>{" "}
+            can contribute to a Backdoor Roth IRA! What's that? Well, let me
+            tell you...
           </Container>
         </Row>
         <Row id="form" className="rowElement"></Row>
@@ -53,8 +70,7 @@ class RothSingleOverD extends React.Component {
           <Container>
             <Form.Group>
               <Form.Row>
-                <Col>
-                </Col>
+                <Col></Col>
                 <Col>
                   <Button
                     variant="continue"
