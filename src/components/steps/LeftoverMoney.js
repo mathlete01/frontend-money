@@ -67,7 +67,8 @@ class LeftoverMoney extends React.Component {
       const spending = this.state.monthly_spending;
       const difference = income - (parseInt(bills) + parseInt(spending));
       this.props.currentUser.leftover_money = difference;
-      return difference;
+      let differenceWithCommas = this.props.numberWithCommas(difference);
+      return differenceWithCommas;
     } else {
       return 0;
     }

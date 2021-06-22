@@ -58,6 +58,10 @@ class StepContainer extends React.Component {
     };
   }
 
+  numberWithCommas = (x) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+
   renderTooltip = (props, tooltipTxt) => {
     return <Tooltip {...props}>{tooltipTxt}</Tooltip>;
   };
@@ -290,6 +294,7 @@ class StepContainer extends React.Component {
             rowNum="1"
             getNextRow={this.getNextRow}
             renderTooltip={this.renderTooltip}
+            numberWithCommas={this.numberWithCommas}
           />
         );
       case "NoDebt":
