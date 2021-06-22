@@ -17,44 +17,62 @@ class Four01kQ extends React.Component {
 
   _yes = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { four01k: true },this.props.currentStep);
+    this.props.updateCurrentUser(
+      this.props.currentUser.id,
+      { four01k: true },
+      this.props.currentStep
+    );
     this.props.handleNextStep(event);
   };
 
   _no = (event) => {
     event.preventDefault();
-    this.props.updateCurrentUser(this.props.currentUser.id, { 
-      four01k: false,
-      four01k_match: "0",
-      four01k_contribution: "0"
-     },this.props.currentStep);
+    this.props.updateCurrentUser(
+      this.props.currentUser.id,
+      {
+        four01k: false,
+        four01k_match: "0",
+        four01k_contribution: "0",
+      },
+      this.props.currentStep
+    );
     this.props.handleNextStep(event);
   };
 
- 
   render() {
     return (
       <Container className="step">
         <Row id="header" className="rowElement">
-          <Button 
-          onClick={this._prev} variant="link" className="backBtn">
+          <Button onClick={this._prev} variant="link" className="backBtn">
             👈 BACK
           </Button>
           <hr className="w-100" />
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h3>Does your employer offer a retirement investment account like a <OverlayTrigger
-          placement="top"
-          // defaultShow="true"
-          delay={{ show: 250, hide: 400 }}
-          overlay={(props) => this.props.renderTooltip(props, "...or 403(b) or 457 or Thrift Savings Plan")}
-        ><a href="#" className="tooltiptext">401(k) plan</a></OverlayTrigger>? 📈</h3>
+            <h3>
+              Does your employer offer a retirement investment account like a{" "}
+              <OverlayTrigger
+                placement="top"
+                // defaultShow="true"
+                delay={{ show: 250, hide: 400 }}
+                overlay={(props) =>
+                  this.props.renderTooltip(
+                    props,
+                    "...or 403(b) or 457 or Thrift Savings Plan"
+                  )
+                }
+              >
+                <a href="#" className="tooltiptext">
+                  401(k) plan
+                </a>
+              </OverlayTrigger>
+              ? 📈
+            </h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
-          <Container>
-          </Container>
+          <Container></Container>
         </Row>
         <Row id="form" className="rowElement"></Row>
         <Row id="buttons" className="rowElement">

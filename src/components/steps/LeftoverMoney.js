@@ -11,8 +11,25 @@ import InputGroup from "react-bootstrap/InputGroup";
 import { Form, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+// import Hoc from "../../HOC";
 
 class LeftoverMoney extends React.Component {
+  _next = (event) => {
+    event.preventDefault();
+    this.props.updateCurrentUser(
+      this.props.currentUser.id,
+      {
+        monthly_income: this.state.monthly_income,
+        monthly_bills: this.state.monthly_bills,
+        monthly_spending: this.state.monthly_spending,
+        leftover_money: this.calcLeftoverMoney(),
+      },
+      this.props.currentStep
+    );
+    // console.log(`_next: this.calcLeftoverMoney() = `, this.calcLeftoverMoney())
+    this.props.handleNextStep(event);
+  };
+
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.currentUser !== this.props.currentUser) {
       this.setState({
@@ -54,22 +71,6 @@ class LeftoverMoney extends React.Component {
     } else {
       return 0;
     }
-  };
-
-  _next = (event) => {
-    event.preventDefault();
-    this.props.updateCurrentUser(
-      this.props.currentUser.id,
-      {
-        monthly_income: this.state.monthly_income,
-        monthly_bills: this.state.monthly_bills,
-        monthly_spending: this.state.monthly_spending,
-        leftover_money: this.calcLeftoverMoney(),
-      },
-      this.props.currentStep
-    );
-    // console.log(`_next: this.calcLeftoverMoney() = `, this.calcLeftoverMoney())
-    this.props.handleNextStep(event);
   };
 
   checkValid = () => {
@@ -320,6 +321,8 @@ const mapStateToProps = (state) => {
 };
 
 // The connect function is linked to the store and listening to each change in the state that occurs. When a change occurs, it calls mapStateToProps(). We specify which component we are providing this data to at the very end.
+
+// LeftoverMoney = Hoc(LeftoverMoney);
 
 export default connect(mapStateToProps, {
   updateCurrentStep,

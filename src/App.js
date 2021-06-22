@@ -24,6 +24,7 @@ import About from "./components/About";
 import HireMe from "./components/HireMe";
 import FAQ from "./components/FAQ";
 import { BrowserView, MobileView } from "react-device-detect";
+// import Hoc from "./HOC";
 
 class App extends React.Component {
   state = {
