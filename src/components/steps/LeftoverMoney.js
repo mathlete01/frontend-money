@@ -65,19 +65,17 @@ class LeftoverMoney extends React.Component {
       const income = this.state.monthly_income;
       const bills = this.state.monthly_bills;
       const spending = this.state.monthly_spending;
-      const difference = income - (parseInt(bills) + parseInt(spending));
+      const difference =
+        parseInt(income) - (parseInt(bills) + parseInt(spending));
       this.props.currentUser.leftover_money = difference;
-      let differenceWithCommas = this.props.numberWithCommas(difference);
-      return differenceWithCommas;
+      return difference;
     } else {
       return 0;
     }
   };
 
   checkValid = () => {
-    if (this.calcLeftoverMoney() > 0) {
-      return true;
-    }
+    return this.calcLeftoverMoney() > 0;
   };
 
   handleFocus = (event) => event.target.select();
@@ -269,7 +267,7 @@ class LeftoverMoney extends React.Component {
                       className="formField"
                       type="string"
                       min="0"
-                      value={this.calcLeftoverMoney()}
+                      value={this.calcLeftoverMoney().toLocaleString()}
                       readOnly
                       id="leftover_money"
                       name="leftover_money"
@@ -287,21 +285,16 @@ class LeftoverMoney extends React.Component {
               <Form.Row>
                 <Col></Col>
                 <Col>
-                  {this.checkValid() ? (
-                    <Button
-                      variant="continue"
-                      block
-                      id={this.props.currentRow}
-                      value="Four01kQ"
-                      onClick={this._next}
-                    >
-                      Next
-                    </Button>
-                  ) : (
-                    <Button variant="continue" block disabled>
-                      Next
-                    </Button>
-                  )}
+                  <Button
+                    variant="continue"
+                    block
+                    disabled={!this.checkValid()}
+                    id={this.props.currentRow}
+                    value="Four01kQ"
+                    onClick={this._next}
+                  >
+                    Next
+                  </Button>
                 </Col>
               </Form.Row>
             </Form.Group>
