@@ -77,7 +77,7 @@ class Four01kMatch extends React.Component {
                       type="string"
                       min="0"
                       // max="7"
-                      maxlength="1"
+                      maxLength="1"
                       value={this.state.four01k_match ? this.state.four01k_match : ""}
                       id="four01k_match"
                       name="four01k_match"
