@@ -92,7 +92,7 @@ class Four01kContribution extends React.Component {
                       type="string"
                       min="0"
                       // max="100"
-                      maxlength="2"
+                      maxLength="2"
                       value={
                         this.state.four01k_contribution
                           ? this.state.four01k_contribution
