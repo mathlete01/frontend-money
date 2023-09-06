@@ -75,15 +75,6 @@ class Intro extends React.Component {
             Wondering how to get started with investing? <br />
             <br /> This interactive quiz asks you a series of questions, then
             creates a plan to transform you from a debtor to an investor.
-						<br />{figures.year}
-						<br />{figures.four01k_max_under_50}
-						<br />{figures.roth_married_jointly_min}
-						<br />{figures.roth_married_jointly_max}
-						<br />{figures.roth_married_not_jointly_min}
-						<br />{figures.roth_single_min}
-						<br />{figures.roth_single_max}
-						<br />{figures.roth_max_50_and_over}
-						<br />{figures.roth_max_under_50}
           </Container>
         </Row>
         <Row id="form" className="rowElement"></Row>

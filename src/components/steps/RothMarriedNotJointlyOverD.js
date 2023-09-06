@@ -43,7 +43,7 @@ class RothMarriedNotJointlyOverD extends React.Component {
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-          Ok, since you'll make more than $10,000 in {figures.year}, you're not eligible to contribute to a regular Roth IRA. But--and this is a big but--anyone with <OverlayTrigger
+          Ok, since you'll make more than ${figures.roth_married_not_jointly_min} in {figures.year}, you're not eligible to contribute to a regular Roth IRA. But--and this is a big but--anyone with <OverlayTrigger
           placement="top"
           // defaultShow="true"
           delay={{ show: 250, hide: 400 }}
