@@ -10,9 +10,11 @@ import InputGroup from "react-bootstrap/InputGroup";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import figures from "../../data/annual_updates";
 
 
 class Four01kContribution extends React.Component {
+
   state = {
     four01k_contribution: this.props.currentUser.four01k_contribution,
   };
@@ -63,7 +65,7 @@ class Four01kContribution extends React.Component {
           placement="top"
           // defaultShow="true"
           delay={{ show: 250, hide: 400 }}
-          overlay={(props) => this.props.renderTooltip(props, "The maximum you can contribute in 2021 is $19,500")}
+          overlay={(props) => this.props.renderTooltip(props, "The maximum you can contribute in 2021 is ${figures.four01k_max_under_50}")}
         ><a href="#" className="tooltiptext">contributing</a></OverlayTrigger> to your <OverlayTrigger
           placement="top"
           // defaultShow="true"

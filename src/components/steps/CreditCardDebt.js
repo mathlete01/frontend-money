@@ -9,6 +9,7 @@ import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import { Form, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
+import figures from "../../data/annual_updates";
 
 class CreditCardDebt extends React.Component {
   componentDidUpdate(prevProps, prevState) {

@@ -9,6 +9,7 @@ import Button from "react-bootstrap/Button";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import figures from "../../data/annual_updates";
 
 class RothSingleOverD extends React.Component {
   _prev = () => {
@@ -43,7 +44,7 @@ class RothSingleOverD extends React.Component {
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Ok, since you'll make more than $140K in 2021, you're not eligible
+            Ok, since you'll make more than $140,000 in 2021, you're not eligible
             to contribute to a regular Roth IRA. But--and this is a big
             but--anyone with{" "}
             <OverlayTrigger

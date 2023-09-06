@@ -9,7 +9,7 @@ import Button from "react-bootstrap/Button";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { Tabs, Tab } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
-
+import figures from "../../data/annual_updates";
 
 
 class PriTaxableBrokerageIntro extends React.Component {

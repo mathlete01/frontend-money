@@ -12,6 +12,7 @@ import Table from "react-bootstrap/Table";
 import { Tabs, Tab } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import figures from "../../data/annual_updates";
 
 class PriRothSingleTween extends React.Component {
   _prev = () => {
@@ -144,7 +145,7 @@ class PriRothSingleTween extends React.Component {
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Since you'll make more than $125k but less than $140k in 2021, the
+            Since you'll make more than $125,000 but less than $140,000 in 2021, the
             amount you'll be able to contribute is reduced.
           </Container>
         </Row>

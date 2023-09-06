@@ -8,6 +8,7 @@ import Button from "react-bootstrap/Button";
 import { Form, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import figures from "../../data/annual_updates";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 // console.log("REACT_APP_BASE_URL:", BASE_URL, 1745)
@@ -72,6 +73,15 @@ class Intro extends React.Component {
             Wondering how to get started with investing? <br />
             <br /> This interactive quiz asks you a series of questions, then
             creates a plan to transform you from a debtor to an investor.
+
+						<br />${figures.four01k_max_under_50};
+						<br />${figures.roth_married_jointly_min}
+						<br />${figures.roth_married_jointly_max}
+						<br />${figures.roth_married_not_jointly_min}
+						<br />${figures.roth_single_min}
+						<br />${figures.roth_single_max}
+						<br />${figures.roth_max_50_and_over}
+						<br />${figures.roth_max_under_50}
           </Container>
         </Row>
         <Row id="form" className="rowElement"></Row>

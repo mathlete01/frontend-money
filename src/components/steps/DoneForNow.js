@@ -6,6 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
+import figures from "../../data/annual_updates";
 
 class DoneForNow extends React.Component {
   _prev = () => {

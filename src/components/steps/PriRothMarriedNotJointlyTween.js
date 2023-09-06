@@ -12,6 +12,7 @@ import Table from "react-bootstrap/Table";
 import { Tabs, Tab } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import figures from "../../data/annual_updates";
 
 class PriRothMarriedNotJointlyTween extends React.Component {
   _prev = () => {
@@ -141,7 +142,7 @@ class PriRothMarriedNotJointlyTween extends React.Component {
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Since your income as a couple will be less than $10k, the amount
+            Since your income as a couple will be less than $10,000, the amount
             you'll be able to contribute is reduced.
           </Container>
         </Row>

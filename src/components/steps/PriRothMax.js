@@ -10,6 +10,7 @@ import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { Tabs, Tab } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import figures from "../../data/annual_updates";
 
 
 class PriRothMax extends React.Component {
@@ -68,7 +69,7 @@ class PriRothMax extends React.Component {
               <ul>
                 <li>
                   Every year, there is a maximum you can contribute to a Roth
-                  IRA. The maximum for someone age 50 or over is $7k.
+                  IRA. The maximum for someone age 50 or over is $7,000.
                 </li>
               </ul>
             </Tab>

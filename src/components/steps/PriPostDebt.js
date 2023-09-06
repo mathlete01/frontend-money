@@ -10,6 +10,7 @@ import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { Tabs, Tab } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 import Spinner from "react-bootstrap/Spinner";
+import figures from "../../data/annual_updates";
 
 class PriPostDebt extends React.Component {
   _prev = () => {

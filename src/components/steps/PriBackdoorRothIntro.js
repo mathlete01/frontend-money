@@ -10,6 +10,7 @@ import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { Tabs, Tab } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import figures from "../../data/annual_updates";
 
 
 class PriBackdoorRothIntro extends React.Component {
@@ -95,7 +96,7 @@ class PriBackdoorRothIntro extends React.Component {
             <Tab eventKey="how" title="How">
               <ul>
                 <li>
-                  This is an oversimplification, but basically you (1) contribute up to $6k to a tranditional IRA, then (2) call up the brokerage and ask them to convert that IRA to a Roth IRA.
+                  This is an oversimplification, but basically you (1) contribute up to $6,000 to a tranditional IRA, then (2) call up the brokerage and ask them to convert that IRA to a Roth IRA.
                 </li>
                 <li>
                   It's a bit complicated but totally doable. Call up your brokerage and ask them to explain it to you.
