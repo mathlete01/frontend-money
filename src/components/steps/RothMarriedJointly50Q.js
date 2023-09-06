@@ -29,7 +29,7 @@ class RothMarriedJointly50Q extends React.Component {
   _no = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { 
-      roth_max: 7000,
+      roth_max: `${figures.roth_max_50_and_over}`,
       below_50: false 
     },this.props.currentStep);
     this.props.handleNextStep(event)

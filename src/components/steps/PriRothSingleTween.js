@@ -83,7 +83,7 @@ class PriRothSingleTween extends React.Component {
     const incomeMin = `${figures.roth_single_min}`;
     const incomeMax = `${figures.roth_single_max}`;
     const divider = 15000;
-    const contributionLimitOld = 7000;
+    const contributionLimitOld = `${figures.roth_max_50_and_over}`;
     switch (true) {
       case magi < incomeMin:
         return contributionLimitOld;
