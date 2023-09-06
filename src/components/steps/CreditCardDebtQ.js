@@ -8,6 +8,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
+import figures from "../../data/annual_updates";
 
 class CreditCardDebtQ extends React.Component {
   _prev = () => {

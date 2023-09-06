@@ -10,6 +10,7 @@ import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { Tabs, Tab } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import figures from "../../data/annual_updates";
 
 
 class PriRothMax extends React.Component {
@@ -21,7 +22,7 @@ class PriRothMax extends React.Component {
     event.preventDefault();
     this.props.updateCurrentUser(
       this.props.currentUser.id,
-      { roth_max: 7000 },
+      { roth_max: `${figures.roth_max_50_and_over}` },
       this.props.currentStep
     );
     this.props.handleNextStep(event)
@@ -59,7 +60,7 @@ class PriRothMax extends React.Component {
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            You can contribute an extra $1,000--up to $7,000--to your Roth IRA! 📈💰
+            You can contribute an extra $1,000--up to ${figures.roth_max_50_and_over}--to your Roth IRA! 📈💰
           </Container>
         </Row>
         <Row id="tabs" className="rowElement">
@@ -68,7 +69,7 @@ class PriRothMax extends React.Component {
               <ul>
                 <li>
                   Every year, there is a maximum you can contribute to a Roth
-                  IRA. The maximum for someone age 50 or over is $7k.
+                  IRA. The maximum for someone age 50 or over is ${figures.roth_max_50_and_over}.
                 </li>
               </ul>
             </Tab>

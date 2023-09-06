@@ -8,6 +8,7 @@ import Button from "react-bootstrap/Button";
 import { Form, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import figures from "../../data/annual_updates";
 
 const BASE_URL = process.env.REACT_APP_BASE_URL;
 // console.log("REACT_APP_BASE_URL:", BASE_URL, 1745)
@@ -53,7 +54,9 @@ class Intro extends React.Component {
       .catch((errors) => console.log(`createUser: ${errors}`));
   };
 
-  render() {
+	
+  
+	render() {
     return (
       <Container className="step">
         <Row id="header" className="rowElement"></Row>

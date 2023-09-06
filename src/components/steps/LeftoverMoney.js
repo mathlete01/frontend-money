@@ -12,6 +12,7 @@ import { Form, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 // import Hoc from "../../HOC";
+import figures from "../../data/annual_updates";
 
 class LeftoverMoney extends React.Component {
   _next = (event) => {
@@ -97,8 +98,7 @@ class LeftoverMoney extends React.Component {
         <Row id="title" className="rowElement">
           <Container>
             <h3>
-              How much money do you have every month to put towards your goals?
-              🥅
+              How much money do you have every month to put towards your goals?🥅
             </h3>
           </Container>
         </Row>

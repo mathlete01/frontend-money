@@ -12,6 +12,8 @@ import Table from "react-bootstrap/Table";
 import { Tabs, Tab } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import figures from "../../data/annual_updates";
+
 
 class PriRothMarriedJointlyTween extends React.Component {
   _prev = () => {
@@ -52,10 +54,10 @@ class PriRothMarriedJointlyTween extends React.Component {
 
   calcRothMaxJointlyYoung = () => {
     const magi = this.state.magi;
-    const incomeMin = 198000;
-    const incomeMax = 208000;
-    const divider = 10000;
-    const contributionLimitYoung = 6000;
+    const incomeMin = `${figures.roth_married_jointly_min}`;
+    const incomeMax = `${figures.roth_married_jointly_max}`;
+    const divider = `${figures.roth_married_not_jointly_min}`;
+    const contributionLimitYoung = `${figures.roth_max_under_50}`;
     switch (true) {
       case magi < incomeMin:
         return contributionLimitYoung;
@@ -79,10 +81,10 @@ class PriRothMarriedJointlyTween extends React.Component {
 
   calcRothMaxJointlyOld = () => {
     const magi = this.state.magi;
-    const incomeMin = 198000;
-    const incomeMax = 208000;
-    const divider = 10000;
-    const contributionLimitOld = 7000;
+    const incomeMin = `${figures.roth_married_jointly_min}`;
+    const incomeMax = `${figures.roth_married_jointly_max}`;
+    const divider = `${figures.roth_married_not_jointly_min}`;
+    const contributionLimitOld = `${figures.roth_max_50_and_over}`;
     switch (true) {
       case magi < incomeMin:
         return contributionLimitOld;
@@ -146,8 +148,8 @@ class PriRothMarriedJointlyTween extends React.Component {
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Since your income as a couple will be more than $198k but less than
-            $208k in 2021, the amount you'll be able to contribute is reduced.
+            Since your income as a couple will be more than ${figures.roth_married_jointly_min} but less than
+            ${figures.roth_married_jointly_max} in {figures.year}, the amount you'll be able to contribute is reduced.
           </Container>
         </Row>
         <Row id="tabs" className="rowElement">

@@ -12,6 +12,7 @@ import Table from "react-bootstrap/Table";
 import { Tabs, Tab } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import figures from "../../data/annual_updates";
 
 class PriRothMarriedNotJointlyTween extends React.Component {
   _prev = () => {
@@ -54,9 +55,9 @@ class PriRothMarriedNotJointlyTween extends React.Component {
     console.log(`calcRothMaxNotJointly called`);
     const magi = this.state.magi;
     const incomeMin = 0;
-    const incomeMax = 10000;
-    const divider = 10000;
-    const contributionLimitYoung = 6000;
+    const incomeMax = `${figures.roth_married_not_jointly_min}`;
+    const divider = `${figures.roth_married_not_jointly_min}`;
+    const contributionLimitYoung = `${figures.roth_max_under_50}`;
     if (magi < incomeMin) {
       console.log(`magi < incomeMin`);
       return 0;
@@ -141,7 +142,7 @@ class PriRothMarriedNotJointlyTween extends React.Component {
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Since your income as a couple will be less than $10k, the amount
+            Since your income as a couple will be less than ${figures.roth_married_not_jointly_min}, the amount
             you'll be able to contribute is reduced.
           </Container>
         </Row>

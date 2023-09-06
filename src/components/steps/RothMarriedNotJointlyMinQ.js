@@ -9,6 +9,7 @@ import Button from "react-bootstrap/Button";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import figures from "../../data/annual_updates";
 
 
 class RothMarriedNotJointlyMinQ extends React.Component {
@@ -48,7 +49,7 @@ class RothMarriedNotJointlyMinQ extends React.Component {
           // defaultShow="true"
           delay={{ show: 250, hide: 400 }}
           overlay={(props) => this.props.renderTooltip(props, "That's the minimim amount you can earn to qualify for a Roth IRA if you are married but file your taxes as a single person")}
-        ><a href="#" className="tooltiptext">less than $10,000</a></OverlayTrigger> in 2021? 💵</h3>
+        ><a href="#" className="tooltiptext">less than ${figures.roth_married_not_jointly_min}</a></OverlayTrigger> in {figures.year}? 💵</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">

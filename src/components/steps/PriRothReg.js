@@ -11,6 +11,7 @@ import Table from 'react-bootstrap/Table'
 import { Tabs, Tab } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import figures from "../../data/annual_updates";
 
 
 class PriRothReg extends React.Component {
@@ -22,7 +23,7 @@ class PriRothReg extends React.Component {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { 
       roth_eligable: true,
-      roth_max: 6000 
+      roth_max: `${figures.roth_max_under_50}` 
     },this.props.currentStep);
     this.props.handleNextStep(event)
   };
@@ -57,7 +58,7 @@ class PriRothReg extends React.Component {
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            You can contribute up to $6k to a Roth IRA, so do it!
+            You can contribute up to ${figures.roth_max_under_50} to a Roth IRA, so do it!
           </Container>
         </Row>
         <Row id="tabs" className="rowElement">
@@ -66,7 +67,7 @@ class PriRothReg extends React.Component {
               <ul>
                 <li>
                   Every year, there is a maximum you can contribute to a Roth
-                  IRA. The maximum for someone below 50 is $6k.
+                  IRA. The maximum for someone below 50 is ${figures.roth_max_under_50}.
                 </li>
               </ul>
             </Tab>

@@ -8,6 +8,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
+import figures from "../../data/annual_updates";
 
 
 class RothMarriedJointlyMinQ extends React.Component {
@@ -42,7 +43,7 @@ class RothMarriedJointlyMinQ extends React.Component {
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h3>As a couple, will your pre-tax income be less than $198,000 in 2021? 💰</h3>
+            <h3>As a couple, will your pre-tax income be less than ${figures.roth_married_jointly_min} in {figures.year}? 💰</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">

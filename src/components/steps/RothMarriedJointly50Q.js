@@ -8,6 +8,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import { Form, FormGroup, FormControl } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
+import figures from "../../data/annual_updates";
 
 
 class RothMarriedJointly50Q extends React.Component {
@@ -18,7 +19,7 @@ class RothMarriedJointly50Q extends React.Component {
   _yes = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { 
-      roth_max: 6000,
+      roth_max: `${figures.roth_max_under_50}`,
       below_50: true 
     },this.props.currentStep);
     this.props.handleNextStep(event)
@@ -28,7 +29,7 @@ class RothMarriedJointly50Q extends React.Component {
   _no = (event) => {
     event.preventDefault();
     this.props.updateCurrentUser(this.props.currentUser.id, { 
-      roth_max: 7000,
+      roth_max: `${figures.roth_max_50_and_over}`,
       below_50: false 
     },this.props.currentStep);
     this.props.handleNextStep(event)

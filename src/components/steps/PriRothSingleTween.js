@@ -12,6 +12,7 @@ import Table from "react-bootstrap/Table";
 import { Tabs, Tab } from "react-bootstrap";
 import { updateCurrentRow } from "../../actions/rowActions";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import figures from "../../data/annual_updates";
 
 class PriRothSingleTween extends React.Component {
   _prev = () => {
@@ -52,10 +53,11 @@ class PriRothSingleTween extends React.Component {
 
   calcRothMaxSingleYoung = () => {
     const magi = this.state.magi;
-    const incomeMin = 125000;
-    const incomeMax = 140000;
+    // const incomeMin = 125000;
+		const incomeMin = `${figures.roth_single_min}`;
+    const incomeMax = `${figures.roth_single_max}`;
     const divider = 15000;
-    const contributionLimitYoung = 6000;
+    const contributionLimitYoung = `${figures.roth_max_under_50}`;
     switch (true) {
       case magi < incomeMin:
         return contributionLimitYoung;
@@ -78,10 +80,10 @@ class PriRothSingleTween extends React.Component {
 
   calcRothMaxSingleOld = () => {
     const magi = this.state.magi;
-    const incomeMin = 125000;
-    const incomeMax = 140000;
+    const incomeMin = `${figures.roth_single_min}`;
+    const incomeMax = `${figures.roth_single_max}`;
     const divider = 15000;
-    const contributionLimitOld = 7000;
+    const contributionLimitOld = `${figures.roth_max_50_and_over}`;
     switch (true) {
       case magi < incomeMin:
         return contributionLimitOld;
@@ -144,7 +146,7 @@ class PriRothSingleTween extends React.Component {
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Since you'll make more than $125k but less than $140k in 2021, the
+            Since you'll make more than ${figures.roth_single_min} but less than ${figures.roth_single_max} in {figures.year}, the
             amount you'll be able to contribute is reduced.
           </Container>
         </Row>
