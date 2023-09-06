@@ -74,7 +74,7 @@ class Intro extends React.Component {
           <Container>
             Wondering how to get started with investing? <br />
             <br /> This interactive quiz asks you a series of questions, then
-            creates a plan to transform you from a debtor to an investor.
+            creates a personalized plan to transform you from a debtor to an investor.
           </Container>
         </Row>
         <Row id="form" className="rowElement"></Row>
