@@ -44,12 +44,12 @@ class RothMarriedJointlyMaxQ extends React.Component {
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h3>As a couple, will your pre-tax income be less than $208,000 in {figures.year}? 💰</h3>
+            <h3>As a couple, will your pre-tax income be less than ${figures.roth_married_jointly_max} in {figures.year}? 💰</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            $208,000 is the maximum you can earn and still contribute to a Roth IRA.
+            ${figures.roth_married_jointly_max} is the maximum you can earn and still contribute to a Roth IRA.
           </Container>
         </Row>
         <Row id="form" className="rowElement"></Row>
