@@ -48,7 +48,7 @@ class RothSingleIncomeQ extends React.Component {
           // defaultShow="true"
           delay={{ show: 250, hide: 400 }}
           overlay={(props) => this.props.renderTooltip(props, "Earned income is income you'd make from wages, not from investments")}
-        ><a href="#" className="tooltiptext">earned income</a></OverlayTrigger> in 2021? 💵</h3>
+        ><a href="#" className="tooltiptext">earned income</a></OverlayTrigger> in {figures.year}? 💵</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">

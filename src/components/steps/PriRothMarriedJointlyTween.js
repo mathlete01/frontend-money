@@ -149,7 +149,7 @@ class PriRothMarriedJointlyTween extends React.Component {
         <Row id="body" className="rowElement">
           <Container>
             Since your income as a couple will be more than $198,000 but less than
-            $208,000 in 2021, the amount you'll be able to contribute is reduced.
+            $208,000 in {figures.year}, the amount you'll be able to contribute is reduced.
           </Container>
         </Row>
         <Row id="tabs" className="rowElement">

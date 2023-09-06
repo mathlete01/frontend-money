@@ -44,7 +44,7 @@ class RothMarriedJointlyMaxQ extends React.Component {
         </Row>
         <Row id="title" className="rowElement">
           <Container>
-            <h3>As a couple, will your pre-tax income be less than $208,000 in 2021? 💰</h3>
+            <h3>As a couple, will your pre-tax income be less than $208,000 in {figures.year}? 💰</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">

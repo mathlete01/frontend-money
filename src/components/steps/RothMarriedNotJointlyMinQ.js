@@ -49,7 +49,7 @@ class RothMarriedNotJointlyMinQ extends React.Component {
           // defaultShow="true"
           delay={{ show: 250, hide: 400 }}
           overlay={(props) => this.props.renderTooltip(props, "That's the minimim amount you can earn to qualify for a Roth IRA if you are married but file your taxes as a single person")}
-        ><a href="#" className="tooltiptext">less than $10,000</a></OverlayTrigger> in 2021? 💵</h3>
+        ><a href="#" className="tooltiptext">less than $10,000</a></OverlayTrigger> in {figures.year}? 💵</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
