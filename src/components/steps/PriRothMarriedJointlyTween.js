@@ -57,7 +57,7 @@ class PriRothMarriedJointlyTween extends React.Component {
     const incomeMin = `${figures.roth_married_jointly_min}`;
     const incomeMax = `${figures.roth_married_jointly_max}`;
     const divider = `${figures.roth_married_not_jointly_min}`;
-    const contributionLimitYoung = 6000;
+    const contributionLimitYoung = `${figures.roth_max_under_50}`;
     switch (true) {
       case magi < incomeMin:
         return contributionLimitYoung;
