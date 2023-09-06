@@ -46,7 +46,7 @@ class RothSingleMinQ extends React.Component {
           // defaultShow="true"
           delay={{ show: 250, hide: 400 }}
           overlay={(props) => this.props.renderTooltip(props, "That's the maximum you can earn as a single person and still qualify for a Roth IRA")}
-        ><a href="#" className="tooltiptext">less than $125,000</a></OverlayTrigger> in 2021? 💰</h3>
+        ><a href="#" className="tooltiptext">less than ${figures.roth_single_min}</a></OverlayTrigger> in {figures.year}? 💰</h3>
           </Container>
         </Row>
         <Row id="body" className="rowElement">
