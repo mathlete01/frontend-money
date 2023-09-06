@@ -44,7 +44,7 @@ class RothSingleOverD extends React.Component {
         </Row>
         <Row id="body" className="rowElement">
           <Container>
-            Ok, since you'll make more than $140,000 in {figures.year}, you're not eligible
+            Ok, since you'll make more than ${figures.roth_single_max} in {figures.year}, you're not eligible
             to contribute to a regular Roth IRA. But--and this is a big
             but--anyone with{" "}
             <OverlayTrigger

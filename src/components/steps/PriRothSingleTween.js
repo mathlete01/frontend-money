@@ -55,7 +55,7 @@ class PriRothSingleTween extends React.Component {
     const magi = this.state.magi;
     // const incomeMin = 125000;
 		const incomeMin = `${figures.roth_single_min}`;
-    const incomeMax = 140000;
+    const incomeMax = `${figures.roth_single_max}`;
     const divider = 15000;
     const contributionLimitYoung = 6000;
     switch (true) {
@@ -81,7 +81,7 @@ class PriRothSingleTween extends React.Component {
   calcRothMaxSingleOld = () => {
     const magi = this.state.magi;
     const incomeMin = `${figures.roth_single_min}`;
-    const incomeMax = 140000;
+    const incomeMax = `${figures.roth_single_max}`;
     const divider = 15000;
     const contributionLimitOld = 7000;
     switch (true) {
