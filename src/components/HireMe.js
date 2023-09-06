@@ -24,7 +24,7 @@ class HireMe extends React.Component {
             </p>
             <p>
               I've learned a tremendous amount about front-end engineering, backend engineering, and the mechanics of web
-              applications. I'm looking forward to applying new programming skills and my old UX skills to a new job opportunity. This web app was built in Rails/React, but I'm eager to learn more programming languages going forward. 
+              applications. I'm looking forward to applying new programming skills and my old UX skills to a new job opportunity.
             </p>
             <p>
               Wanna know more?{" "}
