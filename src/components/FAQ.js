@@ -19,8 +19,7 @@ class FAQ extends React.Component {
           <Card>
             <Card.Header>
               <Accordion.Toggle as={Button} variant="link" eventKey="1">
-                Why do you prioritize paying off the smallest debt instead of
-                the debt with the highest interest rate?
+                Why do you prioritize paying off the smallest debt instead of the debt with the highest interest rate?
               </Accordion.Toggle>
             </Card.Header>
             <Accordion.Collapse eventKey="1">
@@ -28,22 +27,14 @@ class FAQ extends React.Component {
                 There are two schools of thought on debt payment: The Debt
                 Snowball and the Debt Avalanche. Prioritizing debt with the
                 highest interest rate is known as the Debt Avalanche, and it
-                makes sense from a mathematical standpoint. But we are big fans
-                of all the learnings in the field of Behavioral Psycology, which
-                show that the Debt Snowball approach is superior. Targeting the
-                smallest debt first results in a psycological "win" that comes
-                early. It is this success that motivates people to continue
-                paying off their second largest debt next, and so on.
-                Persistance is the name of the game, and the early successs of
-                the Debt Snowball helps people stay on track.
+                makes sense from a mathematical standpoint. But we are big fans of all the learnings in the field of Behavioral Psycology, which show that the Debt Snowball approach is superior. Targeting the smallest debt first results in a psycological "win" that comes early. It is this success that motivates people to continue paying off their second largest debt next, and so on. Persistance is the name of the game, and the early successs of the Debt Snowball helps people stay on track.
               </Card.Body>
             </Accordion.Collapse>
           </Card>
           <Card>
             <Card.Header>
               <Accordion.Toggle as={Button} variant="link" eventKey="2">
-                Why do you focus on the Roth IRA and not even mention
-                Traditional IRAs?
+                Why do you focus on the Roth IRA and not even mention Traditional IRAs?
               </Accordion.Toggle>
             </Card.Header>
             <Accordion.Collapse eventKey="2">

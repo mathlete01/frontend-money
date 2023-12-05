@@ -14,6 +14,7 @@
 .rowElement {
   padding: 10px;
   margin: 0px;
+	text-align: left;
 }
 .header {
   margin-top: 40px;
@@ -141,6 +142,12 @@ button.btn.btn-continue:active {
   background-color: #248699;
   border-color: white !important;
   color: white;
+}
+/* Make the FAQ questions left-aligned */
+button.btn.btn-link {
+  /* background-color: red; */
+	text-align: left;
+  /* color: yellow; */
 }
 a.nav-link {
   font-size: small;
