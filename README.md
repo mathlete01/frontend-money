@@ -7,5 +7,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 2. Build Docker Image
    `docker build -t frontend_money .`
 3. Run Docker Image
-   `docker run -p 3000:3000 frontend_money`
+   `docker run -it -p 3000:3000 -v $(pwd):/usr/src/app -v /usr/src/app/node_modules frontend_money`
 4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
