@@ -91,7 +91,7 @@ class Four01kContribution extends React.Component {
                   <InputGroup>
                     <FormControl
                       className="formField"
-                      type="string"
+                      type="number"
                       min="0"
                       // max="100"
                       maxLength="2"
