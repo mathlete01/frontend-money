@@ -128,7 +128,7 @@ class App extends React.Component {
     this.setState({
       showToast: false,
     });
-    console.log(`this.state.showToast = `, this.state.showToast);
+    //console.log(`this.state.showToast = `, this.state.showToast);
   };
 
   showToast = () => {

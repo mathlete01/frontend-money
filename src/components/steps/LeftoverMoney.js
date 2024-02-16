@@ -138,7 +138,7 @@ class LeftoverMoney extends React.Component {
                     </InputGroup.Prepend>
                     <FormControl
                       className="formField"
-                      type="string"
+                      type="number"
                       min="0"
                       value={
                         this.state.monthly_income
@@ -186,7 +186,7 @@ class LeftoverMoney extends React.Component {
                     </InputGroup.Prepend>
                     <FormControl
                       className="formField"
-                      type="string"
+                      type="number"
                       min="0"
                       value={
                         this.state.monthly_bills ? this.state.monthly_bills : ""
@@ -232,7 +232,7 @@ class LeftoverMoney extends React.Component {
                     </InputGroup.Prepend>
                     <FormControl
                       className="formField"
-                      type="string"
+                      type="number"
                       min="0"
                       value={
                         this.state.monthly_spending
@@ -265,9 +265,10 @@ class LeftoverMoney extends React.Component {
                     </InputGroup.Prepend>
                     <FormControl
                       className="formField"
-                      type="string"
+                      type="number"
                       min="0"
-                      value={this.calcLeftoverMoney().toLocaleString()}
+                      // value={this.calcLeftoverMoney().toLocaleString()}
+											value={this.calcLeftoverMoney()}
                       readOnly
                       id="leftover_money"
                       name="leftover_money"

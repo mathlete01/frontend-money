@@ -75,7 +75,7 @@ class Four01kMatch extends React.Component {
                   <InputGroup >
                     <FormControl
                     className="formField"
-                      type="string"
+                      type="number"
                       min="0"
                       // max="7"
                       maxLength="1"

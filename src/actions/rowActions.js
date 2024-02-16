@@ -8,7 +8,7 @@ export const updateCurrentRow = (nextRow) => {
 };
 
 export const clearCurrentRow = (row) => {
-  console.log("clearCurrentRow called, row = ", row);
+  //console.log("clearCurrentRow called, row = ", row);
   switch (row) {
     case "row2":
       return (dispatch) => {
