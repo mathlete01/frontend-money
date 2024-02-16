@@ -4,7 +4,7 @@
   "private": true,
   "engines": {
     "npm": "7.5.4",
-    "node": "16.13.0"
+    "node": ">=18.0.0"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.34",
@@ -25,7 +25,7 @@
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "NODE_OPTIONS=--openssl-legacy-provider react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
