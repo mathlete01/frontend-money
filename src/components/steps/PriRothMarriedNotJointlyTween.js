@@ -52,20 +52,20 @@ class PriRothMarriedNotJointlyTween extends React.Component {
   };
 
   calcRothMaxNotJointly = () => {
-    console.log(`calcRothMaxNotJointly called`);
+    //console.log(`calcRothMaxNotJointly called`);
     const magi = this.state.magi;
     const incomeMin = 0;
     const incomeMax = `${figures.roth_married_not_jointly_min}`;
     const divider = `${figures.roth_married_not_jointly_min}`;
     const contributionLimitYoung = `${figures.roth_max_under_50}`;
     if (magi < incomeMin) {
-      console.log(`magi < incomeMin`);
+      //console.log(`magi < incomeMin`);
       return 0;
     } else if (magi >= incomeMax) {
-      console.log(`magi >= incomeMax`);
+      //console.log(`magi >= incomeMax`);
       return 0;
     } else if (magi > incomeMin && magi < incomeMax) {
-      console.log(`magi > incomeMin && magi < incomeMax`);
+      //console.log(`magi > incomeMin && magi < incomeMax`);
       const num =
         contributionLimitYoung -
         ((magi - incomeMin) / divider) * contributionLimitYoung;
