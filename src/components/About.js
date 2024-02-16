@@ -19,29 +19,29 @@ class About extends React.Component {
           <Col md={7}>
             <p>
               Compounding interest can have a massively positive or negative
-              impact on your life depending on how well you manage your money.
+              impact on your life.
               But the subject of Personal Finance is dull, complex, and
               intimidating, so most people never properly manage their debt or
               take advantage of investment.
             </p>
             <p>
               I used to be one of those people myself, until I made a New Year's
-              Resolution to get my financial act together. I ended up completely
+              resolution to get my financial act together. I ended up completely
               geeking out on the subject, and realized that it's all just a set
               of widely agreed-upon best practices. There's a logic and a
-              sequence to it.
+              sequence to it!
             </p>
             <p>
-              This realization inspired me to create a system to help everyone
+              This realization inspired me to create <i>Debtor to Investor</i> to help everyone
               who doesn't <i>want</i> to geek out on Personal Finance--for all
-              the smart, hardworking people who just want their debt to shrink,
+              the hardworking people who just want their debt to shrink,
               their savings to grow, and to be able to retire in comfort.
             </p>
             <p>
               I've taken the best practices of Personal Finance that I learned
               from Suze Orman, Ramit Sethi, and Dave Ramsay and baked them into
-              this app. Just answer a series of nosy questions and Debtors to
-              Investors will give you a set of prioritized to-do items.
+              this app. Just answer a series of nosy questions and <i>Debtor to
+              Investor</i> will give you a set of prioritized to-do items.
             </p>
             <p>
               Got questions that are frequenly asked? Check out the{" "}
